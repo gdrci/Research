@@ -68,22 +68,18 @@ The signature and hash checks were run directly on the extracted images. Output:
 | `vendor_boot` whole-image SHA-256 (13,946,880 bytes) | matches |
 | `vendor` dm-verity root, SHA-256 (453,591,040 bytes) | matches |
 | `system` dm-verity root, SHA-256 (1,433,899,008 bytes) | matches |
-| `odm` dm-verity root, SHA-1 (52,924,416 bytes) | does not match |
-| `product` dm-verity root, SHA-1 (650,182,656 bytes) | does not match |
-| `system_ext` dm-verity root, SHA-1 (410,660,864 bytes) | does not match |
+| `odm` dm-verity root, SHA-1 (52,924,416 bytes) | matches (tree rebuilt, 32-byte digest slots) |
+| `product` dm-verity root, SHA-1 (650,182,656 bytes) | matches (tree rebuilt, 32-byte digest slots) |
+| `system_ext` dm-verity root, SHA-1 (410,660,864 bytes) | matches (tree rebuilt, 32-byte digest slots) |
 
-So the signed metadata covers the `boot`, `dtbo`, `vendor_boot`, `vendor` and `system` contents exactly as shipped. Verified.
+So the signed metadata covers the `boot`, `dtbo`, `vendor_boot`, `vendor`, `system`, `odm`, `product` and `system_ext` contents exactly as shipped. Verified.
 
 ### The SHA-1 trees
 
-The three SHA-1 trees do not match under the layout the script implements, which is the standard v1 layout with the salt prepended to each block and each hash block padded to 4096 bytes. The SHA-256 trees match under the same code, so the code is right for SHA-256. For `odm`, I also tried the salt appended instead, and that did not match either.
+The three SHA-1 trees (`odm`, `product`, `system_ext`) first failed under the standard layout, which uses one digest per 20-byte slot. The fix is in the layout, not the data. Each level stores its digests in 32-byte slots, zero-padded after the 20-byte SHA-1 digest. That gives 128 digests per 4096-byte block, not 204.
 
-Possible explanations, none tested:
+Evidence: for `odm`, the stored tree has 102 blocks, which matches 128 digests per block (101 level-0 blocks plus one root block). With 20-byte slots the count would be 65. Rebuilding every tree with 32-byte slots gives the descriptor's root digest for `odm`, `product` and `system_ext`. The same rebuild also matches the `vendor` and `system` SHA-256 roots. The stored tree equals the rebuilt tree, byte for byte, in top-down order. Output: `data/avb/hashtree_rebuild.txt`.
 
-- the SHA-1 trees use a different layout or a different hash-block packing;
-- the descriptor's data range differs from the range I hashed;
-- the trees are correct and I have the layout wrong.
-
-These three partitions have FEC enabled (`fec_num_roots=2` on `odm`). FEC does not change the root hash, so it is not the cause. The mismatch is open. It should not be read as a failed check.
+The FEC data was not checked. FEC does not change the root hash.
 
 Still not checked: the chain-partition public keys' use, and the FEC data.

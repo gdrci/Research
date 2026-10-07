@@ -19,3 +19,4 @@
    hashtree system: OK (root 84536badd84425f6..)
    hashtree system_ext: computing (410660864 bytes, sha1) ...
    hashtree system_ext: MISMATCH (root 4fd36a640e5f42d5..)
+See data/avb/hashtree_rebuild.txt: all five dm-verity roots reproduced; SHA-1 trees use 32-byte digest slots.

@@ -1,0 +1,62 @@
+SBL1 FUN_148298A4 (protocol registry lookup). Ghidra decompile, headless, program sbl1.elf.
+Protocol 0x3E is passed at 0x1482CCB4, 0x1482CE4C (in FUN_1482CD30), 0x1482D0B0 and 0x1482D258 (wrapper FUN_1482D254).
+Found by scanning every 'mov w1, #0x3e' in the SBL1 load segments.
+
+=== DECOMP 148298a4 FUN_148298a4
+
+void FUN_148298a4(long param_1,uint param_2,undefined8 *param_3)
+
+{
+  int iVar1;
+  undefined8 uVar2;
+  code *UNRECOVERED_JUMPTABLE;
+  long extraout_x8;
+  long extraout_x8_00;
+  long extraout_x8_01;
+  long extraout_x8_02;
+  long extraout_x8_03;
+  long lVar3;
+  
+  if ((param_1 == -1) && (param_1 = DAT_148c8010, DAT_148c8010 == 0)) {
+    FUN_14829e54(0x148b6000,0xffffffffffffffff,param_2,"sbl1_mc.c");
+    lVar3 = extraout_x8_01;
+LAB_1482995c:
+    UNRECOVERED_JUMPTABLE = *(code **)(lVar3 + 0xd80);
+    uVar2 = 0x80000000;
+  }
+  else {
+    iVar1 = FUN_14829720(param_1);
+    if (iVar1 != 0) {
+LAB_148298e4:
+      FUN_14829e00();
+      return;
+    }
+    if (param_2 < 100) {
+      if (param_3 != (undefined8 *)0x0) {
+        if (*(int *)(param_1 + (ulong)param_2 * 0x18 + 0x20) == 2) {
+          FUN_14829e74();
+          *param_3 = *(undefined8 *)(extraout_x8_00 + 0x10);
+          goto LAB_148298e4;
+        }
+        FUN_14829e60();
+        lVar3 = extraout_x8_03;
+        goto LAB_1482995c;
+      }
+      FUN_14829e18();
+      lVar3 = extraout_x8_02;
+    }
+    else {
+      FUN_14829e18();
+      lVar3 = extraout_x8;
+    }
+    UNRECOVERED_JUMPTABLE = *(code **)(lVar3 + 0xd80);
+    uVar2 = FUN_14829e0c();
+  }
+  FUN_14829e00(uVar2);
+                    /* WARNING: Could not recover jumptable at 0x1482996c. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+  (*UNRECOVERED_JUMPTABLE)();
+  return;
+}
+
+

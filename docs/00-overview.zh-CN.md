@@ -25,7 +25,7 @@ Boot ROM（PBL）                 芯片内部，不在 OTA 中                 
   -> 眼镜端服务                MCU HAL、STP、EMG、Smartglass 应用              已观察
 ```
 
-`uefi.img` 很可能是加载程序：SBL1 的子系统列表中有 `uefi`，而我搜索过的范围内没有 `abl`。两个镜像都存在，但尚未通过跳转到加载程序的代码得到确认。第 02 节说明了证据。
+`uefi.img` 很可能是加载程序。SBL1 的子系统列表和镜像名表中有 `uefi` 与 `APPSBL`，`uefi.img` 是 UEFI DXE 卷，而 `abl.img` 中没有相应字符串。跳转到加载程序的代码尚未反编译。第 02 节说明了证据。
 
 ## XBL 容器
 

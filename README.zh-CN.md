@@ -4,6 +4,8 @@
 
 英文版：[README.md](README.md)
 
+Discord：[discord.gg/oculus](https://discord.gg/oculus) · @gdrci（Discord）
+
 ## 范围
 
 本仓库描述系统如何构建与启动，不是漏洞研究。文中不包含任何漏洞利用代码，也不包含关于缺陷的结论。固件二进制文件不在本仓库中。

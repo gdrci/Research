@@ -1,0 +1,14 @@
+# program sbl1.elf lang AARCH64:LE:64:v8A
+=== DECOMP 1482d254 FUN_1482d254
+
+void FUN_1482d254(undefined8 param_1)
+
+{
+  undefined8 uStack0000000000000008;
+  
+  uStack0000000000000008 = 0;
+  FUN_148298a4(param_1,0x3e,&stack0x00000008);
+  return;
+}
+
+

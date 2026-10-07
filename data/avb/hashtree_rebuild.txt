@@ -1,0 +1,35 @@
+dm-verity tree rebuild, from vbmeta*.img descriptors and the partition images
+Method: level 0 = H(salt || 4096-byte data block); each level packed into 4096-byte blocks;
+each digest in a slot of 'slot' bytes (zero-padded); next level = H(salt || block); root = H(salt || top block).
+Stored tree compared as a top-down prefix (dm-verity order).
+
+== odm (vbmeta.img)
+slot 20 levels [64, 1] total blocks 65 root 314731ee1c2a21c28abf55e656c8302939e3bf33 matches descriptor False
+   stored == bottom-up False  stored == top-down False
+slot 32 levels [101, 1] total blocks 102 root f7a354357e3bb37d824a6baf447180b1af170236 matches descriptor True
+   stored == bottom-up False  stored == top-down True
+
+== product (vbmeta_system.img)
+slot 20 levels [779, 4, 1] total blocks 784 root 0b97a19ad0631d51da07e9af1b5851fb92eda4f7 matches descriptor False
+   stored == bottom-up False  stored == top-down False
+slot 32 levels [1241, 10, 1] total blocks 1252 root 43838c9f73c12a14a32f487fbc2b660d0423031d matches descriptor True
+   stored == bottom-up False  stored == top-down True
+
+== system_ext (vbmeta_system.img)
+slot 20 levels [492, 3, 1] total blocks 496 root 4fd36a640e5f42d56be5c734c858f75d8b2fce92 matches descriptor False
+   stored == bottom-up False  stored == top-down False
+slot 32 levels [784, 7, 1] total blocks 792 root 7f4fcd520a147213047c9a567db00981f119ce0f matches descriptor True
+   stored == bottom-up False  stored == top-down True
+
+== system (vbmeta_system.img)
+slot 32 levels [2735, 22, 1] total blocks 2758 root 84536badd84425f692b5e5703fc62a1bf6cf60206f0bff465d03301d9f172296 matches descriptor True
+   stored == bottom-up False  stored == top-down True
+slot 32 levels [2735, 22, 1] total blocks 2758 root 84536badd84425f692b5e5703fc62a1bf6cf60206f0bff465d03301d9f172296 matches descriptor True
+   stored == bottom-up False  stored == top-down True
+
+== vendor (vbmeta.img)
+slot 32 levels [866, 7, 1] total blocks 874 root ed3a590f7c43f1660c390136bcc63a1462b97f271cce646fc29c845b59bf9c15 matches descriptor True
+   stored == bottom-up False  stored == top-down True
+slot 32 levels [866, 7, 1] total blocks 874 root ed3a590f7c43f1660c390136bcc63a1462b97f271cce646fc29c845b59bf9c15 matches descriptor True
+   stored == bottom-up False  stored == top-down True
+

@@ -75,6 +75,14 @@ Inferred design: the band's signal goes to the MCU, then through a `Band` device
 
 The files in `vendor/firmware` are containers, and each one holds named sub-images. The names below are the ones found inside each file (full list in `data/userspace/tub_contents.txt`):
 
+Structure, from `case.default.cabo.tub` and `mcu.core1.default.rt700.tub` (observed):
+
+- The first bytes are the name of the sub-image, NUL-padded (`case.bin`, `core1.bin`).
+- The payload comes first. A JSON manifest follows at the end of the file, and some files carry a second JSON block after the first.
+- The manifest has `deployment_methods` (`["RPC"]`), `md5`, `platform` (`greatwhite-rt700` in the core1 file), `target_assets` (each with `name`, `type`, `layout.load_addr`, `layout.offset`, and a `signature` in the core1 file) and `version`.
+- `layout.offset` values (for example `142409728`, which is `0x87D0000`) are larger than the file. They are load positions for the target, not file offsets.
+- The manifest `md5` did not match a prefix of the file. The prefix search was not completed, so the payload boundary and the hashed range are unverified.
+
 | Container | Size | Sub-image names |
 |---|---:|---|
 | `mcu.default.rt700.tub` | 8.5 MB | `app.bin`, `display_calibration.bin`, `display_wpc_coeff.bin`, `touch-app-b0.cyacd2`, `boot_data.bin`, `pmic_reset_info.bin` |

@@ -56,6 +56,8 @@ Its source-file strings cover the whole job:
 
 SBL1 has a subsystem list that includes `tz`, `mss`, `uefi`, `adsp`, `aop` and `ssc`. That list is in the same string block, at offset `0xCD0F9`. It is the strongest hint that `uefi` is the next loader. Observed.
 
+The next-stage names are also in SBL1's string table. A block of image names at `0x813D0`–`0x813F8` reads `CPUCP_DTB`, `QSEE Dev Config`, `QSEE` and `APPSBL`. A separate `uefi` string sits at `0x82171`. `abl` does not appear there, and it is not in the `uefi` image either. `uefi.img` contains `UEFI DXE` and DXE core strings (`Dxe Core  FV decompression failed`, `DXE Heap`, `AddDecompressdFvForDxe failed`). These are the strings of a UEFI DXE firmware volume, so `uefi.img` is a UEFI payload. Observed. That `uefi` is loaded as `APPSBL` is inferred: SBL1's loader code that uses these names is not yet decompiled.
+
 SBL1 refers to `shrm.elf`, `devcfg.bin`, `cpr.bin` and `_dcb.bin` by file name. These are the images it loads. The code that loads them is not yet decompiled.
 
 #### The memory-map function
@@ -64,7 +66,19 @@ The QFPROM reference (section 06) sits inside one function, `FUN_1482CD30` in Gh
 
 The decompiled function (`data/ghidra/sbl1_memmap_decompiled.txt`) builds a table of region records on the stack. Each record holds a start address, a second address, a size and a class value. The class values in the table are `0x8`, `0x22`, `0x23`, `0x25`, `0x26` and `0x27`. Among the regions named are SBL1's own image (`0x14800000`, `0x14824000`), shared IMEM (`0x146AA000`), the TrustZone image (`0x14680000`), and the MMIO blocks `0x221C2000` and `0x221C8000`. The `BootMemMapLib.c` source name is in the same program.
 
-The function does not write the records to hardware itself. It obtains an interface object through a call with protocol ID `0x3E` (`FUN_148298A4`), and then calls the object's first entry with the table. That means the table is handed to a service. The service is not decompiled yet.
+The function does not write the records to hardware itself. It obtains an interface object through a call with protocol ID `0x3E` (`FUN_148298A4`), and then calls the object's first entry with the table. The service is not decompiled yet.
+
+What `FUN_148298A4` does (decompiled, `data/ghidra/sbl1_fn148298a4_decompiled.txt`):
+
+```c
+if (param_2 < 100) {                              // protocol id, 0..99
+    if (param_3 != 0) {
+        if (*(int *)(param_1 + param_2*0x18 + 0x20) == 2) {   // state 2 = registered
+            *param_3 = *(undefined8 *)(entry + 0x10);         // the object
+            ...
+```
+
+It is a registry lookup. The registry is a table of 100 entries, 0x18 bytes each. An entry is usable when its state field at `+0x20` is 2, and the object is at `+0x10`. The `sbl1_mc.c` source name is in the same function. Call sites that pass `0x3E` are at `0x1482CCB4`, `0x1482CE4C` (inside `FUN_1482CD30`), `0x1482D0B0` and `0x1482D258` (through the wrapper `FUN_1482D254`). Found by scanning every `mov w1, #0x3E` in SBL1. Observed. The registration code that sets the state to 2 for `0x3E` is not found yet, so the provider of the service is unknown.
 
 The exact per-record field meanings are not confirmed, so this document does not assign a size to each record.
 
@@ -78,6 +92,7 @@ The tests on its content (`data/analysis/isa_tests.txt`, `data/ghidra/xbl_primar
 - **Function-boundary instructions.** None of these appear: Hexagon `allocframe` and `dealloc_return`; ARM32 `push {..., lr}`, `pop {..., pc}`, `bx lr`; AArch64 `ret` (`0xD65F03C0`); RISC-V `ret` (`0x00008067`). Known AArch64 code has 24.6 `ret` per 1,000 words, so the test works.
 - **Ghidra disassembly from the start address.** Disassembled from offset 0 as Thumb-2, 669 instructions decode before the first error. Known AArch64 code decodes 2,000 instructions from its entry in the same method. The Thumb-2 output is a repeating pattern (`stmia r4!,{r0}` followed by `adds r0,#0x3`, with values stepping towards `cmp r0,#0xf6`). That reads as a table of values, not code. Ghidra's ARM32 decode gives 0 instructions, and its Hexagon decode gives 1.
 - **Entropy.** Most of the region is between 6.5 and 7.1 bits per byte. One 64 KB chunk at offset `0x10000` is lower (3.6 bits per byte).
+- **Byte-level checks on the first 112 KB of the segment** (`0x2211C000`, `0x1C000` bytes). ARM32 decodes 0 instructions from the start and Thumb decodes 164 instructions in the first 16 KB. 27% of its words are zero. No stride from 2 to 32 words repeats more than 29% of the time, so there is no fixed record size. zlib and LZMA do not decode from offsets 0 to 60. The companion segment at `0x22143000` (640 bytes) does not start with DER or X.509 data; it begins with a Qualcomm-style header of packed fields. None of these results identifies the format.
 
 The conclusion is that the primary stub is a data table, not code of a tested ISA. Its exact format is not identified.
 
@@ -162,7 +177,7 @@ The table is read only by the two functions above. Their 30 call sites, with the
 - `abl.img`: ELF32 with `EM_ARM`, entry `0x9FA00000`. It has almost no readable strings. Its ISA and role are not established. The condition-code and Thumb tests I ran on it were inconclusive, and the same condition-code test fails on the known ARM32 modem binary, so I do not rely on it.
 - `imagefv.img`: ELF32 ARM, 20 KB, likely a firmware volume. Unverified.
 
-`uefi` is the likelier loader. SBL1's subsystem list includes `uefi`, and `abl` does not appear in any image name or string I searched. Observed.
+`uefi` is the likelier loader. SBL1's subsystem list and its image-name table both include `uefi` or `APPSBL`, and `uefi.img` is a UEFI DXE volume. `abl.img` contains no UEFI, Android boot or fastboot strings. Observed. Which image SBL1 actually jumps to has not been confirmed in code.
 
 ## Stage 5 and later
 

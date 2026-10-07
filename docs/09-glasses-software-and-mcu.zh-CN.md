@@ -75,6 +75,14 @@
 
 `vendor/firmware` 中的文件是容器，每个容器都包含带名称的子镜像。下表中的名称是从各文件中找到的（完整列表见 `data/userspace/tub_contents.txt`）：
 
+结构，依据 `case.default.cabo.tub` 与 `mcu.core1.default.rt700.tub`（已观察）：
+
+- 文件开头是子镜像名称，以 NUL 填充（如 `case.bin`、`core1.bin`）。
+- 载荷在前，文件末尾跟着 JSON 清单，部分文件还在第一个 JSON 之后带有第二个 JSON 块。
+- 清单包含 `deployment_methods`（`["RPC"]`）、`md5`、`platform`（core1 文件中为 `greatwhite-rt700`）、`target_assets`（每项含 `name`、`type`、`layout.load_addr`、`layout.offset`，core1 文件中还有 `signature`）以及 `version`。
+- `layout.offset` 的值（例如 `142409728`，即 `0x87D0000`）大于文件长度，它们是目标端的加载位置，不是文件偏移。
+- 清单中的 `md5` 与文件前缀不匹配。前缀搜索未完成，因此载荷边界和被哈希的范围尚未验证。
+
 | 容器 | 大小 | 子镜像名称 |
 |---|---:|---|
 | `mcu.default.rt700.tub` | 8.5 MB | `app.bin`、`display_calibration.bin`、`display_wpc_coeff.bin`、`touch-app-b0.cyacd2`、`boot_data.bin`、`pmic_reset_info.bin` |

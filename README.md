@@ -4,6 +4,8 @@ Documentation of the Ray-Ban Display firmware: how the system is built, how it b
 
 Chinese version: [README.zh-CN.md](README.zh-CN.md)
 
+Discord: [discord.gg/oculus](https://discord.gg/oculus) · @gdrci (Discord)
+
 ## Scope
 
 This repository describes how the system is built and how it starts. It is not vulnerability research. It contains no exploit material and no findings about weaknesses. Firmware binaries are not included.

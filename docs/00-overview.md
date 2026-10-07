@@ -25,7 +25,7 @@ Boot ROM (PBL)                 silicon, not in the OTA                       unv
   -> glasses services          MCU HALs, STP, EMG, Smartglass apps           observed
 ```
 
-`uefi.img` is the likely bootloader: SBL1's subsystem list names `uefi`, and `abl` appears nowhere I searched. Both images are present, and this is not yet confirmed by the code that jumps to the loader. Section 02 explains the evidence.
+`uefi.img` is the likely bootloader. SBL1's subsystem list and image-name table name `uefi` and `APPSBL`, and `uefi.img` is a UEFI DXE volume, while `abl.img` has no matching strings. The code that jumps to the loader is not yet decompiled. Section 02 explains the evidence.
 
 ## The XBL container
 
