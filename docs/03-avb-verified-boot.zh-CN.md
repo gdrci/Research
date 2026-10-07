@@ -69,6 +69,8 @@ DXE 固件卷中的验证启动代码已反编译，见 `data/ghidra/uefi_verifi
 
 `keymaster.img` 负责 Keymaster 的回滚保护。密钥 blob 携带 OS 版本，并与当前启动的 OS 版本比较（`Current boot osVersion` 和 `Key blob osVersion`）。未通过检查的密钥不会被升级。保存的状态（`sfs_rpmb_set` / `sfs_rpmb_get`）位于 RPMB 中。Keymaster 还为证明记录 `vbmeta` 摘要（`fill_vbmeta_digest`），并处理启动状态与信任根（`KEYMASTER_SET_ROT`、`KEYMASTER_SET_BOOT_STATE`、`KEYMASTER_SET_VERSION`）。这是密钥级别的回滚保护。`vbmeta` 索引比较不在该镜像中。依据字符串观察得出。证据见 `data/secure/keymaster_rollback_strings.txt`。
 
+验证启动 DXE 协议在镜像数据段（`0xD1C0`）中有一张方法表：`GetBootState`（`0x26BC`）、`GetCertFingerPrint`（`0x2720`，仅允许在 YELLOW 状态下调用），以及一个 `SecurityFlag` 读取函数（`0x27A8`，标志的第 7 位）。启动状态依次为 `GREEN`（0）、`ORANGE`（1）、`YELLOW`（2）和 `RED`（3）。`GetCertFingerPrint` 通过哈希协议对传入的证书做摘要，不读取任何熔丝。因此 OEM 信任根密钥哈希的读取者不在验证启动 DXE 代码中。已观察。反编译见 `data/ghidra/uefi_vb_protocol_methods_decompiled.txt`。
+
 ## 已对照镜像进行的检查
 
 签名与哈希校验直接在解出的镜像上进行。输出见 `data/avb/verify_results.txt`。

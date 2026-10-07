@@ -69,6 +69,8 @@ The verified-boot code in the DXE volume is decompiled in `data/ghidra/uefi_veri
 
 `keymaster.img` holds the Keymaster rollback protection. Key blobs carry an OS version, which is compared with the current boot OS version (`Current boot osVersion` and `Key blob osVersion`). Keys that fail the check are not upgraded. The stored state (`sfs_rpmb_set` / `sfs_rpmb_get`) is kept in RPMB. Keymaster also records the `vbmeta` digest (`fill_vbmeta_digest`) for attestation, and it handles boot state and root-of-trust (`KEYMASTER_SET_ROT`, `KEYMASTER_SET_BOOT_STATE`, `KEYMASTER_SET_VERSION`). This is key-level rollback. The `vbmeta` index comparison is not in this image. Observed from strings. Evidence: `data/secure/keymaster_rollback_strings.txt`.
 
+The verified-boot DXE protocol has a method table in the image's data section (`0xD1C0`): `GetBootState` (`0x26BC`), `GetCertFingerPrint` (`0x2720`, allowed only in the YELLOW state), and a `SecurityFlag` reader (`0x27A8`, bit 7 of the flag). Boot states are `GREEN` (0), `ORANGE` (1), `YELLOW` (2) and `RED` (3). `GetCertFingerPrint` hashes a supplied certificate through a hash protocol and does not read any fuse. So the OEM root-of-trust key-hash reader is not in the verified-boot DXE code. Observed. Decompiles: `data/ghidra/uefi_vb_protocol_methods_decompiled.txt`.
+
 ## What was checked against the images
 
 The signature and hash checks were run directly on the extracted images. Output: `data/avb/verify_results.txt`.

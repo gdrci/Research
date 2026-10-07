@@ -1,0 +1,82 @@
+# program vb.pe lang AARCH64:LE:64:v8A
+NO FUNCTION at 00001c70
+NO FUNCTION at 00002440
+=== DECOMP 00002720 FUN_00002720
+
+long FUN_00002720(undefined8 param_1,undefined8 *param_2,ulong param_3,ulong *param_4)
+
+{
+  char *pcVar1;
+  long lVar2;
+  
+  if (DAT_0000d178 == 2) {
+    lVar2 = 0x50;
+    pcVar1 = "VB: GetCertFingerPrint: invalid input parameters!\n";
+    if (((param_2 != (undefined8 *)0x0) && (param_3 != 0)) &&
+       (pcVar1 = "VB: GetCertFingerPrint: invalid input parameters!\n", param_4 != (ulong *)0x0)) {
+      lVar2 = FUN_000036c4(DAT_0000d2f0,DAT_0000d2f8,param_2,param_3,param_4);
+      if (lVar2 == 0) {
+        return 0;
+      }
+      pcVar1 = "VB: GetCertFingerPrint: cannot get finger print!\n";
+    }
+  }
+  else {
+    lVar2 = 0x50;
+    pcVar1 = 
+    "VB: GetCertFingerPrint: only can be called after image verification for YELLOW state!\n";
+  }
+  FUN_00005458(0x80000000,(byte *)pcVar1);
+  return lVar2;
+}
+
+
+=== DECOMP 000027a8 FUN_000027a8
+
+long FUN_000027a8(undefined8 param_1,byte *param_2)
+
+{
+  long lVar1;
+  undefined4 local_24;
+  
+  local_24 = 0;
+  if (param_2 == (byte *)0x0) {
+    FUN_00005458(0x80000000,(byte *)"VB: DEBUG: Inavlid Parameter passed\n");
+    lVar1 = -0x7ffffffffffffffe;
+  }
+  else {
+    lVar1 = FUN_00004c40("SecurityFlag",&local_24);
+    if (lVar1 == 0) {
+      *param_2 = (byte)local_24 >> 7;
+    }
+    else {
+      FUN_00005458(0x80000000,(byte *)"VB: DEBUG: Unable to read the security flag\n");
+    }
+  }
+  return lVar1;
+}
+
+
+=== DECOMP 000026bc FUN_000026bc
+
+undefined8 FUN_000026bc(undefined8 param_1,undefined4 *param_2)
+
+{
+  undefined8 uVar1;
+  
+  if ((DAT_0000d2a0 & 1) == 0) {
+    FUN_00005458(0x80000000,(byte *)"VB: GetBootState: call the API after image verification\n");
+    uVar1 = 0x50;
+  }
+  else if (param_2 == (undefined4 *)0x0) {
+    FUN_00005458(0x80000000,(byte *)"VB: GetBootState: Invalid input\n");
+    uVar1 = 0x8000000000000002;
+  }
+  else {
+    uVar1 = 0;
+    *param_2 = DAT_0000d178;
+  }
+  return uVar1;
+}
+
+
