@@ -1,0 +1,1613 @@
+hc8"hc8c
+M;@9N?@9
+,U@9KMA8J	@9
+Xfx*xjx_
+x:xQha8Qh)81
+(ki8hj)8)
+ *k,ik8lk+8j
+K1@9J9@9j
+K1@9J9@9j
+KM@9JI@9j
+*)!*Kk=@
+"/k 1QzC
+_!5k;i68
+Wrong CPU core %d
+Init CPU core %d
+%s unimplemented
+IS_ALIGNED(user_stack_top, 16)
+arch/arm64/arch.c
+DEBUG ASSERT FAILED at (%s:%d): %s
+iframe %p:
+X0   %16llX    X16  %16llX
+X1   %16llX    X17  %16llX
+X2   %16llX    X18  %16llX
+X3   %16llX    X19  %16llX
+X4   %16llX    X20  %16llX
+X5   %16llX    X21  %16llX
+X6   %16llX    X22  %16llX
+X7   %16llX    X23  %16llX
+X8   %16llX    X24  %16llX
+X9   %16llX    X25  %16llX
+X10  %16llX    X26  %16llX
+X11  %16llX    X27  %16llX
+X12  %16llX    X28  %16llX
+X13  %16llX    X29  %16llX
+X14  %16llX    X30  %16llX
+X15  %16llX    PC   %16llX
+SP  %16llX
+SPSR%16llX
+unhandled syscall vector
+Entered recursive exception, panic!
+instruction abort: PC at 0x%lX (0x%lX)
+Thread %s @ 0x%lX on Core %d  Thr entry 0x%lX @ %llX
+data fault: @ %llX PC at 0x%llX, FAR 0x%llX, iss 0x%X (DFSC 0x%lX)
+data fault: @ %llX PC at 0x%llX, FAR 0x%llX, iss 0x%X
+recovery attempted for : %llu us
+unhandled synchronous exception
+ESR 0x%X: ec 0x%X, il 0x%X, iss 0x%X
+Stack frame:
+------------
+Thread %s @ 0x%lX on Core %d
+invalid exception, which 0x%X
+sp 0x%lx
+   0x%llX : %08X %08X %08X %08X  
+   0x%llX : %016llX %016llX 
+TTBR0 : %llX
+TCR   : %llX
+MAIR  : %llX
+SCTLR : %llX
+T0SZ Max addr : %lld bits
+TG0 : 4k page size
+Unsupported TG0 configuration for exception analysis %lld
+MMU Fault, Table walk for : 0x%llX
+L%d Table : 0x%llX[0x%X] = 0x%llX
+Data abort
+Instruction abort
+Not decoded
+SP alignment fault
+PC alignment fault
+SVC executed in AArch64
+Address size fault, zeroth level of translation or translation table base register
+Address size fault, first level
+Address size fault, second level
+Address size fault, third level
+Translation fault, zeroth level
+Translation fault, first level
+Translation fault, second level
+Translation fault, third level
+Access flag fault, first level
+Access flag fault, second level
+Access flag fault, third level
+Permission fault, first level
+Permission fault, second level
+Permission fault, third level
+Synchronous external abort
+Asynchronous external abort
+Synchronous external abort on translation table walk, zeroth level
+Synchronous external abort on translation table walk, first level
+Synchronous external abort on translation table walk, second level
+Synchronous external abort on translation table walk, third level
+Synchronous parity error on memory access
+Asynchronous parity error on memory access
+Synchronous parity error on memory access on translation table walk, zeroth level
+Synchronous parity error on memory access on translation table walk, first level
+Synchronous parity error on memory access on translation table walk, second level
+Synchronous parity error on memory access on translation table walk, third level
+Alignment fault
+Debug event
+TLB conflict abort
+IMPLEMENTATION DEFINED
+Domain fault
+UEFI DXE
+  > Scheduler up on Core %d
+Init %ld aux cores of %ld
+bootstrap
+Invalid aux_cpu_num %d, SMP_MAX_CPUS %d
+Invalid secondary cpu num %d, SMP_MAX_CPUS %d, secondary_bootstrap_thread_count %d
+Invalid aux_cpu_count %d, SMP_MAX_CPUS %d
+AuxBootStrap_%d
+Shutdown_%d
+Continue booting UEFI on Core %d
+Hit object count ceiling %d
+Hit object count ceiling
+register_int_handler: vector out of range %d
+rev == 3 || rev == 4
+dev/interrupt/arm_gic/arm_gicx.c
+DEBUG ASSERT FAILED at (%s:%d): %s
+Max ints %d exceed Gic supported max ints %u
+sre & 0x1
+%s unimplemented
+%s:%d: FAIL, off by %llu
+arg == NULL
+dev/timer/arm_generic/arm_generic_timer.c
+ASSERT FAILED at (%s:%d): %s
+%s:%d: Failed to initialize timer, frequency is 0
+e->magic == EVENT_MAGIC
+kernel/event.c
+DEBUG ASSERT FAILED at (%s:%d): %s
+m->magic == MUTEX_MAGIC
+kernel/mutex.c
+DEBUG ASSERT FAILED at (%s:%d): %s
+mutex_destroy: thread %p (%s) tried to release mutex %p it doesn't own. owned by %p (%s)
+mutex_acquire_timeout: thread %p (%s) tried to acquire mutex %p it already owns.
+t->magic == THREAD_MAGIC
+kernel/thread.c
+DEBUG ASSERT FAILED at (%s:%d): %s
+t->state == THREAD_READY
+arch_ints_disabled()
+spin_lock_held(&thread_lock)
+!list_in_list(&t->queue_node)
+current_thread->state != THREAD_RUNNING
+stack overrun at %p: thread %p (%s), stack %p
+unsafe stack overrun at %p: thread %p (%s), unsafe stack %p
+t->state == THREAD_SLEEPING
+current_thread->magic == THREAD_MAGIC
+current_thread->state == THREAD_RUNNING
+t->state != THREAD_DEATH
+current_thread->state == THREAD_BLOCKED
+!thread_is_idle(current_thread)
+t->state == THREAD_BLOCKED
+!thread_is_idle(t)
+bootstrap
+dump_thread: t %p (%s)
+	state %s, curr_cpu %d, pinned_cpu %d, priority %d, remaining quantum %d
+	stack %p, stack_size %zd, stack_used %zd
+	unsafestack %p, unsafe_stack_size %zd, unsafe_stack_used %zd
+	entry %p, arg %p, flags 0x%x
+	wait queue %p, wait queue ret %d
+bad magic on thread struct %p, aborting.
+wait->magic == WAIT_QUEUE_MAGIC
+t->state == THREAD_DEATH
+t->blocking_wait_queue == NULL
+wait->count == 0
+somehow fell through thread_exit()
+t->blocking_wait_queue != NULL
+t->blocking_wait_queue->magic == WAIT_QUEUE_MAGIC
+list_in_list(&t->queue_node)
+thread->magic == THREAD_MAGIC
+thread_is_idle(t)
+arch_ints_disabled()
+kernel/timer.c
+DEBUG ASSERT FAILED at (%s:%d): %s
+timer && timer->magic == TIMER_MAGIC
+TIME_GT(timer->scheduled_time, now)
+timer->magic == TIMER_MAGIC
+timer %p already in list
+UnplugThr
+HALT: spinning forever... (reason = %d)
+novm_add_arena: too many arenas added, bump NOVM_MAX_ARENAS!
+System heap not provided!
+panic (caller %p): 
+0x%08lx: 
+         
+0x%016llx: 
+0x%08llx: 
+0.000000
+General Error
+No Error
+chunk_end <= (vaddr_t)next_chunk
+lib/heap/miniheap/miniheap.c
+DEBUG ASSERT FAILED at (%s:%d): %s
+(len % sizeof(void *)) == 0
+Heap dump (using miniheap):
+	base %p, len 0x%zx
+	free list:
+		base %p, end 0x%lx, len 0x%zx
+(chunk->len % sizeof(void *)) == 0
+chunk->len >= size
+%s:%d: failed to grow kernel heap by 0x%zx bytes
+as->magic == HEAP_MAGIC
+end > start
+end_page <= end
+start_page >= start
+io->magic == IO_HANDLE_MAGIC
+lib/io/io.c
+DEBUG ASSERT FAILED at (%s:%d): %s
+lib/cbuf/cbuf.c
+DEBUG ASSERT FAILED at (%s:%d): %s
+ispow2(len)
+len < valpow2(cbuf->len_pow2)
+cbuf && regions
+cbuf->tail < sz
+ret <= sz
+platform_fiq
+arm_generic_timer_init
+test_time_conversion_check_result
+0123456789abcdef0123456789ABCDEFheap_grow
+Timer Delta   : +%ld mS
+Timer Delta   : -%ld mS
+UefiInfoBlkPtr != ((void *) 0)
+WARNING: Unable to add InfoBlk HOB
+EarlyCacheInit Failed
+Status == 0
+Error parsing configuration file
+Error: Overlap detected!!! Memory region carved out in a hole defined by RAM partition table !
+Error updating info for all banks
+Error initializing cache with memory regions
+InitSharedLibs failed
+DXE Heap
+Could not locate "DXE Heap" in CFG
+UEFI_LOG
+Minidump      : ON
+Minidump      : OFF (No UEFI Log)
+SecPagePoolCount
+Need valid SecPagePoolCount cfg, using default value of 0x400
+EnableMultiThreading
+MaxCoreCnt
+EarlyInitCoreCnt
+Dxe Core  FV decompression failed, Status: %d
+AddDecompressdFvForDxe failed, Status: %d
+EnableMultiCoreFvDecompression
+UEFI Aux FV decompression failed, Status: %d
+Could not locate UefiInfoBlkPtr
+DecompressionRequired
+Format != ((void *) 0)
+(Status == 0) || (Status == ((RETURN_STATUS)(0x8000000000000000ULL | (4))))
+WARNING: Bad SBL Pointer!!
+UEFI Start     [%5d]
+ - 0x%09X [%5d] Sec.efi
+ASLR          : ON [WARNING Using constant]
+ASLR          : ON
+DEP           : ON (RTB)
+Invalid memory configuration, check memory partition table
+RAM Entry %d   : Base 0x%010lx  Size 0x%010lx
+Preloaded %d : Base 0x%010lx  Size 0x%010lx
+RAM Available : %ld MB (0x%010lx)
+RAM Installed : %ld MB (0x%010lx)
+UEFI Memory Map configuration not found
+MemRegions != ((void *) 0)
+MemRegionsCnt != 0
+Invalid BuildHob Option
+pMemRegion->MemBase < 0xFFFFFFFFFFFFFFFFULL
+(pMemRegion->MemBase + pMemRegion->MemSize - 1) <= 0xFFFFFFFFFFFFFFFFULL
+UefiPlatCfg.c
+ERROR: UEFI FD region not present in cfg file !
+RO: 0x%016lx--0x%016lx [Failed]
+XN: 0x%016lx--0x%016lx [Failed]
+uefiplat.cfg
+MemoryMap
+RegisterMap
+ConfigParameters
+ChipIDConfig
+Failed LoadAndParsePlatformCfg
+Memory region %s carved out in a hole defined by RAM partition table !
+AllocOnly
+HobOnlyNoCacheSetting
+AddDynamicMem
+Invalid BuildHob option in config file !
+FIRMWARE_DEV
+MMAP_IO_PORT
+Invalid ResourceType in config file !
+SYS_MEM_CAP
+SYS_MEM_CAP_XN
+UNCACHEABLE
+WRITE_COMBINEABLE
+WRITE_THROUGH
+INITIALIZED
+PROTECTED
+WRITE_PROTECTED
+EXECUTION_PROTECTED
+Invalid Resource Attribute in config file !
+Ch != ((void *) 0)
+Unusable
+ACPIReclaim
+ACPI_NVS
+MmIOPort
+Invalid Memory Type in config file !
+NS_DEVICE
+UNCACHED_UNBUFFERED
+UNCACHED_UNBUFFERED_XN
+WRITE_BACK_XN
+WRITE_THROUGH_XN
+WRITE_BACK
+NS_UNCACHED_UNBUFFERED
+NS_WRITE_BACK
+NS_WRITE_THROUGH
+Invalid Cache Attribute in config file !
+Unsupported config file version!
+MaxMemoryRegions
+Unable to allocate memory for memory table!
+mMemRegions != ((void *) 0)
+FreeBufferPtr != ((void *) 0)
+ConfigParameterCount
+Failed to allocate enough memory for config table 
+ConfigTable != ((void *) 0)
+Config file has more entries than specified max value
+MaxConfigParameters != 0
+ConfigTableEntryCount < MaxConfigParameters
+ChipID_RegAddr
+Jun  1 2026
+PlatConfigFileName
+Error reading config file name
+UEFI Ver    : Invalid Length
+UEFI Ver      : %a
+Build Info    : 64b %a %a
+12:28:53
+Boot Device   : UFS
+Boot Device   : Flashless
+Boot Device   : NAND
+Boot Device   : eMMC
+Boot Device   : SDC
+Boot Device   : NVME
+Boot Device   : SPI
+Unable to determine boot device ...
+FwVersion.c
+PROD Mode     : TRUE
+Retail        : TRUE
+UARTLogBufferSize
+UEFI Log
+Error Allocating buffer for UART log 
+SecFdtInitRootHandle: DTBBlob NULL!
+SecFdtGetNodeHandle: DTBBlob NULL!
+SecDtb.c
+BootSharedImemCookiePtr != ((void *) 0)
+fdt_set_blob_handle: %d
+/sw/boot
+fdt_get_node_handle: %d
+fdt_get_uint32_prop_list: %d
+PrintLib.c
+(((UINTN) (StartOfBuffer)) & 0x01) == 0
+(((UINTN) (FormatString)) & 0x01) == 0
+(((UINTN) (Buffer)) & 0x01) == 0
+wwwwwwwwwwwwwwwwww$
+0123456789ABCDEFSuccess
+Warning Unknown Glyph
+Warning Delete Failure
+Warning Write Failure
+Warning Buffer Too Small
+Warning Stale Data
+Load Error
+Invalid Parameter
+Unsupported
+Bad Buffer Size
+Buffer Too Small
+Not Ready
+Device Error
+Write Protected
+Out of Resources
+Volume Corrupt
+Volume Full
+No Media
+Media changed
+Not Found
+Access Denied
+No Response
+No mapping
+Time out
+Not started
+Already started
+ICMP Error
+TFTP Error
+Protocol Error
+Incompatible Version
+Security Violation
+CRC Error
+End of Media
+Reserved (29)
+Reserved (30)
+End of File
+Invalid Language
+Compromised Data
+PrintLibInternal.c
+Buffer != ((void *) 0)
+Width < 38
+(Flags & ~(0x01 | 0x08 | 0x20 | 0x80)) == 0
+((Flags & 0x08) == 0) || ((Flags & 0x80) == 0)
+(Buffer != ((void *) 0))
+(BufferSize <= (_gPcd_FixedAtBuild_PcdMaximumAsciiStringLength))
+(BufferSize <= (_gPcd_FixedAtBuild_PcdMaximumUnicodeStringLength) * sizeof (CHAR16) + 1)
+((Flags & ~(0x01 | 0x08 | 0x20 | 0x80)) == 0)
+(((Flags & 0x08) == 0) || ((Flags & 0x80) == 0))
+(Width < 38)
+(BufferSize >= (Width + 1) * Increment)
+(Format != ((void *) 0))
+(BufferSize <= (_gPcd_FixedAtBuild_PcdMaximumUnicodeStringLength))
+(StrnLenS ((CHAR16 *)Format, (_gPcd_FixedAtBuild_PcdMaximumUnicodeStringLength) + 1) <= (_gPcd_FixedAtBuild_PcdMaximumUnicodeStringLength))
+(AsciiStrnLenS (Format, (_gPcd_FixedAtBuild_PcdMaximumAsciiStringLength) + 1) <= (_gPcd_FixedAtBuild_PcdMaximumAsciiStringLength))
+<null string>
+<null guid>
+%08x-%04x-%04x-%02x%02x-%02x%02x%02x%02x%02x%02x
+<null time>
+%02d/%02d/%04d  %02d:%02d
+((BOOLEAN)(0==1))
+(((EFI_COMMON_SECTION_HEADER2 *) (UINTN) Section)->ExtendedSize) > 0x00FFFFFF
+Decompress GetInfo Failed - %r
+Decompress Failed - %r
+SectionLength != 0
+ASSERT_EFI_ERROR (Status = %r)
+!EFI_ERROR (Status)
+PrePiLib.c
+Buffer != 0
+Loading DxeCore at 0x%10p EntryPoint=0x%10p
+BaseOfStack != ((void *) 0)
+DxeCore returned
+ZeroMemWrapper.c
+Length <= (0xFFFFFFFFFFFFFFFFULL - (UINTN)Buffer + 1)
+SetMemWrapper.c
+(Length - 1) <= (0xFFFFFFFFFFFFFFFFULL - (UINTN)Buffer)
+CopyMemWrapper.c
+(Length - 1) <= (0xFFFFFFFFFFFFFFFFULL - (UINTN)DestinationBuffer)
+(Length - 1) <= (0xFFFFFFFFFFFFFFFFULL - (UINTN)SourceBuffer)
+#MEMMUTEX
+InitNamedLock Failed - %r
+AllocPagePoolLib.c
+NumPages != 0
+pPagePool != ((void *) 0)
+PagePoolAllocatedCount >= (*PageCount)
+(PagePoolAllocatedCount + CurrentAllocReqCount) < PagePoolSize
+Pages != 0
+(0x00080000 - (((0x1 << 0x4)-1)*0x00001000)) > (Pages * 0x00001000)
+Hob != ((void *) 0)
+HobStart != ((void *) 0)
+((MemoryAllocationModule & (0x00001000 - 1)) == 0) && ((ModuleLength & (0x00001000 - 1)) == 0)
+DataLength <= (0xffff - sizeof (EFI_HOB_GUID_TYPE))
+Data != ((void *) 0) || DataLength == 0
+((BaseAddress & (0x00001000 - 1)) == 0) && ((Length & (0x00001000 - 1)) == 0)
+DB:Start:
+DB:Support:
+DB:Stop:
+LoadImage:
+StartImage:
+PeiPerformanceLib.c
+Source != ((void *) 0)
+unknown name
+MemoryAllocationLib.c
+(Alignment & (Alignment - 1)) == 0
+Pages <= (0xFFFFFFFFFFFFFFFFULL - (((Alignment) >> 12) + (((Alignment) & 0xFFF) ? 1 : 0)))
+SerialPort Lib
+Sync IO       : Enabled [WARNING]
+Copy of logs to buffer failed 
+Replay of logs to buffer failed 
+DebugLib.c
+ASSERT %a +%d: %a
+SwitchStack.c
+EntryPoint != ((void *) 0)
+NewStack != ((void *) 0)
+((UINTN)NewStack & (16 - 1)) == 0
+LShiftU64.c
+Count < 64
+DivU64x32Remainder.c
+Divisor != 0
+DivU64x32.c
+SafeString.c
+((UINTN) String & 0x00000001) == 0
+((UINTN) Destination & 0x00000001) == 0
+((UINTN) Source & 0x00000001) == 0
+AddressIndex + 1 < (sizeof (Address->Addr) / sizeof ((Address->Addr)[0]))
+*Source < 0x100
+String.c
+Destination != ((void *) 0)
+(UINTN)(Destination - Source) > StrLen (Source)
+(UINTN)(Source - Destination) > StrLen (Source)
+(UINTN)(Source - Destination) >= Length
+Length <= _gPcd_FixedAtBuild_PcdMaximumUnicodeStringLength
+String != ((void *) 0)
+Length < _gPcd_FixedAtBuild_PcdMaximumUnicodeStringLength
+StrSize (FirstString) != 0
+StrSize (SecondString) != 0
+StrSize (Destination) != 0
+StrSize (String) != 0
+StrSize (SearchString) != 0
+StrSize (Source) != 0
+(UINTN) (Destination - (CHAR8 *) Source) >= StrSize (Source)
+(UINTN) ((CHAR8 *) Source - Destination) > StrLen (Source)
+AsciiStrSize (ReturnValue) != 0
+(UINTN)(Destination - Source) > AsciiStrLen (Source)
+(UINTN)(Source - Destination) > AsciiStrLen (Source)
+Length <= _gPcd_FixedAtBuild_PcdMaximumAsciiStringLength
+Length < _gPcd_FixedAtBuild_PcdMaximumAsciiStringLength
+AsciiStrSize (FirstString)
+AsciiStrSize (SecondString)
+AsciiStrSize (Destination) != 0
+AsciiStrSize (String) != 0
+AsciiStrSize (SearchString) != 0
+AsciiStrSize (Source) != 0
+(UINTN) ((CHAR8 *) Destination - Source) > AsciiStrLen (Source)
+(UINTN) (Source - (CHAR8 *) Destination) >= (AsciiStrSize (Source) * sizeof (CHAR16))
+StrSize (ReturnValue) != 0
+ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/
+SixBitGroupsConsumed == 4
+Value < 100
+Value < 0xa0
+(Value & 0xf) < 0xa
+Unaligned.c
+RShiftU64.c
+PrePiExtractGuidedSectionLib.c
+ExtractHandlerGuidTable != ((void *) 0)
+OutputBufferSize != ((void *) 0)
+ScratchBufferSize != ((void *) 0)
+SectionAttribute != ((void *) 0)
+OutputBuffer != ((void *) 0)
+AuthenticationStatus != ((void *) 0)
+ ),6APageAttributeToGcdAttribute: PageAttributes:0x%lX not supported.
+ArmMmuLibCore.c
+MemoryTable != ((void *) 0)
+ArmConfigureMmu: The MaxAddress 0x%lX is not supported by this MMU configuration.
+TranslationTableAttribute == ARM_MEMORY_REGION_ATTRIBUTE_WRITE_BACK || TranslationTableAttribute == ARM_MEMORY_REGION_ATTRIBUTE_WRITE_BACK_XN || TranslationTableAttribute == ARM_MEMORY_REGION_ATTRIBUTE_NONSECURE_WRITE_BACK
+!EFI_ERROR (((RETURN_STATUS)(0x8000000000000000ULL | (2))))
+WARN: Not BBM Safe Region: 0x%x
+TopBit != 0
+UEFI Config Lib
+DloadCookieAddr
+DloadCookieAddr not found in uefiplat.cfg
+DloadCookieValue
+DloadCookieValue not found in uefiplat.cfg
+TzFastcall() failed for TZ_IO_ACCESS_WRITE_ID, Status = (0x%x)
+EDLCookieAddr
+SkipDBISetup
+DBI Dump
+ Could not find the DBI Dump region .
+ DBI Dump region is invalid .
+Could not NumCpus uefiplat.cfg Defaulting to 8 cores , Status = (0x%x)
+DbiDumpLib.c
+running_index == (22) || NumCores < (0x8)
+SharedIMEMBaseAddr
+Unable to get SharedIMEMBaseAddr from uefiplat!
+DBI Dump table region assignment by TZ failed due to invalid argument or some other reason
+ERROR: Failed to set DLOAD cookie
+ERROR: Failed to get UefiInfoBlk!
+GuidedSectionExtraction.c
+InputSection != ((void *) 0)
+ZlibDecompress.c
+Stream.avail_in != 0
+1.2.8.f-QC-UEFI
+rc == 1 || rc == 0
+Stream.total_out == DecompressedSize
+Invalid zlib header!
+zlib scratch buffer not initialized before use!
+!EFI_ERROR (((RETURN_STATUS)(0x8000000000000000ULL | (4))))
+Out of zlib scratch buffer space!
+!EFI_ERROR (((RETURN_STATUS)(0x8000000000000000ULL | (9))))
+incorrect header check
+unknown compression method
+invalid window size
+invalid block type
+invalid stored block lengths
+too many length or distance symbols
+invalid code lengths set
+invalid bit length repeat
+invalid code -- missing end-of-block
+invalid literal/lengths set
+invalid distances set
+invalid literal/length code
+invalid distance code
+invalid distance too far back
+incorrect data check
+LzmaDecompress.c
+SourceSize >= (5 + 8)
+RAM Partition
+RamPartitionTableLib.c
+mRamPartitionTableEntryCount <= 32
+mPreloadRamPartitionTableEntryCount <= 32
+WARNING: Unable to read memory partition table from SMEM
+ERROR: Failed to Get Shared Imem Boot Device type 
+OverRideSharedImemBootCfg
+QC_IMAGE_VERSION_STRING=BOOT.MXF.2.2-00536-AURORA-1.149279.3
+Unknown exception type %d
+ArmExceptionLib.c
+(BaseAddress & gExceptionVectorAlignmentMask) == 0
+Sched Heap
+TZ SMC call Failed!
+SecFuseLib.c
+Error: DecompressFvHobInit Failed - %r
+Error: GetDecompressedFvBufferInfo Failed - %r
+Error: KernelInterfaceInit failed 
+ERROR: Unable to add to FV info HOB %g
+ERROR: DecompressThreadEntry failed for %g
+ERROR: Unable to decompress Fv: %g
+FvLaunch
+Error: [AllocateDecompressFvInfo] Potential Duplicate entry %g Status= 0x%x
+Error: WaitForProcessingComplete Failed - %r
+Error: SearchDecompressFvEntry Failed - %r
+fdt_header
+reg-names
+fprop->data
+]aPPI/SGI : %08X, SPI : %08X %08X
+Pgm self wake up @ %lX => (%lX %d)
+Pgm in %d @ %lX => (%lX %d)
+PPI/SGI : %08X, SPI : %08X %08X, I_TMR: %3X %2X
+Woke %d @ %lX
+Wrong CPU count config
+Out of memory for context pages
+Unable to register Pwr transition notification for UART
+ERROR: Spinlock Cache line expectation not met for 2 locks, will result into problem
+Slp Rq @ %lX for %d (%lX, %d)
+Power OFF notification from %d @ %lX
+%d Time taken for Power OFF notifs %lX
+Power ON notification from %d @ %lX
+%d Time taken for Power ON notifs %lX
+Stats %d Act (Exp): %ld.%ld (%ld.%ld) Diff: %ld ms
+Sleep logs buffer memory passed is NULL 
+Out of memory for sleep logs
+PowerSleepLib.c
+==> PC %d => C4D4 (%02x)
+==> PC %d => C4 (%02x)
+==> ERR: Pending Intr
+==> WARN: Another core entered a shallow sleep, couldn't enter C4D4
+==> WARN: Other core woke, couldn't enter C4D4
+==> ERR: INVAL_RESTORE_PTR
+==> ERR: Unexpected error!!
+==> %d Awake (%02x)
+==> WARN: Late Wakeup @ %08x (Exp: %08x)
+NSFT for C4 @ %08x Req wake %08x
+NSFT for C4D4 @ %08x, => C4 wake to %08x
+PowerSleepStats:
+	Mode: %c%c%c%c
+	Count: 0x%08x
+	Entered: 0x%08x
+	Exited: 0x%08x
+PowerSleepCb.c
+ERROR: SMC_ID_WDOG_CTL Enable failed - (%d)
+ERROR: SMC_ID_WDOG_CTL Disable failed - (%d)
+ERROR: SMC_ID_WDOG_SET failed - (%d)
+ERROR: SMC_ID_WDOG_PET failed - (%d)
+%BasePeCoff.c
+ImageContext != ((void *) 0)
+(UINTN)FixupData <= (UINTN)ImageContext->FixupData + ImageContext->FixupDataSize
+ReadSize != ((void *) 0)
+FileHandle != ((void *) 0)
+BaseUefiDecompressLib.c
+TableBits <= 16
+nn <= ((1U << 5) - 1)
+DestinationSize != ((void *) 0)
+ScratchSize != ((void *) 0)
+Scratch != ((void *) 0)
+Version == 1 || Version == 2
+SetMem16Wrapper.c
+(((UINTN)Buffer) & (sizeof (Value) - 1)) == 0
+(Length & (sizeof (Value) - 1)) == 0
+IoLibNoIo.c
+(Address & 1) == 0
+(Address & 3) == 0
+(Address & 7) == 0
+(3?KVsmem_alloc: SMEM is not initialized state=%d! smem_type=%d, buf_size=%d.
+smem_alloc: Trying to allocate smem item=%d which is >= max item=%d!
+smem_alloc: SMEM allocation failed! smem_type=%d, buf_size=%d
+smem_get_addr: SMEM is not initialized state=%d! smem_type=%d.
+smem_get_addr: Trying to get addr smem item=%d which is >= max item=%d!
+smem_get_addr: SMEM get addr failed! smem_type=%d
+smem_alloc_ex: params should not be NULL!
+smem_alloc_ex: SMEM is not initialized state=%d! smem_type=%d, remote=%d.
+smem_alloc_ex: Trying to allocate smem item=%d which is >= max item=%d!
+smem_alloc_ex: SMEM size mismatch! smem_type=%d, remote=%d, size=%d, flags=0x%08X and offset = 0x%08X.
+smem_get_addr_ex: params should not be NULL!
+smem_get_addr_ex: SMEM is not initialized state=%d! smem_type=%d, remote=%d.
+smem_get_addr_ex: Trying to get addr smem item=%d which is >= max item=%d!
+smem_get_addr_ex: SMEM size mismatch! smem_type=%d, remote=%d, size=%d, flags=0x%08X and offset = 0x%08X.
+smem_version_set: Unable to allocate version array: type %d.
+SMEM base addr=0x%08X, size=%d memory mapping failed.
+SMEM is not initialized by Boot.
+smem_init: major version (%d) does not match all procs!
+Invalid SMEM memory type, %d, requested.
+smem_legacy.c
+Invalid smem_type=%d
+In new SMEM version smem_alloc_add_table_entry() is not supported
+Can't initialize heap info
+Assertion smem_legacy_info.smem_buf_data_tbl[buf_tbl_idx].tag != SMEM_INVALID failed
+Invalid memory type %d
+Invalid SMEM heap pointers. Uncached: 0x%X, cached: 0x%X
+Fixed buffer allocation not supported in new SMEM version
+Assertion SMEM_READ_SMEM_4(&toc->version) == 1 failed
+smem_partition.c
+Assertion SMEM_READ_SMEM_4(&toc->num_entries) <= SMEM_MAX_PARTITIONS failed
+Assertion ((unsigned int)(uintptr_t)hdr & SMEM_PAGE_ALIGN_MASK) == 0 failed
+Assertion hdr->identifier == SMEM_PARTITION_HEADER_ID failed
+Assertion partition_offset > 0 failed
+Assertion partition_offset < smem_size - SMEM_TOC_SIZE failed
+Invalid partition size(%d). Actual partition size:%d,host0:0x%04X, host1:0x%04X.
+SMEM Partition %d init failed with status 0x%x
+Invalid SMEM canary 0x%X at location 0x%X
+Invalid SMEM item size:%d, Partition size:%d smem_type:0x%04X.
+Invalid SMEM item size. Total size: %d, remaining: %d
+Invalid padding data size:%d, size_item:%d smem_type:0x%04X.
+Trying to acquire invalid spinlock: %d
+Trying to unlock invalid spinlock: %d
+Unexpected mutex value %d. Expected %d.
+smem_target.c
+SMEM Target info addr=0x%08X memory mapping failed.
+SMEM Target info is not present.
+Recursive exception occurred while dumping the CPU state
+%a Exception at 0x%016lx
+PC 0x%012lx (0x%012lx+0x%08x) [ 0] %a
+PC 0x%012lx
+PC 0x%012lx (0x%012lx+0x%08x) [% 2d] %a
+[% 2d] %a
+  X0 0x%016lx   X1 0x%016lx   X2 0x%016lx   X3 0x%016lx
+  X4 0x%016lx   X5 0x%016lx   X6 0x%016lx   X7 0x%016lx
+  X8 0x%016lx   X9 0x%016lx  X10 0x%016lx  X11 0x%016lx
+ X12 0x%016lx  X13 0x%016lx  X14 0x%016lx  X15 0x%016lx
+ X16 0x%016lx  X17 0x%016lx  X18 0x%016lx  X19 0x%016lx
+ X20 0x%016lx  X21 0x%016lx  X22 0x%016lx  X23 0x%016lx
+ X24 0x%016lx  X25 0x%016lx  X26 0x%016lx  X27 0x%016lx
+ X28 0x%016lx   FP 0x%016lx   LR 0x%016lx  
+  V0 0x%016lx %016lx   V1 0x%016lx %016lx
+  V2 0x%016lx %016lx   V3 0x%016lx %016lx
+  V4 0x%016lx %016lx   V5 0x%016lx %016lx
+  V6 0x%016lx %016lx   V7 0x%016lx %016lx
+  V8 0x%016lx %016lx   V9 0x%016lx %016lx
+ V10 0x%016lx %016lx  V11 0x%016lx %016lx
+ V12 0x%016lx %016lx  V13 0x%016lx %016lx
+ V14 0x%016lx %016lx  V15 0x%016lx %016lx
+ V16 0x%016lx %016lx  V17 0x%016lx %016lx
+ V18 0x%016lx %016lx  V19 0x%016lx %016lx
+ V20 0x%016lx %016lx  V21 0x%016lx %016lx
+ V22 0x%016lx %016lx  V23 0x%016lx %016lx
+ V24 0x%016lx %016lx  V25 0x%016lx %016lx
+ V26 0x%016lx %016lx  V27 0x%016lx %016lx
+ V28 0x%016lx %016lx  V29 0x%016lx %016lx
+ V30 0x%016lx %016lx  V31 0x%016lx %016lx
+  SP 0x%016lx  ELR 0x%016lx  SPSR 0x%08lx  FPSR 0x%08lx
+ ESR 0x%08lx          FAR 0x%016lx
+ ESR : EC 0x%02x  IL 0x%x  ISS 0x%08x
+Stack dump:
+%c %013lx: %016lx %016lx %016lx %016lx
+DefaultExceptionHandler.c
+Synchronous
+SVC executed in AArch64
+Instruction abort
+PC alignment fault
+SP alignment fault
+Data abort
+Address size fault, zeroth level of translation or translation table base register
+Address size fault, first level
+Address size fault, second level
+Address size fault, third level
+Translation fault, zeroth level
+Translation fault, first level
+Translation fault, second level
+Translation fault, third level
+Access flag fault, first level
+Access flag fault, second level
+Access flag fault, third level
+Permission fault, first level
+Permission fault, second level
+Permission fault, third level
+Synchronous external abort
+Synchronous parity error on memory access
+Asynchronous external abort
+Asynchronous parity error on memory access
+Synchronous external abort on translation table walk, zeroth level
+Synchronous external abort on translation table walk, first level
+Synchronous external abort on translation table walk, second level
+Synchronous external abort on translation table walk, third level
+Synchronous parity error on memory access on translation table walk, zeroth level
+Synchronous parity error on memory access on translation table walk, first level
+Synchronous parity error on memory access on translation table walk, second level
+Synchronous parity error on memory access on translation table walk, third level
+Alignment fault
+Debug event
+TLB conflict abort
+IMPLEMENTATION DEFINED
+Domain fault
+Unknown section type - %X
+linux,phandle
+/aliases
+compatible
+gcc_qupv3_wrap1_s5_clk
+Curr TS %X, %X 
+WDog ALRT on %d, Cpu %d, Act %X, 
+%X >= %X ? 
+Add Rpt %X, 
+No Rpt (%d ms)
+ERROR: QTtimer incorrect. TimeStamp 0 not expected !
+ERROR: Failed to enable DEP
+ERROR: Encountered NULL ImageContext
+global &%aPkg
+global &%aBinToSrcRelPath
+if ("&%aBinToSrcRelPath"=="")
+  &%aBinToSrcRelPath="."
+y.spath.translate "%a" "&%aPkg"
+global &%aObj
+&%aObj="&%aPkg/&%aBinToSrcRelPath/%a"
+%aBuild%a
+%aDEBUG_
+%aRELEASE_
+%aAARCH64%a
+local &Sf
+&Sf="&%aObj/%a"
+if (os.file("&Sf"))
+  data.load.elf "&Sf" 0x%09lx /nocode /noclear
+CompareMemWrapper.c
+DestinationBuffer != ((void *) 0)
+SourceBuffer != ((void *) 0)
+CheckSum.c
+Length <= (0xFFFFFFFFFFFFFFFFULL - ((UINTN) Buffer) + 1)
+((UINTN) Buffer & 0x1) == 0
+(Length & 0x1) == 0
+((UINTN) Buffer & 0x3) == 0
+(Length & 0x3) == 0
+((UINTN) Buffer & 0x7) == 0
+(Length & 0x7) == 0
+INITDATA
+@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopq
+/data/sandcastle/boxes/trunk-grepo-smartglasses-grepo/non-hlos/neo/BOOT.MXF.2.2/boot_images/Build/AuroraLAA/Core/RELEASE_CLANG140LINUX/AARCH64/QcomPkg/XBLCore/XBLCore/DEBUG/Sec.dll
+[Config]
+Version = 3
+MaxMemoryRegions = 74
+[MemoryMap]
+# Keep this map in sync with DT memory nodes from:
+#  vendor/qcom/neo/proprietary/devicetree/qcom/neo-reserved-memory.dtsi
+#  vendor/qcom/neo/proprietary/devicetree/qcom/neo_la-reserved-memory.dtsi
+#  kernel/qcom/neo/arch/arm64/boot/dts/oculus/neo-prune.dtsi
+#                                                    EFI_RESOURCE_ EFI_RESOURCE_ATTRIBUTE_ EFI_MEMORY_TYPE ARM_REGION_ATTRIBUTE_
+#MemBase,   MemSize,   MemLabel(32 Char.), BuildHob, ResourceType, ResourceAttribute, MemoryType, CacheAttributes
+#--------------------- DDR  -----
+0x80000000, 0x00600000, "HYP",               NoMap,  MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN
+0x80600000, 0x00040000, "XBL DT",            AddMem, SYS_MEM, SYS_MEM_CAP, Reserv, WRITE_BACK_XN
+0x80640000, 0x001C0000, "XBL Ramdump",       AddMem, MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN
+0x80800000, 0x00060000, "AOP",               AddMem, MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN
+0x80860000, 0x00020000, "aop_cmd_db_region", AddMem, MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN
+0x80880000, 0x00020000, "aop_config_region", AddMem, MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN
+0x808A0000, 0x00040000, "tme_crash_dump",    AddMem, MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN
+0x808E0000, 0x00004000, "tme_log_region",    AddMem, MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN
+0x808E4000, 0x00010000, "UEFI Log",          AddMem, MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN
+0x808F4000, 0x0000B000, "HLOS1",             AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN
+0x808FF000, 0x00001000, "secdata_apss",      AddMem, MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN
+0x80900000, 0x00200000, "SMEM",              AddMem, MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN
+0x80B00000, 0x00100000, "CPUCP",             AddMem, MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN
+0x80C00000, 0x00E00000, "HLOS2",             AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN
+0x81A00000, 0x00F00000, "DBI Dump",          NoHob,  MMAP_IO, INITIALIZED, Conv,   UNCACHED_UNBUFFERED_XN
+0x82900000, 0x02500000, "HLOS3",             AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN
+0x84E00000, 0x00800000, "camera_region",     AddMem, SYS_MEM, SYS_MEM_CAP, Reserv, WRITE_BACK_XN
+0x85600000, 0x01900000, "HLOS4",             AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN
+0x86F00000, 0x00500000, "video_region",      AddMem, SYS_MEM, SYS_MEM_CAP, Reserv, WRITE_BACK_XN
+0x87400000, 0x00200000, "HLOS5",             AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN
+0x87600000, 0x01D00000, "adsp_region",       AddMem, SYS_MEM, SYS_MEM_CAP, Reserv, WRITE_BACK_XN
+0x89300000, 0x00100000, "HLOS6",             AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN
+0x89400000, 0x00A00000, "cdsp_region",       AddMem, SYS_MEM, SYS_MEM_CAP, Reserv, WRITE_BACK_XN
+0x89E00000, 0x0051A000, "HLOS7",             AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN
+0x8A31A000, 0x00002000, "gpu_microcode",     AddMem, SYS_MEM, SYS_MEM_CAP, Reserv, WRITE_BACK_XN
+0x8A31C000, 0x000E4000, "HLOS8",             AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN
+0x8A400000, 0x00700000, "cvp_region",        AddMem, SYS_MEM, SYS_MEM_CAP, Reserv, WRITE_BACK_XN
+0x8AB00000, 0x01500000, "HLOS9",             AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN
+0x8C000000, 0x10000000, "Kernel",            AddMem, SYS_MEM, SYS_MEM_CAP, Reserv, WRITE_BACK_XN
+0x9C000000, 0x0AC00000, "DXE Heap",          AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN
+0xA6C00000, 0x00200000, "Pstore",            AddMem, MEM_RES, SYS_MEM_CAP, Reserv, WRITE_BACK_XN
+0xA6E00000, 0x00040000, "xbl_sc_region",     AddMem, MEM_RES, SYS_MEM_CAP, Reserv, WRITE_BACK_XN
+0xA6E40000, 0x000C0000, "HLOS10",            AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN
+0xA6F00000, 0x00100000, "global_sync",       AddMem, SYS_MEM, SYS_MEM_CAP, Reserv, WRITE_BACK_XN
+0xA7000000, 0x00400000, "UEFI FD",           AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK
+0xA7400000, 0x00200000, "UEFI FD Reserved",  AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK
+0xA7600000, 0x00001000, "CPU Vectors",       AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK
+0xA7601000, 0x00001000, "Info Blk",          AddMem, SYS_MEM, SYS_MEM_CAP, RtData, WRITE_BACK_XN
+0xA7602000, 0x00003000, "MMU PageTables",    AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN
+0xA7605000, 0x00008000, "Log Buffer",        AddMem, SYS_MEM, SYS_MEM_CAP, RtData, WRITE_BACK_XN
+0xA760D000, 0x00040000, "UEFI Stack",        AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN
+0xA764D000, 0x0008C000, "SEC Heap",          AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN
+0xA76D9000, 0x00400000, "Sched Heap",        AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN
+# Ram partition boundaries differ by DDR size:
+#   2GB: 0x80000000-0xC0000000, 0xC0000000-0xE8E00000, 0xE9A00000-0xFCC00000, ...
+#   3GB: 0x80000000-0xE0000000, 0xE0000000-0xE8E00000, 0xE9A00000-0x100000000, ...
+# Split HLOS regions so no single region crosses a partition boundary on any config.
+0xA7AD9000, 0x18527000, "HLOS11",            AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN
+0xC0000000, 0x20000000, "HLOS12",            AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN
+0xE0000000, 0x08800000, "HLOS13",            AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN
+0xE8800000, 0x00100000, "tz_stat_region",    NoMap,  MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN
+0xE8900000, 0x00500000, "tags_region",       NoMap,  MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN
+0xE8E00000, 0x00500000, "qtee_region",       NoMap,  MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN
+# Keep this in sync with value of prop "OEM_pil_secure_app_load_region_size" set in
+# TZ.XF.5.21/trustzone_images/ssg/securemsm/trustzone/qsee/mink/oem/config/aurora/oem_config.xml
+0xE9300000, 0x00700000, "trusted_apps",      NoMap,  MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN
+0xE9A00000, 0x00500000, "HLOS14",            AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN
+0xE9F00000, 0x02B00000, "Display Demura",    AddMem, MEM_RES, SYS_MEM_CAP, Reserv, WRITE_THROUGH_XN
+0xECA00000, 0x00190000, "Display Reserved",  AddMem, MEM_RES, SYS_MEM_CAP, Reserv, WRITE_THROUGH_XN
+# Memory after 0xECB90000 will be added dynamically as HLOS with two unmapped gaps used for HYP:
+# Gap 1: On non-secure from 0xFCC00000 size 0x00600000
+#            on secure from 0xFD000000 size 0x00600000
+# Gap 2: On non-secure from 0xFF000000 size 0x01000000
+#            on secure from 0xFF400000 size 0x00C00000
+[RegisterMap]
+#--------------------- Other -----
+0x14680000, 0x0002A000, "IMEM Base",          NoHob,  MMAP_IO, INITIALIZED, Conv,   NS_DEVICE
+0x146AA000, 0x00016000, "IMEM Cookie Base",   AddDev, MMAP_IO, INITIALIZED, Conv,   NS_DEVICE
+#--------------------- Register --
+0x00400000, 0x00100000, "IPC_ROUTER_TOP",     AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x00780000, 0x00007000, "SECURITY CONTROL",   AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x007C0000, 0x00020000, "PERIPH_SS_SDC1",     AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x00900000, 0x00100000, "QUP",                AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x00A00000, 0x00100000, "QUPV3",              AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x010C0000, 0x0000C000, "PRNG_CFG_PRNG",      AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x01DC0000, 0x00040000, "CRYPTO0 CRYPTO",     AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x01FC0000, 0x00030000, "TCSR_TCSR_REGS",     AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x08800000, 0x00100000, "PERIPH_SS",          AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x0A600000, 0x00200000, "USB",                AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x0B000000, 0x04000000, "AOSS",               AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x0F000000, 0x01000000, "TLMM",               AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x15000000, 0x00200000, "SMMU",               AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x17000000, 0x00E00000, "APSS_HM",            AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+[ConfigParameters]
+# Update count if more than default 30 entries
+ConfigParameterCount = 64
+## UEFI CORE
+PlatConfigFileName = "uefiplatLA.cfg"
+OsTypeString = "LA"
+# Force booting to shell whilst in pre-silicon phase
+EnableShell = 0x0
+# Tune based on Sec heap needs for FV decompression and MMU tables through Dxe/BDS
+SecPagePoolCount = 0x800
+# Shared IMEM (Cookies, Offsets)
+SharedIMEMBaseAddr    = 0x146AA000
+DloadCookieAddr = 0x01FD3000
+# for full dump 0x10, for minidump 0x20
+DloadCookieValue = 0x10
+# debug cookie of PIL subsystem, defined in FBC script
+PilSubsysDbgCookieAddr = 0x146AA6DC
+PilSubsysDbgCookieVal = 0x53444247
+# NumCpus - max number of cores
+NumCpus = 4
+# NumActiveCores - number of cores used
+NumActiveCores = 4
+## ULogFile
+SpecialLogPartition = "LOGFS:\"
+MaxLogFileSize = 0x400000
+# UEFI memory use
+UefiMemUseThreshold = 0x1900
+## USB ##
+USBHS1_Config = 0x0
+UsbFnIoRevNum = 0x00010001
+## Buttons / KeyPad ##
+PwrBtnShutdownFlag = 0x0
+## SDCC ##
+Sdc1GpioConfigOn = 0x1E92
+Sdc2GpioConfigOn = 0x1E92
+Sdc1GpioConfigOff = 0xA00
+Sdc2GpioConfigOff = 0xA00
+## SDHC Mode 0:Legacy Mode, Non-zero: SDHC Mode ##
+EnableSDHCSwitch = 0x1
+EnableUfsIOC = 1
+UfsSmmuConfigForOtherBootDev = 1
+## Security flag ##
+SecurityFlag = 0xC4
+# SecBootEnableFlag = 0x1               i.e. 0b00000001
+# TreeTpmEnableFlag = 0x2               i.e. 0b00000010
+# CommonMbnLoadFlag = 0x4               i.e. 0b00000100
+# DxHdcp2LoadFlag = 0x8                 i.e. 0b00001000
+# VariableServicesFlag = 0x10           i.e. 0b00010000
+# WinsecappFlag = 0x20                  i.e. 0b00100000
+# LoadSecAppFlag = 0x40                 i.e. 0b01000000
+# LoadKeymasterFlag = 0x80              i.e. 0b10000000
+# EnableQseeLogsFlag = 0x100            i.e. 0b 00000001 00000000
+## Default app to boot in platform BDS init
+DefaultChargerApp = "QcomChargerApp"
+DefaultBDSBootApp = "LinuxLoader"
+MetaChargerApp = "MetaChargerApp"
+MetaBtApp = "MetaBtApp"
+DefaultTempCheckApp = "TempCheckApp"
+## Enable HotKey detection in RETAIL devices
+DetectRetailUserAttentionHotkey = 0x00
+## 0x17 is SCAN_ESC
+DetectRetailUserAttentionHotkeyCode = 0x17
+## Enable OEM Setup App launch in Retail ##
+EnableOEMSetupAppInRetail = 0x0
+## LogFs partition
+## NOTE: Ensure logfs bin is flashed from /Tools/binaries ##
+EnableLogFsSyncInRetail = 0x1
+## ShmBridge Memory Size
+ShmBridgememSize = 0xA00000
+##  Multithreading options
+EnableMultiThreading = 1
+MaxCoreCnt = 4
+# Keep the following number of cores active, including the boot core
+EarlyInitCoreCnt = 4
+## Get TZ App Logs ##
+EnableUefiSecAppDebugLogDump = 0x0
+## Allow Non Persistent Varialbes in Retail ##
+## NOTE: Recommend disabling feature for Retail devices
+AllowNonPersistentVarsInRetail = 0x1
+# Initialize Display panel in its own thread to run in parallel to booting
+EnableDisplayThread = 0x1
+# Using imagefv to load display logo
+EnableDisplayImageFv = 0x0
+## Dynamic UART Log Buffer Size
+## Refer to QcomPkg/Docs/UefiLogBufferSizeConfigReadme.txt for usage
+#UARTLogBufferSize = 0x19000
+#DDRInfoDxe EnvDxe event callback flag
+DDRInfoNotifyFlag = 0x0
+#  FV Decompression on multicore option
+EnableMultiCoreFvDecompression = 1
+## Enable/Disable Variable Policy Engine ##
+EnableVariablePolicyEngine = 0
+## Allow individual ACPI tables loading ##
+EnableACPIFallback = 0x0
+## Use Meta Logo current as logo3.bmp ##
+PrimaryLogoIndex = 3
+## Enable/Disable Hibernate support feature ##
+SleepToDiskFlag = 0x01
+# Skip dbi setup. On prod device is always skipped.
+SkipDBISetup = 0x0
+## NOTE: Do not remove last newline, required by parser ##
+~ru>cI${
+hoA\Ny3:oG
+h,+{'+:	6
+p(9?|si8
+EV }(m4W
+GR<aK>R6
+Vl'o9en\
+^qK1}SCW
+R|9hs`+1
+yN"@y_ }
+)~(qNy|fu<
+H0A_s<VY@
+[FU.03)**(
+r.xtk4i)p
+m5xpo%;@0^l
+vs{]{c{s{K
+&vxQ1s,`
+5 bGDLV<
+Rof%+H3F
+|}mqm#I3
+C7MM.xwt
+tm6WU9+(V&\
+is3eL;e\
+a2<0])N/
+sQu~+Z/]
+vOdMtF_s kh
+aM[Ch^.B
+3JyI8bX+
+|I^~YmEM
+rWeme}u9
+ynJ;vx.OK4
+J1b\2#\>
+F::?G[NE
+$GV	lX{2
+94gvlUTk
+$EEjRTZUR@
+jm~qNv:n[
+h;a}c];n
+l!3l)!20w
+JE|D>p7`
+V,E6JBY[
+hC@')(#OW
+['~!^:y@
+PUQU:?7w
+el5biOX0x
+s,R4$-t%
+m	}`?}w1
+DISJiNfj
+Y^]fAVmz
+]R[:Mc2j,
+];S<t~d=
+gZM60oC6
+;,el6K#H
+O*; +[9J
+ga]{P1~@
+^1F<t~d=
+$~yWOXXs
+:b"vRIjH
+lR4B=`:vx
+-p#gS8z=
+sM]Ha_O~
+ogrRF='qFG
+	yu8G>1Z
+d 'EL+:<OZ~
+2keQI?yrW
+SPw%ffYrS
+Nf3_|$3(I
+VZ*CR./,F!
+5TYt9+VM
+	BIrk+q8
+yYVNNnqq
+m3H][,)ya8o
+8h+NIR7G
+b5wQEU5=
+"{EuEQEY
+BcP5)+;#g
+\(QaB_=I
+Iust,5=qJ
+u&xgt>X#
+rL2	LBTB
+a#wSeiuA
+>r#pzSNh
+rtQwB[q4
+kw0GeLhW
+ 8B&<Jmb
+zCD$}W`/
+6&LrC`2~n
+sC~voY	y
+95s][DlNa
+{}M=hnm 0
+g]OMOSOkOG
+z|HoyX(y
+8T[QQP^Y]PX\]P^^Z
+	b%9PIZj*q7HJ
+,(22/95=sS
+TZ--F0I<b
+u)Zmy^QfF
+t0d7q}gr
+_n ,l8Lx@
+%yF3\4^O
+KV3ozj&X
+\L'|	5>;
+(mUEuQeZ
+|bqiEeZyQE
+`MqFAyQYq
+'vyUEMEaEY
+EzH7o:4D
+AIk1(gG3
+|F9h(Ob)G
+P_sgU5bE3g
+op_lZsVG
+4'RFzZ?T
+seHs/2=z
+F_>KYM}^K
+h?`7SrI~
+0u+Z$K]`
+a,(}ay #8
+w4DC4DC4DC4DC4DC4DC4D
+$$i%)'vRI
+pYD-eC\L2
+u+j*K"Nrf
+@Z5mcR??B}}
+kXMN8+xSb
+<=M`G`g\5
+ZY]R\_f-X
+uKmu}uIu
+nV]qUiIq]}e
+`P^A{;O`
+<B<7|.7Q
+;hI0(y-Ly
++Q>Q[6Z=_
+yhainr%s
+h Q;C,QXXX
+.c|vajr63;
+'!;	9I('Bh
+(QwQbLD-/lO
+TCU;U3U+U#U
+GZP5q#Fs
+y6HT!G$\
+YmDY}DYcD
++yop<?ZD
+_@;DagEk
+}.JpwJl*
+_R+{$Vy;
+l)DV)POB
+A[<lmd)D
+.W!u^`nA
+{swEwmwcw[w{
+9^:wN#q"
+KqJ]8^p.P
+<O:ycd;gA;
+A[<lmd)D
+2&(|q$;<b
+q0DzoXv#
+}Gh|rsh[
+ZJe+4N_0
+cvu&=K$/
+D>.x[[8k
+Zy8+c|?e} 
+3K-OY	Oi1
+S_a_X[S_Q^
+0Vi5~Sb@
+C	mc,cm?
+	RnEscFa
+X]1iYmsE
+ k~VZaVq
+[/h;7z<Ee
+c'!Cbu(;
+V@{,_q]B
+MDs3hf5c
+74JY&jBboVaEYmMy
+!@K 0MnGP
+.iR2Vr7.wT:
+Iq-lMz;+
+,9S$$&\R
+	]IwUW1y
+$j?JyZ"X=
+YBUVj(L!`
+7>l|\p|P
+u/y`c<|IG
+/$^.D9eLC
+u<;XL<i>
+8cHV`^F	
+YCmpsY.i
+#yzYD?(6
+<KiV;6R;t
+V*se2=)M
+E~ao0x<R
+u!TGSZP^1
+PU\\Qf)>A
+Y\ir6U46,.t
+M)Ib=U~gh
+*x,"%Ppm8
+D/'xl(e@
+7G(~z_1Z
+_C9A!E;-
+<Ca2M!d5
+U:F&QX.3
+=#;Q:'0y
+xq+yy/I2%
+cM^Y]P]Se
+uCeyuyay
+T]n-.GW)(
+^VX\^y{yi
+SD [YpwQ
+*([SXPU]Z4quymQ
+.y?"ZNfg
+o.|yi|ME3
+lY?da]{@
+Z@MilH`r 
+47h\{"r+v
+sPc7_&[<
+Z*Uh&:/'
+!~n(kQT-
+UUEU<jfYy
+ffjjvzFb
+p$i}FvuC
+gn]|W^m^
+545'gqvn
+\\PeN+Xg
+YVU]PVXd
+DV_&[p:d
+,N?Jh<	mIK
+I7-]Z8yq
+&C20CBB&	
+3(| B*[y}
+Mffsx7GR
+/#ayd^U7L
++FJ{4$mg5K
+kqo-D/9d
+M#b%IkJ`
+tmO<@6 m
+|UN=F2m|
+%`wSG@?wm
+)eIZ0]D6
+'(?wa.xY
+4FL0CS2)K
+HfI~a7(9J
+X]d+//(g^
+`>vzwqG>
+<W="JNNKNf7
+([_VSU-H
+AVUUm^i5i
+]UQTSSZ#^M
+6n+l\Y7)
+*ZwlX#bF
+3W=|oH2l
+1:8cE{x*s
+ymg]%Mstp
+&?KC?jAp
+!N$|#A8J
+uOfuiusu
+MhAKyVEn
+b -,.61o
+	tw5q&@F	
+kxjMY}}E
+`z&/tVfu
+	$gx~6L}
+jIo*+3~6
+WsA^4QLG
+ml,Wxn=	
+]!sI,n(<
+h:P72;d@	
+4i|JQxV[
+uw(V]6=Jj
+vCY7|eYc~
+?<Z;x_M_
+/Q]8wr:J
+$3/''/'#}*
+.XQVl/)(/*+
+Ziyiu)ex
+qBvT:!m!
+@IsY+qm|(
+,?-_x5<+;khzfv
+rEYEeEuEM
+Imcgmmck
+l(K!g,{	D
+Ktg+#{HM
+'K)"Y]H~1g
+={Lt1s]K
+HwIJwRNC:%
+lYA~Uuia
+GJc+_Ji1
+Kgmt~|G(st
+{8stE0Gg0=W`
+m'y!Y:uP
+,.H.(-.,
+5XMES#Ml?
+LPtn51w{
+RXi/xA<;
+8)i_zy4|
+~Sj^gjf~
+fO|MW='W
+yqc]K}SQ]mS
+3Us6;*1;
+abY4Jd`.(+\
+Mu-=m5tJ}kp
+k AnwVqsoV>K_Tc
+9X-ka3X%
+tuBg/TtW
+^%}f^hn-
+aEw{UgS{
+mnM[5&)L
+dZevgFevW^e
+3dKcS$;C
+"DWX5jg^
+.Ws f9}]#f
+a:RHQI\'
+TY4xr!f~
+,=uvjvjm
+b7NW~fLRR
+=]GiiQ~eIyi%
+##37+/==s
+:H+z)`MC
+WJMAAAAAAAAAAAAAAAAAAAAAAAA
+C;&C~i:q
+,0Cz^XsB
+q.]t}q.o
+N	3Vb7J;
+.uMSnHCv@+
+D,Nx<!/_
+)(^R^*0{t
+tAuemeIey
+ZR]\]o+)
+!;ur[e]-3
+w)l1}+:Gb{sL
+[Tf'.9R'.
+>y#P0	43
+yQaFA^~VQ
+]LyPEu4`
+Gsg"l+`[%X~
+4SFfVvNnQ}
+]Wa[_YUmw
+ogJWZaaggaa
+,m^in:I}
+EBNR!/W 
+L%K#R# kkQ
+Q:W3xO3Z
+1Qx"`l!<Q0
+U]^U1@Wn(*
+(khtUEE-@
+u>>nBr4\
+	}7czWY;)
+VrUYs8vL/
+rNXpe8?(
+k64TKwR9
+j\Wcohp4HY
+eFE<h0nA
+|`!pmULC6
+UUkv:-N1*
+QoiY;eu/++
+N|uL:I6]
+<5y0UTM+
+5R|MYP|MO
+!gHNfa|R?
+,JO.)MG|
+Ry?CY|mI@
+C{SLw*cn
+`,T"-awT
+?7gB?<p`>p
+S)D{QRoSk
+\MBno*i)
+NQyEHCg	
+8{Pn#_[t
+WQiN1M\i
+c$mBW_g<
+x\Z}+qL5QYO
+,C_%&w]aI
+	NNYc	FbB
+~/t~/b!]oc
+],E}W_M<
+GZH|feQ*
+%%PCe[,r
+HycMwySL
+V>rUJe==
+##qyh8[o
+1aXd90(II
+H5su`Wwm
+14,lWvx0[
+)	tSevv4(
+8_3.\J**
+ki	Wny+7Ae
+L,N#5jz,
+X=!L4L8'
+|e@TTD&Ai
+TuKuku{ug5
+8;'g?!d4r
+hNrS7'q'
+qzp&2Z	:Za
+EvC<~L<te
+gS|R*Q'm
+]J=I{^AIQYj
+i]QaIaNa
+sLi6*I}#
+/LYRey~R
+h?NzUH'8
+4-_@H%~YV
+9auOIuk 
+?)-_@H%F.U
+#}O+Won 
+RIJb L6`n
+hY]Q[UXl
+	]YUQSQXQ
+cNqYqAuq
+RGXS<wLQ
+Mrx3%v43
+`uges.r?
+nMeM5),/[
+?6u6u7]h
+#UmKf^:u
+Hk}ifB}i
+,da}]o57
+Erq?KlD[w0
+R^}i=rK 
+>ZOpa~uM
+KF	hy|}C
+G	1\mpz[X
+$)B R.6EM
+RmWW]vXc
+(--3tyl$
+C2I|~Z2)q
+]706c-s0/kge
+hK=dV}]&
+HMY`XW\]
+/on;wt{\wW
+&!	NHH 	
+o:4Dc]xJ
+;'I=">KA
+_Fiu]ni)
+a;C@gR{J
+_)3B})Dh
+P^%4lU	n
+ULfmmkaRGD8
+Fx>6'ZbD
+&^zifCtj
+PD"B5TR`F
+Ikg cy`#7
+`,X5K\>O0
+C}=r}icC
+Cu^=jHM3e&#k
+-|KhKNKq
+n67/Mdss7
+(ceYAYyY
+yX5JR^	J	8
+9 rK~mm3$
+9t#GDeEpDT^
+:,v_5qfd;
+Y ?-!}:+
+zy{`BX/gv8
+gMa0g^E}
+ |Qf`~=O6|
+lr& |me9%?e
+?pFZrPvT
+\)bFXqD|
+rjeaiqQae
+OH1~]Ps]&SH4n
+|t[3~SQTi
+D-;W){dBP
+>Z;]#833
+5V}f2+D_8
+-)(XU`NY[WRW_k
+(_]SUWUVU
++\Z8410q
+!8V97]qd
+*='"Uzj@
+-g}tY8SR[
+;9i}-z]M
+l30D0'J1
+dP!dyIyI
+i{SmS}SC
+y}sAsisms}sC
+W~W~W~W~W~W~W~W~W~W~W~W~W~W~
+%~RGX[6F(
+\p%1>+Ey
+<c5<Vr<<t
+G|\|Lv-e~
+E<s8_;sX
+/2&rhPb"
+qUUqKks%-7N
+ ':sv^ND
+-DS,z:"x
+V-Eu.63_
+]*+}CR{`
+/yK~O9jF
+Z&tAR$?;
+|u%s6cLa
+1#9]C1l&
+j[9^r<:Qr<
+<2qYNRszw
+ysU-`P:jc
+dm7dY-hi
+W^v&Xn0=,
+y:vc|*h+
+9,,$8}Xpz
+2ab`p@\L
+KY8B57>jKY=f
+HZRxQ0R[
+CZEEVXEj
+3,ty]MCMiMU
+pCuiPyYP
+,3b6[Cy)0
+#HFo2[3E>
+w0w=/'2Y
+"Q^\2Z6o
+ph?/yp]`
+<^I'B{tv
+md+u%[yNK;3
+XS-?#`JT
+otlfU6krb
+4XG-Sea'
+2+Hn&p?2
+)/Sbsm5k
+jLoMI{%6m
+29Yt&0c[
+/jaQYEiI
+[ZS[]ywQEm
+CzVQeIEi?d
+_[T\:-3w
+9A=~s`;'
+)}c:I[C2~
+JuB6>H8%
+l8SSMZy:
+gy-,N{G9
+p>T_RG<|
+}#}O|u(K
+-zsMRizB
+7Pn]mmue
+;cf^iseeuc#
+:(BBzPxo
+>;;{\n]C
+HtdlCuM]
+0QWW062L9
+N+^_9M?x
+5m=JHQKr
+V[n@f{li
+,eSKKSCt
+7yV7OHQP
+?0<Z/_#i!fR@l
+P&zx@mYX[
+#OX)I]IQS
+%1D%1D%1D%1D%1D
+P!0;5xsg
+{j_B5}DR
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175903Z
+20631121175903Z0|1 0
+Greatwhite_FW_Signing_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175853Z
+20631121175853Z0y1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175856Z
+20631121175856Z0y1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175858Z
+20631121175858Z0y1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175901Z
+20631121175901Z0y1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1

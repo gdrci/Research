@@ -1,0 +1,22 @@
+TrustZone MMIO table at 0x1C141C40 (tz.img), 5 entries of (base u32, count u32):
+  index 0  0x221C0000  count 8
+  index 1  0x221C4000  count 4
+  index 2  0x221C2000  count 8
+  index 3  0x221C8000  count 8   (QFPROM)
+  index 4  0x010C0000  count 8
+
+Table users (ADRP 0x1C141000 + add/ldr #0xC40, then w0*8 indexing):
+  0x1C067548  flag 0x9041  checks w0 <= 4; loads base,count; calls 0x1C03ACAC
+  0x1C067598  flag 0x9061  same pattern
+
+Call sites and the index passed (last mov/movz into w0 before the BL):
+  flag 0x9041: 0x1C042078 idx4; 0x1C05F808 idx4; 0x1C0652D0 idx0; 0x1C0652D8 idx2; 0x1C0652E0 idx1;
+               0x1C084A30 idx3; 0x1C084AEC idx3; 0x1C084B7C idx0; 0x1C084B84 idx2; 0x1C084B8C idx1;
+               0x1C084B94 idx3; 0x1C0A38FC unknown; 0x1C106800 idx0; 0x1C106808 idx2; 0x1C106810 idx1
+  flag 0x9061: 0x1C0420B8 idx4; 0x1C05F8A8 idx4; 0x1C065304 idx3; 0x1C06530C idx0; 0x1C065314 idx2;
+               0x1C0675FC idx(w19); 0x1C084B08 idx3; 0x1C084BB8 idx3; 0x1C084BC0 idx0; 0x1C084BC8 idx2;
+               0x1C084BD0 idx1; 0x1C0A3910 idx4; 0x1C10682C idx0; 0x1C106834 idx2; 0x1C10683C idx1
+
+Callee 0x1C03ACAC: stp frame; bl 0x1C062D44 (enter); bl 0x146816F4 (TZ code, args x0=ctx, x1=base, x2=count, w4=flag); bl 0x1C062D7C (leave)
+0x146816F4: sub sp; reads byte at [x0,#0x80] as a state flag; constant 0x8110000C loaded into w19.
+Interpretation of flags and count units: not established.

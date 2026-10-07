@@ -1,0 +1,1540 @@
+T)hj8	h*8
+@9n	@9oM@8p
+@9k	@9Q5@9
+@9M	@9A!
+**-@),5A)
+ykx+x*xJ
+I)8nI*8@
+4('@)(}`
+T('@)(}`
+T('@)(}`
+H)@yI5@y!
+S-i+8(i,8
+@y,!@y-1@y)5@y
++0@9,4@9
+)5@y?!5k!
+ii8+k)8)
+ii8+k)8)
+TLhi8li)8)
+;|)	kh8)
+ThfT9ijT9
+?a39?q39?q
+H(NBh(N@x
+q"H(NBh(NAx
+H(NBh(N@x@L"H(NB
+X(NBx(N@x
+q"X(NBx(NAx
+X(NBx(N@x@L"X(NB
+x(N!Z(N!x(N2Z(NRz(N
+x(N!Z(N!x(N2Z(NRz(Nq
+q!Z(N!x(N2Z(NRz(N
+Z(NRz(N!Z(N!x(N2Z(NRz(N
+Z(NRz(N_
+Z(NRz(Nq
+h(N!J(N!h(N2J(NRj(N
+2J(NQj(N
+J(N1j(Nc
+J(N1j(N 
+h(N!J(N!h(N
+J(N!h(N J(N
+h(N!J(N!h(N
+J(N!h(NB
+J(N!h(Nc
+	Joio8`i`8aia8
+*@)m0A)	}`
+$@9	 @9	]
+0@9	,@9	]
+T(T@9)P@9*h@9+l@9
+(l@9 h@9
+T	xhx*xhx+
+p]@9kY@9
+KM@9JI@9j
+K1@9J9@9j
+j"@)k&C)
++0@9,4@9
+j2@9k6@9)i
+TLih8mih8
+*Q@9+U@9K
+,U@9-Q@9.e@9*a@90m@9+i@9
+N]@9JY@9
+@9bB@y?%
+h&@)j.A)
+RJ	@y*i+
+($G)+0M)0(I)-
+T(0A)	(G)+
+t@9	p@9	
++)A))1@)kU
++)C))1B)kU
++)E))1D)kU
+*%@9+!@9,
+*9@9+5@9,1@9--@9J
+*%@9+!@9,
+*9@9+5@9,1@9--@9J
+*%@9+!@9,
+*9@9+5@9,1@9--@9J
+M3G)+%A)_)
+Jih8kih8Jq
+Jih8kih8
+*)!@)	}`
+MD tbl not found, Clear MD cookie
+XBLRamDump.c
+Display check error
+Display check pmic error
+rd_if_get error
+set_ptr error
+GetRamdump table interface ptr error
+Ramdump Table close error
+Set Ramdump table interface ptr error
+set_crt error
+get_cache_if error
+Uncached heap init failed
+Power key configuration failed
+PSHold Configuration failed
+RamDump DisplayInfo fail, Errcode:0x%x
+ERROR: Ramdump Init 0x%x
+ERROR: Ramdump TableInit 0x%x
+Boot device check, skipping [%d]
+wdog disable check failed
+set boot device failed
+get rd_media_if failed
+rd_media_if.media_hw_init
+get media_hw_init failed
+get rd_format_if failed
+get rd_format_if.init failed
+get rd_format_if.open failed
+write error
+start rd_format_if.close
+close error
+rd_media_if.media_hw_deinit
+post process error
+re-enter ramdump
+/sw/boot
+xbl_ramdump_wdog
+uncached heap map error
+get_cc_if error
+get_dal_if error
+get_logger_if error
+get_mem_if error
+Display Init Failed
+QUALCOMM 
+CrashDump Mode
+__________________________
+get_ptr error
+boot_dload_debug.c
+rd_format_raw.c
+RawDump: Dump start address:0x%llx, size 0x%llx
+curr_sec_base_addr 0x%llx, curr_partition_offset 0x%llx, (void*)&curr_sec_size 0x%llx
+MediaIf Open Fail
+MediaIf close Fail
+Raw Partition Dump
+There is no raw partiton
+RD:dump header init err
+RD:section header tbl deinit err
++---------------+
+| RAW Dump done |
+MediaIf Open Fail, Errcode:0x%x
+MediaIf Write Fail, Errcode:0x%x
+MediaIf Close Fail, Errcode:0x%x
+Raw_Dmp!rd_format_hfat.c
+start addr:0x%016llx size:0x%016llx file: %s
+errfile.txt
+HFAT Dump Init
+NVMe FAT Partition Dump Init
+SD Dump Init
+/fs_mnt/ram_dump/
+/fs_mnt/
+errmax.txt
+Max FAT partition dump
+Failed to create errfile.txt
+No error, errfile.txt deleted
++----------------+
+| HFAT Dump done |
+Failed count: %d
+FAT partition write failed, due to no space left on FAT partition 
+FAT partition write failed! ERR CODE:0x%x
+Error creating file %s
+%s write failed due to no space left on SD card
+%s write failed! Errcode %d
+rdcookie.txt
+rtcookie.txt
+rd_format_sahara.c
+Sahara Init
+Sahara Open
+rd_sahara return status:0x%x
++------------------+
+| Sahara Dump done |
+fdt_header
+!*3<-+   0X0x
+0123456789ABCDEFboot_config_context.c
+boot_statistics.c
+Flash Throughput, %d KB/s  (%d Bytes,  %d us)
+Flash Throughput, %d B/s  (%d Bytes,  %d us)
+boot_flashless_sahara.c
+boot_sahara.c
+boot_block_dev.c
+boot_media_interface.c
+boot_timer.c
+boot_pbl_shared_data_lib.c
+%$%a%b%V%U%c%Q%W%]%\%[%
+%<%^%_%Z%T%i%f%`%P%l%g%h%d%e%Y%X%R%S%k%j%
+e"d" #!#
+boot_reset.c
+boot_chipinfo.c
+boot_ddr_info.c
+boot_mhi.c
+boot_platforminfo.c
+boot_ramdump.c
+TCSR reg value 0x%x 
+Enter PBL EDL PCIe
+Enter PBL EDL USB
+/sw/boot/fedl_timeout
+DTB: setting version mismatch
+DTB: couldn't retrieve fedl timeout action setting
+EMERGENCY_DLOAD_TIMEOUT_COOKIE_SET: Powerdown
+EMERGENCY_DLOAD_TIMEOUT_COOKIE_SET: Reset
+Auth Metadata
+boot_seclib_ns.c
+Pimem init cmd, entry
+Pimem init cmd, exit
+boot_dbginfo.c
+boot_logger.c
+boot_logger_ram.c
+ OVERFLOW
+boot_memory_mgr.c
+CommonMemMapLib.c
+RamdumpMemMapLib.c
+Error code %lx at %s Line %lu
+Call Stack:
+func_addr  :   %08X
+^^^^^^^^^^^^^^^^^^^^^
+error_handler_el1.c
+boot_logger_uart.c
+boot_hfat_dev.c
+ramdump_table.c
+RD:[Max %d][index %d] %s %s 0x%x 0x%x
+OCIMEM.BIN
+AOP Code RAM region
+CODERAM.BIN
+AOP Data RAM region
+DATARAM.BIN
+AOP MSGRAM0 region
+MSGRAM0.BIN
+AOP MSGRAM1 region
+MSGRAM1.BIN
+AOP MSGRAM2 region
+MSGRAM2.BIN
+AOP MSGRAM3 region
+MSGRAM3.BIN
+AOP MSGRAM4 region
+MSGRAM4.BIN
+AOP MSGRAM5 region
+MSGRAM5.BIN
+AOP MSGRAM6 region
+MSGRAM6.BIN
+AOP MSGRAM7 region
+MSGRAM7.BIN
+AOP MSGRAM8 region
+MSGRAM8.BIN
+AOP MSGRAM9 region
+MSGRAM9.BIN
+AOP MSGRAM10 region
+MSGRAM10.BIN
+AOP MSGRAM11 region
+MSGRAM11.BIN
+AOP MSGRAM12 region
+MSGRAM12.BIN
+AOP MSGRAM13 region
+MSGRAM13.BIN
+AOP MSGRAM14 region
+MSGRAM14.BIN
+AOP MSGRAM15 region
+MSGRAM15.BIN
+SHRM MEM region
+SHRM_MEM.BIN
+DCC SRAM region
+DCC_SRAM.BIN
+DCC CFG region
+DCC_CFG.BIN
+CD STRCT region
+CD_STRCT.BIN
+CD BTDDR region
+CD_BTDDR.BIN
+CD BTIMM region
+CD_BTIMM.BIN
+CD SHIMM region
+CD_SHIMM.BIN
+CPUCPFW region
+CPUCPFW.BIN
+; Build ID: %s @ %s @ %s @ %s
+12:28:10
+Jun  1 2026
+if OS.FILE(%s)
+  d.load.binary %s 0x%lx /noclear
+CMM Script
+load.cmm
+RD: heap err, no space for %d rd entries
+XBL_RD_MINI_CTX
+Encrypted AES Key
+md_wrpd_keys.BIN
+IV Key region
+md_encr_iv.BIN
+MAC region
+md_encr_mac.BIN
+boot_sahara_command_handler_tbl.c
+Received training data of size 0
+Received training data points to address greater than 32 bit arch
+boot_sahara_dispatch_tbl.c
+boot_sahara_status_map.c
+boot_blacklist.c
+boot_whitelist_prot.c
+boot_slvcom.c
+WatchDogTimerLib.c
+Bootup: Driver Init, No PMIC on RUMI Target
+Driver Init # SPMI Transn: %d
+Bootup: AOP-Pre Init, No PMIC on RUMI Target
+PM Total Mem Allocated: %d 
+/sw/pmic/pm/sw-config
+/sw/pmic/pm/pon
+/sw/pmic/pm/charger
+/sw/pmic/pm/haptics
+/sw/pmic/pm/display
+/sw/pmic/pm/camera
+/sw/pmic/arb/access
+/sw/pmic/arb/mgpi
+/sw/pmic/arb/pvc
+apply-rsns-trim
+wlan-attach-type
+rsns-trim-value
+ext-buck-voltage-drop
+driver-post-init
+device-pre-init
+sw-config
+PM_DT_PARSING_ERR: %s
+%s/pshold
+reset-type
+smpl-delay
+%s/s2-kpdpwr
+s2-kpdpwr
+%s/s2-kpdpwr-resin
+s2-kpdpwr-resin
+%s/s2-resin
+s2_resin
+%s/s3-reset
+timer-value-ms
+s3-reset
+%s/uvlo-config
+config-value
+%s/ovlo-config
+%s/long-pwrkey-dbnc-chk
+dbnc-time-ms
+long-pwrkey-dbnc-chk
+%s/pre-psi
+vreg-sp-value
+pre-psi-value
+parallel-charger
+charger-pmic-index
+loader-dbc-threshold
+dbc-sdp-thd-inc
+skip-loader-dbc
+core-dbc-threshold
+skip-core-dbc
+uv-oc-1s-threshold
+uv-oc-2s-threshold
+apply-ichg-fs
+batt-2s-option
+apply-too-hot-afp
+too-hot-afp-threshold
+apply-too-cold-afp
+too-cold-afp-threshold
+apply-boot-wo-batt
+boot-wo-batt
+icl-boot-wo-batt
+apply-float-voltage
+float-voltage-mv
+apply-pre-charge-current
+pre-charge-ma
+apply-fast-charge-current
+fast-charge-ma
+apply-icl
+apply-float-charger-icl
+float-charger-icl-ma
+apply-vsysmin
+usb-suspend
+wls-usb-prior-swap
+batt-detect-src
+max-dbg-board-id
+min-dbg-board-id
+detect-jig-by-therm
+max-therm
+min-therm
+jig-icl-ma
+uvp-recover-delay
+ignore-temp-in-dbc
+batt-therm-pull-up
+ibat-via-ext-sense
+ext-rsns-adc-scale
+vbat-thd-rtc-pon
+vsys-min-recover-mv
+vflt-recover-mv
+%s/led-config
+blink-during-charging
+blink-during-shutdown
+rgb-dim-level
+led-config
+ext-boost-vdd
+vmax-hdrm
+autores-cfg
+vbatt-min
+boost-cfg-bob
+lra-resistance
+swr-io-volt
+swire-map
+apply-default-volt
+default-elvss
+default-elvdd
+default-oledb
+rst-signal
+camera-gpio
+port-cfg
+pvc-port-id
+spmi-prioriety
+addr-cfg
+VBATT_2S
+adc_read error: %d. %s %d
+pm_chg_get_vbatt
+pon_ocv get batt opt failed
+pon_ocv get acc0 Failed
+pon_ocv acc0 invalid value
+pon_ocv acc1 invalid value
+PM %d=0x%llx:0x%llx 
+POWER ON by
+POWER OFF by
+KPDPWR_AND_RESIN
+HARD_RESET
+MBG_FAULT
+GP_FAULT3
+GP_FAULT2
+GP_FAULT1
+GP_FAULT0
+RESTART_PON
+PBS_NACK
+PBS_WD_TO
+KPDPWR_ANDOR_RESIN
+PBS_WATCHDOG_TO
+IMM_XVDD_SD
+RAW_DVDD_SHD
+RAW_XVDD_SHD
+HARD RESET by %s
+%s %s, %s %s
+%s %s, POWER OFF due to FAULT %s of PM %d
+%s %s, POWER OFF due to FAULT %s
+%s %s, %s S3 reset %s
+SOFT_RESET_REASON1:SOFT
+%s %s,%s %s
+WARM reset by %s
+Sdam Write Failed
+PBS_RAM %d reloading
+PBS_RAM %d reloading for sid %d
+PBS RAM %d CRC mismatch for sid %d; read_val = 0x%02x%02x, data_val_0 = 0x%02x%02x
+Bootup: No PMIC on RUMI Target
+Device Init # SPMI Transn: %d
+VPH : %d uV 
+CHG Init # SPMI Transn: %d
+WR Count : 0x%X
+Pre-SIL. No CHG Support
+Charging applicable is true as USB is connected
+S3 RESET is passed from Aurora to Helios
+XVDD/DVDD seen SDAM for ADB Reboot cleared
+!$(*,.02
+8:KTB/HALO 1.3V MV Buck configured wit default voltage
+Failed to caculate VSET for given DCR Drop voltage of MV Buck
+I2C Open failure of MV Buck
+MV Buck configuration Failed
+ %c:%d.%d
+PSI: b0x%02x_v0x%02x
+Elapsed tick: 0x%x, Wait tick: 0x%x 
+OCP Occured: PMIC: %d; SMPS: %d 
+OCP Occured: PMIC: %d; LDO: %d 
+OCP Occured: PMIC: %d; BOB: %d 
+SUWPM_SET_VAL:Start
+PM_SET_VAL:End:%d
+SET_VAL:Skip
+PBS_GET:%d:0x%X
+WRITE:bus:%d,sid:%d,0x%X,data:0x%X,sindx:%d,eindx:%d
+PASS:%d,%d,0x%X,set:0x%X,get:0x%X
+VIOLATION:%d,%d,0x%X,set:0x%X,get:0x%X
+PBS:%d:0x%X,0x%X
+REVID_SBL_ID_0:0x%X
+REVID_SBL_ID_1:0x%X
+	pm_pbs_ram_image_verify: err_flag = %d, ram size failed
+*** pm_pbs_ram read fail: word number = %d, read_val = %d, slave_id = %d
+***pbs ram verify fail word number = 0x%x, slave_id = 0x%x, periph_id = 0x%x, read_val = 0x%lx, dataval = 0x%lx
+***pbs ram verify fail word number = 0x%x, slave_id = 0x%x, periph_id = 0x%x, read_val = 0x%x, dataval = 0x%x
+PM_PBS_INFO
+PON REASON HISTORY LOGS
+Word %d : 0x%lX
+hBATT_THERM
+BATT_THERM_PU_30K
+BATT_THERM_PU_400K
+BATT_THERM_OHMS
+%.35s execution_time %dms
+execution_time per spmi_read %dus
+execution_time per spmi_write %dus
+periph id 0x%x modification is not allowed
+ channel for periph id 0x%x not found for appendIRQ operation
+ periph id 0x%x not found for append operation
+DAL_PLATFORM_INFO
+linux,phandle
+/aliases
+compatible
+disp_cc_mdss_ahb1_clk
+disp_cc_mdss_ahb_clk
+disp_cc_mdss_non_gdsc_ahb_clk
+disp_cc_mdss_rscc_ahb_clk
+disp_cc_mdss_byte0_clk
+disp_cc_mdss_byte0_intf_clk
+disp_cc_mdss_byte1_clk
+disp_cc_mdss_byte1_intf_clk
+disp_cc_mdss_dptx0_aux_clk
+disp_cc_mdss_dptx0_crypto_clk
+disp_cc_mdss_dptx0_link_clk
+disp_cc_mdss_dptx0_link_intf_clk
+disp_cc_mdss_dptx0_usb_router_link_intf_clk
+disp_cc_mdss_dptx1_usb_router_link_intf_clk
+disp_cc_mdss_spdm_dp_crypto_clk
+disp_cc_mdss_dptx0_pixel0_clk
+disp_cc_mdss_spdm_dp_pixel_clk
+disp_cc_mdss_dptx0_pixel1_clk
+disp_cc_mdss_spdm_dp_pixel1_clk
+disp_cc_mdss_dptx1_aux_clk
+disp_cc_mdss_dptx1_crypto_clk
+disp_cc_mdss_dptx1_link_clk
+disp_cc_mdss_dptx1_link_intf_clk
+disp_cc_mdss_dptx1_pixel0_clk
+disp_cc_mdss_dptx1_pixel1_clk
+disp_cc_mdss_dptx2_aux_clk
+disp_cc_mdss_dptx2_crypto_clk
+disp_cc_mdss_dptx2_link_clk
+disp_cc_mdss_dptx2_link_intf_clk
+disp_cc_mdss_dptx2_pixel0_clk
+disp_cc_mdss_dptx2_pixel1_clk
+disp_cc_mdss_dptx3_aux_clk
+disp_cc_mdss_dptx3_crypto_clk
+disp_cc_mdss_dptx3_link_clk
+disp_cc_mdss_dptx3_link_intf_clk
+disp_cc_mdss_dptx3_pixel0_clk
+disp_cc_mdss_esc0_clk
+disp_cc_mdss_esc1_clk
+disp_cc_mdss_mdp1_clk
+disp_cc_mdss_mdp_clk
+disp_cc_mdss_mdp_lut1_clk
+disp_cc_mdss_mdp_lut_clk
+disp_cc_mdss_spdm_mdp_clk
+disp_cc_mdss_pclk0_clk
+disp_cc_mdss_spdm_pclk0_clk
+disp_cc_mdss_pclk1_clk
+disp_cc_mdss_spdm_pclk1_clk
+disp_cc_mdss_rscc_vsync_clk
+disp_cc_mdss_vsync1_clk
+disp_cc_mdss_vsync_clk
+disp_cc_pll_test_clk
+disp_cc_sleep_clk
+disp_cc_mdss_accu_clk
+disp_cc_xo_clk
+disp_cc_debug_clk
+disp_cc_mdss_spdm_debug_clk
+gcc_sdcc1_ahb_clk
+gcc_camera_ahb_clk
+gcc_disp_ahb_clk
+gcc_qmip_camera_nrt_ahb_clk
+gcc_qmip_camera_rt_ahb_clk
+gcc_qmip_video_cv_cpu_ahb_clk
+gcc_qmip_video_cvp_ahb_clk
+gcc_qmip_video_lsr_ahb_clk
+gcc_qmip_video_v_cpu_ahb_clk
+gcc_qmip_video_vcodec_ahb_clk
+gcc_video_ahb_clk
+gcc_iris_ss_spd_axi1_clk
+gcc_camera_hf_axi_clk
+gcc_disp_hf_axi_clk
+gcc_iris_ss_hf_axi1_clk
+gcc_camera_sf_axi_clk
+gcc_video_axi0_clk
+gcc_video_axi1_clk
+gcc_sdcc1_at_clk
+gcc_qupv3_wrap0_s0_clk
+gcc_qupv3_wrap0_s1_clk
+gcc_qupv3_wrap0_s2_clk
+gcc_qupv3_wrap0_s3_clk
+gcc_qupv3_wrap0_s4_clk
+gcc_qupv3_wrap0_s5_clk
+gcc_qupv3_wrap1_s0_clk
+gcc_qupv3_wrap1_s1_clk
+gcc_qupv3_wrap1_s2_clk
+gcc_qupv3_wrap1_s3_clk
+gcc_qupv3_wrap1_s4_clk
+gcc_qupv3_wrap1_s5_clk
+gcc_sdcc1_apps_clk
+gcc_sdcc1_ice_core_clk
+gcc_usb30_prim_sleep_clk
+gcc_aggre_usb3_prim_axi_clk
+gcc_cfg_noc_usb3_prim_axi_clk
+gcc_usb30_prim_master_clk
+gcc_usb30_prim_mock_utmi_clk
+gcc_usb3_prim_phy_aux_clk
+gcc_usb3_prim_phy_com_aux_clk
+gcc_usb3_prim_phy_pipe_clk
+gcc_camera_xo_clk
+gcc_video_xo_clk
+disp_cc_mdss_core_gdsc
+disp_cc_mdss_core_int2_gdsc
+gcc_usb30_prim_gdsc
+usb30_prim
+disp_cc_debug_div_clk_src
+disp_cc_mdss_byte0_div_clk_src
+disp_cc_mdss_byte1_div_clk_src
+disp_cc_mdss_dptx0_link_div_clk_src
+disp_cc_mdss_dptx1_link_div_clk_src
+disp_cc_mdss_dptx2_link_div_clk_src
+disp_cc_mdss_dptx3_link_div_clk_src
+disp_cc_mdss_spdm_debug_div_clk_src
+disp_cc_mdss_spdm_dp_crypto_div_clk_src
+disp_cc_mdss_spdm_dp_pixel1_div_clk_src
+disp_cc_mdss_spdm_dp_pixel_div_clk_src
+disp_cc_mdss_spdm_mdp_div_clk_src
+disp_cc_mdss_spdm_pclk0_div_clk_src
+disp_cc_mdss_spdm_pclk1_div_clk_src
+disp_cc_pll_test_div_clk_src
+smem_alloc: SMEM is not initialized state=%d! smem_type=%d, buf_size=%d.
+smem_alloc: Trying to allocate smem item=%d which is >= max item=%d!
+smem_alloc: SMEM allocation failed! smem_type=%d, buf_size=%d
+smem_get_addr: SMEM is not initialized state=%d! smem_type=%d.
+smem_get_addr: Trying to get addr smem item=%d which is >= max item=%d!
+smem_get_addr: SMEM get addr failed! smem_type=%d
+smem_version_set: Unable to allocate version array: type %d.
+SMEM base addr=0x%08X, size=%d memory mapping failed.
+SMEM is not initialized by Boot.
+smem_init: major version (%d) does not match all procs!
+SMEM version=0x%X not supported.
+smem_boot.c
+smem_setup_toc: Heap remaining (%d) < total partitions sz (%d)!
+smem_boot_setup_toc: TOC too big! Size: %d Bytes, must be %d or less.
+SMEM TOC + targ_info too big! TOC: %d B; targ_info: %d B, max: %d B.
+smem_xbl_loader.c
+/sw/smem
+smem-vers
+smem-toc-vers
+smem-max-items
+/sw/smem/smem-partitions
+exclusion-sizes
+Invalid SMEM memory type, %d, requested.
+smem_legacy.c
+Invalid smem_type=%d
+In new SMEM version smem_alloc_add_table_entry() is not supported
+Can't initialize heap info
+Assertion smem_legacy_info.smem_buf_data_tbl[buf_tbl_idx].tag != SMEM_INVALID failed
+Invalid memory type %d
+Invalid SMEM heap pointers. Uncached: 0x%X, cached: 0x%X
+Fixed buffer allocation not supported in new SMEM version
+Assertion SMEM_READ_SMEM_4(&toc->version) == 1 failed
+smem_partition.c
+Assertion SMEM_READ_SMEM_4(&toc->num_entries) <= SMEM_MAX_PARTITIONS failed
+Assertion ((unsigned int)(uintptr_t)hdr & SMEM_PAGE_ALIGN_MASK) == 0 failed
+Assertion hdr->identifier == SMEM_PARTITION_HEADER_ID failed
+Assertion partition_offset > 0 failed
+Assertion partition_offset < smem_size - SMEM_TOC_SIZE failed
+Invalid partition size(%d). Actual partition size:%d,host0:0x%04X, host1:0x%04X.
+SMEM Partition %d init failed with status 0x%x
+Invalid SMEM canary 0x%X at location 0x%X
+Invalid SMEM item size:%d, Partition size:%d smem_type:0x%04X.
+Invalid SMEM item size. Total size: %d, remaining: %d
+Invalid padding data size:%d, size_item:%d smem_type:0x%04X.
+host sends ZLP
+host lacks ZLP
+init start
+enum_timeout, retry in HS
+enum_tiemout
+Disconnect no enum
+ENUM success
+bulk_shutdown
+DISCONNECT
+79@999999IS
+set_ep_halt
+clear_ep_halt
+SUPER-PLUS
+EMMC Vendor ID : 0x%X
+EMMC Product Name : %s
+EMMC Size : %d sectors
+EMMC Firmware version : %d
+EMMC SpeedMode - HS400 ES Mode 
+EMMC SpeedMode - HS400 Mode 
+EMMC SpeedMode - HS200 Mode 
+EMMC SpeedMode - DDR50 Mode 
+EMMC Tuning phase-%d selected
+EMMC extCSD information
+Device Life Time EOL[267]=%d
+Device Life Time A[268]=%d
+Device Life Time B[268]=%d
+SLVCOM Err: slvcom_internal_read failed! err=%d.
+SLVCOM Fatal: slvcom_gpio_init(TZ_NS) failed! err=%d
+SLVCOM Err: Invalid handle pointer or config is NULL
+SLVCOM Err: SLVCOM is not supported!
+SLVCOM Err: SLVCOM is not initialized!
+SLVCOM Err: Client already exists (0x%X)!
+SLVCOM Err: Client structure allocation failed! size=%d
+SLVCOM Fatal: slvcom_gpio_out failed while deinit! err=%d
+SLVCOM Fatal: slvcom_gpio_init failed! err=%d
+SLVCOM Fatal: slvcom_gpio_out failed! err=%d
+SLVCOM Err: This client didnt enable secmode to disable. handle: 0x%x
+SLVCOM Err: Read invalid args operation=%d, reg_start_addr=0x%02X, ahb_addr=0x%X, num_words=%d, read_buf=0x%X, read_buf_size=%d.
+SLVCOM Err: slvcom_internal_write failed! err=%d.
+SLVCOM Err: Write invalid args operation=%d, reg_start_addr=0x%02X, ahb_addr=0x%X, num_words=%d, write_buf=0x%X, write_buf_size=%d.
+SLVCOM Err: slvcom_os_calloc failed, size=%d.
+SLVCOM Err: DAL_DeviceAttach with DALDEVICEID_TLMM failed with err=%d.
+SLVCOM Err: h_slvcom_tlmm_handle is NULL
+SLVCOM Err: DalDevice_Open failed with err=%d.
+SLVCOM Err: DalTlmm_ConfigGpio failed with err=%d.
+SLVCOM Err: DalDevice_Close failed with err=%d.
+SLVCOM Err: DalTlmm_GpioOut failed with err=%d.
+SLVCOM Fatal: spi_open failed! device_id=%d, err=%d.
+SLVCOM Fatal: spi_close failed! err=%d.
+SLVCOM Fatal: spi_full_duplex failed! device_id=%d, err=%d.
+.       
+..      
+		 SDP_CHARGER
+ OCP_CHARGER
+ CDP_CHARGER
+ DCP_CHARGER
+ FLOAT_CHARGER
+ INVALID
+ UNKNOWN
+usb: ser_str_cookie_pid
+ufs_info_fail
+ufs_ser_strlen <= 2
+emmc_parti_unavail
+sdc_parti_unavail
+emmc/sdc_info_fail
+ser_str_conv_fail
+usb: UFS Serial
+usb: Serial
+enter forced EDL
+usb_dp_toggled_for_cdp
+usb: chgr
+chdlp-%d
+EFI PART
+logtomedia: get log part size err
+logs_to_media.c
+logtomedia: log part read fail
+logtomedia: log part write fail
+LOG_START-%010d
+dalspinlock
+3/B///HFailed- DeviceId:0x%x
+Failed- pszDevName:%s pDALPtr:0x%x
+Failed- pszDevName:%s DALPROP_PropsInfo:0x%x
+DevCfgVersionInfo
+DALPROP_PropsInfo is NULL- pszName:%s
+pDALPropsDir or pbDevicePropsPos is NULL- pszName:%s pDALPropsDir:0x%x pbDevicePropsPos:0x%x
+SkipProp error- pszName:%s pDALPropsDir:0x%x pbDevicePropsPos:0x%x
+Unknown prop value- pPropVar:0x%x
+Unknown type- pPropVar:0x%x
+/devcfg.bin
+boot_minidump_loader.c
+MD: IV Buf heap err
+MD: MAC Buf heap err
+MD: skip invalid region subsys_id:0x%08X name:%s base:0x%11X size:0x%11X
+MD: Subsys: 0x%04X invalid count: 0x%04X
+MD: MD table is not initialized in SMEM
+MD: No regions registered in MD table
+MD: region_table heap err
+MD: Error overlap subsys_id:0x%08X name:%s base:0x%llX size:0x%llX
+boot_encryption.c
+ramdump_table_target_sm.c
+Aoss rst fsm stat
+FSM_STS.BIN
+Aoss rst fsm ctrl
+FSM_CTRL.BIN
+Aoss reset debug en
+DBG_EN.BIN
+FSM_CTRL
+Reset Status Region
+RST_STAT.BIN
+RST_STAT
+SHRDIMEM
+SMEM info
+SMEMINFO.BIN
+SMEM_VER.BIN
+SMEMINFO
+SMEM_VER
+PMIC_PON.BIN
+PMON_HIS.BIN
+PBUS_LOG.BIN
+Pmic PON stat
+PM PON HIST 
+PMIC_PON
+PMON_HIS
+PBUS_LOG
+PMPONHIS.BIN
+PM PON HIST
+PM_PON_HIST
+PMIC registers
+sbl_pmic_dump.bin
+H_M55 DTCM region
+XRC_DTCM_RAM.BIN
+H_M3SS RAM region
+XRC_M3SS_RAM.BIN
+H_SHMEM region
+XRC_SHMEM.BIN
+H_M3SS Code region
+XRC_M3SS_CODE.BIN
+DDR Training Data
+DDR_DATA.BIN
+PIMEM region
+PIMEM.BIN
+pImem Disabled,ERRCODE:%d
+Ramdump Error: can't get ddr info from SMEM
+ DDR CS%u part%u Memory
+DDRCS%u_%u.BIN
+IMAGE_VARIANT_STRING=SocAuroraLAA
+OEM_IMAGE_VERSION_STRING=3108-2f95-0004-0000.twshared60610.09.atn6.tw.fbinfra.net
+QC_IMAGE_VERSION_STRING=BOOT.MXF.2.2-00536-AURORA-1.149279.3
+OEM_IMAGE_UUID_STRING=Q_SENTINEL_{07901735-7FAE-423F-A234-5EF3DA425CE8}_20260601_1228
+XRC: xrc_ramdump_init start
+XRC Err: xrc_gpio_h2a_register failed, ret=%d
+XRC Err: Wait for H2A_INT for crash command status, ret=%d
+XRC Err: 1: SLVCOM_REG_TZ_TO_MASTER_STATUS register read failed, ret=%d
+XRC: First read status:boot_loader:%d,main_image:%d,data_contents:0x%x
+XRC Err: Wait for H2A_INT 2 crash command fail ret=%d
+XRC Err: 2: SLVCOM_REG_TZ_TO_MASTER_STATUS read failed, ret=%d
+XRC: Second read status:boot_loader:%d,main_image:%d,data_contents:0x%x
+XRC: Got XRC RAM available
+XRC Err: BL not waiting for RAM available
+XRC Err: xrc_os_malloc failed, size=%d.
+XRC Err: DAL_DeviceAttach with DALDEVICEID_TLMM failed with err=%d.
+XRC Err: h_xrc_tlmm_handle is NULL
+XRC Err: DalDevice_Open failed with err=%d.
+XRC Err: DalTlmm_ConfigGpio failed with err=%d.
+XRC Err: DalDevice_Close failed with err=%d.
+XRC Err: DalTlmm_GpioOut failed with err=%d.
+XRC Err: DalTlmm_GpioIn failed with err=%d.
+XRC Err: DalTlmm_GpioIn failed
+XRC Err: xrc_gpio_h2a_init(H2A) failed! err=%d
+XRC Err: xrc_gpio_deinit(H2A) failed! err=%d
+Exception caught by SBL1 vector table!!
+ELR-EL%1d: %16lx (Exception Link Register) *PC at exc
+ESR-EL%d: %16lx (Exception Syndrome Register)
+X0 : %16lx, X1 : %16lx
+X2 : %16lx, X3 : %16lx
+X4 : %16lx, X5 : %16lx
+X6 : %16lx, X7 : %16lx
+X8 : %16lx, X9 : %16lx
+X10: %16lx, X11: %16lx
+X12: %16lx, X13: %16lx
+X14: %16lx, X15: %16lx
+X16: %16lx, X17: %16lx
+X18: %16lx, X19: %16lx
+X20: %16lx, X21: %16lx
+X22: %16lx, X23: %16lx
+X24: %16lx, X25: %16lx
+X26: %16lx, X27: %16lx
+X28: %16lx, X29: %16lx
+X30: %16lx
+hw-channel
+settling-delay-uS
+average-sample
+decimation-ratio
+cal-method
+scaling-factor
+scaling-method
+offset-factor
+pull-up-res
+int-table
+int-table (prop-list)
+int-table (reg)
+Translation table index out of range
+int-table (table)
+Err get table prop list
+gpio-num
+gpio (eGpio)
+pmic-sid
+gpio (psid)
+use-interrupt
+fullscale-code
+fullscale-uV
+fullratiometric-code
+read-timeout-uS
+ldo-settling-uS
+slave-id
+peripheral-id
+master-id
+pmic-device
+%s/gpio-map
+get_count_subnode
+get_size_subnode_name
+get_subnode_name
+%s/therm_table
+%s/vadc_ch_cfg
+ADC_ERROR: %s
+/soc/sdc%d/HsrSettings
+/soc/sdc%d/HsrSettings/HS400
+/soc/sdc%d/HsrSettings/HS200
+DLLConfig
+DLLConfig2
+DLLConfig3
+DLLTestCtrl
+DDRConfig
+DLLUserCtrl
+SDCC HSR Settings from Device Tree:
+DLLConfig = 0x%x, DLLConfig2 = 0x%x, DLLConfig3 = 0x%x
+DLLTestCtrl = 0x%x, DDRConfig = 0x%x, DLLUserCtrl = 0x%x
+/soc/sdc%d
+EnableLogging
+DriveStrength
+SDCC Drive Strength CTL-0 Setting from Device Tree: 0x%x
+SDCC Drive Strength CTL-1 Setting from Device Tree: 0x%x
+MaxSpeedMode
+SDCC Speed Mode Setting from Device Tree: %d
+/sw/pmic/adc/vadc/spmi-vadc@0
+VAdc - conversion timed out
+VAdc - invalid ADC code read
+UsbSharedLib.c error in line
+/soc/usb0/hs_phy_cfg
+HS: usb_shared_xbl_dtb_node_init dtb inaccessible
+usb_hs_phy_cfg size 
+HS: usb_shared_process_phy_reg_dtb_list Failed
+rumi_phy_disabled
+USB_PHY_PS for LaneDet, ChipInfo 
+SW MUX ovrd method
+/soc/usb0/ss_phy_cfg
+SS: usb_shared_xbl_dtb_node_init device tree Not available
+ssusb_phy_init_timeout
+ssusb_phy_init_success lane
+%s_CID:%04X_SN:%08X
+usb_eud_is_active, status 
+usb run_stop status 
+usb_shared_lib_process_phy_reg_dtb_list: Invalid paramerters received
+usb_eud_serial 
+Fail to Initialize and attach DAL TLMM driver
+Fail to Configure GPIO#99
+Fail to drive GPIO#99
+NULL_MSG
+usb: %s , 0x%x
+str_overflow
+usb: ID:0x%x, value: 0x%x
+qusb_platform
+utmi_only
+init_dp_gnd Failed
+qusb_dci_dp_gnd_check: 
+dpGnd LOW, break
+dpGnd HIGH
+wait unplug(dpGnd LOW), (ms):
+dpGnd LOW, enter FEDL
+vioclt_eud_set
+qusb_dci_eud_init
+enum_carried_from_pbl
+vbus_det_pm_unavail
+VBUS High!
+VBUS Low
+endxfer EP0 OUT
+endxfer EP0 IN
+unstall ep failed
+resubmit urb 
+resubmit urb failed
+qusb_dci_retry_highspeed 
+ep_cmd_write failed, cmd_type
+STATUS_SETUP_PENDING, cancel_transfer 
+PIMEM dump complete, size
+recover ctrl state machine.
+start PIMEM dump, size
+unknown dwc coreid: 
+qusb_dci_eud_recovery vioctl_eud_detect:
+qusb_dci_usbdp_mode_reset: init
+dci, chgr_type_det_err
+vbus_pm_err
+wait_cc_out_gpio...
+ss_lane_1st
+ss_lane_2nd
+ss_lane_pm_err
+ss_lane_cc_timeout
+ss_lane_invalid
+timer_start
+timer_stop
+timer_expired
+/soc/pinctrl@f100000
+pinctrl-names
+pinctrl-%d
+%s-gpios
+qcom,sleep-config
+qcom,active-config
+(-<@RkkkkkkkkkkkkkZakkkkkkg
+/soc/spi
+/soc/spi/spi_device_config_
+core_base_addr
+common_base_addr
+core_offset
+qupv3_instance
+core_index
+se_index
+core_irq
+polled_mode
+min_data_length_for_dma
+gpi_index
+se_clock_dfs_index
+se_clock_frequency
+miso_encoding
+mosi_encoding
+cs_encoding
+clk_encoding
+tcsr_base_addr
+tcsr_reg_offset
+tcsr_reg_value
+se_clock
+6Displaylib: MDP_GetDisplayBootConfig failed!
+DisplayLib: MDPPlatformConfigure(MDPPLATFORM_CONFIG_INIT) failed! Returned %d
+DisplayLib: MDP init failed!
+Displaylib: Common display panel power up failed!
+Displaylib: Display panel detect failed!
+Displaylib: Specific display panel power up failed!
+8450_xml
+IsRemotable
+tlmm_sleep
+NumSysWorkLoops
+FixedMemLength
+DALPROP_TARGET_PROP_NAME
+icbcfg_info
+TSENS_BSP
+/dev/icbcfg/boot
+/core/hwengines/tsens
+gcc_qupv3_wrap0_core_clk
+gcc_qupv3_wrap0_core_2x_clk
+gcc_qupv3_wrap_0_m_ahb_clk
+gcc_qupv3_wrap_0_s_ahb_clk
+gcc_qupv3_wrap1_core_clk
+gcc_qupv3_wrap1_core_2x_clk
+gcc_qupv3_wrap_1_m_ahb_clk
+gcc_qupv3_wrap_1_s_ahb_clk
+DisplayDxe: Error set VDDMM level 
+DisplayDxe: Error enable VDDMM
+DisplayDxeBoot: SW renderer only
+Ramdump: Panel_PowerDown: Primary Power Down Sequence Failed (%d)
+DisplayDxeBoot: Power Down not supported in this mode
+DisplayDxe: Error configuring LDO12 to 1.8V
+DisplayDxe: Error configuring LDO12 to 3.0V
+DisplayDxe: Error enabling LDO13
+DisplayDxe: Error enabling LDO6
+DisplayDxeBoot: Wled pm_wled_set_led_duty_cycle failed
+Backlight dcs bit width is not available
+Backlight brightness DCS command send failed
+Ramdump:Display:ReadPlatformIDAndChipId: Failed
+<?xml version="1.0" encoding="utf - 8"?><PanelName>R66451 Visionox</PanelName><PanelDescription>R66451 Visionox Single DSI DSC Command Mode Amoled Panel (1440x2560 24bpp)</PanelDescription><Group id="Active Timing"><HorizontalActive>1080</HorizontalActive><HorizontalFrontPorch>95</HorizontalFrontPorch><HorizontalBackPorch>40</HorizontalBackPorch><HorizontalSyncPulse>1</HorizontalSyncPulse><HorizontalSyncSkew>0</HorizontalSyncSkew><HorizontalLeftBorder>0</HorizontalLeftBorder><HorizontalRightBorder>0</HorizontalRightBorder><VerticalActive>2340</VerticalActive><VerticalFrontPorch>25</VerticalFrontPorch><VerticalBackPorch>4</VerticalBackPorch><VerticalSyncPulse>1</VerticalSyncPulse><VerticalSyncSkew>0</VerticalSyncSkew><VerticalTopBorder>0</VerticalTopBorder><VerticalBottomBorder>0</VerticalBottomBorder><InvertDataPolarity>False</InvertDataPolarity><InvertVsyncPolairty>False</InvertVsyncPolairty><InvertHsyncPolarity>False</InvertHsyncPolarity><BorderColor>0x0</BorderColor></Group><Group id="Display Interface"><InterfaceType>9</InterfaceType><InterfaceColorFormat>3</InterfaceColorFormat></Group><Group id="DSI Interface"><DSIChannelId>2</DSIChannelId><DSIVirtualId>0</DSIVirtualId><DSIColorFormat>36</DSIColorFormat><DSITrafficMode>1</DSITrafficMode><DSILanes>4</DSILanes><DSICmdSwapInterface>False</DSICmdSwapInterface><DSITECheckEnable>True</DSITECheckEnable><DSITEUsingDedicatedTEPin>True</DSITEUsingDedicatedTEPin><DSITEvSyncStartPos>2340</DSITEvSyncStartPos><DSITEvSyncInitVal>2340</DSITEvSyncInitVal><DSIDSCEnable>True</DSIDSCEnable><DSIDSCMajor>1</DSIDSCMajor><DSIDSCMinor>1</DSIDSCMinor><DSIDSCScr>0</DSIDSCScr><DSIDSCProfileID>7</DSIDSCProfileID><DSIDSCSliceWidth>540</DSIDSCSliceWidth><DSIDSCSliceHeight>20</DSIDSCSliceHeight><DSILanes>4</DSILanes><DSIHsaHseAfterVsVe>False</DSIHsaHseAfterVsVe><DSILowPowerModeInHFP>False</DSILowPowerModeInHFP><DSILowPowerModeInHBP>False</DSILowPowerModeInHBP><DSILowPowerModeInHSA>False</DSILowPowerModeInHSA><DSILowPowerModeInBLLPEOF>True</DSILowPowerModeInBLLPEOF><DSILowPowerModeInBLLP>True</DSILowPowerModeInBLLP><DSIRefreshRate>0x3C0000</DSIRefreshRate><DSIDynamicRefreshRates>0x3B8000 0x3BC000 0x3C0000</DSIDynamicRefreshRates><DSICmdUsingTrigger>False</DSICmdUsingTrigger><DSIEnableAutoRefresh>True</DSIEnableAutoRefresh><DSIAutoRefreshFrameNumDiv>1</DSIAutoRefreshFrameNumDiv><DSIControllerMapping>00</DSIControllerMapping></Group><DSIInitSequence>39 b0 00
+39 d8 00 00 00 00 00 00 00 00 00 5b 00 5b 00 5b 00 5b 00 5b
+39 b0 80
+39 e6 00
+39 b0 00
+39 cf 64 0b 00 00 00 00 00 00 08 00 0b 77 01 01 01 01 01 01 04 04 04 04 04 05
+39 b0 04
+39 f7 01
+39 df 50 40
+39 f3 50 00 00 00 00
+39 f2 11
+39 f3 01 00 00 00 01
+39 f4 00 02
+39 f2 19
+39 df 50 42
+39 35 00
+39 2a 00 00 04 37
+39 2b 00 00 09 23
+</DSIInitSequence><DSITermSequence>05 28
+</DSITermSequence><Group id='Backlight Configuration'><BacklightType>3</BacklightType><BacklightBitWidth>12</BacklightBitWidth></Group>
+<?xml version="1.0" encoding="utf-8"?> <PanelName>VirtioDSI</PanelName> <PanelDescription>DSI Model (640x480 24bpp)</PanelDescription> <Group id="Active Timing">  <HorizontalActive>640</HorizontalActive>  <HorizontalFrontPorch>13</HorizontalFrontPorch>  <HorizontalBackPorch>14</HorizontalBackPorch>  <HorizontalSyncPulse>15</HorizontalSyncPulse>  <VerticalActive>480</VerticalActive>  <VerticalFrontPorch>11</VerticalFrontPorch>  <VerticalBackPorch>12</VerticalBackPorch>  <VerticalSyncPulse>13</VerticalSyncPulse> </Group> <Group id="Display Interface">  <InterfaceType>8</InterfaceType>  <InterfaceColorFormat>3</InterfaceColorFormat> </Group> <Group id="DSI Interface">  <DSIChannelId>1</DSIChannelId>  <DSIVirtualId>0</DSIVirtualId>  <DSIColorFormat>36</DSIColorFormat>  <DSITrafficMode>0</DSITrafficMode>  <DSILanes>2</DSILanes>  <DSIHsaHseAfterVsVe>False</DSIHsaHseAfterVsVe>  <DSILowPowerModeInHFP>False</DSILowPowerModeInHFP>  <DSILowPowerModeInHBP>False</DSILowPowerModeInHBP>  <DSILowPowerModeInHSA>False</DSILowPowerModeInHSA>  <DSILowPowerModeInBLLPEOF>False</DSILowPowerModeInBLLPEOF>  <DSILowPowerModeInBLLP>False</DSILowPowerModeInBLLP>  <DSIRefreshRate>0x3c0000</DSIRefreshRate> </Group> <DisplayPrimaryFlags>0x2</DisplayPrimaryFlags> <DSIInitSequence>  32 00 00
+ </DSIInitSequence>
+<?xml version="1.0" encoding="utf-8"?><PanelName>Seeya</PanelName><PanelDescription>Seeya Dual DSI amoled video mode panel without DSC(720x1280 24bpp)</PanelDescription><Group id="Active Timing"> <HorizontalActive>1280</HorizontalActive> <HorizontalFrontPorch>64</HorizontalFrontPorch> <HorizontalBackPorch>32</HorizontalBackPorch> <HorizontalSyncPulse>32</HorizontalSyncPulse> <HorizontalSyncSkew>0</HorizontalSyncSkew> <HorizontalLeftBorder>0</HorizontalLeftBorder> <HorizontalRightBorder>0</HorizontalRightBorder> <VerticalActive>720</VerticalActive> <VerticalFrontPorch>44</VerticalFrontPorch> <VerticalBackPorch>14</VerticalBackPorch> <VerticalSyncPulse>2</VerticalSyncPulse> <VerticalSyncSkew>0</VerticalSyncSkew> <VerticalTopBorder>0</VerticalTopBorder> <VerticalBottomBorder>0</VerticalBottomBorder> <InvertDataPolarity>False</InvertDataPolarity> <InvertVsyncPolairty>False</InvertVsyncPolairty> <InvertHsyncPolarity>False</InvertHsyncPolarity> <BorderColor>0x0</BorderColor></Group><Group id="Display Interface"> <InterfaceType>8</InterfaceType> <InterfaceColorFormat>3</InterfaceColorFormat></Group><Group id="DSI Interface"> <DSIChannelId>1</DSIChannelId> <DSIVirtualId>0</DSIVirtualId> <DSIColorFormat>36</DSIColorFormat> <DSITrafficMode>1</DSITrafficMode> <DSILanes>4</DSILanes>   <DSIHsaHseAfterVsVe>False</DSIHsaHseAfterVsVe>   <DSILowPowerModeInHFP>False</DSILowPowerModeInHFP>   <DSILowPowerModeInHBP>False</DSILowPowerModeInHBP>   <DSILowPowerModeInHSA>False</DSILowPowerModeInHSA>   <DSILowPowerModeInBLLPEOF>True</DSILowPowerModeInBLLPEOF>   <DSILowPowerModeInBLLP>True</DSILowPowerModeInBLLP>   <DSIRefreshRate>0x3C0000</DSIRefreshRate> <DSIControllerMapping>  00 </DSIControllerMapping></Group><DSIInitSequence>15 03 80
+15 53 29
+39 51 FF 01
+15 69 01
+15 6B 00
+39 80 01 40 B4 10
+39 81 03 E2 00 10 00 2C 01
+39 82 03 E2 00 10 00 2C 01
+15 35 00
+15 25 01
+39 F0 AA 11
+39 C0 00 04 00
+39 C2 00 40 03 FF 03 FF 00 90 82
+39 F0 AA 12
+15 D3 20
+39 BF 37 BE
+39 FF 5A 81
+15 65 0B
+39 F9 58 5F 66 6D 74 7B 82 89 90 97 9E A5 AC
+39 F0 AA 11
+15 C0 FF
+</DSIInitSequence><DSITermSequence> 05 28
+</DSITermSequence><Group id='Backlight Configuration'> <TLMMGPIODefaultHigh>0xB 0x6D</TLMMGPIODefaultHigh> <BacklightType>3</BacklightType> <BacklightBitWidth>10</BacklightBitWidth> <DisplayResetInfo>0 10 1000 10000 0</DisplayResetInfo></Group>
+<?xml version="1.0" encoding="utf - 8"?><PanelName>R66451 Visionox</PanelName><PanelDescription>R66451 Visionox Single DSI DSC Command Mode Amoled Panel for secondary panel (1440x2560 24bpp)</PanelDescription><Group id="Active Timing"><HorizontalActive>1080</HorizontalActive><HorizontalFrontPorch>95</HorizontalFrontPorch><HorizontalBackPorch>40</HorizontalBackPorch><HorizontalSyncPulse>1</HorizontalSyncPulse><HorizontalSyncSkew>0</HorizontalSyncSkew><HorizontalLeftBorder>0</HorizontalLeftBorder><HorizontalRightBorder>0</HorizontalRightBorder><VerticalActive>2340</VerticalActive><VerticalFrontPorch>25</VerticalFrontPorch><VerticalBackPorch>4</VerticalBackPorch><VerticalSyncPulse>1</VerticalSyncPulse><VerticalSyncSkew>0</VerticalSyncSkew><VerticalTopBorder>0</VerticalTopBorder><VerticalBottomBorder>0</VerticalBottomBorder><InvertDataPolarity>False</InvertDataPolarity><InvertVsyncPolairty>False</InvertVsyncPolairty><InvertHsyncPolarity>False</InvertHsyncPolarity><BorderColor>0x0</BorderColor></Group><Group id="Display Interface"><InterfaceType>11</InterfaceType><InterfaceColorFormat>3</InterfaceColorFormat></Group><Group id="DSI Interface"><DSIChannelId>2</DSIChannelId><DSIVirtualId>0</DSIVirtualId><DSIColorFormat>36</DSIColorFormat><DSITrafficMode>1</DSITrafficMode><DSILanes>4</DSILanes><DSICmdSwapInterface>False</DSICmdSwapInterface><DSITECheckEnable>True</DSITECheckEnable><DSITEUsingDedicatedTEPin>True</DSITEUsingDedicatedTEPin><DSITEvSyncStartPos>2340</DSITEvSyncStartPos><DSITEvSyncInitVal>2340</DSITEvSyncInitVal><DSITEvSyncSelect>1</DSITEvSyncSelect><DSIDSCEnable>True</DSIDSCEnable><DSIDSCMajor>1</DSIDSCMajor><DSIDSCMinor>1</DSIDSCMinor><DSIDSCScr>0</DSIDSCScr><DSIDSCProfileID>7</DSIDSCProfileID><DSIDSCSliceWidth>540</DSIDSCSliceWidth><DSIDSCSliceHeight>20</DSIDSCSliceHeight><DSILanes>4</DSILanes><DSIHsaHseAfterVsVe>False</DSIHsaHseAfterVsVe><DSILowPowerModeInHFP>False</DSILowPowerModeInHFP><DSILowPowerModeInHBP>False</DSILowPowerModeInHBP><DSILowPowerModeInHSA>False</DSILowPowerModeInHSA><DSILowPowerModeInBLLPEOF>True</DSILowPowerModeInBLLPEOF><DSILowPowerModeInBLLP>True</DSILowPowerModeInBLLP><DSIRefreshRate>0x3C0000</DSIRefreshRate><DSIDynamicRefreshRates>0x3B8000 0x3BC000 0x3C0000</DSIDynamicRefreshRates><DSICmdUsingTrigger>False</DSICmdUsingTrigger><DSIEnableAutoRefresh>True</DSIEnableAutoRefresh><DSIAutoRefreshFrameNumDiv>1</DSIAutoRefreshFrameNumDiv><DSIControllerMapping>01</DSIControllerMapping></Group><DSIInitSequence>39 b0 00
+39 d8 00 00 00 00 00 00 00 00 00 5b 00 5b 00 5b 00 5b 00 5b
+39 b0 80
+39 e6 00
+39 b0 00
+39 cf 64 0b 00 00 00 00 00 00 08 00 0b 77 01 01 01 01 01 01 04 04 04 04 04 05
+39 b0 04
+39 f7 01
+39 df 50 40
+39 f3 50 00 00 00 00
+39 f2 11
+39 f3 01 00 00 00 01
+39 f4 00 02
+39 f2 19
+39 df 50 42
+39 35 00
+39 2a 00 00 04 37
+39 2b 00 00 09 23
+</DSIInitSequence><DSITermSequence>05 28
+</DSITermSequence><Group id='Backlight Configuration'><BacklightType>3</BacklightType><BacklightBitWidth>12</BacklightBitWidth></Group>
+DisplayDxe: Failed to send max return size packet!
+DisplayDxe: DSIDriver_Write: DSI_Display_ClientWrite failed! DSI Status: 0x%x
+DisplayDxe: MDP_OSAL_CALLOC failed
+DisplayDxe: Invalid DSI Device ID %d
+DisplayDxe: DSIDriver_Init(MDP_CLOCKTYPE_DSI%d) failed
+DisplayDxe: I2CDriver_Init() failed eStatus=%d 
+DisplayDxe: DSIDriver_Close(MDP_CLOCKTYPE_DSI%d) failed
+DisplayDxe: DSI_Display_Close() failed on device%d
+DisplayDxe: DSI_Device_Close() failed on device%d
+DisplayDxe: an invalid mapping
+DSIDriver_SetMode: Split link can only be used on single interface
+DSIDriver_SetMode: Split link is only supported in DSC merge
+DisplayDxe: DSIDriver_SetMode() Incorrect Lane remap parameter, defalting to 0
+DisplayDxe: Clock lane failed to enter HS pre-init
+DisplayDxe: Failed to send I2C command 
+DisplayDxe: Clock lane failed to enter HS post-init
+DisplayDxe: UncachedAllocateZeroPool failed
+DisplayDxe: MDPPlatformConfigure(MDPPLATFORM_CONFIG_RESETPANEL) failed
+DSIDriver_CalibratePLL no valid pllcodes buffer provided
+DSIDriver_CalibratePLL dynamic refresh frequency number is invalid
+DisplayDxe: DSIDriver_Init() failed
+DisplayDxe: DSIDriver_SetMode() failed
+DSI_Display_SetProperty(DSI_DISPLAY_PROPERTYID_LP11) Failed
+DSI_Display_SetProperty(DSI_DISPLAY_PROPERTYID_RESETCORE) Failed
+DisplayDxe: SendPanelXMLSequence() failed on device%d
+Offset   Data
+-------+------------------------------------------------------------
+0x%04x   
+--ERROR-- 
+DisplayDxe: Failed to switch to broadcast mode for split link panel
+DisplayDxe: Packet transmission failed CMD:0x%x Length:%d
+ss-7Fssss
+ssMDSIDriver: Packet Timeout, Resending DSI Packet.
+DSIDriver: DSI%d Phy configuration failed.
+DSIDriver: DSI%d Pll configuration failed.
+DSIDriver: DSI Write command is too long for FIFO (Use DMA backed packets).
+DSI Phy timing setup failed.
+DSIDriver: DSI%d PLL cannot be locked (Freq:%dHz)!
+DSIDriver: DSI%d clock source cannot be configured.
+DSIDriver: DSI%d Failed to configure post clock config.
+DSIDriver: DSI%d clocks cannot be disabled.
+$*18?FMTTTTTT`gnu|
+%,3:AHOVVVVVVbipw~
+HAL_DSI_PhyFxnsInit, Wrong version, maj=%d minor=%d
+Wait for Refgen timed out on DSI %d after %d microsecs
+DSI_Pll_Lock: Failed
+^#^*^1:AHOV^^
+disp_cc_mdss_core_gdsc
+mdss_0_disp_cc_mdss_core_gdsc
+mdss_1_disp_cc_mdss_core_gdsc
+_hMDPInit
+MDPPower
+MDPDetect
+MDPSetMode
+MDPSetProperty
+MDPDeInit
+MDPExitBoot
+MDPSetCoreClock
+MDPUpdateCoreClockAndBandwidth
+MDPDetectPanel
+DSIInitSequence
+DSITermSequence
+I2CInitSequence
+I2CTermSequence
+PixelDrop
+Bilinear
+Adaptive
+MDPPanelDeInit
+MDPPanelInit
+MDPPanelSendCommandSequence
+/soc/disp_rdump_region
+ msm_drm.dsi_display0=
+ msm_drm.dsi_display1=
+DisplayDxe Profiling Log
+%-14a %-5a %-40a %-6a %-6a %-10a
+Timestamp(us)
+Function
+Delta(us)
+%d Entries
+EnableDisplayImageFv
+SecondaryLogoIndex
+PrimaryLogoIndex
+logo%d.bmp
+0x%08x: %08x
+%s%d.txt
+display_config
+bootargs
+/reserved-memory/splash_region
+#sim-hwte
+#sim-swte
+sim-hwte
+sim-swte
+#override:
+QUSB_BULK
+``000000``
+ffff|fffff
+lffffffffl
+fb`hxh``bf
+fb`d|d````
+0000000000
+fllxpxllff
+````````bf
+fffff|````
+ffff|xllff
+00000000x
+0000000000
+```|ffffff|
+3000x00000x
+```|vfffff
+``flxpxllf
+ffffff|``
+Q3r$Q3s$Q@I#Q
+#Q3r0Q3s0Q@I/Q
+DDDDUUUU
+@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopq
+@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopq
+Uf=	Uf<	Wf:
+UU7 UU6!UU5#UU3$UU2%UU1'UU/(UU.)UU-+UU+$IIJ%III%III&IIH'IIG'IIG(IIF(IIF)IIE)IIE*IID+IIC+IIC,IIB,IIB-IIA-IIA.II@/II?/II?0II>0II>1II=1II=2II<3II;3II;4II:4II:5II95II96II87II7@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@disp_cc_mdss_esc0_clk
+disp_cc_mdss_pclk0_clk
+disp_cc_mdss_byte0_clk
+disp_cc_mdss_byte0_intf_clk
+disp_cc_mdss_byte0_div_clk_src
+disp_cc_mdss_esc1_clk
+disp_cc_mdss_pclk1_clk
+disp_cc_mdss_byte1_clk
+disp_cc_mdss_byte1_intf_clk
+disp_cc_mdss_byte1_div_clk_src
+mdss_0_disp_cc_mdss_esc0_clk
+mdss_0_disp_cc_mdss_pclk0_clk
+mdss_0_disp_cc_mdss_byte0_clk
+mdss_0_disp_cc_mdss_byte0_intf_clk
+mdss_0_disp_cc_mdss_byte0_div_clk_src
+mdss_0_disp_cc_mdss_esc1_clk
+mdss_0_disp_cc_mdss_pclk1_clk
+mdss_0_disp_cc_mdss_byte1_clk
+mdss_0_disp_cc_mdss_byte1_intf_clk
+mdss_0_disp_cc_mdss_byte1_div_clk_src
+mdss_1_disp_cc_mdss_esc0_clk
+mdss_1_disp_cc_mdss_pclk0_clk
+mdss_1_disp_cc_mdss_byte0_clk
+mdss_1_disp_cc_mdss_byte0_intf_clk
+mdss_1_disp_cc_mdss_byte0_div_clk_src
+mdss_1_disp_cc_mdss_esc1_clk
+mdss_1_disp_cc_mdss_pclk1_clk
+mdss_1_disp_cc_mdss_byte1_clk
+mdss_1_disp_cc_mdss_byte1_intf_clk
+mdss_1_disp_cc_mdss_byte1_div_clk_src
+disp_cc_mdss_esc1_clk
+disp_cc_mdss_pclk1_clk
+disp_cc_mdss_byte1_clk
+disp_cc_mdss_byte1_intf_clk
+disp_cc_mdss_byte1_div_clk_src
+mdss_0_disp_cc_mdss_esc1_clk
+mdss_0_disp_cc_mdss_pclk1_clk
+mdss_0_disp_cc_mdss_byte1_clk
+mdss_0_disp_cc_mdss_byte1_intf_clk
+mdss_0_disp_cc_mdss_byte1_div_clk_src
+mdss_1_disp_cc_mdss_esc0_clk
+mdss_1_disp_cc_mdss_pclk0_clk
+mdss_1_disp_cc_mdss_byte0_clk
+mdss_1_disp_cc_mdss_byte0_intf_clk
+mdss_1_disp_cc_mdss_byte0_div_clk_src
+mdss_1_disp_cc_mdss_esc1_clk
+mdss_1_disp_cc_mdss_pclk1_clk
+mdss_1_disp_cc_mdss_byte1_clk
+mdss_1_disp_cc_mdss_byte1_intf_clk
+mdss_1_disp_cc_mdss_byte1_div_clk_src
+mdss_0_disp_cc_mdss_dptx3_pixel0_clk
+mdss_0_disp_cc_mdss_dptx3_link_clk
+mdss_0_disp_cc_mdss_dptx3_aux_clk
+mdss_0_disp_cc_mdss_dptx3_link_intf_clk
+gcc_edp_0_clkref_en
+gcc_disp_hf_axi_clk
+disp_cc_mdss_ahb_clk
+disp_cc_mdss_mdp_clk
+disp_cc_mdss_vsync_clk
+disp_cc_mdss_rscc_ahb_clk
+disp_cc_mdss_rscc_vsync_clk
+gcc_disp_hf_axi_clk
+mdss_0_disp_cc_mdss_ahb_clk
+mdss_0_disp_cc_mdss_mdp_clk
+mdss_0_disp_cc_mdss_vsync_clk
+mdss_0_disp_cc_mdss_rscc_ahb_clk
+mdss_0_disp_cc_mdss_rscc_vsync_clk
+gcc_disp1_hf_axi_clk
+mdss_1_disp_cc_mdss_ahb_clk
+mdss_1_disp_cc_mdss_mdp_clk
+mdss_1_disp_cc_mdss_vsync_clk
+mdss_1_disp_cc_mdss_rscc_ahb_clk
+mdss_1_disp_cc_mdss_rscc_vsync_clk
+disp_cc_mdss_mdp_clk
+mdss_0_disp_cc_mdss_mdp_clk
+mdss_1_disp_cc_mdss_mdp_clk
+disp_cc_mdss_esc0_clk
+disp_cc_mdss_byte0_clk
+disp_cc_mdss_byte0_intf_clk
+disp_cc_mdss_pclk0_clk
+disp_cc_mdss_byte0_div_clk_src
+disp_cc_mdss_esc1_clk
+disp_cc_mdss_byte1_clk
+disp_cc_mdss_byte1_intf_clk
+disp_cc_mdss_pclk1_clk
+disp_cc_mdss_byte1_div_clk_src
+mdss_0_disp_cc_mdss_esc0_clk
+mdss_0_disp_cc_mdss_byte0_clk
+mdss_0_disp_cc_mdss_byte0_intf_clk
+mdss_0_disp_cc_mdss_pclk0_clk
+mdss_0_disp_cc_mdss_byte0_div_clk_src
+mdss_0_disp_cc_mdss_esc1_clk
+mdss_0_disp_cc_mdss_byte1_clk
+mdss_0_disp_cc_mdss_byte1_intf_clk
+mdss_0_disp_cc_mdss_pclk1_clk
+mdss_0_disp_cc_mdss_byte1_div_clk_src
+mdss_1_disp_cc_mdss_esc0_clk
+mdss_1_disp_cc_mdss_byte0_clk
+mdss_1_disp_cc_mdss_byte0_intf_clk
+mdss_1_disp_cc_mdss_pclk0_clk
+mdss_1_disp_cc_mdss_byte0_div_clk_src
+mdss_1_disp_cc_mdss_esc1_clk
+mdss_1_disp_cc_mdss_byte1_clk
+mdss_1_disp_cc_mdss_byte1_intf_clk
+mdss_1_disp_cc_mdss_pclk1_clk
+mdss_1_disp_cc_mdss_byte1_div_clk_src
+mdss_0_disp_cc_mdss_dptx3_pixel0_clk
+mdss_0_disp_cc_mdss_dptx3_link_clk
+mdss_0_disp_cc_mdss_dptx3_aux_clk
+mdss_0_disp_cc_mdss_dptx3_link_intf_clk
+gcc_edp_0_clkref_en
+gcc_disp_ahb_clk
+disp_cc_xo_clk
+gcc_disp_ahb_clk
+mdss_0_disp_cc_xo_clk
+gcc_disp_ahb_clk
+mdss_1_disp_cc_xo_clk
+InterfaceType
+PanelOrientation
+InterfaceColorFormat
+HorizontalFrontPorch
+HorizontalBackPorch
+HorizontalSyncPulse
+HorizontalSyncSkew
+HorizontalActive
+VerticalActive
+VerticalFrontPorch
+VerticalBackPorch
+VerticalSyncPulse
+HorizontalLeftBorder
+HorizontalRightBorder
+VerticalTopBorder
+VerticalBottomBorder
+BorderColor
+UnderflowColor
+InvertDataPolarity
+InvertVsyncPolairty
+InvertHsyncPolarity
+PixelsPerClock
+DSIRefreshRate
+DSIDynamicRefreshRates
+DSIBitClockFrequency
+DSILanes
+DSICPhyMode
+DSIChannelId
+DSIVirtualId
+DSIColorFormat
+DSIPacketTransferHS
+DSIClockHSForceRequest
+DSIHostLaneMapping
+DSILP11AtInit
+DSIPhyDCDCMode
+DSIDisableEoTAfterHSXfer
+DSIControllerMapping
+DSINullpacketInsertionBytes
+DSIInterfaceMaster
+DSIFlags
+DSISSCConfig
+DSIDSCEnable
+DSIDSCMajor
+DSIDSCMinor
+DSIDSCScr
+DSIDSCProfileID
+DSIDSCSliceHeight
+DSIDSCSliceWidth
+DSIDSCSlicePerPacket
+DSIDSCChromaFormat
+DSIDSCPicWidthSlice
+DSIAutoRefreshFrameNumDiv
+DSIEnableAutoRefresh
+DSIInitMasterTime
+DisplayResetGpio
+DisplayResetInfo
+DSIEscapeClockDivisor
+DSIEscapeClockFrequency
+DSITimingHSZeroOverride
+DSITimingHSZeroValue
+DSITimingHSExitOverride
+DSITimingHSExitValue
+DSITimingHSPrepareOverride
+DSITimingHSPrepareValue
+DSITimingHSTrailOverride
+DSITimingHSTrailValue
+DSITimingHSRequestOverride
+DSITimingHSRequestValue
+DSITimingCLKZeroOverride
+DSITimingCLKZeroValue
+DSITimingCLKTrailOverride
+DSITimingCLKTrailValue
+DSITimingCLKPrepareOverride
+DSITimingCLKPrepareValue
+DSITimingCLKPreOverride
+DSITimingCLKPreValue
+DSITimingCLKPostOverride
+DSITimingCLKPostValue
+DSITimingTASureOverride
+DSITimingTASureValue
+DSITimingTAGoOverride
+DSITimingTAGoValue
+DSITimingTAGetOverride
+DSITimingTAGetValue
+DSITimingMargin
+DSITrafficMode
+DSIHsaHseAfterVsVe
+DSILowPowerModeInHFP
+DSILowPowerModeInHBP
+DSILowPowerModeInHSA
+DSILowPowerModeInBLLPEOF
+DSILowPowerModeInBLLP
+DSIForceCmdInVideoHS
+DSICmdModeIdleTime
+DSICMDSwapInterface
+DSICMDUsingTrigger
+DSISlaveControllerSkewLines
+DSICmdModePixelAlignment
+DSITECheckEnable
+DSITECheckSetDisable
+DSITEUsingDedicatedTEPin
+DSITEvSyncStartPos
+DSITEvSyncContinueLines
+DSITEvSyncStartLineDivisor
+DSITEvSyncPosSafetyMargin
+DSITEvSyncBelowSafetyMargin
+DSITEPercentVariance
+DSITEvSyncRdPtrIrqLine
+DSITEvSyncSelect
+DSITEvSyncInitVal
+DSIDataStrengthLP
+DSIDataStrengthHS
+DSIClockStrengthHS
+DSISprPackType
+DSIInitSequence
+DSITermSequence
+DSIDemuraPanelIDReadCMD
+DSIDemuraPanelID
+DSISplitLinkConfig
+DSII2CSlaveAddressList
+DSII2CI2CNumOfSlaves
+DSII2CFrequency
+DSII2CGSBIPort
+DSII2COffsetLength
+DSII2CForceInVideoHS
+I2CInitSequence
+I2CTermSequence
+DynamicEDIDEnabled
+DynamicEDIDI2CSlaveAddress
+DynamicEDIDI2CFrequency
+DynamicEDIDI2CGSBIPort
+DynamicEDIDPTM
+DynamicEDIDStartAddress
+BacklightType
+BacklightPmicControlType
+BacklightDefault
+BacklightBitWidth
+DisplayPrimaryFlags
+TLMMGPIODefaultLow
+TLMMGPIODefaultHigh
+EDPRefreshRate
+EDPVoltageSwingLevel
+EDPPreemphasisLevel
+EDPNumberOfLanes
+EDPLinkRate
+EDPMaxLinkRate
+EDPTraining
+EDPDPCDRead
+EDPEDIDRead
+EDPHPDActiveLow
+EDPPowerUpWaitInMs
+EDPMaxAuxRetry 
+AdaptiveMode
+FilterType
+AdaptiveFilterCoeffs
+FilterCoeffs
+PhaseInc
+PhaseRepeat
+ColorPhaseOffsetsRed
+ColorPhaseOffsetsGreen
+ColorPhaseOffsetsBlue
+ColorPhaseOffsetsWhite
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175903Z
+20631121175903Z0|1 0
+Greatwhite_FW_Signing_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175853Z
+20631121175853Z0y1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175856Z
+20631121175856Z0y1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175858Z
+20631121175858Z0y1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175901Z
+20631121175901Z0y1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1

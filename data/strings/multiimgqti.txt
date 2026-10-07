@@ -1,0 +1,25 @@
+&YCGeb9<
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1301
+*SRoT MBNv7 Image Signing Root CA 6 SubCA 10
+260128034537Z
+280128034537Z0W1
+	San Diego1
+QUALCOMM1
+CASS - SBL40v0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1+0)
+"SRoT MBNv7 Image Signing Root CA 60
+200825220346Z
+300825220346Z0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1301
+*SRoT MBNv7 Image Signing Root CA 6 SubCA 10v0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1+0)
+"SRoT MBNv7 Image Signing Root CA 60 
+200825215431Z
+20500825215431Z0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1+0)
+"SRoT MBNv7 Image Signing Root CA 60v0

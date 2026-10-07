@@ -1,0 +1,3055 @@
+hih8(i58
+	@9%L@8&
+&%@9.N@8M=p
+@9p	@9qM@8r
+e@9+MA8,
+@9M	@9NM@8O
+@9M	@9NM@8O
+T	@@y*@@y?
+)5@y?!5k
+	JIAIJ)=
+@9n	@9qM@8`	@9
+@9P	@9lM@8m
+@9+	@9,M@8-
+@9,	@9-M@8.
+)5@9KM@8L
+@9+	@9,M@8-
+@9o	@9pM@8r
+k	@9"N@8,
+3o	@9pM@8q
+@9.	@90M@81
+	@9*M@8+
+H/M9I+M9J'M9S#M9	
+*-g9+)g9,%g9)!g9K
+<h@y:l@y`&@
+<P@y:T@y`&@
+@y.u@9kM-
+*9a9)=a9I
+hBa9iBa9
+T	E@y?!+k
+4C)0IM)*1
+_H?!+k [
+Ku@9Ly@9
+4Ka@9J	@
+H9a9I=a9
+*Ka@9J	@
+_H?!+k@S
+qupv3_se_hw
+qupv3_se_hw_size
+qupv3_common_hw
+qupv3_common_hw_size
+qupv3_0_clocks_arr
+qupv3_0_clocks_arr_size
+qupv3_1_clocks_arr
+qupv3_1_clocks_arr_size
+is_ssc_qup_ac_config_supported
+ssc_qupv3_se_hw
+ssc_qupv3_se_hw_size
+ssc_qupv3_common_hw
+ssc_qupv3_common_hw_size
+ssc_qupv3_all_clocks_arr
+ssc_qupv3_all_clocks_size
+qupv3_gpio_use_msm_ver
+qupv3_tcsr_soc_hw_ver_addr
+qupv3_double_signed
+ssc_qupv3_boot_config_plat_list
+icb_voting_version
+qupv3_private_arr
+qupv3_private_arr_size
+is_common_rot
+TargetCfg
+GlbCtxtHWMutexNumber
+hyp_enable_dvm
+hyp_tph_debug_loading
+hyp_secure_dcc_enable
+hyp_cpusys_vm_ras_handler
+? $(,37;0th level
+1st level
+2nd level
+3rd level
+Address size fault
+Translation fault
+Access flag fault
+Permission fault
+Sync Ext Abt, non wlk
+Sync Ext Abt, tbl wlk
+Sync parity err, non wlk
+Sync parity err, tbl wlk
+Alignment fault
+TLB conflict abort
+,049>DJPV]
+"-8CNYdoz
+hyp dump table
+0123456789abcdef
+4QUP_0I3
+QUP_1I5I
+QUP_1I11
+Failed to map hypx code
+Failed to Fetch Callback Function Address !
+Failed to remap region from EL2 0x%x:0x%x
+Instruction
+ELR_EL2(%8X) SP_EL2(%8X) SPSR_EL2(%8X) ESR_EL2(%8X) 
+Unable to Get physical address of hyp_stack_dynamic_top!
+Failed to map SHM BRIDGE memory range
+IterateThroughPageTableEntries() Error Invalid Arg  pt_level(%u) >= PT_LEVEL_NUM(%u)
+smem_version_set: Unable to allocate version array: type %d.
+%s first segment is not 4K aligned
+video_tear_down
+%s CPnonpxl check failed
+%s Map combination from is not supported
+prescan_segments
+%s Channel VMUnmap Failed.
+Not supported since mappings are not contigous
+enable_kp
+KP: Unable to get hyp memory
+SmcInvokeGetClientEnv failed!
+Report size is too small
+SHM Bridge creation successful on address %x and size %x
+KPPF: TAIL and HEAD should both either be NULL or populated with an entry pointer
+%s [%lx] %lx %lx %lx
+doorbell_reset ret: {:#x}
+cspace_configure: {:#x} {:#x}
+cspace_configure ret: {:#x}
+vpm_group_get_state: {:#x}
+vcpu_set_priority ret: {:#x}
+vcpu_bind_virq ret: {:#x}
+WDT Pat: now_ticks {:d}, VM {:d}
+bridge create image_phys failed {:d}
+Failed activation of device memextent
+psci power_cpu_suspend {:#x}
+psci power_cpu_suspend wakeup; poweroff {:d} system_resume {:d} error {:d}
+Out-of-range LR
+{:#x} {:#x} sync_lr {:d}: {:#x} -> {:#x}
+{:#x} {:#x} sync_lr {:d}: deactivate HW IRQ {:d}
+{:#x} {:#x} wakeup-1n: failed
+Unable to create cap to HWIRQ
+QUP_0S0G2
+QUP_1I7I
+QUP_1S3G2
+DevCfgVersionInfo
+Failed get_HLOS_ddrMap in map_HLOS_for_Hypx
+hyp_secure_mor_enabled
+hyp_secure_launch_enabled
+hypExcludeRegionFromSMEMRamPartition bad index!
+LoA64 irq.
+Core(%d), Abort Nesting happend.
+RemoteObj_invoke
+Attempted to release a free dynamic stack with id %d
+VMUnmap_NoCommit failed inside of VMUnmapRange
+QHEEBSP SMMU Post Update: VM TLB Inval Failed.
+Unable to map smem region 1:1
+Span = %x
+SMMUMapS2ForVirtualization: Failed to unmap SMMU (dev=0x%x) Global 0 and Global 1 spaces
+%s BLSP reset failed
+%s Image start/end invalid
+cdsp_tear_down
+[CAM-PIL][%s] setting invalid state=%u
+[CAM-PIL][%s] map to HLOS from intermediate VM failed
+Memory is overlapping with pCPAppMemoryTableHead memory range partially 
+hyp_notify_rtic_dtb_location
+text_protection is %d, pt_2mb_alignment is %d
+report region asset not protected %d
+partition_create_partition: {:#x} {:#x}
+addrspace_unmap: {:#x} {:#x} {:#x} {:#x} {:#x}
+vcpu_configure: {:#x} {:#x}
+vcpu_kill ret: {:#x}
+watchdog_unbind_virq: {:#x} {:#x}
+virtio_mmio_backend_bind_virq ret: {:#x}
+debug disabled
+X{:d} = {:#x}
+Unhandled EL2 trap on CPU {:d}, ESR_EL2 = {:#x}, ELR_EL2 = {:#x}
+EL2 undef instruction bad PC: {:x}
+pgtable bad size
+platform_info.platform_subtype
+Error soc_GetRamPartitionTable(HYPERVISOR)
+received VM_REQUEST
+too many reserved irqs for env_data
+qcom_debug_info: Address allocation failed.
+hyp_dump: failed allocating top level dump table
+WDT: HW reset too close to previous, skipped
+TZ-Hyp bridge create: {:#x}, {:#x}
+Invalid VM timer IRQ
+Invalid timer
+psci_suspend: DENIED - pstate {:#x} - VM {:d}
+Error doing the memory database walk
+Invalid package ELF
+Error loading ELF
+is_ac_hlos_modem_supported
+ssc_gpii_perms
+QUP Private Resource assignment success !!!
+QUP_1I10
+QUP_1S0S
+QUP_1S2S
+QUP_SI0I
+Property not found- pszName:%s pDALPropsDir:0x%x pbDevicePropsPos:0x%x
+Failed get_NonSecure_ddrMap in get_map_NonSecure_for_Hyp
+ERROR : Failed to fetch Ram Partition Table.
+ERROR : Ram partition count mismatch.
+Core(%d)Context DUMP Error
+KP: Bridging HLOS asset failed! %d
+hyp_make_smc: Failed to allocate memory for extra_params
+Invoke SMC_VM_REQUEST unexpected behavior
+localObjTable is full!! Increase maxLocalObj
+VMUnmap_NoCommit failed inside of VMUnmap
+Input Address = 0x%16x, PRWX = %x, URWX = %x
+SMMU Exact Write: buf32 not align bn=%d
+%s ElfFile_getSegmentInfo failed
+%s PRNG fill failed
+%s WARNING. ACResetSharedChannel failed
+%s Map combination is not supported
+Memheap Assertion theBlock->extra < kMinChunkSize failed
+gcc_qupv3_wrap1_s0_clk
+gcc_aggre_noc_mmu_pcie_tbu_clk
+gcc_mmnoc_mmu_tbu_sf0_clk
+Memory is not owned by this Master side VMs | Address - %x  Size - %x VM - %x
+Memory is shared but only 1 VM was passed
+PID is %d
+KP: Nothing to protect
+MP data not initialized
+vic_configure ret: {:#x}
+vcpu_poweron: {:#x} {:#x} {:#x}
+virtio_mmio_backend_get_queue_info ret: {:#x} {:#x} {:#x} {:#x}
+Unexpected look-up result in partition_phys_valid. PA:{:#x}, looked-up PA: {:#x}
+Error adding ram to partition
+Dumping frame at {:#x}
+memdb: Error adding ram {:#x}..{:#x} to partition {:x}, err = {:d}
+Failed to initialize hypervisor root page-table
+pgtable: Address allocation failed
+WDT Bark: now_ticks {:d}, last_pat {:d}, VM {:d}
+QHEEBSP failed in soc_get_platform_info_s()
+Error extending private partition heap memory
+psci too many consecutive PSCI_DENIED errors, entering idle
+psci VM {:d} - system suspend
+RootVM package header not found!
+ELF segment out of range
+Illegal or unsupported CPU mode
+vgic sync after failed redeliver of {:#x}: dstate {:#x} -> {:#x}
+i2chub_common_hw
+i2chub_se_hw_size
+ssc_gpii_perms_size
+NULL pointer access: pPrivateResource = %d, pPrivateResourceSize = %d
+QUP_0I5I
+QUP_1S0G0
+QUP_SI14
+QUP_SS1S
+Failed- pszDevName:%s DALPROP_PropsInfo:0x%x
+Failed to map TZ DIAG region to HLOS PT
+ramptable structure num_partitions > RAM_NUM_PART_ENTRIES
+hyp_mdp_db_len
+hyp_uncached_ranges
+hyp_sk_map_reserved_ranges
+ERROR : TZ_SECURE_MOR_REGIONS_ID returned failure
+Invoke SMC unexpected behavior, rsp = 0x%x, 0x%x
+Unable to map dynamic stack region into S1 of EL2 pagetable
+Adding minidump region failed
+Attempt to Double Free in hyp_free_pages_aligned!
+Failed unmap 0x%lx
+Adding minidump region failed 
+QHEEBSP SMMU Attach: Invalid Arguments.
+Reason = %x
+smmu_vm_register_virt_dev: Device %x already registered
+IDOM_qhee_init(): Unable to locate S2 domain for AVMID: 0x%x -- Skipping IOMMU Programming for Dev %d, ARID 0x%x.
+SMMUSecureModeSwitch(NS->SEC Revert): Failed to detach ARID 0x%x from Dev %d
+%s ClockReset failed
+%s Enabling processor failed
+pil_camera_mem_assign
+__prescan_segments
+Memheap Assertion heap_ptr->used_bytes == 0 failed
+Memheap Assertion sect_index failed
+Memheap Assertion !(INTEGRITY_CHECK_ON_FREE_HEADER(heap_ptr->magic_num_free, pblk)) failed
+gcc_qupv3_wrap_0_m_ahb_clk
+gcc_turing_mmu_tbu0_clk
+Failed to map ACDataBase to HYP page table
+smmu_policy_custom_enable
+Picked up de-centralized aperture : %s
+Unable to allocate EL2 Report Region
+Failed to unprotect the asset!
+Emulate in %s asset
+pil_mem_area_api_ns
+PILSubsys_setState
+PILSubsys_deleteShmBridge
+msgqueue_receive: {:#x} {:#x} {:#x}
+addrspace_map: {:#x} {:#x} {:#x} {:#x} {:#x}
+addrspace_unmap ret: {:#x}
+watchdog_configure ret: {:#x}
+Unable to create idle thread
+Attempt to add memory already in partition
+X27 = {:#x}
+QHEE rwx not supported!
+kernel_remove_physical_memory: unknown {:x}..{:x}
+TZ_PIL_MEM_ID: smc-ret {:#x}
+Not enough memory for SMMU CB data ({:d} bytes)
+qhee_hyp_client_deregister: smc-ret {:#x}
+Failed creation of ETM memextent
+SMC from invalid VM
+hyp_debug_info
+psci_set_suspend_mode - DENIED - VM {:d}
+system_off event returned
+is_common_rot
+QUP_1I8I
+QUP_SS5S
+Failed to unmap Hypervisor from HLOS Stage 2
+HypXDataAddr
+Ram Partition Table error.  Fail to initalize Hyp PT table.  Not enough space! idx = %d
+hyp_fusion_plat_types_count
+ERROR : TZ_SECURE_MOR_REGIONS_ID SMC failed
+LoA64 sync.
+ScmCall failed ret 0x%x 
+Bad Input params alignment?
+Hypervisor UART is enabled!
+ECATS_TEST
+Fetch Address = 0x%16x, Reason = %x
+SMMU Virt: S2: Invalid SID=0x%08x for Dev=0x%x
+SMEM base addr=0x%08X, size=%d memory mapping failed.
+Invalid SMEM memory type, %d, requested.
+pil_video_mem_assign
+%s CP/Nonpxl sizes invalid
+Memheap Assertion !theBlock->free_flag failed
+scc_qupv3_se2_clk
+AreSecDumpsAllowed failed
+Incorrect Source VM
+Memory partially overlaps with shared memory region
+KP: MPData Not Available
+Failed to get task name %d
+KP: Unable to align RO asset
+KP: Protecting RW Asset: %s Address: %x Size: %u Perm: %u
+PILSourceNS_getData
+protect_metadata
+%s: PIL unlock smc call 0x%x to tz failed for proc id %d as TZ is busy
+cspace_copy_cap_from: {:#x} {:#x} {:#x} {:#x}
+addrspace_configure: {:#x} {:#x}
+watchdog_attach_vcpu: {:#x} {:#x}
+rm_rpc: Received unexpected packet fragment
+{:s}: Not enough memory {:d}
+failed ram probe
+{:#x} {:#x} sync_lr {:d}: LR left active ({:s} pending)
+{:#x} {:#x} reroute-all: {:d}
+gpii_perms
+ssc_qupv3_common_hw_size
+ssc_qupv3_perms_size
+QUP_0S1G2
+QUP_1S2G2
+remap_region: Failed to unmap region from EL2 0x%x:0x%x
+hyp_global_init: PlatformInfo_GetPlatformInfo failed: %x
+Ram Partition Table Warning. Table filled completely.  Fail to Mark End of Partition list.
+hyp_cpusys_vm_ras_handler
+EL2 with SP_EL2 sync.
+LoA32 error.
+SMC caller_mode unknowon
+nQHEESmcInvoke
+CallbackObj_invoke failed, ret = 0x%x 
+Interrupt session exceeds maximum support.
+ADSP Table: Could not populate requested number of entries %d - only populated %d entries!
+Failed to map buffer pages into EL2 S1 with specified attributes
+LPAE_ReadAttributesfromStage2PTE returning (%d) failure
+smem_legacy_get_static_size
+[CAM-PIL][%s] map to subsys from intermediate VM failed
+Memheap Assertion (chunks*kMinChunkSize) >= (2*kMinChunkSize-1) failed
+Cannot use this feature on secure devices
+Kernel start addr is %x
+SHM Bridge creation on %x addr and length %x
+Protecting HLOS asset failed! addr_aligned=%x, size_aligned=%x
+PILSubsys_tearDown
+%s: PIL set state smc call 0x%x to tz failed for proc id %d as TZ is busy
+partition_create_doorbell: {:#x} {:#x}
+msgqueue_configure ret: {:#x}
+cspace_copy_cap_from ret: {:#x} {:#x}
+virtio_mmio_configure: {:#x} {:#x} {:#x}
+Partition deactivation attempted
+thread_freeze returned: {:#x}
+Failed to add high memory: {:x}..{:x}
+Error updating bootmem allocator memory
+pgtable walk
+bad PARange
+Failed to activate PMU IRQ
+etm: os is not locked
+Hyp-assign failed, ret: {:d}
+{:s} = {:#x}
+platform_info.platform_type
+Error reserving QHEEBSP stage 2 PT
+SMC - boot_info_paddr {:#x}
+Failed to assign SVM Stage2 Table: {:#x}, {:#x}
+Failed creation of watchdog memextent
+{:#x} {:#x} eoi-lr {:d}: deactivate HW IRQ {:d}
+QUP_0I9I
+QUP_0S1S
+QUP_SI12I
+QUP_SI15
+HypXStackSize
+hyp_num_uncached_ranges
+RemoteObj_release
+Bad input arg: msg tracker cannot be NULL
+QHEEBSP SMMUv2 Attach CB: Failed.
+Input Address = 0x%16x, RnW = %x, InD = %x, PnU = %x
+SMMUv3 @0x%16x Event Encountered: EVENT_F_TRANSLATION
+smmu_vm_smr_virt_to_phys: smr_lookup is NULL!
+SMMU Virt: SMMU register address 0x%08x out of range
+SMMU_HYP_VirtualizeIDR0: Unable to find Virt Info for VMID %d
+SMMU Virt S2CR: Invalid SIDi=0x%08x for Dev=0x%x
+Guestvm %x not found!
+Guestvm %x not started!
+[CAM-PIL][%s] firmware segment prescan failed
+[CAM-PIL][%s] map combination is not supported
+Memheap Assertion heap_ptr->number_of_sections < MEM_HEAP_SECTIONS_MAX failed
+gcc_qupv3_wrap0_s0_clk
+gcc_qupv3_wrap_1_s_ahb_clk
+Memory is shared and not all VMs passed as source match the owner of the SharedVM memory
+ACSmmuTZAssignExt failed %x
+cpz_camera_validate: delete bridge failed
+Va of RW asset isnt correct!
+asset_not_protected is %d
+%s: PIL init image smc call 0x%x to tz failed for proc id %d as TZ is busy
+msgqueue_configure_receive ret: {:#x}
+Switched to an exited thread!
+ELR_EL2 = {:#x}
+memdb: Error updating {:#x}..{:#x} - obj({:#x}) - type({:d}), err = {:d}
+Error in pgtable_vm_unmap
+invalid level ({:d}).
+WDT: Frozen for VM {:d} (count {:d})
+{:s} {:s}
+failed to copy {:d} bytes from guest va {:#x}, error {:d}
+platform_info.foundry_id
+WDT: HW pat too close to previous, skipped
+VM {:d} denied call SIP_SHM_BRIDGE_CREATE
+First CPU to wakeup from suspend
+Multiple RootVM runtime images
+Unexpected trap from VM {:d}, ESR_EL2 = {:#x}, ELR_EL2 = {:#x}
+vcpu: {:#x} block finish
+Unable to activate GICH HWIRQ
+{:#x} {:#x} sgi fast: {:d}
+{:#x} {:#x} sync_lr {:d}: delisted (pending {:d})
+qupv3_irq_list_size
+i3c_ibi_perms_size
+dalspinlock
+QUP_1I6I
+QUP_SI14I
+QUP_SI15I
+DALPROP_PropsInfo is NULL- pszName:%s
+IDIOM_qhee_init failed
+hyp_tz_reserved_ranges
+hyp_enable_smc_log
+Core:%d, %s abort from EL%d
+ Faulting Address: 0x%X
+ Address of Last Instruction Executed: 0x%X at EL%d
+ System Registers:
+  ESR_EL2(%X)
+  FAR_EL2(%X)
+  HPFAR_EL2(%X)
+  ELR_EL2(%X)
+  HCR_EL2(%X)
+Failed to find whether region is mapped to HYP VM or not
+CreateClientEnvObject
+Not NS obj!! objHandle = 0x%x
+Unable to create dynamic stack array!
+Failed to Config the Univesal S2 Page Table
+Hypervisor UART is disabled!
+gcc_mmu_tcu_clk
+Substream Id = 0x%8x, SSV = %x
+smmu_vm_register_virt_dev: Unexpected Error, physical cb index > max CB index
+%s FW not loaded
+video_set_state
+scc_qupv3_se0_clk
+DCC: Failed to register DCC virtualization functions!
+AC allocation failed. Used bytes %d Freed bytes: %d
+Hyp Fatal from AC %x
+TZBSP_AC_ERR_NOT_DDR_MEMORY
+Kernel base VA is %x, mpdata %x
+Asset not protected is %d
+%s: PILSubsys_envAuthReset- metadata - SHMB Delete Failed - Addr 0x%x Ret 0x%x
+partition_create_vpm_group: {:#x} {:#x}
+object_reset ret: {:#x}
+doorbell_bind_virq: {:#x} {:#x} {:#x}
+msgqueue_bind_send_virq: {:#x} {:#x} {:#x}
+msgqueue_bind_receive_virq: {:#x} {:#x} {:#x}
+vic_attach_vcpu ret: {:#x}
+vcpu_set_affinity: {:#x} {:#x}
+virtio_mmio_configure ret: {:#x}
+virtio_mmio_backend_acknowledge_reset: {:#x}
+watchdog_manage: {:#x} {:#x}
+Request to update a timer that is not queued on this CPU
+X25 = {:#x}
+Error adding boot memory to hyp_partition
+Failed to map table (pa {:#x}, level {:d}) for merge
+WDT: Failed to create hypervisor watchdog
+ETM: programmers model is not stable
+vm base({:#x}), size({:#x}) entry({:#x})
+platform_shm_bridge_create: smc-ret {:#x}
+psci vcpu started: {:#x} - VM {:d}
+psci Last CPU to suspend
+ERROR: psci suspend error {:d}
+vcpu: {:#x} block start
+{:#x} {:#x} redeliver {:d}: redundant assertions merged
+{:#x} {:#x} redeliver {:d}: {:#x} -> {:#x}
+ssc_qupv3_se_hw
+qupv3_private_arr_size
+failed- lock:0x%x
+Failed to get GlbCtxtHWMutexNumber
+QUP_1I0I
+QUP_1I9I
+Unknown prop value- pPropVar:0x%x
+Unknown type- pPropVar:0x%x
+Failed to map Hypervisor DIAG to HLOS PT
+Failed to remap SMEM from EL2
+hyp_dcc_config_size
+hyp_num_protected_ranges
+%d % 7lu.%06lu
+ELR_EL1(%8X) SP_EL1(%8X) SPSR_EL1(%8X)
+Stack ID is non-existent
+gpucc_gpu_smmu_clk
+Stream Id = 0x%8x
+SMMUv3 @0x%16x Event Encountered: EVENT_E_PAGE_REQUEST
+SMMU Virt: Invalid access by VMID %d to CBAR%d for Dev=0x%x
+SMMU Virt: Unreachable error in writing S2CR=0x%0x08x for Dev=0x%x
+Unexpected Context Bank IRQ Encountered, IRQ=%d
+Error of reading PIL loaded segments!
+[CAM-PIL][%s] core must be idle before halt state= %u
+Memheap Assertion mem_magic_number->magic_num_index_array failed
+Memheap Assertion (((uint32)theBlock)%kMinChunkSize) == 0 failed
+scc_qupv3_core_clk
+Memory is not owned by CP APP VM | Address - %x  Size - %x VM - %x
+pil_zero_peripheral_memory
+CameraSS_ResetHwBlock ret:%d
+CameraSS_SetTopology called for phy_id: %d, topology: %x. ret: %d
+EL2t vectors
+partition_create_partition ret: {:#x} {:#x}
+partition_create_cspace ret: {:#x} {:#x}
+msgqueue_configure_receive: {:#x} {:#x} {:#x}
+cspace_revoke_cap_from: {:#x} {:#x}
+virtio_mmio_backend_get_drv_features ret: {:#x} {:#x}
+virtio_mmio_backend_get_notification: {:#x}
+rm_rpc_receive_from_rm: message size {:d} < min header size
+Unexpected condition during mapping:
+Failed to get platform_get_entropy
+ETM: invalid access size
+gicv3: Mapping of distributor failed.
+failed to copy {:d} bytes to guest va {:#x}, error {:d}
+Error in qhee_soc_unmap({:x}..{:x}): {:d}
+Watchdog timer: Address allocation failed.
+Hypervisor SHM bridge creation failed
+{:#x} {:#x} sync_lr {:d}: LR unchanged
+AC_HLOS_MODEM is not supported, redirecting to AC_HLOS
+gpii_perms_size
+qupv3_common_hw
+HypXBTIEnabled
+HypX Version Not Supported!
+Partition Size requested is larger than the available size!
+hyp_dcc_sram_size
+hyp_num_debug_ranges
+EL2 with SP_EL0 sync(%x).
+Non-defined exception code (%u)
+x20(%8X) x21(%8X) x22(%8X) x23(%8X) x24(%8X)
+Failed to map indirect parameters
+localAsyncOpMsg is too small!! Increase maxAsyncOp
+remoteObjTable is full!! Increase maxRemoteObj
+Bad size given to VMUnmap which causes overflow!
+Reason = %x, S2 = %x, NS_IPA = %x
+smmu_vm_register_virt_dev: Unable to allocate CBs from resource pool
+smmu_vm_deregister_virt_dev: virt_devices NULL for vmid %d, dev %x
+SMMU_HYP_VirtualizeCBARWrite: cb virt to phys failed
+SMMU_DynamicCfgSyscall: Mode Switch SUCCESS!! -- New Mode = %x
+pil_video_prng_fill - SHM Bridge create failed for Addr 0x%x Ret 0x%x
+Incorrect num VMs for guestvm subsys!
+Memheap Assertion mem_magic_number->magic_num_index < MAX_HEAP_INIT failed
+scc_qupv3_se7_clk
+Error returned when enabling secure dcc.
+Not Allowed to open up the given ranges
+SMC call to ACTzDeleteSHMBridge failed 0x%x
+cpz_pre_validate camera requires contiguous buffers
+size can't create SHM bridge
+SHM Bridge creation failed on %x address
+seq_num is %d
+PILSource_ctor
+%s: Failed to unmap peripheral memory
+CameraSS_DynamicPHYProtect
+CameraSS_DynamicPHYProtect called for phy_id: %d, protect: %d, ret: %d
+msgqueue_configure_send: {:#x} {:#x} {:#x}
+memextent_configure_derive ret: {:#x}
+virtio_mmio_frontend_bind_virq ret: {:#x}
+virtio_mmio_backend_assert_virq ret: {:#x}
+virtio_mmio_backend_set_dev_features ret: {:#x}
+addrspace_configure_info_area: {:#x} {:#x} {:#x}
+memextent_donate: {:#x} {:#x} {:#x} {:#x} {:#x}
+Error freeing stack to hypervisor partition
+X21 = {:#x}
+rm_rpc_receive_from_rm: bad header
+Error create addrspace cap id.
+Failed to map table (pa {:#x}, level {:d}, idx {:d})
+WDT bite: now_ticks {:d}, last_pat {:d}, from VM {:d}
+gicv3: Mapping of redistributors failed.
+SMMU attach failed with error {:d}
+{:#x} {:#x} list_if_pending {:d}: {:#x} -> {:#x}
+Read attempt for a register outside ETM register range, register %x. This should not be trapped to hypervisor
+QUP_1S1S
+Error Fatal Triggered by Hypx Module!
+Failed to find whether qsee log buffer is mapped to HLOS VM or not
+Minidump smem Area is not set
+Subsystem TOC initialization failed
+SMMUMapS2ForVirtualization: Failed to unmap SMMU (dev=0x%x) all CB Aperture for Primary VM already mapped
+SMMU_HYP_VirtualizeS2CRRead: cbndx phys to virt lookup failed
+SMMU Virt: Hist buffer index error
+SMMUSecureModeSwitch(NS->SEC): Failed to attach ARID 0x%x to Dev %d
+%s Segment info failed
+%s SEC_SID_7 val is not equal to 1, val = 0x%0x
+[CAM-PIL][%s] last mappable segment: paddr=%llu memsz=%llu
+Memheap Assertion mem_magic_number failed
+Memheap Assertion freeBlock->forw_offset > 0 failed
+scc_qupv3_2xcore_clk
+/ac/debug_config
+enable_debug_profile
+Memory is overlapping with SharedVM memory range partially
+Multiple VM's given but the IPA does not equal the PA
+Multiple VM's given have mismatch SMMU types
+/kp/general
+Shared region with TZ RTIC service
+Converting SP_EL0 VA->IPA Failed, %x %x %x, %x!
+KP: Bridging HLOS asset failed for addr: %x, size: %u %d
+%d MP Data is NUll
+doorbell_unbind_virq: {:#x}
+scheduler_yield ret: {:#x}
+boot_cpu_start
+Request to enqueue a timer that is already queued
+X22 = {:#x}
+pgtable fault
+Elf copied from {:#x} to {:#x} - size {:#x}
+Error allocating smc trace buffer
+failed to get image info for PIL VM {:d}
+No DT_TABLE_MAGIC/DTB_MAGIC segment found in PIL image
+Error soc_AllocRamPartition
+Root VM requested SEC WDOG trigger
+set_bootinfo: invalid addr
+hyp_dump: no imem
+hyp_blsp_handle_ssr() HYP SCM call to TZ FAILED
+QUP_0I3I
+QUP_1S2G0
+QUP_SI13I
+Failed to register hyp diag for Mini dump
+Ram Partition Table error.  Fail to initalize Hyp PT table.  Not enough space! s2_idx = %d
+hyp_mdp_db_start
+hyp_num_sk_map_reserved_ranges
+Devcfg NOAC is used
+hlos_vm_config
+FAR_EL2(%8X) HPFAR_EL2(%8X) HCR_EL2(%8X)
+Is QSEE LOG buffer region mapped to HLOS VM = %d 0x%x:0x%x
+SmcInvokeMsg_unmarshal cleanup due to error
+Unabled to find space for the memory requested
+hyp_register_reserved_irq: no free devices!
+Unable to map devices region 1:1
+smmu_vm_cb_phys_to_virt: cb_lookup is NULL!
+smmu_vm_register_virt_dev: Unable to allocate SMRs from resource pool
+SMMUSecureModeSwitch: Device is not TZ_DEVICE_CPP -- Unsupported!
+%s Segment is not 4K aligned, returning failure
+pil_video_prng_fill
+[CAM-PIL][%s] map to intermediate VM from subsys failed
+Memheap Assertion BOUNDARY_CHECK_SECTIONS(theBlock, heap_ptr) failed
+Memheap Assertion FRD_OFFSET_CHECK_SECTIONS(theBlock, heap_ptr) failed
+Memheap Assertion block_ptr failed
+scc_qupv3_se6_clk
+Kaslr_offset %x
+EL2 report buffer is NULL
+KPPF: No memory available to add new entry for temp unprotected region backup.
+memset_s: null pointer
+partition_create_thread ret: {:#x} {:#x}
+doorbell_receive ret: {:#x} {:#x}
+msgqueue_unbind_send_virq: {:#x}
+memextent_configure ret: {:#x}
+qhee_channel_send ret: {:#x} {:#x}
+virtio_mmio_backend_assert_virq: {:#x} {:#x}
+env_data: no more free ranges
+cap table has incorrect cap_count on allocate
+SPSR_EL2 = {:#x}
+Abort: {:s} from PC {:#x}, FP {:#x}
+WDT Set times: VM {:d}, bark {:d}, bite {:d}
+Hyp-assign pre-validation failed:
+{:s} HLOS !src||!dst
+QHEE cache attr not supported!
+bridge delete metadata failed {:d}
+qhee_hyp_client_register: smc-ret {:#x}
+forward SMC id {:x}, client-id {:d}
+qcom_debug_info: failed map
+Error creating root cspace cap
+instruction/data abort from VM {:d}, ESR_EL2 = {:#x}, fault VA = {:#x}, fault IPA = {:#x}, ELR_EL2 = {:#x}
+{:#x} {:#x} eoi-lr {:d}: {:#x} -> {:#x}
+vgic_read_irqbits: Bad base_offset
+i2chub_perms_size
+hyp_smc64_std_call_rsp did not return success
+QUP_1S4G0
+QUP_1S4G2
+QUP_SI10
+Ram Partition Table Magic error. .
+EL2 with SP_EL0 irq.
+LoA64 fiq.
+LoA64 error.
+Failed to create the  hyp shared memory bridge region
+Failed to get DDR memory range
+Failed to get TZ device secure state
+Guestvm signer info(0x4:OEM sign,0x6:double/QC sign): %x
+SMMUv3 @0x%16x Event Encountered: EVENT_F_STE_FETCH
+SMMU Virt: S1/S2: Invalid S2CR=0x%08x for Dev=0x%x
+SMMU Virt: S1/S2: Invalid SID=0x%08x for Dev=0x%x
+gpu_ucode_set_state
+%s Map segment failed
+video_init_and_start
+%s , CVP_TZ_VPU_WRAPPER_TZ_XTSS_SW_RESET = 0x%0x
+Memheap Assertion heap_ptr failed
+gcc_qupv3_wrap0_s2_clk
+validate_IPAlist failed
+Memory is not owned by this Master side VM | Address - %x  Size - %x VM - %x
+Asset name %s, addr %x, len %x, attr %x
+kp_protect_kernel_assets failed!
+Task name is %s
+%s [%lx] %lx %lx
+msgqueue_send ret: {:#x} {:#x}
+addrspace_configure ret: {:#x}
+vpm_group_attach_vcpu ret: {:#x}
+watchdog_bind_virq: {:#x} {:#x} {:#x} {:#x}
+Attempt to free memory not in partition
+scheduler: block {:#x}, reason: {:d}, others: {:#x}
+WDT: Failed to activate hypervisor watchdog
+WDT: Turn off VM {:d}
+Incorrect IRQ type
+set_bootinfo: invalid msg length
+prng: IO map failed
+Error activating root thread
+{:#x} {:#x} sgi ipi: pending {:#x}
+i3c_ibi_perms
+ETM: Failed to register ETM virtualization functions!
+QUP_0I10
+QUP_1I4I
+QUP_1I10I
+QUP_1S3G0
+QUP_SI10I
+QUP_SI12
+input pointer is NULL!
+hyp_fusion_remap_regions_table
+hyp_devcfg_init: NO hlos_vm_config properties collection
+EL2 with SP_EL2 error (%u)
+x30(%8X)
+remote Object_OP_release failed !!
+Smc Invoke call failed ret 0x%x
+CopyObj_fromRemote failed
+QHEEBSP SMMU Attach: Failed. NO ACVMID.
+Input Address = 0x%16x, RWXP = %x, Span = %x
+smmu_vm_register_virt_dev: Unable to allocate memory for smr/cb lookup
+SMMU_HYP_VirtualizeSMRWrite: smr virt to phys failed
+HYP Permissions assign failed with err=%d
+video_bring_up
+video_set_va_ranges
+%s Map to Hyp failed
+%s Unmap from Hyp failed
+Memheap Assertion !INTEGRITY_CHECK_ON_FREE_HEADER(heap_ptr->magic_num_free, pblk) failed
+DCC_HYP_Parser: DCC parsing failed. Expected desc:%x Actual:%d
+Memory is overlapping with pMasterSideMPUProtectedMemoryTableHead memory range partially 
+Mappings missing - output size less than the size provided
+failed to protect RO
+Syscall for sharing report region with QSEE passed on insufficient size!
+64-bit guest vectors
+partition_create_msgqueue ret: {:#x} {:#x}
+addrspace_attach_thread ret: {:#x}
+vcpu_poweroff: {:#x}
+vcpu_bind_virq: {:#x} {:#x} {:#x} {:#x}
+CPU {:d} coming online
+no boot mem
+Failed to do sparse mapping transfer
+Failed to allocate page.
+Spurious PMU IRQ
+dtbs({:#x}) size({:#x}), following segment({:#x})
+prng: allocate address failed
+TZ-Hyp bridge delete: handle {:#x}
+psci_set_suspend_mode - INVALID_PARAMETERS - VM {:d}
+Invalid pkg_hdr
+Failed creation of new mem extent
+Error creating smc_wait_queue cap id
+{:#x} {:#x} undeliver-unlisted {:d}: {:#x} -> {:#x}
+{:#x} {:#x} bind {:d}: route virt {:d} phys {:#x}
+unknown object type
+qupv3_irq_list
+qupv3_gpio_use_msm_ver
+qupv3_private_arr
+Blocking write attempt for an ETM register: %x
+QUP_0S0G0
+QUP_1S0G2
+QUP_SI13
+HypXCodeAddr
+VMManagerInit failed
+hyp_num_tz_reserved_ranges
+SmcInvokeMsg_unmarshal failed
+Failed to allocate dynamic stack for CPU %d
+SMMUv3 @0x%16x Event Encountered: EVENT_C_BAD_CD
+SMMUv3 @0x%16x Event Encountered: EVENT_F_CFG_CONFLICT
+SMMU_ERR_FATAL SMMU:>> 0x%08x CB: %d Fault: FSR=0x%08x, FAR=0x%16x, IPAFAR=0x%16x, FSYNR0=0x%08x, FSYNR1=0x%08x, CBFRSYNRA=0x%8x, CR0=0x%08x,  NSCR0=0x%08x, CBAR=0x%08x, CBA2R=0x%08x, SCTLR=0x%08x, TCR=0x%08x, TTBR0=0x%08x, TTBR1=0x%08x
+SMMUSecureModeSwitch: Unable to get S2 domain for Camera Preview
+%s Not halted
+gcc_qupv3_wrap0_s5_clk
+gcc_qupv3_wrap1_s4_clk
+validate_VMlist src failed
+Failed to map TZ-subsys secure channel subsysID:%x 
+Dest mask is 0x%08x_%08x
+Memory is not shared and source VM is greater than 1
+Memory is not owned by HLOS Unmapped VM | Address - %x  Size - %x VM - %x
+Region not found in HypX HLOS RO Memory list
+ret size %d, ret error %d
+%s [%lx] %lx
+PIL_validateMemoryRange
+32-bit guest vectors
+partition_create_addrspace ret: {:#x} {:#x}
+doorbell_send: {:#x} {:#x}
+doorbell_mask ret: {:#x}
+hwirq_bind_virq ret: {:#x}
+vcpu_poweroff ret: {:#x}
+vcpu_set_timeslice: {:#x} {:#x}
+virtio_mmio_frontend_unbind_virq ret: {:#x}
+entering idle
+unable to allocate boot idle thread
+ESR_EL2 = {:#x}
+Error activating addrspace
+Stepped out of the table (va {:#x}, level {:d}, idx {:d})
+Request to dequeue a watchdog that is not queued
+Unexpected PSCI result
+{:s} SVM src&&dst
+pil proc_id invalid
+Error extending root partition heap memory
+qhee_hyp_client_register_complete: smc-ret {:#x}
+qtee_config_info too large
+soc_ac_tag_region_for_cpu_vm: failed {:#x}
+TZ-Hyp bridge delete: {:#x}, {:#x}
+psci_cpu_suspend: INVALID_PARAMETERS - pstate {:#x} - VM {:d}
+{:#x} {:#x} unrouted: check range {:d}
+qupv3_common_hw_size
+QUP_0S2S
+hypExcludeRegionFromRamPartition bad index
+ptable structure num_partitions > RAM_NUM_PART_ENTRIES
+hyp_tph_debug_loading
+Failed get_HLOS_ddrMap in secure_mor
+QHEEBSP FATAL!
+x 5(%8X) x 6(%8X) x 7(%8X) x 8(%8X) x 9(%8X)
+address and/or length params cannot be NULL or length causing integer overflow
+VMMap_NoCommit failed inside of VMMap 0x%x 0x%x 0x%x 0x%x
+QHEEBSP Configure SMMU: Failed. Error Code %d
+smmu_vm_register_virt_dev: Unexpected Error
+SMMU Virt SMR: Invalid SIDi=0x%08x for Dev=0x%x
+SMEM is not initialized by Boot.
+smem_init: major version (%d) does not match all procs!
+SMEM Target info is not present.
+%s ClockEnable failed
+%s Map DMA segment failed
+Memheap Assertion FRD_OFFSET_CHECK_SECTIONS(pblk,heap_ptr) failed
+ACCreateSHMBridge  failed 0x%x
+IsDeviceNonSecure failed
+Couldnt unmap HLOS DDR region during static policy application
+VMMap_NoCommit failed %x
+FillHLOSRegionMapInfo: Memory permissions on region are inconsistent, uInputAddr : %x  Size : %x 
+KPPF: No memory available to add new entry for temp unprotected region.
+PILSubsys_envAuthImage
+doorbell_mask: {:#x} {:#x} {:#x}
+cspace_delete_cap_from ret: {:#x}
+trace_update_class_flags ret: {:#x} {:#x}
+watchdog_bind_virq ret: {:#x}
+watchdog_unbind_virq ret: {:#x}
+vpm_group_unbind_virq ret: {:#x}
+partition_create_virtio_mmio ret: {:#x} {:#x}
+virtio_mmio_backend_unbind_virq ret: {:#x}
+virtio_mmio_backend_set_dev_features: {:#x} {:#x} {:#x}
+virtio_mmio_backend_get_notification ret: {:#x} {:#x} {:#x}
+cspace_revoke_caps_from ret: {:#x}
+addrspace_lookup ret: {:#x} {:#x} {:#x} {:#x}
+Error activating idle thread
+EL2t SError fault
+memdb_update: {:#x}..{:#x} - obj({:#x}) - type({:d})
+pgtable: Mapping of HLOS pgtable failed
+pgtable bad event
+Failed to find device memextent.
+TZ_PIL_GET_SIGNER_INFO_ID: smc-ret {:#x}, {:#x}
+soc_setup_xpu_protected_area failed
+set_bootinfo: range not within page
+platform_hyp_shm_bridge_delete failed
+Error root addrspace not yet created
+Unexpected guest trap
+i2chub_se_hw
+GlbCtxtHWMutexNumber
+QUP_0I11
+HYP Timestamp Log Init: %lu
+x10(%8X) x11(%8X) x12(%8X) x13(%8X) x14(%8X)
+Is QSEE log Buffer region mapped to HYP VM = %d
+TZ was unable to generate a random number for Hypervisor in hyp_prng_get_data
+Failed to Allocate SMC call parameter SHM BRIDGE memory
+soc_get_device_irqs:irqs is null.
+soc_get_device_irqs:max_irqs is null.
+Unable to map devcfg region
+SMMU VirtBuff: malloc dev %d VCBAR failed
+Unexpected mutex value %d. Expected %d.
+%s Map to HLOS failed
+%s cvp_prescan_seg_info failed
+%s Map combination to is not supported
+[CAM-PIL][%s] unmappable segment%d: paddr=%llu memsz=%llu
+gcc_qupv3_wrap0_core_clk
+Caller perm incorrect  failed 0x%x
+cpz_post_validate: add to list failed
+Converting SP_EL0 VA->IPA %x %x, %x %x!
+Failed to get PID %d
+PILSubsys_getArbFuseBank
+PILSubsys_verifyMetadata
+%s: PILSubsys_envAuthImage - SHMB Create failed - Addr 0x%x Ret 0x%x
+%s: PILSubsys_envAuthReset- SHMB Delete failed - Addr 0x%x Ret 0x%x
+msgqueue_send: {:#x} {:#x} {:#x} {:#x}
+msgqueue_receive ret: {:#x} {:#x} {:#x}
+cspace_delete_cap_from: {:#x} {:#x}
+invalid cap state
+Error updating memdb.
+EL2t FIQ fault
+EL2 exception at PC = {:x} ESR_EL2 = {:#x}, LR = {:#x}, SP = {:#x}, FP = {:#x}
+VMID bitmap never set or already cleared.
+pgtable corrupt entry
+smc_trace_init already initialized
+ETM: Address allocation failed.
+ETM: waiting idle timeout for context save
+{:s} sglist entry: {:d} ({:x}, {:x}) not page-aligned
+TZ_PIL_AUTH_RESET_ID: smc-ret {:#x}
+hyp_dump: error registering dump entry
+runtime_ipa: {:#x}
+Error activating smc_wait_queue
+Unhandled instruction/data abort
+i2chub_perms
+ssc_qupv3_perms
+QUP_0I1I
+QUP_0S3S
+QUP_SI4I
+QUP_SS0S
+QUP_SS3S
+No empty RAM partition entry available!
+Ram Partition Table error.  Fail to initalize Hyp PT table.  No suitible partition found
+SUCCESS : Ram Partition Table fetched.
+hyp_ipa_based_safe_eco_swa
+ERROR : Failed to get sec halt status.
+x25(%8X) x26(%8X) x27(%8X) x28(%8X) x29(%8X)
+SmcInvokeGetClientEnv: Creating Client Env Object Failed !!!
+Invoke SMC to TZ failed! smc_ret = %d, x1 = %d, x2 = %d
+ADSP Table: Could not find requested number of entries %d - only removed %d entries!
+invalid size specified in hyp buff allocation
+QHEEBSP SMMUv2 CB Fault Handler Error.
+NO LCP_DARE_REGION!
+SMMUv3 @0x%16x Event Encountered: EVENT_F_WALK_EABT
+SMMU_Virtualization: Could not retrieve SW domain handle. avmid = %d
+%s video_prescan_seg_info failed
+%s CPA start invalid
+HLOS attempted to pass inaccessible memory as destVMlist ptr - EC: %d mapStatus: %d
+Memory was only partially found in shared list
+FillHLOSRegionMapInfo: VMIsMappedExt Failed
+VMIsMappedExt Failed
+TZBSP_AC_ERR_INVALID_INDEX
+Incorrect MP data
+Unable to create Full SHM on %s asset
+%s [%lx]
+%s: PIL set mem area smc call 0x%x to tz failed for proc id %d as TZ is busy
+CameraSS_RegWrite ret:%d
+vcpu_poweron ret: {:#x}
+trace_update_class_flags: {:#x} {:#x}
+vpm_group_bind_virq: {:#x} {:#x} {:#x}
+added heap: partition {:#x}, virt {:#x}, phys {:#x}, size {:#x}
+preempt: force disabled; previous count was {:#x}
+WDT: Turn on VM {:d}
+{:s}: Too many SG entries: {:d}
+failed to get a virt address for mapping
+Error not enough space allocated from hypervisor region
+set_log_buf_range: invalid msg length
+Failed creation of GIC memextent
+hw prng failure
+WDT: Pat after resume
+Injecting instruction/data abort to VM {:d}, original ESR_EL2 = {:#x}, fault VA = {:#x}, fault IPA = {:#x}, ELR_EL2 = {:#x}
+Illegal CPU mode: injecting exception to EL2
+{:#x} {:#x} sync_lr {:d}: LR set pending ({:s} active)
+{:#x} {:#x} route {:d}: virt {:d} phys {:#x}
+{:#x} {:#x} GICD_WRITE reg = {:x}, val = {:#x}
+QUPV3_HW_PROP
+qupv3_perms
+qupv3_se_hw
+qupv3_se_hw_size
+QUP_0S1G0
+get_map_HLOS_S2_PT is out of range!
+Failed to configure PMIC access control
+hyp_enable_dvm
+hyp_safe_eco_swa
+No empty ramptable entry available!
+Ram Partition Table full.
+0123456789abcdef
+EL2 with SP_EL2 fiq.
+LoA32 irq.
+Log Encryption feature is not enabled
+ RemoteObj_delete failed !!! %d
+Attempted to recycle a free dynamic stack with id %d
+MINIDUMP_SMEM_AREA_NULL
+Error mapping VA: 0x%lx - 0x%lx to PA: 0x%lx - 0x%lx, err = %d
+QHEEBSP SMMU Attach: SMMU Configure Failed.
+Input Address = 0x%16x, RnW = %x
+SMMUv3 @0x%16x Event Encountered: EVENT_F_TLB_CONFLICT
+smmu_vm_smr_phys_to_virt: smr_lookup is NULL!
+SMMU Virt: NULL hist buffer index pointer
+SMMU_HYP_VirtualizeCBARRead: cbar index virt to phys failed
+%s Invalid FW addresses
+cvp_set_state
+pil_cvp_halt
+Memheap Assertion heap_ptr->first_block failed
+Memheap Assertion !INTEGRITY_CHECK_ON_USED_HEADER(heap_ptr->magic_num_used, pblk) failed
+Memheap Assertion (theBlock->forw_offset - sizeBlockHeader - theBlock->extra) <= heap_ptr->used_bytes failed
+Memheap Assertion FRD_OFFSET_CHECK_SECTIONS(block_ptr, heap_ptr) failed
+gcc_qupv3_wrap0_s1_clk
+gcc_qupv3_wrap0_s4_clk
+scc_qupv3_m_hclk_clk
+gcc_mmnoc_mmu_tbu_hf2_clk
+gcc_turing_mmu_tbu1_clk
+ACSmmuAreDumpsAllowed using weak definition
+Memory is owned by SHAREDVM and not by SMMU type source VM 
+Memory is not owned by this SharedVM type VM | Address - %x  Size - %x VM - %x
+cpz_camera_validate: could not remove entry from camera list
+KP Retry Faulting Instruction
+pil_set_state_api_ns
+%s: Failed to map peripheral memory
+Stack corruption detected in EL2
+hypervisor_identify ret: {:#x} {:#x} {:#x} {:#x}
+partition_create_memextent ret: {:#x} {:#x}
+partition_create_watchdog ret: {:#x} {:#x}
+msgqueue_bind_send_virq ret: {:#x}
+msgqueue_flush: {:#x}
+addrspace_attach_vdma: {:#x} {:#x} {:#x}
+addrspace_attach_vdma ret: {:#x}
+memextent_unmap_all ret: {:#x}
+memextent_configure_derive: {:#x} {:#x} {:#x} {:#x} {:#x}
+Hypervisor cold boot, version: {:s} ({:s})
+Error setup qhee_channel
+Bad arguments in pgtable_vm_unmap
+gpt: Failed to revert update!
+WDT: Unfrozen for VM {:d} (count {:d})
+WDT Control: VM {:d}, enable {:d}
+WDT: Watchdog sync with an empty queue
+Failed creation of low power timer memextent
+platform info return:
+soc_get_device_irqs failed
+hyp_dump: address space allocation failed.
+Redundant VM hyp timeout
+psci power_cpu_suspend failed: {:d}
+psci vcpu resume: {:#x} - VM {:d} - VCPU {:d}
+Failed creation of derived mem extent
+hyp_blsp_initaccess: hyp_register_reserved_irq failed
+QUP_0I0I
+QUP_0I6I
+QUP_1I2I
+QUP_SI3I
+QUP_SS4S
+/dev/hyp
+Failed to map hypx data
+Failed get_HLOS_ddrMap in get_map_HLOS_for_Hyp
+hyp_protected_ranges
+disable_smmu_ac
+EL2 with SP_EL0 error.
+LoA32 fiq.
+x15(%8X) x16(%8X) x17(%8X) x18(%8X) x19(%8X)
+ARM SMC 0x%x not in hyp
+stack_dynamic_base isn't aligned with stack_base_align!
+ADSP Table: Mismatch with Hyp copy at index %d, possible corruption !
+LPAE_CoalesceACEntries returning (%d) failure other than E_NOT_ALLOWED 
+soc_get_tvm_reserved_devices:device_list is null.
+IPA = 0x%16x
+SMMUv3 @0x%16x Event Encountered: EVENT_F_ACCESS
+SMMUMapS2ForVirtualization: Failed to map SMMU (dev=0x%x) CB Aperture for Primary VM
+SMMUSecureModeSwitch(SEC->NS Revert): Failed to detach ARID 0x%x from Dev %d
+Invalid smem_type=%d
+DALSYS_SyncCreate() failed!
+%s PRNG generation failed
+cdsp_bring_up
+pil_cvp_start
+camera_set_state
+scc_qupv3_se3_clk
+gcc_qupv3_wrap1_core_clk
+KP: TVM fault handler failure
+pil_unlock_area_api_ns
+PILSubsys_getSignerInfo
+PILSubsys_memAssign
+pil_map_memory
+pil_auth_reset_to_tz
+memset_s: bad size
+partition_create_cspace: {:#x} {:#x}
+partition_create_thread: {:#x} {:#x}
+partition_create_watchdog: {:#x} {:#x}
+doorbell_send ret: {:#x} {:#x}
+msgqueue_flush ret: {:#x}
+msgqueue_configure: {:#x} {:#x}
+addrspace_update_access ret: {:#x}
+vpm_group_bind_virq ret: {:#x}
+vpm_group_unbind_virq: {:#x}
+virtio_mmio_frontend_unbind_virq: {:#x}
+prng_get_entropy
+addrspace_lookup: {:#x} {:#x} {:#x} {:#x}
+addrspace_configure_info_area ret: {:#x}
+cpu warm boot complete
+disabling unhandled HW IRQ {:d}
+Unexpected look-up result in partition_phys_valid. PA:{:#x}, attr : {:#x}
+X20 = {:#x}
+skipping hlt instruction at PC: {:x}, imm16: {:x}
+Error creating root addrspace
+Invalid granule size
+kernel_add_physical_memory: in use {:x}..{:x}
+Error qhee_pgtable_vm_commit(HYPERVISOR)
+Failed creation of device memextent
+WDT: HW counter read too close to pat, return 0
+VM {:d} denied call SIP_SHM_BRIDGE_DELETE
+unhandled vcpu_suspend error (WFI)
+Allocate env_data failed
+ELF program header address + size overflow
+Error creating smc_wait_queue
+vcpu: {:#x} block aborted, pending
+No spectre-BHB mitigation registered for unknown core
+Warning, trapped AArch32 LDC/STC 0 ignored
+{:#x} {:#x} redeliver {:d}: hw + sw; relisting as sw
+{:#x} {:#x} reclaim_lr {:d}: {:#x} -> {:#x}
+Unable to create root VM's virtual GIC
+{:#x} {:#x} GICR_WRITE reg = {:x}, val = {:#x}
+AC_NON_SECURE_MODEM is not supported, redirecting to AC_NON_SECURE
+has_qup_i2c_master_hub
+IOAssign failed for QUP Private Resource: %s
+Read will be blocked. register will be read as zero
+QUP_0I7I
+QUP_SI7I
+Failed hypGetRamPartitionTable in get_HLOS_ddrMap
+failed to map HLOS partition for HypX
+Failed to setup stage2 PTs
+input table size is NOT sufficient!
+hyp_devcfg_init: NO properties collection from /dev/hyp
+hyp_debug_ranges
+SMCInvoke .. %s:%d Failed!
+RemoteObj_invokeInternal
+ksp_hyp_assign_pre_vailidatation failed!
+hyp_register_reserved_irq: irq_list_size too large!
+QHEEBSP Configure SMMU: SMMU Attach Failed. Error Code %d.
+SMMUv3 @0x%16x Event Encountered: EVENT_C_BAD_SUBSTREAMID
+Class = %x, S2 = %x, NS_IPA = %x
+SMMU Virt: Invalid CBARn value=0x%08x for Dev=0x%x
+SMMU Virt: Unreachable error in writing CBAR=0x%0x08x for Dev=0x%x
+%s Invalid state
+lpass_tear_down
+Memheap Assertion (UINT32_MAX - (uint32)memory_start_ptr) >= section_size failed
+Memheap Assertion BOUNDARY_CHECK_SECTIONS(nextFreeBlock, heap_ptr) failed
+Memheap Assertion block_ptr != NULL failed
+Memheap Assertion heap_ptr->next_block->forw_offset > 0 failed
+gcc_mmnoc_mmu_tbu_hf0_clk
+DAL_PLATFORM_INFO
+HLOS attempted to pass inaccessible memory as IPAinfo ptr - EC: %d mapStatus: %d
+/ac/autosmmuconfig
+Address is not a DDR address
+VMIsMapped Failed
+Mismatch in i/o & o/p address
+ACSmmuMapAndUpdateListExt failed %x
+Assign failed %d
+FillHLOSRegionMapInfo: Memory is not HLOS exclusive
+cpz_post_validate: camera requires contiguous buffers
+Providing EL2 report Address to QSEE provided Failed response, %d
+Failed to read SP_EL0: 0x%x
+Can't protect %s asset
+Syscall for sharing report region with QSEE with null argument passed!.
+doorbell_bind_virq ret: {:#x}
+vpm_group_attach_vcpu: {:#x} {:#x} {:#x}
+virtio_mmio_backend_acknowledge_reset ret: {:#x}
+Error allocating root partition
+pgtable walk depth error
+platform_get_entropy err: {:d}
+Hyp-assign RM failed, ret: {:d}
+failed ram probe (S2PT)
+too many RAM ranges
+qhee_hyp_client_register: bad options {:#x}
+boot_info_paddr {:#x}
+No vCPUs found for SError injection, aborting
+Failed to power on secondary CPU
+Bad image type
+{:#x} {:#x} deactivate {:d}: {:#x} -> {:#x}
+vcpu {:#x}: SGIR write with IRM set ignored
+is_qupv3_ac_stubbed
+/dev/buses/qupac/palima/xx/yy
+Failed to get prop handle
+QUP_0I2I
+QUP_1S1G2
+QUP_SI6I
+QUP_SI8I
+QUP_SI9I
+Failed to protect OEM region from HLOS 0x%x:0x%x
+hyp_devcfg_init: NO /dev/hyp_config_oem properties collection
+Core:%d, %s abort from EL%d, %s
+Irregular Exception from EL%d on Core%d:
+Please Refer to ARMv8 Documentation on ESR_EL2 for more specifics
+System Registers:
+ ESR_EL2(%X)
+ FAR_EL2(%X)
+ HPFAR_EL2(%X)
+ ELR_EL2(%X)
+ HCR_EL2(%X)
+Failed to create msg_tracker 
+HLOS attempted to pass inaccessible memory as an indirect pointer - EC: %d mapStatus: %d
+No Minidump smem Area for QHEE is set
+DEP violated
+SDC1_EMMC
+SMMUv3 @0x%16x Event Encountered: C_BAD_STREAMID
+smmu_vm_cb_virt_to_phys: cb_lookup is NULL!
+smmu_vm_alloc_smrs: Unexpected Error, base_pa: %x, num_smrs: %d
+SMMU_Virtualization_Init: Unable to allocate memory for resource allocators!!
+Integer overflow while doing addition(0x%08X%08X, 0x%08X%08X).
+cvp_bring_up
+[CAM-PIL][%s] cannot resume core: current state = %u
+Memheap Assertion 0 failed
+Memheap Assertion mem_magic_number->magic_num failed
+Memheap Assertion block_ptr->forw_offset != 0 failed
+scc_qupv3_s_hclk_clk
+mapAndCopyIPAList failed
+Failed to create shared mutex for TZ and HYP
+Converting VA->IPA on p_addr (0x%x) failed!
+Syscall for sharing report region with QSEE with on 0 size passed!
+Syscall for sharing report region with QSEE failed on insufficient size.
+CameraSS_DynamicPHYProtectLanes called for protect: %d, phy_id_mask: %d. ret: %d
+doorbell_receive: {:#x} {:#x}
+msgqueue_configure_send ret: {:#x}
+qhee_channel_receive: {:#x} {:#x} {:#x}
+cspace_revoke_caps_from: {:#x} {:#x}
+vcpu_unbind_virq ret: {:#x}
+watchdog_manage ret: {:#x}
+secondary cpu ({:d}) cold boot
+cap table has incorrect cap_count on delete
+Unable to allocate address space for idle stacks
+X30 = {:#x}
+Unhandled EL2 trap on CPU {:d}, ESR_EL2 = {:#x}, ELR_EL2 = {:#x}, FAR_EL2 = {:#x}
+unhandled rm_rpc msg: ({:x})
+Error in pgtable_vm_unmap_matching
+map_modifier bad type
+Invalid SL0
+WDT: Triggering NS Watchdog Bite
+ETM: Mapping of etm register failed.
+DTB_MAGIC found in segment {:d}
+TZ_PIL_UNLOCK_XPU_ID: smc-ret {:#x}
+Error donating memory
+irq list is NULL
+svm_get_stage2_pt: Lookup addrspace failed
+psci_system_suspend: DENIED - VM {:d}
+psci VM {:d} - system resume
+ELF overlaps rootvm_mem area
+Emulated RAZ for ID register: ISS {:#x}
+Warning, trapped conditional AArch32 debug register
+{:#x} {:#x} deliver {:d}: {:#x} -> {:#x}
+{:#x} {:#x} redeliver {:d}: lr {:d} -> {:d}
+is_ac_non_secure_modem_supported
+ssc_qupv3_common_hw
+QUP_0I8I
+QUP_0S4G2
+QUP_1I11I
+QUP_1S5G0
+pDALPropsDir or pbDevicePropsPos is NULL- pszName:%s pDALPropsDir:0x%x pbDevicePropsPos:0x%x
+Failed to register KP
+ptable structure for HYP Dynamic Partition Allocatoin is NULL!
+ptable structure for HYP Dynamic PT base is NULL!
+Unable to map page tables with offset
+RemoteAsyncOpMsg_process
+ LocalObj_retrieve failed, remoteObj = 0x%x
+Failure encountered when looking up output address in VM_Get_Output_Addr
+VMMapExt_NoCommit failed inside of VMMapExt 0x%x 0x%x 0x%x 0x%x
+VMMap_NoCommit failed inside of VMMapRange
+hyp_register_reserved_irq: duplicate device added!
+Fetch Address = 0x%16x
+SMMUv3 @0x%16x Event Encountered: EVENT_F_CD_FETCH
+Stag = %x, ImplDef = %x, Stall = %x
+SMMUAttachExt: Unable to program S2 only ARIDs for VM %d, S2 domain not found after VMAttach.
+SMMU Virt Read: buf32 overflow bn=%d
+SMMUSecureModeSwitch: Call to TZ failed (NS->SEC)
+%s Teardown not in resume or restore state
+[CAM-PIL][%s] actual segment count=%zu exceeds array size
+gcc_qupv3_wrap1_s1_clk
+Blocked Read attempt Addr : %x
+ACDeleteSHMBridge failed 0x%x
+Incorrect Dest VM
+Memory is already mapped to HLOS with requested permission, uInputAddr : %x  Size : %x 
+Got TA object and clientenv
+Return is %d
+KP: Unable to align start address
+partition_create_msgqueue: {:#x} {:#x}
+qhee_channel_receive ret: {:#x} {:#x} {:#x}
+virtio_mmio_backend_bind_virq: {:#x} {:#x} {:#x}
+virtio_mmio_backend_get_drv_features: {:#x} {:#x}
+boot_cpu_warm_init
+returned to thread_reset_stack()
+Error in rm_rpc_receive_from_rm: ({:d})
+Invalid entry get paddr
+WDT Control: VM {:d}, enable {:d} (frozen {:d})
+Failed to create Hyp Timer IRQ
+soc_get_device_addr(UART) failed
+Failed creation of GICA memextent
+minidump: {:d} of {:d} slots available
+hyp_dump: disabled
+Injecting SError to VM {:d}
+unhandled suspend error
+psci: delaying suspend by {:d} ticks
+{:#x} {:#x} undeliver-sync {:d}: {:#x} -> {:#x}
+{:#x} {:#x} wakeup-1n: {:d}
+i2chub_common_hw_size
+qupv3_private_arr found but qupv3_private_arr_size not found.
+QUP_0S2G0
+QUP_0S3G0
+QUP_0S4G0
+QUP_1I3I
+QUP_1S3S
+QUP_SI2I
+HypXVersion
+~~~~~HYPX REGISTRATION SUCCESS~~~~~
+hyp_clean_evict_SWA_flag
+/ac/smmu
+remap_region: Failed to unmap region from EL1 0x%x:0x%x
+Unable to get Stack Alignment and Max Size per CPU!
+Can't find sid or smc_ctx.
+Failed to allocate buffer for random canary!!!!
+Unable to map hyp_buff_region region 1:1
+SMMUv3 @0x%16x Event Encountered: EVENT_F_STREAM_DISABLED
+SMMU Virt: Illegal write for reg addr=0x%08x
+SMMU Virt S2CR: Invalid SID=0x%08x for Dev=0x%x
+SMMU Virt SMR: Invalid SID=0x%08x for Dev=0x%x
+SMEM Partition %d init failed with status 0x%x
+In new SMEM version smem_alloc_add_table_entry() is not supported
+%s Segment list count (0x%0x) is greater than SEG_LIST_SIZE (0x%0x)
+%s Map to subsys VM failed
+%s CPA start/end invalid
+%s : fw_end: %x
+Memheap Assertion ret_value == OSAL_SUCCESS failed
+scc_qupv3_se5_clk
+Blocked SW trigger
+gcc_mmnoc_mmu_tbu_hf3_clk
+Cannot determine device is secure or non-secure
+ACIsWithinRange failed
+ACResetSharedChannel
+Failed to map ACDatabase buffer 
+Source mask is 0x%08x_%08x
+Partially overlapping range in Device Memory
+Invalid data during write_report
++=+= kp asset region not mapped for HLOS
+pil_init_image_to_tz
+CameraSS_SecurityStatus ret: %d
+CameraSS_NotifyStreamStatus called for protect: %d, streaming: %s. ret: %d
+partition_create_addrspace: {:#x} {:#x}
+object_activate_from ret: {:#x}
+vcpu_set_priority: {:#x} {:#x}
+virtio_mmio_backend_set_queue_num_max: {:#x} {:#x} {:#x}
+vcpu_unbind_virq: {:#x} {:#x}
+acknowledged HW IRQ {:d}
+Error passing on bootmem to hypervisor allocator
+thread_freeze start fn: {:#x} param: {:#x}
+EL2t IRQ
+platform_info.platform_version
+soc_get_tvm_reserved_devices failed
+device_list IS NULL
+hyp_dump: allocation error
+hyp_dump: address space map failed.
+Unable to create GICH HWIRQ
+{:#x} {:#x} route: {:d} best ({:d})
+{:#x} {:#x} lazy reroute {:d}: to cpu {:d}
+qupv3_tcsr_soc_hw_ver_addr
+qup_gpii_current_assign memory allocation failed
+qup_se_current_assign memory allocation failed
+QUP_SS6S
+Failed to create AC_VM_HYP VM
+Failed to map debug region for HLOS 0x%x:0x%x
+hyp_dcc_sram_base
+Recycle stack failed for CPU %d
+QHEEBSP SMMUv2 Detach: Failed.
+Input Address = 0x%16x, RnW = %x, InD = %x, PnU = %x, TT_RnW = %x
+SMMU_HYP_VirtualizeS2CRRead: s2cr index virt to phys failed
+SMMU Virt Write: buf32 not align bn=%d
+smem_part_init
+%s ClockSetup failed
+[CAM-PIL][%s] map to intermediate VM from HYP failed
+gcc_qupv3_wrap_1_m_ahb_clk
+gcc_aggre_noc_mmu_audio_tbu_clk
+Invalid Source
+Profile not initilaized
+Memory is not owned by this SharedVM typer VM | Address - %x  Size - %x VM - %x
+Va of RO asset isnt correct!
+KP: Protecting RO Asset: %s Address: %x Size: %u Perm: %u
+pil_set_mem_area_to_tz
+pil_set_state_to_tz
+hypervisor_identify:
+partition_create_vic ret: {:#x} {:#x}
+object_reset_from: {:#x} {:#x}
+hwirq_bind_virq: {:#x} {:#x} {:#x}
+qhee_channel_send: {:#x} {:#x} {:#x} {:#x}
+scheduler_yield: {:#x} {:#x}
+cspace_attach_thread: {:#x} {:#x}
+partition_create_virtio_mmio: {:#x} {:#x}
+X23 = {:#x}
+Invalid tg0 code
+unable to allocate boot entropy pool
+gicv3: Address allocation failed.
+platform_info.chip_version
+pil auth: proc_id {:d}: fw {:x}({:d}), img: {:x}({:d})
+hyp_dump: dump table disabled / invalid
+Failed to activate watchdog bark IRQ
+Error mapping to root VM address space
+Injecting unknown abort to VM {:d}, original ESR_EL2 {:#x}
+{:#x} {:#x} bind {:d}: route virt none phys {:#x}
+QUP_0S5G2
+QUP_1S4S
+QUP_1S5G2
+QUP_SI5I
+QUP_SS7S
+Ram Partition Table Magic error. Use default value(%X).
+/dev/hyp_config_oem
+qtee_config_info
+Core(%d) context dump:
+Unable to create VA range for dynamic stack!
+Size parameter cannot be NULL
+invalid alignment specified in hyp buff allocation
+QHEE soc_get_platform_info_s failed-wrong Arguments!
+SMMUv3 @0x%16x Event Encountered: EVENT_C_BAD_STE
+SMMUv3 @0x%16x Event Encountered: EVENT_F_ADDR_SIZE
+SMMU_HYP_VirtualizeS2CRWrite: smr virt to phys failed
+SMMU_NON_FATAL SMMU:>> 0x%08x CB: %d Fault: FSR=0x%08x, FAR=0x%16x, IPAFAR=0x%16x, FSYNR0=0x%08x, FSYNR1=0x%08x, CBFRSYNRA=0x%8x, CR0=0x%08x,  NSCR0=0x%08x, CBAR=0x%08x, CBA2R=0x%08x, SCTLR=0x%08x, TCR=0x%08x, TTBR0=0x%08x, TTBR1=0x%08x
+video_prescan_seg_info
+%s Map to intermediate VM failed
+%s SEC_SID_1 val is not equal to 1, val = 0x%0x
+pil_cvp_mem_assign
+Memheap Assertion heap_mem_size >= (2*kMinChunkSize-1) failed
+Memory is overlapping with pHlosUnmappedMemoryTableHead memory range partially 
+Memory is not owned by this source VM Address - %x  Size - %x VM - %x
+KP: Kernel Physical Address is 0!
+KP: Client env open failed for QRKS service
+KP: Unable to align RW asset
+KP: Emulate write truncated copy size: %d, error %d
+PIL_parseMetadata
+pil_init_image_api_ns
+CameraSS_RegRead ret:%d
+object_reset_from ret: {:#x}
+msgqueue_unbind_receive_virq ret: {:#x}
+cspace_revoke_cap_from ret: {:#x}
+virtio_mmio_backend_unbind_virq: {:#x}
+virtio_mmio_backend_set_queue_num_max ret: {:#x}
+virtio_mmio_backend_update_status: {:#x} {:#x}
+boot_hypervisor_start
+Unable to allocate IRQ table
+scheduler: unblock {:#x}, reason: {:d}, others: {:#x}, local run: {:d}
+EL2t synchronous fault
+Bad arguments in pgtable_vm_unmap_matching
+WDT: Hypervisor watchdog bite!
+Watchdog bite
+gicr is NULL for cpu(%u):
+PIL image for VM {:d} has overflowing segment {:#x} + {:#x}
+hw prng zero checker
+{:#x} {:#x} route: {:d} immediate, checked {:d}
+VIC couldn't attach root VM thread
+Unable to create HW IRQ object
+/dev/buses/qupac/xx/yy
+QUP_0I4I
+QUP_0I10I
+hyp_secure_dcc_enable
+hyp_map_debug_ranges_flag
+hypExcludeRegionFromSMEMRamPartition bad range!
+Failed mapping 0x%lx: 0x%lx
+QHEEBSP Configure SMMU: LPAE Attach PT Failed. Error Code %d.
+SMMUv3 @0x%16x Event Encountered: EVENT_F_UUT
+smmu_vm_alloc_cbs: Unexpected Error, base_pa: %x, num_cbs: %d
+SMMU_Virtualization_Init: VM Reservior Index out of Bounds!!
+SMMU_HYP_VirtualizeS2CRRead: s2cr out of bounds
+pil_lpass_mem_assign
+%s ElfFile pointer is NULL
+video_program_sec_sid_registers
+gcc_qupv3_wrap1_s2_clk
+AC malloc parameter size more than 32 bits
+Invalid rule or no rule found for hyp_assign call
+SMMU static aperture has mapped a region where AP-NS has no access. Conflict in unampRegions array: Start - 0x%08x, Size - 0x%08x
+VMUnmap Failed
+%s [%lx] %lx %lx %lx %lx
+%s: PILSubsys_envAuthImage - SHMB Delete Failed - Addr 0x%x Ret 0x%x
+CameraSS_DynamicPHYProtectLanes
+doorbell_unbind_virq ret: {:#x}
+vcpu_set_affinity ret: {:#x}
+cpu warm boot start
+thread_freeze resumed: {:#x}
+rm_rpc: dropping packet
+memdb: Error inserting {:#x}..{:#x} - obj({:#x}) - type({:d}), err = {:d}
+memdb allocate err: {:d}
+Failed to alloc page table level.
+platform_get_entropy busy
+Error allocating trace buffer
+timer_lp: Allocation failed.
+vendor: hyp_pil_auth_id {:#x} {:#x} {:#x} {:#x}
+svm_get_stage2_pt: invalid msg length
+hyp_dump: no hyp dump table
+hyp_dump_table
+vm_{:d}_vcpu_{:x}
+platform_shm_bridge_teardown: smc-ret {:#x}
+unhandled vcpu_suspend error
+{:#x} {:#x} undeliver {:d}: deactivate HW IRQ {:d}
+{:#x} {:#x} reclaim_lr {:d}: deactivate HW IRQ {:d}
+qupv3_perms_size
+is_ssc_qup_ac_config_supported
+QUP_1S1G0
+QUP_SI11
+Failed- pszDevName:%s pDALPtr:0x%x
+SkipProp error- pszName:%s pDALPropsDir:0x%x pbDevicePropsPos:0x%x
+EL2 with SP_EL0 fiq.
+ %s operation
+ADSP Table: Attempt to clear entry at index %d while it is in use!
+No Space left in memory bitmask
+Guestvm %x signer check failed!
+Unable to map diag region 1:1
+SMMUv3 @0x%16x Event Encountered: EVENT_F_BAD_ATS_TREQ
+SMMUAttachExt: Failed to attach ARID %d, to Dev %d
+SMMU Virt: Unreachable error in writing SMR=0x%0x08x for Dev=0x%x
+SMMU_DynamicCfgSyscall: Mode Switch FAILURE!! -- ret = %d
+SMMUSecureModeSwitch(SEC->NS): Failed to detach ARID 0x%x to Dev %d
+%s Init-and-start failed
+[CAM-PIL][%s] segment%d paddr=%llu not 4kB aligned
+gcc_qupv3_wrap1_s3_clk
+ACMapMemoryRange error during camera unassign = 0x%x
+mapAndCopyDestVMList failed
+%s Channel not found.
+Calculated key is %d
+Memory is shared and only 1 VM passed as source %x
+KP: SHM bridge created on address %x, size %x
+pil_unlock_to_tz
+object_activate_from: {:#x} {:#x}
+hwirq_unbind_virq: {:#x}
+hwirq_unbind_virq ret: {:#x}
+vic_configure: {:#x} {:#x} {:#x} {:#x} {:#x}
+vcpu_configure ret: {:#x}
+virtio_mmio_backend_update_status ret: {:#x}
+partition_phys_valid: Bad look-up result
+Error inserting ram to memdb
+X19 = {:#x}
+X28 = {:#x}
+EL2 debug trap
+memdb_insert: {:#x}..{:#x} - obj({:#x}) - type({:d})
+Hyp assign: Failed to send to Resource Manager
+platform_shm_bridge_delete: smc-ret {:#x}
+SError target vCPU has incorrect affinity, aborting
+Failed to enable VM Timer IRQ
+psci vcpu suspend: {:#x} - VM {:d}
+psci VM {:d} - cluster_suspend_state: {:#x}
+ELF out of valid region
+No firmware support for spectre-BHB yet!
+{:#x} {:#x} wakeup-1n: disabled
+ssc_qup_gpii_current_assign memory allocation failed
+QUP_0S3G2
+QUP_0S4S
+QUP_0S5G0
+QUP_1I1I
+invalid table_index
+Failed hypExcludeRegionFromRamPartition for  hyp_tz_reserved_ranges in secure_mor
+OEM Version Info: %s
+x 0(%8X) x 1(%8X) x 2(%8X) x 3(%8X) x 4(%8X)
+ERROR: Syscall buffer size not specified
+SMCInvoke .. %s:%d Failed!  ret = 0x%x
+Parameter cpu_id out of boundary.
+HYP_DIAG
+size requested more than 32 bits
+Unable to clear bits in memory mask
+IterateThroughPageTableEntries() Error Invalid Arg  pt_base = NULL
+Error unmapping 0x%lx - 0x%lx, err = %d
+hyp_register_reserved_irq: irq_list is null!
+SMMUv3 @0x%16x Event Encountered: EVENT_F_VMS_FETCH
+smmu_vm_register_virt_dev: SMMU Device is not MMU500
+SMMU_Virtualization_Init: Unable to allocate memory for virt_devices!!
+SMMU Virt: S2: Invalid S2CR=0x%08x for Dev=0x%x
+SMEM ASSERT in %s() function at %d line.
+Can't initialize heap info
+Invalid memory type %d
+lpass_bring_up
+%s Cannot SUSPEND without RESUME curr_state=%d
+%s Cannot RESTORE without RESUME curr_state=%d
+DALDEVICEID_SPMI_DEVICE
+Memheap Assertion theBlock->forw_offset >= sizeBlockHeader failed
+gcc_qupv3_wrap1_s5_clk
+scc_qupv3_se4_clk
+gcc_qupv3_wrap_0_s_ahb_clk
+Invalid rule or no rule found for SHM create call
+FillHLOSRegionMapInfo: Memory is not owned by HLOS VM, uInputAddr : %x,  Size : %x 
+Memory is not owned by VMID: %d, uInputAddr : %x,  Size : %x 
+KP: Kernel VA is %x, PA is %x
+KP: Get RTIC MPData service failed
+Providing EL2 report Address to QSEE returned Failure
+Setting Execute permission
+conversion compile VA to PA of EL1 vector failed!
+PILSource_getData
+pil_auth_reset_api_ns
+PILSubsys_authReset
+%s: PILSubsys_envAuthReset - SHMB Create failed - Addr 0x%x Ret 0x%x
+%s: PILSubsys_deleteShmBridge - SHMB Delete Failed - Ret 0x%x
+partition_create_memextent: {:#x} {:#x}
+partition_create_vic: {:#x} {:#x}
+doorbell_reset: {:#x}
+msgqueue_bind_receive_virq ret: {:#x}
+addrspace_attach_thread: {:#x} {:#x}
+addrspace_update_access: {:#x} {:#x} {:#x} {:#x} {:#x}
+vpm_group_get_state ret: {:#x} {:#x}
+watchdog_configure: {:#x} {:#x}
+no runnable VCPUs, entering idle
+SP_EL2 = {:#x}
+Unhandled EL2 trap
+Failed to allocate bottom page table level.
+Error in pgtable_hyp_unmap
+Invalid stg1 access type
+Making SMC call TZ_SECURE_WDOG_TRIGGER_ID
+VM {:d} denied fast-call {:#x}
+Watchdog timer: Mapping failed.
+SError received on CPU {:d}, ISS {:#x}
+Spurious VM timer IRQ
+system_reset event returned
+app_ipa: {:#x}
+Failed activation of new mem extent
+{:#x} {:#x} deactivate {:d}: deactivate HW IRQ {:d}
+{:#x} {:#x} route {:d}: virt {:d} phys N/A
+ibi_space_to_2_RG
+ssc_qupv3_se_hw_size
+QUP_0S0S
+QUP_0S2G2
+QUP_SS2S
+ERROR : PSCI Reset Failed
+HYP Version Info: %s
+EL2 with SP_EL2 irq.
+Core:%d, %s abort from EL%d, %s %s
+ qsee log buffer SHMB deletion failed
+Can't create hyp originated msg tracker.
+SmcInvokeInit
+CallbackObj_invoke
+Failed mapping. Already mapped and not mapped as requested. Requested: 0x%lx Existing: %lx err: 0x%lx
+Did not get the right VA. Wanted 0x%lx but got 0x%lx
+SMMU Virt: Invalid S2CRn value=0x%08x for Dev=0x%x
+SMEM Target info addr=0x%08X memory mapping failed.
+%s Map subsys region failed
+%s Invalid segment
+pil_video_prng_fill- SHM Bridge delete failed for Addr 0x%x Ret 0x%x
+cvp_prescan_seg_info
+Memheap Assertion heap_mem_size failed
+Memheap Assertion heap_ptr->total_bytes >= heap_ptr->used_bytes failed
+Memheap Assertion BOUNDARY_CHECK_SECTIONS((mem_block_header_type*)(temp), heap_ptr) failed
+Memheap Assertion !((block_ptr->forw_offset)%kMinChunkSize) failed
+Memheap Assertion followingBlock->forw_offset > 0 failed
+gcc_qupv3_wrap0_s3_clk
+scc_qupv3_se1_clk
+gcc_qupv3_wrap0_core_2x_clk
+gcc_aggre_noc_mmu_tbu1_clk
+TZ create SHM bridge returned SMC error: %08x
+AreDumpsAllowed failed
+Memory is shared and not all VMs passed as source match the owner of the shared memory
+ACSmmuUnmapAndUpdateListExt failed
+Cannot verify memory permissions, dest VM not SMMU type
+TZBSP_AC_ERR_DATABASE_PTR_IS_NULL
+cpz_post_validate: create bridge failed
+pid offset is %d, task_name_offset is %d
+Stack fault detected in EL2h vectors
+partition_create_doorbell ret: {:#x} {:#x}
+object_activate ret: {:#x}
+object_reset: {:#x}
+msgqueue_unbind_send_virq ret: {:#x}
+msgqueue_unbind_receive_virq: {:#x}
+vic_attach_vcpu: {:#x} {:#x} {:#x}
+virtio_mmio_frontend_bind_virq: {:#x} {:#x} {:#x}
+vic_bind_msi_source: {:#x} {:#x}
+vic_bind_msi_source ret: {:#x}
+spurious EL2 IRQ
+Error activating root partition
+thread: ctx switch from: {:#x} to: {:#x}
+Panic: {:s} from PC {:#x}, FP {:#x}
+X26 = {:#x}
+X29 = {:#x}
+memdb: Error removing ram {:#x}..{:#x} from partition {:x}, err = {:d}
+Failed revert to parent mapping
+gicv3: Unable to find CPU's redistributor.
+Hyp assign: Failure from Resource Manager
+QHEE allocate kaddr not supported!
+platform_info.chip_id
+PIL image segment count {:d} is greater than QHEE_HYP_PIL_MAX_SEGMENTS {:d}
+failed to map pil segment
+DT_TABLE_MAGIC found in segment {:d}
+bridge create metadata_phys failed {:d}
+vendor: hyp_pil_auth_id ret {:#x} {:#x}
+invalid ram entry [{:x}..{:x}]
+hyp_dump_data
+Error allocating root thread
+Processing package image ({:d}) type={:d}
+Unsafe DC *SW in VM {:d} @ {:#x}
+{:#x} {:#x} route: none (E1NWF={:d})
+QUP_AC_PROPS
+qupv3_i3c_ibi_enabled
+QUP_1S5S
+QUP_SI11I
+Failed- DeviceId:0x%x
+HypXSize
+~~~~~HYPX NOT ENABLED~~~~~ Reason: 0x%x
+hyp_dcc_config_base
+ERROR : Failed hyp_alloc_buffer_shm_bridge in secure_mor
+SDI dump table not ready.
+Failed syscall Register log buffer
+Stack Protect has detected an incorrect Canary Value!
+buffer and/or size parameter cannot be NULL
+NULL input msg_tracker 
+Failed to map DDR memory range
+Failed to unmap Ram Partition Table from HLOS Stage 2:%d
+QHEEBSP SMMU Attach: Invalid Arguments
+EVA_CV_CPU
+SMMUv3 @0x%16x Event Encountered: EVENT_F_TRANSL_FORBIDDEN
+SMMU Virt: Illegal read for reg addr=0x%08x
+IDOM_qhee_init(): Failed to attach ARID 0x%x to Dev %d
+Hypervisor could not map TOC, smem_size=%d.
+Guestvm %x already started!
+Memheap Assertion heap_mem_ptr failed
+Memheap Assertion heap_ptr != NULL failed
+gcc_qupv3_wrap1_core_2x_clk
+HLOS attempted to pass inaccessible memory as sourceVMlist ptr - EC: %d mapStatus: %d
+IPA and PA given does not match the config type
+Memory permissions on region are inconsistent, uInputAddr : %x  Size : %x 
+%s Entry
+Cannot committ mapping updates in ISV fault!
+MP Data not initialized
+PILSubsys_bringUp
+EL2h vectors
+addrspace_map ret: {:#x}
+memextent_configure: {:#x} {:#x} {:#x} {:#x}
+virtio_mmio_backend_get_queue_info: {:#x} {:#x}
+partition_phys_valid failed for PA: {:#x}
+Failed to activate Hyp Timer IRQ
+failed to allocate ETM context memory
+Invalid argument
+PIL image for VM {:d} has no segments
+TZ_PIL_INIT_ID: smc-ret {:#x}
+Invalid rootvm log buffer VA
+psci suspend: INVALID_PARAMETERS - pstate {:#x} - VM {:d}
+Error create memextent cap id.
+Unhandled trap from VM {:d}, ESR_EL2 = {:#x}, ELR_EL2 = {:#x}
+QUP_0I11I
+QUP_0S5S
+QUP_SI1I
+hypExcludeRegionFromRamPartition bad range!
+ERROR : NULL passed in as region_count
+ERROR: memory region not mapped for sec mor: %d
+IClientEnv_registerAsClient failed %d
+Failed to map HWIO memory range
+soc_get_tvm_reserved_devices:max_devices is null.
+SMMUAttachExt: Unable to Attach to SMMMU AVMID: %d  Skipping attaching the context for the VM.
+[CAM-PIL][%s] failed to get ELF segment info at index=%d
+Memheap Assertion heap_ptr->magic_num == mem_magic_number->magic_num[heap_ptr->magic_num_index] failed
+NS perm incorrect  failed 0x%x
+%s Channel VMMap Failed.
+Device Memory used in ACMapMemoryRangeExt
+KP Emulate failed
+pil_init
+PILSubsys_envAuthReset
+%s: PIL auth reset smc call 0x%x to tz failed for proc id %d as TZ is busy
+partition_create_vpm_group ret: {:#x} {:#x}
+object_activate: {:#x}
+memextent_unmap_all: {:#x}
+vcpu_kill: {:#x}
+cspace_attach_thread ret: {:#x}
+watchdog_attach_vcpu ret: {:#x}
+vcpu_set_timeslice ret: {:#x}
+memextent_donate ret: {:#x}
+cpu cold boot complete
+X24 = {:#x}
+Error attaching root addrspace to root thread.
+Mapping pa({:x}) to va({:x}), size({:d}), level({:d})
+timer_lp: Mapping failed.
+Failed to create low power timer IRQ
+Failed to activate low power timer IRQ
+Failed to create PMU IRQ
+hyp_dump: error registering dump table.
+Failed to create watchdog bark IRQ
+Watchdog timer: Is secure only.
+TZ-Hyp bridge created: handle: {:#x}
+Error creating root partition cap
+No spectre-BHB mitigation for unexpected core
+Failed to activate HW IRQ object
+""""""""""""""""""""""""""""
+$0<HT`lx
+$-6?HQZclugunyah-059467ae4 perf
+Thu May 23 08:44:49 2024 UTC
+kernel_delete_vm
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/musl-c-runtime/src/auxvec.c
+util_is_baligned(size, PAGE_SIZE)
+Guest 64 fiq vector
+x8: {:#8x}	 x9: {:#8x}	 x10:{:#8x}	 x11:{:#8x}
+Current sp0 fiq vector
+x28:{:#8x}	 x29:{:#8x}	 x30:{:#8x}
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/musl-c-runtime/src/log_buf.c
+f != NULL
+{:s}: invalid tty ioctl cmd{:#x}
+/dev/gicv3
+timespec_valid(ts)
+{:d}.{:06d}: 
+assertion: {:s} in func({:s}) file({:s}:{:d})
+new_addr != 0U
+area_sz <= 524288
+{:s}: invalid brk {:#x}
+Guest 32 sync vector
+fs_alloc_fd
+platform_timer_init
+sys_ioctl
+Returned from app entry
+Current spx serror vector
+util_is_baligned((uintptr_t)stack, 16U)
+sys_exit/sys_exit_group: called
+ts != NULL
+x4: {:#8x}	 x5: {:#8x}	 x6: {:#8x}	 x7: {:#8x}
+Guest 64 sync vector
+trap frame dump:
+x16:{:#8x}	 x17:{:#8x}	 x18:{:#8x}	 x19:{:#8x}
+util_is_baligned(base, PAGE_SIZE)
+x24:{:#8x}	 x25:{:#8x}	 x26:{:#8x}	 x27:{:#8x}
+app_memory_size > STACK_SIZE
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/musl-c-runtime/src/read_write.c
+consumed_len <= remaining
+area_sz > (sizeof(size_t) * 2)
+Current sp0 irq vector
+init_heap
+Guest 32 fiq vector
+spsr_el1:{:#8x}	 elr_el1:{:#8x}	 esr_el1:{:#8x}
+/dev/console
+/dev/exit
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/musl-c-runtime/src/mmap.c
+ticks_to_timespec
+Current sp0 sync vector
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/musl-c-runtime/arch/armv8/src/gicv3.c
+(irq >= 0) && (irq < GIC_SPI_END)
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/musl-c-runtime/src/fs.c
+tty_ioctl
+log_append
+Current spx fiq vector
+Guest 32 irq vector
+Guest 32 serror vector
+x20:{:#8x}	 x21:{:#8x}	 x22:{:#8x}	 x23:{:#8x}
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/musl-c-runtime/src/ioctl.c
+EL1h sync exception not handled
+sys_writev
+log_buf != NULL
+Guest 64 ieq vector
+sp_el0:{:#8x}	 sp_el1:{:#8x}
+log_set_buffer
+Current sp0 serror vector
+x12:{:#8x}	 x13:{:#8x}	 x14:{:#8x}	 x15:{:#8x}
+Guest 64 serror vector
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/musl-c-runtime/arch/armv8/src/generic_timer.c
+x0: {:#8x}	 x1: {:#8x}	 x2: {:#8x}	 x3: {:#8x}
+timer_init
+timespec_max_sec > 0U
+Panic: {:s} from PC {:#x}, FP {:#x}
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/musl-c-runtime/src/string_util.c
+cntfrq == timer_freq
+platform_irq_deactivate
+elf_setup
+(~fd_alloc) != 0U
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/musl-c-runtime/src/timer.c
+Failure for assertion
+0123456789abcdef
+.note.gnu.property
+.data.rel.ro
+.rela.dyn
+.gnu.hash
+.dynamic
+.shstrtab
+>[^[:alnum:]_]
+Error: failed to reserve smc_wait_queue virq
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/platform/qcom/src/vm_creation/pil_image.c
+platform_vm_auth
+qcom,max-queues
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/dt/dt_overlay.c
+fragment@%u
+info->holder_virq == VIRQ_INVALID
+MEM_ACCEPT: from:%d handle:%d
+memparcel_do_accept
+resp_size != NULL
+init completed, disabling UART
+rm_rpc_fifo_tx_callback
+rm_notify
+status->reply_buf != NULL
+dtb_parser_parse_dtb
+fdt_check_header(fdt) == 0
+configure_msgqueue_pair
+handle_vcpu: failed get free virq for proxy sched
+boot-config
+crash-fatal
+iomemory-ranges
+qcom,pasid invalid
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/vm_config/vm_config_smmu.c
+dto_construct_end_path
+vm_creation_process_memparcel
+kaslr-seed
+linux,initrd-end
+Unable to allocate DTB buffer, using DTB region for processing instead
+#global-interrupts
+qcom,rx-message-size
+vm_mgnt_new_vm
+n=clientenv;p=7C,8F,97,159,7F1;o=0;
+Error: dt_offset or dt_size is out of range
+Error: failed to map whole dtb segment
+Error: segment %d overlaps image area
+DTB region max size %zd (limit address is %#lx)
+flush_pending_list
+manager != NULL
+(start_idx + alloc_count) <= region_list_get_len(mp->region_list)
+rm_get_qhee_ch_cap_id
+!util_add_overflows(right->size, size)
+util_is_p2(new_capacity)
+ras-error-handler
+size-max too large for base-address
+Error: image name missing or too long
+get_hyp_resources: err(%d)
+(vm != NULL) && (vm->vm_state == VM_STATE_LOAD)
+process_dtb failed, ret = %d
+/reserved-memory/%s
+accept_memparcel
+create_reserved_buffer_node
+accept_memparcel_fixed
+fixed-clock
+qcom,gunyah-vm-id
+arch_timer
+[^[:space:]]
+qtee_config_info: %s
+Error: VM %d not in LOAD state
+Error: Invalid dtb memory region (%lx++%lx), range overflow
+dtb table found
+Error: failed to map PIL image
+error == 0
+gen_local_fixups_node
+irq_info != NULL
+list->l1_bits <= MAX_L1_BITS
+memparcel: acl[%d]: invalid IO rights
+ unknown create
+memparcel: unmap region failed %d
+sgl[%d]: vaddr: %lx vsize: %lx paddr: %lx psize: %lx
+priv_env_data != NULL
+address_range_allocator_alloc
+/hypervisor/qcom,resource-mgr
+db != NULL
+Failed: save compatible in doorbell node
+failed: to bind be virq
+message-queue
+parse_vcpus: "affinity_map" missing
+Failed to allocate SMMU configuration buffer
+dma_base
+Error: vm %d failed to map info area, error %d
+Error: failed to create vdevices, ret = %d
+device_type
+Warning: iomem (label %x) has no memory parcel
+map_dtb: invalid dtb
+hypervisor
+Qualcomm
+/aliases
+Error: failed to get security device state, assume it's not security device
+vm_memory_map
+dto_property_add_u64array
+info->is_valid
+dict_contains(dict, (dict_key_t)handle)
+err == RM_OK
+rm_reply: err(%d)
+OOM: fail to alloc rm_notify
+/hypervisor/qcom,virtio_mmio
+Failed: invalid owner VM
+parse vdevice node: expected "memory" node
+dto_construct_begin_path
+error: %s: truncated reg property
+qcom,vm-signing-authority
+cfg->peer_id != NULL
+qcom,peers
+memparcel_acl_to_hyp_assign_rights
+qcom,board-id-match
+Error: no VM for vmid %d
+qcom,scm-v1.1
+/dev/gicv3
+!irq_info->is_owner
+memparcel_accept
+*resp == NULL
+MEM_RELEASE: from:%d handle:%d
+memparcel_map_rm
+sanitise_region
+target_vm != NULL
+rm_get_rm_addrspace
+!util_add_overflows(start_address, size)
+handle_irqs
+handle_vcpu: failed attach watchdog
+shm-doorbell
+queue-depth
+parse vdevice node: base and allocate-base both present
+Missing num-cbs in vsmmu config
+cfg->db_src != NULL
+/soc/hypervisor
+qcom,vmid
+qcom,free-irq-start
+target-path
+Invalid CONTROL_UART msg
+get_board_match_dtb
+Error: image memparcel is not physically contiguous
+Error: invalid msg, len overflows. req size = %zu, unmap_virqs_size = %zu
+irq_manager_allocate_virq
+irq_manager_release_irq
+memparcel: invalid attr[%d]
+MEM_%s: ret=%d
+memparcel: Map region failed %d
+Failed to start HLOS: %d
+create_rpc_header
+allocator->range_node_cnt == 0UL
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/vm_config/vm_config.c
+vm_config_delete_vdevice_node
+Failed: to copy tx cap
+Failed: to get free virq
+Failed: to alloc vdevice node
+Error: failed to handle SMMUs
+Error: failed to handle msgqueue pairs
+qcom,rm_sglist
+iomemory-ranges invalid length
+Failed to allocate vRTC configuration node
+is-sender
+hlos_vm_create
+%s: accepting %s @ %#lx ++ %#lx
+qcom,gunyah-message-queue
+hlos != NULL
+VM_ALLOCATE: %d vmid=%d
+boot info map failed
+HYP_ASSIGN: failed to allocate pools vector
+Using static client registration for VM %d
+get_board_ext_match_dtb
+Warning: has no qcom,board-id and invalid qcom,board-id-match
+Error: len %zu should be %lu
+Error: failed to create svm %d: %d
+Error: image size is smaller than ELF header
+vm_memory_setup
+vm_memory_create_and_map
+vm_address_range_alloc
+hlos_owner && !hlos_target
+(pwd_len + node_len) < PWD_SZ
+dict != NULL
+info->hw_irq_cap != CSPACE_CAP_INVALID
+irq_manager_get
+MEM_APPEND: from:%d handle:%d
+memparcel_tag_regions: %lx..%lx (%x) failed with %d for vm %d
+memparcel_notify_shared
+hlos_vm_create ret=%d
+(priv_env_data->usable_cores) != 0U
+vm_config_get_rm_rpc_msg_queue_info
+d != NULL
+data != NULL
+Failed: to bind vpm virq
+handle_vcpu: invalid priority
+Failed: to alloc doorbell generate string
+Failed: to reserve virq
+Failed: to virtio_mmio alloc generate string
+vrtc-pl031
+size-max
+console-dev
+qcom,resource-manager-%s
+optional
+vRTC: Base invalid
+Error: Failed to apply DT overlay, ret=(%d)
+/hypervisor
+qcom,qcom
+map_dtb: memparcel_map_rm failed
+vm_mgnt_parse_peer_id
+/__symbols__
+Assertion failed: %s (%s: %s: %d)
+smc_wait_queue_init
+/firmware/qcom_scm
+qcom,primary-vm-index
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/platform/qcom/src/vm_creation/dtb_selection.c
+soc mask doesn't match: expect(0x%x) dtb(0x%x)
+Error: failed to unmap
+Warning: failed to obtain platform info, using 0s
+dto_property_add_stringlist
+dto_property_add_addrrange
+(size_t)fmt_ret == node_len
+leave_node
+__fixups__
+(hwirqs != NULL) || (num_hwirqs == 0)
+irq_manager_create
+info->owner_info->is_valid
+memparcel: Failed to alloc contig range %d
+vm_info != NULL
+memparcel_unmap_rm
+rm_get_platform_max_cores
+rx_data->msg_type != RM_RPC_MSG_TYPE_CONTINUED
+(vector != NULL) && (vector->data != NULL)
+Error: array property "%s" length %zd exceeds expected size %zd
+self_vmcfg != NULL
+generate
+num-smrs
+parse vdevice node: neither base or allocate-base present
+Error: invalid qcom,rm_sglist value
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/vm_config/vm_config_rtc.c
+qcom,gunyah-doorbell
+qcom,vdevice-handle
+*name_start != '\0'
+Error: failed to allocate path for %s
+qcom,rm-mem-handle
+CPUS: Can not find node %s in device tree
+buf8 == (ret_buf + ret_size)
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/platform/qcom/src/hyp_assign/hyp_assign.c
+Error disabling UART
+vm_signer_info: %x
+qcom,qtee-config-info
+Selected DTB: msm-id(0x%x 0x%x) board_id(0x%x 0x%x)
+Error: failed to create PIL memparcel, ret = %d
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/irq_manager/irq_manager.c
+Error: invalid msg, len(%zu) < %zu
+list != NULL
+resp != NULL
+vm_info->ipa_alloc_count == 0U
+region_list != NULL
+rm_get_watchdog_address
+vcpu_data != NULL
+db_src != NULL
+handle_vcpu: failed vcpu configure
+Error: failed to handle doorbells
+sched-priority
+qcom,rm_acl
+vRTC: Base not aligned
+Failed to allocate SMMU CB IRQ array
+target[sz - 1] != '/'
+process_dtb: ret %d
+accept mp fixed: failed %d
+Warning: SHM/VIRTIO_MMIO (label %d) requires allocation of IPA
+create_resmem_nodes
+resmem: memparcel label %#x already has a node
+Error: failed to allocate path for RTC
+NOTIFY_VM_STATUS: to: %d [%d: %d/%d/%d]
+id_val != NULL
+Error: Null peer_id for vm_lookup_by_id
+-+   0X0x
+HYP_ASSIGN: Failed to add region to pool %d
+d->data != NULL
+DTB selected:
+util_array_size(vm->vm_config->platform.segments) >= vm->vm_config->platform.segment_count
+acl_info != NULL
+first != NULL
+irq_manager_lend_irq
+!info->owner_info->is_mapped
+MEM_ACCEPT: ret=%d
+rm_get_rm_cspace
+rm_get_hlos_entry
+Warning: number of Reserved IRQ is more than allowed.
+rm-rpc-fifo: Dropped pending reply for VM %d!
+rm_rpc_fifo_reply
+rm-rpc-fifo: Dropped pending notif for VM %d!
+#interrupt-cells
+next_depth < MAX_DEPTH
+self == VMID_RM
+peer != self
+/hypervisor/qcom,shm
+Failed: to bind virq
+parse_vcpus: cpu and affinity count don't match
+parse_vcpus: "config" path invalid
+Missing smmu-handle in vsmmu config
+memory-region
+Error: vm %d failed to create watchdog, error %d
+process_memparcels: ret %d
+VM_INIT: from:%d vmid:%d
+name != NULL
+region_cnt > 0
+linux,initrd-start
+create_dt_nodes
+Failed to patch SMMU node: VMID %d, error %d
+qcom,resource-manager-rpc@%016lx
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/vm_mgnt/vm_mgnt.c
+vm_mgnt_is_vm_sensitive
+vm_mgnt_handle_get_id
+[[:space:]]
+qcom,primary-vm-index out of range
+pil_auth failed: %d
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/platform/qcom/src/vm_memory.c
+dto_property_add_u32array
+free_local_fixups
+ret.err == OK
+irq_info->virq == virq_num
+memparcel_construct ret=%d
+(start_idx == 0U) && (alloc_count == 1U)
+rm_get_me
+rm_get_rm_vic
+(rx_data->len + len) <= rx_data->alloc_size
+vm_config_set_console
+get_vdevice_resource_handle
+invalid vcpu count for ras error handler
+Failed: to bind rx virq
+Error: failed to handle virtio_mmio
+Error: failed to handle msgqueues
+Warning: Unknown VM attribute "%s"
+Error: failed to parse qcom,rm_acl for iomem %d
+parse_vcpus: unsupported "affinity"
+Virtual RTC requested but not supported
+dma-coherent
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/vm_creation/second_vm.c
+%s: no memparcel with label %#x!
+qcom,vm-uri
+Error: failed to process memparcel %#x: %d
+Failed to allocate IPA for stats area, error %d
+Error: failed to parse guid from %s
+param != NULL
+vm_client_register: failed BUSY for vm %d
+foundry id doesn't match: expect(0x%x) dtb(0x%x)
+RM_QHEE_MSG_ID_PIL_IMAGE_DETAILS: vmid:%d phys-region:%lx (%lx)
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/platform/qcom/src/vm_dt.c
+dto_property_add_u32
+second != NULL
+memparcel_construct
+resp == NULL
+owner_info != NULL
+Unhandled request from VM %d, ID: %x
+remove_restricted_irqs
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/rpc/rm-rpc-fifo.c
+status->reply_buf == NULL
+start_address > left->base_address - 1 + left->size
+!util_add_overflows(left->base_address, left->size)
+dict->tables[i]->entries < TABLE_ENTRIES
+dict_remove
+self != NULL
+self->vm != NULL
+handle_vcpu: failed set timeslice
+Error: failed to handle iomem ranges
+Error: failed to handle iomems
+vsmmu-v2
+image-name
+parse_vcpus: "config" missing
+tx_queue_depth
+cfg->db != NULL
+vmcfg != NULL
+vm != NULL
+VM_START: ret=%d
+boot_info_create
+Error: failed to create dtb info array
+dto_property_add_blob
+irq_info->is_mapped
+region_list_finalize
+memparcel: acl[%i] duplicate vmid
+memparcel: Map in owner failed %d
+memparcel: invalid share request
+preempt_disable_count != 0U
+Starting Resource Manager, version: %s (%s)
+send_pending_reply
+new_capacity > dict->capacity
+idx < data->affinity_map_cnt
+add_virtio_mmio
+handle_vcpu: failed attach vpm
+Failed: to copy backend cap
+vdevice-type
+parse_vcpus: no enable-method defined
+parse vdevice node: multiple "memory" nodes
+Invalid context banks count
+rtc_cap != CSPACE_CAP_INVALID
+Failed to allocate vRTC configuration buffer
+SMMUv2 virtualisation requested but not supported
+rx-doorbell
+Error: vm %d address range init failed, error %d
+Error: vm %d failed to configure info area, error %d
+Error: failed to parse device tree, ret = %d
+!util_add_overflows(ramfs_ipa_start, vm->ramfs_size - 1U)
+qcom,vm-guid
+create_dt_nodes: vmid %d, %s (%d), error %d
+vm_dt_create_hlos
+vm_creation_process_resource: ret %d
+vmid_idx == num_vmids
+HYP_ASSIGN: Failed to remove region from pool %d
+HYP_ASSIGN: Failed to alloc pool
+HYP_ASSIGN invalid src/dest
+No uart_address configured
+client registration for VM %d
+Error: DT entry_count or entry_offset is out of range
+memextent_delete
+unmap_irq
+virq_handle_manager_free
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/log.c
+memparcel: Failed to alloc as range %d
+memparcel: Failed to sanitize %lx (%lx)
+13aadd1e
+Unhandled notification from VM %d, ID: %x
+rm_rpc_fifo_create
+!util_add_overflows(alloc_address, size)
+*_head != NULL
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/utils/dict.c
+new_capacity <= CAPACITY_LIMITATION
+handle_vcpu: failed to bind proxy_virq %d
+/hypervisor/qcom,vpm
+!util_add_overflows(vdevice_handle, 1U)
+(node != NULL) && (*node != NULL)
+handle_vcpu: failed to add vcpu
+Failed: to msgqueue alloc generate string
+Error: failed to handle shms
+Error: failed to handle vRTC
+fdt,unified
+sched-timeslice
+d->num_cbs <= SMMU_V2_MAX_CB_NUM
+reserved-memory
+memparcel %#x (%#x) is base memory: %#zx (%#zx)
+Error: invalid sign %d
+process_memparcels
+Error: failed to allocate peers_id
+is_vm_query_allowed
+ignored legacy VM_START
+Disabled UART driver
+vm_client_register: failed with %d for vm %d
+data->platform.secdomain_ids_num < MAX_NUM_SECDOMAIN_ID
+Error: Invalid dtb segment base(%lx) < VM memory base(%lx)
+Error: dtb size(%zu) > region size(%zu)
+vm_memory_get_acl_info
+dto_modify_end
+dto_node_begin
+dto_node_end
+add_local_fixup
+handle_notify: handle(0x%x) flags(0x%x), vmids_cnt(%lu), vmids[
+handle_unmap: virq_num_cnt(%lu), virq_nums[
+memparcel: attr_list[%i] duplicate vmid
+prev_vm != NULL
+memparcel_release
+mp->share_count == 0U
+region_list_cleanup_regions
+address_range_allocator_free
+find_range
+vio != NULL
+handle_vcpu
+/hypervisor/qcom,doorbell
+handle_vcpu: failed vcpu activate
+qcom,gunyah-hvc
+vm_config_vrtc_attach_addrspace
+Failed to allocate SMMU memextent cap array
+vm_creation_init
+Warning: memory size %zu is less than minimum %zu
+accept private mp: too large; %zu > %zu - %zu
+apb_pclk
+qcom,tx-message-size
+qcom,tx-queue-depth
+num_vms < 64
+__symbols__
+[[:alnum:]_]
+-0X+0X 0X-0x+0x 0x
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/platform/qcom/src/platform_qcom.c
+Error: failed to get free smc_wait_queue virq
+Error: DT table header entry_size is %zu, expected %zu
+Error: failed to chose a dtb
+dto_property_add_string
+fmt_ret < who_sz
+ev->prev == NULL
+!info->is_lent
+Reached memparcel limit for VM %d
+memparcel: create 0x%x, label 0x%x
+buf != NULL
+TX failed for VM %d, error: %x
+rm_get_vic_hwirqs
+dict_get_first_free_key_from
+dict_add
+dict->tables[i]->entries > 0
+capacity >= vector->elements
+Error: failed to create hlos tx msg queue, err(%x)
+!console_created
+handle_msgqueue_pair
+(peer_vm != NULL) || (peer_cfg == NULL)
+node != NULL
+virtio-mmio
+Creating virtual RTC failed, error %d
+hlos_vm_start
+Error: failed to update vm_config, ret = %d
+Error: failed to map device tree
+fdt_open_into ret=%d
+buffer@0x%lx
+add_peers_id_list
+handle_lookup_by_id: error sending reply %u
+linux,phandle
+[^[:digit:]]
+arm_smccc12_call
+selected dtb model: %s
+qcom,msm-id
+sz_ret <= FRAGMENT_NAME_SZ
+dto_property_add_phandle
+Error: invalid msg, virq_entry_cnt = %zu, virq_nums = %u
+irq_manager_borrow_irq
+handle_lend: borrower(0x%x) virq_num(%d) label(0x%x)
+handle_reclaim: handle(0x%x)
+region_list_pop_back
+vm_info->ipa_alloc_count <= num_mappings
+free_as_range
+cur_irq < info.vic_hwirq_count
+address_range_allocator_deinit
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/utils/vector.c
+d->peer == VMID_PEER_DEFAULT
+Failed: to copy send cap
+Failed: to copy cap
+Failed: save compatible in shm node
+qcom,mem-info-tag
+Failed to allocate SMMU configuration node
+is-receiver
+create_dtbo
+Error: %s: mp(label %d) has no VM(%d) in ACL
+qcom,oem
+cur_vm != NULL
+owner != VMID_RM
+/__local_fixups__
+vmid_idx == acl_entries
+3cd47b20f1665fe2952102eedfc4350a
+Error: failed to handle smc wait queue
+qcom,secdomain_ids invalid
+plat_subtype skip: expect(0x%x) dtb(0x%x)
+Warning: multiple board id, only calculate the first id
+Error: failed to map dtb segment header
+image_base < image_limit
+(ret == -FDT_ERR_NOSPACE) || (ret == 0)
+dto_property_add_u64
+strcmp(cur_leaf->label, label) != 0
+__local_fixups__
+/dev/exit
+info->owner_info != NULL
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/memparcel/memparcel.c
+memparcel: donate to mp extent failed %d
+rm_get_device_me_size
+num_fragments < 0x63
+/dev/console
+fdt_read_num
+push_ctx
+create_msgqueue_pair
+peer_vm != NULL
+Failed: to alloc vpm config
+handle_vcpu: nomem
+Failed: to alloc doorbell config
+size-min invalid alignment
+size-max invalid alignment
+interrupt-controller
+message-size
+qcom,gunyah-doorbell-source
+HLOS is RAS handler
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/vm_creation/vm_creation.c
+unmap_dtb: ret %d
+create_iomem_nodes
+interrupts
+vm_mgnt_handle_get_id: error sending reply %u
+hyp_assign_add_sgl_to_pool
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/platform/qcom/src/vm_client.c
+secdomain_ids:
+cur_dtb->dtb != NULL
+dto_modify_end_by_path
+!info->is_mapped
+(mp->trans_type != TRANS_TYPE_SHARE) || (owner_info != NULL)
+rm_get_qhee_ch_send_virq
+rm_get_watchdog_supported
+vector_at_internal
+vm_config_alloc
+vmcfg->irq_manager == NULL
+check_default_peer
+handle_vcpu: failed reserve proxy_virq
+handle_vcpu: failed attach addrspace
+Failed: to copy rx cap
+msg_queue_pair: msg_size/queue_depth is not identical between two VMs
+Failed: to alloc push compatibles
+Error: failed to handle platform vm_config
+^/qcom,vm-config/vcpus$
+qcom,sensitive
+push-compatible
+invalid vm-guid
+parse_vcpus: idle states must be defined only for psci
+addrspace_cap != CSPACE_CAP_INVALID
+Configuring virtual RTC failed, error %d
+Error: vm %d failed to activate addrspace, error %d
+total_size <= max_dtb_size
+memory@%lx
+%s: patching %s (label %#x)
+qcom,none
+patch_smmu_v2_nodes
+Error: Invalid ID type %d
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/platform/qcom/src/boot/boot_info.c
+get_soc_dtb
+vm_memory_map_partial
+handle_lend
+MEM_RECLAIM: res=%d
+assert_preempt_enabled
+UART disable failed: %d
+rm_get_rm_partition
+(ret.key >= from) && (ret.key < CAPACITY_LIMITATION)
+expand_for
+vmcfg->console == NULL
+Error: failed to create hlos rx msg queue, err(%x)
+Failed: copy vcpu cap from rm cspace
+error: invalid peer argument
+^/qcom,vm-config/memory$
+aarch64-guest
+add_smmu_v2
+Failed to allocate IPA for virtual SMMU, error %d
+#address-cells
+platform_notif_callback
+qcom,primary-vm-index invalid
+Error: DT table has invalid magic %#x
+Error: failed to select dtb
+Error: phdr size or location is out of range
+vm_memory_donate_extent
+enter_node
+irq_manager_static_share
+region_list_destroy
+addr_valid(paddr) && addr_valid(psize)
+vm_dt_create_hlos ret=%d
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/utils/address_range_allocator.c
+start_address - 1 + size < right->base_address
+err == OK
+peer-default
+Mapping SMMU 0x%x IRQ %d failed for VM %d
+Failed to allocate 32-bit IPA for virtual SMMU
+qcom,gunyah-shm-doorbell
+Error: vm %d failed to configure addrspace, error %d
+vm %d, failed to get random seed
+always-on
+vm_mgnt_send_state
+id_buf != NULL
+*vm != NULL
+Unexpected WaitQ wake!
+board_id_match(0x%x 0x%x 0x%x 0x%x 0x%x 0x%x)
+PIL seg %d: %lx..%lx
+platform_vm_init
+dto_init
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/event/event-isr.c
+paddr == log_buf
+!util_add_overflows((uintptr_t)buf, len)
+Fri Dec 27 09:18:34 2024 UTC
+rm_get_qhee_ch_recv_virq
+rm_reply_error
+handle_rm_rpc
+add_msgqueue
+Failed: to alloc virtual pm generate string
+Failed: save compatible in virtio node
+Failed: invalid backend
+qcom,scm
+base-address
+arm,gic-v3
+qcom,rm_attributes
+parse_vcpus: invalid idle states or method count
+Missing patch in vsmmu config
+vRTC error: Neither base nor allocate-base present
+Attaching virtual SMMUv2 to VM failed, error %d
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/vm_creation/dto_construct.c
+irq_manager != NULL
+vm_creation_config_image
+Error: vm %d image ranges are invalid: image %#zx+%#zx, DT %#zx+%#zx, mem size %#zx
+map_dtb: fdt_totalsize (%zu) > DTB region size(%zu)
+process_dtb: DTB region too small: %zu bytes, need %zu
+dtb_process_buf != NULL
+qcom,label
+%s: memparcel %#x @ %#lx has not been mapped
+(cells == 1) || (cells == 2)
+qcom,gunyah-capability
+compatible
+HYP_ASSIGN: invalid packet size %u != %lu
+qcom,qtee-config-info invalid
+Error: DT table size %zu exceeds area size %zu
+Error: failed to unmap DT table header
+Error: couldn't get memparcel phys address
+Warning: failed to obtain chip info, using 0s
+dto_modify_begin
+irq_manager_reserve_virq
+irq_manager_unmap_irqs
+memparcel_accept: error sending reply %d
+MEM_RELEASE: ret=%d
+unmap_err == OK
+preempt_disable_count == 0U
+boot_info_create ret=%d
+RM exit ret=%d
+send_packet error
+Failed: to copy vpm cap
+Failed: to alloc virtio_mmio config
+^/qcom,vm-config/interrupts$
+doorbell-source
+enable-method
+iomemory-ranges invalid alignment
+dto_create_shm
+Error: vm %d bad auth mode %d
+resmem: memparcel %#x (%#x) added: %#zx (%#zx)
+patch_chosen_node
+Error: failed to generate peers id list
+VM_ALLOCATE: ret=%d
+/dev/null
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/arch/armv8/src/smc.c
+Error enabling UART
+smc_wait_queue_vm_config_add %s
+vm_address_range_init
+info != NULL
+list->regions != NULL
+memparcel: Donate to new owner failed %d
+memparcel: Failed lookup of VM memory %d
+memparcel_do_append
+rm_err == RM_OK
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/resource-manager.c
+cell_cnt <= 2
+get_vdev_desc
+peer_cfg == NULL
+handle_vcpu: failed get free virq
+Failed: to alloc msgqueue_pair config
+Failed: to msgqueue_pair alloc generate string
+Failed: to bind fe virq
+kernel-entry-segment
+qcom,pasid
+parse vdevice node: base not aligned
+Error: failed to save peer id
+tx-doorbell
+Error: vm %d failed to create cspace, error %d
+map_dtb(%lx, %zu, %zu) : failed, ret=%d
+VM_AUTH_IMAGE: from:%d truncated, length %zd expected %zd (num %d)
+/reserved-memory
+qcom,image-name
+Error: failed to accept image memparcel: %d
+Failed to add vcpu-capability property
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/vm_dt/vm_dt.c
+qcom,rx-queue-depth
+/soc/kryo-erp
+Error no mem for vm mgnt init
+cmp_guid
+__overlay__
+#size-cells
+HYP_ASSIGN: Failed to add pool to vector %d
+smc_wait_queue_vm_create
+Error: invalid dtb header at index %d
+qcom,board-id
+vm_memory_get_owned_extent
+gen_fixups_node
+free_virq <= VIRQ_LAST_VALID
+irq_info->is_valid
+info->owner_info->is_lent
+log_expose_to_hlos
+memparcel_do_reclaim
+MEM_RECLAIM: from:%d handle:%d
+MEM_NOTIFY: from:%d handle:%d ret=%d
+ret == OK
+memparcel: failed to push back region
+rm_get_device_me_cap
+rm_get_device_me_base
+OOM: fail to alloc rm_reply
+address <= (allocator->start_address + allocator->size - 1)
+vm_config_add_rm_rpc
+/hypervisor/qcom,gh-watchdog
+Failed: save compatible in iomems node
+handle_vcpu: failed attach cspace
+Failed: to copy recv cap
+error: invalid peer
+Failed: to alloc peer_cfg
+affinity
+qcom,resource-manager
+Invalid SMR count
+Failed to allocate vRTC generate string
+VM_CONFIG_IMAGE: from:%d vmid:%d
+arm,pl031
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/vm_creation/vm_creation_smmu.c
+cur_vm->vm_config != NULL
+msgq_pair != NULL
+owner_vm != NULL
+vm_mgnt_init
+vm_mgnt_lookup_by_id
+Error: failed to bind smc_wait_queue virq
+Map qupv3 uart failed
+segments
+Error: phdr %d is overlapping phdr %d
+vm_memory_unmap_partial
+vm_address_range_free
+dto_property_ref_external
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/hyp/memextent.c
+create_irq_mapping
+irq_info->hw_irq_cap == info->owner_info->hw_irq_cap
+MEM_%s: from:%d
+MEM_APPEND: ret=%d
+hyp_err == OK
+assert_preempt_disabled
+Error: failed to handle vcpus, ret=%d
+vm_config_add_watchdog
+handle_vcpu: failed reserve vpm_virq
+Failed: save compatible in msgqueue node
+gic-irq-ranges
+Error: failed to parse qcom,rm_attributes for iomem %d
+base-address invalid alignment
+parse_vcpus: reducing priority to -1 for proxy scheduled VM
+Activating virtual RTC failed, error %d
+Failed attach RTC
+Failed to allocate SMMU CB Info array
+qcom,peer-vmid
+target[0] == separator
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/vm_creation/hlos_vm.c
+Error: vm %d failed to create addrspace, error %d
+process_dtb
+hlos->vm_config != NULL
+qcom,is-full-duplex
+/soc/qcom,wdt@%08x
+disabled
+'hnopqb 
+}&*+<=>?CGJMXYZ[\]^_`acdefgijklrstyz{|
+no client registration IDs for VM %d
+irq_manager_get_free_virt_virq
+Error: invalid msg, len(%zu) != %zu
+!irq_info->is_lent
+info->owner_info->is_owner
+unmap_ret == RM_OK
+memparcel: Failed to get VM ACL info %d
+find_ret.status != NULL
+key < dict->capacity
+Error: failed to add hlos rm rpc vdevice, err(%x)
+Failed: to find peer VM(%d)
+ras handler VM already exists
+handle_vcpu: failed create vpm group
+vm-attrs
+amu-counting-disabled
+affinity-map
+Mapping SMMU 0x%x context bank %d failed for VM %d
+dto_construct_append_capid
+vm->vm_config != NULL
+accept iomem mp (label %d) failed %d
+qcom,shared-memory
+#clock-cells
+clock-names
+qcom,gunyah-hypervisor-1.0
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/platform/qcom/src/smc_wait_queue.c
+smc_wait_queue_vm_config_add
+get_platform_match_dtb
+Error: no DTB segment found
+Error: failed to find image memparcel
+platform_dto_finalise
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/memparcel/mem_region.c
+region_list_get_len
+ret.status != NULL
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/rpc/rm-rpc.c
+!util_add_overflows(left->size, right->size)
+vm_config_get_resource_descs
+vm_config_set_irq_manager
+Error: failed to add hlos watchdog, err(%x)
+vm_config_add_shm
+handle_vcpu: failed attach vic
+handle_vcpu: failed create thread
+Failed: to bind tx virq
+Error: failed to handle interrupt controller
+tx_message_size
+virtio,mmio
+Error: vm %d failed to attach info area, error %d
+!util_add_overflows(vm->ramfs_offset, vm->vm_config->mem_ipa_base)
+Error: failed to convert guid to string
+arm,primecell
+qcom,vendor
+qcom_tzlog
+(id_msg + id_msg_size) == buf8
+Warning: failed to find segment ramdisk segment index
+variant skip: expect(0x%x) dtb(0x%x)
+Error: image memparcel is not exclusive to VM
+Error: unexpected value in PIL image ehdr
+irq_manager_return_virq
+handle_accept: handle(0x%x) virq_num(%d)
+MEM_QCOM_LOOKUP_SGL: from:%d handle:%d ret=%d
+add_sgl_to_mp
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/vm_config/dtb_parser.c
+self_vm != NULL
+Error: address space limits out of range
+qcom,resource-manager-1-0
+Error: failed to update platform vm_config
+handle_vcpu: invalid timeslice
+Error: failed to handle rm rpcs
+Error: failed to handle watchdog
+smmu-handle
+Warning: base-address not 2MB aligned, aligning up
+Failed to allocate IPA for vRTC at %lu, error %d
+vm_console: Failed to send char notification
+Error: vm %d failed to look up memparcel %d
+Error: vm %d failed to allocate config
+vm_creation_process_resource
+SMMU: Can not find node %s in device tree
+rmlog-size
+svm_poweron: ret %d
+vm not ready
+failed to init VM smc_waitqs, ret = %d
+Error: phdr %d is outside image memparcel
+Error: invalid ramfs idx(%u) seg cnt(%zu)
+dto_finalise
+cur_level < MAX_LEVEL
+irq_info->is_reserved
+virq_handle_manager_get
+irq_manager_reclaim_irq
+vm_info_get_ipa
+/local/mnt/workspace/CRMBuilds/de49de7d-db0e-4ec6-2be4-08de71ac5d65/b/trustzone_images/core/kernel/hypervisor-rm/resource-manager/src/preempt/preempt.c
+len <= alloc_size
+allocator != NULL
+find_neighbor_range
+next_depth == cur_depth
+Error: array property "%s" has misaligned size %zd
+Error: invalid vcpu cnt(%zu) vs max cores(%u)
+handle_vcpu: activated VCPU %d with VIRQ %d
+vm_config_add_msgqueue_pair
+handle_msgqueue_pair_destruction
+cfg != NULL
+handle_vcpu: failed add_vpm_group
+^/qcom,vm-config$
+Missing num-smrs in vsmmu config
+allocate-base
+%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x
+Error: vm %d memory setup failed, error %d
+parse_ret.r != NULL
+VM_AUTH_IMAGE: from:%d truncated, length %zd < %zd
+VM_AUTH_IMAGE: from:%d vmid:%d
+map_dtb: ret %d
+error: %s: accept failed (%d)
+qcom,rm-attributes
+Warning: accept private mp %#x failed: %d
+%s/vrtc-pclk
+qcom,gunyah-hypervisor
+qcom,gunyah-vm
+Error: failed to parse peer id %s
+guid_len == VM_GUID_LEN
+allocated vmid=%d
+Error: failed to duplicate peer id for lookup
+vm not running
+/__fixups__
+Enabled UART driver
+platform_config_update_parsed
+vm->vm_config->platform.smc_wait_queues_virq >= 32
+vm_memory_lookup
+irq_info->is_owner
+virq_num != VIRQ_INVALID
+info->owner_info == get_ret.info
+free_allocated_ipas
+rm-rpc: Failed to allocate recv buffer for VM %d, message ID %lx
+!util_add_overflows(left->size, size)
+vector_resize
+vpm != NULL
+Failed: to bind db virq(%d) err(0x%x)
+/hypervisor/qcom,message-queue
+backend != frontend
+Failed: invalid peer
+message-queue-pair
+size-min
+vRTC error: Base and allocate-base both present
+(size_t)snp_name_ret <= sz
+Error: vm %d failed to configure cspace, error %d
+Error: vm %d failed to activate cspace, error %d
+Error: vm %d platform_vm_create failed (%d)
+%s: node %s has no label 
+patch_resmem_nodes
+qcom,owner-vmid
+rmlog-address
+%04x%04x-%04x-%04x-%04x-%04x%04x%04x
+[[:digit:]]
+qcom,secdomain-ids
+Plat IDs: chip_id(0x%x) chip_version(0x%x) foundry_id(0x%x) platform_type(0x%x) platform_version(0x%x) platform_subtype(0x%x) hlos_subtype(0x%x)
+Error: no or invalid segments
+Error: failed to unmap PIL image
+dto_modify_begin_by_path
+dto_property_add_empty
+info->is_mapped
+handle_release: handle(0x%x)
+region_list_push_back
+memparcel: acl[%d]: invalid vmid or rights
+memparcel_notify: mem-info-tag (%x) and request tag (%x) mismatch, flags(%x)
+mem_type != MEM_TYPE_IO
+memparcel_read_lists
+util_is_p2(alignment)
+vmcfg->vm != NULL
+handle_vcpu: failed set priority
+handle_vcpu: failed set affinity
+msgqueue_pair: cannot setup peer as itself
+Failed: to shm alloc generate string
+Error: failed to handle irqs
+doorbell
+kernel-entry-offset
+cpu-idle-states
+boot_vcpu != CSPACE_CAP_INVALID
+Error: vm %d failed to activate watchdog, error %d
+store_cells
+qcom,rm-acl
+qcom,qcom-oem
+clock-frequency
+simple-bus
+qcom,gunyah-vm-id-1.0
+qcom,gh-watchdog
+failed to create hlos vm_t
+VM_START: from:%d vmid:%d
+?0123456789ABCDEF
+ !"#$$%%&&''(((())))****++++,,,,,,,,--------........////////
+%&'()*+,
+BCDEFGHI
+!`,a,b,k
+r,s,u,v,~,?
+$%&'()*+
+23456789
+[\]^_`ab
+Illegal byte sequence
+Domain error
+Result not representable
+Not a tty
+Permission denied
+Operation not permitted
+No such file or directory
+No such process
+File exists
+Value too large for data type
+No space left on device
+Out of memory
+Resource busy
+Interrupted system call
+Resource temporarily unavailable
+Invalid seek
+Cross-device link
+Read-only file system
+Directory not empty
+Connection reset by peer
+Operation timed out
+Connection refused
+Host is down
+Host is unreachable
+Address in use
+Broken pipe
+I/O error
+No such device or address
+Block device required
+No such device
+Not a directory
+Is a directory
+Text file busy
+Exec format error
+Invalid argument
+Argument list too long
+Symbolic link loop
+Filename too long
+Too many open files in system
+No file descriptors available
+Bad file descriptor
+No child process
+Bad address
+File too large
+Too many links
+No locks available
+Resource deadlock would occur
+State not recoverable
+Previous owner died
+Operation canceled
+Function not implemented
+No message of desired type
+Identifier removed
+Device not a stream
+No data available
+Device timeout
+Out of streams resources
+Link has been severed
+Protocol error
+Bad message
+File descriptor in bad state
+Not a socket
+Destination address required
+Message too large
+Protocol wrong type for socket
+Protocol not available
+Protocol not supported
+Socket type not supported
+Not supported
+Protocol family not supported
+Address family not supported by protocol
+Address not available
+Network is down
+Network unreachable
+Connection reset by network
+Connection aborted
+No buffer space available
+Socket is connected
+Socket not connected
+Cannot send after socket shutdown
+Operation already in progress
+Operation in progress
+Stale file handle
+Remote I/O error
+Quota exceeded
+No medium found
+Wrong medium type
+No error information
+h"@9i&@9j*@9k.@9
+7h"@9i&@9j*@9k.@9
+*i,86i+8
+@9n	@9oM@8p
+@9k	@915@9
+@9-	@92!
+j";9(1;9
+kkkxLilx
+j	@9)a@9_
+Jihx_!!k
+,khxKihx
+	 @y?!(k
+*Ac@y@g@yW
+Rac@y`g@yi
+ac@y`g@yc
+.init_array
+.fini_array
+.eh_frame_hdr
+.data.rel.ro
+.rela.dyn
+.gnu.hash
+.eh_frame
+.dynamic
+.shstrtab
+IMAGE_VARIANT_STRING=RAHAANAAA
+OEM_IMAGE_VERSION_STRING=CRM
+QC_IMAGE_VERSION_STRING=TZ.XF.5.21-149633-2
+QCOM  2KDEMOCQ
+$DISPLAY
+$ECATS_TEST
+$EVA_CV_CPU
+$EVA_LSR
+$SDC1_EMMC
+Enabclk0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1301
+*SRoT MBNv7 Image Signing Root CA 6 SubCA 10
+260225134948Z
+280225134948Z0W1
+	San Diego1
+QUALCOMM1
+CASS - SBL40v0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1+0)
+"SRoT MBNv7 Image Signing Root CA 60
+200825220346Z
+300825220346Z0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1301
+*SRoT MBNv7 Image Signing Root CA 6 SubCA 10v0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1+0)
+"SRoT MBNv7 Image Signing Root CA 60 
+200825215431Z
+20500825215431Z0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1+0)
+"SRoT MBNv7 Image Signing Root CA 60v0
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175903Z
+20631121175903Z0|1 0
+Greatwhite_FW_Signing_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175853Z
+20631121175853Z0y1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175856Z
+20631121175856Z0y1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175858Z
+20631121175858Z0y1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175901Z
+20631121175901Z0y1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1

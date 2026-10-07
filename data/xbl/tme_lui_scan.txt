@@ -1,0 +1,3 @@
+TME (RISC-V) image: LUI with immediates 0x221c8, 0x221c2, 0x221c4, 0x221c0 -> 0 hits.
+Literal 0x221c8000 in TME image -> 0 hits.
+Conclusion: TME does not reference the QFPROM block directly in this build.

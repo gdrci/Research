@@ -1,0 +1,1509 @@
+[
+  {
+    "image": "abl.img",
+    "bytes": 339968,
+    "sha256": "52ee2dc8b6647ef385da7c33ec651bc61ed7ad645f02e1b7f9ed76155b0e5471",
+    "kind": "elf",
+    "elf": {
+      "class": 32,
+      "machine": "EM_ARM",
+      "entry": 2678063104,
+      "segments": [
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 0,
+          "filesz": 148,
+          "memsz": 0,
+          "flags": 117440512
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 2678063104,
+          "offset": 4096,
+          "filesz": 327680,
+          "memsz": 327680,
+          "flags": 7
+        },
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 331776,
+          "filesz": 6136,
+          "memsz": 6136,
+          "flags": 33554432
+        }
+      ]
+    }
+  },
+  {
+    "image": "aop.img",
+    "bytes": 241664,
+    "sha256": "5dd8c9c8a091dbff43cb6dca4d972ce036197d3b0d64ac20ab760229ebcc554c",
+    "kind": "elf",
+    "elf": {
+      "class": 32,
+      "machine": "EM_ARM",
+      "entry": 184549385,
+      "segments": [
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 0,
+          "filesz": 340,
+          "memsz": 0,
+          "flags": 117440512
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 184549376,
+          "offset": 340,
+          "filesz": 82992,
+          "memsz": 98304,
+          "flags": 7
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 185466880,
+          "offset": 83332,
+          "filesz": 32048,
+          "memsz": 32768,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 2155872256,
+          "offset": 115380,
+          "filesz": 39372,
+          "memsz": 81920,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 2155954176,
+          "offset": 154752,
+          "filesz": 0,
+          "memsz": 32768,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 2155986944,
+          "offset": 154756,
+          "filesz": 44756,
+          "memsz": 278528,
+          "flags": 7
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 342462464,
+          "offset": 199512,
+          "filesz": 16144,
+          "memsz": 16144,
+          "flags": 7
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 342511616,
+          "offset": 215656,
+          "filesz": 4096,
+          "memsz": 4096,
+          "flags": 6
+        },
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 221184,
+          "filesz": 16560,
+          "memsz": 16560,
+          "flags": 33554432
+        }
+      ]
+    }
+  },
+  {
+    "image": "aop_config.img",
+    "bytes": 16384,
+    "sha256": "a1b676d12b48a399d9a31f73f8995ace9842230a60ad2a6e9a0ae442dcc80fa5",
+    "kind": "elf",
+    "elf": {
+      "class": 32,
+      "machine": "EM_ARM",
+      "entry": 0,
+      "segments": [
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 0,
+          "filesz": 180,
+          "memsz": 0,
+          "flags": 117440512
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 2156396544,
+          "offset": 180,
+          "filesz": 3848,
+          "memsz": 3848,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 2156400640,
+          "offset": 4028,
+          "filesz": 418,
+          "memsz": 126976,
+          "flags": 7
+        },
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 8192,
+          "filesz": 6184,
+          "memsz": 6184,
+          "flags": 33554432
+        }
+      ]
+    }
+  },
+  {
+    "image": "bluetooth.img",
+    "bytes": 1224704,
+    "sha256": "9f22be3a573bc19072691713ab5511a3bdbe2a76a4084f5aa250131229b1f8e2",
+    "kind": "other"
+  },
+  {
+    "image": "boot.img",
+    "bytes": 100663296,
+    "sha256": "1090962994e0f779d447816ab53c98178014d5af42d387b03bd44eb186afce18",
+    "kind": "android-boot"
+  },
+  {
+    "image": "cpucp.img",
+    "bytes": 106496,
+    "sha256": "5e5b7cccd5b7c06d9a78674e054e6cce66d9d8c7e52454d010c453c82f735477",
+    "kind": "elf",
+    "elf": {
+      "class": 32,
+      "machine": "EM_RISCV",
+      "entry": 144,
+      "segments": [
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 0,
+          "filesz": 340,
+          "memsz": 0,
+          "flags": 117440512
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 0,
+          "offset": 4096,
+          "filesz": 30258,
+          "memsz": 30258,
+          "flags": 5
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 32768,
+          "offset": 36864,
+          "filesz": 4052,
+          "memsz": 4052,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 40960,
+          "offset": 40960,
+          "filesz": 1388,
+          "memsz": 1388,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 45056,
+          "offset": 45056,
+          "filesz": 4372,
+          "memsz": 4372,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 2159017984,
+          "offset": 53248,
+          "filesz": 18060,
+          "memsz": 18060,
+          "flags": 5
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 2159083520,
+          "offset": 73728,
+          "filesz": 10352,
+          "memsz": 10352,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 2159149056,
+          "offset": 86016,
+          "filesz": 0,
+          "memsz": 655360,
+          "flags": 6
+        },
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 86016,
+          "filesz": 16560,
+          "memsz": 16560,
+          "flags": 33554432
+        }
+      ]
+    }
+  },
+  {
+    "image": "devcfg.img",
+    "bytes": 57344,
+    "sha256": "e68dab205e07e54f1b23569041c4f54ea5eb9ec0a5354c6a1dd2e0440ab92998",
+    "kind": "elf",
+    "elf": {
+      "class": 64,
+      "machine": "EM_AARCH64",
+      "entry": 469762048,
+      "segments": [
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 0,
+          "filesz": 288,
+          "memsz": 0,
+          "flags": 117440512
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 469762048,
+          "offset": 4096,
+          "filesz": 40816,
+          "memsz": 40816,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 2155859968,
+          "offset": 45056,
+          "filesz": 2556,
+          "memsz": 2556,
+          "flags": 6
+        },
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 49152,
+          "filesz": 6184,
+          "memsz": 6184,
+          "flags": 33554432
+        }
+      ]
+    }
+  },
+  {
+    "image": "dsp.img",
+    "bytes": 67108864,
+    "sha256": "f5fcc454f532dd24352332d4ceeb0310c33ef6cf5698c952ab7e3064c0c947f5",
+    "kind": "other"
+  },
+  {
+    "image": "dtbo.img",
+    "bytes": 24117248,
+    "sha256": "06f4125311547a8e2d4d11fa0917028ae0446638d8f3e7628a9aa482d3a150b7",
+    "kind": "dtbo"
+  },
+  {
+    "image": "featenabler.img",
+    "bytes": 90112,
+    "sha256": "4fb8c054e494935b85a08cc3ba2ac54a466bb3389d7a09018a967dfa387c3c15",
+    "kind": "elf",
+    "elf": {
+      "class": 64,
+      "machine": "EM_AARCH64",
+      "entry": 0,
+      "segments": [
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 0,
+          "filesz": 568,
+          "memsz": 0,
+          "flags": 117440512
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 0,
+          "offset": 4096,
+          "filesz": 47268,
+          "memsz": 47268,
+          "flags": 5
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 49152,
+          "offset": 53248,
+          "filesz": 240,
+          "memsz": 240,
+          "flags": 67108870
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 53248,
+          "offset": 57344,
+          "filesz": 472,
+          "memsz": 472,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 57344,
+          "offset": 61440,
+          "filesz": 913,
+          "memsz": 913,
+          "flags": 6
+        },
+        {
+          "type": "PT_DYNAMIC",
+          "vaddr": 61440,
+          "offset": 65536,
+          "filesz": 304,
+          "memsz": 304,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 61440,
+          "offset": 65536,
+          "filesz": 8928,
+          "memsz": 8928,
+          "flags": 6
+        },
+        {
+          "type": "PT_GNU_RELRO",
+          "vaddr": 53248,
+          "offset": 57344,
+          "filesz": 472,
+          "memsz": 472,
+          "flags": 6
+        },
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 77824,
+          "filesz": 11232,
+          "memsz": 11232,
+          "flags": 33554432
+        }
+      ]
+    }
+  },
+  {
+    "image": "hyp.img",
+    "bytes": 1228800,
+    "sha256": "2cccff6da124a373e512aa816eb7082e0c34932a5759171c49e79e7403856086",
+    "kind": "elf",
+    "elf": {
+      "class": 64,
+      "machine": "EM_AARCH64",
+      "entry": 2147483648,
+      "segments": [
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 0,
+          "filesz": 568,
+          "memsz": 0,
+          "flags": 117440512
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 0,
+          "offset": 4096,
+          "filesz": 586176,
+          "memsz": 586176,
+          "flags": 5
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 589824,
+          "offset": 593920,
+          "filesz": 147552,
+          "memsz": 147552,
+          "flags": 4
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 741376,
+          "offset": 745472,
+          "filesz": 392,
+          "memsz": 392,
+          "flags": 6
+        },
+        {
+          "type": "PT_DYNAMIC",
+          "vaddr": 741376,
+          "offset": 745472,
+          "filesz": 392,
+          "memsz": 392,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 745472,
+          "offset": 749568,
+          "filesz": 322912,
+          "memsz": 322912,
+          "flags": 4
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 2097152,
+          "offset": 1114112,
+          "filesz": 90144,
+          "memsz": 289264,
+          "flags": 6
+        },
+        {
+          "type": "PT_TLS",
+          "vaddr": 0,
+          "offset": 1204256,
+          "filesz": 0,
+          "memsz": 2652,
+          "flags": 6
+        },
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 1208320,
+          "filesz": 16560,
+          "memsz": 16560,
+          "flags": 33554432
+        }
+      ]
+    }
+  },
+  {
+    "image": "imagefv.img",
+    "bytes": 20480,
+    "sha256": "dfb6bb67b8cff059727578739013bc77a8f16b0d478381b8edec64d2edb2d4ec",
+    "kind": "elf",
+    "elf": {
+      "class": 32,
+      "machine": "EM_ARM",
+      "entry": 0,
+      "segments": [
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 0,
+          "filesz": 148,
+          "memsz": 0,
+          "flags": 117440512
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 0,
+          "offset": 4096,
+          "filesz": 8192,
+          "memsz": 8192,
+          "flags": 7
+        },
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 12288,
+          "filesz": 6136,
+          "memsz": 6136,
+          "flags": 33554432
+        }
+      ]
+    }
+  },
+  {
+    "image": "keymaster.img",
+    "bytes": 368640,
+    "sha256": "5fd33a616ef98f4894ed20d7d68cf7a516e4ba4eb4cc667c0aeff37306ac798d",
+    "kind": "elf",
+    "elf": {
+      "class": 64,
+      "machine": "EM_AARCH64",
+      "entry": 0,
+      "segments": [
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 0,
+          "filesz": 568,
+          "memsz": 0,
+          "flags": 117440512
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 0,
+          "offset": 4096,
+          "filesz": 322432,
+          "memsz": 322432,
+          "flags": 5
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 323584,
+          "offset": 327680,
+          "filesz": 221,
+          "memsz": 221,
+          "flags": 67108870
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 327680,
+          "offset": 331776,
+          "filesz": 2824,
+          "memsz": 2824,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 331776,
+          "offset": 335872,
+          "filesz": 6728,
+          "memsz": 6728,
+          "flags": 6
+        },
+        {
+          "type": "PT_DYNAMIC",
+          "vaddr": 339968,
+          "offset": 344064,
+          "filesz": 304,
+          "memsz": 304,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 339968,
+          "offset": 344064,
+          "filesz": 14909,
+          "memsz": 14909,
+          "flags": 6
+        },
+        {
+          "type": "PT_GNU_RELRO",
+          "vaddr": 327680,
+          "offset": 331776,
+          "filesz": 2824,
+          "memsz": 2824,
+          "flags": 6
+        },
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 360448,
+          "filesz": 6424,
+          "memsz": 6424,
+          "flags": 33554432
+        }
+      ]
+    }
+  },
+  {
+    "image": "modem.img",
+    "bytes": 38522880,
+    "sha256": "04030355fff6a1d9a22385b2567517e0b095ab6be19adfbbebf63557035dc36c",
+    "kind": "other"
+  },
+  {
+    "image": "multiimgoem.img",
+    "bytes": 16384,
+    "sha256": "549fdf6e632cca8e693a64d8becaac07ca5238183e7b6f8a27a5953253f8cc86",
+    "kind": "elf",
+    "elf": {
+      "class": 64,
+      "machine": "EM_ARM",
+      "entry": 346017792,
+      "segments": [
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 0,
+          "filesz": 232,
+          "memsz": 0,
+          "flags": 117440512
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 346017792,
+          "offset": 4096,
+          "filesz": 944,
+          "memsz": 944,
+          "flags": 0
+        },
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 8192,
+          "filesz": 6136,
+          "memsz": 6136,
+          "flags": 33554432
+        }
+      ]
+    }
+  },
+  {
+    "image": "multiimgqti.img",
+    "bytes": 12288,
+    "sha256": "adbf4e1889010b1f2a2d9b79f8f8146dfcc4f06523d37edd3bfd06f03d0c3883",
+    "kind": "elf",
+    "elf": {
+      "class": 64,
+      "machine": "EM_ARM",
+      "entry": 346017792,
+      "segments": [
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 0,
+          "filesz": 232,
+          "memsz": 0,
+          "flags": 117440512
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 346017792,
+          "offset": 4096,
+          "filesz": 608,
+          "memsz": 608,
+          "flags": 0
+        },
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 8192,
+          "filesz": 3896,
+          "memsz": 3896,
+          "flags": 33554432
+        }
+      ]
+    }
+  },
+  {
+    "image": "odm.img",
+    "bytes": 53850112,
+    "sha256": "ac0b4ced2453ee3e90ecb74a1a3b43ff1aef2456e4842fbd0d54f2429427c2f0",
+    "kind": "other"
+  },
+  {
+    "image": "product.img",
+    "bytes": 660692992,
+    "sha256": "fe4d2069f03080aa92ec637901248e8eba18097581dad6345c2ab4ccd8343db1",
+    "kind": "other"
+  },
+  {
+    "image": "qupfw.img",
+    "bytes": 65536,
+    "sha256": "9a219b19e6a0654b385f1cb74054d8aa395fa38ad730684043d36f30f40faf1c",
+    "kind": "elf",
+    "elf": {
+      "class": 32,
+      "machine": "EM_QDSP6",
+      "entry": 0,
+      "segments": [
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 0,
+          "filesz": 468,
+          "memsz": 0,
+          "flags": 117440512
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 4096,
+          "offset": 4096,
+          "filesz": 16488,
+          "memsz": 16488,
+          "flags": 134217735
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 20584,
+          "offset": 20584,
+          "filesz": 1403,
+          "memsz": 1403,
+          "flags": 134217735
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 21992,
+          "offset": 21992,
+          "filesz": 1461,
+          "memsz": 1461,
+          "flags": 134217735
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 23456,
+          "offset": 23456,
+          "filesz": 1925,
+          "memsz": 1925,
+          "flags": 134217735
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 25384,
+          "offset": 25384,
+          "filesz": 4217,
+          "memsz": 4217,
+          "flags": 134217735
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 29608,
+          "offset": 29608,
+          "filesz": 4453,
+          "memsz": 4453,
+          "flags": 134217735
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 34064,
+          "offset": 34064,
+          "filesz": 1817,
+          "memsz": 1817,
+          "flags": 134217735
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 35888,
+          "offset": 35888,
+          "filesz": 2141,
+          "memsz": 2141,
+          "flags": 134217735
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 38032,
+          "offset": 38032,
+          "filesz": 724,
+          "memsz": 724,
+          "flags": 134217735
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 38760,
+          "offset": 38760,
+          "filesz": 2189,
+          "memsz": 2189,
+          "flags": 134217735
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 40952,
+          "offset": 40952,
+          "filesz": 2125,
+          "memsz": 2125,
+          "flags": 134217735
+        },
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 45056,
+          "filesz": 16752,
+          "memsz": 16752,
+          "flags": 33554432
+        }
+      ]
+    }
+  },
+  {
+    "image": "recovery.img",
+    "bytes": 104857600,
+    "sha256": "217ce83238d1d5ada255ff68bd0adde416edf32d3a9fd5bf7750b31ec7993b7e",
+    "kind": "android-boot"
+  },
+  {
+    "image": "shrm.img",
+    "bytes": 61440,
+    "sha256": "66bb5cc9c5fbd4def0d888cac680ab932507338f3d658c28bb30dca5da3016af",
+    "kind": "elf",
+    "elf": {
+      "class": 32,
+      "machine": "EM_RISCV",
+      "entry": 2097152,
+      "segments": [
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 0,
+          "filesz": 180,
+          "memsz": 0,
+          "flags": 117440512
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 2097152,
+          "offset": 4096,
+          "filesz": 21892,
+          "memsz": 21892,
+          "flags": 5
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 4194304,
+          "offset": 28672,
+          "filesz": 13280,
+          "memsz": 13280,
+          "flags": 6
+        },
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 45056,
+          "filesz": 16320,
+          "memsz": 16320,
+          "flags": 33554432
+        }
+      ]
+    }
+  },
+  {
+    "image": "system.img",
+    "bytes": 1456967680,
+    "sha256": "ab778a176c3b30fcb3322a3259cd88baf16c19ebdcc8e4862ec65fe365fe02a2",
+    "kind": "other"
+  },
+  {
+    "image": "system_ext.img",
+    "bytes": 417329152,
+    "sha256": "8665f5e948600d03fc1d29e2fdf518ce252d842c629ded9e7ac2ae64e28b2235",
+    "kind": "other"
+  },
+  {
+    "image": "tz.img",
+    "bytes": 3469312,
+    "sha256": "4e418f8343771347ec313c9fa951e1328385fc8e52aec2cb45a50e70362ac12c",
+    "kind": "elf",
+    "elf": {
+      "class": 64,
+      "machine": "EM_AARCH64",
+      "entry": 342360064,
+      "segments": [
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 0,
+          "filesz": 2024,
+          "memsz": 0,
+          "flags": 117440512
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 342360064,
+          "offset": 4096,
+          "filesz": 44684,
+          "memsz": 44684,
+          "flags": 7
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 342405120,
+          "offset": 49152,
+          "filesz": 8708,
+          "memsz": 8708,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 342425600,
+          "offset": 61440,
+          "filesz": 6088,
+          "memsz": 6088,
+          "flags": 7
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 342433792,
+          "offset": 69632,
+          "filesz": 5240,
+          "memsz": 5240,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 469819392,
+          "offset": 77824,
+          "filesz": 34560,
+          "memsz": 34560,
+          "flags": 5
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 469856256,
+          "offset": 114688,
+          "filesz": 39152,
+          "memsz": 39152,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 469897216,
+          "offset": 155648,
+          "filesz": 41104,
+          "memsz": 41104,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 469970944,
+          "offset": 200704,
+          "filesz": 1081492,
+          "memsz": 1081492,
+          "flags": 5
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 471056384,
+          "offset": 1286144,
+          "filesz": 72208,
+          "memsz": 72208,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 471130112,
+          "offset": 1359872,
+          "filesz": 671104,
+          "memsz": 671104,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 471801856,
+          "offset": 2031616,
+          "filesz": 0,
+          "memsz": 0,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 472367104,
+          "offset": 2031616,
+          "filesz": 48864,
+          "memsz": 380928,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 472748032,
+          "offset": 2080768,
+          "filesz": 0,
+          "memsz": 65536,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 472813568,
+          "offset": 2080768,
+          "filesz": 65536,
+          "memsz": 65536,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 472907776,
+          "offset": 2146304,
+          "filesz": 615,
+          "memsz": 615,
+          "flags": 4
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 472911872,
+          "offset": 2150400,
+          "filesz": 543016,
+          "memsz": 543016,
+          "flags": 5
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 473456640,
+          "offset": 2695168,
+          "filesz": 5264,
+          "memsz": 5264,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 473464832,
+          "offset": 2703360,
+          "filesz": 33990,
+          "memsz": 33990,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 473501696,
+          "offset": 2740224,
+          "filesz": 219720,
+          "memsz": 219720,
+          "flags": 5
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 473722880,
+          "offset": 2961408,
+          "filesz": 262,
+          "memsz": 262,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 473726976,
+          "offset": 2965504,
+          "filesz": 4168,
+          "memsz": 4168,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 473735168,
+          "offset": 2973696,
+          "filesz": 27656,
+          "memsz": 27656,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 473763840,
+          "offset": 3002368,
+          "filesz": 48165,
+          "memsz": 48165,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 473812992,
+          "offset": 3051520,
+          "filesz": 140450,
+          "memsz": 140450,
+          "flags": 5
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 473956352,
+          "offset": 3194880,
+          "filesz": 263,
+          "memsz": 263,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 473960448,
+          "offset": 3198976,
+          "filesz": 2168,
+          "memsz": 2168,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 473964544,
+          "offset": 3203072,
+          "filesz": 149592,
+          "memsz": 149592,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 474116096,
+          "offset": 3354624,
+          "filesz": 26846,
+          "memsz": 26846,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 474144768,
+          "offset": 3383296,
+          "filesz": 33954,
+          "memsz": 33954,
+          "flags": 5
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 474181632,
+          "offset": 3420160,
+          "filesz": 206,
+          "memsz": 206,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 474185728,
+          "offset": 3424256,
+          "filesz": 632,
+          "memsz": 632,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 474189824,
+          "offset": 3428352,
+          "filesz": 4424,
+          "memsz": 4424,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 474198016,
+          "offset": 3436544,
+          "filesz": 9510,
+          "memsz": 9510,
+          "flags": 6
+        },
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 3448832,
+          "filesz": 17808,
+          "memsz": 17808,
+          "flags": 33554432
+        }
+      ]
+    }
+  },
+  {
+    "image": "uefi.img",
+    "bytes": 2670592,
+    "sha256": "f63acf3695c97d99cec5cc5c5306cafa006fc2d4defb050c5be7e588b6e84299",
+    "kind": "elf",
+    "elf": {
+      "class": 64,
+      "machine": "EM_ARM",
+      "entry": 2801795072,
+      "segments": [
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 0,
+          "filesz": 232,
+          "memsz": 0,
+          "flags": 117440512
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 2801795072,
+          "offset": 4096,
+          "filesz": 2658304,
+          "memsz": 2658304,
+          "flags": 7
+        },
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 2662400,
+          "filesz": 6136,
+          "memsz": 6136,
+          "flags": 33554432
+        }
+      ]
+    }
+  },
+  {
+    "image": "uefisecapp.img",
+    "bytes": 180224,
+    "sha256": "d6d3997f7bacf744767c8ec56ce8fa9bae495fbb09b199a86f9a6ed77b6a8253",
+    "kind": "elf",
+    "elf": {
+      "class": 64,
+      "machine": "EM_AARCH64",
+      "entry": 0,
+      "segments": [
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 0,
+          "filesz": 568,
+          "memsz": 0,
+          "flags": 117440512
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 0,
+          "offset": 4096,
+          "filesz": 95098,
+          "memsz": 95098,
+          "flags": 5
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 98304,
+          "offset": 102400,
+          "filesz": 215,
+          "memsz": 215,
+          "flags": 67108870
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 102400,
+          "offset": 106496,
+          "filesz": 1120,
+          "memsz": 1120,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 106496,
+          "offset": 110592,
+          "filesz": 33624,
+          "memsz": 33624,
+          "flags": 6
+        },
+        {
+          "type": "PT_DYNAMIC",
+          "vaddr": 143360,
+          "offset": 147456,
+          "filesz": 304,
+          "memsz": 304,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 143360,
+          "offset": 147456,
+          "filesz": 21380,
+          "memsz": 21380,
+          "flags": 6
+        },
+        {
+          "type": "PT_GNU_RELRO",
+          "vaddr": 102400,
+          "offset": 106496,
+          "filesz": 1120,
+          "memsz": 1120,
+          "flags": 6
+        },
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 172032,
+          "filesz": 6424,
+          "memsz": 6424,
+          "flags": 33554432
+        }
+      ]
+    }
+  },
+  {
+    "image": "vbmeta.img",
+    "bytes": 8192,
+    "sha256": "340ffff6c7658bf2497f2cf91cd1e37d03f8327659fb2dcad06a44d2088fca5b",
+    "kind": "avb-vbmeta"
+  },
+  {
+    "image": "vbmeta_system.img",
+    "bytes": 4096,
+    "sha256": "cd898111d5762a2d1fcd05f9d7e01db939aac80ab0cba9950ccafda34973262f",
+    "kind": "avb-vbmeta"
+  },
+  {
+    "image": "vendor.img",
+    "bytes": 460947456,
+    "sha256": "40e7f65885ef2b2bcde1a280d0412514717bf1b50d9ef80c10458849fd32b3c2",
+    "kind": "other"
+  },
+  {
+    "image": "vendor_boot.img",
+    "bytes": 100663296,
+    "sha256": "586e4d32ed1b2cf032e11812f1e49adf68ea3501991921ca28ec6be914a10d41",
+    "kind": "android-vendor-boot"
+  },
+  {
+    "image": "xbl.img",
+    "bytes": 978944,
+    "sha256": "939e0acc0455b166d697a1e3056e792f62e3e55341718fc1fdcdf1a087f3ba2c",
+    "kind": "elf",
+    "elf": {
+      "class": 32,
+      "machine": "EM_M32 (1; odd for XBL, see docs/03)",
+      "entry": 571588608,
+      "segments": [
+        {
+          "type": "PT_LOAD",
+          "vaddr": 571588608,
+          "offset": 116,
+          "filesz": 114688,
+          "memsz": 114688,
+          "flags": 16777223
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 571748352,
+          "offset": 114804,
+          "filesz": 640,
+          "memsz": 640,
+          "flags": 16777223
+        }
+      ]
+    }
+  },
+  {
+    "image": "xbl_config.img",
+    "bytes": 147456,
+    "sha256": "641bcf3201b87e81b8582ce5106141d5f950de44976e1e146f851c0e3f1dfa29",
+    "kind": "elf",
+    "elf": {
+      "class": 64,
+      "machine": "EM_M32 (1; odd for XBL, see docs/03)",
+      "entry": 345300992,
+      "segments": [
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 0,
+          "filesz": 680,
+          "memsz": 0,
+          "flags": 117440512
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 345300992,
+          "offset": 680,
+          "filesz": 508,
+          "memsz": 508,
+          "flags": 16777223
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 345301500,
+          "offset": 1188,
+          "filesz": 34820,
+          "memsz": 34820,
+          "flags": 16777223
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 345336320,
+          "offset": 36008,
+          "filesz": 34820,
+          "memsz": 34820,
+          "flags": 16777223
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 345371140,
+          "offset": 70828,
+          "filesz": 5240,
+          "memsz": 5240,
+          "flags": 16777223
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 345376380,
+          "offset": 76068,
+          "filesz": 13304,
+          "memsz": 13304,
+          "flags": 16777223
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 345389684,
+          "offset": 89372,
+          "filesz": 47232,
+          "memsz": 47232,
+          "flags": 16777223
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 345436916,
+          "offset": 136604,
+          "filesz": 356,
+          "memsz": 356,
+          "flags": 16777223
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 345437272,
+          "offset": 136960,
+          "filesz": 356,
+          "memsz": 356,
+          "flags": 16777223
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 345437628,
+          "offset": 137316,
+          "filesz": 356,
+          "memsz": 356,
+          "flags": 16777223
+        },
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 139264,
+          "filesz": 6520,
+          "memsz": 6520,
+          "flags": 33554432
+        }
+      ]
+    }
+  },
+  {
+    "image": "xbl_ramdump.img",
+    "bytes": 708608,
+    "sha256": "0510b3aa533838294a38bba9af6ad4dc68e3db0d567160d399d2e014c58356ae",
+    "kind": "elf",
+    "elf": {
+      "class": 64,
+      "machine": "EM_AARCH64",
+      "entry": 2154037248,
+      "segments": [
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 0,
+          "filesz": 344,
+          "memsz": 0,
+          "flags": 117440512
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 2154037248,
+          "offset": 4096,
+          "filesz": 487424,
+          "memsz": 487424,
+          "flags": 5
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 2154553344,
+          "offset": 491520,
+          "filesz": 135168,
+          "memsz": 135168,
+          "flags": 6
+        },
+        {
+          "type": "PT_LOAD",
+          "vaddr": 2154688512,
+          "offset": 626688,
+          "filesz": 73728,
+          "memsz": 704512,
+          "flags": 6
+        },
+        {
+          "type": "PT_NULL",
+          "vaddr": 0,
+          "offset": 700416,
+          "filesz": 6232,
+          "memsz": 6232,
+          "flags": 33554432
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,1217 @@
+/A006_7_0100_0_dcb.bin
+/A006_7_0100_1_dcb.bin
+/cpr.bin
+pre-ddr-soc-greatwhite.dtb
+post-ddr-soc-greatwhite.dtb
+pre-ddr-sxr-aurora-1.0-overlay.dtbo
+pre-ddr-ssg-aurora-1.0-overlay.dtbo
+pre-ddr-ssg2-aurora-1.0-overlay.dtbo
+PLL Pre-Cal
+PLL Precal
+PLL DCC Monitor
+CLKIO DCC Monitor
+RDT4 DCC Monitor
+RCW CDC/Full Cycle Sweep
+LowSpeed DIT
+tWCK2DQI (DIT)
+CA CDC CF
+Write Level
+Global Vref CDC-2D
+Local Vref CDC-2D
+RDQS CDC CF
+RD_Matched_1TV
+RD_Matched_1UV
+RD_Matched_2OV
+RD_Matched_3RDQDCC
+RD_Matched_4RDQS_PB
+RD_Matched_4RDDQS
+PHY_SED_RD
+READ Scaling
+HighSpeed DIT
+DIT - Periodic Training
+DRAM Vref DQ CDC perbit
+DQ CDC perbit (NO VREF)
+PHY_SED_LP4_WR_Print
+Low Freq DQ CDC perbit
+	#	$	%	&	4	O	P	Q	R	`	{	|	}	~	
+PLL Pre-Cal
+PLL Precal
+GHS PLL DCC Monitor
+PLL DCC Monitor
+CLKIO DCC Monitor
+RDT4 DCC Monitor
+RCW CDC/Full Cycle Sweep
+LowSpeed DIT
+tWCK2DQI (DIT)
+CA CDC CF
+Write Level
+Global Vref CDC-2D
+Local Vref CDC-2D
+RDQS CDC CF
+RD_Matched_1TV
+RD_Matched_1UV
+RD_Matched_2OV
+RD_Matched_3RDQDCC
+RD_Matched_4RDQS_PB
+RD_Matched_4RDDQS
+PHY_SED_RD
+READ Scaling
+HighSpeed DIT
+DIT - Periodic Training
+DRAM Vref DQ CDC perbit
+DRAM Vref
+DRAM Vref DQ CDC
+DRAM Vref DQ DCC
+DQ CDC perbit (NO VREF)
+PHY_SED_LP4_WR_Print
+Low Freq DQ CDC perbit
+qcom,aurora
+qcom,aurora
+ddr_common_dt
+qcom,ddr_common_dt
+ddr_target_dt
+qcom,ddr_target_dt
+buttons-config
+qcom,pm-button
+platform-key-maps
+qcom,pm-keymap
+PlatformInfo
+qcom,platforminfo
+pinctrl@f100000
+qcom,aurora-pinctrl
+sdc0@7C4000
+qcom,sdcc
+HsrSettings
+qcom,seclib
+BootTempBsp
+qcom,BootTempBsp
+BootTempThres
+i2c@900000
+qcom,i2c-controller
+i2c_device_config_5@5
+|gcc_qupv3_wrap0_s4_clk
+i2c_device_config_6@6
+|gcc_qupv3_wrap0_s5_clk
+i2c_device_config_9@9
+|gcc_qupv3_wrap1_s2_clk
+i2c_device_config_11@b
+|gcc_qupv3_wrap1_s4_clk
+qcom,boot
+forced_download
+fedl_timeout
+qcom,pm-pon
+s2-kpdpwr
+s2-kpdpwr-resin
+s2-resin
+s3-reset
+uvlo-config
+ovlo-config
+long-pwrkey-dbnc-chk
+qcom,pm-display
+qcom,pm-haptics
+led-config
+qcom,pm-camera
+sw-config
+qcom,pm-sw
+qcom,pm-lockbit
+qcom,arb_mgpi
+qcom,arb_pvc
+mgpi-addr
+spmi-vadc@0
+qcom,spmi-vadc
+vadc_ch_cfg
+PMIC_TEMP
+	6/sw/pmic/adc/vadc/spmi-vadc@0/therm_table/therm_tb@2
+SYS_THERM2
+	6/sw/pmic/adc/vadc/spmi-vadc@0/therm_table/therm_tb@3
+vadc-avg-ch
+	@XO_THERM_GPS
+	HXO_THERM_GPS_LOW
+	QXO_THERM_GPS_MED
+	ZXO_THERM_GPS_HIGH
+gpio-map
+therm_table
+therm_tb@1
+therm_tb@2
+therm_tb@3
+qcom,smem
+smem-partitions
+__symbols__
+/soc/pinctrl@f100000
+/sw/pmic/pm/pon
+/sw/pmic/arb/access
+/sw/pmic/adc/vadc/spmi-vadc@0/therm_table
+/sw/pmic/adc/vadc/spmi-vadc@0/therm_table/therm_tb@1
+/sw/pmic/adc/vadc/spmi-vadc@0/therm_table/therm_tb@2
++/sw/pmic/adc/vadc/spmi-vadc@0/therm_table/therm_tb@3
+	compatible
+#address-cells
+#size-cells
+print_severity_dt
+ddr_log_level_dt
+mte_disable
+gpio-configs
+key-maps
+PlatformInfo
+gpio-controller
+#gpio-cells
+qcom,sleep-config
+EnableLogging
+DriveStrength
+MaxSpeedMode
+DLLConfig
+DLLConfig2
+DLLConfig3
+DLLTestCtrl
+DDRConfig
+DLLUserCtrl
+pimem_max_storage_size
+nUpperThresholdDegC
+nLowerThresholdDegC
+uMaxNumIterations
+uWaitPerIterationMicroSec
+core_base_addr
+common_base_addr
+core_offset
+qupv3_instance
+core_index
+se_index
+gpi_index
+core_irq
+polled_mode
+min_data_length_for_dma
+scl_encoding
+sda_encoding
+tcsr_reg_offset
+tcsr_base_addr
+tcsr_reg_value
+se_clock
+test_mode
+xbl_sc_wdog
+xbl_ramdump_wdog
+skip_ddr_init_in_EDL
+vibration
+save_logs_to_media
+check_usb_option
+check_dp_timeout
+ignore_pwr_key
+ignore_vol_keys
+reset-type
+smpl-delay
+timer-value-ms
+config-value
+dbnc-time-ms
+swire-map
+apply-default-volt
+default-elvss
+default-elvdd
+default-oledb
+ext-boost-vdd
+vmax-hdrm
+autores-cfg
+vbatt-min
+boost-cfg-bob
+lra-resistance
+swr-io-volt
+parallel-charger
+charger-pmic-index
+loader-dbc-threshold
+dbc-sdp-thd-inc
+skip-loader-dbc
+core-dbc-threshold
+skip-core-dbc
+uv-oc-1s-threshold
+uv-oc-2s-threshold
+apply-ichg-fs
+batt-2s-option
+too-hot-afp-threshold
+apply-too-hot-afp
+too-cold-afp-threshold
+apply-too-cold-afp
+apply-boot-wo-batt
+icl-boot-wo-batt
+apply-float-voltage
+float-voltage-mv
+apply-pre-charge-current
+pre-charge-ma
+apply-fast-charge-current
+fast-charge-ma
+apply-icl
+apply-float-charger-icl
+float-charger-icl-ma
+dam-cable-enable
+apply-vsysmin
+usb-suspend
+wls-usb-prior-swap
+batt-detect-src
+max-dbg-board-id
+min-dbg-board-id
+detect-jig-by-therm
+max-therm
+min-therm
+jig-icl-ma
+ignore-temp-in-dbc
+vsys-min-recover-mv
+vflt-recover-mv
+blink-during-charging
+blink-during-shutdown
+rgb-dim-level
+rst-signal
+driver-post-init
+apply-rsns-trim
+rsns-trim-value
+ext-buck-voltage-drop
+device-pre-init
+wlan-attach-type
+port-cfg
+pvc-port-id
+spmi-priority
+addr-cfg
+use-interrupt
+fullscale-code
+fullscale-uV
+fullratiometric-code
+read-timeout-uS
+ldo-settling-uS
+slave-id
+peripheral-id
+master-id
+pmic-device
+hw-channel
+settling-delay-uS
+average-sample
+decimation-ratio
+cal-method
+scaling-factor
+offset-factor
+scaling-method
+pull-up-res
+int-table
+low-name
+med-name
+high-name
+med-to-low
+low-to-med
+high-to-med
+med-to-high
+smem-vers
+smem-toc-vers
+smem-max-items
+size-cacheline
+exclusion-sizes
+therm_table
+sys_therm_tb
+pmic_die_temp_tb
+pmic_quiet_temp_tb
+qcom,aurora
+qcom,aurora
+ddr_common_dt
+qcom,ddr_common_dt
+ddr_target_dt
+qcom,ddr_target_dt
+buttons-config
+qcom,pm-button
+platform-key-maps
+qcom,pm-keymap
+PlatformInfo
+qcom,platforminfo
+pinctrl@f100000
+qcom,aurora-pinctrl
+sdc0@7C4000
+qcom,sdcc
+HsrSettings
+qcom,seclib
+BootTempBsp
+qcom,BootTempBsp
+BootTempThres
+i2c@900000
+qcom,i2c-controller
+i2c_device_config_5@5
+|gcc_qupv3_wrap0_s4_clk
+i2c_device_config_6@6
+|gcc_qupv3_wrap0_s5_clk
+i2c_device_config_9@9
+|gcc_qupv3_wrap1_s2_clk
+i2c_device_config_11@b
+|gcc_qupv3_wrap1_s4_clk
+QCOMEDK2
+APPS_MMU500_SMMU_APP
+GPU_GFX_MMU500_SMMU_GFX
+NAMEDNODE_CRYPTO
+SIDMappings
+SIDMappings_1
+SIDMappings_2
+SIDMappings_3
+NAMEDNODE_Camera
+SIDMappings
+SIDMappings_0
+SIDMappings_2
+SIDMappings_4
+SIDMappings_5
+SIDMappings_7
+SIDMappings_9
+SIDMappings_10
+NAMEDNODE_Display
+#DISPLAY
+SIDMappings
+SIDMappings_0
+SIDMappings_1
+NAMEDNODE_ECATS_95TEST
+#ECATS_TEST
+SIDMappings
+SIDMappings_0
+SIDMappings_1
+NAMEDNODE_EVA
+SIDMappings
+SIDMappings_0
+SIDMappings_1
+SIDMappings_2
+NAMEDNODE_EVA_95CV_95CPU
+#EVA_CV_CPU
+SIDMappings
+SIDMappings_0
+SIDMappings_2
+NAMEDNODE_EVA_95LSR
+#EVA_LSR
+SIDMappings
+SIDMappings_0
+SIDMappings_1
+SIDMappings_2
+NAMEDNODE_GPU
+SIDMappings
+SIDMappings_0
+SIDMappings_1
+SIDMappings_3
+SIDMappings_4
+SIDMappings_5
+NAMEDNODE_LPASS
+SIDMappings
+SIDMappings_1
+SIDMappings_2
+SIDMappings_3
+SIDMappings_4
+SIDMappings_5
+SIDMappings_6
+NAMEDNODE_NSP
+SIDMappings
+SIDMappings_1
+SIDMappings_2
+SIDMappings_3
+SIDMappings_4
+SIDMappings_5
+SIDMappings_6
+SIDMappings_7
+SIDMappings_8
+SIDMappings_9
+NAMEDNODE_PCIE0
+SIDMappings
+SIDMappings_0
+SIDMappings_3
+SIDMappings_4
+SIDMappings_5
+SIDMappings_6
+SIDMappings_7
+NAMEDNODE_PCIE1
+SIDMappings
+SIDMappings_0
+SIDMappings_3
+SIDMappings_4
+SIDMappings_5
+SIDMappings_6
+SIDMappings_7
+NAMEDNODE_QDSS
+SIDMappings
+SIDMappings_0
+SIDMappings_1
+NAMEDNODE_QSPI
+SIDMappings
+SIDMappings_0
+NAMEDNODE_QUP0
+SIDMappings
+SIDMappings_1
+SIDMappings_2
+NAMEDNODE_QUP1
+SIDMappings
+SIDMappings_1
+SIDMappings_2
+NAMEDNODE_SDC1_95EMMC
+#SDC1_EMMC
+SIDMappings
+SIDMappings_0
+NAMEDNODE_USB0
+SIDMappings
+SIDMappings_0
+NAMEDNODE_Video
+SIDMappings
+SIDMappings_0
+SIDMappings_1
+SIDMappings_2
+SIDMappings_3
+SIDMappings_4
+qcom,quantum
+spi@A00000
+qcom,spi-controller
+spi_device_config_1@1
+|gcc_qupv3_wrap0_s0_clk
+pil_proxy_vote
+qcom,pil-proxy-vote
+pil_proxy_vote_1
+PIL_ADSP
+)/vcs/vdd_lpi_mx
+/vcs/vdd_lpi_cx
+pil_proxy_vote_4
+PIL_MODEM
+)/vcs/vdd_mx
+/vcs/vdd_cx
+/vcs/vdd_mxc
+pil_proxy_vote_12
+PIL_SLPI
+)/vcs/vdd_lpi_mx
+/vcs/vdd_lpi_cx
+pil_proxy_vote_18
+PIL_CDSP
+)/vcs/vdd_mx
+/vcs/vdd_cx
+/vcs/vdd_mxc
+/vcs/vdd_nsp
+M/icb/arbiter
+pil_proxy_vote_6
+PIL_WPSS
+)/vcs/vdd_mx
+/vcs/vdd_cx
+/vcs/vdd_mxc
+bam_config
+bam_config_dummy
+qcom,usb
+hs_phy_cfg
+ss_phy_cfg
+qcom,ssr
+smp2p_err_fatal
+slave-kernel
+smp2p_err_ready
+slave-kernel
+smp2p_proxy_unvote
+slave-kernel
+smp2p_stop_ack
+slave-kernel
+ssr_subsys_config_1
+ssr_subsys_config_2
+ssr_subsys_config_3
+qcom,boot
+forced_download
+fedl_timeout
+qcom,pm-pon
+s2-kpdpwr
+s2-kpdpwr-resin
+s2-resin
+s3-reset
+uvlo-config
+ovlo-config
+long-pwrkey-dbnc-chk
+qcom,pm-display
+qcom,pm-haptics
+led-config
+qcom,pm-camera
+sw-config
+qcom,pm-sw
+qcom,pm-lockbit
+qcom,arb_mgpi
+qcom,arb_pvc
+mgpi-addr
+spmi-vadc@0
+qcom,spmi-vadc
+vadc_ch_cfg
+PMIC_TEMP
+/sw/pmic/adc/vadc/spmi-vadc@0/therm_table/therm_tb@2
+SYS_THERM2
+/sw/pmic/adc/vadc/spmi-vadc@0/therm_table/therm_tb@3
+vadc-avg-ch
+XO_THERM_GPS
+XO_THERM_GPS_LOW
+XO_THERM_GPS_MED
+XO_THERM_GPS_HIGH
+gpio-map
+therm_table
+therm_tb@1
+therm_tb@2
+therm_tb@3
+qcom,smem
+smem-partitions
+qcom,uefi
+uefiplat
+[Config]
+Version = 3
+MaxMemoryRegions = 74
+[MemoryMap]
+#                                                    EFI_RESOURCE_ EFI_RESOURCE_ATTRIBUTE_ EFI_MEMORY_TYPE ARM_REGION_ATTRIBUTE_
+#MemBase,   MemSize,   MemLabel(32 Char.), BuildHob, ResourceType, ResourceAttribute, MemoryType, CacheAttributes
+#--------------------- DDR  -----
+0x80000000, 0x0600000, "NOMAP",             NoMap,  MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN
+#0x80000000, 0x00600000, "HYP",               AddDynamicMem, SYS_MEM, SYS_MEM_CAP, Reserv, WRITE_BACK_XN
+0x80600000, 0x00200000, "BOOT",              AddMem, SYS_MEM, SYS_MEM_CAP, Reserv, UNCACHED_UNBUFFERED_XN
+0x80800000, 0x000A0000, "AOP",               AddMem, MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN
+0x80900000, 0x00200000, "SMEM",              AddMem, MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN
+0x80B00000, 0x00100000, "CUCP",              AddMem, MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN
+0x84E00000, 0x1C600000, "PIL Reserved",      AddMem, MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN
+0xA1400000, 0x02B00000, "Display Demura",    AddMem, MEM_RES, SYS_MEM_CAP, Reserv, WRITE_THROUGH_XN
+0xA6000000, 0x00F00000, "DBI Dump",          NoHob,  MMAP_IO, INITIALIZED, Conv,   UNCACHED_UNBUFFERED_XN
+0xA7000000, 0x00400000, "UEFI FD",           AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK
+0xA7400000, 0x00200000, "UEFI FD Reserved",  AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK
+0xA7600000, 0x00001000, "CPU Vectors",       AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK
+0xA7601000, 0x00001000, "Info Blk",          AddMem, SYS_MEM, SYS_MEM_CAP, RtData, WRITE_BACK_XN
+0xA7602000, 0x00003000, "MMU PageTables",    AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN  
+0xA7605000, 0x00008000, "Log Buffer",        AddMem, SYS_MEM, SYS_MEM_CAP, RtData, WRITE_BACK_XN      
+0xA760D000, 0x00040000, "UEFI Stack",        AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN
+0xA764D000, 0x0008C000, "SEC Heap",          AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN
+0xA76D9000, 0x00400000, "Sched Heap",        AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN
+0xA7AD9000, 0x00400000, "FV Region",         AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN
+0xA7ED9000, 0x00127000, "UEFI RESV",         AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN
+0xA8000000, 0x10000000, "Kernel",            AddMem, SYS_MEM, SYS_MEM_CAP, Reserv, WRITE_BACK_XN
+0xB8000000, 0x02B00000, "Display Reserved",  AddMem, MEM_RES, SYS_MEM_CAP, Reserv, WRITE_THROUGH_XN
+0xBB000000, 0x05000000, "OEM VM",            AddMem, SYS_MEM, SYS_MEM_CAP, Reserv, WRITE_BACK_XN
+0xC0000000, 0x20000000, "MTE Reserved",      AddDynamicMem, SYS_MEM, SYS_MEM_CAP, Reserv, WRITE_BACK_XN 
+0xE0000000, 0x05700000, "VM PIL",            AddMem, SYS_MEM, SYS_MEM_CAP, Reserv, WRITE_BACK_XN   
+0xE8800000, 0x00100000, "TZ STATS",          AddDynamicMem, MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN
+0xE9300000, 0x00C00000, "TZApps Reserved",   AddDynamicMem, MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED_XN
+0xEFD00000, 0x07C00000, "DXE Heap",          AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN
+#0x830000000, 0x10000000, "HYP Reserved",     AddDynamicMem, SYS_MEM, SYS_MEM_CAP, Reserv, WRITE_BACK_XN
+[RegisterMap]
+#--------------------- Other -----
+0x14680000, 0x0002A000, "IMEM Base",          NoHob,  MMAP_IO, INITIALIZED, Conv,   NS_DEVICE
+0x146AA000, 0x00016000, "IMEM Cookie Base",   AddDev, MMAP_IO, INITIALIZED, Conv,   NS_DEVICE
+#--------------------- Register --
+0x00400000, 0x00100000, "IPC_ROUTER_TOP",     AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x00780000, 0x00007000, "SECURITY CONTROL",   AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x007C0000, 0x00020000, "PERIPH_SS_SDC1",     AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x00900000, 0x00100000, "QUP",                AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x00A00000, 0x00100000, "QUPV3",              AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x010C0000, 0x0000C000, "PRNG_CFG_PRNG",      AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x01DC0000, 0x00040000, "CRYPTO0 CRYPTO",     AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x01FC0000, 0x00030000, "TCSR_TCSR_REGS",     AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x08800000, 0x00100000, "PERIPH_SS",          AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x0A600000, 0x00200000, "USB",                AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x0B000000, 0x04000000, "AOSS",               AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x0F000000, 0x01000000, "TLMM",               AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x15000000, 0x00200000, "SMMU",               AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+0x17000000, 0x00E00000, "APSS_HM",            AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE
+[ConfigParameters]
+# Update count if more than default 30 entries
+ConfigParameterCount = 64
+## UEFI CORE
+PlatConfigFileName = "uefiplatLA.cfg"
+OsTypeString = "LA"
+# Force booting to shell whilst in pre-silicon phase
+EnableShell = 0x1
+# Tune based on Sec heap needs for FV decompression and MMU tables through Dxe/BDS
+SecPagePoolCount = 0x800
+# Shared IMEM (Cookies, Offsets)
+SharedIMEMBaseAddr    = 0x146AA000
+DloadCookieAddr = 0x01FD3000
+# for full dump 0x10, for minidump 0x20
+DloadCookieValue = 0x10
+# debug cookie of PIL subsystem, defined in FBC script
+PilSubsysDbgCookieAddr = 0x146AA6DC
+PilSubsysDbgCookieVal = 0x53444247
+# NumCpus - max number of cores
+NumCpus = 4
+# NumActiveCores - number of cores used
+NumActiveCores = 4
+## ULogFile
+SpecialLogPartition = "LOGFS:\"
+MaxLogFileSize = 0x400000
+# UEFI memory use
+UefiMemUseThreshold = 0x1900
+## USB ##
+USBHS1_Config = 0x0
+UsbFnIoRevNum = 0x00010001
+## Buttons / KeyPad ##
+PwrBtnShutdownFlag = 0x0
+## SDCC ##
+Sdc1GpioConfigOn = 0x1E92
+Sdc2GpioConfigOn = 0x1E92
+Sdc1GpioConfigOff = 0xA00
+Sdc2GpioConfigOff = 0xA00
+## SDHC Mode 0:Legacy Mode, Non-zero: SDHC Mode ##
+EnableSDHCSwitch = 0x1
+EnableUfsIOC = 1
+UfsSmmuConfigForOtherBootDev = 1
+## Security flag ##
+SecurityFlag = 0x44
+# SecBootEnableFlag = 0x1               i.e. 0b00000001
+# TreeTpmEnableFlag = 0x2               i.e. 0b00000010
+# CommonMbnLoadFlag = 0x4               i.e. 0b00000100
+# DxHdcp2LoadFlag = 0x8                 i.e. 0b00001000
+# VariableServicesFlag = 0x10           i.e. 0b00010000
+# WinsecappFlag = 0x20                  i.e. 0b00100000
+# LoadSecAppFlag = 0x40                 i.e. 0b01000000
+# LoadKeymasterFlag = 0x80              i.e. 0b10000000
+# EnableQseeLogsFlag = 0x100            i.e. 0b 00000001 00000000
+## Default app to boot in platform BDS init
+DefaultChargerApp = "QcomChargerApp"
+DefaultBDSBootApp = "LinuxLoader"
+## Enable HotKey detection in RETAIL devices
+DetectRetailUserAttentionHotkey = 0x00
+## 0x17 is SCAN_ESC
+DetectRetailUserAttentionHotkeyCode = 0x17
+## Enable OEM Setup App launch in Retail ##
+EnableOEMSetupAppInRetail = 0x0
+## LogFs partition
+## NOTE: Ensure logfs bin is flashed from /Tools/binaries ##
+EnableLogFsSyncInRetail = 0x0
+## ShmBridge Memory Size
+ShmBridgememSize = 0xA00000
+##  Multithreading options
+EnableMultiThreading = 1
+MaxCoreCnt = 4
+# Keep the following number of cores active, including the boot core
+EarlyInitCoreCnt = 2
+## Get TZ App Logs ##
+EnableUefiSecAppDebugLogDump = 0x0
+## Allow Non Persistent Varialbes in Retail ##
+## NOTE: Recommend disabling feature for Retail devices
+AllowNonPersistentVarsInRetail = 0x1
+# Initialize Display panel in its own thread to run in parallel to booting
+EnableDisplayThread = 0x1
+# Using imagefv to load display logo
+EnableDisplayImageFv = 0x0
+## Dynamic UART Log Buffer Size
+## Refer to QcomPkg/Docs/UefiLogBufferSizeConfigReadme.txt for usage
+#UARTLogBufferSize = 0x19000
+#DDRInfoDxe EnvDxe event callback flag
+DDRInfoNotifyFlag = 0x0
+#  FV Decompression on multicore option
+EnableMultiCoreFvDecompression = 0
+## Enable/Disable Variable Policy Engine ##
+EnableVariablePolicyEngine = 0
+## Allow individual ACPI tables loading ## 
+EnableACPIFallback = 0x0
+## NOTE: Do not remove last newline, required by parser ##
+CfgVersion = 1
+########################################################################
+##   PIL configuration, contains the base address and size of image load
+##   information region in IMEM
+########################################################################\
+[IMAGE_LOAD_INFO_REGION]
+ImageLoadInfoBase = 0x146AA94C
+ImageLoadInfoSize = 200
+########################################################################
+##   PIL configuration, contains the list of images which is allowed 
+##   to be loaded by PIL in retail. PIL does not support images beyond
+##   the list
+########################################################################\
+[RETAIL]
+########################################################################
+##   PIL configuration, contains the list of images which will be 
+##   loaded by PIL by default
+########################################################################\
+########################################################################
+##   PIL image configuration, updated to Aurora V3 memory map
+########################################################################\
+[FULL_ADSP]
+Type = elf_split
+#PartiLabel = modem_a
+#PartiRootGuid = 
+PartiGuid = "EBD0A0A2 B9E5 4433 87C0 68B6B72699C7"
+ImagePath = \image\adsp
+SubsysID = 1
+ResvMemoryStart = 0x87600000
+ResvMemorySize  = 0x01E00000
+ImageLoadInfo = Yes
+OverrideElfAddr = Yes
+ProxyGuid = "36FE27E1 33E9 45AD 98DA C88438CA8816"
+#[FULL_SLPI]
+#Type = elf_split
+#PartiLabel = modem_a
+#PartiRootGuid = 
+#PartiGuid = "EBD0A0A2 B9E5 4433 87C0 68B6B72699C7"
+#ImagePath = \image\slpi
+#SubsysID = 12
+#ResvMemoryStart = 0x88000000
+#ResvMemorySize = 0x1900000
+#ImageLoadInfo = Yes
+#OverrideElfAddr = Yes
+#ProxyGuid = "B2DCFC34 B2A0 4BB7 BDB0 31DB01E3CC2A"
+[FULL_CDSP]
+Type = elf_split
+#PartiLabel = modem_a
+#PartiRootGuid = 
+PartiGuid = "EBD0A0A2 B9E5 4433 87C0 68B6B72699C7"
+ImagePath = \image\cdsp
+SubsysID = 18
+ResvMemoryStart = 0x89400000
+ResvMemorySize  = 0x00F00000
+ImageLoadInfo = Yes
+OverrideElfAddr = Yes
+ProxyGuid = "45E14C04 D134 4EE4 AC13 7098F0A9F261"
+#[FULL_NPU]
+#Type = elf_split
+##PartiLabel = modem_a
+##PartiRootGuid = 
+#PartiGuid = "EBD0A0A2 B9E5 4433 87C0 68B6B72699C7"
+#ImagePath = \image\npu
+#SubsysID = 23
+#ResvMemoryStart = 0x86900000
+#ResvMemorySize = 0x500000
+#ImageLoadInfo = Yes
+#OverrideElfAddr = Yes
+#ProxyGuid = "45654140 778E 4384 8EEC 703FDACE3172"
+[FULL_MODEM]
+Type = elf_split
+#PartiLabel = modem_a
+#PartiRootGuid = 
+PartiGuid = "EBD0A0A2 B9E5 4433 87C0 68B6B72699C7"
+ImagePath = \image\modem
+SubsysID = 4
+ResvMemoryStart = 0x8BC00000
+ResvMemorySize = 0x13200000  
+ImageLoadInfo = Yes
+OverrideElfAddr = Yes
+ProxyGuid = "61513695 E0C6 4F07 BF41 A51A7770640E"
+[FULL_WPSS]
+Type = elf_split
+PartiLabel = modem_a
+#PartiRootGuid =
+#PartiGuid = "EBD0A0A2 B9E5 4433 87C0 68B6B72699C7"
+ImagePath = \image\wpss
+SubsysID = 6
+ResvMemoryStart = 0x85600000
+ResvMemorySize = 
+0x01900000
+ImageLoadInfo = Yes
+OverrideElfAddr = Yes
+ProxyGuid = "1CAAECA0 978B 4472 8B36 1ACD7F06B713"
+[CORE_ADSP]
+Type = elf_split
+PartiLabel = core_nhlos_a
+#PartiRootGuid = 
+#PartiGuid = "EBD0A0A2 B9E5 4433 87C0 68B6B72699C7"
+ImagePath = \image\adsp
+SubsysID = 1
+ResvMemoryStart = 0x87600000
+ResvMemorySize  = 0x01E00000
+ImageLoadInfo = Yes
+OverrideElfAddr = Yes
+ProxyGuid = "36FE27E1 33E9 45AD 98DA C88438CA8816"
+[CORE_SLPI]
+Type = elf_split
+PartiLabel = core_nhlos_a
+#PartiRootGuid = 
+#PartiGuid = "EBD0A0A2 B9E5 4433 87C0 68B6B72699C7"
+ImagePath = \image\slpi
+SubsysID = 12
+ResvMemoryStart = 0x88000000
+ResvMemorySize = 0x1900000	
+ImageLoadInfo = Yes
+OverrideElfAddr = Yes
+ProxyGuid = "B2DCFC34 B2A0 4BB7 BDB0 31DB01E3CC2A"
+[CORE_CDSP]
+Type = elf_split
+PartiLabel = core_nhlos_a
+#PartiRootGuid = 
+#PartiGuid = "EBD0A0A2 B9E5 4433 87C0 68B6B72699C7"
+ImagePath = \image\cdsp
+SubsysID = 18
+ResvMemoryStart = 0x89400000
+ResvMemorySize  = 0x00F00000
+ImageLoadInfo = Yes
+OverrideElfAddr = Yes
+ProxyGuid = "45E14C04 D134 4EE4 AC13 7098F0A9F261"
+#[CORE_NPU]
+#Type = elf_split
+#PartiLabel = core_nhlos_a
+##PartiRootGuid = 
+##PartiGuid = "EBD0A0A2 B9E5 4433 87C0 68B6B72699C7"
+#ImagePath = \image\npu
+#SubsysID = 23
+#ResvMemoryStart = 0x86900000
+#ResvMemorySize = 0x500000
+#ImageLoadInfo = Yes
+#OverrideElfAddr = Yes
+#ProxyGuid = "45654140 778E 4384 8EEC 703FDACE3172"
+[CORE_MODEM]
+Type = elf_split
+PartiLabel = core_nhlos_a
+#PartiRootGuid = 
+#PartiGuid = "EBD0A0A2 B9E5 4433 87C0 68B6B72699C7"
+ImagePath = \image\modem
+SubsysID = 4
+ResvMemoryStart = 0x8BC00000
+ResvMemorySize = 0x13200000 
+ImageLoadInfo = Yes
+OverrideElfAddr = Yes
+ProxyGuid = "61513695 e0c6 4f07 bf41 a51a7770640e"
+[CORE_WPSS]
+Type = elf_split
+PartiLabel = core_nhlos_a
+#PartiRootGuid =
+#PartiGuid = "EBD0A0A2 B9E5 4433 87C0 68B6B72699C7"
+ImagePath = \image\wpss
+SubsysID = 6
+ResvMemoryStart = 0x85600000
+ResvMemorySize = 
+0x01900000
+ImageLoadInfo = Yes
+OverrideElfAddr = Yes
+ProxyGuid = "1CAAECA0 978B 4472 8B36 1ACD7F06B713"
+#Type = elf_split
+#PartiLabel = modem_a
+#PartiRootGuid = 
+#PartiGuid = "EBD0A0A2 B9E5 4433 87C0 68B6B72699C7"
+#ImagePath = \image\spss1t
+#SubsysID = 14
+#ResvMemoryStart = 0x8BA00000
+#ResvMemorySize = 0x180000
+#ImageLoadInfo = Yes
+#OverrideElfAddr = Yes
+#ProxyGuid = "2B4DE7E9 B796 4FE7 B210 49F11C6BABC2"
+Type = elf_fv
+#PartiLabel = abl_a
+#PartiRootGuid = 
+PartiGuid = "BD6928A1 4CE0 A038 4F3A 1495E3EDDFFB"
+SubsysID = 21
+ImageLoadInfo = No
+Unlock = Yes
+[ImageFv]
+Type = elf_fv
+#PartiLabel = imagefv_a
+#PartiRootGuid = 
+PartiGuid = "17911177 C9E6 4372 933C 804B678E666F"
+SubsysID = 20
+ImageLoadInfo = No
+Unlock = Yes
+clk_pegging_node
+qcom,clock
+qcom,smp2p
+smp2p-interrupts
+qcom,glink
+xport-smem-config
+__symbols__
+T/soc/pinctrl@f100000
+Y/soc/iort
+^/soc/iort/APPS_MMU500_SMMU_APP
+z/soc/iort/GPU_GFX_MMU500_SMMU_GFX
+/soc/pil/pil_proxy_vote
+/soc/ssr/smp2p_err_fatal
+/soc/ssr/smp2p_err_ready
+/soc/ssr/smp2p_proxy_unvote
+/soc/ssr/smp2p_stop_ack
+	/sw/pmic/pm/pon
+/sw/pmic/arb/access
+/sw/pmic/adc/vadc/spmi-vadc@0/therm_table
+ /sw/pmic/adc/vadc/spmi-vadc@0/therm_table/therm_tb@1
+-/sw/pmic/adc/vadc/spmi-vadc@0/therm_table/therm_tb@2
+>/sw/pmic/adc/vadc/spmi-vadc@0/therm_table/therm_tb@3
+	compatible
+#address-cells
+#size-cells
+print_severity_dt
+ddr_log_level_dt
+mte_disable
+gpio-configs
+key-maps
+PlatformInfo
+gpio-controller
+#gpio-cells
+qcom,sleep-config
+EnableLogging
+DriveStrength
+MaxSpeedMode
+DLLConfig
+DLLConfig2
+DLLConfig3
+DLLTestCtrl
+DDRConfig
+DLLUserCtrl
+pimem_max_storage_size
+nUpperThresholdDegC
+nLowerThresholdDegC
+uMaxNumIterations
+uWaitPerIterationMicroSec
+core_base_addr
+common_base_addr
+core_offset
+qupv3_instance
+core_index
+se_index
+gpi_index
+core_irq
+polled_mode
+min_data_length_for_dma
+scl_encoding
+sda_encoding
+tcsr_reg_offset
+tcsr_base_addr
+tcsr_reg_value
+se_clock
+Signature
+Revision
+Checksum
+OEMTableID
+OEMRevision
+CreatorID
+CreatorRevision
+NumberofIORTNodes
+Reserved
+instance_handles
+NumberofMappings
+BaseAddress
+NumContextInterrupts
+NumPMUInterrupts
+NSGIRPT_GSIV
+NSGIRPT_FLAGS
+NSGCFGIRPT_GSIV
+NSGCFGIRPT_FLAGS
+ContextInterruptFlags
+PMUInterruptFlags
+SIDMAPPING
+NodeFlags
+CacheCoherency
+AllocationHints
+Reserved1
+MemAccessFlags
+DeviceMemAddressSize
+DevObjectName
+InputBase
+OutputBase
+OutputReference
+enter_quantum
+miso_encoding
+mosi_encoding
+clk_encoding
+cs_encoding
+sleep_miso_encoding
+sleep_mosi_encoding
+sleep_clk_encoding
+sleep_cs_encoding
+se_clock_frequency
+se_clock_dfs_index
+subsys_id
+client_name
+rail_names
+rail_voltage_levels
+icb_name
+icb_arb_master_slave
+icb_arb_request_type
+icb_arb_request_data
+cfg_bits
+sec_config
+max_subsys_configured
+entry_name
+subsys_name
+sfr_type
+wdog_intr
+err_fatal
+proxy_unvote
+err_ready
+stop_ack_bit
+qmi_svc_ins
+test_mode
+xbl_sc_wdog
+xbl_ramdump_wdog
+skip_ddr_init_in_EDL
+vibration
+save_logs_to_media
+check_usb_option
+check_dp_timeout
+ignore_pwr_key
+ignore_vol_keys
+reset-type
+smpl-delay
+timer-value-ms
+config-value
+dbnc-time-ms
+swire-map
+apply-default-volt
+default-elvss
+default-elvdd
+default-oledb
+ext-boost-vdd
+vmax-hdrm
+autores-cfg
+vbatt-min
+boost-cfg-bob
+lra-resistance
+swr-io-volt
+parallel-charger
+charger-pmic-index
+loader-dbc-threshold
+dbc-sdp-thd-inc
+skip-loader-dbc
+core-dbc-threshold
+skip-core-dbc
+uv-oc-1s-threshold
+uv-oc-2s-threshold
+apply-ichg-fs
+batt-2s-option
+too-hot-afp-threshold
+apply-too-hot-afp
+too-cold-afp-threshold
+apply-too-cold-afp
+apply-boot-wo-batt
+icl-boot-wo-batt
+apply-float-voltage
+float-voltage-mv
+apply-pre-charge-current
+pre-charge-ma
+apply-fast-charge-current
+fast-charge-ma
+apply-icl
+apply-float-charger-icl
+float-charger-icl-ma
+dam-cable-enable
+apply-vsysmin
+usb-suspend
+wls-usb-prior-swap
+batt-detect-src
+max-dbg-board-id
+min-dbg-board-id
+detect-jig-by-therm
+max-therm
+min-therm
+jig-icl-ma
+ignore-temp-in-dbc
+vsys-min-recover-mv
+vflt-recover-mv
+blink-during-charging
+blink-during-shutdown
+rgb-dim-level
+rst-signal
+driver-post-init
+apply-rsns-trim
+rsns-trim-value
+ext-buck-voltage-drop
+device-pre-init
+wlan-attach-type
+port-cfg
+pvc-port-id
+spmi-priority
+addr-cfg
+use-interrupt
+fullscale-code
+fullscale-uV
+fullratiometric-code
+read-timeout-uS
+ldo-settling-uS
+slave-id
+peripheral-id
+master-id
+pmic-device
+hw-channel
+settling-delay-uS
+average-sample
+decimation-ratio
+cal-method
+scaling-factor
+offset-factor
+scaling-method
+pull-up-res
+int-table
+low-name
+med-name
+high-name
+med-to-low
+low-to-med
+high-to-med
+med-to-high
+smem-vers
+smem-toc-vers
+smem-max-items
+size-cacheline
+exclusion-sizes
+cx_corner
+ddr_min_max_freq
+shub_min_max_freq
+max-entries
+remote-host
+fifo-size
+mtu-size
+default-qos
+custom-fifo-alloc
+clear-interrupt
+APPS_MMU500_SMMU_APP_handle
+GPU_GFX_MMU500_SMMU_GFX_handle
+pil_proxy_vote
+smp2p_err_fatal_handle
+smp2p_err_ready_handle
+smp2p_proxy_unvote_handle
+smp2p_stop_ack_handle
+therm_table
+sys_therm_tb
+pmic_die_temp_tb
+pmic_quiet_temp_tb
+fragment@0
+__overlay__
+display_info
+qcom,display
+__fixups__
+2/fragment@0:target:0
+compatible
+display_panel_type
+fragment@0
+__overlay__
+display_info
+qcom,display
+__fixups__
+2/fragment@0:target:0
+compatible
+display_panel_type
+fragment@0
+__overlay__
+display_info
+qcom,display
+__fixups__
+2/fragment@0:target:0
+compatible
+display_panel_type
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175903Z
+20631121175903Z0|1 0
+Greatwhite_FW_Signing_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175853Z
+20631121175853Z0y1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175856Z
+20631121175856Z0y1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175858Z
+20631121175858Z0y1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175901Z
+20631121175901Z0y1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1

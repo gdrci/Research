@@ -1,0 +1,17 @@
+ISA discrimination tests (per-word decode rate, and function-boundary densities per 1000 words)
+
+Decode rate (pypcode, one ISA per process):
+  XBL primary code, Hexagon          0.774
+  XBL primary code, ARM32            0.769
+  aop.img code, ARM32 (known ARM)    0.723
+  adsp.b02 (known Hexagon), Hexagon  0.969
+  adsp.b02 (known Hexagon), ARM32    0.894
+  random bytes, Hexagon              0.560
+  -> decode rate does not separate ISAs. ARM32 accepts Hexagon data at 0.89.
+
+Function-boundary densities (instructions per 1000 words):
+  XBL primary (114 KB code): allocframe 0.0, dealloc_return 0.0, push_lr 0.0, pop_pc 0.0, bx_lr 0.0
+  Hexagon control adsp.b02 (2.4 MB): allocframe 0.15, dealloc_return 0.0
+  ARM32 control aop.img code: push_lr 0.19, pop_pc 2.41, bx_lr 0.0
+  AArch64 control tz.img code: push_lr 0.0, pop_pc 0.0, bx_lr 0.0 (pattern set is ARM32-specific)
+  -> primary XBL code has no standard prologues or epilogues. It is probably a loader stub.

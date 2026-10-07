@@ -1,0 +1,8 @@
+TrustZone table at tz.img vaddr 0x1c141c40 (16-byte entries: base, count)
+base        count
+0x221c0000  8
+0x221c4000  4
+0x221c2000  8
+0x221c8000  8
+0x010c0000  8
+Count meaning not verified. Code that indexes this table has not been found yet.

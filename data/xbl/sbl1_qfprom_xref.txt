@@ -1,0 +1,10 @@
+SBL1 (AArch64) references to 0x221C8000 (tools/aarch64_xref.py)
+literal pool entries: 0x148afcb8, 0x148afe20
+direct code references: 1
+  0x1482ced4 mov  w13, #0x8000
+  0x1482ced8 movk w13, #0x221c, LSL #16     -> builds 0x221c8000
+
+Context: a run of stack stores that builds an array of 64-bit region descriptors.
+Constants written nearby: 0x221c2000 (movk at 0x1482ce98), 0x221c8000, 0x22000000, 0x20c20000,
+and SBL1 addresses 0x148a3000, 0x148b2000, 0x148b5000, 0x148c7000. The image also contains
+BootMemMapLib.c. The array is most likely the boot memory map. This is an interpretation.

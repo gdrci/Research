@@ -1,0 +1,1400 @@
+CHIP_PROD_PROV_K_LBL
+CHIP_PROD_PROV_SESSION_K_LBL
+CHIP_PROD_SVCS_K_LBL
+ENTITY_DEV_FACT_PROV_K_LBL
+ENTITY_OTA_PROV_K_LBL
+ENTITY_IP_PROTECTION_K_LBL
+CHIP_ATTESTATION_SRVC_K_LBL
+CLIENT_EXTS_SRVC_K_LBL
+ENTITY_HW_ATTESTATION_SRVC_K_LBL
+""""3333DDDDUUUUffffwwww
+SEQ_FW_BUILD_TYPE_STRING=RELEASE
+SEQ_FW_RELEASE_BUILD_VERSION_STRING=r10
+&#(!'#&1'#$A'#"Q'# a'
+EE1 EE! 
+<#(!=#&1=#$A=#"Q=# a=#.q;7
+(# !)#.1'#,A'#*Q'#(a'#&q'#$
+(#(!)#&1)#$A)#"Q)
+"# !##.1!#,A!
+ # !!#.1
+4#(!5#&15#$A57
+$# !%#.1##,A##*Q##(a#7
+#.1}#,A}#*Q}#(a}#&q}
+URV"U}t"
+8# !9#.17#,A7#*Q7#(a7#&q7#$
+/sources/entrypoints/tmeFwMain/src/TmeFwMain.cpp
+TME_FW_NS_DUMP
+TME_FW_MINIDUMP
+/sources/third_party/freertos/FreeRTOS/Source/tasks.c
+ThreadHandler
+/sources/tasks/handler/src/ThreadHandler.cpp
+/sources/tasks/threadable/inc/Threadable.h
+/sources/tasks/qmp/src/qmp.cpp
+ThreadSequencer
+/sources/tasks/sequencer/src/ThreadSequencer.cpp
+/sources/tasks/threadable/inc/ThreadableQueue.h
+/sources/tasks/threadable/src/ThreadableMutex.cpp
+/sources/tasks/threadable/src/ThreadableSemaphore.cpp
+/sources/tasks/threadable/src/ThreadableMessageBuffer.cpp
+/sources/services/watchdog/src/WatchdogMgr.cpp
+/sources/services/tme_com/src/GLinkPort.cpp
+/sources/services/tme_messages/src/ImageAuthPblUtils.cpp
+/sources/services/tme_messages/src/tme_messages_mem.cpp
+/sources/external_teams/core/mproc/smem/src/smem_ac.c
+/sources/external_teams/core/mproc/smem/src/smem_target.c
+IPCC_Attach failed, (arg) Protocol %d
+IPCC_Attach failed, Protocol %d not supported on this subsystem
+IPCC_RegisterInterrupt failed (arg) for eSenderCID %d, nSignalLow %d, nSignalHigh %d
+IPCC_DeregisterInterrupt failed (arg) for eSenderCID %d, nSignalLow %d, nSignalHigh %d
+/sources/external_teams/core/systemdrivers/ipcc/src/tme/IPCC_OSTME.c
+IPCC_RxIsr handled signal for eCID %d, nSignal %d
+IPCC_RxIsr unhandled signal for eCID %d, nSignal %d
+IPCCRx Initialized
+IPCCRx_Attach: Could not register interrupt %d for protocol ID %d
+IPCCRx_Detach: Could not unregister interrupt %d for protocol ID %d
+IPCCRx_RegisterInterrupt failed (arg) for eCID %d, nSignalLow %d, nSignalHigh %d
+IPCCRx_RegisterInterrupt called for eCID %d, SignalLow: %d, SignalHigh: %d
+IPCCRx_RegisterInterrupt failed (in use) for eCID %d, nSignalLow %d, nSignalHigh %d
+IPCCRx_RegisterInterrupt failed (no memory) for eCID %d, nSignalLow %d, nSignalHigh %d
+IPCCRx_DeregisterInterrupt failed (arg) for eCID %d, nSignalLow %d, nSignalHigh %d
+IPCCRx_DeregisterInterrupt failed (empty list) for eCID %d, nSignalLow %d, nSignalHigh %d
+IPCCRx_DeregisterInterrupt successful for eCID %d, nSignalLow %d, nSignalHigh %d from head
+IPCCRx_DeregisterInterrupt successful for eCID %d, nSignalLow %d, nSignalHigh %d from between
+IPCCRx_DeregisterInterrupt failed (not found) for eCID %d, SignalLow: %d, SignalHigh: %d
+IPCCTx Initialized
+IPCCTx_Trigger failed (arg) for eCID %d, nSignalLow %d, nSignalHigh %d
+IPCCTx_Trigger called for eCID %d, SignalLow: %d, SignalHigh: %d
+ /sources/services/antirollback/src/AntiRollbackMgr.cpp
+/sources/third_party/freertos/FreeRTOS/Source/queue.c
+/sources/third_party/freertos/FreeRTOS/Source/stream_buffer.c
+tme_apps
+/sources/external_teams/core/mproc/glink/config/default/src/xport_qmp_config_tme.c
+/sources/external_teams/core/mproc/glink/src/glink_api.c
+/sources/external_teams/core/mproc/glink/src/xport_qmp.c
+/sources/external_teams/core/mproc/glink/src/glink_os_freertos.c
+/sources/external_teams/core/mproc/smem/src/smem.c
+/sources/external_teams/core/mproc/smem/src/smem_partition.c
+/sources/external_teams/core/mproc/smem/src/spinlock.c
+IPCC_Trigger failed (arg) for eTargetCID %d, nSignalLow %d, nSignalHigh %d
+Pure virtual function called!
+Deleted virtual function called!
+TME_FW_BUILD_TIME_STRING=October 05 2025 at 22:44:44
+TME_FW_VERSION_STRING=ssg.tmefw.1.0.1-00467-release
+TME_FW_CHIPSET_STRING=Aurora
+XPUPolicyVersion = 4.5
+XPUPolicyTimeStamp = <!-- Generated Tue September 30 08:49:36 2025 UTC -->
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1301
+*SRoT MBNv7 Image Signing Root CA 6 SubCA 10
+251006055137Z
+271006055137Z0W1
+	San Diego1
+QUALCOMM1
+CASS - SBL40v0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1+0)
+"SRoT MBNv7 Image Signing Root CA 60
+200825220346Z
+300825220346Z0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1301
+*SRoT MBNv7 Image Signing Root CA 6 SubCA 10v0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1+0)
+"SRoT MBNv7 Image Signing Root CA 60 
+200825215431Z
+20500825215431Z0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1+0)
+"SRoT MBNv7 Image Signing Root CA 60v0
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175903Z
+20631121175903Z0|1 0
+Greatwhite_FW_Signing_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175853Z
+20631121175853Z0y1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175856Z
+20631121175856Z0y1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175858Z
+20631121175858Z0y1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175901Z
+20631121175901Z0y1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+T)hj8	h*8
+@9n	@9oM@8p
+@9k	@9Q5@9
+@9M	@9A!
+**-@),5A)
+)5@y?!5k!
+ii8+k)8)
+ii8+k)8)
+TLhi8li)8)
+;|)	kh8)
+4('@)(}`
+T('@)(}`
+T('@)(}`
+H)@yI5@y!
+S-i+8(i,8
+@y,!@y-1@y)5@y
++0@9,4@9
+)-@)Ka89?
+@9o!@9k1@9
+H(NBh(N@x
+q"H(NBh(NAx
+H(NBh(N@x@L"H(NB
+X(NBx(N@x
+q"X(NBx(NAx
+X(NBx(N@x@L"X(NB
+x(N!Z(N!x(N2Z(NRz(N
+x(N!Z(N!x(N2Z(NRz(Nq
+q!Z(N!x(N2Z(NRz(N
+Z(NRz(N!Z(N!x(N2Z(NRz(N
+Z(NRz(N_
+Z(NRz(Nq
+h(N!J(N!h(N2J(NRj(N
+2J(NQj(N
+J(N1j(Nc
+J(N1j(N 
+h(N!J(N!h(N
+J(N!h(N J(N
+h(N!J(N!h(N
+J(N!h(NB
+J(N!h(Nc
+TH(@9I,@9J$@9
+R/U@9,Q@9-e@9*a@9.m@9+i@9
+N]@9JY@9
+SK@9UO@9hR
+(?@9);@9	
+*M@8(M@8.
+@9,	@9-M@8/
+p]@9kY@9
+KM@9JI@9j
+K1@9J9@9j
+@9,	@9-M@8.
+J3Yy(M@8_
+TKih8+i(8
+TKih8+i(8
+j"@)k&C)
+TLih8mih8
+Q)aBJ	Yi
++0@9,4@9
+j2@9k6@9)i
+@9k	@9.$@9
+@9tq@y	C
+R(!Ay#%Ay
+ThjJ9k>@
+Ju[9	i@y)
+5%p9TmA9
+,%4K-!4K
+Th&xghfx'h&x
+gj&x'hfx
+*$h&xJh&x
+TEh&x,h&x1
+r(-@))	@
+sbl1_mc.c
+SBL1, End
+SBL1, Delta
+CDT not found in any storage media
+CDT Version:%d,Platform ID:%d,Major ID:%d,Minor ID:%d,Subtype:%d
+External heap init, Start
+External heap init, End
+sbl1_load_ddr_training_data
+Entering DeviceProg DDR
+%s @ 0x%08x = 0x%016llx
+%s @ 0x%08x = 0x%08x
+RST:APPS_WDOG_BITE
+RST:AOP_WDOG_BITE
+Format: Log Type - Time(microsec) - Message - Optional Info
+Log Type: B - Since Boot(Power On Reset),  D - Delta,  S - Statistic
+SBL1, Start
+SBL1 BUILD @ 13:02:53 on Mar  5 2026
+DDR Frequency, %d MHz
+Boot Config
+Serial Number
+OEM Config Row 0
+OEM Config Row 1
+Feature Config Row 0
+Feature Config Row 1
+Boot Interface: 
+Secure Boot: 
+OEM LCS:
+Core 0 Frequency, %d MHz
+PBL Patch Ver: %d
+PBL freq: %d MHZ
+boot_timer.c
+!*3<-+   0X0x
+0123456789ABCDEFboot_logger.c
+boot_logger_ram.c
+ OVERFLOW
+boot_config_context.c
+boot_statistics.c
+Flash Throughput, %d KB/s  (%d Bytes,  %d us)
+Flash Throughput, %d B/s  (%d Bytes,  %d us)
+boot_media_interface.c
+boot_whitelist_prot.c
+WatchDogTimerLib.c
+boot_ram_init.c
+boot_memory_mgr.c
+logtomedia: get log part size err
+logs_to_media.c
+logtomedia: log part read fail
+logtomedia: log part write fail
+LOG_START-%010d
+boot_loader_interface.c
+(%d Bytes)
+boot_cdt_flash.c
+CDT not found in any storage media, using defaults
+Error: Platform ID is not programmed
+boot_reset.c
+boot_mode_interface.c
+sbl1_hw.c
+sbl1_ddr_init, Start
+sbl1_ddr_init, Delta
+/dev/icbcfg/boot
+do_ddr_training, Start
+do_ddr_training, Delta
+boot_rom
+vsense_init, Start
+vsense_init, Delta
+sbl1_wait_for_ddr_training, Start
+sbl1_wait_for_ddr_training, Delta
+/sw/boot
+vibration
+DTB: invalid vibration prop value
+DTB: couldn't retrieve vibration setting
+DTB: Vibration Enabled
+sbl1_hw_init
+boot_exit_if.c
+CommonMemMapLib.c
+BootMemMapLib.c
+IMAGE_VARIANT_STRING=SocAuroraLAA
+OEM_IMAGE_VERSION_STRING=ip-10-195-200-195
+QC_IMAGE_VERSION_STRING=BOOT.MXF.2.2-00536-AURORA-1.149279.3
+sbl1_config.c
+sbl1_xblconfig_init
+boot_pre_ddr_dtb_load
+boot_check_device_temp
+sbl1_pmic_init
+media_init:2
+media_init:3
+boot_wdog_disable_check
+init-logstomedia
+boot_cdt_init
+sbl1_hw_platform_pre_ddr
+sbl1_hw_pre_ddr_init
+boot_fedl_check
+boot_dload_handle_forced_dload_timeout
+sbl1_ddr_set_params
+sbl1_ddr_init
+store-logstomedia
+xbl_trng_ddi_seq
+xbl_map_smem
+boot_smem_debug_init
+boot_smem_init
+boot_ddr_share_data_to_aop
+boot_populate_ddr_details_shared_table
+boot_recovery_partitions_info_smem_init
+boot_update_ram_partition_table
+sbl1_post_ddr_init
+sbl1_hw_init_secondary
+boot_post_ddr_dtb_load
+aop_loaded
+boot_dload_dump_security_regions
+EUD Init
+blacklist enable
+DP_Milestone
+media_init:1
+blacklist disable
+boot_update_abnormal_reset_status
+boot_cache_set_memory_barrier
+boot_smem_alloc_for_minidump
+boot_shrm_mini_dump_init
+boot_minidump_register_regions
+boot_smem_store_pon_status
+boot_clock_init_rpm
+boot_vsense_copy_to_smem
+sbl1_tlmm_init
+sbl1_efs_handle_cookies
+sbl1_pm_aop_pre_init_wrapper
+shrm_load_cancel
+sbl1_hw_play_vibr
+boot_usb_update_serial
+boot_usb_handle_charger
+sbl1_hw_platform_smem
+ramdump_load_cancel
+sbl1_save_appsbl_index
+boot_prepare_cpucp
+boot_reset_cpucp
+skip_ddr_init_in_EDL
+boot_dload_entry
+EDL: sbl1_dload_entry: dload_entry_count > 1
+OEM_MISC
+QTI_MISC
+XBL Config
+AOP Config
+CPUCP_DTB
+QSEE Dev Config
+xbl_sc_wdog
+save_logs_to_media
+L2M:invalid feature type
+Init logs to media: Failed
+/sw/boot/forced_download
+EDL: boot_fedl_check
+boot_pbl_shared_data_lib.c
+boot_mbn_loader.c
+boot_mbn_driver.c
+Image destination pointer uint32 overflow 
+boot_blacklist.c
+boot_elf_loader.c
+ &*.4;boot_elf_driver.c
+boot_elf_auth.c
+Error code %lx at %s Line %lu
+Call Stack:
+func_addr  :   %08X
+^^^^^^^^^^^^^^^^^^^^^
+error_handler_el3.c
+sbl_error_handler: Unable to get DDR initialization state
+sbl_error_handler: dump collection failed
+sbl_error_handler: copied boot regions to crash dump region
+sbl_error_handler FAIL: DDR not initialized
+boot_buttons.c
+V-/V+/P:%s
+boot_cpucp.c
+boot_eud.c
+boot_vsense.c
+boot_seclib_s.c
+Auth Metadata
+Segments hash check
+Pimem init cmd, entry
+Pimem init cmd, exit
+boot_chipinfo.c
+boot_dbginfo.c
+boot_ddr.c
+boot_ddr_info.c
+boot_platforminfo.c
+<boot_qsee.c
+boot_ramdump.c
+TCSR reg value 0x%x 
+Enter PBL EDL PCIe
+Enter PBL EDL USB
+/sw/boot/fedl_timeout
+DTB: setting version mismatch
+DTB: couldn't retrieve fedl timeout action setting
+EMERGENCY_DLOAD_TIMEOUT_COOKIE_SET: Powerdown
+EMERGENCY_DLOAD_TIMEOUT_COOKIE_SET: Reset
+boot_logger_uart.c
+boot_process_config_context.c
+ Image Load, Start
+ Image Loaded, Delta - (%d Bytes)
+ Image Loaded, Delta - (0 Bytes)
+Bootup: Driver Init, No PMIC on RUMI Target
+Driver Init # SPMI Transn: %d
+Bootup: AOP-Pre Init, No PMIC on RUMI Target
+PM Total Mem Allocated: %d 
+/sw/pmic/pm/sw-config
+/sw/pmic/pm/pon
+/sw/pmic/pm/charger
+/sw/pmic/pm/haptics
+/sw/pmic/pm/display
+/sw/pmic/pm/camera
+/sw/pmic/arb/access
+/sw/pmic/arb/mgpi
+/sw/pmic/arb/pvc
+apply-rsns-trim
+wlan-attach-type
+rsns-trim-value
+ext-buck-voltage-drop
+driver-post-init
+device-pre-init
+sw-config
+PM_DT_PARSING_ERR: %s
+%s/pshold
+reset-type
+smpl-delay
+%s/s2-kpdpwr
+s2-kpdpwr
+%s/s2-kpdpwr-resin
+s2-kpdpwr-resin
+%s/s2-resin
+s2_resin
+%s/s3-reset
+timer-value-ms
+s3-reset
+%s/uvlo-config
+config-value
+%s/ovlo-config
+%s/long-pwrkey-dbnc-chk
+dbnc-time-ms
+long-pwrkey-dbnc-chk
+%s/pre-psi
+vreg-sp-value
+pre-psi-value
+parallel-charger
+charger-pmic-index
+loader-dbc-threshold
+dbc-sdp-thd-inc
+skip-loader-dbc
+core-dbc-threshold
+skip-core-dbc
+uv-oc-1s-threshold
+uv-oc-2s-threshold
+apply-ichg-fs
+batt-2s-option
+apply-too-hot-afp
+too-hot-afp-threshold
+apply-too-cold-afp
+too-cold-afp-threshold
+apply-boot-wo-batt
+boot-wo-batt
+icl-boot-wo-batt
+apply-float-voltage
+float-voltage-mv
+apply-pre-charge-current
+pre-charge-ma
+apply-fast-charge-current
+fast-charge-ma
+apply-icl
+apply-float-charger-icl
+float-charger-icl-ma
+apply-vsysmin
+usb-suspend
+wls-usb-prior-swap
+batt-detect-src
+max-dbg-board-id
+min-dbg-board-id
+detect-jig-by-therm
+max-therm
+min-therm
+jig-icl-ma
+uvp-recover-delay
+ignore-temp-in-dbc
+batt-therm-pull-up
+ibat-via-ext-sense
+ext-rsns-adc-scale
+vbat-thd-rtc-pon
+vsys-min-recover-mv
+vflt-recover-mv
+%s/led-config
+blink-during-charging
+blink-during-shutdown
+rgb-dim-level
+led-config
+ext-boost-vdd
+vmax-hdrm
+autores-cfg
+vbatt-min
+boost-cfg-bob
+lra-resistance
+swr-io-volt
+swire-map
+apply-default-volt
+default-elvss
+default-elvdd
+default-oledb
+rst-signal
+camera-gpio
+port-cfg
+pvc-port-id
+spmi-prioriety
+addr-cfg
+VBATT_2S
+adc_read error: %d. %s %d
+pm_chg_get_vbatt
+pon_ocv get batt opt failed
+pon_ocv get acc0 Failed
+pon_ocv acc0 invalid value
+pon_ocv acc1 invalid value
+PM %d=0x%llx:0x%llx 
+POWER ON by
+POWER OFF by
+KPDPWR_AND_RESIN
+HARD_RESET
+MBG_FAULT
+GP_FAULT3
+GP_FAULT2
+GP_FAULT1
+GP_FAULT0
+RESTART_PON
+PBS_NACK
+PBS_WD_TO
+KPDPWR_ANDOR_RESIN
+PBS_WATCHDOG_TO
+IMM_XVDD_SD
+RAW_DVDD_SHD
+RAW_XVDD_SHD
+HARD RESET by %s
+%s %s, %s %s
+%s %s, POWER OFF due to FAULT %s of PM %d
+%s %s, POWER OFF due to FAULT %s
+%s %s, %s S3 reset %s
+SOFT_RESET_REASON1:SOFT
+%s %s,%s %s
+WARM reset by %s
+Sdam Write Failed
+PBS_RAM %d reloading
+PBS_RAM %d reloading for sid %d
+PBS RAM %d CRC mismatch for sid %d; read_val = 0x%02x%02x, data_val_0 = 0x%02x%02x
+Bootup: No PMIC on RUMI Target
+Device Init # SPMI Transn: %d
+VPH : %d uV 
+CHG Init # SPMI Transn: %d
+WR Count : 0x%X
+Pre-SIL. No CHG Support
+Charging applicable is true as USB is connected
+S3 RESET is passed from Aurora to Helios
+XVDD/DVDD seen SDAM for ADB Reboot cleared
+!$(*,.02
+8:KTB/HALO 1.3V MV Buck configured wit default voltage
+Failed to caculate VSET for given DCR Drop voltage of MV Buck
+I2C Open failure of MV Buck
+MV Buck configuration Failed
+ %c:%d.%d
+PSI: b0x%02x_v0x%02x
+Invalid pwrkey press. Shutting down! 
+Elapsed tick: 0x%x, Wait tick: 0x%x 
+Boot up PwrKey press %d ms detected is less than expected %d ms duration. Shutting down device. Release_time %d, Press_time %d 
+OCP Occured: PMIC: %d; SMPS: %d 
+OCP Occured: PMIC: %d; LDO: %d 
+OCP Occured: PMIC: %d; BOB: %d 
+SUWPM_SET_VAL:Start
+PM_SET_VAL:End:%d
+SET_VAL:Skip
+PBS_GET:%d:0x%X
+WRITE:bus:%d,sid:%d,0x%X,data:0x%X,sindx:%d,eindx:%d
+PASS:%d,%d,0x%X,set:0x%X,get:0x%X
+VIOLATION:%d,%d,0x%X,set:0x%X,get:0x%X
+PBS:%d:0x%X,0x%X
+REVID_SBL_ID_0:0x%X
+REVID_SBL_ID_1:0x%X
+	pm_pbs_ram_image_verify: err_flag = %d, ram size failed
+*** pm_pbs_ram read fail: word number = %d, read_val = %d, slave_id = %d
+***pbs ram verify fail word number = 0x%x, slave_id = 0x%x, periph_id = 0x%x, read_val = 0x%lx, dataval = 0x%lx
+***pbs ram verify fail word number = 0x%x, slave_id = 0x%x, periph_id = 0x%x, read_val = 0x%x, dataval = 0x%x
+PM_PBS_INFO
+PON REASON HISTORY LOGS
+Word %d : 0x%lX
+hBATT_THERM
+BATT_THERM_PU_30K
+BATT_THERM_PU_400K
+BATT_THERM_OHMS
+%.35s execution_time %dms
+execution_time per spmi_read %dus
+execution_time per spmi_write %dus
+periph id 0x%x modification is not allowed
+ channel for periph id 0x%x not found for appendIRQ operation
+ periph id 0x%x not found for append operation
+vdda_ebi
+gcc_memnoc_clk
+gcc_qupv3_wrap0_s0_clk
+gcc_qupv3_wrap0_s1_clk
+gcc_qupv3_wrap0_s2_clk
+gcc_qupv3_wrap0_s3_clk
+gcc_qupv3_wrap0_s4_clk
+gcc_qupv3_wrap0_s5_clk
+gcc_qupv3_wrap1_s0_clk
+gcc_qupv3_wrap1_s1_clk
+gcc_qupv3_wrap1_s2_clk
+gcc_qupv3_wrap1_s3_clk
+gcc_qupv3_wrap1_s4_clk
+gcc_qupv3_wrap1_s5_clk
+gcc_shrm_clk
+usb30_prim
+qupv3_core_2x
+/sw/clk_pegging_node
+test_mode
+Pegging-tool : Result is %x and test_mode is %x
+cx_corner
+ddr_min_max_freq
+shub_min_max_freq
+/sw/clk_pegging_node : cx_corner[%x]..ddr_min_max[%x]..shub_min_max[%x]
+Error in reading /sw/clk_pegging_node data
+SM_KAILUA
+SMP_KAILUA
+SXR_AURORA
+QRU_LASSEN
+QDU_LASSEN
+QDU1010_LASSEN
+QRU1032_LASSEN
+QRU1052_LASSEN
+QRU1062_LASSEN
+SXR_HALLIDAY
+SM_LANAI
+SMP_LANAI
+SCP_HAMOA
+SDX_PINNACLES
+SDX_PINNACLES_M
+SA_PINNACLES
+SA_PINNACLES_L
+SSG_AURORA
+SM_KAPITI
+SDX_KUNO_SINGLEDIE
+SDX_KUNO_HYBRID
+SSG2_AURORA
+SXR_HALLIDAY5
+SAR1165P
+SAR1180P
+/soc/PlatformInfo
+PlatformInfo
+rpm_buffer_addr
+DAL_PLATFORM_INFO
+/soc/i2c
+/soc/i2c/i2c_device_config_
+core_base_addr
+common_base_addr
+core_offset
+qupv3_instance
+core_index
+se_index
+core_irq
+polled_mode
+min_data_length_for_dma
+gpi_index
+scl_encoding
+sda_encoding
+tcsr_base_addr
+tcsr_reg_offset
+tcsr_reg_value
+se_clock
+fdt_header
+dalspinlock
+3/B///HFailed- DeviceId:0x%x
+Failed- pszDevName:%s pDALPtr:0x%x
+Failed- pszDevName:%s DALPROP_PropsInfo:0x%x
+DevCfgVersionInfo
+DALPROP_PropsInfo is NULL- pszName:%s
+pDALPropsDir or pbDevicePropsPos is NULL- pszName:%s pDALPropsDir:0x%x pbDevicePropsPos:0x%x
+SkipProp error- pszName:%s pDALPropsDir:0x%x pbDevicePropsPos:0x%x
+Unknown prop value- pPropVar:0x%x
+Unknown type- pPropVar:0x%x
+/devcfg.bin
+boot_block_dev.c
+TSENS_BSP
+/core/hwengines/tsens
+(%x %x %x)
+(%x %x %x %x %x %x)
+boot_smem_drv.c
+smem_alloc: SMEM is not initialized state=%d! smem_type=%d, buf_size=%d.
+smem_alloc: Trying to allocate smem item=%d which is >= max item=%d!
+smem_alloc: SMEM allocation failed! smem_type=%d, buf_size=%d
+smem_get_addr: SMEM is not initialized state=%d! smem_type=%d.
+smem_get_addr: Trying to get addr smem item=%d which is >= max item=%d!
+smem_get_addr: SMEM get addr failed! smem_type=%d
+smem_version_set: Unable to allocate version array: type %d.
+SMEM base addr=0x%08X, size=%d memory mapping failed.
+SMEM is not initialized by Boot.
+smem_init: major version (%d) does not match all procs!
+SMEM version=0x%X not supported.
+smem_boot.c
+smem_setup_toc: Heap remaining (%d) < total partitions sz (%d)!
+smem_boot_setup_toc: TOC too big! Size: %d Bytes, must be %d or less.
+SMEM TOC + targ_info too big! TOC: %d B; targ_info: %d B, max: %d B.
+smem_xbl_loader.c
+/sw/smem
+smem-vers
+smem-toc-vers
+smem-max-items
+/sw/smem/smem-partitions
+exclusion-sizes
+Invalid SMEM memory type, %d, requested.
+smem_legacy.c
+Invalid smem_type=%d
+In new SMEM version smem_alloc_add_table_entry() is not supported
+Can't initialize heap info
+Assertion smem_legacy_info.smem_buf_data_tbl[buf_tbl_idx].tag != SMEM_INVALID failed
+Invalid memory type %d
+Invalid SMEM heap pointers. Uncached: 0x%X, cached: 0x%X
+Fixed buffer allocation not supported in new SMEM version
+Assertion SMEM_READ_SMEM_4(&toc->version) == 1 failed
+smem_partition.c
+Assertion SMEM_READ_SMEM_4(&toc->num_entries) <= SMEM_MAX_PARTITIONS failed
+Assertion ((unsigned int)(uintptr_t)hdr & SMEM_PAGE_ALIGN_MASK) == 0 failed
+Assertion hdr->identifier == SMEM_PARTITION_HEADER_ID failed
+Assertion partition_offset > 0 failed
+Assertion partition_offset < smem_size - SMEM_TOC_SIZE failed
+Invalid partition size(%d). Actual partition size:%d,host0:0x%04X, host1:0x%04X.
+SMEM Partition %d init failed with status 0x%x
+Invalid SMEM canary 0x%X at location 0x%X
+Invalid SMEM item size:%d, Partition size:%d smem_type:0x%04X.
+Invalid SMEM item size. Total size: %d, remaining: %d
+Invalid padding data size:%d, size_item:%d smem_type:0x%04X.
+smem_ac_validate failed!
+smem_ac.c
+XBL Permissions assign failed with err=%d
+Integer overflow while doing addition(0x%08X%08X, 0x%08X%08X).
+/soc/BootTempBsp/BootTempThres
+ )-5<AE44
+ddr_devicetree_helper_uint32:  Error while reading DT entry, return value is %d
+ddr_devicetree_helper_string:  Error while reading DT entry, return value is %d
+ddr_log_level_dt
+/soc/ddr_common_dt
+print_severity_dt
+DDR_INIT with shrm.elf
+DDR_FW_Init_APPs,Overriding DDR init func ptr API to not use shrm.elf 
+ddr_init = %d DDR ABORT
+ddr_init = %d cold boot
+ddr_sns_drivers.c
+Testing DDR Read/Write.
+Testing DDR Read/Write: Data lines.
+Testing DDR Read/Write: Address lines.
+Testing DDR Read/Write: Own-address algorithm.
+Testing DDR Read/Write: Walking-ones algorithm.
+Testing DDR Self Refresh.
+Testing DDR Self Refresh: Write pass.
+Testing DDR Self Refresh: Entering self refresh.
+Testing DDR Self Refresh: In self refresh.
+Testing DDR Self Refresh: Exiting self refresh.
+Testing DDR Self Refresh: Read pass.
+More than 4 channels, not support!
+Testing DDR Deep Power Down.
+Testing DDR Deep Power Down: Write pass.
+Testing DDR Deep Power Down: Entering deep power down.
+Testing DDR Deep Power Down: In deep power down.
+Testing DDR Deep Power Down: Exiting deep power down.
+Testing DDR Deep Power Down: Read pass.
+mte_disable
+/soc/ddr_target_dt
+MTE value:  %d
+Invalid boot mode in ddr_target_init
+/soc/display_info/panel_0
+display_panel_type
+display width = %d display height = %d display_type = %s
+PASS1 Cookie =  0x%x
+ALT_ARES Set, Before HAL_DDR_Init(), DBG PDC Tr = 0x%x, First Pass expire = 0x%x, First Pass complete = 0x%x , BIMC Alt ARES  = 0x%x , PASS2 Cookie = 0x%x 
+SHRM run state = 0x%x 
+pass1 fail case, full ddr_init_done = %d 
+ALT_ARES Set,HAL_DDR_Init() completed, DBG PDC Tr = 0x%x, First Pass expire = 0x%x, First Pass complete = 0x%x , BIMC Alt ARES  = 0x%x , PASS2 Cookie = 0x%x 
+HAL_DDR_SDI_Recover() start:  DBG PDC Tr = 0x%x, First Pass expire = 0x%x, First Pass complete = 0x%x , BIMC Alt ARES  = 0x%x , PASS2 Cookie = 0x%x 
+HAL_DDR_SDI_Recover() end : DBG PDC Tr = 0x%x, First Pass expire = 0x%x, First Pass complete = 0x%x , BIMC Alt ARES  = 0x%x , PASS2 Cookie = 0x%x 
+ddr_init status = %d  DDR recover normal pass2
+DSF version = %03d.%02d.%02d
+Manufacturer ID = 0x%x, Device Type = 0x%x
+Rank 0 size = %d MB, Rank 1 size = %d MB
+Current DDR Freq = %d MHz
+Max enabled DDR Freq = %d MHz
+DDR: The serial number is 0x%x
+DDR: Checksum on flash is %d
+DDR: Recomputed checksum is %d
+DDR: Training is required
+DDR: Training is not required
+Bootup frequency set to sw_override frequency %u
+Bootup frequency set to %u
+DDR: Start of DDR Training Init
+DDR: End of DDR Training Init
+DDR: Start of DDR Training Restore
+DDR: End of DDR Training Restore
+DDR: serial # 0x%x
+Unsupported SCT configuration in ddr_post_setup
+Row Hammer Check : DRAM supports unlimited MAC Value : MR_RH[OP2:0 = %d] & MR_RH[OP3 = %d] for CH%d & CS%d
+Row Hammer Check : DRAM doesn't support unlimited MAC Value : MR_RH[OP2:0 = %d] & MR_RH[OP3 = %d] for CH%d & CS%d 
+Aborting DDR
+Row Hamming DDR
+LP4x MR24_value =  0x%x
+ddr_external_api.c
+LBNETRTSSEY
+vdd_lpi_mx
+vdd_lpi_cx
+EDOMTSET
+XBLTestMode.c
+Exception caught by SBL1 vector table!!
+ELR-EL%1d: %16lx (Exception Link Register) *PC at exc
+ESR-EL%d: %16lx (Exception Syndrome Register)
+X0 : %16lx, X1 : %16lx
+X2 : %16lx, X3 : %16lx
+X4 : %16lx, X5 : %16lx
+X6 : %16lx, X7 : %16lx
+X8 : %16lx, X9 : %16lx
+X10: %16lx, X11: %16lx
+X12: %16lx, X13: %16lx
+X14: %16lx, X15: %16lx
+X16: %16lx, X17: %16lx
+X18: %16lx, X19: %16lx
+X20: %16lx, X21: %16lx
+X22: %16lx, X23: %16lx
+X24: %16lx, X25: %16lx
+X26: %16lx, X27: %16lx
+X28: %16lx, X29: %16lx
+X30: %16lx
+XBL_SC_MINI_CTX
+boot_crashdump_handler_aarch64.c
+xbl_wrpd_keys
+xbl_encr_iv
+xbl_encr_mac
+xbl_strct
+xbl_imem
+xbl_shrd_imm
+successfully processed
+Debug Policy
+processed
+Rom Patch
+Static Fuse Overwrite
+SLC 0x%x unknown
+not supported
+not authorized
+%s: Unknown error: 0x%x
+debug policy applied
+no debug policy applied
+%s: error code: 0x%x
+%s: SEQ error code: 0x%x
+TZ_MINIDUMP
+boot_ram_partition_drv.c
+ILAVboot_minidump_loader.c
+MD: IV Buf heap err
+MD: MAC Buf heap err
+MD: skip invalid region subsys_id:0x%08X name:%s base:0x%11X size:0x%11X
+MD: Subsys: 0x%04X invalid count: 0x%04X
+MD: MD table is not initialized in SMEM
+MD: No regions registered in MD table
+MD: region_table heap err
+MD: Error overlap subsys_id:0x%08X name:%s base:0x%llX size:0x%llX
+boot_encryption.c
+boot_media_initialization.c
+dtb_loader.c
+xcfg_chipinfo.err[%x]
+xcfg_platinfo.err[%x]
+post-ddr
+cfg_item_config_open_first_dtb[%s] returned[%x]
+DTBO: %s* dtbo can't be found[%x]!
+fdt merge overlay failed:returned [%d]
+fdt_set_blob_handle got an error [%d]
+DTB %s Found: [%s][%llx][%llx]
+dload_dump.c
+pImem Disabled, segment not added to dump.
+xbl_hw_sm.c
+Pre_DDR_clock_init, Start
+Pre_DDR_clock_init, Delta
+pm_device_init, Delta
+pm_driver_init, Start
+pm_driver_init, Delta
+OEM_IMAGE_UUID_STRING=Q_SENTINEL_{36EBAE5F-C771-47A7-99E2-7A44DF2875D4}_20260305_1257
+LBNEENODRN
+EMMC Vendor ID : 0x%X
+EMMC Product Name : %s
+EMMC Size : %d sectors
+EMMC Firmware version : %d
+EMMC SpeedMode - HS400 ES Mode 
+EMMC SpeedMode - HS400 Mode 
+EMMC SpeedMode - HS200 Mode 
+EMMC SpeedMode - DDR50 Mode 
+EMMC Tuning phase-%d selected
+EMMC extCSD information
+Device Life Time EOL[267]=%d
+Device Life Time A[268]=%d
+Device Life Time B[268]=%d
+		 SDP_CHARGER
+ OCP_CHARGER
+ CDP_CHARGER
+ DCP_CHARGER
+ FLOAT_CHARGER
+ INVALID
+ UNKNOWN
+usb: ser_str_cookie_pid
+ufs_info_fail
+ufs_ser_strlen <= 2
+emmc_parti_unavail
+sdc_parti_unavail
+emmc/sdc_info_fail
+ser_str_conv_fail
+usb: UFS Serial
+usb: Serial
+enter forced EDL
+usb_dp_toggled_for_cdp
+usb: chgr
+!'.5CTicbcfg_info
+ read:addr=0x%016lx
+ !error:addr=0x%010lx ref=0x%016lx data=0x%016lx xor=0x%016lx
+DDI: add delay
+delay_ms: %d
+DDI: memory read command
+  test range: 0x%lx ~ 0x%lx
+repeat_count: %lld
+ Start Read Test #%d
+** %s **
+DDI: ddr write command
+  random_stride: %d, random_seed: 0x%08x
+  pattern_size: %d
+  pattern: 0x%016llx
+  repeat: %lld  invert: %d
+ Start Write Test #%d
+DDI: Memory Test command
+  random_stride: %d  random_seed: 0x%08x
+  repeat: %lld  verify: %d  invert: %d  cache: %d
+ Start Write test #%d
+ Start Verify #%d
+total_fail_count: %d
+DDI: DDR frequency switch
+freq: %d
+DDI: running plot command
+type: %s, freq: %d
+x_step: %d, y_step: %d
+DDI: invalid frequency option
+step size struct added successfully
+step size data saved to DDR partition
+DDI: read eCDT
+DDI: read AC timing
+DDI: get safe mode setting
+DDI: get device info
+DDI: Set parameter
+DDI: modify PHY
+freq: %d, type: %d
+phy mask: cs:0x%X, ch:0x%X, dq:0x%X
+offsets Vref: %d pt, CDC: %d pt
+ Outofbound %s %s
+DDI: Failed to peg DDR freq
+CPR rev %d data not found in voltage plan
+vrm.mmcx
+vdd_ssc_mx
+vdd_ssc_cx
+vdd_wlan
+/cpr.bin
+chdlp-%d
+EFI PART
+hw-channel
+settling-delay-uS
+average-sample
+decimation-ratio
+cal-method
+scaling-factor
+scaling-method
+offset-factor
+pull-up-res
+int-table
+int-table (prop-list)
+int-table (reg)
+Translation table index out of range
+int-table (table)
+Err get table prop list
+gpio-num
+gpio (eGpio)
+pmic-sid
+gpio (psid)
+use-interrupt
+fullscale-code
+fullscale-uV
+fullratiometric-code
+read-timeout-uS
+ldo-settling-uS
+slave-id
+peripheral-id
+master-id
+pmic-device
+%s/gpio-map
+get_count_subnode
+get_size_subnode_name
+get_subnode_name
+%s/therm_table
+%s/vadc_ch_cfg
+ADC_ERROR: %s
+4Error enabling GPIO lines
+Error enabling MSM-GPIO-122 line for VOL+ btn
+Error getting GPIO status, GPIO %d
+Error getting PWR button status
+Error getting VOL- button status
+Error configure buttons GPIO
+Error reading button status, Error code %d
+Error writing to SDAM
+/soc/sdc%d/HsrSettings
+/soc/sdc%d/HsrSettings/HS400
+/soc/sdc%d/HsrSettings/HS200
+DLLConfig
+DLLConfig2
+DLLConfig3
+DLLTestCtrl
+DDRConfig
+DLLUserCtrl
+SDCC HSR Settings from Device Tree:
+DLLConfig = 0x%x, DLLConfig2 = 0x%x, DLLConfig3 = 0x%x
+DLLTestCtrl = 0x%x, DDRConfig = 0x%x, DLLUserCtrl = 0x%x
+/soc/sdc%d
+EnableLogging
+DriveStrength
+SDCC Drive Strength CTL-0 Setting from Device Tree: 0x%x
+SDCC Drive Strength CTL-1 Setting from Device Tree: 0x%x
+MaxSpeedMode
+SDCC Speed Mode Setting from Device Tree: %d
+/sw/pmic/adc/vadc/spmi-vadc@0
+VAdc - conversion timed out
+VAdc - invalid ADC code read
+8450_xml
+IsRemotable
+tlmm_sleep
+NumSysWorkLoops
+FixedMemLength
+DALPROP_TARGET_PROP_NAME
+icbcfg_info
+TSENS_BSP
+UsbSharedLib.c error in line
+/soc/usb0/hs_phy_cfg
+HS: usb_shared_xbl_dtb_node_init dtb inaccessible
+usb_hs_phy_cfg size 
+HS: usb_shared_process_phy_reg_dtb_list Failed
+rumi_phy_disabled
+USB_PHY_PS for LaneDet, ChipInfo 
+SW MUX ovrd method
+/soc/usb0/ss_phy_cfg
+SS: usb_shared_xbl_dtb_node_init device tree Not available
+ssusb_phy_init_timeout
+ssusb_phy_init_success lane
+%s_CID:%04X_SN:%08X
+usb_eud_is_active, status 
+usb run_stop status 
+usb_shared_lib_process_phy_reg_dtb_list: Invalid paramerters received
+usb_eud_serial 
+Fail to Initialize and attach DAL TLMM driver
+Fail to Configure GPIO#99
+Fail to drive GPIO#99
+NULL_MSG
+usb: %s , 0x%x
+str_overflow
+usb: ID:0x%x, value: 0x%x
+qusb_platform
+utmi_only
+init_dp_gnd Failed
+qusb_dci_dp_gnd_check: 
+dpGnd LOW, break
+dpGnd HIGH
+wait unplug(dpGnd LOW), (ms):
+dpGnd LOW, enter FEDL
+vioclt_eud_set
+qusb_dci_eud_init
+/soc/pinctrl@f100000
+pinctrl-names
+pinctrl-%d
+%s-gpios
+qcom,sleep-config
+qcom,active-config
+gcc_qupv3_wrap0_core_clk
+gcc_qupv3_wrap0_core_2x_clk
+gcc_qupv3_wrap_0_m_ahb_clk
+gcc_qupv3_wrap_0_s_ahb_clk
+gcc_qupv3_wrap1_core_clk
+gcc_qupv3_wrap1_core_2x_clk
+gcc_qupv3_wrap_1_m_ahb_clk
+gcc_qupv3_wrap_1_s_ahb_clk
+(-<@RkkkkkkkkkkkkkZakkkkkkgphandle
+linux,phandle
+/aliases
+compatible
+ %*/49>CH
+DDR_FW version : 275.0.0
+Training version : 275.0.0
+TRN_PRINT
+TRN_ISSUE
+DSF V%03u.%02u.%02u
+ERROR! Invalid input to DCNOC_Data_Barrier
+eCDT MRR - Data Starting Address: 0x%08X
+MR Write/Read/Match Sequence
+MR Write : W MA OP
+MR Read  : R MA OP
+MR Match : M MA OP_MSK OP_EXP OP_OBS OP_DIF
+==================================================================================
+strt=%d   
+stop=%d   
+ perbit_knob [%d][%d][%d][%d]=%d
+ perbit_knob [%d][%d][%d]
+%d: strt:%d, stop:%d, Mid:%d  
+DBI: strt:%d, stop:%d, Mid:%d  
+dqdcc_x [%d][%d][%d]= 
+ wck_dcc[%d][%d][%d]=%d
+ lmx_dcc[%d][%d][%d]=%d
+ ====================================== 
+   PHY_Trn_WR_HCD Started 
+ sweeping for  PHY_Trn_WR_HCD cdc 
+ tby2=%d ps  
+   PHY_Trn_WR_HCD ended 
+start=%4d stop =%4d  on bit [%d][%d][%d][%d]
+min_strt=%d 
+ strt=%d * %d= %d ps,  
+(tby2 %d +WR_HCD_MARGIN_PS(%d))< %d start_inps, HCD Activated for HCD[%d][%d][%d]<<<<<====
+hcd[%d][%d][%d]= %X
+   PHY_Trn_WR_FCD Started 
+ sweeping for  PHY_Trn_WR_FCD cdc 
+   PHY_Trn_WR_FCD ended 
+ch=%d  tby2= %d WR_CD_MARGIN_STEPS= %d   min_strt= %d fcd_v=%d hcd_v=%d 
+HCD[%d][%d][%d]= %X   <<<<<====
+HCD[%d][%d][%d]= %d  
+FCD[%d][%d][%d]= %d 
+fcd[%d][%d][%d]= %X
+profile %D fcd[%d][%d][%d]= %X
+DQ_DBI_BIT_INDEX= %d
+dbidqdcc[%d][%d][%d][%d]= %d
+WR_Pbit_CDC pbit[%d][%d][%d][%d]= %d coarse:%d, fine:%d
+dbi_pbit[%d][%d][%d][%d]= %d
+  0x%08X%08X ,  
+  PHY_Trn_WR_PBIT_CDC_All started 
+  PHY_Trn_WR_PBIT_CDC_All ended 
+  PHY_Trn_WR_DBI_DCC_All started 
+ sweeping for  dbi dcd  
+  PHY_Trn_WR_DBI_DCC_All ended 
+  PHY_Trn_WR_DBI_CDC_All started 
+Calculating  dbi cdc 
+  PHY_Trn_WR_DBI_CDC_All ended 
+WR_Pbit_CDC_ProfileDB pbit[%d][%d][%d][%d]= %d coarse:%d, fine:%d
+Calculating  perbit cdc 
+TagString
+V:\vi_aurora\users\sve_ddr\debug\Aurora\WR\
+V:\vi_aurora\users\sve_ddr\debug\Aurora\RD\
+midp[%3d][%3d][%3d][%3d]=%3d,
+maxmidp[%3d][%3d][%3d]]=%3d,
+ rdqs[%d][%d][%d] =%3d
+ rdqs[%d][%d][%d] =%3d
+Unterminated Vref Training Done!!
+global Vref Training Done!!
+PHY_Trn_RD_Matched_TOV_RDQS_PB  Training Done!!
+Offset Vref Training Done!!
+Intermediate perbit after OV Training Done!!
+PHY_Trn_RD_Matched_3RDQSDCC  Training Started!!
+RDQS Only Training Done!!
+PHY_Trn_RD_Matched_3RDQSDCC  Training Ended!!
+RDQS an Perbit  Training Done!!
+PHY_Trn_RD_Matched_RDQS_PB  Training Done!!
+PHY_Trn_RD_Matched_RDQS  Training Done!!
+PHY_Trn_RD_DQDCC_Binary_Search  Training Start!!
+PHY_Trn_RD_DQDCC_Binary_Search  Training Done!!
+DDR_ABORT: DELTA BETWEEN RANK0 & RANK1 TRAINED VREFs IS OUT OF SPEC, Frequency = %d, Channel = %d, Rank = %d, Byte = %d
+  PHY_SED_RD started 
+ Trained TVref SED 
+ Top Vref SED . offset=%d
+ Bot Vref SED . offset=%d
+ SIPI_p60mv Vref SED offset=%d
+ SIPI_m60mv Vref SEDoffset=%d
+ Trained UVref SED 
+ Top UVref SED . offset=%d
+ Bot UVref SED . offset=%d
+ SIPI_p60mv UVref SED offset=%d
+ SIPI_m60mv UVref SEDoffset=%d
+   PHY_SED_WB_RD ended 
+   PHY_SED_RD ended 
+  PHY_SED_RD_LowFreq started 
+   PHY_SED_RD_LowFreq ended 
+  PHY_TRN_RD_TV_Modify started 
+ Adde to Terminated  Vref =%d
+   PHY_TRN_RD_TV_Modify ended 
+ sweeping for  scaling cdc 
+Applying    Scaling CDC 
+ sweeping for  dbi cdc 
+Applying    DBI CDC 
+   PHY_Trn_LP5_WR_All ended 
+@    ch=%d, cs=%d, byte=%d	 Coarse=%d Fine=%d	 Delay@%d %d 	  Delay@%d  %d 
+Trained value Coarse: %d, Fine: %d 
+M 0x%02X 0x%02X 0x%02X 0x%02X 0x%02X
+W 0x%02X 0x%02X
+R 0x%02X 0x%02X
+Populated CS Mask: 0x%X
+?LP4DEBUG  CH=%d, cs=%3d, vref=%3d, vrange=%d, 
+ Vref[%d][%d]=%d, mr14=%d
+ Vref[%d][%d][0]=%d
+CH=%d, cs=%3d, low=%3d, high=%d, mid=%3d, 
+median_dqdcc[%d][%d]=%3d    max_dcc=%3d   min_dcc=%3d
+  PHY_Trn_LP4_WR_All started 
+BSearch for Vref 
+Calculating WR perbit DQ DCC   
+ WR perbit DQ DCC Training 
+Final 1D sweep to train pbit  
+ dbi dcd Training 
+ Applying DBI DCC for  dbi dcd  
+ sweeping for  dbi cdc 
+ Applying    dbi cdc 
+   PHY_Trn_LP4_WR_All ended 
+  PHY_Trn_LP4_WR_Vref started 
+   PHY_Trn_LP4_WR_All_Vef ended 
+  PHY_Trn_LP4_WR_DQ_DCC started 
+   PHY_Trn_LP4_WR_DQ_DCC ended 
+  PHY_Trn_LP4_WR_CDC started 
+   PHY_Trn_LP4_WR_CDC ended 
+  PHY_SED_LP4_WR_Print started 
+ Trained Vref SED 
+   PHY_SED_LP4_WR_Print ended 
+DCC_PLL_ADJ:%x,%x,%x,PLL%x,%x,Value:%x
+---> DCC ABORT GPLL Switch CH:%d, GPLL PLL:%d<-------------
+---> DCC ABORT!!! CH:%d, PLL:%d<-------------
+DCC_CLK_ADJ   :%x,%x,%x,%x,%x,Value:%x
+DCC_IO_DQS_ADJ:%x,%x,%x,%x,%x,Value:%x
+DCC_CLK_ADJ:%x,%x,%x,PLL%x,%x,Value:%x
+DCC_IO_CK_ADJ:%x,%x,%x,%x,%x,Value:%x
+DCC_RDT4_ADJ:%x,%x,%x,%x,%x,Value:%x
+>>>> DCC ADJ MAXING:%x
+@3333333@
+(%x %x %x %x %x)
+(%x %x %x %x)
+Access Control Error: Address computation for MPU - Addr:%d offset:%d
+/%04X_%01X_%04X_%01X_dcb.bin
+TRAINING TIME PER CALL: GROUP=%s,NAME=%s,FREQ(kHz)=%d,TIME(us)=%d
+TRAINING TIME PER FUNCTION:
+GROUP,NAME,CALL_COUNT,TOTAL_TIME(us)
+%c,%s,%d,%d
+%s,%s,%d,%d
+TRAINING TIME TOTAL(us): %d
+UNCATEGORIZED
+INVALID_ECDT_ENTRY
+LIMIT_EXCEEDED
+NO_MEMORY_DEVICE_DETECTED
+ONLY_RANK_1_OF_MEMORY_DEVICE_DETECTED
+MEMORY_DEVICE_DOES_NOT_MATCH_OTHER_CHANNELS
+READ_ZERO_EYE_OPENING
+WRITE_ZERO_EYE_OPENING
+RCW_TRAINING_FAIL
+DIT_READ_FAIL
+DCB_LOAD_FAIL
+DCB_VERSION_INCORRECT
+SDI_VERSION_INCORRECT
+MANAGER_VERSION_INCORRECT
+DRAM_DCC_FAIL
+LLCC_AS_TCM_FAIL
+LLCC_LCP_CFG_FAIL
+%s: REASON=%s,FREQ=%s,CHANNEL=%s,CHIPSELECT=%s,BYTE=%s,BIT=%s,LIMIT=0x%X,VALUE=%d
+DDR_ABORT
+/soc/seclib/pimem
+pimem_max_storage_size
+EUD wait %ds
+/__local_fixups__
+/__fixups__
+/__symbols__
+__overlay__
+target-path
+__symbols__
+/__overlay__/
+E98C028875B64D348F852598E5168EAB
+Q3r$Q3s$Q@I#Q
+#Q3r0Q3s0Q@I/Q
+DDDDUUUU
+@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopq
+tWCK2DQI (DIT)
+PLL Precal
+DIT - Periodic Training
+GHS PLL DCC Monitor
+PLL DCC Monitor
+CLKIO DCC Monitor
+RDT4 DCC Monitor
+RCW CDC/Full Cycle Sweep
+RD_Matched_1UV
+RD_Matched_1TV
+RD_Matched_2OV
+RD_Matched_3RDQDCC
+RD_Matched_4RDQS_PB
+RD_Matched_4RDDQS
+PHY_SED_RD
+READ Scaling
+DRAM Vref DQ CDC perbit
+DRAM Vref
+DRAM Vref DQ DCC
+DRAM Vref DQ CDC
+DQ CDC perbit (NO VREF)
+PHY_SED_LP4_WR_Print
+Low Freq DQ CDC perbit
+@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopq
+Kv)n<JLj
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1301
+*SRoT MBNv7 Image Signing Root CA 6 SubCA 10
+260305134650Z
+280305134650Z0W1
+	San Diego1
+QUALCOMM1
+CASS - SBL40v0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1+0)
+"SRoT MBNv7 Image Signing Root CA 60
+200825220346Z
+300825220346Z0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1301
+*SRoT MBNv7 Image Signing Root CA 6 SubCA 10v0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1+0)
+"SRoT MBNv7 Image Signing Root CA 60 
+200825215431Z
+20500825215431Z0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1+0)
+"SRoT MBNv7 Image Signing Root CA 60v0
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175903Z
+20631121175903Z0|1 0
+Greatwhite_FW_Signing_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175853Z
+20631121175853Z0y1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175856Z
+20631121175856Z0y1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175858Z
+20631121175858Z0y1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175901Z
+20631121175901Z0y1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1

@@ -1,0 +1,10 @@
+String locations in xbl.img (file offsets)
+SEQ_FW_RELEASE            0x145e4   primary stub
+ImageAuthPblUtils.cpp     0x43cff   TME image
+SRoT MBNv7 CA chain       0x4888b   TME image
+Greatwhite_FW_Root_01     0x4986c   TME image
+TME_FW_VERSION            0x44ebb   TME image
+SBL1 BUILD                0xcb26b   SBL1 image
+Secure Boot:              0xcb35b   SBL1 image
+PBL Patch                 0xcb3a0   SBL1 image
+QC_IMAGE_VERSION          0xcbdd4   SBL1 image

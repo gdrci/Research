@@ -1,0 +1,98 @@
+o` Ro` lo`
+71fd199c734da644fa23798f83bcaecb1594c5ef
+Devcfg init Done
+SAW init
+VPP init
+CPRh init
+CLKDOM%d init
+APM init
+MEMACC init
+OPP control debug init Done
+CLKDOM%d Enabled
+CLKDOM%d set Boot VC %d
+CPUCP boot started 
+CPUSS peripheral Clock init Done
+IPC init Done
+CPUSS SYS debug init Done
+SCMI init Done
+2025-11-05
+10:23:30
+Waipio_ACD_HSR.xlsx
+DTECH_DLP_APSS_APM_HSR.xlsx
+Kailua_CPRh_HSR.xlsx
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1301
+*SRoT MBNv7 Image Signing Root CA 6 SubCA 10
+251105102739Z
+271105092739Z0W1
+	San Diego1
+QUALCOMM1
+CASS - SBL40v0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1+0)
+"SRoT MBNv7 Image Signing Root CA 60
+200825220346Z
+300825220346Z0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1301
+*SRoT MBNv7 Image Signing Root CA 6 SubCA 10v0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1+0)
+"SRoT MBNv7 Image Signing Root CA 60 
+200825215431Z
+20500825215431Z0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1+0)
+"SRoT MBNv7 Image Signing Root CA 60v0
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175903Z
+20631121175903Z0|1 0
+Greatwhite_FW_Signing_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175853Z
+20631121175853Z0y1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175856Z
+20631121175856Z0y1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175858Z
+20631121175858Z0y1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175901Z
+20631121175901Z0y1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1

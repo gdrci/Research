@@ -1,0 +1,1363 @@
+@9))B)K6
+@9)	@9k6@9b
+@9)	@9k&@9b
+LU@9IE@9p
+@9!M@8*	@9)
+So&@9a=p
+kV@9AMA8L	@9J
+@9l/@8I/@8J
+3N	@9QM@8H
+	@9	t@9K
+3	4@9A=p
+3N	@9QM@8H
+	@9	t@9K
+3.T@9OM@8
+3m	@9pM@8j
+3n	@9rM@8i
+,	@9-M@8.
+)	@9*t@9l
+3-	@91M@8(
+,	@9-M@8.
+L	@9MM@8I
+@9,	@9-M@8.
+	@9KM@8L
+GU@9Be@9Ju@9&
+3-	@91M@8(
+3n	@9rM@8i
+,	@9-M@8.
+@9!N@8I	@9#
+PE@9RU@9@e@9m
++5@).=A)
+9l%@9m)@9n-@9
+9l5@9m9@9n=@9kA
+T)hj8	h*8
+5	1@y?=,q
+%s:%d: km_is_key_size_valid failed: %u
+aes_generate
+%s:%u:%d
+aes_encrypt_decrypt_secret
+aes_begin
+aes_update_aad
+AAD processed successfully
+AAD not provided with updateAad call
+AAD provided for non-AAD mode of AES
+aes_update
+Invalid Mode: %u for purpose:%u
+Invalid Purpose:%u
+aes_finish
+%s:%u: 0x%x %s 0x%x
+Invalid padding in: %s
+operation->algCtx.overflowBufOffset:%u
+operation->algCtx.purpose:%u
+operation->algCtx.mode:%u
+Invalid last blk size in %s
+Aead tag not set %s
+aes_import
+Unsupported key import format in %s
+key format: %u
+%s:%d: qsee_open_singleton failed: %d
+aes_export
+%s:%d: Fallback to legacy aes_export implementation
+IICE_requestWrappedKey ret: %d
+%s:%d: Key export not supported for AES
+blockModeValid
+nonceValidations
+generateRandomNonce
+encryptBlockCiphers
+prefillOverFlowBuf
+cacheOverflowData
+processStreamCiphers
+processAeadCiphers
+processAesAeadData
+decryptBlockCiphers
+processAesData
+buf_init
+Integer Overflow: a=%llu, b=%llu
+params_serialize
+Integer Overflow: a=%u, b=%u
+AllocateAndCopyData
+open_storage_platform failed with ret : %d
+cmd_id=KM_NEW_BEGIN begin
+cmd_id=KM_NEW_BEGIN done with ret: %d
+cmd_id=KM_NEW_UPDATE begin
+cmd_id=KM_NEW_UPDATE done with ret: %d
+cmd_id=KM_NEW_FINISH begin
+cmd_id=KM_NEW_FINISH done with ret: %d
+cmd_id=KM_NEW_ABORT begin
+cmd_id=KM_NEW_ABORT done with ret: %d
+cmd_id=KM_NEW_GENERATE_KEY begin
+cmd_id=KM_NEW_GENERATE_KEY done with ret: %d
+cmd_id=KM_NEW_GET_KEY_CHARACTERISTICS begin
+cmd_id=KM_NEW_GET_KEY_CHARACTERISTICS done with ret: %d
+cmd_id=KM_NEW_CONFIGURE begin
+cmd_id=KM_NEW_CONFIGURE done with ret: %d
+cmd_id=KM_NEW_DELETE_ALL_KEYS begin
+cmd_id=KM_NEW_DELETE_ALL_KEYS done with ret: %d
+cmd_id=KM_NEW_DELETE_KEY begin
+cmd_id=KM_NEW_DELETE_KEY done with ret: %d
+cmd_id=KM_NEW_EXPORT_KEY begin
+cmd_id=KM_NEW_EXPORT_KEY done with ret: %d
+cmd_id=KM_NEW_IMPORT_KEY begin
+cmd_id=KM_NEW_IMPORT_KEY done with ret: %d
+cmd_id=KM_NEW_UPGRADE_KEY begin
+cmd_id=KM_NEW_UPGRADE_KEY done with ret: %d
+cmd_id=KEYMASTER_SET_ROT begin
+cmd_id=KEYMASTER_SET_ROT done with ret: %d
+cmd_id=KEYMASTER_SET_BOOT_STATE begin
+cmd_id=KEYMASTER_SET_BOOT_STATE done with ret: %d
+cmd_id=KEYMASTER_SET_VERSION begin
+cmd_id=KEYMASTER_SET_VERSION done with ret: %d
+cmd_id=KEYMASTER_GET_VERSION begin
+cmd_id=KEYMASTER_GET_VERSION done with ret: %d
+cmd_id=KEYMINT_GENERATE_KEY begin
+cmd_id=KEYMINT_GENERATE_KEY done with ret: %d
+cmd_id=KEYMINT_IMPORT_KEY begin
+cmd_id=KEYMINT_IMPORT_KEY done with ret: %d
+cmd_id=KM_NEW_PROVISION_DEVICE_IDS begin
+cmd_id=KM_NEW_PROVISION_DEVICE_IDS done with ret: %d
+cmd_id=KEYMASTER_PROVISION_ATTEST_KEY_NEW begin
+cmd_id=KEYMASTER_PROVISION_ATTEST_KEY_NEW done with ret: %d
+cmd_id=KM_NEW_ATTEST begin
+cmd_id=KM_NEW_ATTEST done with ret: %d
+cmd_id=KM_NEW_SET_PROVISIONING_SUCCESS begin
+cmd_id=KM_NEW_SET_PROVISIONING_SUCCESS done with ret: %d
+cmd_id=KM_NEW_DESTROY_DEVICE_IDS begin
+cmd_id=KM_NEW_DESTROY_DEVICE_IDS done with ret: %d
+cmd_id=KEYMINT_CONVERT_STORAGE_KEY_TO_EPHEMERAL begin
+cmd_id=KEYMINT_CONVERT_STORAGE_KEY_TO_EPHEMERAL done with ret: %d
+cmd_id=KEYMINT_UPDATE_AAD begin
+cmd_id=KEYMINT_UPDATE_AAD done with ret: %d
+cmd_id=KEYMINT_GENERATE_CSR begin
+cmd_id=KEYMINT_GENERATE_CSR done with ret: %d
+identity_credential
+Only Identity Credential TA has Access.
+attest_key_identity_cred failed: %d
+get_certificate_publickey failed: %d
+get_identity_x509_certificate failed: %d
+x509Certificate_len: %zu, x509cert_blob.len:%zu
+get_identity_x509_certificate check failed
+CKMHal_getprivKey_der failed: %d
+CKMHal_provisionDeviceIds
+CKMHal object is NULL
+CKMHal_retain: %d
+free CKMHal_ctx
+CKMHal ctx is NULL
+Ivalid input provided to CKMHal_sendRequestWithMemoryObjs
+confirmation token not provided
+confirmationUiFinish
+confirmation token invalid
+confirmationUiUpdate
+processInputData
+confirmation token
+km_is_key_size_valid
+%s: Unsupported key size
+ecc_generate
+%s: km_ecc_serialize_key failed keysize: %u
+%s: encryptDecryptKeyBlob failed with ret: %d
+ecc_encrypt_decrypt_secret
+ecc_begin
+Begin called for ECDH key agreement, nothing to be done for now
+operation->algCtx.digest: %u
+km_hash_init failed in %s for digest:%u
+Update called for ECDH key agreement, nothing to be done for now
+ecc_update
+km_hash_update failed in %s for len:%u ret:%d
+ecc_update failed during rsa_finish with ret: %d
+ecc_finish
+km_hash_finish failed in %s
+Unsupported key size in %s
+key_size: %u
+ecc_export
+ecc_import2
+initEccAttKeyOld
+initEccAttKey
+Cannot find parameters for curve %d
+Invalid oid
+verify_ecc_tbscert
+ffffffff00000001000000000000000000000000ffffffffffffffffffffffff
+ffffffff00000001000000000000000000000000fffffffffffffffffffffffc
+5ac635d8aa3a93e7b3ebbd55769886bc651d06b0cc53b0f63bce3c3e27d2604b
+6b17d1f2e12c4247f8bce6e563a440f277037d812deb33a0f4a13945d898c296
+4fe342e2fe1a7f9b8ee7eb4a7c0f9e162bce33576b315ececbb6406837bf51f5
+ffffffff00000000ffffffffffffffffbce6faada7179e84f3b9cac2fc632551
+fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffeffffffff0000000000000000ffffffff
+fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffeffffffff0000000000000000fffffffc
+b3312fa7e23ee7e4988e056be3f82d19181d9c6efe8141120314088f5013875ac656398d8a2ed19d2a85c8edd3ec2aef
+aa87ca22be8b05378eb1c71ef320ad746e1d3b628ba79b9859f741e082542a385502f25dbf55296c3a545e3872760ab7
+3617DE4A96262C6F5D9E98BF9292DC29F8F41DBD289A147CE9DA3113B5F0B8C00A60B1CE1D7E819D7A431D7C90EA0E5F
+ffffffffffffffffffffffffffffffffffffffffffffffffc7634d81f4372ddf581a0db248b0a77aecec196accc52973
+ffffffffffffffffffffffffffffffff000000000000000000000001
+fffffffffffffffffffffffffffffffefffffffffffffffffffffffe
+b4050a850c04b3abf54132565044b0b7d7bfd8ba270b39432355ffb4
+b70e0cbd6bb4bf7f321390b94a03c1d356c21122343280d6115c1d21
+bd376388b5f723fb4c22dfe6cd4375a05a07476444d5819985007e34
+ffffffffffffffffffffffffffff16a2e0b8f03e13dd29455c5c2a3d
+01ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+01fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc
+0051953eb9618e1c9a1f929a21a0b68540eea2da725b99b315f3b8b489918ef109e156193951ec7e937b1652c0bd3bb1bf073573df883d2c34f1ef451fd46b503f00
+00c6858e06b70404e9cd9e3ecb662395b4429c648139053fb521f828af606b4d3dbaa14b5e77efe75928fe1dc127a2ffa8de3348b3c1856a429bf97e7e31c2e5bd66
+011839296a789a3bc0045c8a5fb42c7d1bd998f54449579b446817afbd17273e662c97ee72995ef42640c550b9013fad0761353c7086a272c24088be94769fd16650
+01fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffa51868783bf2f966b7fcc0148f709a5d03bb5c9b8899c47aebb6fb71e91386409
+perform_key_agreement
+Password handle len invalid in %s
+Invalid enrolled password handle in %s: %u
+delete_user
+delete_all_users
+verify_password
+ThrottleRequest failed in %s
+User id is blank, which is invalid
+gk_encrypt_user_credentials
+add_kmta_origin_tags
+genKeyHandler
+getKeyCharacteristics
+hmac_generate
+hmac_encrypt_decrypt_secret
+hmac_begin
+hmac_update
+hmac_finish
+hmac_import
+Key export not supported for HMAC in %s
+hmac_export
+%s: km_is_key_size_valid failed keysize:%u 
+operation->keyblob.teeParams.minMacLength: %u
+getPreSharedSecretForStrongbox
+RspLen not sufficient: %u
+PSS return feature not enabled
+getPreSharedSecretForStrongboxInternal
+getHmacParamsHandlerCommon
+getHmacSharingParameters
+computeHmacHandlerCommon
+qsee_open singleton failed for strongbox, use default key derivation
+KeymasterSharedMac
+computeSharedHmac
+Compution of shared hmac with strongbox failed, use default key derivation, ret = %d
+Keymaster HMAC Verification
+get_hmac_session_key_tee
+IStrongBox_getHmacSessionKey failed: %d, hmac_key_len_out: %u: 
+allow_pss_return
+PSS return not allowed
+getPreSharedSecretKey
+importKeyHandler
+exportKeyHandler
+")07>!!!Should never happen!!!
+Buffer size doesnt match: %zu
+%s: Not supported key type
+getDerivedKey
+getGkDerivedKey
+Can't find user ID for decrypt
+hmacVerifyKeyBlob
+encryptDecryptKeyBlob
+hmacVerifyDeviceId
+KM CPHR HW Crypto Derived key
+KM CPHR HW Crypto key derived from SHK
+KM HMAC HW Crypto Derived key
+KM HMAC HW Crypto key derived from SHK
+GK HMAC HW Crypto Derived key
+GK HMAC HW Crypto key derived from SHK
+KM UNIQUEID HW Crypto Derived key
+KM UNIQUEID HW Crypto key derived from SHK
+KM DEVICEID HW Crypto Derived key
+KM DEVICEID HW Crypto key derived from SHK
+KM FILENAME HW Crypto Derived key
+KM FILENAME HW Crypto key derived from SHK
+KM ICE HW Crypto Derived key
+KM ICE HW Crypto key derived from SHK
+Keymaster Pre Shared Secret
+Keymaster Pre Shared Secret Context
+gk_create_kdf_context
+operation->keyblob.keyId: %llu
+Failed in km_check_key_id:%d
+operation_begin_handler
+operation_update_common_handler
+inputBuf.data_length: %u
+operationCtx->level: %u
+operationCtx->opSpecificRequest: %u
+funcPtr->alg: %u
+input_consumed: %zu
+output_length: %zu
+operation_finish_common_handler
+input_length: %u
+signature_length: %u
+operation_abort_common_handler
+operation_delete_handler
+operation_delete_all_handler
+operation_update_aad_handler
+Invalid key: keyblob_size: %zu
+copySpuKeyMaterial
+requiresUpgrade
+validateKeyBlob
+Old keyblob, requires upgrade
+key_upgrade
+getEncryptionParams
+osPatchLevelKey: %zu
+osPatchLevel: %zu
+osVersionKey: %zu
+osVersion: %zu
+bootPatchLevelKey: %zu
+bootPatchLevel: %zu
+vendorPatchLevelKey: %zu
+vendorPatchLevel: %zu
+isValidKmBlob
+copyKeyMaterial
+Current boot osPatchLevel: %u
+Key blob osPatchLevel: %u
+Current boot vendorPatchLevel: %u
+Key blob vendorPatchLevel: %u
+Current boot bootPatchLevel: %u
+Key blob bootPatchLevel: %u
+Current boot osVersion: %u
+Key blob osVersion: %u
+upgradeBootState
+getSecureImportedKeyAndParams
+getWrappingKey
+parseSecureKeyWrapper
+unwrapTransportKey
+unwrapEncryptedKey
+parseKeyDescription
+parseEnumRepeated
+parseInteger
+parseBool
+parseLong
+parseLongRepeated
+parseBytes
+KEYMASTER Init 
+Keymaster App shutdown
+Invalid input length cmd.data_length:%d, rsp->data_length:%d
+Invalid input length rsp->data_length:%d
+addkeyId
+RPMB is full. Upgraded key will not be rollback protected.
+cmd_id=%s begin
+process_request
+cmd_id=%s done with ret: %d
+cmd_id=%s done with ret: %d time taken: %llu
+%s:%u Calling CConfirmationToken
+CAppOpener_open
+%s:%u Calling CKMHal_hlos
+%s:%u Calling CKeymasterDevice
+JMPSVY\_zbehkzzzzzzzzzn
+KM_BOOL: tag = %s, value = %u
+KM_ENUM: tag = %s, value = %u
+KM_UINT: tag = %s, value = %u
+KM_ULONG: tag = %s, value = %llu
+KM_DATE: tag = %s, value = %llu
+KM_BIGNUM/ KM_BYTES: tag = %s
+default or invalid tag
+default or invalid tags
+configure_key
+Current ROT not set
+Boot state not set
+km_check_is_sw_fuse_blown failed or fuse already blown
+KM_ERROR_ROOT_OF_TRUST_ALREADY_SET
+km_set_boot_state
+is_unlocked: %u
+color: %u
+system_version: %u
+system_security_level %u
+DYNAMIC REPROVISION FLAG NOT SET
+km_set_rot
+rot.data_length: %u
+km_set_vbh
+send_rot_info_to_ese failed, probably because TZ SB service not supported
+TEE_DEVICE_IDS
+getDeviceInfo
+MANUFACTURER
+unlocked
+getOSBootMeasurementsInfo
+ALGORITHM
+KEY_SIZE
+BLOCK_MODE
+CALLER_NONCE
+MIN_MAC_LENGTH
+BLOB_USAGE_REQUIREMENTS
+BOOTLOADER_ONLY
+RSA_PUBLIC_EXPONENT
+INCLUDE_UNIQUE_ID
+HARDWARE_TYPE
+EARLY_BOOT_ONLY
+ACTIVE_DATETIME
+ORIGINATION_EXPIRE_DATETIME
+USAGE_EXPIRE_DATETIME
+MIN_SECONDS_BETWEEN_OPS
+MAX_USES_PER_BOOT
+ALL_USERS
+USER_SECURE_ID
+NO_AUTH_REQUIRED
+USER_AUTH_TYPE
+AUTH_TIMEOUT
+ALLOW_WHILE_ON_BODY
+TRUSTED_USER_PRESENCE_REQUIRED
+TRUSTED_CONFIRMATION_REQUIRED
+UNLOCKED_DEVICE_REQUIRED
+ALL_APPLICATIONS
+APPLICATION_ID
+APPLICATION_DATA
+CREATION_DATETIME
+ROLLBACK_RESISTANT
+ROOT_OF_TRUST
+OS_VERSION
+OS_PATCHLEVEL
+UNIQUE_ID
+ATTESTATION_CHALLENGE
+ATTESTATION_APPLICATION_ID
+ATTESTATION_ID_BRAND
+ATTESTATION_ID_DEVICE
+ATTESTATION_ID_PRODUCT
+ATTESTATION_ID_SERIAL
+ATTESTATION_ID_IMEI
+ATTESTATION_ID_MEID
+ATTESTATION_ID_MANUFACTURER
+ATTESTATION_ID_MODEL
+VENDOR_PATCHLEVEL
+BOOT_PATCHLEVEL
+DEVICE_UNIQUE_ATTESTATION
+IDENTITY_CREDENTIAL_KEY
+STORAGE_KEY
+ASSOCIATED_DATA
+AUTH_TOKEN
+MAC_LENGTH
+RESET_SINCE_ID_ROTATION
+KEY_TYPE
+deserializeSetBootState
+deserializeSetRot
+encode_rot
+qsee_open singleton failed for strongbox
+IStrongBox_setRoTInfo failed: %d : 
+GET_SUPPORTED_ALGORITHMS
+GET_SUPPORTED_BLOCK_MODES
+GET_SUPPORTED_DIGESTS
+GET_SUPPORTED_IMPORT_FORMATS
+GET_SUPPORTED_EXPORT_FORMATS
+ADD_RNG_ENTROPY
+GENERATE_KEY
+GET_KEY_CHARACTERISTICS
+IMPORT_KEY
+EXPORT_KEY
+DELETE_KEY
+DELETE_ALL_KEYS
+CONFIGURE
+GET_VERSION
+READ_KM_DEVICE_STATE
+WRITE_KM_DEVICE_STATE
+MILESTONE_CALL
+GET_AUTH_TOKEN_KEY
+SECURE_WRITE_PROTECT
+SET_VERSION
+SET_BOOT_STATE
+PROVISION_DEVICE_IDS
+DESTROY_DEVICE_IDS
+SET_PROVISIONING_SUCCESS
+KEYMASTER_SPU_INIT
+KEYMASTER_REPROVISION_DEVICE_IDS
+IAR_SET_USER_CREDENTIAL
+GK_ENROLL
+GK_VERIFY
+GK_DELETE_USER
+GK_DELETE_ALL_USERS
+GK_SB_ENROLL
+GK_SB_VERIFY
+GK_SB_DELETE_USER
+GK_SB_DELETE_ALL_USERS
+IMPORT_WRAPPED_KEY
+VERIFY_AUTHORIZATION
+GET_HMAC_SHARING_PARAMS
+COMPUTE_SHARING_HMAC
+GET_PRE_SHARED_SECRET
+KEYMASTER_SET_VBH
+KEYMASTER_GET_DATE_SUPPORT
+KEYMASTER_PROVISION_ATTEST_KEY_NEW
+SB_GENERATE_KEY
+SB_GET_KEY_CHARACTERISTICS
+SB_IMPORT_KEY
+SB_EXPORT_KEY
+SB_DELETE_KEY
+SB_DELETE_ALL_KEYS
+SB_BEGIN
+SB_UPDATE
+SB_FINISH
+SB_UPGRADE
+SB_ATTEST
+SB_SECURE_IMPORT_KEY
+SET_ICE_KEY
+CLEAR_ICE_KEY
+SB_PROVISION_ATTEST_KEY_NEW
+SB_PROVISION_DEVICE_ID
+SB_DESTROY_DEVICE_IDS
+SB_SET_PROVISIONING_SUCCESS
+SB_GET_HMAC_SHARING_PARAMS
+SB_COMPUTE_SHARING_HMAC
+SB_UNWRAP
+KM_NEW_GENERATE_KEY
+KM_NEW_GET_KEY_CHARACTERISTICS
+KM_NEW_IMPORT_KEY
+KM_NEW_EXPORT_KEY
+KM_NEW_DELETE_KEY
+KM_NEW_DELETE_ALL_KEYS
+KM_NEW_BEGIN
+KM_NEW_UPDATE
+KM_NEW_FINISH
+KM_NEW_ABORT
+KM_NEW_UPGRADE
+KM_NEW_ATTEST
+KM_NEW_CONFIGURE
+KM_NEW_IMPORT_WRAPPED_KEY
+KM_NEW_VERIFY_AUTHORIZATION
+KM_NEW_GET_VERSION
+KM_NEW_SET_ROT
+KM_NEW_READ_KM_DEVICE_STATE
+KM_NEW_WRITE_KM_DEVICE_STATE
+KM_NEW_MILESTONE_CALL
+KM_NEW_GET_AUTH_TOKEN_KEY
+KM_NEW_SET_VERSION
+KM_NEW_SET_BOOT_STATE
+KM_NEW_PROVISION_DEVICE_IDS
+KM_NEW_DESTROY_DEVICE_IDS
+KM_NEW_SET_PROVISIONING_SUCCESS
+KM_NEW_SPU_INIT
+KEYMASTER_SPU_SSR
+KM_NEW_GET_HMAC_SHARING_PARAMS
+KM_NEW_COMPUTE_SHARING_HMAC
+KM_NEW_GET_PRE_SHARED_SECRET
+KM_NEW_SET_VBH
+KM_NEW_SET_ICE_KEY
+KM_NEW_CLEAR_ICE_KEY
+KM_NEW_PROVISION_ATTEST_KEY_NEW
+KM_NEW_GET_DATE_SUPPORT
+KM_NEW_SET_EARLY_BOOT_ENDED
+KM_NEW_SB_GENERATE_KEY
+KM_NEW_SB_GET_KEY_CHARACTERISTICS
+KM_NEW_SB_IMPORT_KEY
+KM_NEW_SB_EXPORT_KEY
+KM_NEW_SB_DELETE_KEY
+KM_NEW_SB_DELETE_ALL_KEYS
+KM_NEW_SB_BEGIN
+KM_NEW_SB_UPDATE
+KM_NEW_SB_FINISH
+KM_NEW_SB_ABORT
+KM_NEW_SB_UPGRADE
+KM_NEW_SB_ATTEST
+KM_NEW_SB_SECURE_IMPORT_KEY
+KM_NEW_SB_ATTEST_ENCRYPTED
+IAR_NEW_SET_USER_CREDENTIAL
+KM_NEW_SB_WRAP
+KM_NEW_SB_UNWRAP
+KM_NEW_SB_SET_ATKEY
+KM_NEW_SB_PROVISION_ATTEST_KEY_NEW
+KM_NEW_SB_PROVISION_DEVICE_ID
+KM_NEW_SB_DESTROY_DEVICE_IDS
+KM_NEW_SB_SET_PROVISIONING_SUCCESS
+KM_NEW_SB_GET_HMAC_SHARING_PARAMS
+KM_NEW_SB_COMPUTE_SHARING_HMAC
+KM_NEW_SB_SET_TEE_DATE_TIME
+KM_NEW_SB_SET_VBH
+GK_NEW_ENROLL
+GK_NEW_VERIFY
+GK_NEW_DELETE_USER
+GK_NEW_DELETE_ALL_USERS
+GK_NEW_SB_ENROLL
+GK_NEW_SB_VERIFY
+GK_NEW_SB_DELETE_USER
+GK_NEW_SB_DELETE_ALL_USERS
+KEYMINT_GENERATE_KEY
+KEYMINT_GET_KEY_CHARACTERISTICS
+KEYMINT_UPDATE
+KEYMINT_UPDATE_AAD
+KEYMINT_BEGIN
+KEYMINT_FINISH
+KEYMINT_IMPORT_KEY
+KEYMINT_IMPORT_WRAPPED_KEY
+KEYMINT_ABORT
+KEYMINT_UPGRADE
+KEYMINT_GET_TIMESTAMP_TOKEN
+KEYMINT_GENERATE_CSR
+getVersion
+ta_major_version: %u
+ta_minor_version: %u
+api_minor_version: %u
+hal_major_version: %u
+hal_minor_version: %u
+pkcs8_parse
+get_eccPrivKey_der
+Parsed public key OID not valid
+parse_ecc_pub_key
+public key size invalid
+compressed key bit not set in the parsed public key
+parseRaw
+parseKeyFallback
+parseKey
+ecc_get_private_key_asn1_der
+3rsaPublicExponent error: %llu
+rsa_generate
+rsa_encrypt_decrypt_secret
+rsa_begin
+rsa_update
+rsa_finish
+overflow_buf NULL in %s
+rsa_export
+rsa_key_upgrade
+rsa_import2
+%d MGF digests specified in begin params and SHA1 not authorized
+MGF Digest %d not supported
+secureImportKeyHandler
+%s: km_is_key_size_valid failed: %u
+tdes_generate
+tdes_encrypt_decrypt_secret
+tdes_begin
+tdes_update
+tdes_finish
+tdes_import
+Key export not supported for Tdes in %s
+tdes_export
+computeTdesKey
+processTdesData
+get_current_time
+*curr_time_date: %lu
+user_auth_finish
+user_auth_update
+user_auth_begin
+validateUser
+validateAuthToken
+Current uptime: %llu
+auth_token->timestamp: %llu
+genkey_key_header->header.auth_timeout: %u
+auth_token->user_id: %llu
+auth_token->authenticator_id: %llu
+auth_token->authenticator_type: %u
+operation->keyblob.teeParams.userAuthType: %u
+verifyVelocity
+Current uptime:%u
+checks->time_last_op:%u
+operation->keyblob.teeParams.minSecondsBetweenOps:%u
+checks_per_boot->num_uses:%u
+operation->keyblob.teeParams.maxUsesPerBoot:%u
+verifyAuthorization
+computeVerificationToken
+Auth Verification
+pad_len: %u
+Unsupported key size: %u
+qsee_SW_Cipher_Init failed
+qsee_SW_CipherData failed
+KM2_SW_CipherData
+qsee_SW_AE_UpdateData failed
+KM2_SW_UpdateData
+KM2_SW_UpdateData failed with ret: %d
+qsee_SW_AE_FinalData failed
+KM2_SW_FinalData
+qsee_SW_Cipher_SetParam failed
+qsee_SW_Cipher_GetParam failed
+qsee_SW_Cipher_DeInit failed: %d
+%s: qsee_SW_Cipher_Init: ret: %d
+KM2_Cipher_keyBlob_Common
+%s: qsee_SW_Cipher_SetParam faile for SW_CIPHER_PARAM_DIRECTION
+%s: qsee_SW_Cipher_SetParam faile for SW_CIPHER_PARAM_KEY
+%s: qsee_SW_Cipher_SetParam faile for SW_CIPHER_PARAM_IV
+%s: qsee_SW_AE_UpdateAAD failed for SW_CIPHER_PARAM_TAG
+%s: qsee_SW_Cipher_SetParam faile for SW_CIPHER_PARAM_TAG
+%s: qsee_SW_AE_UpdateData failed
+%s: qsee_SW_AE_FinalData failed re: %d
+%s: qsee_SW_Cipher_GetParam faile for SW_CIPHER_PARAM_TAG
+ecc_generate_platform
+%s: qsee_SW_GENERIC_ECC_init failed keySize: %u
+%s: qsee_SW_GENERIC_ECC_keypair_generate failed keysize: %u
+setPrivKey
+setPubKeyX
+setPubKeyY
+eccOperationAllocate
+qsee_SW_GENERIC_ECC_init failed in %s with ret: %d
+initEccAttKeyNewPlatform
+km_ecc_binary_to_bigval failed in %s with ret: %d
+qsee_SW_GENERIC_ECC_binary_to_bigval failed in %s with ret: %d
+initEccAttKeyOldPlatform
+sign_ecc_tbscert
+sign_ecc_tbscert_keymint
+get_ecc_pubkey
+get_ecc_pubkey_binary
+ecc_decrypt_convert_to_bignum
+ecc_import_convert_to_bignum
+ecc_pubkey_convert_to_bignum
+get_ecdh_key_agreement_key
+gk_storage_init
+gk_delete_storage_data_uid
+gk_delete_all_storage_data
+gk_get_rpmb_data
+gk_get_user_data_uid
+gk_modify_user_data
+copy_hmac_to_signature
+gk_send_to_km
+set_fallback
+is_fallback_set
+sfs_rpmb_set
+sfs_rpmb_get
+gk_init_last_checked_boot
+sync_sector
+compute_hmac
+%s: qsee_SW_Hmac_Init failed with ret: %d
+km2_hmac_init_generic
+%s: qsee_SW_Hash_SetParam failed with ret: %d
+km2_hmac_init
+output_len invalid: %zu
+qsee_kdf failed with ret: %d
+qsee_open singleton failed
+ICrypto_device_kdf failed: %d output_len_temp: %u output_len: %u
+attest_key
+/persist/data/rsa_attest_key
+/persist/data/ecc_attest_key
+attest_key_sb
+get_attestation_key
+km_read_attestation_key
+km_write_attestation_key
+reset_attestation_keybox
+persist_device_ids
+validate_device_ids
+is_reprovisioning_device_ids_allowed
+RPMB: Device ID provisioning not allowed
+reset_device_ids
+is_reprovisioning_keybox_allowed
+RPMB: Keybox provisioning not allowed
+Attestation key file present after deletion
+qsee_sfs_open failed in %s
+is_file_present_in_sfs
+qsee_sfs_error: %d
+%s: qsee_sfs_open_failed for %s with ret: %d
+%s file already present
+manufacturer
+brand_sb
+device_sb
+product_sb
+serial_sb
+manufacturer_sb
+model_sb
+Device ID present after deletion
+gk_timeout_config
+Error: qsee_cfg_getpropval in %s failed for %s, ret_size = %d
+get_timeout_config
+enable_spu_default
+get_enable_spu_default
+allow_reprovision_device_ids
+allow_reprovision_keybox
+allow_dynamic_reprovision
+get_allow_dynamic_reprovision
+custom_hw_authenticator_types_count
+get_custom_authenticator_types_count
+custom_hw_authenticator_types
+get_custom_authenticator_types
+get_allow_pss_return
+enable_set_bandwidth
+get_enable_set_bandwidth
+use_128_256
+get_use_128_256
+enable_throttle_iterations
+Failed to get %s, ret_size = %d
+fpta_name
+fingerprint
+irista_name
+confui_ta_name
+confirmationui
+faceauth_ta_name
+face3d64
+Invalid auth type:%u
+auth_prop_name: %s
+auth_prop_name_len: %u
+get_auth_ta_name
+enable_at_key_return_default
+get_enable_at_key_return
+enable_exclude_vb_key
+Param is NULL
+get_exclude_vb_key
+enable_spu_uefi
+get_enable_spu_uefi
+get_allow_reprovision_common
+get_cfg_propval
+km_add_handle
+free handle not found
+km_add_handle_velocity
+km_add_handle_uses_per_boot
+km_register_shared_buffer
+km_deregister_shared_buffer
+km_check_is_sw_fuse_blown
+km_set_milestone
+Failed to open CSPCOM
+Failed to register buffer: size %u (%d)
+Failed to get qsee space
+Failed to add spu memory object to memory space! err=%d
+km_add_auth_list
+Empty List
+User ID: %d
+Secure User ID: %u
+Timeout value: %u
+User Key %x %x %x %x %x %x
+The list had %d items
+Could not find auth data for secure ID %lu
+Custom authenicator types identified
+km_get_auth_token_key
+gatekeeper
+get_fpta_name error:%d
+Invalid custom auth type:%u
+qsee_encapsulate_inter_app_message failed in %s with ret:%d
+output buf len: %u
+output buf len required: %u
+km_add_key_id
+key_id in %s: %llu
+km_check_key_id
+key id not present %s: %llu
+km_delete_key_id
+key id not present in %s: %llu
+km_delete_all_keys
+RPMB not provisioned or enabled
+RPMB buffer invalid
+RPMB buffer length less than min. Len: %u
+km_register_shared_buffer() failed=%ld! cmd_data_ptr:%p len:%u
+qsee_stor_read_sectors() failed=%ld!
+qsee_prepare_shared_buf_for_nosecure_read() failed=%ld!
+qsee_stor_write_sectors() failed=%ld!
+storage_alloc_read
+storage_alloc
+km2_rsa_init_key
+setRsaModulus
+setRsaPubExp
+setRsaPrivExp
+getRsaKeySize failed, RSA key is NULL
+getRsaKeySize failed, RSA key is invalid
+getRsaKeySize failed, RSA key Size doesn't meet standard
+rsaKeyGeneratePlatform
+km2_util_init_s_bigint failed
+initRsaAttKeyOld
+initRsaAttKey
+km2_rsa_sign_hash failed with ret: %d
+rsaVerify
+rsaEncrypt
+km2_rsa_decrypt failed with ret: %d
+rsaDecrypt
+rsa_pad_none
+Msg len greater than key size for KM_PAD_NONE in %s
+key_temp->bitLength in bits: %u
+*input_buf_len_temp: %u
+sign_rsa_tbscert
+rsaDecodeInit
+rsa_copy_platform_to_internal
+rsaKeyAllocate
+verify_rsa_tbscert
+SBILEN[%d>%d]!
+km2_util_init_s_bigint failed for msg %s
+km2_util_check_msg_gt_modulus
+input_buf_len_temp: %u
+km2_BIGINT_read_unsigned_bin failed for msg %s
+Msg numerically larger than modulus %s
+Partition not opened for writing!
+gk_write_platform
+gk_sfs_file
+sync_sector: Fail to seek back to offset: %zu with error: %d
+gk_storage_platform_init
+gk_storage_init: Fail to seek back to the beginning of file!
+is_secure_boot_enabled
+open_storage_platform
+qsee_stor_device_init error ret: %d
+!!! secboot device && rpmb error, BAILING OUT !!!
+secboot device : %u
+gk_is_sfs_file_present
+%s: qsee_sfs_open failed for %s with ret: %d
+qsee_stor_open_partition() for KM partition failed, adding the partition
+open_add_km_partition
+Successfully added KM partition: %u
+open_add_km_partition status:%d
+open_add_gk_partition
+Successfully added GK partition: %u
+qsee_SW_Cipher_DES_Init failed
+qsee_SW_CipherDESData failed
+KM2_SW_DES_CipherData
+qsee_SW_Cipher_DES_DeInit failed: %d
+qsee_SW_Cipher_DES_SetParam failed
+x509Cert_readInit
+dnCount in cert and value provided dont match
+dnCount: %zu
+readCount: %zu
+x509SerialNumber_write
+x509AlgorithmID_write
+x509Name_writeDN
+x509Name_write
+x509Validity_write
+X509SubKeyInfo_write
+x509Extensions_writeKeyUsage
+x509Extensions_writeKeyMaster
+setKeymintVersionHandler
+x509Extensions_writeKeyMint
+x509Extensions_writeIdentityCredential
+x509Extensions_write
+x509SignatureAlgorithm_write
+x509Cert_write_ecc_credential
+%s: sign_ecc_tbscert failed with ret: %d
+x509Cert_write_keymint
+x509Cert_write
+%s: sign_rsa_tbscert failed with ret: %d
+ Attestation only for assymetric algos
+X509SubKeyInfo_write_noCert
+x509Extensions_write_IC_X509Cert
+x509Cert_compute_signature
+ecc_encode_encrypt
+ecc_decode_decrypt
+ecc_get_public_key
+ecc_serialize_import
+set_ecc_pubkey
+ecc_serialize_aad
+deserializeEnroll
+deserializeEnrollSb
+serializeEnroll
+deserializeVerify
+deserializeVerifySb
+serializeVerify
+deserializeDeleteUser
+rsplen insufficient %s
+serializeVerifySpu
+Required rsplen %u
+serializeEnrollSpu
+mintAuthToken
+km_create_kdf_context_common
+km_append_gk_key_to_context
+rsa_get_public_key
+rsa_encode_encrypt
+rsa_decode_decrypt
+rsa_serialize_aad
+symmetric_encode_encrypt_common
+symmetric_decode_decrypt_common
+symmetric_key_serialize_aad
+3f4d154a92d354d0924108e34c8bc670vm
+%s::%u Failed to retrieve TUI LE VM credentials, ret - %d
+client_is_TUI
+%s::%u Invalid TUI LE VM credentials
+%s::%u Printing Expected VMUID
+%s::%u Failed to print Expected VMUID
+%s::%u Printing Actual VMUID
+%s::%u Failed to print Actual VMUID
+%s::%u Invalid VMUID data passed
+print_bytes
+%02x %02x %02x %02x %02x %02x %02x %02x
+Invalid output length for RSA sign in %s
+output_length: %d
+Required out length: %d
+eccVerify
+eccVerifyCommon
+The provided RSA Key is Null
+The provided RSA Key modulus is Null
+rsa_serialize_import
+convertStorageKeyToEphemeral
+add_keymint_origin_tags
+Usage count provided as zero, should be always >0
+Usage count can be enforced in HW
+genKeyMintHandler
+importKeyMintHandler
+validate_certs
+Invalid OID
+attest_keymint
+Attestation App ID missing for factory key attestation
+get_identity_x509_certificate
+Android Identity Credential Key
+Android Identity Credential Authentication Key
+get_certificate_publickey
+attest_key_identity_cred
+Attestation for alg: %u not supported
+attest_key_common
+parseAttestationKeyNew
+parseAttestationKeyOld
+write_attestation_cert
+Android Keystore Key
+generate_unique_id
+attest_key_factory
+attest_device_ids
+write_attestation_cert_keymint
+write_certificate_subject
+write_attestation_cert_ic
+km_provision_attestation_id_common
+km_set_provisioning_success_common
+km_clean_provisioning_state_common
+level: %u
+km_provision_attestation_key_new_common
+km_write_attestation_key failed of size:%u
+km_read_attestation_key failed
+File written and read not the same attes_key_size: %u read_attes_key_size: %u
+deserializeCharacteristics
+decodeKeyBlob
+deserializeKeyBlobCommon
+serializeKeyBlobKm41
+KM_TAG_USAGE_COUNT_LIMIT found in HW params
+Unknown TEE tag %lu found
+KM_TAG_USAGE_COUNT_LIMIT found in SW params
+Unknown SW tag %lu found
+Usage Count HW enforced, count = %d
+Usage Count SW enforced, count = %d
+serializeCharacteristics
+!/8AJS\enw
+$6ALWhblobOffset: %zu
+serializedBlob->minIndirectDataOffset: %zu
+serializedBlob->maxIndirectDataOffset: %zu
+get_attestation_type
+attestation_type = %d
+deserializeGenKeyMint
+Recieved attestation keyblob size = %d
+deserializeImportKeyMint
+deserializeSecureImportKeyMint
+deserializeSecureImportKey
+deserializeImportKey
+deserializeGenKey
+deserializeBegin
+spuRsp->operation_handle: %lu
+spuRsp->operation_speicific_req: %u
+spuRsp->operation_security_level: %u
+serializeBegin
+op_handle: %lu
+deserializeUpdateAad
+deserializeUpdate
+validateOutBuf
+serializeUpdate
+deserializeFinish
+serializeFinish
+Key references deleted for single use key
+deserializeAbort
+deserializeDelete
+deserializeConvertStorageKeyToEphemeral
+serializeConvertStorageKeyToEphemeral
+deserializeExport
+validateExportOutBuf
+serializeExport
+deserializeGetCharacteristics
+deserializeUpgrade
+deserializeAttest
+serializeAttestKey
+params_count: %u
+deserializeConfigure
+deserializeDeviceIdProv
+serializeGetHmacParams
+deserializeComputeHmacParams
+serializeComputeHmacParams
+deserializeGenerateTimestampToken
+serializeTimestampToken
+deserializeInteger
+deserializeVerificationAuth
+serializeVerificationAuth
+deserializeCleanProvisioningState
+deserializeSetDeviceLocked
+deserialize_X509Cert_input
+failed, ret = %d
+encode_getDeviceInfo
+vb_state
+bootloader_state
+os_version
+system_patch_level
+boot_patch_level
+vendor_patch_level
+encode_OSBootMeasurementsInfo
+parseGenImportKey
+KM_TRUSTED_USER_PRESENCE_REQUIRED requested, currently not implemented
+KM_TAG_FBE_ICE - using FBE ICE
+KM_TAG_CERTIFICATE_SERIAL
+KM_TAG_CERTIFICATE_SUBJECT
+KM_TAG_USAGE_COUNT_LIMIT = %d
+AllocateCopyBlob
+tempBlob.len: %zu
+parseAttestationKeyParams
+parseBeginInputs
+encodeKeyblob
+encodeKeyblobKeymint
+Encoded keyblob size = %d
+Total encodedSize = %d
+parseOperationInputs
+tag: %lu
+parseExportInputs
+parseUpgradeInputs
+parseAttestInputs
+parseConfigureInputs
+KM_TAG_OS_VERSION: %u
+KM_TAG_OS_PATCHLEVEL: %lu
+Tag: %lu
+!!! The OS Version / Security or Vendor Patch Level not provided !!!
+!!! OS Version: %u !!!
+!!! System Security Patch Level: %u !!!
+!!! Vendor Security Patch Level: %u !!!
+!!! Boot Security Patch Level: %u !!!
+parseAttestDeviceIdInputs
+PRODUCT_
+MANUFACTURER_
+verifyDeviceId
+X25519_encode_HKDF
+constructCoseSign1
+constructCoseEncrypt
+Signature1
+encodeSigStructure
+encodeCoseSign1
+encodeCoseEncryptPayload
+encodeProtectedHeader
+encodeUnprotectedHeader
+encodeAad
+encodeCertReqRecipients
+encodeCoseEncrypt
+ED25519_DeviceKeyPairGen
+ED25519_sign
+ED25519_verify
+X25519_generate_keyPair
+X25519_generate_SharedKey
+CSWCrypto_UID failed to open
+ICrypto_hkdf Failed
+X25519_generate_hkdf
+X25519_HKDF_DeriveKey
+encodeCoseEncryptCiphertext
+encodeCoseEncryptCiphertext failed with error: %d
+ED25519_derive_public_key
+is_device_key_present_in_sfs
+read_device_keypair_from_sfs
+read_key_from_sfs
+derive_device_keypair
+derive_device_private_key
+RKP PRIVATE KEY SEED
+Device Key Seed
+write_key_to_sfs
+WARNING: no Device Info file provisioned. Skipping DEVICE_ID provisioning...
+km_read_attestation_key failed with error: %d
+createDeviceInfo
+encodeDeviceInfo
+encodeSignedMacAad
+fill_device_info_buf
+fill_vbmeta_digest
+fill_os_version
+att_id_state
+vbmeta_digest
+security_level
+validateAndExtractEekPubAndId
+getPayloadFromCoseSign1
+getPubKeyXAndEekId
+Could not decode COSE_LABEL: %d
+getCoseKeyInt
+getCoseKeyBytes
+encodeSignatureInput
+checkFirstPubKey
+copyEekToSessionCtx
+generateCsrHandler
+generateBcc
+createCoseKey
+RKP Device Key
+QUALCOMM
+createSignedPayload
+encodeBcc
+generateCsr
+deserializeGenerateCsr
+serializeGenerateCsr
+secureImportKeyMintHandler
+generateTimestampToken
+verifyTimestampToken
+gk_generate_user_key
+gk_wrap_key
+gk_unwrap_key
+gk_update_km_auth_list
+gk_add_spu_user_key
+%s found GK Mixing Key
+km_derive_kwk
+km_wrap_or_unwrap_key
+derive_kwk_common_hwkm
+km_create_aad
+km_wrap_key
+km_wrap_key_create_plaintext
+km_wrap_key_create_ciphertext
+km_unwrap_key
+km_unwrap_key_create_ciphertext
+aes_generate_hwkm
+aes_import_hwkm
+aes_export_hwkm
+%s:%d: IICE_setEphemeralContext failed: %d
+km_hwkm_gen_fbe_key
+km_hwkm_wrap_key
+km_hwkm_kdf_kwk_generate
+km_hwkm_import_fbe_key
+km_hwkm_kdf_kwk
+km_hwkm_kdf_kwk_ephemeral
+HWKM : Hardware Key Manager provides hardware-based cryptography
+HWKM : Hardware Key Manager provides hardware-based cryptography
+Failure in cmnlib_init():  %u
+Failed to register CTAMemorySpace_UID:  %u
+Failure in GPAppLib_init():  %u
+Failure in GPAppLib_appInit():  %u
+ObjectList_append() out of memory: %u bytes
+[%s] Failed to allocate CGPEntryPointsSession: %u bytes
+CGPEntryPoints_openSession
+[%s] Out of memory: %u B
+GPParams_newFromMinkInternal
+GPParams_newFromCA
+[%s] No TA Memory object, memory objects not supported
+GPParams_prepareParams
+[%s] No length/offset for the memory region %zu
+[%s] sharedObjIndex %u invalid: %d
+[%s] IMemSpace_map failed on parameter %u: %d, perm=%u
+[%s] Invalid size/offset for memory object %u: userSize=%zu, userOffset=%zu, actual size=%llu
+[%s] VALUE_INPUT Size does not match with buffer [%d]
+9999e99999999
+-+   0X0x
+%_ is unsupported 
+0123456789ABCDEF
+keymaster64
+n=keymaster64;o=100;p=8:c47728cf3e4481,61,82:6224,b4,10a:9024,12d:1;s=96,47e
+obL$`P*8L)~s3L}
+qsee_SW_CipherDESData
+qsee_SW_Hmac_Deinit
+app_heap_limit
+qsee_SW_AE_FinalData
+qsee_SW_GENERIC_ECC_keypair_generate
+qsee_stor_write_sectors
+qsee_get_secure_state
+CElfFile_invoke
+TA_METADATA
+qsee_SW_GENERIC_ECC_bigval_to_binary
+qsee_kdf
+qsee_SW_Hash_Init
+qsee_prng_getdata
+ta_multiSession
+ta_minExecTimeout
+qsee_SW_CipherData
+TA_MAX_STORAGE_FILES
+qsee_pkey_derive
+qsee_encapsulate_inter_app_message
+ta_heapLimit
+qsee_SW_Hash_Update
+qsee_sfs_seek
+ta_filesNoPersist
+qsee_register_shared_buffer
+ta_heapSize
+qsee_sfs_getSize
+qsee_prepare_shared_buf_for_secure_read
+qsee_pkey_free
+qsee_malloc
+TA_APP_NAME
+qsee_util_free_s_bigint
+qsee_open
+qsee_SW_Hash_Final
+qsee_SW_Cipher_SetParam
+GPAppLib_handleRequest
+__stack_chk_guard
+CApp_openSession
+qsee_pkey_verify
+ta_heapAddr
+ta_version
+ta_acceptBufSize
+qsee_SW_Hmac_Init
+qsee_deregister_shared_buffer
+time_getutcsec
+qsee_SW_Cipher_DES_Init
+qsee_SW_GENERIC_ECDH_shared_key_derive
+qsee_sfs_write
+GPAppLib_appShutdown
+qsee_BIGINT_read_unsigned_bin
+qsee_SW_Cipher_Init
+qsee_free
+__stack_guard_size
+qsee_SW_AE_UpdateData
+qsee_SW_Hmac
+qsee_err_fatal
+qsee_SW_GENERIC_ECC_pubkey_generate
+__funcs_on_exit
+TA_CUSTOM_PROPERTIES_NUM
+qsee_realloc
+qsee_open_singleton
+qsee_stor_open_partition
+wrap_funcs_on_exit_ptr
+qsee_SW_Hmac_Update
+qsee_sfs_read
+ta_stackLimit
+qsee_stor_add_partition
+qsee_SW_Cipher_DeInit
+qsee_rsa_decrypt
+ta_minWaitTimeout
+qsee_SW_GENERIC_ECC_binary_to_bigval
+qsee_pkey_sign
+qsee_SW_GENERIC_ECC_init
+qsee_prepare_shared_buf_for_nosecure_read
+qsee_SW_Hash_SetParam
+ta_customProperties
+ta_cryptoSelfTest
+appCntxt
+qsee_SW_Hash_Deinit
+qsee_rsa_sign_hash
+ta_description
+qsee_pkey_new
+qsee_rsa_verify_signature
+app_heap_base
+ta_stackSize
+qsee_get_uptime
+qsee_stor_device_init
+app_stack_base
+qsee_pkey_init
+qsee_log
+qsee_SW_GENERIC_ECDSA_sign
+GPAppLib_init
+qsee_sfs_open
+cmnlib_release
+qsee_query_rpmb_enablement
+qsee_SW_Hmac_Final
+qsee_pkey_ctrl
+qsee_blow_sw_fuse
+ta_stackAddr
+cmnlib_init
+qsee_util_init_s_bigint
+qsee_rsa_encrypt
+qsee_cfg_getpropval
+qsee_is_sw_fuse_blown
+qsee_SW_Cipher_DES_DeInit
+qsee_stor_read_sectors
+qsee_sfs_error
+qsee_SW_AE_UpdateAAD
+qsee_SW_GENERIC_ECDSA_verify
+GPAppLib_appInit
+qsee_SW_Cipher_DES_SetParam
+qsee_rsa_key_gen
+app_stack_limit
+qsee_sfs_rm
+qsee_SW_Cipher_GetParam
+qsee_sfs_close
+libcmnlib.so
+1zr+FGPw
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175903Z
+20631121175903Z0|1 0
+Greatwhite_FW_Signing_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175853Z
+20631121175853Z0y1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175856Z
+20631121175856Z0y1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175858Z
+20631121175858Z0y1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175901Z
+20631121175901Z0y1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1

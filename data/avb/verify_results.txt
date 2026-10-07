@@ -1,0 +1,21 @@
+== vbmeta.img
+   authentication hash matches signed data: True
+   RSA signature: VALID
+   public key sha256: 0d5c1533678bc678252d94dbe5c9689ebdfe72f34c32fdbbcc87e3952c814abe
+   hash boot: OK (30208000 bytes, sha256)
+   hash dtbo: OK (2435291 bytes, sha256)
+   hash vendor_boot: OK (13946880 bytes, sha256)
+   hashtree odm: computing (52924416 bytes, sha1) ...
+   hashtree odm: MISMATCH (root 314731ee1c2a21c2..)
+   hashtree vendor: computing (453591040 bytes, sha256) ...
+   hashtree vendor: OK (root ed3a590f7c43f166..)
+== vbmeta_system.img
+   authentication hash matches signed data: True
+   RSA signature: VALID
+   public key sha256: 0d5c1533678bc678252d94dbe5c9689ebdfe72f34c32fdbbcc87e3952c814abe
+   hashtree product: computing (650182656 bytes, sha1) ...
+   hashtree product: MISMATCH (root 0b97a19ad0631d51..)
+   hashtree system: computing (1433899008 bytes, sha256) ...
+   hashtree system: OK (root 84536badd84425f6..)
+   hashtree system_ext: computing (410660864 bytes, sha1) ...
+   hashtree system_ext: MISMATCH (root 4fd36a640e5f42d5..)

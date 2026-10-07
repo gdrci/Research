@@ -1,0 +1,215 @@
+module	license	description	author	depends
+adsp_loader_dlkm.ko	GPL v2	ADSP Loader module		spf_core_dlkm
+arm_smmu.ko	GPL v2	IOMMU API for ARM architected SMMU implementations	Will Deacon <will@kernel.org>	qcom_iommu_util,iommu-logger,secure_buffer
+audio_pkt_dlkm.ko	GPL v2	MSM Audio Packet Driver		spf_core_dlkm,audpkt_ion_dlkm,gpr_dlkm
+audio_prm_dlkm.ko	GPL v2	audio prm		spf_core_dlkm,gpr_dlkm,q6_notifier_dlkm
+audpkt_ion_dlkm.ko	GPL v2	MSM Audio ION module		secure_buffer
+bam_dma.ko	GPL v2	QCOM BAM DMA engine driver	Andy Gross <agross@codeaurora.org>	
+bt_fm_slim.ko	GPL v2	BTFM Slimbus Slave driver		slimbus,btpower
+btpower.ko	GPL v2	MSM Bluetooth power control driver		icnss2
+bwmon.ko	GPL v2	QCOM BWMON driver		qcom-dcvs
+camcc-neo.ko	GPL v2	QTI CAM_CC NEO Driver		
+camera.ko	GPL v2	Camera Request Manager		mdt_loader,llcc-qcom,synx-driver,qcom_iommu_util,mem_buf_dev
+cdsp-loader.ko	GPL v2	CDSP Loader module		
+cdsprm.ko	GPL v2			
+clk-rpmh.ko	GPL v2	QCOM RPMh Clock Driver		qcom_rpmh,cmd-db
+clk-spmi-pmic-div.ko	GPL v2	QCOM SPMI PMIC clkdiv driver		
+cmd-db.ko	GPL v2	Qualcomm Technologies, Inc. Command DB Driver		
+cnss2.ko	GPL v2	CNSS2 Platform Driver		pci-msm-drv,qmi_helpers,wlan_firmware_service,cmd-db,mhi,qcom_ramdump,cnss_plat_ipc_qmi_svc
+cnss_nl.ko	GPL v2	CNSS generic netlink module		
+cnss_plat_ipc_qmi_svc.ko	GPL v2	CNSS Platform IPC QMI Service		qmi_helpers
+cnss_prealloc.ko	GPL v2	CNSS prealloc driver		
+cnss_utils.ko	GPL v2	CNSS Utilities Driver		
+core_hang_detect.ko	GPL v2	MSM Core Hang Detect Driver		
+cpu_hotplug.ko	GPL v2	CPU Hotplug cooling device driver		
+cqhci.ko	GPL v2	Command Queue Host Controller Interface driver	Venkat Gopalakrishnan <venkatg@codeaurora.org>	crypto-qti-common,sdhci-msm-scaling
+crc8.ko	Dual BSD/GPL	CRC8 (by Williams, Ross N.) function	Broadcom Corporation	
+crypto-qti-common.ko	GPL v2	Common crypto library for storage encryption		crypto-qti-hwkm
+crypto-qti-hwkm.ko	GPL v2	Crypto HWKM library for storage encryption		hwkm
+dcc_v2.ko	GPL v2	MSM data capture and compare engine		
+dcvs_fp.ko	GPL v2	QCOM DCVS FP Driver		qcom_rpmh,cmd-db
+ddr_cdev.ko	GPL v2			
+debugcc-neo.ko	GPL v2	QTI DEBUG CC NEO Driver		
+dispcc-neo.ko	GPL v2	QTI DISP_CC NEO Driver		
+dwc3-haps.ko	GPL v2	Synopsys HAPS PCI Glue Layer	Thinh Nguyen <thinhn@synopsys.com>	
+dwc3-msm.ko	GPL v2	DesignWare USB3 MSM Glue Layer		dwc3
+dwc3-of-simple.ko	GPL v2	DesignWare USB3 OF Simple Glue Layer	Felipe Balbi <balbi@ti.com>	
+dwc3-qcom.ko	GPL v2	DesignWare DWC3 QCOM Glue Driver		
+dwc3.ko	GPL v2	DesignWare USB3 DRD Controller Driver	Felipe Balbi <balbi@ti.com>	
+frpc-adsprpc.ko	GPL v2			socinfo,rproc_qcom_common,qcom_ramdump,pdr_interface,mem_buf_dev,secure_buffer
+gcc-neo.ko	GPL v2	QTI GCC NEO Driver		
+gh_msgq.ko	GPL v2	Qualcomm Technologies, Inc. Gunyah Message Queue Driver		
+gh_rm_drv.ko	GPL v2	Qualcomm Technologies, Inc. Gunyah Resource Mgr. Driver		gh_msgq
+gh_virt_wdt.ko	GPL v2	QCOM Gunyah Watchdog Driver		qcom_wdt_core
+glink_pkt.ko	GPL v2	MSM G-Link Packet Port		
+glink_probe.ko	GPL v2	Qualcomm Technologies, Inc. GLINK probe helper driver		qcom_glink_smem,qcom_glink,rproc_qcom_common
+gpr_dlkm.ko	GPL v2	QTI GPR Bus		snd_event_dlkm,q6_notifier_dlkm
+gpucc-neo.ko	GPL v2	QTI GPU_CC NEO Driver		
+hwkm.ko	GPL v2	QTI Hardware Key Manager library		tmecom-intf
+i2c-stp.ko	GPL v2			stp-interface
+icc-bcm-voter.ko	GPL v2	Qualcomm BCM Voter interconnect driver	David Dai <daidavid1@codeaurora.org>	qcom_rpmh
+icc-debug.ko	GPL v2	QCOM ICC debug library		
+icc-rpmh.ko	GPL v2			socinfo,icc-debug,icc-bcm-voter,cmd-db
+icnss2.ko	GPL v2	iWCN CORE platform driver		wlan_firmware_service,qmi_helpers,qti-adc-tm,socinfo,rproc_qcom_common,qcom_ramdump,pdr_interface
+iommu-logger.ko	GPL v2	QTI IOMMU SUPPORT		
+ipclite.ko	GPL v2	IPCLite Driver		secure_buffer
+kryo_arm64_edac.ko	GPL v2	Kryo EDAC driver		
+llcc-qcom.ko	GPL v2	Qualcomm Last Level Cache Controller		
+llcc_perfmon.ko	GPL v2	QCOM LLCC PMU MONITOR		
+lpass_cdc_dlkm.ko	GPL v2	LPASS Codec driver		snd_event_dlkm,spf_core_dlkm
+lpass_cdc_rx_macro_dlkm.ko	GPL v2	RX macro driver		swr_ctrl_dlkm,wcd_core_dlkm,lpass_cdc_dlkm
+lpass_cdc_tx_macro_dlkm.ko	GPL v2	TX macro driver		lpass_cdc_dlkm
+lpass_cdc_va_macro_dlkm.ko	GPL v2	LPASS codec VA macro driver		swr_ctrl_dlkm,wcd_core_dlkm,lpass_cdc_dlkm
+lpass_cdc_wsa2_macro_dlkm.ko	GPL v2	WSA2 macro driver		swr_ctrl_dlkm,wcd_core_dlkm,lpass_cdc_dlkm
+lpass_cdc_wsa_macro_dlkm.ko	GPL v2	WSA macro driver		swr_ctrl_dlkm,wcd_core_dlkm,lpass_cdc_dlkm
+machine_dlkm.ko	GPL v2	ALSA SoC msm		wsa883x_dlkm,wcd938x_dlkm,wcd937x_dlkm,snd_event_dlkm,wcd_core_dlkm,lpass_cdc_dlkm,lpass_cdc_rx_macro_dlkm,audio_prm_dlkm,spf_core_dlkm,audpkt_ion_dlkm
+mbhc_dlkm.ko	GPL v2	wcd MBHC v2 module		
+mcu_thermistor.ko	GPL	MCU Thermistor Driver		stp-interface
+mdt_loader.ko	GPL v2	Firmware parser for Qualcomm MDT format		
+mem-hooks.ko	GPL v2	Qualcomm Technologies, Inc. Memory Trace Hook Call-Back Registration		
+mem_buf.ko	GPL v2	Qualcomm Technologies, Inc. Memory Buffer Sharing driver		mem_buf_dev,qcom_dma_heaps,gh_msgq
+mem_buf_dev.ko	GPL v2	Qualcomm Technologies, Inc. Memory Buffer Sharing driver		secure_buffer,gh_rm_drv
+memlat.ko	GPL v2	QCOM MEMLAT Driver		qcom-pmu-lib,qcom-dcvs
+metabattery.ko	GPL	MetaBattery driver		stp-interface
+mfi_i2c_driver.ko	GPL	MFi I2C driver		
+mhi.ko	GPL v2	MHI Host Interface		pci-msm-drv
+mhi_dev_dtr.ko	GPL v2	MHI DTR Driver		mhi
+mhi_dev_netdev.ko	GPL v2	MHI NETDEV Network Interface		mhi
+mhi_dev_uci.ko	GPL v2	MHI UCI Driver		mhi,mhi_dev_dtr
+msm-eva.ko	GPL v2			mdt_loader,synx-driver,secure_buffer,frpc-adsprpc,msm-mmrm,mem_buf_dev
+msm-mmrm.ko	GPL v2	QTI MMRM Driver		
+msm.ko	GPL	MSM DRM Driver	Rob Clark <robdclark@gmail.com	cmd-db,mdt_loader
+msm_dma_iommu_mapping.ko	GPL v2			
+msm_drm.ko	GPL	MSM DRM Driver	Rob Clark <robdclark@gmail.com	qcom_iommu_util,msm_dma_iommu_mapping,qcom_rpmh,llcc-qcom,spmi-pmic-arb
+msm_geni_serial.ko	GPL v2	Serial driver for GENI based QTI serial cores		
+msm_kgsl.ko	GPL v2	3D Graphics driver		qcom_iommu_util,cmd-db,msm_performance,llcc-qcom,qcom-dcvs,mdt_loader,secure_buffer,mem_buf_dev
+msm_performance.ko	GPL v2			qcom-pmu-lib,sched-walt
+msm_qmp.ko	GPL v2	MSM QTI Mailbox Protocol		qcom_aoss
+msm_rng.ko	GPL v2	QTI MSM Random Number Driver		
+msm_video.ko	GPL v2			mdt_loader,msm-mmrm,llcc-qcom,mem_buf_dev
+nvmem_qcom-spmi-sdam.ko	GPL v2	QCOM SPMI SDAM driver		
+nvmem_qfprom.ko	GPL v2	Qualcomm QFPROM driver	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>	
+pci-msm-drv.ko	GPL v2	Qualcomm Technologies, Inc. PCIe RC driver		rproc_qcom_common,crc8
+pdr_interface.ko	GPL v2	Qualcomm Protection Domain Restart helpers		qmi_helpers
+phy-generic.ko	GPL	NOP USB Transceiver driver	Texas Instruments Inc	
+phy-msm-snps-eusb2.ko	GPL v2	MSM USB eUSB2 PHY driver		repeater
+phy-msm-ssusb-qmp.ko	GPL v2	MSM USB SS QMP PHY driver		
+pinctrl-spmi-gpio.ko	GPL v2	Qualcomm SPMI PMIC GPIO pin control driver	Ivan T. Ivanov <iivanov@mm-sol.com>	
+pinctrl-spmi-mpp.ko	GPL v2	Qualcomm SPMI PMIC MPP pin control driver	Ivan T. Ivanov <iivanov@mm-sol.com>	
+pinctrl_lpi_dlkm.ko	GPL v2	QTI LPI GPIO pin control driver		snd_event_dlkm,spf_core_dlkm,q6_notifier_dlkm
+pmic_glink.ko	GPL v2	QTI PMIC Glink driver		rproc_qcom_common,pdr_interface
+power_state.ko	GPL v2	Qualcomm Technologies, Inc. (QTI) Power State Driver		rproc_qcom_common,qcom_secure_hibernation
+q6_dlkm.ko	GPL v2	Q6 module		
+q6_notifier_dlkm.ko	GPL v2	Audio notifier driver		rproc_qcom_common,q6_pdr_dlkm
+q6_pdr_dlkm.ko	GPL v2	PDR framework driver		pdr_interface
+qce50.ko	GPL v2	Crypto Engine driver		sps_drv
+qcedev-mod.ko	GPL v2	QTI DEV Crypto driver		mem_buf_dev,qce50
+qcom-cpufreq-hw-debug.ko	GPL v2	QTI clock driver for CPUFREQ HW debug		
+qcom-cpufreq-hw.ko	GPL v2	QCOM CPUFREQ HW Driver		
+qcom-dcvs.ko	GPL v2	QCOM DCVS Driver		dcvs_fp
+qcom-dload-mode.ko	GPL v2	MSM Download Mode Driver		
+qcom-i2c-pmic.ko	GPL v2			
+qcom-pdc.ko	GPL v2	Qualcomm Technologies, Inc. Power Domain Controller		
+qcom-pmu-lib.ko	GPL v2	QCOM PMU Driver		qcom_llcc_pmu
+qcom-reboot-reason.ko	GPL v2	MSM Reboot Reason Driver		
+qcom-rpmh-regulator.ko	GPL v2	Qualcomm RPMh regulator driver		qcom_rpmh,cmd-db
+qcom-spmi-adc5.ko	GPL v2	Qualcomm Technologies Inc. PMIC5 ADC driver		qcom-vadc-common
+qcom-spmi-pmic.ko	GPL v2	Qualcomm SPMI PMIC driver	Josh Cartwright <joshc@codeaurora.org>	regmap-spmi
+qcom-spmi-temp-alarm.ko	GPL v2	QPNP PMIC Temperature Alarm driver		
+qcom-vadc-common.ko	GPL v2	Qualcomm ADC common functionality		
+qcom_aoss.ko	GPL v2	Qualcomm AOSS QMP driver		
+qcom_cpu_vendor_hooks.ko	GPL v2	QCOM CPU Vendor Hooks Driver		
+qcom_cpuss_sleep_stats.ko	GPL v2	Qualcomm Technologies, Inc. (QTI) CPUSS sleep stats driver		
+qcom_dma_heaps.ko	GPL v2			mem_buf_dev,secure_buffer,msm_dma_iommu_mapping
+qcom_edac.ko	GPL v2	QCOM EDAC driver		
+qcom_glink.ko	GPL v2	Qualcomm GLINK driver		
+qcom_glink_smem.ko	GPL v2	Qualcomm GLINK SMEM driver	Bjorn Andersson <bjorn.andersson@linaro.org>	qcom_glink
+qcom_hib.ko	GPL	Qualcomm Technologies, Inc. Bootloader Hibernation Vendor hooks		
+qcom_hwspinlock.ko	GPL v2	Hardware spinlock driver for Qualcomm SoCs		
+qcom_iommu_debug.ko	GPL v2			qcom_iommu_util
+qcom_iommu_util.ko	GPL v2			
+qcom_ipc_lite.ko	GPL v2			
+qcom_ipcc.ko	GPL v2	Qualcomm IPCC Driver		
+qcom_llcc_pmu.ko	GPL v2	QCOM LLCC PMU		
+qcom_logbuf_vendor_hooks.ko	GPL v2	QCOM Logbuf Vendor Hooks Driver		
+qcom_lpm.ko	GPL v2	Qualcomm Technologies, Inc. cpuidle LPM governor		sched-walt
+qcom_pil_info.ko	GPL v2	Qualcomm PIL relocation info		
+qcom_q6v5.ko	GPL v2	Qualcomm Peripheral Image Loader for Q6V5		qcom_sysmon,rproc_qcom_common
+qcom_q6v5_pas.ko	GPL v2	Qualcomm Hexagon v5 Peripheral Authentication Service driver		qcom_aoss,qcom_sysmon,rproc_qcom_common,qcom_q6v5,qcom_pil_info,mdt_loader,qcom_ramdump
+qcom_ramdump.ko	GPL v2	Qualcomm Technologies, Inc. Ramdump driver		
+qcom_rpmh.ko	GPL v2	Qualcomm Technologies, Inc. RPMh Driver		cmd-db
+qcom_secure_hibernation.ko	GPL	Framework to encrypt a page using a trusted application		smcinvoke_mod
+qcom_smd.ko	GPL v2	Qualcomm Shared Memory Driver	Bjorn Andersson <bjorn.andersson@sonymobile.com>	
+qcom_soc_wdt.ko	GPL v2	QCOM Soc Watchdog Driver		qcom_wdt_core
+qcom_sync_file.ko	GPL v2	QCOM Speculative Sync Driver		
+qcom_sysmon.ko	GPL v2	Qualcomm sysmon driver		qmi_helpers,rproc_qcom_common
+qcom_tsens.ko	GPL v2	QCOM Temperature Sensor driver		
+qcom_wdt_core.ko	GPL v2	QCOM Watchdog Driver Core		
+qdss_bridge.ko	GPL v2	QDSS Bridge driver		usb_f_qdss,mhi
+qmi_helpers.ko	GPL v2	QMI encoder/decoder helper		
+qnoc-neo.ko	GPL v2	Neo NoC driver		qnoc-qos,icc-rpmh
+qnoc-qos.ko	GPL v2			
+qpnp-power-on.ko	GPL v2	QPNP PMIC Power-on driver		
+qrtr-mhi.ko	GPL v2	Qualcomm IPC-Router MHI interface driver	Chris Lew <clew@codeaurora.org>	qrtr,mhi
+qrtr-smd.ko	GPL v2	Qualcomm IPC-Router SMD interface driver		qrtr,qcom_glink
+qrtr.ko	GPL v2	Qualcomm IPC-router driver	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>	
+qseecom-mod.ko	GPL v2	QTI Secure Execution Environment Communicator		mem_buf_dev
+qti-adc-tm.ko	GPL v2	Qualcomm Technologies Inc. PMIC ADC_TM driver		
+qti-fixed-regulator.ko	GPL	Fixed voltage regulator	Mark Brown <broonie@opensource.wolfsonmicro.com>	
+qti_cpufreq_cdev.ko	GPL v2	Qualcomm Technologies, Inc. cpufreq cooling driver		
+qti_devfreq_cdev.ko	GPL v2	Qualcomm Technologies, Inc. devfreq cooling device driver		
+qti_qmi_cdev.ko	GPL v2	QTI QMI cooling device driver		qmi_helpers
+qti_userspace_cdev.ko	GPL v2	Userspace cooling device driver		
+rdbg.ko	GPL v2	rdbg module		
+regmap-spmi.ko	GPL			
+repeater-i2c-eusb2.ko	GPL v2	eUSB2 i2c repeater driver		repeater
+repeater.ko	GPL v2	USB repeater framework		
+rpmh-regulator.ko	GPL v2	RPMh regulator driver		qcom_rpmh,cmd-db
+rproc_qcom_common.ko	GPL v2	Qualcomm Remoteproc helper driver		qcom_smd,qcom_glink,qcom_glink_smem
+rq_stats.ko	GPL v2	QCOM Run Queue Stats		
+rtc-pm8xxx.ko	GPL v2	PMIC8xxx RTC driver	Anirudh Ghayal <aghayal@codeaurora.org>	
+sched-walt.ko	GPL v2			qcom-cpufreq-hw
+sdhci-msm-scaling.ko	GPL v2	Qualcomm Technologies, Inc. SDHCI Controller Support		
+sdhci-msm.ko	GPL v2	Qualcomm Secure Digital Host Controller Interface driver		sdhci-msm-scaling,hwkm,crypto-qti-common,cqhci
+secure_buffer.ko	GPL v2			
+slim-qcom-ngd-ctrl.ko	GPL v2	Qualcomm SLIMBus NGD controller		slimbus,qmi_helpers,rproc_qcom_common,pdr_interface
+slimbus.ko	GPL v2	SLIMbus core		
+smcinvoke_mod.ko	GPL v2	SMC Invoke driver		qseecom-mod,mem_buf_dev
+smp2p.ko	GPL v2	Qualcomm Shared Memory Point to Point driver		
+smp2p_sleepstate.ko	GPL v2	SMP2P SLEEP STATE		
+snd_event_dlkm.ko	GPL v2	SND event module		
+soc_sleep_stats.ko	GPL v2	Qualcomm Technologies, Inc. (QTI) SoC Sleep Stats driver		
+socinfo.ko	GPL v2	Qualcomm SoCinfo driver		
+spf_core_dlkm.ko	GPL v2	q6 core		gpr_dlkm
+spi-msm-geni.ko	GPL v2			
+spidev.ko	GPL	User mode SPI device interface	Andrea Paterniani, <a.paterniani@swapp-eng.it>	
+spmi-pmic-arb-debug.ko	GPL v2			
+spmi-pmic-arb.ko	GPL v2			
+sps_drv.ko	GPL v2	Smart Peripheral Switch (SPS)		
+stp-interface.ko	GPL v2			
+stub-regulator.ko	GPL v2	stub regulator driver		
+stub_dlkm.ko	GPL v2	Generic MSM CODEC driver		
+subsystem_sleep_stats.ko	GPL v2	Qualcomm Technologies, Inc. (QTI) subsystem sleep stats driver		soc_sleep_stats
+swr_ctrl_dlkm.ko	GPL v2	SoundWire Master Controller		swr_dlkm,spf_core_dlkm
+swr_dlkm.ko	GPL v2	Soundwire module		
+swr_dmic_dlkm.ko	GPL v2	SWR DMIC driver		wcd938x_dlkm,swr_dlkm
+swr_haptics_dlkm.ko	GPL v2	SWR haptics driver		swr_dlkm
+synx-driver.ko	GPL v2	Global Synx Driver		qcom_ipc_lite
+sysmon_subsystem_stats.ko	GPL v2	Qualcomm Technologies, Inc. Sysmon subsystem Stats driver		
+tcsrcc.ko	GPL v2	QTI TCSR_CC Driver		
+thermal_pause.ko	GPL v2			sched-walt
+tmecom-intf.ko	GPL v2	MSM TMECom QTI mailbox protocol client		
+usb_f_diag.ko	GPL v2	Diag function driver		
+usb_f_qdss.ko	GPL v2	USB QDSS Function Driver		dwc3-msm
+videocc-neo.ko	GPL v2	QTI VIDEO_CC NEO Driver		
+wcd937x_dlkm.ko	GPL v2	WCD937X Codec driver		wcd9xxx_dlkm,mbhc_dlkm,wcd_core_dlkm,swr_dlkm
+wcd937x_slave_dlkm.ko	GPL v2	WCD937X Swr Slave driver		swr_dlkm
+wcd938x_dlkm.ko	GPL v2	WCD938X Codec driver		wcd9xxx_dlkm,mbhc_dlkm,wcd_core_dlkm,swr_dlkm
+wcd938x_slave_dlkm.ko	GPL v2	WCD938X Swr Slave driver		swr_dlkm
+wcd9xxx_dlkm.ko	GPL v2	WCD Class-H Driver		audio_prm_dlkm
+wcd_core_dlkm.ko	GPL v2	WCD9XXX CODEC core init driver		
+wlan.ko	Dual BSD/GPL	WLAN HOST DEVICE DRIVER	Qualcomm Atheros, Inc.	cnss2,cnss_prealloc,cnss_nl,cnss_utils
+wlan_firmware_service.ko	GPL v2	WLAN FW QMI service		qmi_helpers
+wsa883x_dlkm.ko	GPL v2	WSA883x codec driver		wcd_core_dlkm,swr_dlkm
+zram.ko	Dual BSD/GPL	Compressed RAM Block Device	Nitin Gupta <ngupta@vflare.org>	zsmalloc
+zsmalloc.ko	Dual BSD/GPL		Nitin Gupta <ngupta@vflare.org>	

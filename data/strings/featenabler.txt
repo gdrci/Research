@@ -1,0 +1,407 @@
++5@).=A)
+9l%@9m)@9n-@9
+9l5@9m9@9n=@9kA
+T)hj8	h*8
+5	1@y?=,q
+%s: LicenseValidateAndEnable_Handler failed %d
+FeatureEnabler_Handler
+%s: RPMBUtils_DeviceCreate failed %d
+%s: RPMBUtils_BufferCacheSeekStart failed %d
+%s: No data in RPMB to enable features %d
+%s: soc_hw_version %x
+FeatureID
+ModuleID
+%s: IPCore_OpenModule failed for module_id %d err %d
+%s: ConfigureSwFuse failed for feature_id %d err %d
+Expiration
+%s: Expiration is not found!! Re-encoding not needed
+FeatureEnabler_ReEncodePayload
+ValidityCounter
+%s: No validity counter for this feature
+%s: validity counter cannot be 0
+%s: QCborUtils_DecodeInt64FromMap for feature id failed %d
+%s: QCborUtils_DecodeInt64FromMap for module id failed %d
+%s: QCBOREncode_Finish failed
+%19Afeature license app init
+TZ App cmd handler @ 0x%08X
+cmd handler received null cmd/rsp buffers
+Invalid cmd/rsp buffer size %d vs %d, %d vs %d
+cmd_id = %u
+Invalid cmd/rsp buffer size %d vs %d, %d vs %d for cmd_id %d
+FeatureEnabler - RPMB has no data
+Invalid command %d
+feature license app shutdown
+GetEnabledFeatures_Handler
+Enabled Features:
+%s: GetFeatureName failed for feature_id %d err %d
+Installed Features:
+GetInstalledFeatures_Prepare
+GetInstalledFeatures_FromRPMB
+GetInstalledFeatures_Handler
+LicenseValidateAndEnable_Handler
+%s: IPCore_OpenModule failed for module_id %d ret %d
+%s: ConfigureSwFuse failed for feature_id %d ret %d
+LicenseValidateAndEnable_EncodePayload
+LicenseValidator_Handler
+%s: Invalid License!! Disable feature_id %d
+ExtraData
+LicenseValidator_EncodePayload
+CommonData
+%s: QCborUtils_DecodeBytesFromMap failed for common_data %d
+LicenseValidator_DecodeExtraData
+LicenseValidatorTest_Handler
+%s: CheckAndGetLicenseInfo failed for feature_id %d ret %d
+%s: EncodePayload failed for feature_id %d ret %d
+%s: UpdatePayload failed for feature id %d ret %d
+%s: QCborUtils_DecodeBytesFromMap for Expiration failed %d
+LicenseValidatorTest_EncodePayload
+Display_QLTM
+Display_SPR
+Display_Demura
+Display_Allocate_Cache_Signal
+Not supported
+%s: %s feature is enabled
+DisplayCore_EnableSwFuse
+%s: display_handle is NULL
+DisplayCore_IsFeatureSupported
+%s: feature id %li not supported for soc_hw_version %x
+DisplayCore_GetFeatureList
+%s: Invalid soc_hw_version %x
+DisplayCore_Close
+%s: HWIOUtils_Close failed %d
+DisplayCore_ConfigureSwFuse
+%s: QCborUtils_DecodeInt64FromMap failed!!
+%s: Configure fuse for feature_id %li
+%s: feature_id %li not supported
+DisplayCore_GetSwFuseStatus
+DisplayCore_GetFeatureName
+Display_Resolution_Limiter
+%s: FeatureName is %s
+DisplayCore_Open
+%s: HWIOUtils_Open failed %d
+Failure in cmnlib_init():  %u
+Failed to register CTAMemorySpace_UID:  %u
+Failure in GPAppLib_init():  %u
+Failure in GPAppLib_appInit():  %u
+ObjectList_append() out of memory: %u bytes
+[%s] Failed to allocate CGPEntryPointsSession: %u bytes
+CGPEntryPoints_openSession
+[%s] Out of memory: %u B
+GPParams_newFromMinkInternal
+GPParams_newFromCA
+[%s] No TA Memory object, memory objects not supported
+GPParams_prepareParams
+[%s] No length/offset for the memory region %zu
+[%s] sharedObjIndex %u invalid: %d
+[%s] IMemSpace_map failed on parameter %u: %d, perm=%u
+[%s] Invalid size/offset for memory object %u: userSize=%zu, userOffset=%zu, actual size=%llu
+[%s] VALUE_INPUT Size does not match with buffer [%d]
+9999e99999999
+-+   0X0x
+%_ is unsupported 
+0123456789ABCDEF
+%s: DeviceID qsee_open() failed %d
+CommonUtils_GetSocHwVersion
+%s: IDeviceID_getHWVersion failed %d
+%s: IPFM qsee_open() failed %d
+CommonUtils_CheckAndGetLicenseInfo
+%s: feature_id %li test_root %d
+%s: IPFM_SetOptions failed %d
+%s: IPFM_CheckInstalledLicense failed %d
+%s: IPFM_GetInstalledLicenseInfo failed %d
+%s: feature_id to find %li
+CommonUtils_SeekPayload
+%s: failed to decode feature id %d
+%s: Add new payload for feature_id %d
+CommonUtils_UpdatePayload
+%s: Replace payload for feature_id %d
+%s: payload not found %d for feature id %li
+CommonUtils_GetPayload
+%s: IPFM pointer is null
+CommonUtils_IPfmOpen
+%s: test_root %d
+%s: feature_ids:%d response_cbor:%d pointer/s is null
+CommonUtils_CheckFeatureIds
+blobVersion
+FeatureIDs
+%s: IPFM_CheckFIDAndGetAllSerialNums failed %d
+%s: Its not an array %d
+CommonUtils_GetLicenseInfo
+%s: Searching feature id %llu
+%s: feature %linot found
+LicenseeHash
+Response
+%s: license check failed! response code %li feature id %li
+SerialNum
+LicenseRestriction
+%s: Encoding license info for feature %li
+%s: Expiration valid feature %li
+%s: hwio_handle is NULL
+HWIOUtils_Open
+%s: DeviceRegionFinder qsee_open() failed %d
+%s: IDeviceRegionFinder_getRegion failed %d
+%s: IMemSpace_map failed %d
+%s: register_base %x
+HWIOUtils_Close
+%s: hwio_handle %d or output handle %d is NULL
+HWIOUtils_Read
+%s: offset %d out of bounds %d
+HWIOUtils_Write
+%s: found %s
+QCborUtils_DecodeBytesFromMap
+%s:laber_str %s not found
+%s: found %s %d
+QCborUtils_DecodeInt64FromMap
+%s:label_str %s not found
+RPMBUtils_BufferCacheSeekNextPayload
+RPMBUtils_BufferCacheRemoveCurrPayload
+%s: payload_size %d size_to_remove %d len %d
+%s: payload len %d new_rpmb_size %d
+RPMBUtils_BufferCacheAddPayload
+%s: RPMBUtils_DeviceRecreate failed %d
+%s: payload len %d new_rpmb_size %d used_size_in_bytes %d size_diff %d
+RPMBUtils_BufferCacheReplaceCurrPayload
+%s: qsee_stor_write_sectors failed num_sectors %d, client_handle %d, buffer_ptr %x, err %d
+RPMBUtils_BufferCacheFlush
+%s: RPMB is not provisioned %d
+RPMBUtils_DeviceCreate
+%s: qsee_stor_device_init failed %d
+%s: qsee_stor_device_get_info failed %d
+%s: RPMBUtils_InitPartition failed %d
+%s: RPMBUtils_BufferCacheCreate failed %d
+%s: RPMBUtils_BufferCacheDestroy failed %d
+RPMBUtils_DeviceDestroy
+%s: RPMBUtils_DeinitPartition failed %d
+%s: ptr %x, curr_pos %d, used_size_in_bytes %d
+%s: available sectors %d is less than requested sectors %d
+RPMBUtils_DeviceRecreate
+%s: avail sectors %d: Recreate device with num sectors %d
+%s: RPMBUtils_BufferCacheFlush failed %d
+RPMBUtils_BufferCacheRecreate
+%s: device_id %d, bytes_per_sector %d, total_sectors %d, available_sectors %d
+%s: client_id %d, bytes_per_sector %d, total_sectors %d
+RPMBUtils_InitPartition
+%s: qsee_stor_add_partition failed %d
+%s: qsee_stor_open_partition failed %d
+%s: Adding the new partition with id %x
+%s: Exceeds max number of partitions!! %x
+%s: trying new partition id %x
+%s: qsee_stor_client_get_info failed %d
+%s: RPMBUtils_BufferCacheInvalidate failed %d
+RPMBUtils_BufferCacheCreate
+RPMBUtils_BufferCacheInvalidate
+%s: qsee_stor_read_sectors failed %d
+%s: used_size_in_bytes %d
+%s: Deleting the partition with id %d
+RPMBUtils_DeinitPartition
+%s: qsee_stor_remove_client failed %d
+RPMBUtils_BufferCacheDestroy
+featenabler
+n=featenabler;p=8:c47728cf3e4081,61:6,77,82:6004,b4,10a:9024;u=7e1903bb7c17ff47b6d862337ca7db85
+obL$`P*8L)~s3L}
+HWIOUtils_Write
+app_heap_limit
+RPMBUtils_BufferCacheSeekStart
+__funcs_on_exit
+QCBOREncode_CloseArray
+TA_CUSTOM_PROPERTIES_NUM
+IPCore_OpenModule
+double_to_i64
+qsee_stor_open_partition
+qsee_stor_write_sectors
+wrap_funcs_on_exit_ptr
+QCBOREncode_AddBytes_3
+qsee_get_secure_state
+CommonUtils_CheckAndGetLicenseInfo
+QCBORDecode_GetNext
+ta_stackLimit
+qsee_stor_add_partition
+CElfFile_invoke
+DisplayCore_GetFeatureList
+QCBOREncode_OpenArray_3
+RPMBUtils_BufferCacheFlush
+ta_minWaitTimeout
+TA_METADATA
+UsefulBuf_Compare
+DisplayCore_Open
+ta_customProperties
+ta_cryptoSelfTest
+appCntxt
+QCBOREncode_AddInt64_3
+ta_multiSession
+QCBOREncode_Finish
+QCBOREncode_Init
+HWIOUtils_Close
+ta_minExecTimeout
+TA_MAX_STORAGE_FILES
+QCBOREncode_AddUInt64_3
+ta_heapLimit
+GetEnabledFeatures_Handler
+ta_filesNoPersist
+ta_description
+CommonUtils_CheckFeatureIds
+QCBOREncode_OpenMap_3
+ta_heapSize
+app_heap_base
+UsefulOutBuf_CopyOut
+qsee_stor_remove_client
+QCBOREncode_AddText_3
+DisplayCore_EncodeMetaData
+QCBORDecode_Init
+UsefulBuf_FindBytes
+IPCore_CloseModule
+qsee_malloc
+ta_stackSize
+UsefulBuf_Copy
+DisplayCore_IsFeatureSupported
+UsefulInputBuf_GetBytes
+UsefulBuf_Set
+QCBOREncode_Finish2
+CommonUtils_GetPayload
+QCBOREncode_AddSimple_3
+RPMBUtils_BufferCacheReplaceCurrPayload
+TA_APP_NAME
+HWIOUtils_Open
+UsefulOutBuf_Init
+qsee_open
+CommonUtils_IsSecureBoot
+CommonUtils_IPfmClose
+qsee_stor_client_get_info
+CommonUtils_IsUEFIMode
+QCborUtils_DecodeBytesFromMap
+RPMBUtils_DeviceCreate
+CommonUtils_UpdatePayload
+qsee_stor_device_init
+CommonUtils_GetSocHwVersion
+app_stack_base
+RPMBUtils_BufferCacheSeekNextPayload
+GPAppLib_handleRequest
+LicenseValidator_Handler
+RPMBUtils_BufferCacheGetNextPayload
+CApp_openSession
+__stack_chk_guard
+FeatureEnabler_Handler
+CommonUtils_MemSCopy
+qsee_log
+DisplayCore_GetFeatureName
+QCBOREncode_AddRawSimple_3
+DisplayCore_EnableSwFuse
+GPAppLib_init
+cmnlib_release
+ta_heapAddr
+ta_version
+ta_acceptBufSize
+DisplayCore_Close
+RPMBUtils_DeviceDestroy
+ta_stackAddr
+cmnlib_init
+GPAppLib_appShutdown
+RPMBUtils_BufferCacheGetCurrPayload
+qsee_free
+CommonUtils_SeekPayload
+qsee_stor_device_get_info
+RPMBUtils_BufferCacheAddPayload
+GetInstalledFeatures_Prepare
+CommonUtils_IPfmOpen
+QCBOREncode_AddDouble_3
+QCBORDecode_Finish
+qsee_is_sw_fuse_blown
+DisplayCore_ReadSwFuseStatus
+CommonUtils_GetLicenseInfo
+QCborUtils_DecodeInt64FromMap
+qsee_stor_read_sectors
+QCBOREncode_AddRaw
+QCBOREncode_AddFloat_3
+DisplayCore_GetSwFuseStatus
+DisplayCore_GetFeatureString
+UsefulOutBuf_InsertUsefulBuf
+CommonUtils_RemovePayload
+GetInstalledFeatures_Handler
+GetInstalledFeatures_FromRPMB
+LicenseValidatorTest_Handler
+UsefulOutBuf_OutUBuf
+__stack_guard_size
+HWIOUtils_Read
+LicenseValidateAndEnable_Handler
+GPAppLib_appInit
+app_stack_limit
+RPMBUtils_BufferCacheRemoveCurrPayload
+DisplayCore_ConfigureSwFuse
+qsee_err_fatal
+libcmnlib.so
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1301
+*SRoT MBNv7 Image Signing Root CA 6 SubCA 10
+260123052817Z
+280123052817Z0W1
+	San Diego1
+QUALCOMM1
+CASS - SBL40v0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1+0)
+"SRoT MBNv7 Image Signing Root CA 60
+200825220346Z
+300825220346Z0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1301
+*SRoT MBNv7 Image Signing Root CA 6 SubCA 10v0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1+0)
+"SRoT MBNv7 Image Signing Root CA 60 
+200825215431Z
+20500825215431Z0
+Qualcomm Technologies, Inc.1*0(
+!Qualcomm Cryptographic Operations1+0)
+"SRoT MBNv7 Image Signing Root CA 60v0
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175903Z
+20631121175903Z0|1 0
+Greatwhite_FW_Signing_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175853Z
+20631121175853Z0y1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175856Z
+20631121175856Z0y1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175858Z
+20631121175858Z0y1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175901Z
+20631121175901Z0y1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1

@@ -1,0 +1,5 @@
+XBL container (xbl.img, 978,944 bytes) - three embedded ELF programs
+offset     machine    class  entry        loads  role (identified from strings)
+0x00000    EM_M32(1)  ELF32  0x2211c000   2      primary XBL stub; no standard prologues in code (ISA unresolved)
+0x1c2f4    EM_RISCV   ELF32  0x20412800   8+     TME firmware (tmeFwMain, tme_com, tme_messages, IPCC, Greatwhite_FW_* certs)
+0x4afc4    AArch64    ELF64  0x14824fa8   7      SBL1 ("SBL1 BUILD @ 13:02:53 on Mar  5 2026", BOOT.MXF.2.2-00536-AURORA-1.149279.3)

@@ -1,0 +1,19 @@
+index	model	compatible	qcom,msm-id	qcom,board-id	nodes	dtbo_bytes
+0	Greatwhite Config Dev0	meta,greatwhite meta,greatwhite-dev0	<0x243 0x10000>	0x22 0xb0	573	132736
+1	Greatwhite EVT1 Camera DOE	meta,greatwhite meta,greatwhite-evt1	<0x243 0x10000>	0x22 0xba	593	135131
+2	Greatwhite Dev0 2023	meta,greatwhite meta,greatwhite-dev0-2023	<0x243 0x10000>	0x22 0xb3	570	132871
+3	Greatwhite Dev1.0	meta,greatwhite meta,greatwhite-dev1	<0x243 0x10000>	0x22 0xbb	602	136342
+4	Protostar FF3 (RT700)	meta,greatwhite meta,protostar-ff3	<0x243 0x10000>	0x22 0xd1	590	137419
+5	Greatwhite DVT	meta,greatwhite meta,greatwhite-dvt	<0x243 0x10000>	0x22 0xae	593	135027
+6	Greatwhite Dev0.2	meta,greatwhite meta,greatwhite-dev0.2	<0x243 0x10000>	0x22 0xb7	602	136063
+7	Greatwhite EVT2	meta,greatwhite meta,greatwhite-evt2	<0x243 0x10000>	0x22 0xbf	595	135151
+8	Greatwhite Config Dev0.1	meta,greatwhite meta,greatwhite-dev0.1	<0x243 0x10000>	0x22 0xb1	584	134237
+9	Greatwhite Dev1.1	meta,greatwhite meta,greatwhite-dev1	<0x243 0x10000>	0x22 0xbd	602	136342
+10	Greatwhite PreP1	meta,greatwhite meta,greatwhite-prep1	<0x243 0x10000>	0x22 0xb2	569	132515
+11	Greatwhite ULED	meta,greatwhite meta,greatwhite-uled	<0x243 0x10000>	0x22 0xb9	596	144065
+12	Greatwhite PreP1+	meta,greatwhite meta,greatwhite-prep1p	<0x243 0x10000>	0x22 0xb4	569	132515
+13	Greatwhite PVT	meta,greatwhite meta,greatwhite-pvt	<0x243 0x10000>	0x22 0xaf	593	135027
+14	Greatwhite P1 (RT700)	meta,greatwhite meta,greatwhite-p1-rt700	<0x243 0x10000>	0x22 0xb6	593	134826
+15	Greatwhite P1 (RT600)	meta,greatwhite meta,greatwhite-p1-rt600	<0x243 0x10000>	0x22 0xb5	583	133984
+16	Greatwhite EVT1 (RT700)	meta,greatwhite meta,greatwhite-evt1	<0x243 0x10000>	0x22 0xb8	595	135265
+17	Greatwhite EVT1 DOE2 (Onewire)	meta,greatwhite meta,greatwhite-evt1	<0x243 0x10000>	0x22 0xbc	595	135167

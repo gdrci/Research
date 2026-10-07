@@ -1,0 +1,17 @@
+../../build/ms/dynamic_modules/aurora.cdsp.prod/libevadsp_3_0.so
+../../build/ms/dynamic_modules/aurora.cdsp.prod/libevadsp_3_0_intermediate.so
+../../build/ms/dynamic_modules/aurora.cdsp.prod/libsysmon_skel.so
+../../build/ms/dynamic_modules/aurora.cdsp.prod/libsysmondomain_skel.so
+../../build/ms/dynamic_modules/aurora.cdsp.prod/libstabilitydomain_skel.so
+../../build/ms/dynamic_modules/aurora.cdsp.prod/libsysmonquery_skel.so
+../../build/ms/dynamic_modules/aurora.cdsp.prod/libbenchmark_skel.so
+../../build/ms/dynamic_modules/aurora.cdsp.prod/libsysmonhvxthrottle_skel.so
+../../build/ms/dynamic_modules/aurora.cdsp.prod/libcrm_test_skel.so
+../../build/ms/dynamic_modules/aurora.cdsp.prod/ubwcdma_dynlib.so
+../../build/ms/dynamic_modules/aurora.cdsp.prod/libsynx.so
+../../build/ms/dynamic_modules/aurora.cdsp.prod/libsynx_os.so
+../../build/ms/dynamic_modules/aurora.cdsp.prod/libsynx_threadutils.so
+../../build/ms/dynamic_modules/aurora.cdsp.prod/fastrpc_shell_3
+../../build/ms/dynamic_modules/aurora.cdsp.prod/fastrpc_shell_unsigned_3
+../../build/ms/dynamic_modules/aurora.cdsp.prod/libc++.so.1
+../../build/ms/dynamic_modules/aurora.cdsp.prod/libc++abi.so.1

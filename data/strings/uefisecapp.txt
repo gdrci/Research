@@ -1,0 +1,482 @@
+()@)+%A)
+*-@),5A)
+cE@9eU@9de@9
++5@).=A)
+9l%@9m)@9n-@9
+9l5@9m9@9n=@9kA
+VERSION:%s
+0x00010004
+Jan 23 2026
+05:23:19
+SetupMode
+SecureBoot
+VarTableInit
+VolatileTables
+UefiSecAppLoadAddr
+UefiSecAppVersion
+HwErrRec
+MemoryOverwriteRequestControl
+%d:%s:%d: Allocated memory %d bytes BlockSize = %d  addr=%lx
+OpenTable
+%d:%s:%d: allocted %d bytes addr=%lx
+FormatTable
+%d:%s:%d: allocted %d bytes  addr %lx
+AnsciToUnicode
+%d:%s:%d: ERR:0x%08x
+IsSpecialVar
+FormatSigDB
+AuthenticateVariable
+6InternalCheckPolicyInTable
+TzVariablePolicyCheck
+TzVariablePolicyDisable
+TzVariablePolicyIsEnabled
+TzVariablePolicyRegister
+TzVariablePolicyDump
+%d:%s:%d: EXTLOCKREQ
+TzVariablePolicyLock
+TzVariablePolicyInitialize
+InternalGetPolicyFromTable
+InternalCheckPolicySanity
+InternalEnforcePolicy
+InternalRegisterPolicy
+InternalAddPolicyInTable
+InternalGetAllPolicies
+InternalGetAllPoliciesFromTable
+InternalGetNextPolicyNameFromTable
+InternalProcessInitParams
+%d:%s:%d: WARN:VarInit ver mismatch.S-0x%x.NS-0x%x
+TzGetNextVariableName
+CheckParams
+AppendSignatureDB
+TzSetVariable
+TzQueryVariableInfo
+%d:%s:%d: ERR:%d
+InitTableInfoArray
+%d:%s:%d: ERR:unknown guid
+%d:%s:%d: ERR:GetSecureState
+IsQCSecureBootEnabled
+TzVariableInitialize
+%d:%s:%d: RT_NV_NS Vol
+%d:%s:%d: RT_NV_S Vol
+%d:%s:%d: BS_NV_NS Vol
+%d:%s:%d: RT_NV_NS_HR Vol
+TzSyncVarTables
+FindVariable
+RegisterPK
+RegisterKEK
+ProcessVarInitParams
+%d:%s:%d: ERR:Table mismatch NS %d, S %d
+%d:%s:%d: ERR: Unexpected TableInfoArraySize :%d !
+%d:%s:%d: Forcing TableInfoArraySize to :%d
+%d:%s:%d: ERR:Invalid PartitionType
+%d:%s:%d: WARN:Unknown DeviceId-%d
+VariableInitializeVolatile
+VariableSetInitVars
+VariableInitializeNonVolatile
+RegisterKeyLists
+=?ACEGIKMO
+Failure in cmnlib_init():  %u
+Failed to register CTAMemorySpace_UID:  %u
+Failure in GPAppLib_init():  %u
+Failure in GPAppLib_appInit():  %u
+ObjectList_append() out of memory: %u bytes
+[%s] Failed to allocate CGPEntryPointsSession: %u bytes
+CGPEntryPoints_openSession
+[%s] Out of memory: %u B
+GPParams_newFromMinkInternal
+GPParams_newFromCA
+[%s] No TA Memory object, memory objects not supported
+GPParams_prepareParams
+[%s] No length/offset for the memory region %zu
+[%s] sharedObjIndex %u invalid: %d
+[%s] IMemSpace_map failed on parameter %u: %d, perm=%u
+[%s] Invalid size/offset for memory object %u: userSize=%zu, userOffset=%zu, actual size=%llu
+[%s] VALUE_INPUT Size does not match with buffer [%d]
+9999e99999999
+-+   0X0x
+%_ is unsupported 
+0123456789ABCDEF
+qcom.tz.uefisecapp
+n=qcom.tz.uefisecapp;p=8:c47728cf3e4081,61,82:6004,b4,10a:9024
+obL$`P*8L)~s3L}
+secpkcs7_get_cert_by_index
+pbl_BIGINT_SetInt
+RT_NV_NS_Changed
+app_heap_limit
+pbl_secx509_ext_sub_alt_name
+secpkcs7_element_value_length
+pbl_BIGINT_Divide
+pbl_BIGINT_Add
+pbl_secx509_ext_auth_key_id
+qsee_stor_write_sectors
+pbl_BIGINT_Subtract
+IsHwErrRecVariable
+qsee_get_secure_state
+pbl_BIGINT_MontMod
+pbl_secx509_parse_dn
+RT_NV_NS_SyncSize
+CopyGuid
+TzVariablePolicyDump
+pbl_secasn1_decode_bit_string
+CElfFile_invoke
+EfiAtRuntime
+TA_METADATA
+RT_V_NS_StorageTable
+TzVariablePolicyLock
+TzVariablePolicyExitBootServices
+GetNextList
+pbl_secx509_parse_ex_key_usage
+GetNextVariableNameEx
+pbl_secx509_parse_gen_name_for_dir
+AddSigList
+AllocMem
+pbl_secx509_parse_unique_id
+FindSignature
+pbl_secx509_ex_key_email
+pbl_BIGINT_greaterEqual
+pbl_xIncr
+CloseSigDBContext
+CompareMem
+TzVariablePolicyRegister
+pbl_BIGINT_Square
+ta_multiSession
+pbl_secx509_md2WithRSAEncryption
+RT_NV_NS_HR_StorageTable
+ta_minExecTimeout
+pbl_secx509_sha256WithRSAEncryption
+TA_MAX_STORAGE_FILES
+VariableNamePK
+pbl_secx509_ext_basic_constraint
+pbl_secx509_parse_key_usage
+ta_heapLimit
+BIGINT_Double
+OpenTable
+qsee_cipher_init
+pbl_BIGINT_RightShiftBy2Bytes
+ta_filesNoPersist
+TzQueryVariableInfo
+pbl_secx509_parse_signature
+TzVariablePolicyIsPrivAuthVarProtectionDisabled
+pbl_secx509_asn1_rsa
+DebugLog
+ta_heapSize
+GetNextSignature
+pbl_secx509_ext_ex_key_usage
+qsee_wstrchr
+pbl_BIGINT_LeftShift
+NullGuid
+CertRSA2048SHA256Guid
+register_pkkey
+pbl_BIGINT_lessEqual
+pbl_secx509_ex_key_ms_sgc
+RT_NV_S_SyncSize
+RT_NV_NS_HR_SyncSize
+pkcs7_secboot_hash
+GetNextListBySigType
+qsee_malloc
+qsee_hash_final
+pbl_BIGINT_IsBitSet
+pbl_secx509_ex_key_cauth
+secpkcs7_get_si_sig_alg
+TA_APP_NAME
+pbl_secx509_ex_key_sauth
+qsee_util_free_s_bigint
+secpkcs7_get_pubkey_from_sig_index
+qsee_log_set_mask
+secpkcs7_pubkey_verify
+pbl_secasn1_decode_boolean
+secpkcs7_get_si_hash_alg
+IsQCSecureBootEnabled
+pbl_BIGINT_cmp
+cmnlib_free
+pbl_secx509_ext_cert_policies
+convertErrCode
+qsee_cipher_encrypt
+pbl_secx509_ex_key_ns_sgc
+DataMgrInit
+IsReloadedFlag
+pbl_BIGINT_LeftShiftBy2Bytes
+DataMgrRead
+StoreCtx
+GPAppLib_handleRequest
+GetNextSignatureInList
+InitTableInfoArray
+pbl_secx509_parse_version
+CApp_openSession
+__stack_chk_guard
+pbl_BIGINT_ModMult
+VariableNameSecureBoot
+qsee_cipher_set_param
+svc_uefi_var_entry
+BS_NV_NS_SyncSize
+AppendSignatureDB
+TzGetNextVariableName
+svc_uefi_auth_entry
+pbl_BIGINT_lessThan
+ta_heapAddr
+ta_version
+ta_acceptBufSize
+TzVariableInitialize
+CertRSA2048Guid
+mCrcTable
+DataMgrClose
+CompareMemZero
+GPAppLib_appShutdown
+SupportedSignatureTypes
+CertX509Guid
+ValidateSignatureSize
+qsee_BIGINT_read_unsigned_bin
+pbl_BIGINT_Multiply
+isUniCodeVarInit
+RT_NV_S_Changed
+pbl_secx509_ex_key_code
+qsee_free
+pbl_BNSub
+secboot_hashInit
+pbl_secasn1_decode_length
+TzVariablePolicyDisable
+TzDelSecBootVar
+pbl_BIGINT_SetBigInt
+RT_NV_NS_StorageTable
+secpkcs7_get_sig_and_hash_alg
+check_pkcs7_format
+CompareGuid
+SetupModeEnabled
+CertSHA1Guid
+pbl_BIGINT_ModExp
+TzVariablePolicyIsEnabled
+pbl_BIGINT_greaterThan
+Pkcs7Guid
+secpkcs7_parse_buffer
+GetVariableEx
+pbl_BLONG_ExpandSize
+FormatTable
+AddSignatureToList
+__stack_guard_size
+VariableNameKEK
+pbl_BIGINT_MulWithArray
+secpkcs7_element_length
+pbl_secx509_parse_cert_buffer
+pbl_BIGINT_ManageStorage
+secasn1_decode_tag
+pbl_BIGINT_PreprocessMonty
+AddSignature
+qsee_err_fatal
+hw_id_string
+CheckParams
+GetTableSize
+pbl_BIGINT_ExpandSize
+DataMgrCheckTableCrc
+DataMgrGetDataStoreVersion
+__funcs_on_exit
+skip_elements
+BS_NV_NS_Changed
+TA_CUSTOM_PROPERTIES_NUM
+ReverseBits
+pbl_BIGINT_ComputeMontInverse
+pbl_BIGINT_RemoveLeadZeroes
+pbl_BNAdd
+qsee_stor_open_partition
+wrap_funcs_on_exit_ptr
+BS_V_NS_StorageTable
+pbl_secx509_name_cmp
+pbl_secx509_parse_extensions
+StrnLenS
+SecureBootEnabled
+gUefiSecAppLoadAddr
+ta_stackLimit
+InternalCheckPolicyInTable
+MemoryOverwriteRequestControlName
+sha256_codehash_str
+DataMgrOpen
+gUefiSecAppVersion
+pbl_BIGINT_equalTo
+GetNextSignatureByOwner
+pbl_BNSquare
+VarCheckUefiIsHexaDecimalDigitCharacter
+TzSyncVarTables
+ResetSigDBContext
+DumpLogBuffer
+ta_minWaitTimeout
+OpenSigDBContext
+TzVariablePolicyInitialize
+secpkcs7_map_oid
+ta_customProperties
+ta_cryptoSelfTest
+DataMgrUpdateTableCrc
+VerifyCertificates
+appCntxt
+BS_NV_NS_StorageTable
+VariableNameSetupMode
+IsSpecialVar
+pbl_secasn1_start
+pbl_secx509_ex_key_time
+pbl_secasn1_end
+pbl_BIGINT_CoreMultiply
+SyncTable
+EnumContext
+CheckNullPresent
+oem_string
+secboot_hashFreeContext
+register_kekkeys
+pbl_BIGINT_NumBits
+gVolatileTables
+DataMgrGetInfo
+TzVariablePolicyIsSecureBootDisabled
+ta_description
+qsee_hash_init
+pbl_secx509_parse_basic_constraint
+pbl_secx509_check_cert_list
+RT_NV_S_StorageTable
+qsee_rsa_verify_signature
+app_heap_base
+Rsa2048Guid
+secpkcs7_delete_ctx
+VariableNameDBX
+CalculateCrc32
+_secmath_BIGINT_modexp
+SetVariableEx
+pbl_secx509_skip_num_certs
+pbl_BIGINT_RightShift
+qsee_cipher_free_ctx
+pbl_secx509_ext_key_usage
+VerifyUnitCert
+ta_stackSize
+DataMgrWrite
+TableInfoArray
+gen_key_for_rpmb
+pbl_secx509_sha1WithRSAEncryption
+secboot_hashUpdate
+InitUniCodeVars
+debug_string
+pbl_secx509_parse_validity
+InitLogBuffer
+pbl_secx509_ext_policy_constraint
+pbl_BIGINT_CoreInnerLoop
+secpkcs7_new_ctx
+qsee_stor_client_get_info
+RT_NV_NS_HR_Changed
+pbl_xDiff
+FormatSigDB
+qsee_stor_device_init
+gVarDataStorageError
+pbl_secx509_parse_auth_key_id
+app_stack_base
+StrnSizeS
+TzSetVariable
+qsee_hash_free_ctx
+pbl_BNNegate
+GetSupportedSignatureTypes
+pbl_BIGINT_CoreCmp
+sha1_codehash_str
+qsee_log
+InitializeMemMgr
+pbl_secx509_check_purpose
+GPAppLib_init
+pbl_secx509_get_asn1_cert_size
+validate_pkcs7_and_get_public_key
+cmnlib_malloc
+TempLogBuffer
+pbl_secx509_check_issued
+cmnlib_release
+qsee_stor_device_get_info
+UefiValidateAddress
+gMinTableInfoArraySize
+qsee_blow_sw_fuse
+ta_stackAddr
+cmnlib_init
+qsee_util_init_s_bigint
+InitializeCrc32Table
+secpkcs7_secx509_check_issued
+pbl_BIGINT_CreateFromBuf
+AuthenticateVariable
+clk_julian_to_secs
+pbl_secasn1_next_field
+pbl_secasn1_decode_time
+TzVariablePolicyCheck
+sw_id_string
+pbl_secx509_parse_sig_algorithm
+qsee_is_sw_fuse_blown
+EfiExitBootServices
+pbl_secx509_parse_certificate
+TzGetVariable
+gQcomTokenSpaceGuid
+qsee_stor_read_sectors
+secpkcs7_verify_si
+DeleteVariableEx
+big_int_free
+secpkcs7_get_si_sig
+pbl_secx509_md5WithRSAEncryption
+secpkcs7_element_value
+CertSHA256Guid
+pbl_ISquare256
+pbl_secx509_parse_pub_key
+kek_keys
+AnsciToUnicode
+pbl_secasn1_close_sequence
+GetTableStat
+logcount
+gVarTableInit
+VariableNameDB
+qsee_hash_update
+SigBuffer
+secpkcs7_get_cert_chain_from_sig_index
+pbl_secx509_ext_name_constraint
+GPAppLib_appInit
+gHwErrNameBase
+InvalidGuid
+app_stack_limit
+secboot_hashFinal
+libcmnlib.so
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175903Z
+20631121175903Z0|1 0
+Greatwhite_FW_Signing_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175853Z
+20631121175853Z0y1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_01)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175856Z
+20631121175856Z0y1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_11)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175858Z
+20631121175858Z0y1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_21)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+231201175901Z
+20631121175901Z0y1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1
+Greatwhite_FW_Root_31)0'
+ Meta Platforms Technologies, LLC1
+Menlo Park1

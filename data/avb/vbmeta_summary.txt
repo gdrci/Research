@@ -1,0 +1,35 @@
+== vbmeta.img
+   public key sha256 = 0d5c1533678bc678252d94dbe5c9689ebdfe72f34c32fdbbcc87e3952c814abe
+   libavb 1.0  release='avbtool 1.2.0'  algorithm=SHA256_RSA2048  rollback_index=1770249600 (location 0)  flags=0x0  pubkey_bytes=520
+   [chain] partition='recovery' rollback_loc=1 pubkey_bytes=520
+   [chain] partition='vbmeta_system' rollback_loc=2 pubkey_bytes=520
+   [property] com.android.build.boot.fingerprint = facebook/greatwhite/greatwhite:12/SQ3A.220605.009.A1/65394930092600080:user/release-keys
+   [property] com.android.build.boot.os_version = 12
+   [property] com.android.build.vendor_boot.fingerprint = facebook/greatwhite/greatwhite:12/SQ3A.220605.009.A1/65394930092600080:user/release-keys
+   [property] com.android.build.vendor.fingerprint = facebook/greatwhite/greatwhite:12/SQ3A.220605.009.A1/65394930092600080:user/release-keys
+   [property] com.android.build.vendor.os_version = 12
+   [property] com.android.build.odm.fingerprint = facebook/greatwhite/greatwhite:12/SQ3A.220605.009.A1/65394930092600080:user/release-keys
+   [property] com.android.build.odm.os_version = 12
+   [property] com.android.build.dtbo.fingerprint = facebook/greatwhite/greatwhite:12/SQ3A.220605.009.A1/65394930092600080:user/release-keys
+   [hash] partition='boot' size=30208000 alg=sha256 digest_len=32
+   [hash] partition='dtbo' size=2435291 alg=sha256 digest_len=32
+   [hash] partition='vendor_boot' size=13946880 alg=sha256 digest_len=32
+   [hashtree] partition='odm' size=52924416 alg=sha1 dm_verity_ver=1
+   [hashtree] partition='vendor' size=453591040 alg=sha256 dm_verity_ver=1
+== vbmeta_system.img
+   public key sha256 = 0d5c1533678bc678252d94dbe5c9689ebdfe72f34c32fdbbcc87e3952c814abe
+   libavb 1.0  release='avbtool 1.2.0'  algorithm=SHA256_RSA2048  rollback_index=1770249600 (location 0)  flags=0x0  pubkey_bytes=520
+   [property] com.android.build.system.os_version = 14
+   [property] com.android.build.system.fingerprint = Meta/greatwhite/greatwhite:14/UKQ1.250303.001/65394930092600080:user/release-keys
+   [property] com.android.build.system.security_patch = 2026-02-05
+   [property] com.android.build.system.security_patch = 2026-02-05
+   [property] com.android.build.product.os_version = 14
+   [property] com.android.build.product.fingerprint = Meta/greatwhite/greatwhite:14/UKQ1.250303.001/65394930092600080:user/release-keys
+   [property] com.android.build.product.security_patch = 2026-02-05
+   [property] com.android.build.product.security_patch = 2026-02-05
+   [property] com.android.build.system_ext.os_version = 14
+   [property] com.android.build.system_ext.fingerprint = Meta/greatwhite/greatwhite:14/UKQ1.250303.001/65394930092600080:user/release-keys
+   [property] com.android.build.system_ext.security_patch = 2026-02-05
+   [hashtree] partition='product' size=650182656 alg=sha1 dm_verity_ver=1
+   [hashtree] partition='system' size=1433899008 alg=sha256 dm_verity_ver=1
+   [hashtree] partition='system_ext' size=410660864 alg=sha1 dm_verity_ver=1

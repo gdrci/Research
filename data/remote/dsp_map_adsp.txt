@@ -1,0 +1,7 @@
+../../build/ms/dynamic_modules/aurora.adsp_la.prod/libsysmon_skel.so
+../../build/ms/dynamic_modules/aurora.adsp_la.prod/libsysmondomain_skel.so
+../../build/ms/dynamic_modules/aurora.adsp_la.prod/libstabilitydomain_skel.so
+../../build/ms/dynamic_modules/aurora.adsp_la.prod/libsysmonquery_skel.so
+../../build/ms/dynamic_modules/aurora.adsp_la.prod/fastrpc_shell_0
+../../build/ms/dynamic_modules/aurora.adsp_la.prod/libc++.so.1
+../../build/ms/dynamic_modules/aurora.adsp_la.prod/libc++abi.so.1

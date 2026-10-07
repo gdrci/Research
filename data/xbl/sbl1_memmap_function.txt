@@ -1,0 +1,7 @@
+SBL1 (xbl.img offset 0x4AFC4 program, vaddr base 0x14824000 region)
+Function containing the QFPROM reference: starts 0x1482CD30 (nearest stp x29,x30 prologue before 0x1482CED4; distance 0x1A4)
+Caller: 0x14825B3C (single BL site)
+QFPROM reference: 0x1482CED4 mov w13,#0x8000 ; 0x1482CED8 movk w13,#0x221c,LSL#16  -> 0x221C8000
+Nearby constants: 0x221C2000 (movk at 0x1482CE98), 0x22000000 (0x1482CEE4), 0x20C20000 (0x1482CF18)
+SBL1 addresses written as region descriptors: 0x148A3000, 0x148B2000, 0x148B5000, 0x148C7000, 0x12000, 0x3000, 0xF000
+String references resolved by simple ADRP+ADD inside the function: none
