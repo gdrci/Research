@@ -1,0 +1,127 @@
+TrustZone SW-fuse check area (tz.img), disassembly by capstone (verified by reading the code):
+
+Function at 0x1C3ECD78: takes x0 (source), x1 (must be 9), x2 (output of 9 bytes). Reads two 32-bit words (big-endian unpack) and writes the 9-byte record. It is a record (de)serialiser, not a fuse read.
+
+Function containing the 'qsee_is_sw_fuse_blown res' log (ADRP at 0x1C3ECF54, prologue not a Ghidra function): loops with 'ldr w0,[x27,x8,lsl #2]' where x27 = 0x1C3FCEC0. That address decodes as ASCII debug text, so the loop input is not a fuse-ID table. The loop calls 0x1C3DD500 (an indirect call stub) with (id, out, 1). Which values the loop reads is not established.
+
+0x1c3ecd78 stp x29, x30, [sp, #-0x20]!
+0x1c3ecd7c str x19, [sp, #0x10]
+0x1c3ecd80 mov x29, sp
+0x1c3ecd84 cbz x0, #0x1c3ece08
+0x1c3ecd88 cmp x1, #9
+0x1c3ecd8c b.ne #0x1c3ece08
+0x1c3ecd90 mov x19, x2
+0x1c3ecd94 cbz x2, #0x1c3ece14
+0x1c3ecd98 mov x8, x0
+0x1c3ecd9c mov w2, #9
+0x1c3ecda0 mov x0, x19
+0x1c3ecda4 mov x1, x8
+0x1c3ecda8 bl #0x1c3f2aa0
+0x1c3ecdac add x0, x29, #0x1c
+0x1c3ecdb0 add x1, x19, #1
+0x1c3ecdb4 bl #0x1c3ec57c
+0x1c3ecdb8 add x0, x29, #0x18
+0x1c3ecdbc add x1, x19, #5
+0x1c3ecdc0 bl #0x1c3ec57c
+0x1c3ecdc4 ldp w9, w8, [x29, #0x18]
+0x1c3ecdc8 mov w0, wzr
+0x1c3ecdcc lsr w10, w8, #0x18
+0x1c3ecdd0 strb w8, [x19, #1]
+0x1c3ecdd4 strb w9, [x19, #5]
+0x1c3ecdd8 strb w10, [x19, #4]
+0x1c3ecddc lsr w10, w8, #0x10
+0x1c3ecde0 lsr w8, w8, #8
+0x1c3ecde4 strb w10, [x19, #3]
+0x1c3ecde8 lsr w10, w9, #0x18
+0x1c3ecdec strb w8, [x19, #2]
+0x1c3ecdf0 lsr w8, w9, #0x10
+0x1c3ecdf4 lsr w9, w9, #8
+0x1c3ecdf8 strb w10, [x19, #8]
+0x1c3ecdfc strb w8, [x19, #7]
+0x1c3ece00 strb w9, [x19, #6]
+0x1c3ece04 b #0x1c3ece34
+0x1c3ece08 adrp x1, #0x1c3fc000
+0x1c3ece0c add x1, x1, #0xe0a
+0x1c3ece10 b #0x1c3ece1c
+0x1c3ece14 adrp x1, #0x1c3fc000
+0x1c3ece18 add x1, x1, #0xe74
+0x1c3ece1c adrp x2, #0x1c3fc000
+0x1c3ece20 mov w0, #0x10
+0x1c3ece24 add x2, x2, #0xe55
+0x1c3ece28 mov x3, x2
+0x1c3ece2c bl #0x1c3dd020
+0x1c3ece30 mov w0, #-1
+0x1c3ece34 ldr x19, [sp, #0x10]
+0x1c3ece38 ldp x29, x30, [sp], #0x20
+0x1c3ece3c ret 
+0x1c3ece40 dsb sy
+0x1c3ece44 isb 
+0x1c3ece48 sub sp, sp, #0x70
+0x1c3ece4c stp x29, x30, [sp, #0x10]
+0x1c3ece50 add x29, sp, #0x10
+0x1c3ece54 stp x28, x27, [sp, #0x20]
+0x1c3ece58 stp x26, x25, [sp, #0x30]
+0x1c3ece5c stp x24, x23, [sp, #0x40]
+0x1c3ece60 stp x22, x21, [sp, #0x50]
+0x1c3ece64 stp x20, x19, [sp, #0x60]
+
+0x1c3ecf3c dsb sy
+0x1c3ecf40 isb 
+0x1c3ecf44 ldurb w8, [x29, #-4]
+0x1c3ecf48 mov w25, #1
+0x1c3ecf4c cbz w8, #0x1c3ecfe4
+0x1c3ecf50 adrp x27, #0x1c3fc000
+0x1c3ecf54 adrp x21, #0x1c3fc000
+0x1c3ecf58 adrp x22, #0x1c3fc000
+0x1c3ecf5c mov x8, xzr
+0x1c3ecf60 mov w20, #0x31
+0x1c3ecf64 add x27, x27, #0xec0
+0x1c3ecf68 mov w9, #1
+0x1c3ecf6c mov w24, #1
+0x1c3ecf70 add x21, x21, #0xec8
+0x1c3ecf74 add x22, x22, #0xf01
+0x1c3ecf78 ldr x10, [x26, #8]
+0x1c3ecf7c add x1, sp, #8
+0x1c3ecf80 ldr w0, [x27, x8, lsl #2]
+0x1c3ecf84 mov w2, #1
+0x1c3ecf88 mov w28, w9
+0x1c3ecf8c strb w25, [sp, #8]
+0x1c3ecf90 bl #0x1c3dd500
+0x1c3ecf94 ldrb w4, [sp, #8]
+0x1c3ecf98 mov w23, w0
+0x1c3ecf9c mov w0, #2
+0x1c3ecfa0 mov x1, x21
+0x1c3ecfa4 mov x2, x22
+0x1c3ecfa8 mov w3, w23
+0x1c3ecfac bl #0x1c3dd020
+0x1c3ecfb0 cbnz w23, #0x1c3ecff0
+0x1c3ecfb4 ldrb w8, [sp, #8]
+0x1c3ecfb8 cbnz w8, #0x1c3ed010
+0x1c3ecfbc mov w9, wzr
+0x1c3ecfc0 add w24, w24, #1
+0x1c3ecfc4 mov w8, #1
+0x1c3ecfc8 tbnz w28, #0, #0x1c3ecf78
+0x1c3ecfcc mov w21, wzr
+0x1c3ecfd0 mov w20, wzr
+0x1c3ecfd4 mov w25, #3
+0x1c3ecfd8 mov w24, #3
+0x1c3ecfdc cbnz x19, #0x1c3ecea0
+0x1c3ecfe0 b #0x1c3ecf18
+0x1c3ecfe4 mov w24, wzr
+0x1c3ecfe8 mov w20, #0x30
+0x1c3ecfec b #0x1c3ece98
+0x1c3ecff0 adrp x1, #0x1c3fc000
+0x1c3ecff4 adrp x2, #0x1c3fc000
+0x1c3ecff8 add x1, x1, #0xf13
+0x1c3ecffc add x2, x2, #0xf01
+0x1c3ed000 mov w0, #0x10
+0x1c3ed004 mov w3, w23
+0x1c3ed008 bl #0x1c3dd020
+0x1c3ed00c mov w20, #0xf
+0x1c3ed010 add w25, w24, #1
+0x1c3ed014 b #0x1c3ece98
+0x1c3ed018 stp x29, x30, [sp, #-0x20]!
+0x1c3ed01c str x19, [sp, #0x10]
+0x1c3ed020 mov x29, sp
+0x1c3ed024 adrp x19, #0x1c3fc000
+0x1c3ed028 adrp x1, #0x1c3fc000
