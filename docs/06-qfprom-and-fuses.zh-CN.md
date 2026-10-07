@@ -157,6 +157,8 @@ UEFI 熔丝库中有一张命名区域表（`data/secure/uefi_fuse_region_table.
 
 记录 `qsee_is_sw_fuse_blown` 结果的 TrustZone 代码见 `data/secure/tz_sw_fuse_check_area.txt`。位于 `0x1C3ECD78` 的一个函数把 9 字节记录解包为两个大端 32 位字，再写回，因此它是记录的序列化函数，而不是熔丝读取。记录熔丝烧断结果的例程用 `ldr w0,[x27,x8,lsl #2]` 遍历一个列表，该列表解码为 ASCII 文本，因此它不是熔丝 ID 表。检查使用哪些软件熔丝 ID，因此仍未确定。
 
+`hyp.img` 是 Gunyah/QTEE 虚拟化资源管理器，而不是普通的虚拟化层。它的字符串列出了 RPC、VM 创建、memparcel 和 SMC 等待队列的源文件，以及本地和远程对象表（`localObjTable`、`remoteObjTable`、`LocalObj_retrieve`）。这使它成为 TrustZone 查找背后对象调用提供者的候选，但其中没有找到对象 `0x91` 的表项，因此尚未确认。它还包含 `PILSubsys_getArbFuseBank`，说明外设镜像（PIL）是按子系统的防回滚熔丝组进行检查的。如果该熔丝组是 `0x221C` 块中的某个软件熔丝范围，那么回滚状态就保存在那里；熔丝组与子系统的对应表尚未解码。依据字符串观察得出。证据见 `data/secure/hyp_rm_objects_and_arb_fuse.txt`。
+
 ## 字面量出现的位置
 
 字面量扫描的计数（`data/qfprom_literal_candidates.json`）：

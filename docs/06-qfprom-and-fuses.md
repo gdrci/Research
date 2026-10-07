@@ -157,6 +157,8 @@ The UEFI fuse library has a table of named regions (`data/secure/uefi_fuse_regio
 
 The TrustZone code that logs `qsee_is_sw_fuse_blown` results is in `data/secure/tz_sw_fuse_check_area.txt`. One function at `0x1C3ECD78` unpacks a 9-byte record into two big-endian 32-bit words and writes it back, so it is a record serialiser, not a fuse read. The routine that logs the fuse-blown result loops over a list read with `ldr w0,[x27,x8,lsl #2]`, which decodes as ASCII text, so the list is not a table of fuse IDs. Which SW fuse IDs the check uses is therefore still open.
 
+`hyp.img` is a Gunyah/QTEE hypervisor resource manager, not a plain hypervisor. Its strings name the RPC, VM-creation, memparcel and SMC wait-queue sources, and a local and a remote object table (`localObjTable`, `remoteObjTable`, `LocalObj_retrieve`). That makes it a candidate for the object-invoke provider behind TrustZone's lookups, but no object-`0x91` row was found in it, so this is not confirmed. It also contains `PILSubsys_getArbFuseBank`, which suggests that peripheral images (PIL) are checked against a per-subsystem anti-rollback fuse bank. If that bank is one of the SW fuse ranges in the `0x221C` block, it is where the rollback state lives; the bank-to-subsystem mapping is not yet decoded. Observed from strings. Evidence: `data/secure/hyp_rm_objects_and_arb_fuse.txt`.
+
 ## Where the literal appears
 
 Counts from a literal scan (`data/qfprom_literal_candidates.json`):

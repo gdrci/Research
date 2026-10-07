@@ -1,0 +1,6 @@
+hyp.img is the Gunyah/QTEE hypervisor resource manager (AArch64 ELF, entry 0x80000000).
+Source tree names (from strings): resource-manager/src/rpc/rm-rpc.c, src/vm_creation/hlos_vm.c, second_vm.c, memparcel/memparcel.c, platform/qcom/src/smc_wait_queue.c, vm_client.c, pil_image.c, hyp_assign.c.
+Object tables: 'localObjTable is full!! Increase maxLocalObj', 'remoteObjTable is full', 'LocalObj_retrieve failed, remoteObj = 0x%x', 'Not NS obj!! objHandle = 0x%x', 'CreateClientEnvObject'.
+PIL: 'PILSubsys_getArbFuseBank' (name at file 0xA6CAA, vaddr 0xA5CAA), with 'PILSubsys_envAuthImage', 'PILSubsys_verifyMetadata', 'TZ_PIL_AUTH_RESET_ID' and smc-ret logs.
+Interpretation: PIL images are checked against a per-subsystem anti-rollback fuse bank, returned by PILSubsys_getArbFuseBank. The bank is a SW fuse range in the 0x221C block (data/secure/uefi_fuse_region_table.txt). The bank-to-subsystem table and the code that calls it are not identified.
+Object-invoke provider for ID 0x91: no keyed table row in hyp.img (one hit at 0x114C38 is data, value 0x92).
