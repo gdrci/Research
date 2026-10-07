@@ -45,9 +45,11 @@ It contains `DDR_FW version : 275.0.0`. The name indicates DDR-related firmware,
 
 A Hexagon ELF with `e_machine = EM_QDSP6` and `e_flags = 0x3`. It has eleven `PT_LOAD` segments and a Qualcomm hash segment. `e_entry` is zero, which is unusual for a standalone image. It is more likely a library or an overlay. Verified from the header.
 
-The image has no readable strings, so its role is unknown. The name suggests the Qualcomm Universal Peripheral (QUP) serial blocks, but that is a guess.
+The image has no functional strings. It does carry a certificate chain (`Qualcomm Technologies, Inc.`, `Qualcomm Cryptographic Operations`, `SRoT MBNv7 Image Signing Root CA 6`, and `CASS - SBL4` near `0xB5FF`). Its role is unknown. The name suggests the Qualcomm Universal Peripheral (QUP) serial blocks, but that is a guess.
 
-Earlier drafts said QUP holds real Hexagon code. That was wrong. Its segments decode at high rates, but they are dominated by repeated words and zeros, which decode cleanly as data. Whether `qupfw.img` contains any code, and where its entry is, is not established.
+The layout is a Qualcomm image format. The `0x1000` segment begins with `QSI ` and holds a table of (offset, size) pairs. The `0x6328` segment begins with `SEFW`. Ghidra's Hexagon decode starts producing plausible instructions from `0x1100` onward (for example `memw R20,(R20+#0x1c)`), but the sequence is dominated by repeated `memw` patterns, so the code boundary is not established.
+
+Earlier drafts said QUP holds real Hexagon code. That was wrong, because the decode rate was not a test of code. Whether `qupfw.img` contains any code, and where its entry is, is not established.
 
 ## Audio and compute DSPs (`dsp.img`)
 

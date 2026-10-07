@@ -45,9 +45,11 @@ SoC 除了应用处理器之外还有若干处理器，每个都运行自己的�
 
 Hexagon ELF，`e_machine = EM_QDSP6`，`e_flags = 0x3`。它有十一个 `PT_LOAD` 段和一个高通哈希段。`e_entry` 为零，对于独立镜像来说不寻常，更像是库或覆盖层。根据头部已验证。
 
-镜像中没有可读字符串，作用未知。名称暗示是高通通用外设（QUP）串行模块，但这只是猜测。
+镜像中没有功能性字符串，但含有一条证书链（`Qualcomm Technologies, Inc.`、`Qualcomm Cryptographic Operations`、`SRoT MBNv7 Image Signing Root CA 6`，以及 `0xB5FF` 附近的 `CASS - SBL4`）。作用未知。名称暗示是高通通用外设（QUP）串行模块，但这只是猜测。
 
-此前的草稿称 QUP 中含有真正的 Hexagon 代码，这是错误的。它的段解码率很高，但主要由重复的字和零组成，这些字也能被干净地解码为数据。`qupfw.img` 中是否含有代码、入口在哪里，尚未确定。
+其布局是高通镜像格式。`0x1000` 段以 `QSI ` 开头，包含一个（偏移，大小）对表。`0x6328` 段以 `SEFW` 开头。Ghidra 的 Hexagon 解码从 `0x1100` 起开始得到看似合理的指令（例如 `memw R20,(R20+#0x1c)`），但序列主要由重复的 `memw` 组成，因此代码边界尚未确定。
+
+此前的草稿称 QUP 中含有真正的 Hexagon 代码，这是错误的，因为解码率并不能作为代码的判据。`qupfw.img` 中是否含有代码、入口在哪里，尚未确定。
 
 ## 音频与计算 DSP（`dsp.img`）
 
