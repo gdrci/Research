@@ -67,6 +67,14 @@ The wrist band is an electromyography input device. Evidence from the files:
 - `/dev/PhoneDisconnected` also appears on the phone side, in `system_ext/bin/navigationservice`, `SmartglassOOBERelease` and `SmartglassSystemUIRelease`. A device-node name that the app layer uses as a state is most likely a companion-state signal passed through the MCU. Inferred from the names.
 - Init scripts `init.emgrelay_receiver.rc` and `init.emgrelaydatax.rc` start `emgrelay_receiver` and `emgrelaydatax`, gated by `system_ext.meta.mobileconfig.service.emgrelay.receiver.enable` and by the screencast-manager property.
 
+The EMG data path has three parts, from the binaries' strings:
+
+- `system_ext/bin/emgrelay_receiver` takes protobuf `EmgInferenceEvent` messages and injects them into the virtual EMG service (`com.meta.wearable.emg.sim.IVirtualEmgService`, with an `IVirtualEmgStreamControlCallback`). It logs `Failed to open channel to phone's EmgRelayReceiver service`, so it opens a channel to the phone side. Its registration message is `Companion scope available [uuid=...], registering DataX service`.
+- `system_ext/bin/emgrelaydatax` serialises `EMGGestureEvent` messages (`EmgEventClient::onGestureDetected`) and sends them to the EMG service. It logs `Failed to connect EmgEventClient to EMG service`.
+- `emg2` implements `IEmgService` and receives device data through its `fmq` instance.
+
+So the band's signal reaches `emg2` through the `fmq` queue for real device data, and through the virtual service for injected inference events. The step from the MCU to the band data source is still not found in code. Observed from strings. Binaries: `system_ext/bin/emgrelay_receiver`, `system_ext/bin/emgrelaydatax`.
+
 The EMG service path, observed in the extracted tree:
 
 - `system_ext/bin/emg2` is the EMG service. It is started by `persist.vendor.meta.enable_emg=1` (`emg2.rc`). It implements `com.meta.wearable.emg.IEmgService` (manifest `emg2_manifest.xml`) with two instances, `default` and `fmq`.

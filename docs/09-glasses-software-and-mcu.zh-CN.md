@@ -67,6 +67,14 @@
 - `/dev/PhoneDisconnected` 也出现在手机一侧：`system_ext/bin/navigationservice`、`SmartglassOOBERelease` 和 `SmartglassSystemUIRelease`。应用层把某个设备节点名称当作状态使用，这很可能是经由 MCU 传递的配套设备状态信号。根据名称推断。
 - init 脚本 `init.emgrelay_receiver.rc` 与 `init.emgrelaydatax.rc` 启动 `emgrelay_receiver` 和 `emgrelaydatax`，其开关由 `system_ext.meta.mobileconfig.service.emgrelay.receiver.enable` 属性以及截屏管理器属性控制。
 
+EMG 数据路径分为三部分，依据二进制文件的字符串得出：
+
+- `system_ext/bin/emgrelay_receiver` 接收 protobuf 格式的 `EmgInferenceEvent` 消息，并把它们注入虚拟 EMG 服务（`com.meta.wearable.emg.sim.IVirtualEmgService`，带有 `IVirtualEmgStreamControlCallback`）。它的日志 `Failed to open channel to phone's EmgRelayReceiver service` 表明它会打开一个通往手机端的通道。其注册消息为 `Companion scope available [uuid=...], registering DataX service`。
+- `system_ext/bin/emgrelaydatax` 序列化 `EMGGestureEvent` 消息（`EmgEventClient::onGestureDetected`），并把它们发送给 EMG 服务。其日志 `Failed to connect EmgEventClient to EMG service` 表明它连接的是 EMG 服务。
+- `emg2` 实现 `IEmgService`，并通过 `fmq` 实例接收设备数据。
+
+因此，腕带信号通过 `fmq` 队列进入 `emg2`（真实设备数据），以及通过虚拟服务进入（注入的推理事件）。从 MCU 到腕带数据源的环节尚未在代码中找到。依据字符串观察得出。相关二进制：`system_ext/bin/emgrelay_receiver`、`system_ext/bin/emgrelaydatax`。
+
 EMG 服务路径（在提取的文件树中观察到）：
 
 - `system_ext/bin/emg2` 是 EMG 服务，由 `persist.vendor.meta.enable_emg=1` 启动（`emg2.rc`）。它实现 `com.meta.wearable.emg.IEmgService`（清单 `emg2_manifest.xml`），有 `default` 和 `fmq` 两个实例。
