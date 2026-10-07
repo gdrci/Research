@@ -1,0 +1,31 @@
+SBL1 fuse-field getters (sbl1.elf, AArch64). Observed from disassembly. Ghidra did not create function boundaries here (analysis off), so addresses are instruction-level.
+
+Dispatcher FUN_148818CC(flag w0, selector w1): if flag==0 and selector<=14, jumps through the byte table at 0x148AC670 (one byte per selector, target = 0x148818FC + byte*4).
+Helpers FUN_14881880 (w0=0,w1=0 -> word 0x221C27F4 bits 11..20) and FUN_148818A4 (w0=0,w1=0 -> word 0x221C27F4 bits 21..30).
+
+Selector -> 5-bit field:
+  sel  word(s)                  field
+  0    0x221C27F8               bits 19..23
+  1    0x221C27F8               bits 24..28
+  2    0x221C27F8 + 0x221C27FC  (0x221C27F8 >> 29) | ((0x221C27FC & 3) << 3)
+  3    0x221C27FC               bits 2..6
+  4    0x221C27FC               bits 7..11
+  5    0x221C27FC               bits 12..16
+  6    0x221C27FC               bits 17..21
+  7    0x221C27FC               bits 22..26
+  8    0x221C27FC               bits 27..31
+  9    0x221C2800               bits 0..4
+  10   0x221C2800               bits 5..9
+  11   0x221C2800               bits 10..14
+  12   0x221C2800               bits 15..19
+  13   0x221C2800               bits 20..24
+  14   0x221C2800               bits 25..29
+
+Caller: FUN_14856624 calls the dispatcher with flag w19 and selector = byte at [x28+0x15] (call sites 0x14855DD8 and 0x14855E1C; the function containing them is not created in Ghidra).
+Caller context (0x14855E50 .. 0x14855EB0): table entries of stride 0xF8 (madd x26, x20, x15, x27 with w15 = 0xF8), signed 16-bit min/max at [x28+4] and [x28+6], a reference value at [sp+0xC], and an sdiv by a value from [sp+0x10]. Strings in the same image: "CPR rev %d data not found in voltage plan", "/cpr.bin".
+Interpretation: CPR (core power reduction) calibration from fuse fields. Inferred from the strings and the arithmetic, not from a named symbol.
+
+Other QFPROM-block word getters in SBL1 (observed):
+  FUN_14853EF4 .. FUN_14853F30: return words 0x221C8780 (+0), 0x221C8784 (+4), 0x221C8788 (+8), 0x221C878C (+0xC) directly.
+  FUN_14853F88 .. FUN_14853FE4: read 0x221C8C70 path with an index check (cmp w9,#0xb; jump table at 0x148A7000) and 0x221C8000 + 0x19C on another branch.
+  Other reads of 0x221C8610 (0x1484B0C0, 0x1484B0D0), 0x221C8780 region at 0x14870F4C, 0x221C8xxx at 0x1487DE44 and 0x148A2A64 (word 0x221C8xxx & 0xF compare with 5).

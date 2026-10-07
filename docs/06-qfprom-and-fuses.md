@@ -105,6 +105,14 @@ The hypervisor has 8 literal-pool slots with `0x221C8000`, and its memory map ha
 
 The TME firmware has no reference to the block: no `LUI` with the QFPROM immediates and no literal. Verified by search.
 
+### SBL1 fuse getters (CPR)
+
+SBL1 has a family of fuse-field getters in the `0x14881880`–`0x14881A30` range. They read 5-bit fields from the words `0x221C27F8`, `0x221C27FC` and `0x221C2800`, which lie in the `0x221C2000` block, not in the QFPROM block at `0x221C8000`. A dispatcher selects one of 15 fields from a jump table at `0x148AC670`. The table and bit positions are in `data/secure/sbl1_cpr_fuse_getters.txt`. Observed.
+
+One caller uses the fields with a 0xF8-byte record stride, signed 16-bit limits, and a divide. SBL1 also contains the strings `CPR rev %d data not found in voltage plan` and `/cpr.bin`. So these getters read the CPR (core power reduction) calibration fields. Inferred from the strings and the arithmetic; the record and field names are not in the image.
+
+SBL1 also reads four words of the QFPROM block directly through small getters at `0x14853EF4`–`0x14853F30`: `0x221C8780`, `0x221C8784`, `0x221C8788` and `0x221C878C`. Their consumers are not identified. Observed.
+
 ## Where the literal appears
 
 Counts from a literal scan (`data/qfprom_literal_candidates.json`):
