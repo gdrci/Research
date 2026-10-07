@@ -82,7 +82,7 @@ The EMG service path, observed in the extracted tree:
 - `libemginput.so` opens device nodes by a formatted name (`/dev/%s`) and also has `/dev/gpiochip%u` and `/dev/joycon0`. The format name is not resolved.
 - Event names in `emg2`: `emg_raw_gesture_event`, `input_emg_raw_gesture_event`, `wearables_band_tightness_detector_events`.
 
-Not found: the transport between the band and `emg2`. The `dev/Band` string in the MCU firmware is a status-icon path, not a device. The vendor init files have no band or EMG device entry. The link is therefore still open.
+Not found: the transport between the band and `emg2`. The `dev/Band` string in the MCU firmware is a status-icon path, not a device. Checked and ruled out as the transport: the MCU firmware (its strings cover gesture, IMU and captouch, with no EMG or band-transport names), the DSP firmware (its `band_*` names are audio bands), and the SPL2 firmware (its UART driver has no EMG names). The band link is therefore probably a wireless connection handled by the Bluetooth stack, which is not identified in the extracted strings. The vendor init files have no band or EMG device entry. The link is therefore still open.
 
 `libmarvin-emg.meta.so` and `libemg_marvin-client.meta.so` use the name "Marvin". It is probably an internal codename for the model or the client. Unverified.
 

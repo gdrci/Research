@@ -82,7 +82,7 @@ EMG 服务路径（在提取的文件树中观察到）：
 - `libemginput.so` 通过格式化名称打开设备节点（`/dev/%s`），另有 `/dev/gpiochip%u` 和 `/dev/joycon0`。格式化名称的来源尚未确定。
 - `emg2` 中的事件名：`emg_raw_gesture_event`、`input_emg_raw_gesture_event`、`wearables_band_tightness_detector_events`。
 
-未找到：腕带与 `emg2` 之间的传输。MCU 固件中的 `dev/Band` 字符串是状态图标路径，不是设备。厂商 init 文件中也没有腕带或 EMG 的设备条目。因此该连接仍未确定。
+未找到：腕带与 `emg2` 之间的传输。MCU 固件中的 `dev/Band` 字符串是状态图标路径，不是设备。已检查并排除的候选：MCU 固件（其字符串涵盖手势、IMU 和触控，没有 EMG 或腕带传输相关名称）、DSP 固件（其 `band_*` 名称指音频频段）、SPL2 固件（其 UART 驱动没有 EMG 名称）。因此腕带链路很可能是由蓝牙协议栈处理的无线连接，而该协议栈在提取的字符串中未被识别。厂商 init 文件中也没有腕带或 EMG 的设备条目。因此该连接仍未确定。
 
 `libmarvin-emg.meta.so` 与 `libemg_marvin-client.meta.so` 中使用了 "Marvin" 这个名字。它很可能是型号或客户端的内部代号。未验证。
 
