@@ -1,1 +1,2 @@
+NOTE: invalid control (adsp.b02 is data).
 Hexagon:LE:32:default    adsp_b02.bin       off=0x0 rate=0.969 words=1023

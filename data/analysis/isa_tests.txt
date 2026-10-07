@@ -1,3 +1,4 @@
+NOTE: the Hexagon control adsp.b02 is 62% zero words (data, not code). Its Hexagon rows are not a valid calibration.
 ISA discrimination tests (per-word decode rate, and function-boundary densities per 1000 words)
 
 Decode rate (pypcode, one ISA per process):

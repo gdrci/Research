@@ -1,3 +1,4 @@
+NOTE: superseded. High decode rates here come from zero-filled and repetitive data, not code.
 qupfw.img (Hexagon ELF, e_machine 0xA4), per-word decode with Hexagon:LE:32:default (first 4 KB of each PT_LOAD)
 PT_LOAD off     vaddr   filesz  flags     valid-word fraction
 1      0x1000   0x1000  0x4068  0x8000007  0.98

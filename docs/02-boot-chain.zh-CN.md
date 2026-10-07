@@ -74,7 +74,7 @@ QFPROM 引用（见第 06 节）位于一个函数内，在 Ghidra 中命名为 
 
 对其内容进行的测试（`data/analysis/isa_tests.txt`、`data/ghidra/xbl_primary_stub_thumb2_disasm.txt`）：
 
-- **逐字解码率。** Hexagon 为 0.774，ARM32 为 0.769，无法区分。已知 Hexagon 代码在 Hexagon 下为 0.969，在 ARM32 下为 0.894。
+- **逐字解码率。** Hexagon 为 0.774，ARM32 为 0.769，无法区分。我之前用作 Hexagon 对照的 `adsp.b02` 有 62% 的字为零，是数据而不是代码，因此它不是有效的对照。该解码率无法区分两种指令集。
 - **函数边界指令。** 以下均未出现：Hexagon 的 `allocframe` 与 `dealloc_return`；ARM32 的 `push {..., lr}`、`pop {..., pc}`、`bx lr`；AArch64 的 `ret`（`0xD65F03C0`）；RISC-V 的 `ret`（`0x00008067`）。已知 AArch64 代码每千个字有 24.6 个 `ret`，说明测试有效。
 - **从起始地址开始的 Ghidra 反汇编。** 从偏移 0 开始按 Thumb-2 反汇编，在第一个错误之前能解码 669 条指令。在同一方法下，已知 AArch64 代码从入口可解码 2,000 条指令。Thumb-2 的输出是一个重复模式（`stmia r4!,{r0}` 后接 `adds r0,#0x3`，数值逐步趋向 `cmp r0,#0xf6`）。这更像一张数值表，而不是代码。Ghidra 的 ARM32 解码为 0 条指令，Hexagon 解码为 1 条。
 - **熵。** 该区域大部分在每字节 6.5 到 7.1 比特之间。偏移 `0x10000` 处的一个 64 KB 块较低（每字节 3.6 比特）。

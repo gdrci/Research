@@ -17,7 +17,7 @@ SoC 除了应用处理器之外还有若干处理器，每个都运行自己的�
 
 ## AOP（`aop.img`、`aop_config.img`）
 
-`aop.img` 是 32 位 ARM ELF，包含七个 `PT_LOAD` 段。入口点为 `0x0B000009`。最低位被置位，这是 ARM Thumb 的约定，因此入口处是 Thumb 代码。指令模式也与之相符：`bx lr`（`0x4770`）每千个半字出现 6.2 次，随机基线约为 0.015。因此该代码是 Thumb-2。
+`aop.img` 是 32 位 ARM ELF，包含七个 `PT_LOAD` 段。入口点为 `0x0B000009`。最低位被置位，这是 ARM Thumb 的约定，因此入口处是 Thumb 代码。指令模式也与之相符：`bx lr`（`0x4770`）每千个半字出现 6.2 次，随机基线约为 0.015。因此该代码是 Thumb-2。Ghidra 从入口处的反汇编证实了这一点：入口从字面量池中加载函数指针，调用它们，并以 `bx r0` 返回（`data/ghidra/aop_entry_thumb2_disasm.txt`）。
 
 版本字符串为 `QC_IMAGE_VERSION_STRING=AOP.HO.4.0-00605-AURORA_E-1`。`AOP.HO` 表示 AOP 镜像系列，`AURORA` 表示 SoC。作为文本已验证。
 
@@ -47,7 +47,7 @@ Hexagon ELF，`e_machine = EM_QDSP6`，`e_flags = 0x3`。它有十一个 `PT_LOA
 
 镜像中没有可读字符串，作用未知。名称暗示是高通通用外设（QUP）串行模块，但这只是猜测。
 
-本节早先的草稿有误。把每个 32 位字按 Hexagon 解码，在全部十一个可加载段中，有效字的比例为 86% 到 98%。因此 `qupfw.img` 包含真正的 Hexagon 代码。早先"找不到代码"的结论是因为只解码了每个块的第一个字，并把它的失败当作结束。
+此前的草稿称 QUP 中含有真正的 Hexagon 代码，这是错误的。它的段解码率很高，但主要由重复的字和零组成，这些字也能被干净地解码为数据。`qupfw.img` 中是否含有代码、入口在哪里，尚未确定。
 
 ## 音频与计算 DSP（`dsp.img`）
 

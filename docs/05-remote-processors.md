@@ -17,7 +17,7 @@ The SoC has processors besides the application CPU, and each runs its own firmwa
 
 ## AOP (`aop.img`, `aop_config.img`)
 
-`aop.img` is a 32-bit ARM ELF with seven `PT_LOAD` segments. Its entry point is `0x0B000009`. The low bit is set, which is the ARM Thumb convention, so the entry is Thumb code. The instruction pattern agrees: `bx lr` (`0x4770`) appears 6.2 times per 1,000 halfwords, against a random baseline near 0.015. So the code is Thumb-2.
+`aop.img` is a 32-bit ARM ELF with seven `PT_LOAD` segments. Its entry point is `0x0B000009`. The low bit is set, which is the ARM Thumb convention, so the entry is Thumb code. The instruction pattern agrees: `bx lr` (`0x4770`) appears 6.2 times per 1,000 halfwords, against a random baseline near 0.015. So the code is Thumb-2. A Ghidra disassembly from the entry confirms it: the entry loads function pointers from a literal pool, calls them, and returns with `bx r0` (`data/ghidra/aop_entry_thumb2_disasm.txt`).
 
 The version string is `QC_IMAGE_VERSION_STRING=AOP.HO.4.0-00605-AURORA_E-1`. `AOP.HO` names the AOP image family and `AURORA` names the SoC. Verified as text.
 
@@ -47,7 +47,7 @@ A Hexagon ELF with `e_machine = EM_QDSP6` and `e_flags = 0x3`. It has eleven `PT
 
 The image has no readable strings, so its role is unknown. The name suggests the Qualcomm Universal Peripheral (QUP) serial blocks, but that is a guess.
 
-This section was wrong in an earlier draft. Decoding each 32-bit word as Hexagon gives 86 to 98 percent valid words across all eleven loadable segments. So `qupfw.img` contains real Hexagon code. The earlier "no code" result came from decoding only the first word of each block and treating its failure as the end.
+Earlier drafts said QUP holds real Hexagon code. That was wrong. Its segments decode at high rates, but they are dominated by repeated words and zeros, which decode cleanly as data. Whether `qupfw.img` contains any code, and where its entry is, is not established.
 
 ## Audio and compute DSPs (`dsp.img`)
 

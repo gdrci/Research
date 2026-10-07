@@ -74,7 +74,7 @@ The first program, at offset 0, is the one with the odd machine value `EM_M32`. 
 
 The tests on its content (`data/analysis/isa_tests.txt`, `data/ghidra/xbl_primary_stub_thumb2_disasm.txt`) are:
 
-- **Per-word decode rate.** Hexagon 0.774, ARM32 0.769. This does not separate the two. Known Hexagon code scores 0.969 under Hexagon and 0.894 under ARM32.
+- **Per-word decode rate.** Hexagon 0.774, ARM32 0.769. This does not separate the two. The Hexagon control I used earlier (`adsp.b02`) is 62% zero words, so it is data, not code, and it is not a valid calibration. The rate does not separate the two ISAs.
 - **Function-boundary instructions.** None of these appear: Hexagon `allocframe` and `dealloc_return`; ARM32 `push {..., lr}`, `pop {..., pc}`, `bx lr`; AArch64 `ret` (`0xD65F03C0`); RISC-V `ret` (`0x00008067`). Known AArch64 code has 24.6 `ret` per 1,000 words, so the test works.
 - **Ghidra disassembly from the start address.** Disassembled from offset 0 as Thumb-2, 669 instructions decode before the first error. Known AArch64 code decodes 2,000 instructions from its entry in the same method. The Thumb-2 output is a repeating pattern (`stmia r4!,{r0}` followed by `adds r0,#0x3`, with values stepping towards `cmp r0,#0xf6`). That reads as a table of values, not code. Ghidra's ARM32 decode gives 0 instructions, and its Hexagon decode gives 1.
 - **Entropy.** Most of the region is between 6.5 and 7.1 bits per byte. One 64 KB chunk at offset `0x10000` is lower (3.6 bits per byte).

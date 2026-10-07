@@ -1,0 +1,14 @@
+# program aop.img lang ARM:LE:32:v8T
+  0b000008  ldr r0,[0x0b000024]
+  0b00000a  blx r0
+  0b00000c  cbnz r0,0x0b000016
+  0b00000e  ldr r0,[0x0b000028]
+  0b000010  blx r0
+  0b000012  ldr r0,[0x0b00002c]
+  0b000014  bx r0
+  0b000016  ldr r0,[0x0b000030]
+  0b000018  blx r0
+  0b00001a  ldr r0,[0x0b000034]
+  0b00001c  ldr r1,[r0,#0x0]
+  0b00001e  bx r1
+DISASM from 0b000008 insns 12 bytes 24
