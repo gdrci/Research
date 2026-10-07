@@ -9,6 +9,6 @@ SBL1 ELF loader object and EL3 hand-off (sbl1.elf, Ghidra decompiles).
    - clears x0..x30, then eret at 0x1482CC28 into non-secure EL1.
    So the hand-off is to the non-secure world, not to TrustZone.
 
-3. Candidate entry: uefi.img is ELF64 AArch64? NO: EM_ARM class 64 with entry 0xA7000000 and one PT_LOAD at 0xA7000000 (size 0x289000). abl.img: EM_ARM class 32, entry 0x9FA00000, load 0x9FA00000 (size 0x50000).
+3. Candidate entry: uefi.img is an ELF with class 64 and e_machine EM_ARM (40), entry 0xA7000000, one PT_LOAD at 0xA7000000 (size 0x289000). abl.img is an ELF with class 32 and e_machine EM_ARM, entry 0x9FA00000, one PT_LOAD at 0x9FA00000 (size 0x50000).
    SBL1 contains no literal 0xA7000000 or 0x9FA00000 (search of mov/movk and data words). The entry is read from the ELF header at run time.
    So the match is structural. Which image is loaded is not confirmed in code.
