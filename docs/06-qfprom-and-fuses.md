@@ -119,6 +119,10 @@ The function behind `qsee_sfs_is_anti_rollback_enabled` is at `0x1C32D6E0` (the 
 
 The object model is the same as the SBL1 protocol registry (`0x3E`, section 02). The flag matters for `vbmeta`: a rollback counter for applications lives in RPMB (`tzbsp application rpmb version rollback label` in `tz.img`). That link is not yet confirmed in code.
 
+### Where the rollback manager runs
+
+The source name `AntiRollbackMgr.cpp` is in the TME firmware, inside `xbl.img`, next to GLink, SMEM and FreeRTOS strings, not in TrustZone. So the anti-rollback manager is a TME service. The link to the TrustZone flag (object `0x91`) is not confirmed: the TME is a separate processor, and the GLink channel from TZ to TME is the likely path, but that is unverified. A search for code that loads the string through RISC-V `auipc` pairs found 15 pairs in the whole TME image and none at that address, so the reference is probably in a table. Data: `data/secure/tme_antirollback_location.txt`.
+
 ## Where the literal appears
 
 Counts from a literal scan (`data/qfprom_literal_candidates.json`):

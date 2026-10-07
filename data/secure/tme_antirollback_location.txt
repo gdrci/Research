@@ -1,0 +1,4 @@
+Anti-rollback manager location (xbl.img, TME RISC-V ELF at offset 0x1C2F4)
+String: '/sources/services/antirollback/src/AntiRollbackMgr.cpp' at xbl offset 0x44AEF (TME blob offset 0x287FB, vaddr 0x204397FB).
+Neighbours (same region): IPCC, GLink xport_qmp_config_tme.c, SMEM, FreeRTOS, 'tme_apps', 'tme_tz', TME_FW_VERSION_STRING=ssg.tmefw.1.0.1-00467-release, TME_FW_CHIPSET_STRING=Aurora.
+Search: RISC-V auipc+addi/ld pairs in the TME ELF: 15 pairs in total, none in 0x20439000..0x2043A000. The reference is not an auipc pair, so it is in a table or a gp-relative load.

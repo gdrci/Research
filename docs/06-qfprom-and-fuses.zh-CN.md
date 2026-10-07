@@ -119,6 +119,10 @@ SBL1 还通过 `0x14853EF4`–`0x14853F30` 处的小型读取函数直接读取 
 
 该对象模型与 SBL1 的协议注册表（`0x3E`，第 02 节）相同。该标志与 `vbmeta` 相关：应用的回滚计数器保存在 RPMB 中（`tz.img` 中的 `tzbsp application rpmb version rollback label`）。该联系尚未在代码中确认。
 
+### 防回滚管理器的位置
+
+源文件名 `AntiRollbackMgr.cpp` 位于 `xbl.img` 内的 TME 固件中，与 GLink、SMEM 和 FreeRTOS 字符串相邻，而不在 TrustZone 中。因此防回滚管理器是 TME 上的服务。它与 TrustZone 标志（对象 `0x91`）之间的联系尚未确认：TME 是独立的处理器，TZ 到 TME 的 GLink 通道是可能的路径，但未经验证。在整个 TME 镜像中只找到 15 个 RISC-V `auipc` 配对，且都不在该地址，因此引用很可能位于表中。数据见 `data/secure/tme_antirollback_location.txt`。
+
 ## 字面量出现的位置
 
 字面量扫描的计数（`data/qfprom_literal_candidates.json`）：
