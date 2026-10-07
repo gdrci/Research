@@ -117,7 +117,7 @@ SBL1 also reads four words of the QFPROM block directly through small getters at
 
 The function behind `qsee_sfs_is_anti_rollback_enabled` is at `0x1C32D6E0` (the string reference is at `0x1C32D710`, source line `0x356`). It asks `FUN_1C32516C` for a one-byte flag. `FUN_1C32516C` keeps a per-thread cache in the TLS block (`tpidrro_el0`, byte `+0x18AB` is the valid marker, `+0x18AC` is the value). On a cache miss, it obtains an object for interface ID `0x91` through `FUN_1C32E024` and `FUN_1C32DFB0`. The second function invokes the object with the ID as a 4-byte buffer, through `FUN_1C302990`. The flag itself comes from the object for ID `0x91`. Its provider is not identified. Observed for the cache and the lookup; the source of the flag is not found. Disassembly is in `data/secure/tz_antirollback_path.txt`.
 
-The object model is the same as the SBL1 protocol registry (`0x3E`, section 02). The flag matters for `vbmeta`: a rollback counter for applications lives in RPMB (`tzbsp application rpmb version rollback label` in `tz.img`). That link is not yet confirmed in code.
+The object-invoke entry (`FUN_1C302990`) is a trampoline that jumps through a register, so object `0x91` is dispatched outside the code in `tz.img`. Its provider is not found. The object model is the same as the SBL1 protocol registry (`0x3E`, section 02), whose provider is now identified. The flag matters for `vbmeta`: a rollback counter for applications lives in RPMB (`tzbsp application rpmb version rollback label` in `tz.img`). That link is not yet confirmed in code.
 
 ### Where the rollback manager runs
 
