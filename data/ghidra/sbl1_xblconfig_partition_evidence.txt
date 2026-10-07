@@ -1,0 +1,144 @@
+SBL1 boot step that registers image regions (sbl1_config.c). Ghidra decompiles.
+Caller of the partition driver (0x1482DB74) is in a routine at 0x1482DAE4 (no Ghidra function record; prologue found by scan). It takes x0 (nonnull) and tests it, calls FUN_1482E6C4, then FUN_148612EC.
+Source name strings: sbl1_config.c (line 0x5D2 used in its assert), l1_xblconfig_init.
+
+FUN_148612EC (boot_ram_partition_drv.c) registers regions with FUN_148615E0(handle, base, size, 1, type, 0, 1):
+  0x14800000, 0x200000, type 4 (SBL1 image)
+  0x14680000, 0x2B000, type 5 (TrustZone image)
+  0xA6E00000, 0x40000, type 4 (third image; name not established)
+Then FUN_14861620 and FUN_148615E0 for 0xA6E00000 with a 0x40000 size.
+
+Emergency-download path (boot_dload_entry) also calls the TrustZone load service at 0x1482E274: blr x8 with (0x14680000, 0x2B000, 0x4001), a load/authenticate interface from FUN_1482E6B8.
+
+=== FUN_148612EC decompile
+# program sbl1.elf lang AARCH64:LE:64:v8A
+NO FUNCTION at 1482e274
+=== DECOMP 148612ec FUN_148612ec
+
+undefined8 FUN_148612ec(undefined8 param_1)
+
+{
+  long lVar1;
+  bool bVar2;
+  bool bVar3;
+  int iVar4;
+  undefined8 uVar5;
+  undefined8 *puVar6;
+  uint *puVar7;
+  ulong uVar8;
+  long lVar9;
+  ulong uVar10;
+  long lVar11;
+  long *plVar12;
+  undefined4 local_6c;
+  long local_68;
+  ulong local_58;
+  
+  local_58 = 0;
+  uVar5 = FUN_148298a4(param_1,0x28,&local_58);
+  if ((int)uVar5 != 0) {
+    return uVar5;
+  }
+  puVar6 = (undefined8 *)(**(code **)(local_58 + 0x20))(0x192,0x918);
+  if (puVar6 == (undefined8 *)0x0) {
+    iVar4 = 0x2001;
+  }
+  else {
+    if (((undefined8 *)0x80900000 < puVar6) && (puVar6 + 0x123 < (undefined8 *)0x80b00001)) {
+      *(undefined4 *)(puVar6 + 2) = 0;
+      local_58 = 0;
+      local_68 = 0;
+      local_6c = 0;
+      uVar5 = FUN_148298a4(param_1,0x1c,&local_58);
+      if (((int)uVar5 == 0) && (uVar5 = FUN_148298a4(param_1,0x1b,&local_68), (int)uVar5 == 0)) {
+        puVar7 = (uint *)(**(code **)(local_58 + 0x20))();
+        lVar1 = DAT_148a91b0;
+        uVar8 = (ulong)*(uint *)(puVar6 + 2);
+        uVar10 = 0;
+        lVar11 = 8;
+        iVar4 = 5;
+        plVar12 = puVar6 + uVar8 * 9 + 0xb;
+        while( true ) {
+          bVar2 = false;
+          bVar3 = true;
+          if (uVar10 < *puVar7) {
+            bVar3 = 0x1e < (uint)uVar8;
+            bVar2 = (uint)uVar8 == 0x1f;
+          }
+          if (bVar3 && !bVar2) {
+            bVar2 = false;
+            iVar4 = 0;
+            uVar5 = 0;
+            goto LAB_148613a4;
+          }
+          lVar9 = *(long *)(puVar7 + 2);
+          *(undefined4 *)((long)plVar12 + -0x1c) = 0xe;
+          plVar12[-6] = ((long *)(lVar9 + lVar11))[-1];
+          lVar9 = *(long *)(lVar9 + lVar11);
+          *(undefined4 *)(plVar12 + -4) = 1;
+          plVar12[-3] = lVar1;
+          local_6c = 0;
+          lVar9 = lVar9 << 0x14;
+          plVar12[-5] = lVar9;
+          *plVar12 = lVar9;
+          uVar5 = (**(code **)(local_68 + 0xb8))(uVar10 & 0xffffffff,4,0,&local_6c);
+          if ((int)uVar5 != 0) break;
+          (**(code **)(local_68 + 0xb8))(uVar10 & 0xffffffff,4,(long)plVar12 + -4,&local_6c);
+          lVar9 = *(long *)(puVar7 + 4);
+          if (lVar9 != 0) {
+            if (*(long *)(lVar9 + lVar11) != plVar12[-6]) {
+              uVar5 = 0;
+              bVar2 = true;
+              goto LAB_148613a4;
+            }
+            *(undefined4 *)(plVar12 + -2) = *(undefined4 *)(lVar9 + lVar11 + -8);
+            *(char *)(plVar12 + -1) = (char)*(undefined4 *)(lVar9 + lVar11 + -4);
+          }
+          uVar10 = uVar10 + 1;
+          lVar11 = lVar11 + 0x10;
+          plVar12 = plVar12 + 9;
+          uVar8 = (ulong)(*(int *)(puVar6 + 2) + 1U);
+          *(uint *)(puVar6 + 2) = *(int *)(puVar6 + 2) + 1U;
+        }
+      }
+      bVar2 = false;
+      iVar4 = 0;
+LAB_148613a4:
+      if ((bVar2) || ((int)uVar5 != 0)) {
+        if ((int)uVar5 != 0) {
+          return uVar5;
+        }
+LAB_14861490:
+        uVar5 = DAT_148a91b8;
+        if (iVar4 == 0) {
+          *(undefined4 *)(puVar6 + 1) = 3;
+          *puVar6 = uVar5;
+          return 0;
+        }
+      }
+      else {
+        iVar4 = FUN_148615e0(puVar6,&DAT_14800000,0x200000,1,4,0,1);
+        if ((iVar4 == 0) && (iVar4 = FUN_148615e0(puVar6,0x14680000,0x2b000,1,5,0,1), iVar4 == 0)) {
+          local_58 = CONCAT44(local_58._4_4_,0xffffffff);
+          FUN_14861620(puVar6,0xa6e00000,&local_58);
+          iVar4 = FUN_148615e0(puVar6,0xa6e00000,0x40000,1,local_58 & 0xffffffff,0,2);
+          goto LAB_14861490;
+        }
+      }
+      iVar4 = iVar4 + 0x2000;
+      uVar5 = 0x23f;
+      goto LAB_1486145c;
+    }
+    iVar4 = 0x2002;
+  }
+  uVar5 = 0x231;
+LAB_1486145c:
+  uVar5 = (*(code *)PTR_FUN_148b6d80)(0x43000000,iVar4,"boot_ram_partition_drv.c",uVar5);
+  return uVar5;
+}
+
+
+
+=== routine at 0x1482DAE4 (caller)
+# program sbl1.elf lang AARCH64:LE:64:v8A
+NO FUNCTION at 1482db74

@@ -95,6 +95,12 @@ The tests on its content (`data/analysis/isa_tests.txt`, `data/ghidra/xbl_primar
 
 The conclusion is that the primary stub is a data table, not code of a tested ISA. Its exact format is not identified.
 
+### Where the TrustZone region is registered
+
+The image regions are registered in `sbl1_config.c`, in a routine at `0x1482DAE4`. It calls `FUN_1482E6C4` and then `FUN_148612EC` (`boot_ram_partition_drv.c`). That function registers three regions through `FUN_148615E0`: SBL1 (`0x14800000`, `0x200000`, type 4), TrustZone (`0x14680000`, `0x2B000`, type 5), and a third region at `0xA6E00000` (`0x40000`, type 4). These type values are the same classes used in the memory map. Observed. Evidence: `data/ghidra/sbl1_xblconfig_partition_evidence.txt`.
+
+In the emergency-download path (`boot_dload_entry`, `0x1482E274`), SBL1 also calls a load-and-authenticate interface with `(0x14680000, 0x2B000, 0x4001)`. The normal path's authenticate call is not yet located. The jump into TrustZone and the per-thread context it receives in `x0` (the `tpidr_el0` value in the entry code) are also not yet located.
+
 ## Stage 2: XBL configuration and ramdump builds
 
 - `xbl_config.img` (147,456 bytes): a text configuration packed into an ELF, read by XBL at boot. Its keys and values are below.
