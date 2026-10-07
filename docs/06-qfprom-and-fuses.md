@@ -149,6 +149,8 @@ Not established: where the display block's base address comes from (`IDeviceRegi
 
 The object-invoke chain in `tz.img` (`data/secure/tz_object_invoke_chain.txt`): `FUN_1C32E024` is called with object IDs `0x30`, `0x12`, `0x61`, `0x114`, `0x91` (twice), `0xB` and `0x16`. The lookup `FUN_1C32DFB0` jumps through the function pointer stored at `tpidrro_el0 + 0x18` of the current thread block, with the handle at `+0x20`. The routine at `0x1C304010` loads that pair from a context block when a thread is switched in, after a magic check. So the object dispatcher is a function that the context supplies. Which function it is for each context, and how the contexts are created, is not yet established.
 
+The context creator is still not found. The switch-in routine (`0x1C304010`) checks that the halfword at `+2` is `0x0002`. No simple constant store writes that value, and ten sites load `0x20000` into unrelated fields. Search log: `data/secure/tz_context_creation_search.txt`.
+
 ## Where the literal appears
 
 Counts from a literal scan (`data/qfprom_literal_candidates.json`):

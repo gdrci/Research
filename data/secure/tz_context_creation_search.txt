@@ -1,0 +1,6 @@
+TrustZone object-invoke context: creation search (tz.img).
+
+- Only one magic check reads the context header: 'ldrh w8,[x0,#2]; lsl w8,w8,#16; cmp w8,#0x20,lsl#12' at 0x1C30402C (switch-in routine). That means the halfword at +2 must equal 0x0002.
+- 15 'strh ...,[xN,#2]' stores exist. None is preceded by a 'mov w,#2' within 8 instructions, so the magic is not written by a simple constant store.
+- 10 sites load 0x20000 (1c016038, 1c050ae4, 1c0ae034, 1c0b8774, 1c0ca7c0, 1c0e094c, 1c120c90, 1c30a86c, 1c318358, 1c318894). They store it into different structure fields, so none is confirmed as the context creator.
+- Not established: the context creator, and which function is the invoke handler for the anti-rollback object 0x91.

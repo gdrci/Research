@@ -149,6 +149,8 @@ TME 代码中没有直接构造 QFPROM 或 TrustZone MMIO 地址的常量（`lui
 
 `tz.img` 中的对象调用链（`data/secure/tz_object_invoke_chain.txt`）：`FUN_1C32E024` 以对象 ID `0x30`、`0x12`、`0x61`、`0x114`、`0x91`（两处）、`0xB` 和 `0x16` 被调用。查找函数 `FUN_1C32DFB0` 通过当前线程块 `tpidrro_el0 + 0x18` 处保存的函数指针跳转，句柄位于 `+0x20`。`0x1C304010` 处的例程在线程切入时，经过魔数检查后，从上下文块中加载这一对值。因此对象分发器是由上下文提供的一个函数。每个上下文对应哪个函数、上下文如何创建，尚未确定。
 
+上下文的创建者仍未找到。切入例程（`0x1C304010`）检查 `+2` 处的半字为 `0x0002`。没有简单的常量存储写入该值，另有十处把 `0x20000` 装入无关字段。搜索记录见 `data/secure/tz_context_creation_search.txt`。
+
 ## 字面量出现的位置
 
 字面量扫描的计数（`data/qfprom_literal_candidates.json`）：
