@@ -1,0 +1,11 @@
+TrustZone object 0x91 and OEM key reader searches (tz.img, devcfg.img)
+
+A. Object 0x91:
+  - Immediate 0x91 sites: 2 are object lookups (0x1C3251E0 and 0x1C325960, both call FUN_1C32E024). Others are error codes (mov w0,#0x91 before a fatal handler at 0x1C0999C4, 0x1C3EC184) or a log argument (0x1C0F2F94, 0x1C0B534C, 0x1C3B288C).
+  - No table in tz.img with id 0x91 followed by a TrustZone pointer (32-bit id scan, 0x30-byte window).
+  - FUN_1C302990 (the object-invoke entry) is a trampoline: 'mov x16, xN; br x16' with the target in a register, so object dispatch happens outside this code.
+
+B. OEM_rot_pk_hash1_fuse_values reader:
+  - No 8-byte or 4-byte pointer to the key string in devcfg.img (vaddr 0x1C0064B2).
+  - No pointer to the key string in tz.img (vaddr 0x1C13C3AC) beyond the earlier scan.
+  - The key lookup is therefore not a pointer table. It is probably a text comparison inside the OEM configuration parser.
