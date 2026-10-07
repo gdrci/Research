@@ -159,6 +159,8 @@ The TrustZone code that logs `qsee_is_sw_fuse_blown` results is in `data/secure/
 
 `hyp.img` is a Gunyah/QTEE hypervisor resource manager, not a plain hypervisor. Its strings name the RPC, VM-creation, memparcel and SMC wait-queue sources, and a local and a remote object table (`localObjTable`, `remoteObjTable`, `LocalObj_retrieve`). That makes it a candidate for the object-invoke provider behind TrustZone's lookups, but no object-`0x91` row was found in it, so this is not confirmed. It also contains `PILSubsys_getArbFuseBank`, which suggests that peripheral images (PIL) are checked against a per-subsystem anti-rollback fuse bank. If that bank is one of the SW fuse ranges in the `0x221C` block, it is where the rollback state lives; the bank-to-subsystem mapping is not yet decoded. Observed from strings. Evidence: `data/secure/hyp_rm_objects_and_arb_fuse.txt`.
 
+The TrustZone secure-boot status word has named bits, reported by one routine (at `0x1C3DFF30`, which calls the status service and logs each bit): bit 0 secboot enabling check, bit 1 secure HW key programmed, bit 2 debug-disable check, bit 3 anti-rollback check, bit 4 fuse configuration check, bit 5 RPMB provisioned check, bit 6 debug check in the image certificate, bit 8 TZ secure-debug fuse, bit 9 MSS secure-debug fuse, bit 10 CP secure-debug fuse, bit 11 non-secure secure-debug fuse. The status service is reached through an indirect slot at `0x1C401090`, which is zero in the file and filled at run time, so the function that computes bit 3 is not identified. Observed from strings and the reporter's code.
+
 ## Where the literal appears
 
 Counts from a literal scan (`data/qfprom_literal_candidates.json`):

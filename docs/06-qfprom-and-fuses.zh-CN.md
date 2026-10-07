@@ -159,6 +159,8 @@ UEFI 熔丝库中有一张命名区域表（`data/secure/uefi_fuse_region_table.
 
 `hyp.img` 是 Gunyah/QTEE 虚拟化资源管理器，而不是普通的虚拟化层。它的字符串列出了 RPC、VM 创建、memparcel 和 SMC 等待队列的源文件，以及本地和远程对象表（`localObjTable`、`remoteObjTable`、`LocalObj_retrieve`）。这使它成为 TrustZone 查找背后对象调用提供者的候选，但其中没有找到对象 `0x91` 的表项，因此尚未确认。它还包含 `PILSubsys_getArbFuseBank`，说明外设镜像（PIL）是按子系统的防回滚熔丝组进行检查的。如果该熔丝组是 `0x221C` 块中的某个软件熔丝范围，那么回滚状态就保存在那里；熔丝组与子系统的对应表尚未解码。依据字符串观察得出。证据见 `data/secure/hyp_rm_objects_and_arb_fuse.txt`。
 
+TrustZone 的安全启动状态字有命名的位，由一个例程报告（位于 `0x1C3DFF30`，它调用状态服务并逐位记录）：第 0 位为 secboot 启用检查，第 1 位为安全硬件密钥已编程，第 2 位为调试禁用检查，第 3 位为防回滚检查，第 4 位为熔丝配置检查，第 5 位为 RPMB 已配置检查，第 6 位为镜像证书中的调试检查，第 8 位为 TZ 安全调试熔丝，第 9 位为 MSS 安全调试熔丝，第 10 位为 CP 安全调试熔丝，第 11 位为非安全安全调试熔丝。状态服务通过 `0x1C401090` 处的间接槽调用，该槽在文件中为零，运行时才填充，因此计算第 3 位的函数尚未确定。依据字符串和报告例程的代码观察得出。
+
 ## 字面量出现的位置
 
 字面量扫描的计数（`data/qfprom_literal_candidates.json`）：
