@@ -153,6 +153,8 @@ TME 代码中没有直接构造 QFPROM 或 TrustZone MMIO 地址的常量（`lui
 
 `tz.img` 中的静态分发表有 61 行，每行 16 字节：8 字节的键 `(type << 16) | method` 和一个处理函数指针。类型标签 2 与切入例程中的线程上下文检查相符。对象 ID `0x91` 不是该表中的键，因此该对象在运行时才被解析。已观察。证据见 `data/secure/tz_dispatch_table.txt`。
 
+UEFI 熔丝库中有一张命名区域表（`data/secure/uefi_fuse_region_table.txt`）。每行包含名称、基址和大小。基址存储为物理地址减去 `0x20000000`，这就是原始值显示为 `0x21C2000` 的原因。还原后区域为：`QFPROM_CORR` 位于 `0x221C2000`（大小 `0x2000`）；`FUSE_CONTROLLER_SW_RANGE0` 位于 `0x221C4000`，`_RANGE1` 位于 `0x221C5000`，`_RANGE3` 位于 `0x221C7000`，`_RANGE4` 位于 `0x221C8000`，`_RANGE5` 位于 `0x221C9000`（每个 `0x1000`）；`VIRT_FUSE_CONTROLLER_SW_RANGE3` 位于 `0x221CA000`；TME RNG 位于 `0x221D0000`；TME 加密位于 `0x221E4000`；RSCC 位于 `0x22200000` 和 `0x22220000`；TME XPU 位于 `0x22240000`。`QFPROM_CORR` 与 `SW_RANGE4` 的地址与 TrustZone MMIO 表（`0x221C2000`、`0x221C8000`）一致。因此保存防回滚状态的软件熔丝范围是 `0x221C` 块内的 4 KB 窗口。已观察。哪个窗口保存 `vbmeta` 索引，尚未确定。
+
 ## 字面量出现的位置
 
 字面量扫描的计数（`data/qfprom_literal_candidates.json`）：

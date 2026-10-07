@@ -1,0 +1,23 @@
+Region table in the UEFI fuse-controller PE (decompressed DXE volume, PE at 0x168E84).
+Each 24-byte row: name pointer, base (stored as physical - 0x20000000), size.
+Base shown here is physical (stored value + 0x20000000).
+
+0x2a9f0  QFPROM_CORR                          base=0x221c2000  size=0x2000
+0x2aa08  FUSE_CONTROLLER_SW_RANGE0            base=0x221c4000  size=0x1000
+0x2aa20  FUSE_CONTROLLER_SW_RANGE1            base=0x221c5000  size=0x1000
+0x2aa38  FUSE_CONTROLLER_SW_RANGE3            base=0x221c7000  size=0x1000
+0x2aa50  FUSE_CONTROLLER_SW_RANGE4            base=0x221c8000  size=0x1000
+0x2aa68  FUSE_CONTROLLER_SW_RANGE5            base=0x221c9000  size=0x1000
+0x2aa80  VIRT_FUSE_CONTROLLER_SW_RANGE3       base=0x221ca000  size=0x1000
+0x2aa98  TME_RNG_TME_TOP                      base=0x221d0000  size=0x10000
+0x2aab0  TME_RNG_RNG_RNG_REGS_NBANKS_1        base=0x221d0000  size=0x2000
+0x2aac8  TME_RNG_CM_CM_PRNG_CM                base=0x221d0000  size=0x1000
+0x2aae0  TME_RNG_TZ_TZ_PRNG_TZ                base=0x221d1000  size=0x1000
+0x2aaf8  TME_CC                               base=0x221e4000  size=0x4000
+0x2ab10  TME_CC_TME_CC_REG                    base=0x221e4000  size=0x4000
+0x2ab28  P_RSCC_TME_RSCC                      base=0x22200000  size=0x20000
+0x2ab40  P_RSCC_RSCC_RSCC_RSC                 base=0x22200000  size=0x20000
+0x2ab58  C_RSCC_TME_CHILD_RSCC                base=0x22220000  size=0x10000
+0x2ab70  C_RSCC_RSCC_RSCC_RSC                 base=0x22220000  size=0x10000
+0x2ab88  TME_XPUC                             base=0x22240000  size=0x2000
+0x2aba0  JTAG_TME_XPUC                        base=0x22242000  size=0x2000

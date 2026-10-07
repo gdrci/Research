@@ -153,6 +153,8 @@ The context creator is still not found. The switch-in routine (`0x1C304010`) che
 
 The static dispatch table in `tz.img` has 61 rows of 16 bytes: an 8-byte key `(type << 16) | method` and a handler pointer. The type tag 2 matches the thread-context check in the switch-in routine. Object ID `0x91` is not a key in this table, so the object is resolved at run time. Observed. Evidence: `data/secure/tz_dispatch_table.txt`.
 
+The UEFI fuse library has a table of named regions (`data/secure/uefi_fuse_region_table.txt`). Each row holds a name, a base and a size. The base is stored as physical address minus `0x20000000`, which is why the raw values look like `0x21C2000`. Restored, the regions are: `QFPROM_CORR` at `0x221C2000` (size `0x2000`); `FUSE_CONTROLLER_SW_RANGE0` at `0x221C4000`, `_RANGE1` at `0x221C5000`, `_RANGE3` at `0x221C7000`, `_RANGE4` at `0x221C8000`, `_RANGE5` at `0x221C9000` (each `0x1000`); `VIRT_FUSE_CONTROLLER_SW_RANGE3` at `0x221CA000`; TME RNG at `0x221D0000`; TME crypto at `0x221E4000`; RSCC at `0x22200000` and `0x22220000`; TME XPU at `0x22240000`. The `QFPROM_CORR` and `SW_RANGE4` addresses agree with the TrustZone MMIO table (`0x221C2000`, `0x221C8000`). The software-fuse ranges that hold anti-rollback state are therefore 4 KB windows inside the `0x221C` block. Observed. Which window holds the `vbmeta` index is not yet identified.
+
 ## Where the literal appears
 
 Counts from a literal scan (`data/qfprom_literal_candidates.json`):
