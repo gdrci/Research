@@ -147,6 +147,8 @@ Gating by `soc_hw_version` (`DisplayCore_IsFeatureSupported`, the value masked w
 
 Not established: where the display block's base address comes from (`IDeviceRegionFinder` with a region name), the licence signature check, and which SoC is which `soc_hw_version`.
 
+The object-invoke chain in `tz.img` (`data/secure/tz_object_invoke_chain.txt`): `FUN_1C32E024` is called with object IDs `0x30`, `0x12`, `0x61`, `0x114`, `0x91` (twice), `0xB` and `0x16`. The lookup `FUN_1C32DFB0` jumps through the function pointer stored at `tpidrro_el0 + 0x18` of the current thread block, with the handle at `+0x20`. The routine at `0x1C304010` loads that pair from a context block when a thread is switched in, after a magic check. So the object dispatcher is a function that the context supplies. Which function it is for each context, and how the contexts are created, is not yet established.
+
 ## Where the literal appears
 
 Counts from a literal scan (`data/qfprom_literal_candidates.json`):

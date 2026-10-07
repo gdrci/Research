@@ -1,0 +1,57 @@
+TrustZone object-invoke chain (tz.img, Ghidra analysis project tzana and capstone disassembly).
+
+Object IDs looked up through FUN_1C32E024 (call sites with the constant in w0): 0x30, 0x12, 0x61, 0x114, 0x91 (twice), 0xB, 0x16, 0x30.
+FUN_1C32DFB0 (object lookup) calls FUN_1C302990 after loading x9 = [tpidrro_el0 + 0x18] and x8 = [tpidrro_el0 + 0x20].
+FUN_1C302990 is 'mov x16, x9; br x16': the invoke goes to the function pointer that is in the current thread block.
+
+Context switch-in routine at 0x1C304010 (checks a magic in the context, then copies the pair at context+0x18 into tpidrro+0x18 and the pair at context+0x8/+0x10 into tpidrro+0x8/+0x10):
+  0x1c304010 dsb sy
+  0x1c304014 isb 
+  0x1c304018 sub sp, sp, #0x70
+  0x1c30401c stp x29, x30, [sp, #0x40]
+  0x1c304020 add x29, sp, #0x40
+  0x1c304024 stp x22, x21, [sp, #0x50]
+  0x1c304028 stp x20, x19, [sp, #0x60]
+  0x1c30402c ldrh w8, [x0, #2]
+  0x1c304030 lsl w8, w8, #0x10
+  0x1c304034 cmp w8, #0x20, lsl #12
+  0x1c304038 b.ne #0x1c30428c
+  0x1c30403c mov w8, #0x18
+  0x1c304040 mrs x9, tpidrro_el0
+  0x1c304044 mov x19, x0
+  0x1c304048 strb w8, [x9, #4]
+  0x1c30404c ldp x8, x0, [x0, #0x18]
+  0x1c304050 mrs x9, tpidrro_el0
+  0x1c304054 stp x8, x0, [x9, #0x18]
+  0x1c304058 cbz x8, #0x1c30406c
+  0x1c30405c mov w1, #0xfffe
+  0x1c304060 mov x2, xzr
+  0x1c304064 mov w3, wzr
+  0x1c304068 bl #0x1c302980
+  0x1c30406c mov x20, x19
+  0x1c304070 ldr x8, [x20, #0x18]!
+  0x1c304074 cbz x8, #0x1c30408c
+  0x1c304078 ldr x0, [x19, #0x20]
+  0x1c30407c mov w1, #0xffff
+  0x1c304080 mov x2, xzr
+  0x1c304084 mov w3, wzr
+  0x1c304088 bl #0x1c302980
+  0x1c30408c ldp x0, x1, [x19, #8]
+  0x1c304090 ldr x2, [x19, #0x70]
+  0x1c304094 ldr w3, [x19, #0x60]
+  0x1c304098 stp xzr, xzr, [x20]
+  0x1c30409c bl #0x1c301040
+  0x1c3040a0 ldr x8, [x19, #8]
+  0x1c3040a4 mrs x9, tpidrro_el0
+  0x1c3040a8 add x2, sp, #8
+  0x1c3040ac str x8, [x9, #8]
+  0x1c3040b0 ldr x8, [x19, #0x10]
+  0x1c3040b4 mrs x9, tpidrro_el0
+  0x1c3040b8 str x8, [x9, #0x10]
+  0x1c3040bc mrs x8, tpidrro_el0
+  0x1c3040c0 ldp x0, x1, [x8, #0x18]
+  0x1c3040c4 bl #0x1c304568
+  0x1c3040c8 cbnz w0, #0x1c304290
+  0x1c3040cc ldp x8, x0, [sp, #8]
+  0x1c3040d0 mrs x9, tpidrro_el0
+  0x1c3040d4 stp x8, x0, [x9, #0x18]
