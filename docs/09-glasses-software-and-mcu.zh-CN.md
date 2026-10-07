@@ -63,11 +63,18 @@
 
 - `system_ext/etc/vintf/manifest/emg2_manifest.xml` 声明了 AIDL HAL `com.meta.wearable.emg`，接口为 `IEmgService`，实例为 `default` 和 `fmq`（快速消息队列）。
 - `system_ext/lib64` 中有 `libemginput.so`、`libemg_quaternion_consumer.so`（来自腕带的姿态/四元数）、`libemg_device_status_consumer.so`、`libemg_state_sync_consumer.so`、`libemgcache.so`、`libemg_equeue.so`、`libemgserviceutils2.so` 和 `emgsdk-proto-cc.so`。
-- MCU 固件 `mcu.default.rt700.tub` 中有字符串 `/dev/Band`、`/dev/BandOff` 和 `/dev/PhoneDisconnected`。`Band` 指向腕带，`BandOff` 指向其关闭状态。`/dev/Band` 还出现在 `system_ext/lib64/libbluetooth_qti.so` 和 `vendor/lib64/libencode_c2.so` 中，因此这个名称是共用的，它本身不能证明存在腕带连接。
+- MCU 固件 `mcu.default.rt700.tub` 中有字符串 `/dev/Band`、`/dev/BandOff` 和 `/dev/PhoneDisconnected`。`Band` 指向腕带，`BandOff` 指向其关闭状态。在提取的文件树中，只有 MCU 固件含有 `/dev/Band`。此前的草稿称 `libbluetooth_qti.so` 和 `libencode_c2.so` 也含有它，这是错误的：搜索在这两个库中都找不到 `/dev/Band`，它们中的 `Band` 匹配是 AAC 编解码器函数名（`FDKaacEnc_*Band*`）。该名称目前唯一已知的位置是 MCU 固件，因此没有任何共用名称把腕带与手机端联系起来。
 - `/dev/PhoneDisconnected` 也出现在手机一侧：`system_ext/bin/navigationservice`、`SmartglassOOBERelease` 和 `SmartglassSystemUIRelease`。应用层把某个设备节点名称当作状态使用，这很可能是经由 MCU 传递的配套设备状态信号。根据名称推断。
 - init 脚本 `init.emgrelay_receiver.rc` 与 `init.emgrelaydatax.rc` 启动 `emgrelay_receiver` 和 `emgrelaydatax`，其开关由 `system_ext.meta.mobileconfig.service.emgrelay.receiver.enable` 属性以及截屏管理器属性控制。
 
-推断的设计：腕带的信号先到达 MCU，再经由某个 `Band` 设备到达 EMG 服务。EMG 相关的库中没有一个直接提到 `/dev/Band`，因此这一连接尚未在代码中得到证明。
+EMG 服务路径（在提取的文件树中观察到）：
+
+- `system_ext/bin/emg2` 是 EMG 服务，由 `persist.vendor.meta.enable_emg=1` 启动（`emg2.rc`）。它实现 `com.meta.wearable.emg.IEmgService`（清单 `emg2_manifest.xml`），有 `default` 和 `fmq` 两个实例。
+- `fmq` 实例通过 AIDL 消息队列传输数据。`libemgfmq_helper.so` 通过 `android.hardware.common.fmq` 读写 `emg_fmq_packet_t` 数据包（`SynchronizedReadWriteEEEE`、`EventFlag`）。其消息涵盖队列长度、队列已满，以及读写指针损坏。
+- `libemginput.so` 通过格式化名称打开设备节点（`/dev/%s`），另有 `/dev/gpiochip%u` 和 `/dev/joycon0`。格式化名称的来源尚未确定。
+- `emg2` 中的事件名：`emg_raw_gesture_event`、`input_emg_raw_gesture_event`、`wearables_band_tightness_detector_events`。
+
+未找到：腕带与 `emg2` 之间的传输。除 MCU 固件外，提取的文件树中没有任何二进制文件提到 `/dev/Band`。厂商 init 文件中也没有腕带或 EMG 的设备条目。因此该连接仍未确定。
 
 `libmarvin-emg.meta.so` 与 `libemg_marvin-client.meta.so` 中使用了 "Marvin" 这个名字。它很可能是型号或客户端的内部代号。未验证。
 

@@ -63,11 +63,18 @@ The wrist band is an electromyography input device. Evidence from the files:
 
 - `system_ext/etc/vintf/manifest/emg2_manifest.xml` declares the AIDL HAL `com.meta.wearable.emg` with interface `IEmgService`, instances `default` and `fmq` (fast message queue).
 - `system_ext/lib64` contains `libemginput.so`, `libemg_quaternion_consumer.so` (orientation from the band), `libemg_device_status_consumer.so`, `libemg_state_sync_consumer.so`, `libemgcache.so`, `libemg_equeue.so`, `libemgserviceutils2.so` and `emgsdk-proto-cc.so`.
-- The MCU firmware `mcu.default.rt700.tub` contains the strings `/dev/Band`, `/dev/BandOff` and `/dev/PhoneDisconnected`. The `Band` name points to the band, and `BandOff` to its off state. `/dev/Band` also appears in `system_ext/lib64/libbluetooth_qti.so` and `vendor/lib64/libencode_c2.so`, so the name is shared. It does not prove a band link by itself.
+- The MCU firmware `mcu.default.rt700.tub` contains the strings `/dev/Band`, `/dev/BandOff` and `/dev/PhoneDisconnected`. The `Band` name points to the band, and `BandOff` to its off state. Only the MCU firmware contains `/dev/Band` in the extracted tree. An earlier draft said `libbluetooth_qti.so` and `libencode_c2.so` also contain it. That was wrong: a search found no `/dev/Band` in either library, and their `Band` matches are AAC codec function names (`FDKaacEnc_*Band*`). The name's only known location is the MCU firmware, so no shared name links the band to the phone side.
 - `/dev/PhoneDisconnected` also appears on the phone side, in `system_ext/bin/navigationservice`, `SmartglassOOBERelease` and `SmartglassSystemUIRelease`. A device-node name that the app layer uses as a state is most likely a companion-state signal passed through the MCU. Inferred from the names.
 - Init scripts `init.emgrelay_receiver.rc` and `init.emgrelaydatax.rc` start `emgrelay_receiver` and `emgrelaydatax`, gated by `system_ext.meta.mobileconfig.service.emgrelay.receiver.enable` and by the screencast-manager property.
 
-Inferred design: the band's signal goes to the MCU, then through a `Band` device, to the EMG service. None of the EMG libraries names `/dev/Band` itself, so this link is not yet shown in code.
+The EMG service path, observed in the extracted tree:
+
+- `system_ext/bin/emg2` is the EMG service. It is started by `persist.vendor.meta.enable_emg=1` (`emg2.rc`). It implements `com.meta.wearable.emg.IEmgService` (manifest `emg2_manifest.xml`) with two instances, `default` and `fmq`.
+- The `fmq` instance moves data through an AIDL message queue. `libemgfmq_helper.so` writes and reads `emg_fmq_packet_t` packets through `android.hardware.common.fmq` (`SynchronizedReadWriteEEEE`, `EventFlag`). Its messages cover the queue length, a full queue, and a corrupt read or write pointer.
+- `libemginput.so` opens device nodes by a formatted name (`/dev/%s`) and also has `/dev/gpiochip%u` and `/dev/joycon0`. The format name is not resolved.
+- Event names in `emg2`: `emg_raw_gesture_event`, `input_emg_raw_gesture_event`, `wearables_band_tightness_detector_events`.
+
+Not found: the transport between the band and `emg2`. No binary in the extracted tree names `/dev/Band`, except the MCU firmware. The vendor init files have no band or EMG device entry. The link is therefore still open.
 
 `libmarvin-emg.meta.so` and `libemg_marvin-client.meta.so` use the name "Marvin". It is probably an internal codename for the model or the client. Unverified.
 
