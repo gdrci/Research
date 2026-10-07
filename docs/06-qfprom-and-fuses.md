@@ -33,8 +33,8 @@ Three other blocks sit next to the QFPROM window. The TrustZone table and SBL1's
 |---|---|---|
 | `0x221C0000` | TrustZone MMIO table, index 0 | count 8 |
 | `0x221C4000` | TrustZone MMIO table, index 1 | count 4 |
-| `0x221C2000` | TrustZone MMIO table, index 2; SBL1 descriptor array | count 8 |
-| `0x221C8000` | TrustZone MMIO table, index 3; hypervisor map; SBL1; device tree | count 8 (TZ); 3 pages (hyp); 1 page (DTB) |
+| `0x221C2000` | TrustZone MMIO table, index 2; SBL1 region map | count 8 |
+| `0x221C8000` | TrustZone MMIO table, index 3; hypervisor map; SBL1 region map; device tree | count 8 (TZ, 8 KB); 3 pages (hyp); 1 page (DTB) |
 
 Only `0x221C8000` has a device-tree node. The names of the other three blocks are not known. The addresses are verified; the names are not.
 
@@ -42,19 +42,26 @@ Only `0x221C8000` has a device-tree node. The names of the other three blocks ar
 
 TrustZone has a table of five 16-byte entries at `0x1C141C40`: a 32-bit base and a 32-bit count per entry. Index 4 is `0x010C0000`.
 
-Two functions use it. `0x1C067548` passes flag `0x9041` and `0x1C067598` passes flag `0x9061`. Each takes an index, rejects values above 4, and loads `base` and `count` from `table + index × 8`. Both have 15 call sites, and every index from 0 to 4 is used with both flags.
+Two functions read the table. `FUN_1C067548` passes flag `0x9041` and `FUN_1C067598` passes flag `0x9061`. Each rejects indices above 4, then maps the entry through `FUN_1C03ACAC`. Both have 15 call sites, and every index from 0 to 4 is used with both flags (`data/secure/tz_mmio_table_users.txt`).
 
-For the QFPROM block (index 3), `0x9041` is set from `0x1C084A30`, `0x1C084AEC` and `0x1C084B94`. `0x9061` is set from `0x1C065304`, `0x1C084B08` and `0x1C084BB8`.
+The decompiled chain is `FUN_1C03ACAC`, which takes a lock, calls `FUN_146816F4`, and releases the lock. `FUN_146816F4` calls `FUN_14681A68`, a stage-1 translation-table mapper. That mapper writes block and page descriptors into the live tables and issues the `TLBI`, `DSB` and `ISB` maintenance instructions. No `SMC` instruction is involved, so the mapping stays in TrustZone (`data/ghidra/tz_mmio_mapper_decompiled.txt`).
 
-The callee at `0x1C03ACAC` takes the base, the count and the flag. It locks, calls `0x146816F4` (TrustZone's own code), and unlocks. `0x146816F4` is an ordinary routine with no `SMC` instruction, so the call does not go through the secure monitor. The exception level it runs at is not established. The routine body is not yet read. The count's unit is not known, and neither is the meaning of the two flags. The flags may separate read-only from read-write treatment, which is unverified.
+What the flags select, from `FUN_14682D04`:
+
+- `0x9041` maps the range read-write at EL1. `0x9061` differs only in bit 5, which sets `AP[2]` (the read-only bit). So `0x9061` maps it read-only.
+- Both set execute-never (`UXN` and `PXN`), inner-shareable and the access flag, and both select MAIR attribute index 1. Index 1 is probably the device memory type. That is inferred.
+
+The count's unit is KB. The mapper checks that the count is a multiple of four (whole 4 KB pages) and computes the end address as `base + count × 0x400`. So the QFPROM entry maps 8 KB in TrustZone. This is inferred from the mapper's arithmetic.
+
+The mapper treats the two base arguments as virtual and physical. Both are the same here, so the mapping is an identity mapping.
 
 ## Mapping sizes disagree
 
 - The device tree gives `0x1000` (one page).
+- TrustZone's table gives 8 KB (inferred from the mapper's arithmetic above).
 - The hypervisor's memory map gives `0x3000` (three pages) for `0x221C8000`, with attribute 4 and permission `0xF`. The record is `(va=0x221C8000, pa=0x221C8000, attr=0x4, perm=0xF, size=0x3000)` (`data/secure/hyp_mmio_map.tsv`).
-- TrustZone's table gives count 8, unit unknown.
 
-These can all be true: the hypervisor maps the whole neighbourhood, while the device tree describes only the part the kernel uses. Not confirmed. The values are verified; the interpretation is open.
+These three can all be true. The hypervisor maps the whole neighbourhood, TrustZone maps 8 KB, and the device tree describes only the part the kernel uses. The values are verified; the reading that they are all consistent is an interpretation.
 
 ## Readers in the kernel
 
@@ -71,13 +78,11 @@ The NVMEM framework exposes each cell by name. A consumer asks for a cell and ne
 
 ### SBL1
 
-SBL1 (the AArch64 program inside `xbl.img`) has one direct reference to `0x221C8000`: a `mov w13, #0x8000` and `movk w13, #0x221c, LSL #16` pair at `0x1482CED4`. That code is in the function that starts at `0x1482CD30`, which has one caller at `0x14825B3C`. The surrounding code stores a series of 64-bit values into a stack array: `0x221C2000`, `0x221C8000`, `0x22000000`, `0x20C20000`, and SBL1 addresses `0x148A3000`, `0x148B2000`, `0x148B5000` and `0x148C7000`. SBL1 contains `BootMemMapLib.c`, so this is most likely the boot memory map being built. Interpretation.
-
-The method and the disassembly are in `data/xbl/sbl1_qfprom_xref.txt`.
+SBL1 (the AArch64 program inside `xbl.img`) has one direct reference to `0x221C8000`: a `mov w13, #0x8000` and `movk w13, #0x221c, LSL #16` pair at `0x1482CED4`. That code is in the memory-map function `FUN_1482CD30`, which has one caller at `0x14825B3C`. The function builds a table of region records that includes `0x221C2000` and `0x221C8000`, and it hands the table to a service found through protocol ID `0x3E` (`data/ghidra/sbl1_memmap_decompiled.txt`). The service is not decompiled yet.
 
 ### TrustZone
 
-TrustZone (`tz.img`) holds the table above and two literal-pool slots with `0x221C8000`. The functions that use the table are listed above. TrustZone also has these names, which are strings and so observed:
+TrustZone (`tz.img`) holds the table above and two literal-pool slots with `0x221C8000`. TrustZone also has these names. They are strings, so their use is observed:
 
 - `qsee_fuse_read`, `qsee_fuse_write`: the read and write API.
 - `qsee_blow_sw_fuse`: blows a software fuse.
@@ -128,6 +133,16 @@ The second copy is in memory that survives a warm reset. Verified from both file
 
 ## Link to verified boot
 
-The rollback index in `vbmeta` is `1770249600` (section 03). Anti-rollback needs a counter that cannot be lowered, and the usual way to get one is a fuse-backed counter. I cannot read the device's counter table yet, so the link between the vbmeta index and a fuse is a reasonable expectation, not a fact.
+The rollback index in `vbmeta` is `1770249600` (section 03). Anti-rollback needs a counter that cannot be lowered, and the usual way to get one is a fuse-backed counter. The device's counter table has not been read, so the link between the vbmeta index and a fuse is a reasonable expectation, not a fact.
+
+## Unresolved points
+
+- The lock taken by `FUN_1C03ACAC` (through `FUN_1C062D44`), and the callers of `FUN_14681A68` outside the MMIO path.
+- The service that receives the SBL1 region table, and what it does with each record.
+- The hypervisor code that uses the `0x3000` record, and whether the extra two pages are used.
+- The byte `0x221C8119` and its neighbours, to confirm the `gpu_speed_bin` field and what else sits in those bytes.
+- The reader of `OEM_rot_pk_hash1_fuse_values`, and its QFPROM offset.
+- The code that compares the vbmeta rollback index with a stored value.
+- The software-fuse table in `featenabler`. Each entry names a feature and a hardware revision.
 
 The device tree and overlay check is done. The base device tree defines one fuse cell (`gpu_speed_bin`). The 18 overlays in `dtbo.img` reference only one nvmem cell, the restart reason, so they add no fuse cells. Verified.

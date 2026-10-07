@@ -79,7 +79,7 @@ The kernel modules that load these images are `cdsp-loader.ko`, `adsp_loader_dlk
 
 ## Modem (`modem.img`)
 
-A FAT16 image of 36.5 MB in 165 files. Listing: `data/remote/modem_listing.txt`. Verified with the reader in `tools/fat_list.py`, which handles long names.
+A FAT16 image of 36.5 MB in 165 files. Listing: `data/remote/modem_listing.txt`. Verified with a FAT reader that handles long names.
 
 Layout:
 

@@ -55,7 +55,7 @@ The first-stage fstab (section 04) uses `avb=vbmeta` for `vendor` and `odm`, and
 
 ## What was checked against the images
 
-The script `tools/avb_verify.py` checks signatures and hashes directly from the extracted images. Output: `data/avb/verify_results.txt`.
+The signature and hash checks were run directly on the extracted images. Output: `data/avb/verify_results.txt`.
 
 | Check | Result |
 |---|---|

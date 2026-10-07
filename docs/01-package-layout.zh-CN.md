@@ -47,7 +47,7 @@ post-timestamp=1780360088
 
 **`uefi.img` 的 ELF 类别不统一。** 它是 64 位 ELF，`e_machine = EM_ARM`（40）。ARM64 镜像通常使用 `EM_AARCH64`（183）。加载器可能忽略这个字段，也可能该镜像实际以 ARM32 代码运行。此点未定。
 
-**高通段标志。** 多个 ELF 镜像含有 `PT_NULL` 头，其 `p_flags` 的高位有值（`0x2000000`、`0x7000000`）。这些是高通镜像格式中的哈希段和签名段，不是代码。`ghidra/import_map.json` 中的加载段表已排除它们。
+**高通段标志。** 多个 ELF 镜像含有 `PT_NULL` 头，其 `p_flags` 的高位有值（`0x2000000`、`0x7000000`）。这些是高通镜像格式中的哈希段和签名段，不是代码。`data/ghidra/import_map.json` 中的加载段表已排除它们。
 
 **远程处理器镜像不全是 ELF。** `dsp.img` 是 ext4，`modem.img` 和 `bluetooth.img` 是 FAT。第一阶段 fstab 在运行时挂载它们。见第 05 节。
 

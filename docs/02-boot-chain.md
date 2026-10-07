@@ -2,7 +2,9 @@
 
 [中文版](02-boot-chain.zh-CN.md)
 
-This document goes through the images in boot order. Each section gives what the file contains, what the evidence shows, and what is still open. The XBL image is a container of three programs, not one loader.
+This document goes through the images in boot order. Each section gives what the file contains and what the evidence shows. The XBL image is a container of three programs, not one loader.
+
+Code-level statements in this document come from headless Ghidra 12.1.3 (decompilation and disassembly). Their output is in `data/ghidra/`.
 
 ## Stage 0: Boot ROM (PBL)
 
@@ -16,11 +18,11 @@ File: `xbl.img`, 978,944 bytes. It holds three ELF programs back to back. Each o
 
 | Offset | Format | Entry | Identified as | Evidence |
 |---|---|---|---|---|
-| `0x00000` | ELF32, `e_machine = 1` (`EM_M32`) | `0x2211C000` | primary stub | two `PT_LOAD` segments, 114 KB of content. No code of any tested ISA matches (see 1c). |
+| `0x00000` | ELF32, `e_machine = 1` (`EM_M32`) | `0x2211C000` | primary stub | two `PT_LOAD` segments, 114 KB of content. Its content is data-like (see 1c). |
 | `0x1C2F4` | ELF32, `EM_RISCV` | `0x20412800` | TME firmware | source paths `tmeFwMain`, `tme_com`, `tme_messages`, `IPCC_*`, `xport_qmp_config_tme.c`; `TME_FW_VERSION_STRING=ssg.tmefw.1.0.1-00467-release`, built `October 05 2025` |
 | `0x4AFC4` | ELF64, `EM_AARCH64` | `0x14824FA8` | SBL1, the secondary bootloader core | `SBL1 BUILD @ 13:02:53 on Mar  5 2026`, `QC_IMAGE_VERSION_STRING=BOOT.MXF.2.2-00536-AURORA-1.149279.3`, `OEM_IMAGE_VERSION_STRING=ip-10-195-200-195` |
 
-The offsets were found by searching for the ELF magic. The table lists them in order. `data/xbl/xbl_container.txt` has the same table, and `data/xbl/string_regions.txt` maps each string to its region.
+The offsets were found by searching for the ELF magic. `data/xbl/xbl_container.txt` has the same table, and `data/xbl/string_regions.txt` maps each string to its region.
 
 The two build dates are separate builds: TME on 5 October 2025, SBL1 on 5 March 2026.
 
@@ -35,7 +37,7 @@ The certificate names are in this region:
 
 The `Greatwhite_FW_*` names are the device-specific firmware roots. Observed.
 
-The TME image does not refer to the QFPROM base. A search of its code for `LUI` with the QFPROM immediates, and for the literal `0x221C8000`, found nothing (`data/xbl/tme_lui_scan.txt`). TME may reach fuses through its own interfaces. This is observed, not proved.
+The TME image does not refer to the QFPROM base. A search of its code for `LUI` with the QFPROM immediates, and for the literal `0x221C8000`, found nothing (`data/xbl/tme_lui_scan.txt`). TME may reach fuses through its own interfaces. Observed, not proved.
 
 `XPUPolicyVersion = 4.5` is also in this region. An XPU is a Qualcomm bus-access protection block, so this value is the version of the access policy. Its contents are not analysed.
 
@@ -52,26 +54,32 @@ Its source-file strings cover the whole job:
 - Crash handling: `error_handler_el3.c`, `sbl_error_handler: DDR not initialized`, `boot_dload_dump_security_regions`, `boot_ramdump.c`.
 - Shared memory and debug: `boot_smem_init`, `boot_smem_debug_init`, `boot_smem_alloc_for_minidump`, `/dev/icbcfg/boot`, `boot_eud.c`.
 
-SBL1 has a subsystem list that includes `tz`, `mss`, `uefi`, `adsp`, `aop` and `ssc`. That list is in the same string block, at offset `0xCD0F9`. It is the strongest hint that `uefi` is the next loader.
+SBL1 has a subsystem list that includes `tz`, `mss`, `uefi`, `adsp`, `aop` and `ssc`. That list is in the same string block, at offset `0xCD0F9`. It is the strongest hint that `uefi` is the next loader. Observed.
 
-SBL1 refers to `shrm.elf`, `devcfg.bin`, `cpr.bin` and `_dcb.bin` by file name. These are the images it loads. The code that loads them is not analysed yet.
+SBL1 refers to `shrm.elf`, `devcfg.bin`, `cpr.bin` and `_dcb.bin` by file name. These are the images it loads. The code that loads them is not yet decompiled.
 
 #### The memory-map function
 
-The QFPROM reference (section 06) is inside one function, which starts at `0x1482CD30`. The function is called from one place, `0x14825B3C`. The reference is 0x1A4 bytes into the function. Its body writes a set of region descriptors to the stack, and the `BootMemMapLib.c` source name is in the same program. The string references inside the function did not resolve with the simple `ADRP`+`ADD` pattern, so its log messages are not yet read.
+The QFPROM reference (section 06) sits inside one function, `FUN_1482CD30` in Ghidra, which is the SBL1 boot memory-map builder. It has one caller, at `0x14825B3C`.
 
-### 1c. The primary stub (ISA not established)
+The decompiled function (`data/ghidra/sbl1_memmap_decompiled.txt`) builds a table of region records on the stack. Each record holds a start address, a second address, a size and a class value. The class values in the table are `0x8`, `0x22`, `0x23`, `0x25`, `0x26` and `0x27`. Among the regions named are SBL1's own image (`0x14800000`, `0x14824000`), shared IMEM (`0x146AA000`), the TrustZone image (`0x14680000`), and the MMIO blocks `0x221C2000` and `0x221C8000`. The `BootMemMapLib.c` source name is in the same program.
+
+The function does not write the records to hardware itself. It obtains an interface object through a call with protocol ID `0x3E` (`FUN_148298A4`), and then calls the object's first entry with the table. That means the table is handed to a service. The service is not decompiled yet.
+
+The exact per-record field meanings are not confirmed, so this document does not assign a size to each record.
+
+### 1c. The primary stub (content is data-like)
 
 The first program, at offset 0, is the one with the odd machine value `EM_M32`. It is the least understood part of the container. Its region holds the version block `SEQ_FW_RELEASE_BUILD_VERSION_STRING=r10` and `SEQ_FW_BUILD_TYPE_STRING=RELEASE` at offset `0x145E4`. The certificate and XPU strings are in the TME region, and `Secure Boot:` is in SBL1's.
 
-The tests run on its code (`data/analysis/isa_tests.txt`) are:
+The tests on its content (`data/analysis/isa_tests.txt`, `data/ghidra/xbl_primary_stub_thumb2_disasm.txt`) are:
 
 - **Per-word decode rate.** Hexagon 0.774, ARM32 0.769. This does not separate the two. Known Hexagon code scores 0.969 under Hexagon and 0.894 under ARM32.
-- **Function-boundary instructions.** None of these appear: Hexagon `allocframe` and `dealloc_return`; ARM32 `push {..., lr}`, `pop {..., pc}`, `bx lr`; AArch64 `ret` (`0xD65F03C0`); RISC-V `ret` (`0x00008067`).
-- **Known-code controls.** SBL1 (known AArch64) has 24.6 `ret` per 1,000 words, so the test works. The stub has 0.
-- **Entropy.** Most of the region is between 6.5 and 7.1 bits per byte. Code of any ISA usually sits lower. One 64 KB chunk at offset `0x10000` is lower (3.6 bits per byte), which is more like a table or padded data.
+- **Function-boundary instructions.** None of these appear: Hexagon `allocframe` and `dealloc_return`; ARM32 `push {..., lr}`, `pop {..., pc}`, `bx lr`; AArch64 `ret` (`0xD65F03C0`); RISC-V `ret` (`0x00008067`). Known AArch64 code has 24.6 `ret` per 1,000 words, so the test works.
+- **Ghidra disassembly from the start address.** Disassembled from offset 0 as Thumb-2, 669 instructions decode before the first error. Known AArch64 code decodes 2,000 instructions from its entry in the same method. The Thumb-2 output is a repeating pattern (`stmia r4!,{r0}` followed by `adds r0,#0x3`, with values stepping towards `cmp r0,#0xf6`). That reads as a table of values, not code. Ghidra's ARM32 decode gives 0 instructions, and its Hexagon decode gives 1.
+- **Entropy.** Most of the region is between 6.5 and 7.1 bits per byte. One 64 KB chunk at offset `0x10000` is lower (3.6 bits per byte).
 
-The stub has no returns in any ISA I tested, and its entropy is high. The working hypothesis is that it is a compressed or encrypted payload, or a data table, not code. This is unverified.
+The conclusion is that the primary stub is a data table, not code of a tested ISA. Its exact format is not identified.
 
 ## Stage 2: XBL configuration and ramdump builds
 
@@ -89,7 +97,7 @@ The stub has no returns in any ISA I tested, and its entropy is high. The workin
 | `PilSubsysDbgCookieAddr` | 0x146AA6DC | address of a debug cookie for the peripheral loader, going by the name |
 | overlay | `pre-ddr-sxr-aurora-1.0-overlay.dtbo` | platform overlay for this SoC |
 
-The cookie meanings come from the key names. The code that reads them is in SBL1 and has not been read.
+The cookie meanings come from the key names. The code that reads them is in SBL1 and has not been decompiled.
 
 Shared IMEM at `0x146AA000` is confirmed by a second source. The vendor device tree defines `qcom,msm-imem@146aa000` with a `restart_reason` at offset `0x65C`. The hypervisor's memory map also maps `0x146AA000` with a size of 16 MB (`data/secure/hyp_mmio_map.tsv`).
 
@@ -118,7 +126,7 @@ The fuse interface strings in `tz.img`:
 
 These names show that root-of-trust key hashes and an encryption-key hash are fuse values, and that a deferred provisioning step exists. Observed.
 
-#### The MMIO table and its users
+#### The MMIO table and its mapper
 
 TrustZone holds a table of five 16-byte entries at `0x1C141C40`. Each entry is a 32-bit base address and a 32-bit count:
 
@@ -130,14 +138,19 @@ TrustZone holds a table of five 16-byte entries at `0x1C141C40`. Each entry is a
 | 3 | `0x221C8000` | 8 | the QFPROM block |
 | 4 | `0x010C0000` | 8 | |
 
-Two functions use the table. Both take an index in `w0`, reject values above 4, load `base` and `count` from `table + index × 8`, and call a routine with a flag:
+Two functions read the table: `FUN_1C067548` and `FUN_1C067598`. Each takes an index, rejects values above 4, reads `base` and `count`, and calls `FUN_1C03ACAC` with the base twice, the count, and a flag. The first function passes flag `0x9041`, the second `0x9061`. Each has 15 call sites, and every index from 0 to 4 is used with both flags (`data/ghidra/tz_mmio_mapper_decompiled.txt`).
 
-- `0x1C067548`: flag `0x9041`. Used from 15 call sites.
-- `0x1C067598`: flag `0x9061`. Used from 15 call sites.
+`FUN_1C03ACAC` takes a lock, calls `FUN_146816F4`, and releases the lock. `FUN_146816F4` builds a 32-byte request from the base, the second base, the count and the flag. It then calls `FUN_14681A68`, which is a stage-1 translation-table mapper. For each range it writes level-2 and level-3 descriptors into the live translation tables, and it issues the `TLBI`, `DSB` and `ISB` maintenance instructions. `FUN_146816F4` contains no `SMC` instruction, so the work stays inside TrustZone.
 
-Each call site passes one index from 0 to 4. So every block is handled with both flags. The called routine (`0x1C03ACAC`) wraps a call to `0x146816F4` between a lock and an unlock. That routine is in TrustZone's own image. It reads a state byte from its argument at offset `0x80`, and it has three return paths. It contains no `SMC` instruction, so the call does not leave to EL3. (`tz.img` as a whole has nine `SMC` instructions.) Its purpose is not established. The flags may separate read-only from read-write treatment, but that is unverified.
+Decoding the flag, with `FUN_14682D04` (`data/ghidra/tz_mmio_mapper_decompiled.txt`):
 
-For the QFPROM block (index 3): flag `0x9041` is set from three sites (`0x1C084A30`, `0x1C084AEC`, `0x1C084B94`) and flag `0x9061` from three more (`0x1C065304`, `0x1C084B08`, `0x1C084BB8`). The count `8` and its unit are not known.
+- `0x9041` and `0x9061` differ in one bit, bit 5. That bit sets descriptor bit 7, `AP[2]`, which is the read-only bit at EL1. So `0x9041` maps the range read-write and `0x9061` maps it read-only.
+- Both set `UXN` and `PXN` (execute-never), inner-shareable, and the access flag. Both select MAIR attribute index 1. The attribute index is probably device memory, which is an inference.
+- The mapper treats the two base arguments as virtual and physical. Both are the same value here, so the mapping is an identity mapping, in line with the hypervisor's `va == pa` records.
+
+The count is in KB. The mapper checks `count & 3` (a multiple of 4 KB pages) and adds `count × 0x400` to compute the end address. So the QFPROM entry, `0x221C8000` with count 8, covers 8 KB in TrustZone. This is inferred from the mapper's arithmetic.
+
+The table is read only by the two functions above. Their 30 call sites, with the index each one passes, are listed in `data/secure/tz_mmio_table_users.txt`.
 
 ### Featenabler
 
@@ -146,10 +159,10 @@ For the QFPROM block (index 3): flag `0x9041` is set from three sites (`0x1C084A
 ## Stage 4: UEFI and ABL
 
 - `uefi.img`: ELF64 with `EM_ARM`, entry `0xA7000000`, one `PT_LOAD`. The strings cover boot-device detection (`UFS`, `eMMC`, `NAND`, `NVME`, `SPI`, `Flashless`), SMP bring-up (`AuxBootStrap_%d`, `Continue booting UEFI on Core %d`), and the platform configuration (`uefiplatLA.cfg`, `OsTypeString`). It also names `qsee/mink/oem/config/aurora/oem_config.xml`, a MINK configuration for this SoC, and `data.load.elf`. Observed.
-- `abl.img`: ELF32 with `EM_ARM`, entry `0x9FA00000`. It has almost no readable strings. Its ISA and role are not established. The condition-code and Thumb tests I ran on it were inconclusive, and on the known ARM32 modem binary the condition-code test also fails, so I do not rely on it.
+- `abl.img`: ELF32 with `EM_ARM`, entry `0x9FA00000`. It has almost no readable strings. Its ISA and role are not established. The condition-code and Thumb tests I ran on it were inconclusive, and the same condition-code test fails on the known ARM32 modem binary, so I do not rely on it.
 - `imagefv.img`: ELF32 ARM, 20 KB, likely a firmware volume. Unverified.
 
-`uefi` is the likelier loader. SBL1's subsystem list includes `uefi`, and `abl` does not appear in any image name or string I searched. This is observed, not proved.
+`uefi` is the likelier loader. SBL1's subsystem list includes `uefi`, and `abl` does not appear in any image name or string I searched. Observed.
 
 ## Stage 5 and later
 
@@ -157,12 +170,12 @@ Android verified boot is in section 03. The kernel, the ramdisks and the vendor 
 
 ## QFPROM references across the boot chain
 
-The base address `0x221C8000` appears in these places. The method is in `data/xbl/sbl1_qfprom_xref.txt`.
+The base address `0x221C8000` appears in these places.
 
 | Where | What is there |
 |---|---|
 | SBL1 (AArch64 program in `xbl.img`) | one direct code reference at `0x1482CED4`, in the memory-map function (see above) |
 | TME (RISC-V program) | no reference |
-| TrustZone (`tz.img`) | two literal-pool slots; the MMIO table at `0x1C141C40` is used by the functions above |
+| TrustZone (`tz.img`) | two literal-pool slots; the MMIO table at `0x1C141C40` is read by the mapper functions above |
 | Hypervisor (`hyp.img`) | a memory map that maps the block with size `0x3000` (section 06) |
 | `xbl_ramdump.img` | two literal-pool slots (the same pattern as SBL1) |

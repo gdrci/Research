@@ -47,7 +47,7 @@ post-timestamp=1780360088
 
 **`uefi.img` mixes ELF classes.** It is a 64-bit ELF with `e_machine = EM_ARM` (40). ARM64 images normally use `EM_AARCH64` (183). The loader may ignore the field, or the image may run as ARM32 code. This is open.
 
-**Qualcomm segment flags.** Several ELF images have `PT_NULL` headers whose `p_flags` contain high bits (`0x2000000`, `0x7000000`). These are the hash and signature segments of the Qualcomm image format. They are not code. The table of load segments in `ghidra/import_map.json` excludes them.
+**Qualcomm segment flags.** Several ELF images have `PT_NULL` headers whose `p_flags` contain high bits (`0x2000000`, `0x7000000`). These are the hash and signature segments of the Qualcomm image format. They are not code. The table of load segments in `data/ghidra/import_map.json` excludes them.
 
 **Remote-processor images are not ELF-only.** `dsp.img` is ext4 and `modem.img` and `bluetooth.img` are FAT. The first-stage fstab mounts them at runtime. See section 05.
 

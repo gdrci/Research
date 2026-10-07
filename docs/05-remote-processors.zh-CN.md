@@ -79,7 +79,7 @@ Hexagon ELF，`e_machine = EM_QDSP6`，`e_flags = 0x3`。它有十一个 `PT_LOA
 
 ## 基带（`modem.img`）
 
-这是一个 FAT16 镜像，大小 36.5 MB，共 165 个文件。列表见 `data/remote/modem_listing.txt`。已通过 `tools/fat_list.py` 验证，该工具能处理长文件名。
+这是一个 FAT16 镜像，大小 36.5 MB，共 165 个文件。列表见 `data/remote/modem_listing.txt`。已通过能处理长文件名的 FAT 读取器验证。
 
 目录结构：
 

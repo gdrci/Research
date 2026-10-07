@@ -2,7 +2,7 @@
 
 [English](03-avb-verified-boot.md)
 
-验证启动遵循 libavb 1.x 格式。解析输出见 `data/avb/vbmeta_summary.txt`。签名与哈希的校验结果见 `data/avb/verify_results.txt`，由 `tools/avb_verify.py` 直接对解出的镜像进行计算。
+验证启动遵循 libavb 1.x 格式。解析输出见 `data/avb/vbmeta_summary.txt`。签名与哈希的校验结果见 `data/avb/verify_results.txt`，直接对解出的镜像进行计算。
 
 ## vbmeta.img
 
@@ -55,7 +55,7 @@
 
 ## 已对照镜像进行的检查
 
-脚本 `tools/avb_verify.py` 直接对解出的镜像进行签名与哈希校验。输出见 `data/avb/verify_results.txt`。
+签名与哈希校验直接在解出的镜像上进行。输出见 `data/avb/verify_results.txt`。
 
 | 检查项 | 结果 |
 |---|---|
