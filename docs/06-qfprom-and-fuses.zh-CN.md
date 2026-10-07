@@ -113,6 +113,12 @@ SBL1 在 `0x14881880`–`0x14881A30` 范围内有一组熔丝字段读取函数�
 
 SBL1 还通过 `0x14853EF4`–`0x14853F30` 处的小型读取函数直接读取 QFPROM 块中的四个字：`0x221C8780`、`0x221C8784`、`0x221C8788` 和 `0x221C878C`。其使用者尚未确定。已观察。
 
+### TrustZone 防回滚标志
+
+`qsee_sfs_is_anti_rollback_enabled` 对应的函数位于 `0x1C32D6E0`（字符串引用位于 `0x1C32D710`，源码行 `0x356`）。它向 `FUN_1C32516C` 请求一个单字节标志。`FUN_1C32516C` 在 TLS 块（`tpidrro_el0`）中保存每线程缓存：`+0x18AB` 为有效标记，`+0x18AC` 为值。缓存未命中时，它通过 `FUN_1C32E024` 和 `FUN_1C32DFB0` 获取接口 ID `0x91` 对应的对象。后者以 4 字节缓冲区形式传入该 ID，经由 `FUN_1C302990` 调用对象。标志本身来自 ID `0x91` 的对象，其提供者尚未确定。缓存与查找方式已观察；标志的来源尚未找到。反汇编见 `data/secure/tz_antirollback_path.txt`。
+
+该对象模型与 SBL1 的协议注册表（`0x3E`，第 02 节）相同。该标志与 `vbmeta` 相关：应用的回滚计数器保存在 RPMB 中（`tz.img` 中的 `tzbsp application rpmb version rollback label`）。该联系尚未在代码中确认。
+
 ## 字面量出现的位置
 
 字面量扫描的计数（`data/qfprom_literal_candidates.json`）：

@@ -1,0 +1,159 @@
+TrustZone anti-rollback flag path (tz.img, AArch64). Disassembly by capstone; Ghidra has no function boundaries in these areas.
+
+Reference to 'qsee_sfs_is_anti_rollback_enabled' (vaddr 0x1C37798D), ADRP at 0x1C32D710, ADD at 0x1C32D718, line 0x356 (inside FUN_1C32D6E0):
+  0x1C32D6E0: stp x29, x30, [sp, #-0x20]!
+  0x1C32D6E4: str x19, [sp, #0x10]
+  0x1C32D6E8: mov x29, sp
+  0x1C32D6EC: cbz x0, #0x1c32d70c
+  0x1C32D6F0: mov x19, x0
+  0x1C32D6F4: add x0, x29, #0x1c
+  0x1C32D6F8: bl #0x1c32516c
+  0x1C32D6FC: cbnz w0, #0x1c32d72c
+  0x1C32D700: ldrb w8, [x29, #0x1c]
+  0x1C32D704: strb w8, [x19]
+  0x1C32D708: b #0x1c32d730
+  0x1C32D70C: adrp x1, #0x1c370000
+  0x1C32D710: adrp x2, #0x1c377000
+  0x1C32D714: add x1, x1, #0x477
+  0x1C32D718: add x2, x2, #0x98d
+  0x1C32D71C: mov w3, #0x356
+  0x1C32D720: mov w4, #-0xfffa
+  0x1C32D724: mov w0, #8
+  0x1C32D728: bl #0x1c331750
+  0x1C32D72C: mov w0, #1
+  0x1C32D730: ldr x19, [sp, #0x10]
+  0x1C32D734: ldp x29, x30, [sp], #0x20
+  0x1C32D738: ret 
+
+FUN_1C32516C (reads the cached flag, miss path calls the object lookup for id 0x91):
+  0x1c32516c sub sp, sp, #0x60
+  0x1c325170 stp x29, x30, [sp, #0x30]
+  0x1c325174 add x29, sp, #0x30
+  0x1c325178 stp x22, x21, [sp, #0x40]
+  0x1c32517c stp x20, x19, [sp, #0x50]
+  0x1c325180 stur wzr, [x29, #-0x14]
+  0x1c325184 mov w9, #0x18ac
+  0x1c325188 str wzr, [sp, #0x18]
+  0x1c32518c mov x19, x0
+  0x1c325190 stp xzr, xzr, [sp, #8]
+  0x1c325194 str wzr, [sp, #4]
+  0x1c325198 mrs x8, tpidrro_el0
+  0x1c32519c ldr x8, [x8, #0x78]
+  0x1c3251a0 ldrb w8, [x8, x9]
+  0x1c3251a4 cbz w8, #0x1c3251e0
+  0x1c3251a8 mrs x8, tpidrro_el0
+  0x1c3251ac mov w9, #0x18ab
+  0x1c3251b0 ldr x8, [x8, #0x78]
+  0x1c3251b4 ldrb w8, [x8, x9]
+  0x1c3251b8 mov w20, wzr
+  0x1c3251bc strb w8, [x19]
+  0x1c3251c0 mov w0, w20
+  0x1c3251c4 ldp x20, x19, [sp, #0x50]
+  0x1c3251c8 ldp x22, x21, [sp, #0x40]
+  0x1c3251cc ldp x29, x30, [sp, #0x30]
+  0x1c3251d0 add sp, sp, #0x60
+  0x1c3251d4 ret 
+  0x1c3251d8 dsb sy
+  0x1c3251dc isb 
+  0x1c3251e0 mov w0, #0x91
+  0x1c3251e4 bl #0x1c32e024
+  0x1c3251e8 cbz x0, #0x1c325280
+  0x1c3251ec mov x20, x0
+  0x1c3251f0 mov x21, x1
+  0x1c3251f4 add x8, sp, #4
+  0x1c3251f8 mov w9, #4
+  0x1c3251fc sub x2, x29, #0x10
+  0x1c325200 mov x0, x1
+  0x1c325204 mov w1, #1
+  0x1c325208 mov w3, #0x10
+  0x1c32520c stp x8, x9, [x29, #-0x10]
+  0x1c325210 mov w22, #1
+  0x1c325214 bl #0x1c3029d0
+  0x1c325218 cbz w0, #0x1c325228
+  0x1c32521c cmp w0, #0xa
+  0x1c325220 b.ne #0x1c3252d0
+  0x1c325224 str wzr, [sp, #4]
+  0x1c325228 mrs x8, tpidrro_el0
+  0x1c32522c mov w9, #0x18ac
+  0x1c325230 ldr x8, [x8, #0x78]
+  0x1c325234 mov x0, x21
+  0x1c325238 ldr w10, [sp, #4]
+  0x1c32523c mov w1, #0xffff
+  0x1c325240 mov x2, xzr
+  0x1c325244 mov w3, wzr
+  0x1c325248 strb w22, [x8, x9]
+  0x1c32524c mrs x8, tpidrro_el0
+  0x1c325250 cmp w10, #0
+  0x1c325254 ldr x8, [x8, #0x78]
+  0x1c325258 cset w9, ne
+
+FUN_1C32E024 (per-thread cache at tpidrro+0x28, then object lookup):
+  0x1c32e024 sub sp, sp, #0x40
+  0x1c32e028 stp x29, x30, [sp, #0x10]
+  0x1c32e02c add x29, sp, #0x10
+  0x1c32e030 stp x22, x21, [sp, #0x20]
+  0x1c32e034 stp x20, x19, [sp, #0x30]
+  0x1c32e038 mov w21, w0
+  0x1c32e03c mrs x8, tpidrro_el0
+  0x1c32e040 add x22, x8, #0x28
+  0x1c32e044 mov w1, w21
+  0x1c32e048 mov x0, x22
+  0x1c32e04c bl #0x1c303d04
+  0x1c32e050 stp x0, x1, [sp]
+  0x1c32e054 cbz x0, #0x1c32e064
+  0x1c32e058 mov x19, x0
+  0x1c32e05c mov x20, x1
+  0x1c32e060 b #0x1c32e0b0
+  0x1c32e064 mov x1, sp
+  0x1c32e068 mov w0, w21
+  0x1c32e06c bl #0x1c32dfb0
+  0x1c32e070 cbnz w0, #0x1c32e0a8
+  0x1c32e074 ldp x19, x20, [sp]
+  0x1c32e078 mov x0, x22
+  0x1c32e07c mov w1, w21
+  0x1c32e080 mov x2, x19
+  0x1c32e084 mov x3, x20
+  0x1c32e088 bl #0x1c303d68
+  0x1c32e08c cbz w0, #0x1c32e0b0
+  0x1c32e090 cbz x19, #0x1c32e0ac
+  0x1c32e094 mov x0, x20
+  0x1c32e098 mov w1, #0xffff
+  0x1c32e09c mov x2, xzr
+  0x1c32e0a0 mov w3, wzr
+  0x1c32e0a4 bl #0x1c3029c0
+  0x1c32e0a8 mov x19, xzr
+  0x1c32e0ac mov x20, xzr
+  0x1c32e0b0 mov x0, x19
+  0x1c32e0b4 mov x1, x20
+  0x1c32e0b8 ldp x20, x19, [sp, #0x30]
+  0x1c32e0bc ldp x22, x21, [sp, #0x20]
+  0x1c32e0c0 ldp x29, x30, [sp, #0x10]
+
+FUN_1C32DFB0 (object invoke with id as a 4-byte buffer, flags 0x1001, via FUN_1C302990):
+  0x1c32dfb0 sub sp, sp, #0x40
+  0x1c32dfb4 stp x29, x30, [sp, #0x20]
+  0x1c32dfb8 add x29, sp, #0x20
+  0x1c32dfbc str x19, [sp, #0x30]
+  0x1c32dfc0 mrs x8, tpidrro_el0
+  0x1c32dfc4 mov x19, x1
+  0x1c32dfc8 ldp x9, x8, [x8, #0x18]
+  0x1c32dfcc add x10, x29, #0x1c
+  0x1c32dfd0 mov w11, #4
+  0x1c32dfd4 str w0, [x29, #0x1c]
+  0x1c32dfd8 mov w3, #0x1001
+  0x1c32dfdc mov x2, sp
+  0x1c32dfe0 mov w1, wzr
+  0x1c32dfe4 mov x0, x8
+  0x1c32dfe8 stp xzr, xzr, [sp, #0x10]
+  0x1c32dfec stp x10, x11, [sp]
+  0x1c32dff0 bl #0x1c302990
+  0x1c32dff4 ldp x8, x9, [sp, #0x10]
+  0x1c32dff8 stp x8, x9, [x19]
+  0x1c32dffc cbnz w0, #0x1c32e00c
+  0x1c32e000 ldr x8, [x19]
+  0x1c32e004 cbnz x8, #0x1c32e00c
+  0x1c32e008 mov w0, #1
+  0x1c32e00c ldr x19, [sp, #0x30]
+  0x1c32e010 ldp x29, x30, [sp, #0x20]
+  0x1c32e014 add sp, sp, #0x40
+  0x1c32e018 ret 
