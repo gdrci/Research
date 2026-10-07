@@ -1,0 +1,12 @@
+TME firmware (RISC-V32 IMC) analysis, from xbl.img TME ELF. Ghidra import with auto-analysis succeeded (program tme.elf, lang RISCV:LE:32:default; 865 functions).
+
+1. Anti-rollback path string '/sources/services/antirollback/src/AntiRollbackMgr.cpp' (vaddr 0x204397FB):
+   - Ghidra refs to 0x204397F8..0x204397FD: none.
+   - Raw 32-bit words equal to 0x204397FA..0x204397FC in the image: none.
+   - lui+addi and auipc+addi/load pairs reconstructing an address in 0x20438000..0x2043C000: none.
+   - The path is likely used through a numeric file-ID in a log/assert table, so there is no direct code reference.
+
+2. Fuse MMIO access from TME:
+   - lui-built constants (with addi) reconstructing 0x221C0000..0x221CFFFF or 0x010C0000..0x010CFFFF: none.
+   - Only address-building lui with no following addi and value 0x20000000 at 0x20421A4E.
+   - Inference: the TME does not read QFPROM directly in this image. Any rollback counter access from TME goes through another component (likely the TZ object model, see object 0x91 in data/secure/tz_antirollback_path.txt). Unverified.

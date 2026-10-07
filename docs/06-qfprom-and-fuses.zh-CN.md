@@ -123,6 +123,8 @@ SBL1 还通过 `0x14853EF4`–`0x14853F30` 处的小型读取函数直接读取 
 
 源文件名 `AntiRollbackMgr.cpp` 位于 `xbl.img` 内的 TME 固件中，与 GLink、SMEM 和 FreeRTOS 字符串相邻，而不在 TrustZone 中。因此防回滚管理器是 TME 上的服务。它与 TrustZone 标志（对象 `0x91`）之间的联系尚未确认：TME 是独立的处理器，TZ 到 TME 的 GLink 通道是可能的路径，但未经验证。在整个 TME 镜像中只找到 15 个 RISC-V `auipc` 配对，且都不在该地址，因此引用很可能位于表中。数据见 `data/secure/tme_antirollback_location.txt`。
 
+TME 代码中没有直接构造 QFPROM 或 TrustZone MMIO 地址的常量（`lui`/`addi` 配对重建 `0x221C0000`–`0x221CFFFF` 或 `0x010C0000`–`0x010CFFFF` 的地址：无）。因此在该镜像中，TME 并不直接读取熔丝块。它的回滚计数器访问必须经过另一个组件，最可能是 TrustZone 的对象模型。这是推断，未被直接证明。TME 的 Ghidra 分析见 `data/secure/tme_ghidra_rollback_search.txt`。
+
 ## 字面量出现的位置
 
 字面量扫描的计数（`data/qfprom_literal_candidates.json`）：

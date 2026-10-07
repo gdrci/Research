@@ -123,6 +123,8 @@ The object model is the same as the SBL1 protocol registry (`0x3E`, section 02).
 
 The source name `AntiRollbackMgr.cpp` is in the TME firmware, inside `xbl.img`, next to GLink, SMEM and FreeRTOS strings, not in TrustZone. So the anti-rollback manager is a TME service. The link to the TrustZone flag (object `0x91`) is not confirmed: the TME is a separate processor, and the GLink channel from TZ to TME is the likely path, but that is unverified. A search for code that loads the string through RISC-V `auipc` pairs found 15 pairs in the whole TME image and none at that address, so the reference is probably in a table. Data: `data/secure/tme_antirollback_location.txt`.
 
+TME code has no constant build of a QFPROM or TrustZone MMIO address (`lui`/`addi` pairs reconstructing `0x221C0000`–`0x221CFFFF` or `0x010C0000`–`0x010CFFFF`: none). So the TME does not read the fuse block directly in this image. Its rollback counter access must go through another component, most likely the TrustZone object model. This is inferred, not shown. Ghidra analysis of the TME is in `data/secure/tme_ghidra_rollback_search.txt`.
+
 ## Where the literal appears
 
 Counts from a literal scan (`data/qfprom_literal_candidates.json`):
