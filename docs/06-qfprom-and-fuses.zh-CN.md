@@ -125,6 +125,28 @@ SBL1 还通过 `0x14853EF4`–`0x14853F30` 处的小型读取函数直接读取 
 
 TME 代码中没有直接构造 QFPROM 或 TrustZone MMIO 地址的常量（`lui`/`addi` 配对重建 `0x221C0000`–`0x221CFFFF` 或 `0x010C0000`–`0x010CFFFF` 的地址：无）。因此在该镜像中，TME 并不直接读取熔丝块。它的回滚计数器访问必须经过另一个组件，最可能是 TrustZone 的对象模型。这是推断，未被直接证明。TME 的 Ghidra 分析见 `data/secure/tme_ghidra_rollback_search.txt`。
 
+### Featenabler 显示软件熔丝
+
+`featenabler.img` 是一个 TrustZone 应用，根据许可证启用显示功能。它的软件熔丝不是 qsee 熔丝，而是显示硬件块中的 32 位字，通过 `HWIOUtils_Read` 和 `HWIOUtils_Write` 访问。依据 Ghidra 反编译（`data/secure/featenabler_display_swfuse_decompiled.txt`）得出。
+
+许可证的 `FeatureID` 到熔丝索引的映射（`DisplayCore_ConfigureSwFuse`）：
+
+| FeatureID | 索引 | 功能 | 字偏移 |
+|---|---|---|---|
+| 1000 (0x3E8) | 2 | `Display_QLTM` | 索引 * 4 + 8 = 0x10 |
+| 1002 (0x3EA) | 12 | `Display_SPR` | 0x38 |
+| 1003 (0x3EB) | 13 | `Display_Demura` | 0x3C |
+| 1004 (0x3EC) | 14 | `Display_Allocate_Cache_Signal` | 0x40 |
+
+启用时向该字写入 `1`。状态读取（`DisplayCore_ReadSwFuseStatus`）在字的 `(value & 0x11) == 1` 时返回真。
+
+按 `soc_hw_version` 的门控（`DisplayCore_IsFeatureSupported`，取值与 `0xFFFFFF00` 做掩码）：
+- `0xA0010100`、`0xA0010200`、`0xA0040100`、`0xA0080100`、`0x600F0100`、`0x600F0200`：功能 1000、1002、1003、1004 受支持（掩码 `0x1D`）。功能 1001 不受支持。
+- `0x60080100`、`0x60080200`、`0x600D0100`、`0x600D0200`、`0x60170100`：只有功能 1000 受支持。
+- 其他值：均不受支持。
+
+未确定：显示块基址的来源（通过区域名称的 `IDeviceRegionFinder`）、许可证签名校验，以及每个 `soc_hw_version` 对应哪款 SoC。
+
 ## 字面量出现的位置
 
 字面量扫描的计数（`data/qfprom_literal_candidates.json`）：

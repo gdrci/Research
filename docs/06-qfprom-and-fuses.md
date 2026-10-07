@@ -125,6 +125,28 @@ The source name `AntiRollbackMgr.cpp` is in the TME firmware, inside `xbl.img`, 
 
 TME code has no constant build of a QFPROM or TrustZone MMIO address (`lui`/`addi` pairs reconstructing `0x221C0000`–`0x221CFFFF` or `0x010C0000`–`0x010CFFFF`: none). So the TME does not read the fuse block directly in this image. Its rollback counter access must go through another component, most likely the TrustZone object model. This is inferred, not shown. Ghidra analysis of the TME is in `data/secure/tme_ghidra_rollback_search.txt`.
 
+### Featenabler display software fuses
+
+`featenabler.img` is a TrustZone application that enables display features from licences. Its software fuses are not qsee fuses. They are 32-bit words in a display hardware block, reached through `HWIOUtils_Read` and `HWIOUtils_Write`. Observed from the Ghidra decompile (`data/secure/featenabler_display_swfuse_decompiled.txt`).
+
+Mapping from the licence's `FeatureID` to the fuse index (`DisplayCore_ConfigureSwFuse`):
+
+| FeatureID | Index | Feature | Word offset |
+|---|---|---|---|
+| 1000 (0x3E8) | 2 | `Display_QLTM` | index * 4 + 8 = 0x10 |
+| 1002 (0x3EA) | 12 | `Display_SPR` | 0x38 |
+| 1003 (0x3EB) | 13 | `Display_Demura` | 0x3C |
+| 1004 (0x3EC) | 14 | `Display_Allocate_Cache_Signal` | 0x40 |
+
+Enabling writes `1` to the word. The status read (`DisplayCore_ReadSwFuseStatus`) returns true when the word has `(value & 0x11) == 1`.
+
+Gating by `soc_hw_version` (`DisplayCore_IsFeatureSupported`, the value masked with `0xFFFFFF00`):
+- `0xA0010100`, `0xA0010200`, `0xA0040100`, `0xA0080100`, `0x600F0100`, `0x600F0200`: features 1000, 1002, 1003 and 1004 are supported (mask `0x1D`). Feature 1001 is not.
+- `0x60080100`, `0x60080200`, `0x600D0100`, `0x600D0200`, `0x60170100`: only feature 1000 is supported.
+- Any other value: nothing is supported.
+
+Not established: where the display block's base address comes from (`IDeviceRegionFinder` with a region name), the licence signature check, and which SoC is which `soc_hw_version`.
+
 ## Where the literal appears
 
 Counts from a literal scan (`data/qfprom_literal_candidates.json`):
@@ -163,6 +185,6 @@ The rollback index in `vbmeta` is `1770249600` (section 03). Anti-rollback needs
 - The byte `0x221C8119` and its neighbours, to confirm the `gpu_speed_bin` field and what else sits in those bytes.
 - The reader of `OEM_rot_pk_hash1_fuse_values`, and its QFPROM offset. The name is a key in the OEM configuration block of `tz.img` (around `0x13A295`–`0x13A7XX`, about 40 keys), and it also appears in `devcfg.img`. No code reference to it was found by ADRP+ADD, ADR, absolute pointer or relocation search (`data/secure/oem_rot_key_xref_search.txt`). The reader is probably a name-based lookup over that block. Not found.
 - The code that compares the vbmeta rollback index with a stored value.
-- The software-fuse table in `featenabler`. Each entry names a feature and a hardware revision.
+- The featenabler display-block base address (`IDeviceRegionFinder` region name), the licence signature check, and the SoC name for each `soc_hw_version`.
 
 The device tree and overlay check is done. The base device tree defines one fuse cell (`gpu_speed_bin`). The 18 overlays in `dtbo.img` reference only one nvmem cell, the restart reason, so they add no fuse cells. Verified.
