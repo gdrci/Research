@@ -1,0 +1,710 @@
+# program sbl1.elf lang AARCH64:LE:64:v8A
+=== DECOMP 14839ae4 FUN_14839ae4
+
+void FUN_14839ae4(uint param_1)
+
+{
+  undefined4 *puVar1;
+  int iVar2;
+  int iVar3;
+  uint uVar4;
+  uint uVar5;
+  uint uVar6;
+  uint uVar7;
+  uint uVar8;
+  uint uVar9;
+  uint uVar10;
+  uint uVar11;
+  uint uVar12;
+  uint uVar13;
+  uint uVar14;
+  uint uVar15;
+  uint uVar16;
+  uint uVar17;
+  uint uVar18;
+  uint uVar19;
+  undefined8 uVar20;
+  undefined8 uVar21;
+  undefined8 uVar22;
+  undefined8 uVar23;
+  undefined8 uVar24;
+  undefined8 uVar25;
+  undefined8 uVar26;
+  undefined8 uVar27;
+  undefined8 uVar28;
+  undefined8 uVar29;
+  undefined8 uVar30;
+  undefined8 uVar31;
+  undefined8 uVar32;
+  undefined8 uVar33;
+  undefined8 uVar34;
+  undefined8 uVar35;
+  undefined8 uVar36;
+  long *plVar37;
+  long lVar38;
+  undefined8 extraout_x1;
+  undefined8 extraout_x1_00;
+  undefined8 extraout_x1_01;
+  undefined8 extraout_x1_02;
+  undefined8 extraout_x1_03;
+  undefined8 extraout_x1_04;
+  undefined8 extraout_x1_05;
+  undefined8 extraout_x1_06;
+  undefined1 extraout_w8;
+  undefined1 extraout_w8_00;
+  undefined1 extraout_w8_01;
+  undefined1 extraout_w8_02;
+  undefined1 extraout_w8_03;
+  undefined1 extraout_w8_04;
+  undefined1 extraout_w8_05;
+  undefined1 extraout_w8_06;
+  undefined1 extraout_w8_07;
+  undefined1 extraout_w8_08;
+  undefined1 extraout_w8_09;
+  undefined1 extraout_w8_10;
+  undefined1 extraout_w8_11;
+  undefined1 extraout_w8_12;
+  undefined1 extraout_w8_13;
+  undefined1 extraout_w8_14;
+  int extraout_w8_15;
+  int extraout_w8_16;
+  int extraout_w8_17;
+  int extraout_w8_18;
+  int extraout_w8_19;
+  int extraout_w8_20;
+  int extraout_w8_21;
+  int extraout_w8_22;
+  ulong extraout_x8;
+  ulong extraout_x8_00;
+  long extraout_x8_01;
+  ulong extraout_x8_02;
+  long extraout_x8_03;
+  long extraout_x8_04;
+  long extraout_x8_05;
+  long extraout_x8_06;
+  long extraout_x8_07;
+  long extraout_x8_08;
+  long extraout_x8_09;
+  long extraout_x8_10;
+  long extraout_x8_11;
+  long extraout_x8_12;
+  long extraout_x8_13;
+  long extraout_x8_14;
+  long extraout_x8_15;
+  long extraout_x8_16;
+  long extraout_x8_17;
+  undefined4 *puVar39;
+  undefined4 extraout_w9;
+  undefined4 extraout_w9_00;
+  long extraout_x9;
+  long extraout_x9_00;
+  long extraout_x9_01;
+  long extraout_x9_02;
+  long extraout_x9_03;
+  long extraout_x9_04;
+  long extraout_x9_05;
+  long extraout_x9_06;
+  long extraout_x9_07;
+  ulong uVar40;
+  long extraout_x9_08;
+  long extraout_x9_09;
+  long extraout_x9_10;
+  long extraout_x9_11;
+  long extraout_x9_12;
+  long extraout_x9_13;
+  long extraout_x9_14;
+  long extraout_x9_15;
+  long extraout_x9_16;
+  long extraout_x9_17;
+  long extraout_x9_18;
+  long extraout_x9_19;
+  long extraout_x9_20;
+  long extraout_x9_21;
+  long extraout_x9_22;
+  long extraout_x9_23;
+  undefined4 extraout_w10;
+  undefined4 extraout_w10_00;
+  undefined4 extraout_w10_01;
+  undefined4 extraout_w10_02;
+  undefined4 extraout_w10_03;
+  undefined4 extraout_w10_04;
+  undefined4 extraout_w10_05;
+  undefined4 extraout_w10_06;
+  undefined4 extraout_w10_07;
+  long extraout_x10;
+  long extraout_x10_00;
+  int *piVar41;
+  int unaff_w20;
+  undefined1 auVar42 [16];
+  undefined4 *local_118;
+  undefined8 local_110;
+  uint local_108;
+  uint local_104;
+  ulong local_100 [18];
+  long local_70;
+  
+  local_70 = DAT_148b7618;
+  FUN_14839058();
+  plVar37 = (long *)0x0;
+  switch(param_1) {
+  case 0:
+    FUN_1483b184();
+    plVar37 = DAT_148ce8f0;
+    if ((DAT_148ce8e0 & 1) == 0) {
+      FUN_14847b04(0x30,&DAT_148ce8f0);
+      iVar2 = FUN_1483b064(local_100 + 2,extraout_x1,"/sw/pmic/pm/sw-config");
+      if (iVar2 == 0) {
+        uVar17 = FUN_1483af94(local_100 + 2,"verbose",DAT_148ce8f0);
+        uVar18 = FUN_1483afd4(local_100 + 2,"apply-rsns-trim",(long)DAT_148ce8f0 + 0x2c);
+        uVar19 = FUN_1483afd4(local_100 + 2,"wlan-attach-type",(long)DAT_148ce8f0 + 0x2d);
+        uVar20 = FUN_1483b114(DAT_148ce8f0,local_100 + 2,"rsns-trim-value");
+        uVar16 = FUN_1483b11c(DAT_148ce8f0,uVar20,"ext-buck-voltage-drop");
+        uVar16 = uVar18 | uVar17 | uVar19 | (uint)uVar20 | uVar16;
+        iVar2 = FUN_1483b088(local_100 + 2,"driver-post-init");
+        if (((uint)local_100[0] != 0) && (iVar2 == 0)) {
+          uVar20 = FUN_1483b190();
+          *(undefined4 *)(extraout_x10 + 0x18) = extraout_w9;
+          uVar20 = FUN_14847b04(uVar20,extraout_x10 + 0x10);
+          uVar17 = FUN_1483b178(DAT_148ce8f0,uVar20,"driver-post-init");
+          uVar16 = uVar17 | uVar16;
+        }
+        local_100[0] = local_100[0] & 0xffffffff00000000;
+        iVar2 = FUN_14852030(local_100 + 2,"device-pre-init",local_100);
+        if (((uint)local_100[0] != 0) && (iVar2 == 0)) {
+          uVar20 = FUN_1483b190();
+          *(undefined4 *)(extraout_x10_00 + 0x28) = extraout_w9_00;
+          uVar20 = FUN_14847b04(uVar20,extraout_x10_00 + 0x20);
+          uVar17 = FUN_1483b160(DAT_148ce8f0,uVar20,"device-pre-init");
+          uVar16 = uVar17 | uVar16;
+        }
+        FUN_1483b014(uVar16,"sw-config");
+        DAT_148ce8e0 = 1;
+        plVar37 = DAT_148ce8f0;
+      }
+      else {
+        FUN_14847b70(&DAT_148ce8f0);
+        plVar37 = DAT_148ce8f0;
+      }
+    }
+    break;
+  case 1:
+    local_100[0] = 0;
+    local_100[1] = 0;
+    local_110 = (int *)((ulong)local_110._4_4_ << 0x20);
+    FUN_1483b0e8(DAT_148ce8e1,0,0);
+    plVar37 = DAT_148ce8f8;
+    if ((extraout_x8 & 1) == 0) {
+      auVar42 = FUN_14847b04(0x58,&DAT_148ce8f8);
+      FUN_1483b054(auVar42._0_8_,auVar42._8_8_,"%s/pshold","debug_init");
+      auVar42 = FUN_1483b028();
+      if (auVar42._0_4_ == 0) {
+        FUN_1483afd4(local_100,"enable",DAT_148ce8f8);
+        auVar42 = FUN_1483b0bc();
+        uVar20 = FUN_1483afd4(auVar42._0_8_,auVar42._8_8_,extraout_x8_03 + 1);
+        param_1 = (uint)uVar20 | param_1;
+        auVar42 = FUN_1483b0d4(uVar20,"pshold");
+      }
+      else {
+        param_1 = 0;
+      }
+      FUN_1483b054(auVar42._0_8_,auVar42._8_8_,"%s/smpl","debug_init");
+      auVar42 = FUN_1483b028();
+      if (auVar42._0_4_ == 0) {
+        auVar42 = FUN_1483b090();
+        uVar16 = FUN_1483afd4(auVar42._0_8_,auVar42._8_8_,extraout_x8_04 + 2);
+        uVar20 = FUN_1483b114(DAT_148ce8f8,local_100,"smpl-delay");
+        param_1 = uVar16 | param_1 | (uint)uVar20;
+        auVar42 = FUN_1483b0d4(uVar20,&DAT_148a4be2);
+      }
+      FUN_1483b054(auVar42._0_8_,auVar42._8_8_,"%s/s2-kpdpwr","debug_init");
+      auVar42 = FUN_1483b028();
+      if (auVar42._0_4_ == 0) {
+        auVar42 = FUN_1483b090();
+        uVar16 = FUN_1483afd4(auVar42._0_8_,auVar42._8_8_,extraout_x8_05 + 8);
+        uVar17 = FUN_1483afd4(local_100,"reset-type",(long)DAT_148ce8f8 + 9);
+        FUN_1483b128(DAT_148ce8f8,local_100,"s1-ms");
+        auVar42 = FUN_1483b0a4();
+        uVar20 = FUN_1483af94(auVar42._0_8_,auVar42._8_8_,extraout_x8_06 + 0x10);
+        param_1 = uVar16 | param_1 | uVar17 | (uint)uVar20;
+        auVar42 = FUN_1483b0d4(uVar20,"s2-kpdpwr");
+      }
+      FUN_1483b054(auVar42._0_8_,auVar42._8_8_,"%s/s2-kpdpwr-resin","debug_init");
+      auVar42 = FUN_1483b028();
+      if (auVar42._0_4_ == 0) {
+        auVar42 = FUN_1483b090();
+        FUN_1483afd4(auVar42._0_8_,auVar42._8_8_,extraout_x8_07 + 0x14);
+        auVar42 = FUN_1483b0bc();
+        FUN_1483afd4(auVar42._0_8_,auVar42._8_8_,extraout_x8_08 + 0x15);
+        auVar42 = FUN_1483b130();
+        FUN_1483af94(auVar42._0_8_,auVar42._8_8_,extraout_x8_09 + 0x18);
+        auVar42 = FUN_1483b0a4();
+        uVar20 = FUN_1483af94(auVar42._0_8_,auVar42._8_8_,extraout_x8_10 + 0x1c);
+        param_1 = param_1 | (uint)uVar20;
+        auVar42 = FUN_1483b0d4(uVar20,"s2-kpdpwr-resin");
+      }
+      FUN_1483b054(auVar42._0_8_,auVar42._8_8_,"%s/s2-resin","debug_init");
+      auVar42 = FUN_1483b028();
+      if (auVar42._0_4_ == 0) {
+        auVar42 = FUN_1483b090();
+        FUN_1483afd4(auVar42._0_8_,auVar42._8_8_,extraout_x8_11 + 0x20);
+        auVar42 = FUN_1483b0bc();
+        FUN_1483afd4(auVar42._0_8_,auVar42._8_8_,extraout_x8_12 + 0x21);
+        auVar42 = FUN_1483b130();
+        FUN_1483af94(auVar42._0_8_,auVar42._8_8_,extraout_x8_13 + 0x24);
+        auVar42 = FUN_1483b0a4();
+        uVar20 = FUN_1483af94(auVar42._0_8_,auVar42._8_8_,extraout_x8_14 + 0x28);
+        param_1 = param_1 | (uint)uVar20;
+        auVar42 = FUN_1483b0d4(uVar20,"s2_resin");
+      }
+      FUN_1483b054(auVar42._0_8_,auVar42._8_8_,"%s/s3-reset","debug_init");
+      auVar42 = FUN_1483b028();
+      if (auVar42._0_4_ == 0) {
+        auVar42 = FUN_1483b090();
+        FUN_1483afd4(auVar42._0_8_,auVar42._8_8_,extraout_x8_15 + 0x2c);
+        param_1 = FUN_1483afd4(local_100,"s3-src",(long)DAT_148ce8f8 + 0x2d);
+        uVar20 = FUN_1483af94(local_100,"timer-value-ms",DAT_148ce8f8 + 6);
+        param_1 = (uint)uVar20 | param_1;
+        auVar42 = FUN_1483b0d4(uVar20,"s3-reset");
+      }
+      FUN_1483b054(auVar42._0_8_,auVar42._8_8_,"%s/uvlo-config","debug_init");
+      FUN_1483b028();
+      auVar42 = FUN_1483b0fc();
+      if (((uint)local_110 != 0) && (auVar42._0_4_ == 0 && unaff_w20 == 0)) {
+        plVar37 = DAT_148ce8f8 + 7;
+        *(char *)((long)DAT_148ce8f8 + 0x34) = (char)((uint)local_110 >> 4);
+        FUN_14847b04((uint)local_110 << 2,plVar37);
+        auVar42 = FUN_1483b148();
+        auVar42 = FUN_14852220(auVar42._0_8_,auVar42._8_8_,*(undefined8 *)(extraout_x8_16 + 0x38));
+      }
+      FUN_1483b054(auVar42._0_8_,auVar42._8_8_,"%s/ovlo-config","debug_init");
+      FUN_1483b028();
+      auVar42 = FUN_1483b0fc();
+      if (((uint)local_110 != 0) && (auVar42._0_4_ == 0 && unaff_w20 == 0)) {
+        plVar37 = DAT_148ce8f8 + 9;
+        *(char *)(DAT_148ce8f8 + 8) = (char)((uint)local_110 >> 4);
+        FUN_14847b04((uint)local_110 << 2,plVar37);
+        auVar42 = FUN_1483b148();
+        auVar42 = FUN_14852220(auVar42._0_8_,auVar42._8_8_,*(undefined8 *)(extraout_x8_17 + 0x48));
+      }
+      FUN_1483b054(auVar42._0_8_,auVar42._8_8_,"%s/long-pwrkey-dbnc-chk","debug_init");
+      auVar42 = FUN_1483b028();
+      if (auVar42._0_4_ == 0) {
+        param_1 = FUN_1483af94(local_100,"dbnc-time-ms",DAT_148ce8f8 + 10);
+        uVar20 = FUN_1483afd4(local_100,"chk-at",(long)DAT_148ce8f8 + 0x54);
+        param_1 = (uint)uVar20 | param_1;
+        auVar42 = FUN_1483b0d4(uVar20,"long-pwrkey-dbnc-chk");
+      }
+      FUN_1483b054(auVar42._0_8_,auVar42._8_8_,"%s/pre-psi","debug_init");
+      iVar2 = FUN_1483b028();
+      if (iVar2 == 0) {
+        uVar16 = FUN_1483afd4(local_100,"vreg-sp-value",(long)DAT_148ce8f8 + 0x55);
+        uVar17 = FUN_1483afd4(local_100,"pre-psi-value",(long)DAT_148ce8f8 + 0x56);
+        FUN_1483b014(uVar16 | param_1 | uVar17,"pre-psi");
+      }
+      DAT_148ce8e1 = 1;
+      plVar37 = DAT_148ce8f8;
+    }
+    break;
+  case 6:
+    local_100[0] = 0;
+    local_100[1] = 0;
+    local_110 = (int *)((ulong)local_110._4_4_ << 0x20);
+    FUN_1483b0e8(DAT_148ce8e2,0,0);
+    plVar37 = DAT_148ce900;
+    if ((extraout_x8_00 & 1) == 0) {
+      FUN_14847b04(0xc4,&DAT_148ce900);
+      iVar2 = FUN_1483b064(local_100,extraout_x1_00,"/sw/pmic/pm/charger");
+      if (iVar2 == 0) {
+        uVar17 = FUN_1483af94(local_100,"parallel-charger",DAT_148ce900);
+        uVar18 = FUN_1483b114(DAT_148ce900,local_100,"charger-pmic-index");
+        uVar19 = FUN_1483af94(local_100,"loader-dbc-threshold",DAT_148ce900 + 1);
+        uVar20 = FUN_1483b128(DAT_148ce900,local_100,"dbc-sdp-thd-inc");
+        uVar21 = FUN_1483b038(uVar20,"skip-loader-dbc");
+        auVar42 = FUN_1483b07c((ulong)local_110 & 0xffffffff,uVar21,"debug_init");
+        auVar42 = FUN_1483b044(auVar42._0_8_,auVar42._8_8_ + 0xd61);
+        *(undefined1 *)(extraout_x9_08 + 0x10) = extraout_w8;
+        uVar21 = FUN_1483af94(auVar42._0_8_,auVar42._8_8_,extraout_x9_08 + 0x14);
+        uVar22 = FUN_1483b038(uVar21,"skip-core-dbc");
+        auVar42 = FUN_1483b07c((ulong)local_110 & 0xffffffff,uVar22,"debug_init");
+        auVar42 = FUN_1483b044(auVar42._0_8_,auVar42._8_8_ + 0xd82);
+        *(undefined1 *)(extraout_x9_09 + 0x18) = extraout_w8_00;
+        uVar12 = FUN_1483af94(auVar42._0_8_,auVar42._8_8_,extraout_x9_09 + 0x1c);
+        uVar22 = FUN_1483af94(local_100,"uv-oc-2s-threshold",DAT_148ce900 + 4);
+        uVar23 = FUN_1483b038(uVar22,"apply-ichg-fs");
+        auVar42 = FUN_1483b07c((ulong)local_110 & 0xffffffff,uVar23,"debug_init");
+        auVar42 = FUN_1483b044(auVar42._0_8_,auVar42._8_8_ + 0xdb6);
+        *(undefined1 *)(extraout_x9_10 + 0x24) = extraout_w8_01;
+        uVar13 = FUN_1483af94(auVar42._0_8_,auVar42._8_8_,extraout_x9_10 + 0x28);
+        uVar23 = FUN_1483af94(local_100,"batt-2s-option",(long)DAT_148ce900 + 0x2c);
+        uVar24 = FUN_1483b038(uVar23,"apply-too-hot-afp");
+        auVar42 = FUN_1483b07c((ulong)local_110 & 0xffffffff,uVar24,"debug_init");
+        auVar42 = FUN_1483b044(auVar42._0_8_,auVar42._8_8_ + 0xddf);
+        *(undefined1 *)(extraout_x9_11 + 0x30) = extraout_w8_02;
+        uVar24 = FUN_1483af94(auVar42._0_8_,auVar42._8_8_,extraout_x9_11 + 0x34);
+        uVar25 = FUN_1483b038(uVar24,"apply-too-cold-afp");
+        auVar42 = FUN_1483b07c((ulong)local_110 & 0xffffffff,uVar25,"debug_init");
+        auVar42 = FUN_1483b044(auVar42._0_8_,auVar42._8_8_ + 0xe08);
+        *(undefined1 *)(extraout_x9_12 + 0x38) = extraout_w8_03;
+        uVar25 = FUN_1483af94(auVar42._0_8_,auVar42._8_8_,extraout_x9_12 + 0x3c);
+        uVar14 = FUN_1483b038(uVar25,"apply-boot-wo-batt");
+        *(bool *)(DAT_148ce900 + 8) = (uint)local_110 == 1;
+        uVar26 = FUN_1483af94(local_100,"boot-wo-batt",&local_110);
+        auVar42 = FUN_1483b07c((ulong)local_110 & 0xffffffff,uVar26,"debug_init");
+        auVar42 = FUN_1483b044(auVar42._0_8_,auVar42._8_8_ + 0xe3f);
+        *(undefined1 *)(extraout_x9_13 + 0x41) = extraout_w8_04;
+        uVar26 = FUN_1483af94(auVar42._0_8_,auVar42._8_8_,extraout_x9_13 + 0x44);
+        uVar27 = FUN_1483b038(uVar26,"apply-float-voltage");
+        auVar42 = FUN_1483b07c((ulong)local_110 & 0xffffffff,uVar27,"debug_init");
+        auVar42 = FUN_1483b044(auVar42._0_8_,auVar42._8_8_ + 0xe64);
+        *(undefined1 *)(extraout_x9_14 + 0x48) = extraout_w8_05;
+        uVar27 = FUN_1483af94(auVar42._0_8_,auVar42._8_8_,extraout_x9_14 + 0x4c);
+        uVar28 = FUN_1483b038(uVar27,"apply-pre-charge-current");
+        auVar42 = FUN_1483b07c((ulong)local_110 & 0xffffffff,uVar28,"debug_init");
+        auVar42 = FUN_1483b044(auVar42._0_8_,auVar42._8_8_ + 0xe8e);
+        *(undefined1 *)(extraout_x9_15 + 0x50) = extraout_w8_06;
+        uVar28 = FUN_1483af94(auVar42._0_8_,auVar42._8_8_,extraout_x9_15 + 0x54);
+        uVar29 = FUN_1483b038(uVar28,"apply-fast-charge-current");
+        auVar42 = FUN_1483b07c((ulong)local_110 & 0xffffffff,uVar29,"debug_init");
+        auVar42 = FUN_1483b044(auVar42._0_8_,auVar42._8_8_ + 0xeb6);
+        *(undefined1 *)(extraout_x9_16 + 0x58) = extraout_w8_07;
+        uVar29 = FUN_1483af94(auVar42._0_8_,auVar42._8_8_,extraout_x9_16 + 0x5c);
+        uVar30 = FUN_1483b038(uVar29,"apply-icl");
+        auVar42 = FUN_1483b07c((ulong)local_110 & 0xffffffff,uVar30,"debug_init");
+        auVar42 = FUN_1483b044(auVar42._0_8_,auVar42._8_8_ + 0xecf);
+        *(undefined1 *)(extraout_x9_17 + 0x60) = extraout_w8_08;
+        uVar30 = FUN_1483af94(auVar42._0_8_,auVar42._8_8_,extraout_x9_17 + 100);
+        uVar31 = FUN_1483b038(uVar30,"apply-float-charger-icl");
+        auVar42 = FUN_1483b07c((ulong)local_110 & 0xffffffff,uVar31,"debug_init");
+        auVar42 = FUN_1483b044(auVar42._0_8_,auVar42._8_8_ + 0xeee);
+        *(undefined1 *)(extraout_x9_18 + 0x68) = extraout_w8_09;
+        uVar31 = FUN_1483af94(auVar42._0_8_,auVar42._8_8_,extraout_x9_18 + 0x6c);
+        uVar32 = FUN_1483b038(uVar31,"apply-vsysmin");
+        auVar42 = FUN_1483b07c((ulong)local_110 & 0xffffffff,uVar32,"debug_init");
+        auVar42 = FUN_1483b044(auVar42._0_8_,auVar42._8_8_ + 0xf11);
+        *(undefined1 *)(extraout_x9_19 + 0x70) = extraout_w8_10;
+        uVar32 = FUN_1483af94(auVar42._0_8_,auVar42._8_8_,extraout_x9_19 + 0x74);
+        uVar33 = FUN_1483b038(uVar32,"usb-suspend");
+        auVar42 = FUN_1483b07c((ulong)local_110 & 0xffffffff,uVar33,"debug_init");
+        auVar42 = FUN_1483b044(auVar42._0_8_,auVar42._8_8_ + 0xf25);
+        *(undefined1 *)(extraout_x9_20 + 0x78) = extraout_w8_11;
+        uVar15 = FUN_1483af94(auVar42._0_8_,auVar42._8_8_,extraout_x9_20 + 0x7c);
+        uVar4 = FUN_1483af94(local_100,"batt-detect-src",DAT_148ce900 + 0x10);
+        uVar5 = FUN_1483af94(local_100,"max-dbg-board-id",(long)DAT_148ce900 + 0x84);
+        uVar33 = FUN_1483af94(local_100,"min-dbg-board-id",DAT_148ce900 + 0x11);
+        uVar34 = FUN_1483b038(uVar33,"detect-jig-by-therm");
+        auVar42 = FUN_1483b07c((ulong)local_110 & 0xffffffff,uVar34,"debug_init");
+        auVar42 = FUN_1483b044(auVar42._0_8_,auVar42._8_8_ + 0xf7e);
+        *(undefined1 *)(extraout_x9_21 + 0x8c) = extraout_w8_12;
+        uVar6 = FUN_1483af94(auVar42._0_8_,auVar42._8_8_,extraout_x9_21 + 0x90);
+        uVar7 = FUN_1483af94(local_100,"min-therm",(long)DAT_148ce900 + 0x94);
+        uVar8 = FUN_1483af94(local_100,"jig-icl-ma",DAT_148ce900 + 0x13);
+        uVar34 = FUN_1483af94(local_100,"uvp-recover-delay",(long)DAT_148ce900 + 0x9c);
+        uVar35 = FUN_1483b038(uVar34,"ignore-temp-in-dbc");
+        auVar42 = FUN_1483b07c((ulong)local_110 & 0xffffffff,uVar35,"debug_init");
+        auVar42 = FUN_1483b044(auVar42._0_8_,auVar42._8_8_ + 0xfc2);
+        *(undefined1 *)(extraout_x9_22 + 0xa0) = extraout_w8_13;
+        uVar35 = FUN_1483af94(auVar42._0_8_,auVar42._8_8_,extraout_x9_22 + 0xa4);
+        uVar36 = FUN_1483b038(uVar35,"ibat-via-ext-sense");
+        auVar42 = FUN_1483b07c((ulong)local_110 & 0xffffffff,uVar36,"debug_init");
+        auVar42 = FUN_1483b044(auVar42._0_8_,auVar42._8_8_ + 0xfe8);
+        *(undefined1 *)(extraout_x9_23 + 0xa8) = extraout_w8_14;
+        uVar9 = FUN_1483af94(auVar42._0_8_,auVar42._8_8_,extraout_x9_23 + 0xac);
+        uVar10 = FUN_1483af94(local_100,"vbat-thd-rtc-pon",DAT_148ce900 + 0x16);
+        uVar11 = FUN_1483af94(local_100,"vsys-min-recover-mv",(long)DAT_148ce900 + 0xb4);
+        uVar16 = FUN_1483af94(local_100,"vflt-recover-mv",DAT_148ce900 + 0x17);
+        uVar16 = uVar18 | uVar17 | uVar19 | (uint)uVar20 | (uint)uVar21 | uVar12 | (uint)uVar22 |
+                 uVar13 | (uint)uVar23 | (uint)uVar24 | (uint)uVar25 | uVar14 | (uint)uVar26 |
+                 (uint)uVar27 | (uint)uVar28 | (uint)uVar29 | (uint)uVar30 | (uint)uVar31 |
+                 (uint)uVar32 | uVar15 | uVar4 | uVar5 | (uint)uVar33 | uVar6 | uVar7 | uVar8 |
+                 (uint)uVar34 | (uint)uVar35 | uVar9 | uVar10 | uVar11 | uVar16;
+        FUN_14826ab8(local_100 + 2,0x80,"%s/led-config","/sw/pmic/pm/charger");
+        iVar2 = FUN_1483b028();
+        if (iVar2 == 0) {
+          uVar17 = FUN_1483afd4(local_100,"blink-during-charging",(long)DAT_148ce900 + 0xbc);
+          uVar18 = FUN_1483afd4(local_100,"blink-during-shutdown",(long)DAT_148ce900 + 0xbd);
+          uVar20 = FUN_1483af94(local_100,"rgb-dim-level",DAT_148ce900 + 0x18);
+          uVar16 = uVar17 | uVar16 | uVar18 | (uint)uVar20;
+          FUN_1483b0d4(uVar20,"led-config");
+        }
+        FUN_1483b014(uVar16,"charger");
+        DAT_148ce8e2 = 1;
+        plVar37 = DAT_148ce900;
+      }
+      else {
+        FUN_14847b70(&DAT_148ce900);
+        plVar37 = DAT_148ce900;
+      }
+    }
+    break;
+  case 7:
+    local_100[2] = 0;
+    local_100[3] = 0;
+    plVar37 = DAT_148ce908;
+    if ((DAT_148ce8e3 & 1) == 0) {
+      FUN_14847b04(0x24,&DAT_148ce908);
+      iVar2 = FUN_1483b064(local_100 + 2,extraout_x1_01,"/sw/pmic/pm/haptics");
+      if (iVar2 == 0) {
+        uVar16 = FUN_1483af94(local_100 + 2,"ext-boost-vdd",DAT_148ce908);
+        uVar20 = FUN_1483b114(DAT_148ce908,local_100 + 2,"vmax-hdrm");
+        uVar17 = FUN_1483b11c(DAT_148ce908,uVar20,"vmax-mv");
+        uVar18 = FUN_1483b128(DAT_148ce908,local_100 + 2,"tlra-ol");
+        uVar19 = FUN_1483af94(local_100 + 2,"autores-cfg",DAT_148ce908 + 2);
+        uVar12 = FUN_1483af94(local_100 + 2,"vbatt-min",(long)DAT_148ce908 + 0x14);
+        uVar13 = FUN_1483af94(local_100 + 2,"boost-cfg-bob",DAT_148ce908 + 3);
+        uVar14 = FUN_1483af94(local_100 + 2,"lra-resistance",(long)DAT_148ce908 + 0x1c);
+        uVar15 = FUN_1483af94(local_100 + 2,"swr-io-volt",DAT_148ce908 + 4);
+        FUN_1483b014((uint)uVar20 | uVar16 | uVar17 | uVar18 | uVar19 | uVar12 | uVar13 | uVar14 |
+                     uVar15,"haptics");
+        DAT_148ce8e3 = 1;
+        plVar37 = DAT_148ce908;
+      }
+      else {
+        FUN_14847b70(&DAT_148ce908);
+        plVar37 = DAT_148ce908;
+      }
+    }
+    break;
+  case 8:
+    local_100[2] = 0;
+    local_100[3] = 0;
+    plVar37 = DAT_148ce910;
+    if ((DAT_148ce8e4 & 1) == 0) {
+      FUN_14847b04(0x10,&DAT_148ce910);
+      iVar2 = FUN_1483b064(local_100 + 2,extraout_x1_02,"/sw/pmic/pm/display");
+      if (iVar2 == 0) {
+        uVar16 = FUN_1483afd4(local_100 + 2,"swire-map",DAT_148ce910);
+        uVar17 = FUN_1483af94(local_100 + 2,"apply-default-volt",(long)DAT_148ce910 + 1);
+        uVar20 = FUN_1483b114(DAT_148ce910,local_100 + 2,"default-elvss");
+        uVar18 = FUN_1483b11c(DAT_148ce910,uVar20,"default-elvdd");
+        uVar19 = FUN_1483b128(DAT_148ce910,local_100 + 2,"default-oledb");
+        FUN_1483b014(uVar17 | uVar16 | (uint)uVar20 | uVar18 | uVar19,"display");
+        DAT_148ce8e4 = 1;
+        plVar37 = DAT_148ce910;
+      }
+      else {
+        FUN_14847b70(&DAT_148ce910);
+        plVar37 = DAT_148ce910;
+      }
+    }
+    break;
+  case 9:
+    FUN_1483b184(&UNK_148ce000);
+    plVar37 = DAT_148ce918;
+    if ((*(byte *)(extraout_x8_01 + 0x8e5) & 1) == 0) {
+      FUN_14847b04(8,&DAT_148ce918);
+      iVar2 = FUN_1483b064(local_100 + 2,extraout_x1_03,"/sw/pmic/pm/camera");
+      if (iVar2 == 0) {
+        FUN_14852030(local_100 + 2,"rst-signal",local_100);
+        uVar16 = (uint)local_100[0];
+        if (7 < (uint)local_100[0]) {
+          uVar16 = 8;
+        }
+        local_100[0] = CONCAT44(local_100[0]._4_4_,uVar16);
+        uVar20 = FUN_14852220(local_100 + 2,"rst-signal",DAT_148ce918);
+        FUN_1483b014(uVar20,"camera-gpio");
+        DAT_148ce8e5 = 1;
+        plVar37 = DAT_148ce918;
+      }
+      else {
+        FUN_14847b70(&DAT_148ce918);
+        plVar37 = DAT_148ce918;
+      }
+    }
+    break;
+  case 10:
+    FUN_1483b184();
+    plVar37 = DAT_148ce920;
+    if ((DAT_148ce8e6 & 1) == 0) {
+      FUN_14847b04(0xa0,&DAT_148ce920);
+      iVar2 = FUN_1483b064(local_100 + 2,extraout_x1_04,"/sw/pmic/arb/access");
+      plVar37 = DAT_148ce920;
+      if (iVar2 == 0) {
+        iVar2 = FUN_1483b088(local_100 + 2,&DAT_148a5160);
+        if (((uint)local_100[0] != 0) && (iVar2 == 0)) {
+          *(uint *)(DAT_148ce920 + 1) = (uint)local_100[0] >> 4;
+          uVar20 = FUN_14847b04(local_100[0] & 0xffffffff);
+          iVar2 = FUN_1483b16c(DAT_148ce920,uVar20,&DAT_148a5160);
+        }
+        FUN_1483b088(local_100 + 2,&DAT_148a5165);
+        FUN_1483b0dc();
+        if ((extraout_w8_15 != 0) && (iVar2 == 0)) {
+          uVar20 = FUN_1483b06c();
+          *(undefined4 *)(extraout_x9 + 0x18) = extraout_w10;
+          uVar20 = FUN_14847b04(uVar20,extraout_x9 + 0x10);
+          iVar2 = FUN_1483b178(DAT_148ce920,uVar20,&DAT_148a5165);
+        }
+        FUN_1483b088(local_100 + 2,&DAT_148a516a);
+        FUN_1483b0dc();
+        if ((extraout_w8_16 != 0) && (iVar2 == 0)) {
+          uVar20 = FUN_1483b06c();
+          *(undefined4 *)(extraout_x9_00 + 0x28) = extraout_w10_00;
+          uVar20 = FUN_14847b04(uVar20,extraout_x9_00 + 0x20);
+          iVar2 = FUN_1483b160(DAT_148ce920,uVar20,&DAT_148a516a);
+        }
+        FUN_1483b088(local_100 + 2,&DAT_148a516d);
+        FUN_1483b0dc();
+        if ((extraout_w8_17 != 0) && (iVar2 == 0)) {
+          uVar20 = FUN_1483b06c();
+          *(undefined4 *)(extraout_x9_01 + 0x38) = extraout_w10_01;
+          FUN_14847b04(uVar20,extraout_x9_01 + 0x30);
+          iVar2 = FUN_14852220(local_100 + 2,&DAT_148a516d,DAT_148ce920[6],local_100[0] & 0xffffffff
+                              );
+        }
+        FUN_1483b088(local_100 + 2,&DAT_148a5171);
+        FUN_1483b0dc();
+        if ((extraout_w8_18 != 0) && (iVar2 == 0)) {
+          uVar20 = FUN_1483b06c();
+          *(undefined4 *)(extraout_x9_02 + 0x88) = extraout_w10_02;
+          FUN_14847b04(uVar20,extraout_x9_02 + 0x80);
+          iVar2 = FUN_14852220(local_100 + 2,&DAT_148a5171,DAT_148ce920[0x10],
+                               local_100[0] & 0xffffffff);
+        }
+        FUN_1483b088(local_100 + 2,&DAT_148a5176);
+        FUN_1483b0dc();
+        if ((extraout_w8_19 != 0) && (iVar2 == 0)) {
+          uVar20 = FUN_1483b06c();
+          *(undefined4 *)(extraout_x9_03 + 0x48) = extraout_w10_03;
+          FUN_14847b04(uVar20,extraout_x9_03 + 0x40);
+          iVar2 = FUN_14852220(local_100 + 2,&DAT_148a5176,DAT_148ce920[8],local_100[0] & 0xffffffff
+                              );
+        }
+        FUN_1483b088(local_100 + 2,&DAT_148a517b);
+        FUN_1483b0dc();
+        if ((extraout_w8_20 != 0) && (iVar2 == 0)) {
+          uVar20 = FUN_1483b06c();
+          *(undefined4 *)(extraout_x9_04 + 0x58) = extraout_w10_04;
+          FUN_14847b04(uVar20,extraout_x9_04 + 0x50);
+          iVar2 = FUN_14852220(local_100 + 2,&DAT_148a517b,DAT_148ce920[10],
+                               local_100[0] & 0xffffffff);
+        }
+        FUN_1483b088(local_100 + 2,"secpro");
+        FUN_1483b0dc();
+        if ((extraout_w8_21 != 0) && (iVar2 == 0)) {
+          uVar20 = FUN_1483b06c();
+          *(undefined4 *)(extraout_x9_05 + 0x78) = extraout_w10_05;
+          FUN_14847b04(uVar20,extraout_x9_05 + 0x70);
+          iVar2 = FUN_14852220(local_100 + 2,"secpro",DAT_148ce920[0xe],local_100[0] & 0xffffffff);
+        }
+        FUN_1483b088(local_100 + 2,&DAT_148a5186);
+        FUN_1483b0dc();
+        if ((extraout_w8_22 != 0) && (iVar2 == 0)) {
+          uVar20 = FUN_1483b06c();
+          *(undefined4 *)(extraout_x9_06 + 0x68) = extraout_w10_06;
+          FUN_14847b04(uVar20,extraout_x9_06 + 0x60);
+          iVar2 = FUN_14852220(local_100 + 2,&DAT_148a5186,DAT_148ce920[0xc],
+                               local_100[0] & 0xffffffff);
+        }
+        iVar3 = FUN_1483b088(local_100 + 2,"invalid");
+        if (((uint)local_100[0] != 0) && (iVar3 == 0 && iVar2 == 0)) {
+          uVar20 = FUN_1483b06c();
+          *(undefined4 *)(extraout_x9_07 + 0x98) = extraout_w10_07;
+          FUN_14847b04(uVar20,extraout_x9_07 + 0x90);
+          FUN_14852220(local_100 + 2,"invalid",DAT_148ce920[0x12],local_100[0] & 0xffffffff);
+        }
+        DAT_148ce8e6 = 1;
+        plVar37 = DAT_148ce920;
+      }
+    }
+    break;
+  case 0xb:
+    FUN_1483b184();
+    plVar37 = DAT_148ce928;
+    if ((DAT_148ce8e7 & 1) == 0) {
+      FUN_14847b04(0x10,&DAT_148ce928);
+      iVar2 = FUN_1483b064(local_100 + 2,extraout_x1_05,"/sw/pmic/arb/mgpi");
+      if (iVar2 == 0) {
+        iVar2 = FUN_1483b088(local_100 + 2,"port-cfg");
+        if (((uint)local_100[0] != 0) && (iVar2 == 0)) {
+          *(uint *)(DAT_148ce928 + 1) = (uint)local_100[0] / 0x28;
+          uVar20 = FUN_14847b04(local_100[0] & 0xffffffff);
+          FUN_1483b16c(DAT_148ce928,uVar20,"port-cfg");
+        }
+      }
+      DAT_148ce8e7 = 1;
+      plVar37 = DAT_148ce928;
+    }
+    break;
+  case 0xc:
+    local_100[0] = 0;
+    local_100[1] = 0;
+    local_108 = 0;
+    local_104 = 0;
+    local_118 = (undefined4 *)0x0;
+    local_110 = (int *)0x0;
+    FUN_1483b0e8(DAT_148ce8e8,0,0);
+    plVar37 = DAT_148ce930;
+    if ((extraout_x8_02 & 1) == 0) {
+      FUN_14847b04(0x10,&DAT_148ce930);
+      iVar2 = FUN_1483b064(local_100,extraout_x1_06,"/sw/pmic/arb/pvc");
+      iVar3 = FUN_14851d68(local_100,&local_104);
+      plVar37 = DAT_148ce930;
+      if ((iVar3 == 0 && iVar2 == 0) && (local_104 != 0)) {
+        *(uint *)(DAT_148ce930 + 1) = local_104;
+        FUN_14847b04(local_104 * 0x18);
+        FUN_14847b04(local_104 << 2,&local_110);
+        iVar2 = FUN_14851e54(local_100,local_110,local_104);
+        if (local_110 == (int *)0x0) {
+          do {
+          } while( true );
+        }
+        iVar3 = 0;
+        piVar41 = local_110;
+        for (uVar40 = (ulong)local_104; uVar40 != 0; uVar40 = uVar40 - 1) {
+          iVar3 = *piVar41 + iVar3;
+          piVar41 = piVar41 + 1;
+        }
+        if (local_110 != (int *)0x0) {
+          FUN_14847b70(&local_110);
+        }
+        FUN_14847b04(iVar3,&local_110);
+        piVar41 = local_110;
+        iVar3 = FUN_14851f14(local_100,local_110,iVar3);
+        if (iVar3 == 0 && iVar2 == 0) {
+          for (uVar40 = 0; uVar40 < local_104; uVar40 = uVar40 + 1) {
+            FUN_14826ab8(local_100 + 2,0x80,"%s/%s","/sw/pmic/arb/pvc",piVar41);
+            iVar2 = FUN_1483b028();
+            if (iVar2 == 0) {
+              FUN_1483af94(local_100,"pvc-port-id",*DAT_148ce930 + uVar40 * 0x18);
+              FUN_1483b114(*DAT_148ce930 + uVar40 * 0x18,local_100,"spmi-prioriety");
+            }
+            iVar2 = FUN_14852030(local_100,"addr-cfg",&local_108);
+            if ((local_108 != 0) && (iVar2 == 0)) {
+              uVar16 = local_108 >> 3;
+              *(uint *)(*DAT_148ce930 + uVar40 * 0x18 + 0x10) = uVar16;
+              FUN_14847b04(uVar16 << 2,*DAT_148ce930 + uVar40 * 0x18 + 8);
+              FUN_14847b04(local_108,&local_118);
+              iVar2 = FUN_14852220(local_100,"addr-cfg",local_118,local_108);
+              if (iVar2 == 0) {
+                puVar39 = local_118;
+                for (lVar38 = 0; (ulong)uVar16 * 4 - lVar38 != 0; lVar38 = lVar38 + 4) {
+                  *(char *)(*(long *)(*DAT_148ce930 + uVar40 * 0x18 + 8) + lVar38) = (char)*puVar39;
+                  puVar1 = puVar39 + 1;
+                  puVar39 = puVar39 + 2;
+                  *(short *)(*(long *)(*DAT_148ce930 + uVar40 * 0x18 + 8) + lVar38 + 2) =
+                       (short)*puVar1;
+                }
+              }
+              if (local_118 != (undefined4 *)0x0) {
+                FUN_14847b70(&local_118);
+              }
+            }
+            lVar38 = FUN_14828074(piVar41);
+            piVar41 = (int *)((long)piVar41 + lVar38 + 1);
+          }
+        }
+        if (local_110 != (int *)0x0) {
+          FUN_14847b70(&local_110);
+        }
+        DAT_148ce8e8 = 1;
+        plVar37 = DAT_148ce930;
+      }
+    }
+  }
+  if (DAT_148b7618 == local_70) {
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_14836900(plVar37);
+}
+
+

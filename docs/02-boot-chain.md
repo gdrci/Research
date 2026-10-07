@@ -177,7 +177,7 @@ The table is read only by the two functions above. Their 30 call sites, with the
 - `abl.img`: ELF32 with `EM_ARM`, entry `0x9FA00000`. It has almost no readable strings. Its ISA and role are not established. The condition-code and Thumb tests I ran on it were inconclusive, and the same condition-code test fails on the known ARM32 modem binary, so I do not rely on it.
 - `imagefv.img`: ELF32 ARM, 20 KB, likely a firmware volume. Unverified.
 
-`uefi` is the likelier loader. SBL1's subsystem list and its image-name table both include `uefi` or `APPSBL`, and `uefi.img` is a UEFI DXE volume. `abl.img` contains no UEFI, Android boot or fastboot strings. Observed. Which image SBL1 actually jumps to has not been confirmed in code.
+`uefi` is the likelier loader. SBL1's subsystem list and its image-name table both include `uefi` or `APPSBL`, and `uefi.img` is a UEFI DXE volume. `abl.img` contains no UEFI, Android boot or fastboot strings. Observed. The one code reference to the `uefi` string (`0x14839E54`, `0x14839E84`, in `FUN_14839AE4`) is in PMIC configuration parsing (`/sw/pmic/pm/sw-config`), not in an image loader. The `APPSBL` entry in the name table has no code reference. So the handoff code is not found, and which image SBL1 jumps to is still unconfirmed. Decompile: `data/ghidra/sbl1_fn14839ae4_uefi_ref_decompiled.txt`.
 
 ## Stage 5 and later
 

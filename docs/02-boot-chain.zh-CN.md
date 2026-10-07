@@ -177,7 +177,7 @@ TrustZone 在 `0x1C141C40` 处有一张表，由五个 16 字节条目组成。�
 - `abl.img`：ELF32，`EM_ARM`，入口 `0x9FA00000`。几乎没有可读字符串。其指令集与作用未确定。我对它进行的条件码与 Thumb 测试都没有定论；在已知的 ARM32 基带二进制上，同样的条件码测试也失败，因此我不依赖它。
 - `imagefv.img`：ELF32 ARM，20 KB，很可能是固件卷。未验证。
 
-`uefi` 是更可能的加载程序。SBL1 的子系统列表和镜像名表都包含 `uefi` 或 `APPSBL`，且 `uefi.img` 是 UEFI DXE 卷。`abl.img` 中不含 UEFI、Android 启动或 fastboot 字符串。已观察。SBL1 实际跳转到哪个镜像，尚未在代码中确认。
+`uefi` 是更可能的加载程序。SBL1 的子系统列表和镜像名表都包含 `uefi` 或 `APPSBL`，且 `uefi.img` 是 UEFI DXE 卷。`abl.img` 中不含 UEFI、Android 启动或 fastboot 字符串。已观察。唯一一处对 `uefi` 字符串的代码引用（`FUN_14839AE4` 中的 `0x14839E54`、`0x14839E84`）位于 PMIC 配置解析（`/sw/pmic/pm/sw-config`）中，而不在镜像加载器里。镜像名表中的 `APPSBL` 条目也没有代码引用。因此跳转代码未找到，SBL1 实际跳转到哪个镜像仍未确认。反编译见 `data/ghidra/sbl1_fn14839ae4_uefi_ref_decompiled.txt`。
 
 ## 阶段 5 及之后
 
