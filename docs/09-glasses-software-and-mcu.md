@@ -63,7 +63,7 @@ The wrist band is an electromyography input device. Evidence from the files:
 
 - `system_ext/etc/vintf/manifest/emg2_manifest.xml` declares the AIDL HAL `com.meta.wearable.emg` with interface `IEmgService`, instances `default` and `fmq` (fast message queue).
 - `system_ext/lib64` contains `libemginput.so`, `libemg_quaternion_consumer.so` (orientation from the band), `libemg_device_status_consumer.so`, `libemg_state_sync_consumer.so`, `libemgcache.so`, `libemg_equeue.so`, `libemgserviceutils2.so` and `emgsdk-proto-cc.so`.
-- The MCU firmware `mcu.default.rt700.tub` contains the strings `/dev/Band`, `/dev/BandOff` and `/dev/PhoneDisconnected`. The `Band` name points to the band, and `BandOff` to its off state. Only the MCU firmware contains `/dev/Band` in the extracted tree. An earlier draft said `libbluetooth_qti.so` and `libencode_c2.so` also contain it. That was wrong: a search found no `/dev/Band` in either library, and their `Band` matches are AAC codec function names (`FDKaacEnc_*Band*`). The name's only known location is the MCU firmware, so no shared name links the band to the phone side.
+- The MCU firmware `mcu.default.rt700.tub` contains `/dev/Band`, `/dev/BandOff` and `/dev/PhoneDisconnected`, but these are not device nodes. They are icon paths in the MCU's UI resources: `./Resources/system/images/ic/432/sm/fl/dev/Band.png`, `BandOff.png` and `PhoneDisconnected.png`. So they name status icons (band connected, band off, phone disconnected). Observed. The earlier reading of them as a device was wrong.
 - `/dev/PhoneDisconnected` also appears on the phone side, in `system_ext/bin/navigationservice`, `SmartglassOOBERelease` and `SmartglassSystemUIRelease`. A device-node name that the app layer uses as a state is most likely a companion-state signal passed through the MCU. Inferred from the names.
 - Init scripts `init.emgrelay_receiver.rc` and `init.emgrelaydatax.rc` start `emgrelay_receiver` and `emgrelaydatax`, gated by `system_ext.meta.mobileconfig.service.emgrelay.receiver.enable` and by the screencast-manager property.
 
@@ -82,7 +82,7 @@ The EMG service path, observed in the extracted tree:
 - `libemginput.so` opens device nodes by a formatted name (`/dev/%s`) and also has `/dev/gpiochip%u` and `/dev/joycon0`. The format name is not resolved.
 - Event names in `emg2`: `emg_raw_gesture_event`, `input_emg_raw_gesture_event`, `wearables_band_tightness_detector_events`.
 
-Not found: the transport between the band and `emg2`. No binary in the extracted tree names `/dev/Band`, except the MCU firmware. The vendor init files have no band or EMG device entry. The link is therefore still open.
+Not found: the transport between the band and `emg2`. The `dev/Band` string in the MCU firmware is a status-icon path, not a device. The vendor init files have no band or EMG device entry. The link is therefore still open.
 
 `libmarvin-emg.meta.so` and `libemg_marvin-client.meta.so` use the name "Marvin". It is probably an internal codename for the model or the client. Unverified.
 

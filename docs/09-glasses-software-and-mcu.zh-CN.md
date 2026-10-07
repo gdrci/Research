@@ -63,7 +63,7 @@
 
 - `system_ext/etc/vintf/manifest/emg2_manifest.xml` 声明了 AIDL HAL `com.meta.wearable.emg`，接口为 `IEmgService`，实例为 `default` 和 `fmq`（快速消息队列）。
 - `system_ext/lib64` 中有 `libemginput.so`、`libemg_quaternion_consumer.so`（来自腕带的姿态/四元数）、`libemg_device_status_consumer.so`、`libemg_state_sync_consumer.so`、`libemgcache.so`、`libemg_equeue.so`、`libemgserviceutils2.so` 和 `emgsdk-proto-cc.so`。
-- MCU 固件 `mcu.default.rt700.tub` 中有字符串 `/dev/Band`、`/dev/BandOff` 和 `/dev/PhoneDisconnected`。`Band` 指向腕带，`BandOff` 指向其关闭状态。在提取的文件树中，只有 MCU 固件含有 `/dev/Band`。此前的草稿称 `libbluetooth_qti.so` 和 `libencode_c2.so` 也含有它，这是错误的：搜索在这两个库中都找不到 `/dev/Band`，它们中的 `Band` 匹配是 AAC 编解码器函数名（`FDKaacEnc_*Band*`）。该名称目前唯一已知的位置是 MCU 固件，因此没有任何共用名称把腕带与手机端联系起来。
+- MCU 固件 `mcu.default.rt700.tub` 中有 `/dev/Band`、`/dev/BandOff` 和 `/dev/PhoneDisconnected`，但它们不是设备节点，而是 MCU 界面资源中的图标路径：`./Resources/system/images/ic/432/sm/fl/dev/Band.png`、`BandOff.png` 和 `PhoneDisconnected.png`。因此它们表示状态图标（腕带已连接、腕带关闭、手机断开）。已观察。此前把它们当作设备的理解是错误的。
 - `/dev/PhoneDisconnected` 也出现在手机一侧：`system_ext/bin/navigationservice`、`SmartglassOOBERelease` 和 `SmartglassSystemUIRelease`。应用层把某个设备节点名称当作状态使用，这很可能是经由 MCU 传递的配套设备状态信号。根据名称推断。
 - init 脚本 `init.emgrelay_receiver.rc` 与 `init.emgrelaydatax.rc` 启动 `emgrelay_receiver` 和 `emgrelaydatax`，其开关由 `system_ext.meta.mobileconfig.service.emgrelay.receiver.enable` 属性以及截屏管理器属性控制。
 
@@ -82,7 +82,7 @@ EMG 服务路径（在提取的文件树中观察到）：
 - `libemginput.so` 通过格式化名称打开设备节点（`/dev/%s`），另有 `/dev/gpiochip%u` 和 `/dev/joycon0`。格式化名称的来源尚未确定。
 - `emg2` 中的事件名：`emg_raw_gesture_event`、`input_emg_raw_gesture_event`、`wearables_band_tightness_detector_events`。
 
-未找到：腕带与 `emg2` 之间的传输。除 MCU 固件外，提取的文件树中没有任何二进制文件提到 `/dev/Band`。厂商 init 文件中也没有腕带或 EMG 的设备条目。因此该连接仍未确定。
+未找到：腕带与 `emg2` 之间的传输。MCU 固件中的 `dev/Band` 字符串是状态图标路径，不是设备。厂商 init 文件中也没有腕带或 EMG 的设备条目。因此该连接仍未确定。
 
 `libmarvin-emg.meta.so` 与 `libemg_marvin-client.meta.so` 中使用了 "Marvin" 这个名字。它很可能是型号或客户端的内部代号。未验证。
 
