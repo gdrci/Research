@@ -151,7 +151,7 @@ androidboot.hibernation_resume_device=259:61
 | 模块 | 描述（来自 modinfo） | 依赖 | 与本分析的关系 |
 |---|---|---|---|
 | `nvmem_qfprom.ko` | Qualcomm QFPROM driver | 无 | 内核的熔丝读取驱动。作者 Srinivas Kandagatla（Linaro）。 |
-| `tmecom-intf.ko` | TME communication interface | 无 | 内核与 TME 固件的连接。 |
+| `tmecom-intf.ko` | MSM TMECom QTI mailbox protocol client | 无 | 内核连接 TME 固件的邮箱客户端。 |
 | `hwkm.ko` | QTI Hardware Key Manager library | `tmecom-intf` | 密钥处理经由 TME。 |
 | `crypto-qti-hwkm.ko` | Crypto HWKM library for storage encryption | `hwkm` | 存储加密密钥（`wrappedkey_v0` 路径）。 |
 | `qcom-dload-mode.ko` | MSM Download Mode Driver | 无 | 下载模式，与 XBL 的 cookie 对应。 |
@@ -186,7 +186,7 @@ androidboot.hibernation_resume_device=259:61
 | 组别 | 节点 | 启用情况 |
 |---|---|---|
 | 显示 | `qcom,dsi-display-primary`、`qcom,dsi-display-secondary`、`qcom,mdss_dsi_ctrl0/1`、`qcom,mdss_mdp`、`qcom,dp_display`、`qcom,wb-display`、`sde_rsc_rpmh` | 18 |
-| LCoS 面板驱动 | `lcosOP02220BA@65`、`lcosOP03010@64`（`meta,lcos-i2c-OP02220`、`meta,lcos-i2c-OP03010`） | 各 18 个。`lcosOP02220BA` 在全部 18 个中为 `okay`；`lcosOP03010` 没有 status 属性。 |
+| LCoS 面板驱动 | `lcosOP02220BA@65`、`lcosOP03010@64`（`meta,lcos-i2c-OP02220`、`meta,lcos-i2c-OP03010`） | 各 18 个。`lcosOP02220BA` 在全部 18 个中为 `okay`；`lcosOP03010` 在 16 个覆盖层中为 `okay`，在 2 个中为 `disabled`（覆盖层 4 和 11，即 Protostar FF3 与 ULED 版本）。 |
 | 显示电源 | `pmicOP02220@44`、`pmicOP03010@40` | `pmicOP02220` 在 18 个中；`pmicOP03010` 在 16 个中（另 2 个禁用） |
 | 显示背光或偏置（根据名称推断） | `ktb8399@60`（`kinetic,ktb8399`） | 18 个，全部 `okay` |
 | 显示温度 | `max31875@48`、`@49`、`@4A` | 6 个覆盖层中 `okay`，12 个中 `disabled` |

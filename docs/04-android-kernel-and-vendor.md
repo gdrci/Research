@@ -151,7 +151,7 @@ Modules that connect to the rest of the analysis:
 | Module | Description (from modinfo) | Depends on | Why it matters |
 |---|---|---|---|
 | `nvmem_qfprom.ko` | Qualcomm QFPROM driver | none | The kernel's fuse reader. Author Srinivas Kandagatla (Linaro). |
-| `tmecom-intf.ko` | TME communication interface | none | The kernel's link to TME firmware. |
+| `tmecom-intf.ko` | MSM TMECom QTI mailbox protocol client | none | The kernel's mailbox client for TME firmware. |
 | `hwkm.ko` | QTI Hardware Key Manager library | `tmecom-intf` | Key handling goes through TME. |
 | `crypto-qti-hwkm.ko` | Crypto HWKM library for storage encryption | `hwkm` | Storage keys (the `wrappedkey_v0` path). |
 | `qcom-dload-mode.ko` | MSM Download Mode Driver | none | Download mode, matching the XBL cookie. |
@@ -186,7 +186,7 @@ Component groups in the overlays, with how many of the 18 enable them:
 | Group | Nodes | Enabled in |
 |---|---|---|
 | Display | `qcom,dsi-display-primary`, `qcom,dsi-display-secondary`, `qcom,mdss_dsi_ctrl0/1`, `qcom,mdss_mdp`, `qcom,dp_display`, `qcom,wb-display`, `sde_rsc_rpmh` | 18 |
-| LCoS panel drivers | `lcosOP02220BA@65`, `lcosOP03010@64` (`meta,lcos-i2c-OP02220`, `meta,lcos-i2c-OP03010`) | 18 each. `lcosOP02220BA` is `okay` in all 18. `lcosOP03010` has no status property. |
+| LCoS panel drivers | `lcosOP02220BA@65`, `lcosOP03010@64` (`meta,lcos-i2c-OP02220`, `meta,lcos-i2c-OP03010`) | 18 each. `lcosOP02220BA` is `okay` in all 18. `lcosOP03010` is `okay` in 16 and `disabled` in 2 (overlays 4 and 11, the Protostar FF3 and ULED builds). |
 | Display power | `pmicOP02220@44`, `pmicOP03010@40` | `pmicOP02220` in 18, `pmicOP03010` in 16 (disabled in 2) |
 | Display backlight or bias (inferred from the name) | `ktb8399@60` (`kinetic,ktb8399`) | 18, `okay` in all |
 | Display temperature | `max31875@48`, `@49`, `@4A` | `okay` in 6 overlays, `disabled` in 12 |

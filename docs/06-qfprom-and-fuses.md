@@ -42,7 +42,7 @@ Only `0x221C8000` has a device-tree node. The names of the other three blocks ar
 
 TrustZone has a table of five 16-byte entries at `0x1C141C40`: a 32-bit base and a 32-bit count per entry. Index 4 is `0x010C0000`.
 
-Two functions read the table. `FUN_1C067548` passes flag `0x9041` and `FUN_1C067598` passes flag `0x9061`. Each rejects indices above 4, then maps the entry through `FUN_1C03ACAC`. Both have 15 call sites, and every index from 0 to 4 is used with both flags (`data/secure/tz_mmio_table_users.txt`).
+Two functions read the table. `FUN_1C067548` passes flag `0x9041` and `FUN_1C067598` passes flag `0x9061`. Each rejects indices above 4, then maps the entry through `FUN_1C03ACAC`. Both have 16 call sites: 15 `BL` and one tail `B` each. Every index from 0 to 4 is used with both flags (`data/secure/tz_mmio_table_users.txt`).
 
 The decompiled chain is `FUN_1C03ACAC`, which takes a lock, calls `FUN_146816F4`, and releases the lock. `FUN_146816F4` calls `FUN_14681A68`, a stage-1 translation-table mapper. That mapper writes block and page descriptors into the live tables and issues the `TLBI`, `DSB` and `ISB` maintenance instructions. No `SMC` instruction is involved, so the mapping stays in TrustZone (`data/ghidra/tz_mmio_mapper_decompiled.txt`).
 

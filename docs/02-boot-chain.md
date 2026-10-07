@@ -138,7 +138,7 @@ TrustZone holds a table of five 16-byte entries at `0x1C141C40`. Each entry is a
 | 3 | `0x221C8000` | 8 | the QFPROM block |
 | 4 | `0x010C0000` | 8 | |
 
-Two functions read the table: `FUN_1C067548` and `FUN_1C067598`. Each takes an index, rejects values above 4, reads `base` and `count`, and calls `FUN_1C03ACAC` with the base twice, the count, and a flag. The first function passes flag `0x9041`, the second `0x9061`. Each has 15 call sites, and every index from 0 to 4 is used with both flags (`data/ghidra/tz_mmio_mapper_decompiled.txt`).
+Two functions read the table: `FUN_1C067548` and `FUN_1C067598`. Each takes an index, rejects values above 4, reads `base` and `count`, and calls `FUN_1C03ACAC` with the base twice, the count, and a flag. The first function passes flag `0x9041`, the second `0x9061`. Each has 16 call sites: 15 `BL` and one tail `B`. Every index from 0 to 4 is used with both flags (`data/secure/tz_mmio_table_users.txt`; the mapper decompile is in `data/ghidra/tz_mmio_mapper_decompiled.txt`).
 
 `FUN_1C03ACAC` takes a lock, calls `FUN_146816F4`, and releases the lock. `FUN_146816F4` builds a 32-byte request from the base, the second base, the count and the flag. It then calls `FUN_14681A68`, which is a stage-1 translation-table mapper. For each range it writes level-2 and level-3 descriptors into the live translation tables, and it issues the `TLBI`, `DSB` and `ISB` maintenance instructions. `FUN_146816F4` contains no `SMC` instruction, so the work stays inside TrustZone.
 
