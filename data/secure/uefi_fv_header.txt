@@ -1,0 +1,7 @@
+uefi.img firmware volume (verified header fields):
+  offset 0x1000: FV GUID 8C8CE578-8A3D-4F1C-9935-896185C32DD3 (EFI_FIRMWARE_FILE_SYSTEM2_GUID)
+  FvLength 0x289000 (0x20), signature _FVH (0x28), attributes 0x0CFEFF (0x2C), HeaderLength 0x48 (0x30)
+  Block map: NumBlocks 0x289, BlockLength 0x1000 (0x38)
+  Area after the header (0x1048) starts with erased bytes (0xFF).
+  The FFS file walk needs the file-start alignment and erased-byte handling; a plain walk from 0x1048 returned 0 files.
+  Android boot, AVB, rollback and RPMB strings are absent from the plain image, consistent with compressed FFS sections (the DXE core message 'Dxe Core FV decompression failed' is present).
