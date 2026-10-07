@@ -151,6 +151,8 @@ TME 代码中没有直接构造 QFPROM 或 TrustZone MMIO 地址的常量（`lui
 
 上下文的创建者仍未找到。切入例程（`0x1C304010`）检查 `+2` 处的半字为 `0x0002`。没有简单的常量存储写入该值，另有十处把 `0x20000` 装入无关字段。搜索记录见 `data/secure/tz_context_creation_search.txt`。
 
+`tz.img` 中的静态分发表有 61 行，每行 16 字节：8 字节的键 `(type << 16) | method` 和一个处理函数指针。类型标签 2 与切入例程中的线程上下文检查相符。对象 ID `0x91` 不是该表中的键，因此该对象在运行时才被解析。已观察。证据见 `data/secure/tz_dispatch_table.txt`。
+
 ## 字面量出现的位置
 
 字面量扫描的计数（`data/qfprom_literal_candidates.json`）：

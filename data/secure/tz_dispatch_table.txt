@@ -1,0 +1,6 @@
+TrustZone static dispatch table (tz.img), 16-byte rows: 8-byte key (type << 16 | method), 8-byte handler pointer.
+Sample rows: 0x20001 -> 0x1C0453B4; 0x20004 -> 0x1C045B70; 0x30004 -> 0x1C045F34; 0x40004 -> 0x1C0462DC; 0x60004 -> 0x1C046980; 0x20104 -> 0x1C046980.
+Survey: 61 rows, types 2 (9 rows), 3 (18), 4 (5), 5 (26), 6 (3). Type 2 methods: 1, 2, 4, 0x16, 0x104, 0x6000.
+Object ID 0x91 is not a key in this table (no row with low halfword 0x0091).
+Thread-context magic: the switch-in routine (0x1C304010) requires the halfword at +2 to be 2, matching the type tag 2 of these rows.
+So the object IDs passed to the lookup (0x30, 0x12, 0x61, 0x114, 0x91, 0xB, 0x16) are resolved outside this static table, at run time.

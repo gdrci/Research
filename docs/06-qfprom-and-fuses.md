@@ -151,6 +151,8 @@ The object-invoke chain in `tz.img` (`data/secure/tz_object_invoke_chain.txt`): 
 
 The context creator is still not found. The switch-in routine (`0x1C304010`) checks that the halfword at `+2` is `0x0002`. No simple constant store writes that value, and ten sites load `0x20000` into unrelated fields. Search log: `data/secure/tz_context_creation_search.txt`.
 
+The static dispatch table in `tz.img` has 61 rows of 16 bytes: an 8-byte key `(type << 16) | method` and a handler pointer. The type tag 2 matches the thread-context check in the switch-in routine. Object ID `0x91` is not a key in this table, so the object is resolved at run time. Observed. Evidence: `data/secure/tz_dispatch_table.txt`.
+
 ## Where the literal appears
 
 Counts from a literal scan (`data/qfprom_literal_candidates.json`):
