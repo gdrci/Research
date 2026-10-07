@@ -149,7 +149,7 @@ SBL1 还通过 `0x14853EF4`–`0x14853F30` 处的小型读取函数直接读取 
 - 接收 SBL1 区域表的服务，以及它对每条记录做什么。
 - 使用 `0x3000` 记录的虚拟化层代码，以及多出的两页是否被使用。
 - 字节 `0x221C8119` 及其相邻字节，用于确认 `gpu_speed_bin` 字段，以及同一字节中还有哪些位。
-- `OEM_rot_pk_hash1_fuse_values` 的读取者，及其对应的 QFPROM 偏移。
+- `OEM_rot_pk_hash1_fuse_values` 的读取者，及其对应的 QFPROM 偏移。该名称是 `tz.img` 中 OEM 配置块（约 `0x13A295`–`0x13A7XX`，约 40 个键）中的一个键，`devcfg.img` 中也有它。通过 ADRP+ADD、ADR、绝对指针和重定位的搜索都未找到对它的代码引用（`data/secure/oem_rot_key_xref_search.txt`）。读取者很可能是对该块的按名称查找。尚未找到。
 - 将 vbmeta 回滚索引与已存储值比较的代码。
 - `featenabler` 中的软件熔丝表。每一项对应一个功能与一个硬件版本。
 

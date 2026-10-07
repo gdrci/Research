@@ -1,0 +1,11 @@
+Search for the reader of OEM_rot_pk_hash1_fuse_values (tz.img file 0x13A3AC, vaddr 0x1C13C3AC; devcfg.img file 0x74B2)
+Checked, none found:
+  - ADRP+ADD and ADR references to the string vaddr (tz.img: scripts xref2)
+  - absolute 32-bit and 64-bit pointers to the string (tz.img)
+  - ELF RELA relocations to the string (tz.img has no .rela sections)
+  - 32-bit offsets from base 0x1C000000 (tz.img)
+
+Context (tz.img):
+  The string is one of about 40 OEM configuration keys in a block at 0x13A295-0x13A7XX (OEM_sec_wdog_bark_time, OEM_rpmb_partition_size, OEM_rot_enable_transfer_APPS, ..., OEM_rot_pk_hash1_fuse_values, OEM_rot_enc_key1_fuse_values, ...).
+  The same key appears in devcfg.img (0x74B2).
+  The fuse writer path for OEM values is FUN_1C0EE8E8 (tz.img), which reads /ac/oem_regions_config and reports 'invoke-oem-spare-fuses failed'.

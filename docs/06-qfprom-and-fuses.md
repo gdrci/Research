@@ -149,7 +149,7 @@ The rollback index in `vbmeta` is `1770249600` (section 03). Anti-rollback needs
 - The service that receives the SBL1 region table, and what it does with each record.
 - The hypervisor code that uses the `0x3000` record, and whether the extra two pages are used.
 - The byte `0x221C8119` and its neighbours, to confirm the `gpu_speed_bin` field and what else sits in those bytes.
-- The reader of `OEM_rot_pk_hash1_fuse_values`, and its QFPROM offset.
+- The reader of `OEM_rot_pk_hash1_fuse_values`, and its QFPROM offset. The name is a key in the OEM configuration block of `tz.img` (around `0x13A295`–`0x13A7XX`, about 40 keys), and it also appears in `devcfg.img`. No code reference to it was found by ADRP+ADD, ADR, absolute pointer or relocation search (`data/secure/oem_rot_key_xref_search.txt`). The reader is probably a name-based lookup over that block. Not found.
 - The code that compares the vbmeta rollback index with a stored value.
 - The software-fuse table in `featenabler`. Each entry names a feature and a hardware revision.
 
