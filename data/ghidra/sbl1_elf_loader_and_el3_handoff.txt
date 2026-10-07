@@ -1,0 +1,14 @@
+SBL1 ELF loader object and EL3 hand-off (sbl1.elf, Ghidra decompiles).
+
+1. ELF-loader interface object built by FUN_14830594 (boot_elf_loader.c): 11 method pointers. Methods used: [2] FUN_148302BC (load segments), [3] FUN_14830280 (verify, then FUN_148301E0), [7] FUN_14830340, [8] FUN_148303A8, [9] FUN_14830424, [10] FUN_1482FC70.
+   [10] verifies, then calls the object at +0x40, method +0x18 (the transfer).
+
+2. EL3 hand-off: FUN_1482CB70 (called at 0x1482CB4C with x0 from the stack)
+   - calls FUN_1482CC30 (clears EL1 system registers, returns void)
+   - elr_el3 = x0 (the entry), spsr_el3 = 0x1C5 (EL1h, DAIF masked), HCR_EL2 |= 1<<31 (RW), SCR_EL3 |= 1 (NS), VMPIDR_EL2 = MPIDR_EL1
+   - clears x0..x30, then eret at 0x1482CC28 into non-secure EL1.
+   So the hand-off is to the non-secure world, not to TrustZone.
+
+3. Candidate entry: uefi.img is ELF64 AArch64? NO: EM_ARM class 64 with entry 0xA7000000 and one PT_LOAD at 0xA7000000 (size 0x289000). abl.img: EM_ARM class 32, entry 0x9FA00000, load 0x9FA00000 (size 0x50000).
+   SBL1 contains no literal 0xA7000000 or 0x9FA00000 (search of mov/movk and data words). The entry is read from the ELF header at run time.
+   So the match is structural. Which image is loaded is not confirmed in code.

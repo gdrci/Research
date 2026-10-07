@@ -101,6 +101,12 @@ QFPROM 引用（见第 06 节）位于一个函数内，在 Ghidra 中命名为 
 
 在紧急下载路径（`boot_dload_entry`，`0x1482E274`）中，SBL1 还以 `(0x14680000, 0x2B000, 0x4001)` 调用加载并认证接口。正常路径中的认证调用尚未找到。进入 TrustZone 的跳转，以及它在 `x0` 中接收的每线程上下文（入口代码中的 `tpidr_el0` 值），也尚未找到。
 
+### SBL1 向非安全世界的跳转
+
+SBL1 通过 ELF 加载器接口对象加载镜像（由 `FUN_14830594` 构建，`boot_elf_loader.c`）。其传输方法（`FUN_1482FC70`）先校验镜像，再调用 `+0x40` 处的对象。EL3 跳转例程 `FUN_1482CB70` 将 `ELR_EL3` 设为 `x0` 中传入的入口，设置 `SPSR_EL3 = 0x1C5`（EL1h），设置 `SCR_EL3.NS` 与 `HCR_EL2.RW`，清零寄存器，然后执行 `eret`。因此 SBL1 跳转到的是 EL1 的非安全世界，而不是 TrustZone。已观察。
+
+`uefi.img` 的 ELF 入口为 `0xA7000000`，且有一个位于同一地址的加载段，与非安全入口一致。SBL1 中没有该地址的字面量，因此入口是在运行时从 ELF 头读取的，此匹配属于结构性匹配。证据见 `data/ghidra/sbl1_elf_loader_and_el3_handoff.txt`。
+
 ## 阶段 2：XBL 配置与转储版本
 
 - `xbl_config.img`（147,456 字节）：打包在 ELF 中的文本配置，XBL 启动时读取。其键与值见下表。

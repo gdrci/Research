@@ -101,6 +101,12 @@ The image regions are registered in `sbl1_config.c`, in a routine at `0x1482DAE4
 
 In the emergency-download path (`boot_dload_entry`, `0x1482E274`), SBL1 also calls a load-and-authenticate interface with `(0x14680000, 0x2B000, 0x4001)`. The normal path's authenticate call is not yet located. The jump into TrustZone and the per-thread context it receives in `x0` (the `tpidr_el0` value in the entry code) are also not yet located.
 
+### The SBL1 hand-off to the non-secure world
+
+SBL1 loads images through an ELF-loader interface object (built by `FUN_14830594`, `boot_elf_loader.c`). Its transfer method (`FUN_1482FC70`) verifies the image and calls the object at `+0x40`. The EL3 hand-off routine `FUN_1482CB70` sets `ELR_EL3` to the entry passed in `x0`, sets `SPSR_EL3 = 0x1C5` (EL1h), sets `SCR_EL3.NS` and `HCR_EL2.RW`, clears the registers, and executes `eret`. So SBL1 hands off to the non-secure world at EL1, not to TrustZone. Observed.
+
+The `uefi.img` ELF has entry `0xA7000000` and one load segment at the same address, which is consistent with the non-secure entry. SBL1 has no literal for that address, so the entry comes from the ELF header at run time and the match is structural. Evidence: `data/ghidra/sbl1_elf_loader_and_el3_handoff.txt`.
+
 ## Stage 2: XBL configuration and ramdump builds
 
 - `xbl_config.img` (147,456 bytes): a text configuration packed into an ELF, read by XBL at boot. Its keys and values are below.
