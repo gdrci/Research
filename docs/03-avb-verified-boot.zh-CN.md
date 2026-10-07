@@ -53,6 +53,18 @@
 
 第一阶段 fstab（第 04 节）中，`vendor` 和 `odm` 使用 `avb=vbmeta`，`system`、`system_ext` 和 `product` 使用 `avb=vbmeta_system`。这些值就是验证器所遵循的链条。已验证。
 
+### `uefi.img` 中的验证启动与设备状态
+
+`uefi.img` 是一个固件卷（`0x1000` 处为 `_FVH`，长度 `0x289000`）。其 DXE 代码位于一个 GUID 定义的段（`1d301fe9-be79-4353-91c2-d23bc959ae0c`）中，该段的载荷是 gzip。解压后为 3,911,688 字节。字符串列表见 `data/strings/uefi_dxe_fv_strings.txt`（18,305 条）。
+
+验证启动模块 `VerifiedBootDxe` 根据其字符串完成以下四项工作：
+- 读写设备状态（`RWDeviceState`）。状态通过 QSEE 应用（`gQcomQseecomProtocolGuid`）、RPMB（`Succeed using rpmb`）或 devinfo 保存。
+- 把启动状态和里程碑发送给 QSEE 应用（`Send_Milestone`、`Reset_State`、`SendBootState`）。
+- 为锁定或解锁设备计算信任根摘要（`SendROT`、`vb_get_digest_locked_device`、`vb_get_digest_unlocked_device`），并用 OEM 证书或内嵌密钥校验签名，还计算证书指纹。
+- 设备解锁时跳过校验（`Device is unlocked! Skipping verification!`）。
+
+镜像中列出的软件熔丝范围有：`FUSE_CONTROLLER_SW_RANGE0`、`_SW_RANGE1`、`_SW_RANGE3`、`_SW_RANGE4`、`_SW_RANGE5`、`VIRT_FUSE_CONTROLLER_SW_RANGE3`，以及 `TME_FUSECONTROLLER`。防回滚状态应当位于这些范围内，但字符串没有说明哪个范围保存 `vbmeta` 索引。RPMB 相关字符串是写入计数器的读取（`rpmb_read_counter_pkt`），不是 `vbmeta` 索引。依据字符串观察得出。结论见 `data/secure/uefi_verified_boot_findings.txt`。
+
 ## 已对照镜像进行的检查
 
 签名与哈希校验直接在解出的镜像上进行。输出见 `data/avb/verify_results.txt`。

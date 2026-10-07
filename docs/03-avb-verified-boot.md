@@ -53,6 +53,18 @@ Anti-rollback only works if the device also keeps a fuse-backed copy of the coun
 
 The first-stage fstab (section 04) uses `avb=vbmeta` for `vendor` and `odm`, and `avb=vbmeta_system` for `system`, `system_ext` and `product`. Those values are the chain that the verifier follows. Verified.
 
+### Verified boot and device state in `uefi.img`
+
+`uefi.img` is a firmware volume (`_FVH` at `0x1000`, length `0x289000`). Its DXE code sits in a GUID-defined section (`1d301fe9-be79-4353-91c2-d23bc959ae0c`) whose payload is gzip. Decompressed, it is 3,911,688 bytes. The string list is `data/strings/uefi_dxe_fv_strings.txt` (18,305 strings).
+
+The verified-boot module `VerifiedBootDxe` does four things, from its strings:
+- It reads and writes device state (`RWDeviceState`). The state goes through a QSEE app (`gQcomQseecomProtocolGuid`), through RPMB (`Succeed using rpmb`), or through devinfo.
+- It sends boot state and milestones to the QSEE app (`Send_Milestone`, `Reset_State`, `SendBootState`).
+- It computes a root-of-trust digest for a locked or unlocked device (`SendROT`, `vb_get_digest_locked_device`, `vb_get_digest_unlocked_device`). It verifies signatures against an OEM certificate or an embedded key, and it computes a certificate fingerprint.
+- It skips verification when the device is unlocked (`Device is unlocked! Skipping verification!`).
+
+The image names software-fuse ranges: `FUSE_CONTROLLER_SW_RANGE0`, `_SW_RANGE1`, `_SW_RANGE3`, `_SW_RANGE4`, `_SW_RANGE5`, `VIRT_FUSE_CONTROLLER_SW_RANGE3`, and a `TME_FUSECONTROLLER`. Anti-rollback state would be in these ranges, but the strings don't say which range holds the `vbmeta` index. The RPMB strings are the write-counter reads (`rpmb_read_counter_pkt`), not the `vbmeta` index. Observed from strings. Findings: `data/secure/uefi_verified_boot_findings.txt`.
+
 ## What was checked against the images
 
 The signature and hash checks were run directly on the extracted images. Output: `data/avb/verify_results.txt`.

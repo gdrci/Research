@@ -1,0 +1,7 @@
+uefi.img DXE volume (gzip section, uncompressed 3,911,688 bytes). Evidence: data/strings/uefi_dxe_fv_strings.txt.
+VerifiedBootDxe: RWDeviceState reads and writes device state through a QSEE app (gQcomQseecomProtocolGuid) or RPMB, or devinfo; logs 'Succeed using rpmb'.
+VerifiedBootDxe SendROT / vb_get_digest_locked_device / vb_get_digest_unlocked_device / vb_verify_hash_oem_certificate / vb_verify_hash_embedded_key / vb_get_cert_fingerprint.
+Send_Milestone, Reset_State, SendBootState, GetKM version call the QSEE app.
+Fuse names: FUSE_CONTROLLER_SW_RANGE0, _SW_RANGE1, _SW_RANGE3, _SW_RANGE4, _SW_RANGE5, VIRT_FUSE_CONTROLLER_SW_RANGE3, TME_FUSECONTROLLER.
+RPMB: rpmb_read_counter_pkt, RPMB listener, ConfigRpmbStorPartitions, ProvisionRpmbTestKey.
+Rollback-index comparison code not identified by strings.
