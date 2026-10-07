@@ -180,7 +180,7 @@ The rollback index in `vbmeta` is `1770249600` (section 03). Anti-rollback needs
 ## Unresolved points
 
 - The lock taken by `FUN_1C03ACAC` (through `FUN_1C062D44`), and the callers of `FUN_14681A68` outside the MMIO path.
-- The service that receives the SBL1 region table, and what it does with each record.
+- The per-record meaning of the SBL1 region table. The receiving service (protocol `0x3E`, the page-table builder) is identified in section 02, but the field layout of each record is not confirmed.
 - Whether the extra two pages of the hypervisor's `0x3000` record are used through computed offsets. No absolute address in `hyp.img` points there.
 - The byte `0x221C8119` and its neighbours, to confirm the `gpu_speed_bin` field and what else sits in those bytes.
 - The reader of `OEM_rot_pk_hash1_fuse_values`, and its QFPROM offset. The name is a key in the OEM configuration block of `tz.img` (around `0x13A295`–`0x13A7XX`, about 40 keys), and it also appears in `devcfg.img`. No code reference to it was found by ADRP+ADD, ADR, absolute pointer or relocation search (`data/secure/oem_rot_key_xref_search.txt`). The reader is probably a name-based lookup over that block. Not found.

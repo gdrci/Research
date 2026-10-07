@@ -66,19 +66,16 @@ The QFPROM reference (section 06) sits inside one function, `FUN_1482CD30` in Gh
 
 The decompiled function (`data/ghidra/sbl1_memmap_decompiled.txt`) builds a table of region records on the stack. Each record holds a start address, a second address, a size and a class value. The class values in the table are `0x8`, `0x22`, `0x23`, `0x25`, `0x26` and `0x27`. Among the regions named are SBL1's own image (`0x14800000`, `0x14824000`), shared IMEM (`0x146AA000`), the TrustZone image (`0x14680000`), and the MMIO blocks `0x221C2000` and `0x221C8000`. The `BootMemMapLib.c` source name is in the same program.
 
-The function does not write the records to hardware itself. It obtains an interface object through a call with protocol ID `0x3E` (`FUN_148298A4`), and then calls the object's first entry with the table. The service is not decompiled yet.
+The function does not write the records to hardware itself. It obtains an interface object through a call with protocol ID `0x3E` (`FUN_148298A4`), and then calls the object's first entry with the table.
 
-What `FUN_148298A4` does (decompiled, `data/ghidra/sbl1_fn148298a4_decompiled.txt`):
+The provider is now known. SBL1 fills its protocol registry from a static table at `0x148B5060` (51 entries, stride `0x30`, read by `FUN_14829BB8`). Entry 40 has ID `0x3E`, and its object is at `0x148B72C0`. The object's first method, `0x14854240`, is the one the memory-map builder calls with `(table, 0, 0)`. Decompiled, it:
 
-```c
-if (param_2 < 100) {                              // protocol id, 0..99
-    if (param_3 != 0) {
-        if (*(int *)(param_1 + param_2*0x18 + 0x20) == 2) {   // state 2 = registered
-            *param_3 = *(undefined8 *)(entry + 0x10);         // the object
-            ...
-```
+- sizes the page tables from the DDR size (`FUN_148549B4`),
+- allocates them (`FUN_148809C4`) and writes the table base and size to the out parameters,
+- walks the region records at `table + 0x18` until it reaches a zero address, and maps each into the tables,
+- sets the MMU attributes before returning.
 
-It is a registry lookup. The registry is a table of 100 entries, 0x18 bytes each. An entry is usable when its state field at `+0x20` is 2, and the object is at `+0x10`. The `sbl1_mc.c` source name is in the same function. Call sites that pass `0x3E` are at `0x1482CCB4`, `0x1482CE4C` (inside `FUN_1482CD30`), `0x1482D0B0` and `0x1482D258` (through the wrapper `FUN_1482D254`). Found by scanning every `mov w1, #0x3E` in SBL1. Observed. The registration code that sets the state to 2 for `0x3E` is not found yet, so the provider of the service is unknown.
+So protocol `0x3E` is the AArch64 stage-1 translation-table service, and the region table is its input. Observed. Evidence: `data/ghidra/sbl1_protocol_table.txt` and `data/ghidra/sbl1_proto3e_mmu_decompiled.txt`.
 
 The exact per-record field meanings are not confirmed, so this document does not assign a size to each record.
 

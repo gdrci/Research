@@ -180,7 +180,7 @@ TME 代码中没有直接构造 QFPROM 或 TrustZone MMIO 地址的常量（`lui
 ## 未解决的问题
 
 - `FUN_1C03ACAC` 所加的锁（经由 `FUN_1C062D44`），以及 `FUN_14681A68` 在 MMIO 路径之外的调用者。
-- 接收 SBL1 区域表的服务，以及它对每条记录做什么。
+- SBL1 区域表中每条记录的含义。接收它的服务（协议 `0x3E`，即页表构建器）已在第 02 节确定，但每条记录的字段布局尚未确认。
 - 多出的两页是否通过计算偏移被使用。`hyp.img` 中没有指向那里的绝对地址。
 - 字节 `0x221C8119` 及其相邻字节，用于确认 `gpu_speed_bin` 字段，以及同一字节中还有哪些位。
 - `OEM_rot_pk_hash1_fuse_values` 的读取者，及其对应的 QFPROM 偏移。该名称是 `tz.img` 中 OEM 配置块（约 `0x13A295`–`0x13A7XX`，约 40 个键）中的一个键，`devcfg.img` 中也有它。通过 ADRP+ADD、ADR、绝对指针和重定位的搜索都未找到对它的代码引用（`data/secure/oem_rot_key_xref_search.txt`）。读取者很可能是对该块的按名称查找。尚未找到。
