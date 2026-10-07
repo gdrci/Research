@@ -185,6 +185,6 @@ TME 代码中没有直接构造 QFPROM 或 TrustZone MMIO 地址的常量（`lui
 - 字节 `0x221C8119` 及其相邻字节，用于确认 `gpu_speed_bin` 字段，以及同一字节中还有哪些位。
 - `OEM_rot_pk_hash1_fuse_values` 的读取者，及其对应的 QFPROM 偏移。该名称是 `tz.img` 中 OEM 配置块（约 `0x13A295`–`0x13A7XX`，约 40 个键）中的一个键，`devcfg.img` 中也有它。通过 ADRP+ADD、ADR、绝对指针和重定位的搜索都未找到对它的代码引用（`data/secure/oem_rot_key_xref_search.txt`）。读取者很可能是对该块的按名称查找。尚未找到。
 - 将 vbmeta 回滚索引与已存储值比较的代码。
-- `featenabler` 中的软件熔丝表。每一项对应一个功能与一个硬件版本。
+- `featenabler` 的显示块基址（`IDeviceRegionFinder` 的区域名称）、许可证签名校验，以及每个 `soc_hw_version` 对应的 SoC 名称。
 
 设备树和覆盖层的检查已经完成。基础设备树只定义了一个熔丝字段（`gpu_speed_bin`）。`dtbo.img` 中的 18 个覆盖层只引用了一个 nvmem 字段，即复位原因，因此没有增加任何熔丝字段。已验证。
