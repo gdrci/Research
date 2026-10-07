@@ -67,6 +67,8 @@
 
 DXE 固件卷中的验证启动代码已反编译，见 `data/ghidra/uefi_verifiedboot_decompiled.txt`。`VerifyImage` 用 SHA-256 对镜像做摘要，用 OEM 证书校验签名，失败时回退到内嵌密钥，并设置启动状态。在这些函数中没有回滚索引比较：`VerifyImage`、`vb_verify_hash_oem_certificate` 和 `vb_verify_hash_embedded_key` 都不比较回滚索引。`RWDeviceState` 读取 `devinfo` 分区和 `SecurityFlag`；对于已锁定的设备，它启动 `keymaster` QSEE 应用，读写已保存的状态。因此已保存的安全状态保存在 Keymaster 之后，RPMB 是替代存储。已观察。在 UEFI 镜像中未找到把 `vbmeta` 回滚索引与已保存状态比较的位置，因此它很可能位于 Keymaster 应用或 Android 启动代码中，而这些不在这些镜像里。
 
+`keymaster.img` 负责 Keymaster 的回滚保护。密钥 blob 携带 OS 版本，并与当前启动的 OS 版本比较（`Current boot osVersion` 和 `Key blob osVersion`）。未通过检查的密钥不会被升级。保存的状态（`sfs_rpmb_set` / `sfs_rpmb_get`）位于 RPMB 中。Keymaster 还为证明记录 `vbmeta` 摘要（`fill_vbmeta_digest`），并处理启动状态与信任根（`KEYMASTER_SET_ROT`、`KEYMASTER_SET_BOOT_STATE`、`KEYMASTER_SET_VERSION`）。这是密钥级别的回滚保护。`vbmeta` 索引比较不在该镜像中。依据字符串观察得出。证据见 `data/secure/keymaster_rollback_strings.txt`。
+
 ## 已对照镜像进行的检查
 
 签名与哈希校验直接在解出的镜像上进行。输出见 `data/avb/verify_results.txt`。

@@ -67,6 +67,8 @@ The image names software-fuse ranges: `FUSE_CONTROLLER_SW_RANGE0`, `_SW_RANGE1`,
 
 The verified-boot code in the DXE volume is decompiled in `data/ghidra/uefi_verifiedboot_decompiled.txt`. `VerifyImage` hashes the image with SHA-256, checks the signature against the OEM certificate, falls back to the embedded key, and sets a boot state. It has no rollback-index logic: no rollback index is compared in `VerifyImage`, `vb_verify_hash_oem_certificate` or `vb_verify_hash_embedded_key`. `RWDeviceState` reads the `devinfo` partition and a `SecurityFlag`, and for a locked device it starts the `keymaster` QSEE app to read and write the stored state. So the stored security state is kept behind Keymaster, with RPMB as an alternative. Observed. The place where a `vbmeta` rollback index is compared against stored state is not found in the UEFI image, so it is probably in the Keymaster app or the Android boot code, which is not in these images.
 
+`keymaster.img` holds the Keymaster rollback protection. Key blobs carry an OS version, which is compared with the current boot OS version (`Current boot osVersion` and `Key blob osVersion`). Keys that fail the check are not upgraded. The stored state (`sfs_rpmb_set` / `sfs_rpmb_get`) is kept in RPMB. Keymaster also records the `vbmeta` digest (`fill_vbmeta_digest`) for attestation, and it handles boot state and root-of-trust (`KEYMASTER_SET_ROT`, `KEYMASTER_SET_BOOT_STATE`, `KEYMASTER_SET_VERSION`). This is key-level rollback. The `vbmeta` index comparison is not in this image. Observed from strings. Evidence: `data/secure/keymaster_rollback_strings.txt`.
+
 ## What was checked against the images
 
 The signature and hash checks were run directly on the extracted images. Output: `data/avb/verify_results.txt`.

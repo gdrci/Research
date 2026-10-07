@@ -1,0 +1,8 @@
+keymaster.img (ELF, 368,640 bytes), strings related to rollback, version, boot state and fuses.
+Boot state and ROT: KEYMASTER_SET_ROT, KEYMASTER_SET_BOOT_STATE, KEYMASTER_SET_VERSION, KEYMASTER_GET_VERSION; km_set_rot; 'Current ROT not set'; 'send_rot_info_to_ese failed, probably because TZ SB service not supported'.
+Key rollback: 'Current boot osVersion: %u' and 'Key blob osVersion: %u' (key-blob OS version compared with the boot OS version); 'RPMB is full. Upgraded key will not be rollback protected.'; ROLLBACK_RESISTANT tag; OS_VERSION tag.
+Patch levels: 'Boot Security Patch Level', 'System Security Patch Level', 'Vendor Security Patch Level', 'OS Version'.
+vbmeta: fill_vbmeta_digest, vbmeta_digest (stored digest for attestation).
+Stored data: sfs_rpmb_set / sfs_rpmb_get / gk_get_rpmb_data; 'RPMB not provisioned or enabled'; 'secboot device && rpmb error, BAILING OUT'.
+Fuses: km_check_is_sw_fuse_blown ('fuse already blown'), qsee_blow_sw_fuse, qsee_is_sw_fuse_blown, qsee_query_rpmb_enablement.
+Not found: the vbmeta rollback-index comparison.
