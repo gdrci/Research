@@ -99,7 +99,7 @@ Featenabler (`featenabler.img`) uses software fuses to enable features per hardw
 
 ### Hypervisor
 
-The hypervisor has 8 literal-pool slots with `0x221C8000`, and its memory map has the `0x3000` record above. It is the most complete picture of the block's mapping.
+The hypervisor has 8 literal-pool slots with `0x221C8000`, and its memory map has the `0x3000` record above. It is the most complete picture of the block's mapping. A scan of `hyp.img` finds no other constant in `0x221C8000`–`0x221CAFFF`: every slot is exactly `0x221C8000`, and there is one `movk` site with `0x221C`. So no code in the image addresses the extra pages by absolute address. Observed. The `0x3000` size may still cover them through a computed offset, which is not checked.
 
 ### TME
 
@@ -153,7 +153,7 @@ The rollback index in `vbmeta` is `1770249600` (section 03). Anti-rollback needs
 
 - The lock taken by `FUN_1C03ACAC` (through `FUN_1C062D44`), and the callers of `FUN_14681A68` outside the MMIO path.
 - The service that receives the SBL1 region table, and what it does with each record.
-- The hypervisor code that uses the `0x3000` record, and whether the extra two pages are used.
+- Whether the extra two pages of the hypervisor's `0x3000` record are used through computed offsets. No absolute address in `hyp.img` points there.
 - The byte `0x221C8119` and its neighbours, to confirm the `gpu_speed_bin` field and what else sits in those bytes.
 - The reader of `OEM_rot_pk_hash1_fuse_values`, and its QFPROM offset. The name is a key in the OEM configuration block of `tz.img` (around `0x13A295`–`0x13A7XX`, about 40 keys), and it also appears in `devcfg.img`. No code reference to it was found by ADRP+ADD, ADR, absolute pointer or relocation search (`data/secure/oem_rot_key_xref_search.txt`). The reader is probably a name-based lookup over that block. Not found.
 - The code that compares the vbmeta rollback index with a stored value.

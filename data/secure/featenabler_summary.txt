@@ -1,0 +1,20 @@
+featenabler.img (ELF64 AArch64, TA). Evidence from the image; disassembly by capstone.
+
+Strings: 'FeatureEnabler_Handler', 'LicenseValidateAndEnable_Handler', 'LicenseValidator_Handler', 'GetEnabledFeatures_Handler', 'GetInstalledFeatures_Handler', 'LicenseValidatorTest_Handler'
+CBOR map keys: FeatureID, ModuleID, Expiration, ValidityCounter, ExtraData, CommonData, LicenseeHash, Response, Flag, Result, SerialNum, LicenseRestriction, blobVersion, FeatureIDs
+Storage: RPMB via qsee_stor_* (RPMBUtils_*); 'FeatureEnabler - RPMB has no data'
+Fuses: ConfigureSwFuse (DisplayCore_ConfigureSwFuse, DisplayCore_GetSwFuseStatus, DisplayCore_ReadSwFuseStatus), imported qsee_is_sw_fuse_blown
+Hardware: soc_hw_version via CommonUtils_GetSocHwVersion / IDeviceID_getHWVersion; HWIOUtils_Read/Write on a region found by IDeviceRegionFinder
+
+Feature-name function at 0x1C58 (vaddr; file 0x1C58 with segment base 0x1000 vaddr 0):
+  w1 == 2  -> 'Display_QLTM'
+  w1 == 0xC -> 'Display_SPR'
+  w1 == 0xD -> 'Display_Demura'
+  w1 == 0xE -> 'Display_Allocate_Cache_Signal'
+  other     -> 'Not supported'
+  (ADRP base 0x9000 + ADD; string at file offset 0xA95C is vaddr 0x995C)
+Display_Resolution_Limiter string at file 0xAB75 is referenced by a separate switch at 0x24AC (jump table at 0x2470).
+
+Software-fuse configure path (DisplayCore_ConfigureSwFuse, reference near 0x1CD0): the ID is shifted left by 2 and offset by 8 (w20 = id*4 + 8) before the fuse call. The fuse ID mapping is not yet confirmed.
+
+Not established: the software-fuse ID per feature, the soc_hw_version gating table, and the license verification key.
