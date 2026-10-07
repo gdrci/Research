@@ -65,6 +65,8 @@
 
 镜像中列出的软件熔丝范围有：`FUSE_CONTROLLER_SW_RANGE0`、`_SW_RANGE1`、`_SW_RANGE3`、`_SW_RANGE4`、`_SW_RANGE5`、`VIRT_FUSE_CONTROLLER_SW_RANGE3`，以及 `TME_FUSECONTROLLER`。防回滚状态应当位于这些范围内，但字符串没有说明哪个范围保存 `vbmeta` 索引。RPMB 相关字符串是写入计数器的读取（`rpmb_read_counter_pkt`），不是 `vbmeta` 索引。依据字符串观察得出。结论见 `data/secure/uefi_verified_boot_findings.txt`。
 
+DXE 固件卷中的验证启动代码已反编译，见 `data/ghidra/uefi_verifiedboot_decompiled.txt`。`VerifyImage` 用 SHA-256 对镜像做摘要，用 OEM 证书校验签名，失败时回退到内嵌密钥，并设置启动状态。在这些函数中没有回滚索引比较：`VerifyImage`、`vb_verify_hash_oem_certificate` 和 `vb_verify_hash_embedded_key` 都不比较回滚索引。`RWDeviceState` 读取 `devinfo` 分区和 `SecurityFlag`；对于已锁定的设备，它启动 `keymaster` QSEE 应用，读写已保存的状态。因此已保存的安全状态保存在 Keymaster 之后，RPMB 是替代存储。已观察。在 UEFI 镜像中未找到把 `vbmeta` 回滚索引与已保存状态比较的位置，因此它很可能位于 Keymaster 应用或 Android 启动代码中，而这些不在这些镜像里。
+
 ## 已对照镜像进行的检查
 
 签名与哈希校验直接在解出的镜像上进行。输出见 `data/avb/verify_results.txt`。
