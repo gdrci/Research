@@ -18,18 +18,18 @@
 同一颗无线芯片在两处使用了两个名称，且二者并不完全一致：
 
 - 蓝牙补丁横幅写的是 `PF=WCN7850ROM=`（已观察，见上文第 07 节）。
-- 设备树把蓝牙节点命名为 `/soc/bt_wcn6x5x`，`compatible = "qcom,kiwi"`，其供电名为 `qcom,bt-vdd-aon`、`qcom,bt-vdd-dig`、`qcom,bt-vdd-rfaOp8`、`qcom,bt-vdd-rfa2` 与 `qcom,bt-vdd18-aon`，并有蓝牙与 WLAN 的复位 GPIO（已观察，`data/android/vendor_ramdisk/vendor_dtb_dump.txt`）。
+- 设备树把蓝牙节点命名为 `/soc/bt_wcn6x5x`，`compatible = "qcom,kiwi"`，其供电名为 `qcom,bt-vdd-aon-supply`、`qcom,bt-vdd-dig-supply`、`qcom,bt-vdd-io-supply`、`qcom,bt-vdd-rfaOp8_supply`（转储中按此拼写，带下划线）、`qcom,bt-vdd-rfa2-supply` 与 `qcom,bt-vdd18-aon-supply`，每项均有一个 `-config` 配套项，复位线为 `qcom,bt-reset-gpio`（已观察，`data/android/vendor_ramdisk/vendor_dtb_dump.txt`）。
 - WCN7850 蓝牙部分的 Linux 绑定（`qcom,wcn7850-bt`）使用另一套供电名（`vddaon`、`vdddig`、`vddrfa0p8`、`vddrfa1p2`、`vddrfa1p8`、`vddrfacmn`、`vddwlcx`、`vddwlmx`）。因此设备树沿用的是较早的 WCN6x5x 命名，并非严格对应 WCN7850 绑定。
 
 公开佐证（来自搜索结果，未打开原文）：上游 Linux `ath12k` 驱动支持 WCN7850 的 hw2.0 固件，公开固件树中的 WLAN 构建字符串形如 `WLAN.HMT.1.1.c5-00284-QCAHMTSWPL_V1.0_V2.0_SILICONZ-3`。设备自身的标签为 `WLAN.HMT.1.1.c4-00443-…`，是同一家族字符串的较早构建。公开树中的板级数据文件为 `ath12k/WCN7850/hw2.0/board-2.bin`，与 `amss.bin`、`m3.bin` 一同出现在首次加入 WCN7850 的 linux-firmware 合并请求中，搜索结果将其定在 2023 年 12 月。引用的合并请求为 [ath10k/ath11k/ath12k 固件 2023-12-21](https://lists.infradead.org/pipermail/ath11k/2023-December/005186.html)，该页面未打开，因此此合并请求中的 WCN7850 内容未经核对。搜索结果中的 WHENCE 未列出 `hmtbtfw20.tlv`，因此蓝牙补丁文件名无法由该来源确认。设备附带的是 `bdwlan.elf`，而非 `board-2.bin`，因此设备的 WLAN 数据打包方式与上游布局不同。根据字符串推断，未对固件本身核对。
 
 WLAN 一侧使用同一家族名称：调制解调器目录为 `kiwi`，Wi-Fi 配置目录为 `kiwi_v2`（第 07、16 节）。推断：`kiwi` 是该无线芯片家族的内部平台名，设备树即为其编写。
 
-参考架构。高通 WCN6856 概述（文档 80-WL542-10，与本芯片同一代但为不同型号）展示了该家族可能共享的结构：PMU、晶振与时钟接口、OTP、RFFE 控制信号、蓝牙子系统，以及两组 WLAN MAC/PHY。其主机接口为蓝牙 HCI 使用 UART 或 USB，WLAN 使用 PCIe，蓝牙音频使用 Slimbus、PCM 或 I2S。这与本设备所见一致：蓝牙使用 `ttyHS0` 与 `hs_uart_operation`（本节），WLAN 使用 PCIe 上的 `mhi0`（第 11 节），音频使用 Slimbus 与 SLIM-DEV1 后端（第 12 节）。WCN6856 是不同型号，因此这只是架构参考。推断，未对照 WCN7850 数据手册核对（该手册尚未阅读）。
+参考架构（背景知识，并非来自本仓库中的文件）。高通 WCN6856 概述（文档 80-WL542-10，与本芯片同一代但为不同型号）展示了该家族可能共享的结构：PMU、晶振与时钟接口、OTP、RFFE 控制信号、蓝牙子系统，以及两组 WLAN MAC/PHY。其主机接口为蓝牙 HCI 使用 UART 或 USB，WLAN 使用 PCIe，蓝牙音频使用 Slimbus、PCM 或 I2S。这与本设备所见一致：蓝牙使用 `ttyHS0` 与 `hs_uart_operation`（本节），WLAN 使用 PCIe 上的 `mhi0`（第 11 节），音频使用 Slimbus 与 SLIM-DEV1 后端（第 12 节）。WCN6856 是不同型号，因此这只是架构参考。推断，未对照 WCN7850 数据手册核对（该手册尚未阅读）。
 
 ## WPSS：Wi-Fi 远程子系统
 
-XBL 配置（`data/strings/xbl_config.txt`）中有两个该子系统的节，`[FULL_WPSS]` 与 `[CORE_WPSS]`。两者都是 `Type = elf_split`、`ImagePath = \image\wpss`、`SubsysID = 6`，并预留内存 `ResvMemoryStart = 0x85600000`。分区标签分别为 `modem_a`（完整版）与 `core_nhlos_a`（核心版）。两者的 `ProxyGuid` 相同，均为 `61513695-E0C6-4F07-BF41-A51A7770640E`。已观察。节内容见 `data/xbl/wpss_config_sections.txt`。
+XBL 配置（`data/strings/xbl_config.txt`）中有两个该子系统的节，`[FULL_WPSS]` 与 `[CORE_WPSS]`。两者都是 `Type = elf_split`、`ImagePath = \image\wpss`、`SubsysID = 6`，并预留内存 `ResvMemoryStart = 0x85600000`。分区标签分别为 `modem_a`（完整版）与 `core_nhlos_a`（核心版）。两者的 `ProxyGuid` 相同，均为 `1CAAECA0-978B-4472-8B36-1ACD7F06B713`，并且都设置了 `ResvMemorySize = 0x01900000`。GUID `61513695-E0C6-4F07-BF41-A51A7770640E` 属于 `[MODEM]` 节（SubsysID 4），而不属于 WPSS。已观察。节内容见 `data/xbl/wpss_config_sections.txt`。
 
 PIL 代理列表中也有 `PIL_WPSS`。已观察。
 
@@ -39,7 +39,7 @@ PIL 代理列表中也有 `PIL_WPSS`。已观察。
 - 其下五个 WLAN 通道：`qcom,smp2p-wlan-1-in`、`-1-out`、`-2-in`、`-2-out` 与 `-3-out`。已观察。
 - `/soc/wpss_etm` 的 coresight 路径，包含 funnel 与 TPDM 节点（`funnel_wpss`、`tpdm_wpss`、`tpdm_wpss1`）。已观察。跟踪路径未作进一步分析。
 
-WPSS 固件本身（`wpss.mdt` 或 `wpss.b*`）不在 OTA 中。已检查：对每个已提取镜像搜索 `wpss`，只找到配置与表格，以及 ADSP、CDSP 段（`modem.img`）中的 QDSS 跟踪字符串。modem FAT 镜像中没有 `wpss` 文件，`vendor`、`odm`、`system_ext`、`product` 中也没有。XBL 条目把镜像指定给 `modem_a` 分区，因此该镜像很可能位于 OTA 未包含的分区中。推断。
+WPSS 固件本身（`wpss.mdt` 或 `wpss.b*`）不在 OTA 中。已检查：对每个已提取镜像搜索 `wpss`，只找到配置与表格，以及 ADSP、CDSP 段（`modem.img`）中的 QDSS 跟踪字符串。modem FAT 镜像中没有 `wpss` 文件，`vendor`、`odm`、`system_ext`、`product` 中也没有。`[FULL_WPSS]` 条目指定 `modem_a`，`[CORE_WPSS]` 条目指定 `core_nhlos_a`。`modem.img` 在 OTA 中且没有 WPSS 文件，因此该 WPSS 镜像很可能位于 OTA 未携带的分区或文件中，或以搜索未能匹配的形式存在。推断。
 
 init 脚本在 Wi-Fi 服务启动之前写入 ICNSS 驱动（见下）。已观察：
 
@@ -63,7 +63,7 @@ init 脚本在 Wi-Fi 服务启动之前写入 ICNSS 驱动（见下）。已观�
 
 调用链是 `wlan.ko` 位于 `cnss2` 之上，`cnss2` 通过 QMI 与固件通信。`icnss2` 是 ICNSS 路径，即较早的平台驱动。模块名为已观察。WPSS 启动使用两者中的哪一个，是根据 init 脚本写入 `/sys/kernel/icnss` 推断的。
 
-厂商固件目录中有 `wlan` 子目录（`fs/vendor/firmware/wlan/qca_cld`），其中包含三个符号链接，在 OTA 中全部失效：
+厂商固件目录中有 `wlan` 子目录（`fs/vendor/firmware/wlan/qca_cld`），其中包含三个符号链接。其中两个在 OTA 中失效，因为它们的目标位于 `/mnt/vendor/persist`；第三个在镜像内可以解析：
 
 - `WCNSS_qcom_cfg.ini` 指向 `/vendor/etc/wifi/kiwi_v2/WCNSS_qcom_cfg.ini`（该目标存在于镜像中）。
 - `wlan.cfg` 指向 `/mnt/vendor/persist/wlan.cfg`。
@@ -75,13 +75,13 @@ init 脚本在 Wi-Fi 服务启动之前写入 ICNSS 驱动（见下）。已观�
 
 来源：`fs/vendor/etc/init/`（`data/userspace/wifi_bt_init_and_modules.txt`）。已观察。
 
-- `init.vendor.wlan.rc`：上述早期启动写入，以及 `wifi_qos_daemon`（类 `late_start`，用户 `wifi`，能力 `NET_ADMIN`）。
-- `vendor.lowi` 运行 `/vendor/bin/lowirpcd`，一个高通低功耗 Wi-Fi RPC 守护进程（名称来自文件）。根据名称推断。
+- `init.vendor.wlan.rc`：上述早期启动写入，以及 `wifi_qos_daemon`（类 `late_start`，用户 `wifi`，组 `net_admin`）。
+- `vendor/etc/init/vendor.wlan.lowirpcd.rc` 存在于 init 文件列表中（`data/userspace/init_rc_files.txt`），因此预期存在 `lowirpcd` 服务。其服务正文不在已提取的列表中。根据文件名推断。
 - `vendor.wifi_hal_legacy` 运行 `/vendor/bin/hw/android.hardware.wifi@1.0-service-lazy`，即高通 Wi-Fi HAL。
-- `vendor.oculus.wifi-hal-1-0` 运行 `/vendor/bin/hw/vendor.oculus.hardware.wifi@1.0-service`。其二进制导出 `vendor::oculus::hardware::wifi::V1_0::IWifi` 并注册为 HIDL 服务。由二进制符号观察得出。这是 Meta 一侧的 Wi-Fi 接口。
+- `vendor.oculus.wifi-hal-1-0` 运行 `/vendor/bin/hw/vendor.oculus.hardware.wifi@1.0-service`。名称 `vendor.oculus.hardware.wifi` 出现在 `data/userspace/meta_hal_names.txt` 中，SELinux hwservice 上下文为其列出了 `IWifi`（`data/android/selinux/vendor_hwservice_contexts`）。本次未检查该二进制的导出符号。这是 Meta 一侧的 Wi-Fi 接口名称。
 - `android.hardware.bluetooth@1.0-service-qti` 以 `vendor.bluetooth-1-0-qti` 的名义运行，类别为 `hal`，具有 `BLOCK_SUSPEND` 与 `NET_ADMIN` 能力。在 `boot` 阶段，其 UART 控制节点 `/sys/class/tty/ttyHS0/device/hs_uart_operation` 被设为模式 0660、属主 `bluetooth`。已观察。该节点位于 `ttyHS0`，这是蓝牙驱动使用的高速 UART。根据节点名推断。
 
-`vendor/lib64` 中的 supplicant 与 HAL 库包括标准的 `android.hardware.wifi.supplicant@1.0` 至 `@1.5` 以及 `android.hardware.wifi.hostapd@1.0` 至 `@1.3`。由文件名观察得出。
+`vendor.img` 的字符串中列有标准的 `android.hardware.wifi.supplicant@1.0` 至 `@1.5` 以及 `android.hardware.wifi.hostapd@1.0` 至 `@1.3` 接口（由 `vendor.img` 的字符串观察得出）。库文件本身不在仓库列表中。
 
 ## Wi-Fi 配置
 
@@ -89,7 +89,7 @@ init 脚本在 Wi-Fi 服务启动之前写入 ICNSS 驱动（见下）。已观�
 
 - `kiwi_v2/WCNSS_qcom_cfg.ini`：驱动的出厂默认覆盖项。示例：`gDot11Mode=0`、`gEnableDFSMasterCap=1`、`FastRoamEnabled=1`、`gEnableTXSTBC=1`、`gEnableTxSUBeamformer=1`、`gVhtMpduLen=2`。`kiwi_v2` 这一名称与调制解调器镜像中的 `kiwi` 目录相同；两者是否相关属于推断。
 - `wpa_supplicant.conf`、`wpa_supplicant_overlay.conf`、`p2p_supplicant_overlay.conf`：supplicant 配置。
-- `icm.conf`：高通许可证头（2017、2019、2022）。正文未解码。
+- `icm.conf`：配置文件，含 `num_devices=1`、`num_radios=1` 以及一个通信接口选项（`ioctl` 或 `cfg`），由 `vendor.img` 的字符串读取。其中没有许可证年份。
 - `vendor_cmd.xml`：HAL 的厂商命令表。
 
 ## 固件

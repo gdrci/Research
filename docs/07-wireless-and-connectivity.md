@@ -18,18 +18,18 @@ This section covers the Wi-Fi and Bluetooth stack as it is laid out in the OTA: 
 Two names appear for the same radio, and they do not fully agree:
 
 - The Bluetooth patch banner says `PF=WCN7850ROM=` (observed, above).
-- The device tree names the Bluetooth node `/soc/bt_wcn6x5x` with `compatible = "qcom,kiwi"`, and the supplies are named `qcom,bt-vdd-aon`, `qcom,bt-vdd-dig`, `qcom,bt-vdd-rfaOp8`, `qcom,bt-vdd-rfa2` and `qcom,bt-vdd18-aon`, with reset GPIOs for Bluetooth and WLAN (observed, `data/android/vendor_ramdisk/vendor_dtb_dump.txt`).
+- The device tree names the Bluetooth node `/soc/bt_wcn6x5x` with `compatible = "qcom,kiwi"`, and the supplies are `qcom,bt-vdd-aon-supply`, `qcom,bt-vdd-dig-supply`, `qcom,bt-vdd-io-supply`, `qcom,bt-vdd-rfaOp8_supply` (underscore as stored in the dump), `qcom,bt-vdd-rfa2-supply` and `qcom,bt-vdd18-aon-supply`, each with a `-config` companion, and the reset line is `qcom,bt-reset-gpio` (observed, `data/android/vendor_ramdisk/vendor_dtb_dump.txt`).
 - The Linux binding for the WCN7850 Bluetooth part (`qcom,wcn7850-bt`) uses different supply names (`vddaon`, `vdddig`, `vddrfa0p8`, `vddrfa1p2`, `vddrfa1p8`, `vddrfacmn`, `vddwlcx`, `vddwlmx`). So the device tree follows the older WCN6x5x naming, not the WCN7850 binding exactly.
 
 Public corroboration (search results, not opened): the upstream Linux `ath12k` driver supports WCN7850 with hw2.0 firmware, and the public firmware tree carries a WLAN build string of the form `WLAN.HMT.1.1.c5-00284-QCAHMTSWPL_V1.0_V2.0_SILICONZ-3`. The device's own tag is `WLAN.HMT.1.1.c4-00443-…`, the same family string with an earlier build. The public tree names the board file `ath12k/WCN7850/hw2.0/board-2.bin`, added with `amss.bin` and `m3.bin` in the first WCN7850 linux-firmware pull, which a search result dates to December 2023. The cited pull is [ath10k/ath11k/ath12k firmware 2023-12-21](https://lists.infradead.org/pipermail/ath11k/2023-December/005186.html); that page was not opened, so the WCN7850 content of this pull is not checked. The public WHENCE does not list a `hmtbtfw20.tlv` in the search results, so the Bluetooth patch name is not confirmed from that source. The device ships `bdwlan.elf`, not `board-2.bin`, so the device's WLAN data is packaged differently from the upstream layout. Inferred from the strings, not checked against the firmware itself.
 
 The WLAN side uses the same family name: the modem directory is `kiwi` and the Wi-Fi config directory is `kiwi_v2` (sections 07 and 16). Inferred: `kiwi` is the internal platform name of this radio family, and the device tree is written for it.
 
-Reference architecture. The Qualcomm WCN6856 overview (document 80-WL542-10, a different chip from the same generation) shows the structure that this family is likely to share: a PMU, a crystal and clock interface, OTP, RFFE control signals, a Bluetooth subsystem, and two WLAN MAC/PHY pairs. Its host interfaces are UART or USB for Bluetooth HCI, PCIe for WLAN, and Slimbus, PCM or I2S for Bluetooth audio. Those host interfaces match what this device shows: `ttyHS0` with `hs_uart_operation` for Bluetooth (this section), `mhi0` on PCIe for WLAN (section 11), and the Slimbus and SLIM-DEV1 back ends for audio (section 12). The WCN6856 is a different part, so this is an architecture reference only. Inferred, not checked against the WCN7850 datasheet, which has not been read.
+Reference architecture (background knowledge, not from a file in this repository). The Qualcomm WCN6856 overview (document 80-WL542-10, a different chip from the same generation) shows the structure that this family is likely to share: a PMU, a crystal and clock interface, OTP, RFFE control signals, a Bluetooth subsystem, and two WLAN MAC/PHY pairs. Its host interfaces are UART or USB for Bluetooth HCI, PCIe for WLAN, and Slimbus, PCM or I2S for Bluetooth audio. Those host interfaces match what this device shows: `ttyHS0` with `hs_uart_operation` for Bluetooth (this section), `mhi0` on PCIe for WLAN (section 11), and the Slimbus and SLIM-DEV1 back ends for audio (section 12). The WCN6856 is a different part, so this is an architecture reference only. Inferred, not checked against the WCN7850 datasheet, which has not been read.
 
 ## WPSS, the Wi-Fi remote subsystem
 
-The XBL configuration (`data/strings/xbl_config.txt`) has two sections for the subsystem, `[FULL_WPSS]` and `[CORE_WPSS]`. Both are `Type = elf_split` with `ImagePath = \image\wpss` and `SubsysID = 6`. They reserve memory at `ResvMemoryStart = 0x85600000`. The partition labels are `modem_a` (full) and `core_nhlos_a` (core). Both carry the same `ProxyGuid`, `61513695-E0C6-4F07-BF41-A51A7770640E`. Observed. The sections are in `data/xbl/wpss_config_sections.txt`.
+The XBL configuration (`data/strings/xbl_config.txt`) has two sections for the subsystem, `[FULL_WPSS]` and `[CORE_WPSS]`. Both are `Type = elf_split` with `ImagePath = \image\wpss` and `SubsysID = 6`. They reserve memory at `ResvMemoryStart = 0x85600000`. The partition labels are `modem_a` (full) and `core_nhlos_a` (core). Both carry the same `ProxyGuid`, `1CAAECA0-978B-4472-8B36-1ACD7F06B713`, and both set `ResvMemorySize = 0x01900000`. The GUID `61513695-E0C6-4F07-BF41-A51A7770640E` belongs to the `[MODEM]` section (SubsysID 4), not to WPSS. Observed. The sections are in `data/xbl/wpss_config_sections.txt`.
 
 The PIL proxy list also names `PIL_WPSS`. Observed.
 
@@ -39,7 +39,7 @@ The device tree (`data/android/vendor_ramdisk/vendor_dtb_dump.txt`) defines the 
 - Five WLAN channels under it: `qcom,smp2p-wlan-1-in`, `-1-out`, `-2-in`, `-2-out` and `-3-out`. Observed.
 - A coresight path `/soc/wpss_etm` with a funnel and TPDM nodes (`funnel_wpss`, `tpdm_wpss`, `tpdm_wpss1`). Observed. The trace path is not analysed further.
 
-The WPSS firmware file itself (`wpss.mdt` or `wpss.b*`) is not in the OTA. Checked: a search of every extracted image for `wpss` found only configuration and tables, and QDSS trace strings inside the ADSP and CDSP segments (`modem.img`). The modem FAT image has no `wpss` file, and `vendor`, `odm`, `system_ext` and `product` have none. The XBL entry names `modem_a` as the partition for the image, so the image is most likely in a partition that the OTA does not include. Inferred.
+The WPSS firmware file itself (`wpss.mdt` or `wpss.b*`) is not in the OTA. Checked: a search of every extracted image for `wpss` found only configuration and tables, and QDSS trace strings inside the ADSP and CDSP segments (`modem.img`). The modem FAT image has no `wpss` file, and `vendor`, `odm`, `system_ext` and `product` have none. The `FULL_WPSS` entry names `modem_a` and the `CORE_WPSS` entry names `core_nhlos_a`. `modem.img` is in the OTA and has no WPSS file, so the WPSS image is probably in a partition or file the OTA does not carry, or is in a form the search did not match. Inferred.
 
 The init script writes to the ICNSS driver before the Wi-Fi service starts (below). Observed:
 
@@ -63,7 +63,7 @@ From `data/android/vendor_ramdisk/modules_modinfo.tsv`. Observed.
 
 The chain is `wlan.ko` on top of `cnss2`, which talks to the firmware over QMI. `icnss2` is the ICNSS path, the older platform driver. The module names are observed. Which of the two platform drivers the WPSS boot uses is inferred from the init script writing to `/sys/kernel/icnss`.
 
-The vendor firmware directory has `wlan` as a subdirectory (`fs/vendor/firmware/wlan/qca_cld`). It contains three symbolic links, all dangling in the OTA:
+The vendor firmware directory has `wlan` as a subdirectory (`fs/vendor/firmware/wlan/qca_cld`). It contains three symbolic links. Two are dangling in the OTA, because their targets are on `/mnt/vendor/persist`. The third resolves inside the image:
 
 - `WCNSS_qcom_cfg.ini` to `/vendor/etc/wifi/kiwi_v2/WCNSS_qcom_cfg.ini` (this target exists in the image)
 - `wlan.cfg` to `/mnt/vendor/persist/wlan.cfg`
@@ -75,13 +75,13 @@ The two `/mnt/vendor/persist` targets are written on the device at run time (the
 
 From `fs/vendor/etc/init/` (`data/userspace/wifi_bt_init_and_modules.txt`). Observed.
 
-- `init.vendor.wlan.rc`: the early-boot writes above, and `wifi_qos_daemon` (class `late_start`, user `wifi`, `NET_ADMIN`).
-- `vendor.lowi` runs `/vendor/bin/lowirpcd`, a Qualcomm low-power Wi-Fi RPC daemon (name from the file). Inferred from the name.
+- `init.vendor.wlan.rc`: the early-boot writes above, and `wifi_qos_daemon` (class `late_start`, user `wifi`, group `net_admin`).
+- `vendor/etc/init/vendor.wlan.lowirpcd.rc` exists in the init file list (`data/userspace/init_rc_files.txt`), so a `lowirpcd` service is expected. Its service body is not in the extracted listing. Inferred from the file name.
 - `vendor.wifi_hal_legacy` runs `/vendor/bin/hw/android.hardware.wifi@1.0-service-lazy`, the Qualcomm Wi-Fi HAL.
-- `vendor.oculus.wifi-hal-1-0` runs `/vendor/bin/hw/vendor.oculus.hardware.wifi@1.0-service`. Its binary exports `vendor::oculus::hardware::wifi::V1_0::IWifi` and registers it as a HIDL service. Observed from the binary's symbols. This is the Meta-side Wi-Fi interface.
+- `vendor.oculus.wifi-hal-1-0` runs `/vendor/bin/hw/vendor.oculus.hardware.wifi@1.0-service`. The name `vendor.oculus.hardware.wifi` appears in `data/userspace/meta_hal_names.txt`, and the SELinux hwservice contexts list `IWifi` for it (`data/android/selinux/vendor_hwservice_contexts`). The exported symbols of the binary were not checked here. This is the Meta-side Wi-Fi interface.
 - `android.hardware.bluetooth@1.0-service-qti` runs as `vendor.bluetooth-1-0-qti` in class `hal`, with `BLOCK_SUSPEND` and `NET_ADMIN`. On `boot` its UART control node `/sys/class/tty/ttyHS0/device/hs_uart_operation` is set to mode 0660, owner `bluetooth`. Observed. The node is on `ttyHS0`, which is the high-speed UART the Bluetooth driver uses. Inferred from the node name.
 
-The supplicant and HAL libraries in `vendor/lib64` include the standard `android.hardware.wifi.supplicant@1.0` to `@1.5` and `android.hardware.wifi.hostapd@1.0` to `@1.3`. Observed from the file names.
+The vendor image's strings name the standard `android.hardware.wifi.supplicant@1.0` to `@1.5` and `android.hardware.wifi.hostapd@1.0` to `@1.3` interfaces (observed in the strings of `vendor.img`). The library files themselves are not in the repository listing.
 
 ## Wi-Fi configuration
 
@@ -89,7 +89,7 @@ Files under `vendor/etc/wifi/` (`data/userspace/wifi_config_and_symlinks.txt`). 
 
 - `kiwi_v2/WCNSS_qcom_cfg.ini`: the driver's factory-default overrides. Examples: `gDot11Mode=0`, `gEnableDFSMasterCap=1`, `FastRoamEnabled=1`, `gEnableTXSTBC=1`, `gEnableTxSUBeamformer=1`, `gVhtMpduLen=2`. The `kiwi_v2` name is the same as the `kiwi` directory in the modem image; whether they are related is inferred.
 - `wpa_supplicant.conf`, `wpa_supplicant_overlay.conf`, `p2p_supplicant_overlay.conf`: supplicant configuration.
-- `icm.conf`: a Qualcomm licence header (2017, 2019, 2022). Its body was not decoded.
+- `icm.conf`: a configuration file with `num_devices=1`, `num_radios=1` and a communication-interface option (`ioctl` or `cfg`), read from the strings of `vendor.img`. It has no licence years.
 - `vendor_cmd.xml`: vendor command table for the HAL.
 
 ## Firmware
