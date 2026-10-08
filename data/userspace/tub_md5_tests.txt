@@ -1,0 +1,34 @@
+mcu.core1.default.rt700.tub (87,552 bytes), manifest at file offset 0x14E00 (the JSON with "md5").
+Manifest fields: deployment_methods ["TBSP"], host_assets (debug_frame.bin, logger_dict_generated.json,
+tel_dict_generated.json, zephyr_log_dict_generated.json, configs.json), md5 3d498ec201781cb20dcead30ca031032,
+platform greatwhite-rt700, target_assets [core1.bin, layout load_addr 544653312 (0x2076C000), offset 140115968 (0x85A0000),
+type bin, signature 128 hex chars], version be0e82d710b3e3fe059f65ffa6d749b964262a2b.
+Note: deployment_methods is "TBSP" in this file (an earlier draft of docs 09 said "RPC"; corrected).
+
+Tests (md5 of the stored bytes, no match):
+  1. Every byte range d[s:e] with s in {0,0x10,0x20,0x40,0x80,0x100,0x200,0x400,0x1000} and every e up to EOF: no hit.
+  2. Prefixes d[:e] for e = manifest start 0x14E00 and EOF 0x15600: no hit.
+  3. Manifest JSON bytes (raw, stripped, NUL-terminated variants): no hit.
+  4. Manifest JSON with the "md5" key removed, serialised as sorted/ordered, compact and indent 2/4: no hit.
+
+Payload character (observed):
+  - Header: "core1.bin" NUL-padded to 0x20 bytes at offset 0.
+  - Shannon entropy per 8 KB block: 6.6-7.1 bits for 0x0000-0xC000, 4.1-4.6 for 0xC000-0x14000, 2.8 for 0x14000-0x14E00.
+  - No zlib, gzip, LZ4, zstd or xz magic anywhere in the file.
+  Interpretation (inferred): the core1 payload is stored encrypted or otherwise non-plain. The md5 is not of a plain
+  byte range of this file. The hashed bytes may be the decrypted image, which is not available here.
+
+Survey of every .tub in vendor/firmware (manifest "deployment_methods", manifest "md5", file size, file md5):
+  file                       deployment  manifest md5                      size     file md5
+  case.default.tub           RPC         9005aaa65f50fd1c9decf3f2a19a3731  85504    cd101cf1ed50caf9ca47bdfacc44084d
+  case.default.lynx.tub      RPC         9005aaa65f50fd1c9decf3f2a19a3731  85504    cd101cf1ed50caf9ca47bdfacc44084d (identical to case.default.tub)
+  case.default.cabo.tub      RPC         f6ab90a9ff8833e0284ef5cca7648bde  89600    7f8b5ca05655f1629565fe1c1df2bb85
+  case.default.cocos.tub     TBSP        29a486c5ecc75fadd2da4b04eee5d88d  55808    e70a6c6262df09f22e37b654443961bb
+  touch.default.tub          RPC         c0f416786fc623c84b0966fd9847f9a2  104960   c72e3079114f2546e161134d61eece74
+  dsp.default.rt700.tub      TBSP        869a093ac9348d5b476eeafb4a910ab0  4429312  206620cf9fc7ca66558dcc058ec951ea
+  spl2.default.rt700.tub     ISP         f7fdd4a41addfa7d7586f6e1b36df5c7  573440   e47f9a797b9747d725afcc9b31e83ba2
+  mcu.default.rt700.tub      TBSP        8589b5e414f8352e39106fc3796ad050  8483328  7e628227b425d0ce2cf97caf6556e7c3
+  mcu.core1.default.rt700.tub TBSP       3d498ec201781cb20dcead30ca031032  87552    ffa8620ceac8cd4e71e69db2ce4500ce
+
+Range scan (same method as above, starts 0..0x1000, every end) on the small files: no match for
+case.default.tub, case.default.cabo.tub, case.default.cocos.tub, touch.default.tub, spl2.default.rt700.tub.
