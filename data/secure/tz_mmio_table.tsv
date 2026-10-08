@@ -1,4 +1,4 @@
-TrustZone table at tz.img vaddr 0x1c141c40 (16-byte entries: base, count)
+TrustZone table at tz.img vaddr 0x1c141c40 (8-byte entries: 32-bit base, 32-bit count)
 base        count
 0x221c0000  8
 0x221c4000  4

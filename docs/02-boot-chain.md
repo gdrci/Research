@@ -18,7 +18,7 @@ File: `xbl.img`, 978,944 bytes. It holds three ELF programs back to back. Each o
 
 | Offset | Format | Entry | Identified as | Evidence |
 |---|---|---|---|---|
-| `0x00000` | ELF32, `e_machine = 1` (`EM_M32`) | `0x2211C000` | primary stub | two `PT_LOAD` segments, 114 KB of content. Its content is data-like (see 1c). |
+| `0x00000` | ELF32, `e_machine = 1` (`EM_M32`) | `0x2211C000` | primary stub | two `PT_LOAD` segments, 115,328 bytes in total (0x1C000 and 0x280). Its content is data-like (see 1c). |
 | `0x1C2F4` | ELF32, `EM_RISCV` | `0x20412800` | TME firmware | source paths `tmeFwMain`, `tme_com`, `tme_messages`, `IPCC_*`, `xport_qmp_config_tme.c`; `TME_FW_VERSION_STRING=ssg.tmefw.1.0.1-00467-release`, built `October 05 2025` |
 | `0x4AFC4` | ELF64, `EM_AARCH64` | `0x14824FA8` | SBL1, the secondary bootloader core | `SBL1 BUILD @ 13:02:53 on Mar  5 2026`, `QC_IMAGE_VERSION_STRING=BOOT.MXF.2.2-00536-AURORA-1.149279.3`, `OEM_IMAGE_VERSION_STRING=ip-10-195-200-195` |
 
@@ -28,7 +28,7 @@ The two build dates are separate builds: TME on 5 October 2025, SBL1 on 5 March 
 
 ### 1a. TME firmware (RISC-V)
 
-This is a RISC-V 32-bit program that runs on the TME core. It provides the image-authentication services that XBL and PBL call through `tme_messages`, and it talks to the other processors through IPCC interrupts and the GLink transport (`tme_com/GLinkPort.cpp`, `xport_qmp_config_tme.c`).
+This is a RISC-V 32-bit program that runs on the TME core. It provides the image-authentication services that XBL and PBL call through `tme_messages`, and it talks to the other processors through IPCC interrupts and the GLink transport (`tme_com/src/GLinkPort.cpp`, `xport_qmp_config_tme.c`).
 
 The certificate names are in this region:
 
@@ -51,12 +51,12 @@ Its source-file strings cover the whole job:
 - Memory and DDR: `boot_ddr.c`, `boot_ddr_info.c`, `boot_ddr_share_data_to_aop`, `boot_populate_ddr_details_shared_table`, `BootMemMapLib.c`.
 - Other processors: `boot_prepare_cpucp`, `boot_reset_cpucp`, `boot_cpucp.c`, `boot_shrm_mini_dump_init`, `boot_vsense.c`.
 - Image loading and checks: `boot_mbn_loader.c`, `boot_elf_loader.c`, `boot_elf_auth.c`, `boot_blacklist.c`, `boot_qsee.c`, `boot_whitelist_prot.c`.
-- Crash handling: `error_handler_el3.c`, `sbl_error_handler: DDR not initialized`, `boot_dload_dump_security_regions`, `boot_ramdump.c`.
+- Crash handling: `error_handler_el3.c`, `sbl_error_handler FAIL: DDR not initialized`, `boot_dload_dump_security_regions`, `boot_ramdump.c`.
 - Shared memory and debug: `boot_smem_init`, `boot_smem_debug_init`, `boot_smem_alloc_for_minidump`, `/dev/icbcfg/boot`, `boot_eud.c`.
 
-SBL1 has a subsystem list that includes `tz`, `mss`, `uefi`, `adsp`, `aop` and `ssc`. That list is in the same string block, at offset `0xCD0F9`. It is the strongest hint that `uefi` is the next loader. Observed.
+SBL1 has a subsystem list that includes `tz`, `mss`, `uefi`, `adsp`, `aop` and `ssc`. That list is in the same string block (which starts at `0xCD0F9`); the list itself begins at `0xCD129`. It is the strongest hint that `uefi` is the next loader. Observed.
 
-The next-stage names are also in SBL1's string table. A block of image names at `0x813D0`–`0x813F8` reads `CPUCP_DTB`, `QSEE Dev Config`, `QSEE` and `APPSBL`. A separate `uefi` string sits at `0x82171`. `abl` does not appear there, and it is not in the `uefi` image either. `uefi.img` contains `UEFI DXE` and DXE core strings (`Dxe Core  FV decompression failed`, `DXE Heap`, `AddDecompressdFvForDxe failed`). These are the strings of a UEFI DXE firmware volume, so `uefi.img` is a UEFI payload. Observed. That `uefi` is loaded as `APPSBL` is inferred: SBL1's loader code that uses these names is not yet decompiled.
+The next-stage names are also in SBL1's string table. A block of image names at SBL1-relative offsets `0x813D0`–`0x813F8` reads `CPUCP_DTB`, `QSEE Dev Config`, `QSEE` and `APPSBL`. A separate `uefi` string sits at `0x82171`. `abl` does not appear there, and it is not in the `uefi` image either. `uefi.img` contains `UEFI DXE` and DXE core strings (`Dxe Core  FV decompression failed`, `DXE Heap`, `AddDecompressdFvForDxe failed`). These are the strings of a UEFI DXE firmware volume, so `uefi.img` is a UEFI payload. Observed. That `uefi` is loaded as `APPSBL` is inferred: SBL1's loader code that uses these names is not yet decompiled.
 
 SBL1 refers to `shrm.elf`, `devcfg.bin`, `cpr.bin` and `_dcb.bin` by file name. These are the images it loads. The code that loads them is not yet decompiled.
 
@@ -87,13 +87,13 @@ The tests on its content (`data/analysis/isa_tests.txt`, `data/ghidra/xbl_primar
 
 - **Per-word decode rate.** Hexagon 0.774, ARM32 0.769. This does not separate the two. The Hexagon control I used earlier (`adsp.b02`) is 62% zero words, so it is data, not code, and it is not a valid calibration. The rate does not separate the two ISAs.
 - **Function-boundary instructions.** None of these appear: Hexagon `allocframe` and `dealloc_return`; ARM32 `push {..., lr}`, `pop {..., pc}`, `bx lr`; AArch64 `ret` (`0xD65F03C0`); RISC-V `ret` (`0x00008067`). Known AArch64 code has 24.6 `ret` per 1,000 words, so the test works.
-- **Ghidra disassembly from the start address.** Disassembled from offset 0 as Thumb-2, 669 instructions decode before the first error. Known AArch64 code decodes 2,000 instructions from its entry in the same method. The Thumb-2 output is a repeating pattern (`stmia r4!,{r0}` followed by `adds r0,#0x3`, with values stepping towards `cmp r0,#0xf6`). That reads as a table of values, not code. Ghidra's ARM32 decode gives 0 instructions, and its Hexagon decode gives 1.
-- **Entropy.** Most of the region is between 6.5 and 7.1 bits per byte.
+- **Ghidra disassembly from the start address.** Disassembled from offset 0 as Thumb-2, 669 instructions decode before the first error. Known AArch64 code decodes 2,000 instructions from its entry in the same method (count not in any data file; unverified). The Thumb-2 output is a repeating pattern (`stmia r4!,{r0}` followed by `adds r0,#0x3`, with values stepping towards `cmp r0,#0xf6`). That reads as a table of values, not code. Ghidra's ARM32 decode gives 0 instructions, and its Hexagon decode gives 1.
+- **Entropy.** The primary stub is about 4.9 bits per byte overall; its 4 KB blocks are between 0 and 6.0 bits per byte (median 5.7). The 6.4 to 7.1 figures in `data/analysis/thumb_arm_tests.txt` are for xbl.img offsets 0x20000 to 0xC0000, which lie in the TME and SBL1 programs.
 - **Hexagon decode runs (Ghidra, raw import of the stub segment).** Starting at offsets 0x8, 0x10, 0x20, 0x40, 0x80 and 0xF0, the Hexagon decoder produces runs of 2 to 10 instructions before an invalid packet. A real Hexagon code region produces long runs. Recorded as a rejection, not a proof of format.
-- **Ghidra decodes, verified.** Raw import of the stub segment with auto-analysis off: AArch64 decodes 0 instructions at the entry and 0 or 1 at the offsets capstone had flagged (0x14598, 0x1457C, 0x14218). ARM v7 decodes 0 at the entry. RISC-V decodes 1 instruction (2 bytes). So the stub is not AArch64, ARM32 or RISC-V code at its entry. Capstone's earlier long runs were noise, because it decodes almost any 4-byte pattern. The stub is therefore likely encrypted, signed or a non-code header; its format is still open. One 64 KB chunk at offset `0x10000` is lower (3.6 bits per byte).
-- **Byte-level checks on the first 112 KB of the segment** (`0x2211C000`, `0x1C000` bytes). ARM32 decodes 0 instructions from the start and Thumb decodes 164 instructions in the first 16 KB. 27% of its words are zero. No stride from 2 to 32 words repeats more than 29% of the time, so there is no fixed record size. zlib and LZMA do not decode from offsets 0 to 60. The companion segment at `0x22143000` (640 bytes) does not start with DER or X.509 data; it begins with a Qualcomm-style header of packed fields. None of these results identifies the format.
+- **Ghidra decodes, observed (the tool output is not saved in `data/`).** Raw import of the stub segment with auto-analysis off: AArch64 decodes 0 instructions at the entry and 0 or 1 at the offsets capstone had flagged (0x14598, 0x1457C, 0x14218). ARM v7 decodes 0 at the entry. RISC-V decodes 1 instruction (2 bytes). So the stub is not AArch64, ARM32 or RISC-V code at its entry. Capstone's earlier long runs were noise, because it decodes almost any 4-byte pattern. The stub is therefore likely encrypted, signed or a non-code header; its format is still open. The 64 KB file range at `0x10000` is 3.6 bits per byte; the stub portion alone (0x10000 to 0x1C000) is 2.8.
+- **Byte-level checks on the first 112 KB of the segment** (`0x2211C000`, `0x1C000` bytes). ARM32 decodes 0 instructions from the start and Thumb decodes 164 instructions in the first 16 KB (count not in any data file; unverified). 27% of its words are zero. No stride from 2 to 32 words repeats more than 29% of the time, so there is no fixed record size. zlib and LZMA do not decode from offsets 0 to 60. The companion segment at `0x22143000` (640 bytes) does not start with DER or X.509 data; it begins with a Qualcomm-style header of packed fields. None of these results identifies the format.
 
-The conclusion is that the primary stub is a data table, not code of a tested ISA. Its exact format is not identified.
+The inferred conclusion is that the primary stub is a data table, not code of a tested ISA. Its exact format is not identified.
 
 ### Where the TrustZone region is registered
 
@@ -133,7 +133,7 @@ These images run at EL3 or in the Hexagon secure partition. They provide the fus
 
 | Image | Format | Entry / segments | Evidence |
 |---|---|---|---|
-| `tz.img` | ELF64 AArch64 | entry `0x14680000`, 32 `PT_LOAD` | the first instructions write `tpidr_el0` and `tpidr_el1`, then read `sctlr_el3`. EL3 setup. Verified. |
+| `tz.img` | ELF64 AArch64 | entry `0x14680000`, 33 `PT_LOAD` headers, one of them empty (filesz 0), so 32 with content | the first instructions write `tpidr_el0` and `tpidr_el1`, then read `sctlr_el3`. EL3 setup. Verified. |
 | `hyp.img` | ELF64 AArch64 | entry `0x80000000`, 5 `PT_LOAD` | `HypX Version Not Supported!`, `smem_init`, `PILSubsys_getArbFuseBank`. Observed. |
 | `devcfg.img` | ELF64 AArch64 | 2 `PT_LOAD` | `PM_QFPROM_FLAG`, `tgt_cpucp_config`, `fp_sensor_version`. Observed. |
 | `keymaster.img` | ELF64 AArch64 | 5 `PT_LOAD` | `KEYMASTER_SET_VERSION`, `KEYMASTER_GET_VERSION`, `osVersion`. Observed. |
@@ -154,7 +154,7 @@ These names show that root-of-trust key hashes and an encryption-key hash are fu
 
 #### The MMIO table and its mapper
 
-TrustZone holds a table of five 16-byte entries at `0x1C141C40`. Each entry is a 32-bit base address and a 32-bit count:
+TrustZone holds a table of five 8-byte entries at `0x1C141C40`. Each entry is a 32-bit base address and a 32-bit count:
 
 | Index | Base | Count | Note |
 |---:|---|---:|---|
@@ -166,7 +166,7 @@ TrustZone holds a table of five 16-byte entries at `0x1C141C40`. Each entry is a
 
 Two functions read the table: `FUN_1C067548` and `FUN_1C067598`. Each takes an index, rejects values above 4, reads `base` and `count`, and calls `FUN_1C03ACAC` with the base twice, the count, and a flag. The first function passes flag `0x9041`, the second `0x9061`. Each has 16 call sites: 15 `BL` and one tail `B`. Every index from 0 to 4 is used with both flags (`data/secure/tz_mmio_table_users.txt`; the mapper decompile is in `data/ghidra/tz_mmio_mapper_decompiled.txt`).
 
-`FUN_1C03ACAC` takes a lock, calls `FUN_146816F4`, and releases the lock. `FUN_146816F4` builds a 32-byte request from the base, the second base, the count and the flag. It then calls `FUN_14681A68`, which is a stage-1 translation-table mapper. For each range it writes level-2 and level-3 descriptors into the live translation tables, and it issues the `TLBI`, `DSB` and `ISB` maintenance instructions. `FUN_146816F4` contains no `SMC` instruction, so the work stays inside TrustZone.
+`FUN_1C03ACAC` calls `FUN_1C062D44(4)`, then `FUN_146816F4`, then a release thunk (inferred to be a lock). `FUN_146816F4` builds a 32-byte request from the base, the second base, the count and the flag. It then calls `FUN_14681A68`, which is a stage-1 translation-table mapper. For each range it writes level-2 and level-3 descriptors into the live translation tables, and it issues the `TLBI`, `DSB` and `ISB` maintenance instructions. `FUN_146816F4` contains no `SMC` instruction, so the work stays inside TrustZone.
 
 Decoding the flag, with `FUN_14682D04` (`data/ghidra/tz_mmio_mapper_decompiled.txt`):
 
@@ -176,7 +176,7 @@ Decoding the flag, with `FUN_14682D04` (`data/ghidra/tz_mmio_mapper_decompiled.t
 
 The count is in KB. The mapper checks `count & 3` (a multiple of 4 KB pages) and adds `count × 0x400` to compute the end address. So the QFPROM entry, `0x221C8000` with count 8, covers 8 KB in TrustZone. This is inferred from the mapper's arithmetic.
 
-The table is read only by the two functions above. Their 30 call sites, with the index each one passes, are listed in `data/secure/tz_mmio_table_users.txt`.
+The table is read only by the two functions above. Their 32 call sites (16 per function), with the index each one passes, are listed in `data/secure/tz_mmio_table_users.txt`.
 
 ### Featenabler
 

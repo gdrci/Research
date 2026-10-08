@@ -10,9 +10,9 @@ The device starts in a fixed sequence. Each stage checks the next one and then h
 Boot ROM (PBL)                 silicon, not in the OTA                       unverified
   -> XBL container             xbl.img (978,944 bytes), three programs
        1. primary stub         ELF32 EM_M32, entry 0x2211C000                 ISA open
-       2. TME firmware         RISC-V, offset 0x1C2F4                         verified (strings)
-       3. SBL1                 AArch64, offset 0x4AFC4, built 2026-03-05      verified (strings)
-       SBL1 loads and authenticates the images below, using the SRoT MBNv7 chain
+       2. TME firmware         RISC-V, offset 0x1C2F4                         header verified; identity observed (strings)
+       3. SBL1                 AArch64, offset 0x4AFC4, built 2026-03-05      header verified; build date observed (string)
+       SBL1 is expected to load and authenticate the images below (inferred; the sequence is not in the code read), using the SRoT MBNv7 chain
        -> TrustZone (QSEE)     tz.img            EL3 entry verified
        -> Hypervisor           hyp.img           memory map verified
        -> DevCfg, CPR, SHRM    devcfg.img, shrm.elf (named by SBL1)          observed
@@ -20,8 +20,8 @@ Boot ROM (PBL)                 silicon, not in the OTA                       unv
        -> remote processors    aop, cpucp, qupfw, dsp, modem, bluetooth      observed
   -> UEFI                      uefi.img, reads oem_config.xml (MINK)         observed
   -> AVB                       vbmeta.img, vbmeta_system.img                 signatures verified
-  -> Linux 5.10.240            boot.img + vendor_boot.img                    verified
-  -> init, vendor, system      vendor.img, odm.img, system*.img, product     verified
+  -> Linux 5.10.240            boot.img + vendor_boot.img                    header verified; banner observed
+  -> init, vendor, system      vendor.img, odm.img, system*.img, product     filesystems verified; init inferred
   -> glasses services          MCU HALs, STP, EMG, Smartglass apps           observed
 ```
 
@@ -29,14 +29,14 @@ Boot ROM (PBL)                 silicon, not in the OTA                       unv
 
 ## The XBL container
 
-`xbl.img` is not one loader. It holds three programs, each with its own ELF header. The SBL1 program is the one that does the work. The TME program is a RISC-V firmware that SBL1 and PBL call for authentication. The first program is a small stub with a machine field that no standard architecture uses. Section 02 describes each, and section 07 explains how to import them.
+`xbl.img` is not one loader. It holds three programs, each with its own ELF header. The SBL1 program is the one that does the work. The TME program is a RISC-V firmware that SBL1 and PBL call for authentication. The first program is a small stub whose machine value (EM_M32, 1) is not used by any of the container's three programs. Section 02 describes each, and section 07 explains how to import them.
 
 ## Where fuses come in
 
 QFPROM is the fuse block at `0x221C8000`. It is a 4 KB window, read-only from the kernel's point of view, and the device tree describes it. Three places read it:
 
 - the kernel, through `nvmem_qfprom` (module `CONFIG_QCOM_QFPROM=m`);
-- the GPU driver, which reads the `gpu_speed_bin` cell at byte `0x119` to pick an operating point;
+- the `gpu_speed_bin` cell at byte `0x119`, consumed by the node `/soc/qfprom@0` (`qcom,qfprom-sys`); a GPU driver reading it is not confirmed;
 - the secure world, which carries `qsee_fuse_read`, `qsee_fuse_write` and software-fuse helpers.
 
 SBL1 has one direct reference to the address, in code that builds a boot memory map. The hypervisor maps the block as three pages. Section 06 has the details.
@@ -47,7 +47,7 @@ The boot image, `vendor` and `odm` carry an Android 12 fingerprint (`SQ3A.220605
 
 ## The glasses around the SoC
 
-Several parts of the system run outside the application processor. A microcontroller (the MCU) handles the sensors, the buttons, the hinge and the charging case, and it is reached over a transport called STP. The electromyography input from the wrist band reaches the phone-side software through an EMG service. Section 09 covers these. The hardware is also split into two audio-codec variants, RT600 and RT700, which the software detects at boot.
+Several parts of the system run outside the application processor. A microcontroller (the MCU) handles the sensors, the buttons, the hinge and the charging case, and it is reached over a transport called STP. The electromyography input from the wrist band reaches the phone-side software through an EMG service. Section 09 covers these. The hardware is also split into two audio-codec variants, RT600 and RT700, is listed per product and per board; how the software selects one at boot is not established (inferred).
 
 ## Document map
 

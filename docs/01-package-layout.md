@@ -12,7 +12,7 @@ The OTA is a standard Android A/B full update.
 | Size | 1,439,273,084 bytes |
 | SHA-256 | `6411fd4f52782e576b6ff7662fa3d62e7af838ae64f4843736a8fa1ef67b1068` |
 | Contents | `payload.bin` (1,439,266,670 bytes), `payload_properties.txt`, `care_map.pb`, `apex_info.pb`, `META-INF/` |
-| Signing | SignApk (`META-INF/com/android/otacert`) |
+| Signing | `META-INF/com/android/otacert` (SignApk attribution inferred) |
 | Update type | `ota-type=AB` |
 
 `payload_properties.txt` gives the payload's own hash and size, with `METADATA_SIZE=97215`. The metadata lists the target build:
@@ -25,7 +25,7 @@ post-security-patch-level=2026-02-05
 post-timestamp=1780360088
 ```
 
-`post-timestamp` is 1780360088, which is 2026-06-02 00:28:08 UTC (June 1, 17:28 PDT). The boot image's `build.prop` gives `Mon Jun 1 17:31:45 PDT 2026`, which is 00:31:45 UTC on June 2, about three minutes later. The two agree.
+`post-timestamp` is 1780360088, which is 2026-06-02 00:28:08 UTC (June 1, 17:28 PDT). The boot image's `build.prop` gives `Mon Jun  1 17:31:45 PDT 2026`, which is 00:31:45 UTC on June 2, about 3.6 minutes later. The two agree.
 
 `payload.bin` is a full payload, not an incremental one. `payload-dumper` extracted it without an original image set, so every partition is complete. All 33 partitions were extracted and every image was hashed. The inventory is in `data/inventory.json`, and the table is in `data/partition_table.md`.
 
@@ -45,11 +45,11 @@ post-timestamp=1780360088
 
 **XBL's outer header has an unusual machine field.** The stub at offset 0 is a 32-bit ELF whose `e_machine` is 1 (`EM_M32`). `xbl_config.img` is a 64-bit ELF with the same value. Standard ARM, AArch64 and Hexagon all use other values. The field is not what the loader reads, so this is probably a Qualcomm convention, but I have not confirmed it against another Qualcomm XBL.
 
-**`uefi.img` mixes ELF classes.** It is a 64-bit ELF with `e_machine = EM_ARM` (40). ARM64 images normally use `EM_AARCH64` (183). The loader may ignore the field, or the image may run as ARM32 code. This is open.
+**`uefi.img` has a 64-bit ELF header with `e_machine = EM_ARM` (40).** ARM64 images normally use `EM_AARCH64` (183). The loader may ignore the field, or the image may run as ARM32 code. This is open.
 
 **Qualcomm segment flags.** Several ELF images have `PT_NULL` headers whose `p_flags` contain high bits (`0x2000000`, `0x7000000`). These are the hash and signature segments of the Qualcomm image format. They are not code. The table of load segments in `data/ghidra/import_map.json` excludes them.
 
-**Remote-processor images are not ELF-only.** `dsp.img` is ext4 and `modem.img` and `bluetooth.img` are FAT. The first-stage fstab mounts them at runtime. See section 05.
+**Remote-processor images are not ELF-only.** `dsp.img` is ext4 and `modem.img` and `bluetooth.img` are FAT. The fstab in `vendor_ramdisk` (`fstab.greatwhite`) mounts them. See section 05.
 
 **No PBL in the image set.** The primary boot loader lives in the SoC's mask ROM, so the OTA does not contain it. This is the standard Qualcomm arrangement; I have not verified it on this device.
 
