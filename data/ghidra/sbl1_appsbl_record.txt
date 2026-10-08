@@ -1,0 +1,6 @@
+SBL1 image-descriptor records (sbl1.elf, data at 0x148B6A40..0x148B6CE0).
+Records with a name pointer and type 2: 'QSEE' at 0x148B6AC8 and 'APPSBL' at 0x148B6C90 (both type 2).
+APPSBL record: pointers to region descriptors 0x148B6278 = (0x80000000, 0x26E00000), (0xA6E40000, 0x591C0000), then 0x220000001E, 0x100000001.
+Arithmetic: 0xA6E40000 + 0x591C0000 = 0x100000000, so the region is 0xA6E40000 .. top of 32-bit space.
+uefi.img loads at 0xA7000000 (inside). abl.img loads at 0x9FA00000 (below the region).
+Conclusion (structural): the APPSBL-role image is uefi.img. The record's field semantics are inferred from the arithmetic, not confirmed in code.
