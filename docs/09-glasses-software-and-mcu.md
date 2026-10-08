@@ -102,7 +102,7 @@ Structure, from `case.default.cabo.tub` and `mcu.core1.default.rt700.tub` (obser
 - The payload comes first. A JSON manifest follows at the end of the file, and some files carry a second JSON block after the first.
 - The manifest has `deployment_methods` (`["RPC"]`), `md5`, `platform` (`greatwhite-rt700` in the core1 file), `target_assets` (each with `name`, `type`, `layout.load_addr`, `layout.offset`, and a `signature` in the core1 file) and `version`.
 - `layout.offset` values (for example `142409728`, which is `0x87D0000`) are larger than the file. They are load positions for the target, not file offsets.
-- The manifest `md5` did not match any tested range. Starts tried: 0, 0x10, 0x20, 0x40, 0x80, 0x100, 0x200, 0x400, 0x1000. Ends tried: each JSON opening brace and end of file. The hashed bytes are therefore not in the file as stored, or they are compressed or encrypted. Unverified.
+- The manifest `md5` did not match any tested range. The same holds for `mcu.default.rt700.tub` (manifest md5 `8589b5e414f8352e39106fc3796ad050`): its `app.bin` entry has `offset` 134807552, which is beyond the 8.5 MB file, and the file prefixes up to its two manifest openings do not match. Starts tried: 0, 0x10, 0x20, 0x40, 0x80, 0x100, 0x200, 0x400, 0x1000. Ends tried: each JSON opening brace and end of file. The hashed bytes are therefore not in the file as stored, or they are compressed or encrypted. Unverified.
 
 | Container | Size | Sub-image names |
 |---|---:|---|
