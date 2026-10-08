@@ -4,3 +4,9 @@ Object tables: 'localObjTable is full!! Increase maxLocalObj', 'remoteObjTable i
 PIL: 'PILSubsys_getArbFuseBank' (name at file 0xA6CAA, vaddr 0xA5CAA), with 'PILSubsys_envAuthImage', 'PILSubsys_verifyMetadata', 'TZ_PIL_AUTH_RESET_ID' and smc-ret logs.
 Interpretation: PIL images are checked against a per-subsystem anti-rollback fuse bank, returned by PILSubsys_getArbFuseBank. The bank is a SW fuse range in the 0x221C block (data/secure/uefi_fuse_region_table.txt). The bank-to-subsystem table and the code that calls it are not identified.
 Object-invoke provider for ID 0x91: no keyed table row in hyp.img (one hit at 0x114C38 is data, value 0x92).
+
+Follow-up on the copied SW-range words (hyp.img):
+- Early boot block at 0x6C..0xB8 copies 0x221C8610, 0x221C8700, 0x221C8744 into globals 0x9D4D0, 0x9D4CC, 0x9D4C8, and stores a flag at 0x9D4D4 (loaded or not).
+- Readers of the flag 0x9D4D4 (ADRP + LDR): 0x46618, 0x6FAFC, 0x6FD7C, 0x700FC, 0x70790, 0x75F18, 0x791C4. The one examined (0x46618) only gates a branch.
+- No reader of the copied words 0x9D4C8..0x9D4D0 was found by ADRP+ADD or ADRP+LDR patterns.
+- Decoding the arb-fuse-bank mapping from this image is not complete.
