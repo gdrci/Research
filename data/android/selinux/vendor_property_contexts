@@ -1,0 +1,122 @@
+#line 1 "out/soong/.intermediates/system/sepolicy/vendor_property_contexts/android_common/gen/namespace_checked/vendor/meta/sepolicy-vendor/uweb/vendor/property_contexts"
+persist.vendor.meta.uweb.                     u:object_r:vendor_uweb_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/vendor_property_contexts/android_common/gen/namespace_checked/device/meta/neo-common/sepolicy/vendor/common/property_contexts"
+ro.vendor.drm.irq                       u:object_r:vendor_init_prop:s0
+vendor.all.modules.ready                u:object_r:vendor_init_prop:s0
+vendor.all.devices.ready                u:object_r:vendor_init_prop:s0
+vendor.debug.time_services.enable       u:object_r:vendor_time_service_prop:s0
+vendor.sys.listeners.registered         u:object_r:vendor_tee_listener_prop:s0
+persist.vendor.sys.ssr.                 u:object_r:vendor_ssr_prop:s0
+
+#mm-video
+vendor.media.target.version            u:object_r:vendor_video_prop:s0
+vendor.video.disable.ubwc              u:object_r:vendor_video_prop:s0
+vendor.media.target_variant            u:object_r:vendor_video_prop:s0
+vendor.media.target.qssi               u:object_r:vendor_video_prop:s0
+vendor.mm.target.enable.qcom_parser    u:object_r:vendor_video_prop:s0
+vendor.media.system.build_codename     u:object_r:vendor_video_prop:s0
+vendor.netflix.bsp_rev                 u:object_r:vendor_video_prop:s0
+vendor.camera.enableUseSensorService   u:object_r:vendor_video_prop:s0
+
+# Camera freeze detect
+vendor.camera.freeze                   u:object_r:vendor_camera_prop:s0
+
+# Graphics
+persist.vendor.display.                 u:object_r:vendor_display_prop:s0
+ro.vendor.display.                      u:object_r:vendor_display_prop:s0
+vendor.display.                         u:object_r:vendor_display_prop:s0
+
+persist.vendor.qcom.bluetooth.          u:object_r:vendor_bluetooth_prop:s0
+persist.vendor.service.bdroid.          u:object_r:vendor_bluetooth_prop:s0
+vendor.service.bdroid.                  u:object_r:vendor_bluetooth_prop:s0
+persist.vendor.bt.                      u:object_r:vendor_bluetooth_prop:s0
+persist.vendor.bluetooth.               u:object_r:vendor_bluetooth_prop:s0
+
+
+persist.vendor.radio                    u:object_r:vendor_radio_prop:s0
+ro.vendor.radio                         u:object_r:vendor_radio_prop:s0
+ro.vendor.ril.                          u:object_r:vendor_radio_prop:s0
+
+persist.vendor.mmi.                     u:object_r:vendor_mmi_prop:s0
+ro.vendor.alarm_boot                    u:object_r:vendor_alarm_boot_prop:s0
+
+vendor.audio.                           u:object_r:vendor_audio_prop:s0
+vendor.voice.                           u:object_r:vendor_audio_prop:s0
+persist.vendor.audio.                   u:object_r:vendor_audio_prop:s0
+persist.vendor.meta.audio.hal.          u:object_r:vendor_audio_prop:s0
+ro.vendor.audio.                        u:object_r:vendor_audio_prop:s0
+persist.vendor.audio.spkr.cal.duration  u:object_r:vendor_audio_prop:s0
+
+# Graphics
+vendor.gralloc.                         u:object_r:vendor_gralloc_prop:s0
+
+ro.vendor.camera.                       u:object_r:vendor_video_prop:s0
+
+#perf
+vendor.post_boot.parsed                u:object_r:vendor_mpctl_prop:s0
+vendor.perf.cores_online               u:object_r:vendor_mpctl_prop:s0
+persist.vendor.qti.                    u:object_r:vendor_mpctl_prop:s0
+ro.vendor.at_library                   u:object_r:vendor_mpctl_prop:s0
+vendor.debug.trace.perf                u:object_r:vendor_mpctl_prop:s0
+vendor.target.init.complete            u:object_r:vendor_mpctl_prop:s0
+vendor.change.cgroup                   u:object_r:vendor_procomp_prop:s0
+vendor.change.cgroup.for.pid           u:object_r:vendor_procomp_prop:s0
+vendor.iop.enable_uxe                  u:object_r:vendor_iop_prop:s0
+vendor.perf.iop_v3.enable              u:object_r:vendor_iop_prop:s0
+vendor.perf.iop_v3.enable.debug        u:object_r:vendor_iop_prop:s0
+vendor.iop.enable_prefetch_ofr         u:object_r:vendor_iop_prop:s0
+
+#display
+vendor.debug.egl.changepixelformat     u:object_r:vendor_public_display_prop:s0
+vendor.debug.egl.profiler              u:object_r:vendor_public_display_prop:s0
+vendor.debug.egl.swapinterval          u:object_r:vendor_public_display_prop:s0
+vendor.debug.prerotation.disable       u:object_r:vendor_public_display_prop:s0
+ro.vendor.graphics.memory              u:object_r:vendor_public_display_prop:s0
+
+#wifi
+vendor.wlan.driver.version       u:object_r:vendor_wifi_version_prop:s0
+vendor.wlan.firmware.version     u:object_r:vendor_wifi_version_prop:s0
+
+# Qseecomd hibernation properties
+vendor.qseecomd.hibernate    u:object_r:vendor_tee_quickboot:s0
+vendor.qseecomd.hibernate_entry    u:object_r:vendor_tee_quickboot:s0
+vendor.keymint.quickboot        u:object_r:vendor_tee_quickboot:s0
+vendor.gatekeeper.quickboot     u:object_r:vendor_tee_quickboot:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/vendor_property_contexts/android_common/gen/namespace_checked/vendor/meta/sepolicy-vendor/common/vendor/property_contexts"
+persist.vendor.camera.                        u:object_r:vendor_camera_prop:s0
+persist.vendor.ovr.                           u:object_r:vendor_oculus_prop:s0
+persist.vendor.usb.                           u:object_r:vendor_usb_prop:s0
+ro.vendor.usb.                                u:object_r:vendor_usb_prop:s0
+vendor.debug.camera.                          u:object_r:vendor_camera_prop:s0
+vendor.debug.fw_init.                         u:object_r:vendor_fw_init_prop:s0
+vendor.fw_init.                               u:object_r:vendor_fw_init_prop:s0
+vendor.ovr.                                   u:object_r:vendor_oculus_prop:s0
+vendor.powerhal.                              u:object_r:vendor_powerhal_prop:s0
+vendor.syncbosshal.                           u:object_r:vendor_syncboss_prop:s0
+vendor.usb.                                   u:object_r:vendor_usb_prop:s0
+vendor.vidc.                                  u:object_r:vendor_vidc_prop:s0
+vendor.runtime.eva.                           u:object_r:vendor_adsprpc_prop:s0
+persist.vendor.fastrpc.                       u:object_r:vendor_adsprpc_prop:s0
+vendor.fastrpc.                               u:object_r:vendor_adsprpc_prop:s0
+vendor.displaymapping.                        u:object_r:vendor_displaymapping_prop:s0
+persist.vendor.meta.displaymapping.           u:object_r:vendor_displaymapping_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/vendor_property_contexts/android_common/gen/namespace_checked/vendor/meta/sepolicy-vendor/smartglasses/vendor/property_contexts"
+# debuggerd
+vendor.meta.config.disable_debuggerd_hookup    u:object_r:vendor_debuggerd_hookup_prop:s0
+
+# usb
+vendor.sys.usb.adb.disabled u:object_r:vendor_usb_prop:s0 prefix
+
+# aoc
+vendor.camera.aoc.                             u:object_r:vendor_camera_aoc_prop:s0
+
+# PalmCheck
+vendor.meta.palmcheck.                         u:object_r:vendor_palmcheck_prop:s0 prefix
+vendor.meta.palmauth.                          u:object_r:vendor_palmauth_prop:s0
+vendor.meta.palmexp.session.id.                u:object_r:vendor_palmauth_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/vendor_property_contexts/android_common/gen/namespace_checked/device/meta/greatwhite/sepolicy/vendor/property_contexts"
+# bt
+ro.vendor.bt.                       u:object_r:vendor_bluetooth_prop:s0
+vendor.meta.mcu_hal.                u:object_r:vendor_meta_hal_lpi_mcu_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/vendor_property_contexts/android_common/gen/namespace_checked/vendor/meta/sepolicy/thermal/odm/pixel/property_contexts"
+vendor.thermal.                           u:object_r:vendor_pixel_thermal_prop:s0

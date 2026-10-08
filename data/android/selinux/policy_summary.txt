@@ -1,0 +1,20 @@
+SELinux vendor policy summary (fs/vendor/etc/selinux of greatwhite.zip). Counts from text scan.
+vendor_sepolicy.cil: 507018 bytes, 5325 lines, sha256 f04fb6f6f1bc5ecfc64be7a959ff22b75dd9963bc63634d5c33972241df3772f
+plat_pub_versioned.cil: 1029359 bytes, 13860 lines, sha256 50e96ba66184ffb8c01dfc69f571d2d9f8a56ad1b1d7b60d85d25d45c51d3d19
+vendor_file_contexts: 96676 bytes, 892 lines, sha256 fdc50f7d5286486acc279447ac22a543d63a4551aebd6a46a3ba6b49ce629024
+vendor_service_contexts: 4017 bytes, 42 lines, sha256 7aab4d911614a78cd362cfd48d6a39b8ac2d891814c82d7f5cade36c3247023d
+vendor_hwservice_contexts: 5853 bytes, 59 lines, sha256 fb4ffda3b814afcc1ca825c0562800a76d67270b39744c16a70b352a7f0f9ced
+vendor_property_contexts: 7652 bytes, 122 lines, sha256 71d0ea30f1bb500368630b7821ce1a46951bae7ad5aa0d9207cb9b9189244c5b
+vendor_seapp_contexts: 119 bytes, 1 lines, sha256 3f2dd60d2ee480762696530c06b8577ef170f9effe28386ff2fffe3c11e9bbd0
+vndservice_contexts: 196 bytes, 3 lines, sha256 5b3e4697ae7371a109dabb4dc61e5b191533276aba028c805616665d712cb213
+vendor_mac_permissions.xml: 2197 bytes, 0 lines, sha256 6b6c37c14b2647a304a748e1c2385f69c84d28878abff090a576b6c13f54d89c
+selinux_denial_metadata: 1503 bytes, 35 lines, sha256 d34dc2f3db8497a3064b0ab204c68516d4c51326b7fdbd3819d7b53fe307e63f
+vendor_sepolicy.cil top-level forms: allow 3136, type 631, roletype 631, typeattributeset 241, genfscon 211, dontaudit 161, typetransition 147, neverallow 82, typeattribute 64, allowx 17, expandtypeattribute 3
+types declared: 631 (vendor_* 258, hal_* 175, sysfs_* 71)
+types carry the platform version suffix _32_0 in their CIL names (e.g. init_32_0, hwservicemanager_32_0), matching plat_sepolicy_vers.txt = 32.0
+allow rules: 3136; top sources: init_32_0 443, vendor_qti_init_shell 130, vendor_init_32_0 101, hwservicemanager_32_0 97, hal_oculus_sensors 82, hal_power_default 73, hal_audio_default 70, autobrightness 59, tee_32_0 55, vendor_hal_perf_default 48, servicemanager_32_0 47, system_server_32_0 46, vndservicemanager_32_0 43, hal_graphics_composer_default 42, mediacodec 41
+neverallow rules: 82; dontaudit: 161
+typetransition rules: 147; typeattributeset: 241
+genfscon: 211 (proc 6, sysfs 205)
+service contexts: 42 entries; hwservice contexts: 59; property contexts: 86; file contexts: 892
+selinux_denial_metadata: 35 rows, 17 distinct bug references
