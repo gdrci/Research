@@ -1,8 +1,8 @@
-# 17 - Modem partition firmware: ADSP, CDSP and trusted applications
+# 16 - Modem partition firmware: ADSP, CDSP and trusted applications
 
 [中文](16-modem-partition-firmware.zh-CN.md)
 
-`modem.img` is a FAT16 image with 165 files (section 05). Besides the modem and Wi-Fi set, it holds the firmware for two Hexagon processors (the application DSP, ADSP, and the compute DSP, CDSP) and about ten signed applications that run in TrustZone. This section covers their structure, their signatures, and what each application does. The file list is in `data/remote/modem_listing.txt`, and the signature evidence is in `data/remote/modem_firmware_signatures.txt`.
+`modem.img` is a FAT16 image with 165 files (section 05). Besides the modem and Wi-Fi set, it holds the firmware for two Hexagon processors (the application DSP, ADSP, and the compute DSP, CDSP) and twelve signed applications that run in TrustZone. This section covers their structure, their signatures, and what each application does. The file list is in `data/remote/modem_listing.txt`, and the signature evidence is in `data/remote/modem_firmware_signatures.txt`.
 
 Status labels: observed means read from the file; inferred means a reasonable reading the file does not state; not found means not in the OTA.
 
@@ -12,7 +12,7 @@ Each image is split into a header file (`.mdt`) and numbered segment files (`.bN
 
 Some program headers have no data. Segment 0 (flags `0x7000000`) is the header segment: its file `.b00` is the ELF header and the program headers, observed as 1,396 bytes. The last segment with flags `0x2000000` is the signature segment, and its file holds the hash table and the certificate chain.
 
-**The hash table.** The signature segment contains one SHA-384 digest (48 bytes) for each non-empty program segment. The digests are at offset 288 plus 48 times the segment index. Observed for ADSP. A check of every non-empty segment of every image found its digest in the signature segment. For ADSP, all 39 non-empty data segments match; the signature segment itself is not hashed. The same holds for CDSP (11 of 11), and for the trusted applications (7 of 7 data segments each, for the eight split images). Observed. So the files are internally consistent: each segment is the one the signature covers.
+**The hash table.** The signature segment contains one SHA-384 digest (48 bytes) for each non-empty program segment. The digests are at offset 288 plus 48 times the segment index for ADSP, CDSP and eight of the nine split TAs. For `featenabler` (an ELF64 TA) the base is 512 plus 48 times the index. Observed. A check of every non-empty segment of every split image found its digest in the signature segment. For ADSP, all 39 non-empty segments match (the header segment 0 and segments 1 to 39, except the empty 24); the signature segment itself is not hashed. The same holds for CDSP (11 of 11), and for the trusted applications (7 of 7 data segments each, for the eight split images). Observed. So the files are internally consistent: each segment is the one the signature covers.
 
 **The certificates.** The signature segment also holds a DER certificate chain, which is readable with `openssl`. Observed. The chains are in `data/remote/modem_firmware_signatures.txt`.
 
@@ -22,7 +22,7 @@ Some program headers have no data. Segment 0 (flags `0x7000000`) is the header s
 
 - ELF32, machine `0xA4` (Hexagon), entry `0x87600000`, 42 program headers, 40 loadable segments, physical range `0x87600000` to `0x89300000`. Observed.
 - Segments `24` and `40` are empty (`p_filesz` zero). The signature segment is `41`.
-- The image holds the audio framework. Its strings include the module names `AudioSphereModule.so.1`, `CFCM.so.1`, `SAPlusCmnModule.so.1`, `aac_dec_module.so.1` and `aac_enc_etsi_module.so.1`. Observed. This is the Qualcomm signal-processing framework (SPF), which loads the audio processing modules that the Android-side audio routes call (section 12).
+- The image holds the audio framework. Its strings include the module names `AudioSphereModule.so.1`, `CFCM.so.1`, `SAPlusCmnModule.so.1`, `flac_dec_module.so.1` and `aac_enc_etsi_module.so.1`. Observed. The AAC decoder appears only as `aac_dec` strings, not as `aac_dec_module.so.1`. This is most likely the Qualcomm signal-processing framework (SPF), inferred from the lowercase `spf` strings. The audio processing modules that the Android-side audio routes call (section 12) are inferred to be loaded here.
 - The QuRT kernel functions (`qurt_api_version`, `adsp_pls_add_lookup`, `adsp_mmap_fd_getinfo`) are in the image, as are the memory-mapping functions. Observed.
 - The ADSP image also has the string `SigVerify_HaveTestRoot`. Observed. The verifier therefore has a code path for a test root in addition to the production root (see the signing section below).
 
@@ -33,7 +33,7 @@ Some program headers have no data. Segment 0 (flags `0x7000000`) is the header s
 
 ### Trusted applications (TAs)
 
-The trusted applications are AArch64 ELF64 images (machine `0xB7`), which the secure world loads. They are in two forms. Most have a split form (`.mdt` and `.bNN`) with eight data segments and a signature segment. Some also have a single `.mbn` file.
+The trusted applications are AArch64 ELF64 images (machine `0xB7`), which the secure world loads. They are in two forms. Most have a split form (`.mdt` and `.bNN`): a header segment `b00`, seven data segments `b01` to `b07`, and a signature segment `b08`. Some also have a single `.mbn` file.
 
 | Application | Form | Signer | What the strings show |
 |---|---|---|---|
@@ -42,7 +42,7 @@ The trusted applications are AArch64 ELF64 images (machine `0xB7`), which the se
 | `hdcp2p2` | `.mdt` | SECTOOLS test root | HDCP 2.2 content protection |
 | `hdcpsrm` | `.mdt` | SECTOOLS test root | HDCP system renewability message (revocation list) |
 | `loadalgota64` | `.mdt` | SECTOOLS test root | An image loader: it checks the ELF and hash segment with `IIPProtector_verifySignature` and an anti-rollback version, and reports `Segment %d overlaps with ELF + PHT segment` |
-| `mldapta` | `.mdt` | SECTOOLS test root | Certificate and key provisioning for an ML device-attestation identity. Its files are `/persist/data/mldapta/MlsDapCCCDeviceCert.crt`, `MlsDapCCCDevicePvKey.key` and `MlsDapCCCManuCert1.crt`. The purpose of "DAP" is not expanded in the image |
+| `mldapta` | `.mdt` | SECTOOLS test root | Certificate and key provisioning for an ML device-attestation identity. Among its files are `/persist/data/mldapta/MlsDapCCCDeviceCert.crt`, `MlsDapCCCDevicePvKey.key` and `MlsDapCCCManuCert1.crt`. The image holds ten `/persist/data/mldapta/` paths, including a CTS set. The purpose of "DAP" is not expanded in the image |
 | `ovrtz64` | `.mdt` (test root) and `.mbn` (Meta chain) | both | `OVRTZ` (an Oculus/Meta TZ application). Secure hibernation HMAC key context and label |
 | `palmprintengine64` | `.mdt` (test root) and `.mbn` (Meta chain) | both | Palm-print engine: `GATEKEEPER_*` errors and `PALMPRINT_CANCEL_ERROR`. It is a palm authentication app; the gatekeeper link is inferred from the error names |
 | `soter64` | `.mdt` | SECTOOLS test root | SOTER key attestation: `ATTK` (attestation key), `KM SOTER SN UNIQUE ID`, and `/persist/data/soter/` |
@@ -56,19 +56,19 @@ All of these are observed from the names and strings. The purpose lines are base
 
 Two signing hierarchies appear.
 
-**The Meta chain.** The certificates are `Greatwhite_FW_Signing_3`, issued by `Greatwhite_FW_Root_3`, with `Greatwhite_FW_Root_0`, `_1`, `_2` and `_3` also present. All are issued by Meta Platforms Technologies, LLC, in Menlo Park, California. Valid 2023-12 to 2063-11. Observed. It signs the ADSP, the CDSP, `featenabler` (above the Qualcomm chain), and the `.mbn` forms of `ovrtz64` and `palmprintengine64`.
+**The Meta chain.** The certificates are `Greatwhite_FW_Signing_3`, issued by `Greatwhite_FW_Root_3`, with `Greatwhite_FW_Root_0`, `_1`, `_2` and `_3` also present. All are issued by Meta Platforms Technologies, LLC, in Menlo Park, California. Valid 2023-12 to 2063-11. Observed. The Meta chain is present in the signature material of the ADSP, the CDSP, `featenabler`, and the `.mbn` forms of `ovrtz64` and `palmprintengine64`. Which chain verifies each image was not checked.
 
-**The SECTOOLS test root.** The certificates are `SecTools Test User`, `SECTOOLS SECP384R1 CURVE TEST ROOT0` and `SECTOOLS SECP384R1 CURVE TEST ROOT`, issued by Qualcomm (`O = QUALCOMM`, `OU = CDMA Technologies`), with a SECP384R1 curve. Observed. It signs `hdcp1`, `hdcp2p2`, `hdcpsrm`, `loadalgota64`, `mldapta`, `soter64`, `sp_license`, `widevine` and `smplap64`, and the `.mdt` forms of `ovrtz64` and `palmprintengine64`.
+**The SECTOOLS test root.** The chain is `SecTools Test User`, issued by `SECTOOLS SECP384R1 CURVE TEST ROOT0`, which is issued by the self-signed `SECTOOLS SECP384R1 CURVE TEST ROOT`. The two roots have `O = QUALCOMM`, `OU = CDMA Technologies`, and are marked `General Use Test Key ... (for testing only)`. All certificates use a SECP384R1 curve. Observed. The chain is present in `hdcp1`, `hdcp2p2`, `hdcpsrm`, `loadalgota64`, `mldapta`, `soter64`, `sp_license`, `widevine` and `smplap64`, and the `.mdt` forms of `ovrtz64` and `palmprintengine64`.
 
-This is an observed fact that matters for the documentation. Several shipped trusted applications are signed with a Qualcomm test root, not a production chain. The zap shader for the GPU carries the same test-root strings (section 08). The ADSP verifier includes the test-root branch (`SigVerify_HaveTestRoot`). Whether the device accepts the test root at run time is a property of the secure-world verifier, which is in the TrustZone image. Not checked here. The OTA does not show a run-time result.
+This is an observed fact that matters for the documentation. Several shipped trusted applications are signed with a Qualcomm test root, not a production chain. The `a740v3` zap shader carries the same test-root chain (section 08). The `a620` zap shader carries the Meta Greatwhite_FW chain instead. The ADSP verifier includes the test-root branch (`SigVerify_HaveTestRoot`). Whether the device accepts the test root at run time is a property of the secure-world verifier, which is in the TrustZone image. Not checked here. The OTA does not show a run-time result.
 
 ## Relation to other sections
 
 - `featenabler` is the TA that section 06 describes for the display SW-fuse feature IDs.
 - The palm-print engine (`palmprintengine64`) is the authentication counterpart of the palm gesture that section 14 reports from the touch controller. Inferred from the names.
-- The Widevine and HDCP apps are the content-protection side of the display (section 13).
+- The Widevine and HDCP apps are content-protection components on the display path (inferred). Section 13 covers the display HAL but does not discuss HDCP or Widevine.
 - The ADSP's audio modules are the processing side of the Android routes in section 12. The NXP RT700 DSP (section 15) is a separate processor.
-- `sp_license` is the feature-licence path. Section 03 covers the boot verification of the images; this is the run-time check for feature licences.
+- `sp_license` is the feature-licence path. Section 02 covers the boot chain and the XBL signature check, and section 03 covers AVB verified boot of the other images.
 
 ## What is not found
 
@@ -80,5 +80,5 @@ This is an observed fact that matters for the documentation. Several shipped tru
 ## Evidence
 
 - `data/remote/modem_listing.txt`: the file list of `modem.img`.
-- `data/remote/modem_firmware_signatures.txt`: the ELF header fields, the SHA-384 coverage, and the certificate subjects for every split image and single-file TA.
+- `data/remote/modem_firmware_signatures.txt`: the ELF header fields, the SHA-384 coverage, and the certificate subjects for every split image. For the single-file TAs it gives the size, the ELF class and a chain summary.
 - `data/remote/modem_verinfo.txt`: the build manifest of `modem.img`.

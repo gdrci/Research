@@ -50,7 +50,7 @@
 
 zap 的 ELF 头写明 `e_machine = EM_QDSP6`（Hexagon），入口 `0x1000`，并有一个位于 `0x1000` 的可加载段，标志为 RWX（`0x8000007`）。已观察。Adreno 驱动通过内核的 zap 着色器路径加载它（`msm.ko` 中的 `adreno_zap_shader_load` 与 `a6xx_zap_shader_init`，`msm_kgsl` 中的 `kgsl_zap_shader_load`）。按符号名观察。推断：高通的外设认证路径加载这些 ELF 文件，Hexagon 机器类型是该路径在头部中期望的值；zap 随后在 GPU 一侧运行。
 
-`a740v3_zap.mbn` 与 `a620_zap.mbn` 含有签名块，其中包括字符串 `SECTOOLS SECP384R1 CURVE TEST ROOT01` 与 `General Use Test Key 0 (for testing only)`。已观察。出货的签名镜像中出现测试根字符串，说明签名结构存在，但这里未检查其到生产根的信任链。
+`a740v3_zap.mbn` 的签名块含有 SECTOOLS 测试根（`SECTOOLS SECP384R1 CURVE TEST ROOT0`、`General Use Test Key 0 (for testing only)`）。`a620_zap.mbn` 不含 SECTOOLS 字符串，而是含有 Meta Greatwhite_FW 链（第 16 节）。已观察。出货的签名镜像中出现测试根字符串，说明签名结构存在，但这里未检查其到生产根的信任链。
 
 GPU 驱动 `msm_kgsl.ko` 读取速度分级熔丝单元（第 06 节）。推断：固件文件通过内核 GPU 驱动与 zap 机制加载，但所检视的镜像中没有加载器代码。
 

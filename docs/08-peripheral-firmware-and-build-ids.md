@@ -50,7 +50,7 @@ Two firmware formats appear:
 
 The zap ELF headers say `e_machine = EM_QDSP6` (Hexagon), entry `0x1000`, and one loadable segment at `0x1000` with flags RWX (`0x8000007`). Observed. The Adreno driver loads the zap through the kernel's zap-shader path (`adreno_zap_shader_load` and `a6xx_zap_shader_init` in `msm.ko`, `kgsl_zap_shader_load` in `msm_kgsl`). Observed as symbol names. Inferred: the Qualcomm peripheral-authentication path loads these ELF files, and the Hexagon machine type is the value that path expects in the header. The zap then runs on the GPU side.
 
-The `a740v3_zap.mbn` and `a620_zap.mbn` files carry the signing blocks. They include the strings `SECTOOLS SECP384R1 CURVE TEST ROOT01` and `General Use Test Key 0 (for testing only)`. Observed. Test-root strings in a shipped signed image show that the signing structure is present, but the chain to a production root is not checked here.
+The `a740v3_zap.mbn` file carries the signing block with the SECTOOLS test root (`SECTOOLS SECP384R1 CURVE TEST ROOT0`, `General Use Test Key 0 (for testing only)`). The `a620_zap.mbn` file has no SECTOOLS strings; it carries the Meta Greatwhite_FW chain instead (section 16). Observed. Test-root strings in a shipped signed image show that the signing structure is present, but the chain to a production root is not checked here.
 
 The GPU driver `msm_kgsl.ko` reads the speed-bin fuse cell (section 06). Inferred: the firmware files are loaded through the kernel GPU driver and the zap mechanism, but the loader code is not in the images examined.
 
