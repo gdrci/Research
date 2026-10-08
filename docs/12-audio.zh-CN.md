@@ -62,7 +62,7 @@
 
 ### 扬声器
 
-更正（来自 ODM 脚本，见第 17 节）：生产用扬声器功放看起来是两颗 Maxim MAX98388 智能功放（左声道 I2C 地址 `0x3A`，右声道 `0x38`，即脚本传给 `mst com_port` 的 `-d` 参数；TDM 输入，4 欧姆负载；脚本未给出地址宽度或 ADDR 脚接法，因此 7 位解读与数据手册映射未被 OTA 确认）。脚本为 `data/android/audio/max98388_v2.sh`。下文的混音配置来自参考板，其中列的是高通 WSA 宏。二者如何对应是推断，未经确认。
+来自 ODM 脚本（见第 17 节）：生产用扬声器功放看起来是两颗 Maxim MAX98388 智能功放（左声道 I2C 地址 `0x3A`，右声道 `0x38`，即脚本传给 `mst com_port` 的 `-d` 参数；TDM 输入，4 欧姆负载；脚本未给出地址宽度或 ADDR 脚接法，因此 7 位解读与数据手册映射未被 OTA 确认）。脚本为 `data/android/audio/max98388_v2.sh`。下文的混音配置来自参考板，其中列的是高通 WSA 宏。二者如何对应是推断，未经确认。
 
 
 IDP 版本的 FTM（工厂测试）配置直接展示了扬声器路径（`data/android/audio/ftm_test_config_neo-idp-sg-snd-card`）。已观察：

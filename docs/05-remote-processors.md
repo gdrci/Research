@@ -49,11 +49,11 @@ The image has no functional strings. It does carry a certificate chain (`Qualcom
 
 The layout is a Qualcomm image format. The `0x1000` segment begins with the `QSI ` magic. Its contents are not decoded; the bytes after it include `30 0d` and `30 00` patterns that look like ASN.1 DER, so no (offset, size) table has been identified. The `0x6328` segment begins with `SEFW`. Ghidra's Hexagon decode starts producing plausible instructions from `0x1100` onward (for example `memw R20,(R20+#0x1c)`), but the sequence is dominated by repeated `memw` patterns, so the code boundary is not established.
 
-Earlier drafts said QUP holds real Hexagon code. That was wrong, because the decode rate was not a test of code. Whether `qupfw.img` contains any code, and where its entry is, is not established.
+A decode rate does not show that a region is code, so the QUP image is not treated as code on that basis. Whether `qupfw.img` contains any code, and where its entry is, is not established.
 
 ## Audio and compute DSPs (`dsp.img`)
 
-An ext4 image. Its top-level directories are `adsp`, `cdsp` and `lost+found`. The `sdsp` directory exists but is empty in this build. Verified by listing the image. The earlier note that `sdsp` held firmware was wrong. The image is mounted at `/vendor/dsp` (section 04).
+An ext4 image. Its top-level directories are `adsp`, `cdsp` and `lost+found`. The `sdsp` directory exists but is empty in this build. Verified by listing the image. The image is mounted at `/vendor/dsp` (section 04).
 
 ### `adsp` (34 files)
 

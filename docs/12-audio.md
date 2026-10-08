@@ -62,7 +62,7 @@ The control names use the prefixes `TX`, `VA`, `WSA` and `RX`. The literal `RX_M
 
 ### Speakers
 
-Correction (from the ODM script, section 17): the production speaker amplifiers appear to be two Maxim MAX98388 smart amplifiers (left at I2C address `0x3A`, right at `0x38`, the values the script passes as `-d` to `mst com_port`; TDM input, 4 ohm load; the script gives no address width or ADDR strap, so the 7-bit reading and the datasheet mapping are not confirmed by the OTA). The script is `data/android/audio/max98388_v2.sh`. The mixer configuration below is the reference board's, and it names the Qualcomm WSA macros. How the two fit together is inferred, not confirmed.
+From the ODM script (section 17): the production speaker amplifiers appear to be two Maxim MAX98388 smart amplifiers (left at I2C address `0x3A`, right at `0x38`, the values the script passes as `-d` to `mst com_port`; TDM input, 4 ohm load; the script gives no address width or ADDR strap, so the 7-bit reading and the datasheet mapping are not confirmed by the OTA). The script is `data/android/audio/max98388_v2.sh`. The mixer configuration below is the reference board's, and it names the Qualcomm WSA macros. How the two fit together is inferred, not confirmed.
 
 
 The FTM test configuration for the IDP build shows the speaker path directly (`data/android/audio/ftm_test_config_neo-idp-sg-snd-card`). Observed:
