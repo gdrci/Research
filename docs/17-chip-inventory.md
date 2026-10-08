@@ -42,7 +42,7 @@ This section lists the integrated circuits that the OTA shows the glasses use, w
 
 | Part | Function | Evidence | Confidence |
 |---|---|---|---|
-| Maxim MAX98388 | Speaker amplifiers, left at I2C `0x3A` and right at `0x38`, TDM input (4 ohm load, 16 bit) | `odm/bin/max98388_v2.sh` init sequences; the name appears in `vendor.img` and in the MCU tub (section 12) | Named; this is the production speaker amplifier by the ODM script. The mixer configuration for the reference board names Qualcomm WSA macros, so the two are reconciled as inferred |
+| Maxim MAX98388 (ADI, WLP-16) | Mono Class-D speaker amplifier with I/V feedback, PCM/TDM input and I2C control. Supply 2.3 V to 10 V. Vendor datasheet facts (Analog Devices product page and Digi-Key listing): THD+N better than -83 dB at 1 kHz, dynamic range up to 111 dB A-weighted, software shutdown below 5 uW, 1 ms power-up. The kernel binding `adi,max98388` describes voltage and current monitor slots (`adi,vmon-slot-no`, `adi,imon-slot-no`) and an interleave mode, which match the odm script's voltage and current feedback enables (section 12) | Named. The I2C addresses differ: the odm script uses `0x3A` and `0x38`; the kernel binding example uses `0x39`. Unresolved without the ADI datasheet |
 | Qualcomm WCD-style codec macros (RX, TX, VA, WSA) | Audio codec and LPASS macros | `RX_MACRO`, `TX_MACRO`, `VA_MACRO`, `WSA_MACRO` in the mixer paths, and the `lpass-cdc` nodes in the device tree (section 12) | Named (family); the codec part number is not in the files |
 | WCD9320 | Codec name in one library | `libats.so` and `vendor.img` contain the string (section 12) | Named in a string only; not used in the device tree |
 | NXP RT700 (MIMXRT798S) | MCU (Cortex-M33) and HiFi4 audio DSP in one part | `system_MIMXRT798S_hifi4.c` in the DSP image; `arvr/firmware/lib/uhal/peripherals/rt700/` drivers in the MCU image (sections 14, 15) | Named |
@@ -65,7 +65,7 @@ This section lists the integrated circuits that the OTA shows the glasses use, w
 
 | Part | Function | Evidence | Confidence |
 |---|---|---|---|
-| Qualcomm WCN7850 | Wi-Fi and Bluetooth combo | Bluetooth patch banner `PF=WCN7850ROM=` (section 07); the WLAN build tag `WLAN.HMT` | Named |
+| Qualcomm WCN7850 (firmware banner); the device tree names the family WCN6x5x (`bt_wcn6x5x`, `qcom,kiwi`) | Wi-Fi and Bluetooth combo | Bluetooth patch banner `PF=WCN7850ROM=` (section 07); the device tree node `/soc/bt_wcn6x5x` with `qcom,kiwi`; the WLAN tag `WLAN.HMT` (section 07). The WCN6856 overview (80-WL542-10) is a different part and gives an architecture reference only | Named (firmware); the two names disagree in the device tree and are both recorded |
 | Qualcomm WPSS subsystem | Wi-Fi remote processor inside the SoC | XBL `[FULL_WPSS]` and `[CORE_WPSS]` sections; SMP2P device-tree nodes (section 07) | Named subsystem; the image is not in the OTA |
 | NXP PTN5150 | USB Type-C controller (`ptn5150@1d`, disabled in 18 overlays) | Overlays (section 04) | Named |
 | Apple MFi authentication chip (343S00176) | Accessory authentication for the case or the band | `mfi343s00176@10` (`meta,mfi-i2c`) in overlays; `vendor.meta.hardware.mfi@1.0-service` and `/dev/mfi-i2c` (section 09) | Named. The MFi part is an Apple-program chip; the vendor string on the part is not in the files |

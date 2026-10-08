@@ -13,6 +13,18 @@
 
 - 芯片为高通 WCN7850，Wi-Fi 与蓝牙合一。蓝牙补丁的横幅中写有该型号（`PF=WCN7850ROM=`），WLAN 构建标签为 `WLAN.HMT`。已观察。
 
+## 芯片身份：固件中为 WCN7850，设备树中为 WCN6x5x
+
+同一颗无线芯片在两处使用了两个名称，且二者并不完全一致：
+
+- 蓝牙补丁横幅写的是 `PF=WCN7850ROM=`（已观察，见上文第 07 节）。
+- 设备树把蓝牙节点命名为 `/soc/bt_wcn6x5x`，`compatible = "qcom,kiwi"`，其供电名为 `qcom,bt-vdd-aon`、`qcom,bt-vdd-dig`、`qcom,bt-vdd-rfaOp8`、`qcom,bt-vdd-rfa2` 与 `qcom,bt-vdd18-aon`，并有蓝牙与 WLAN 的复位 GPIO（已观察，`data/android/vendor_ramdisk/vendor_dtb_dump.txt`）。
+- WCN7850 蓝牙部分的 Linux 绑定（`qcom,wcn7850-bt`）使用另一套供电名（`vddaon`、`vdddig`、`vddrfa0p8`、`vddrfa1p2`、`vddrfa1p8`、`vddrfacmn`、`vddwlcx`、`vddwlmx`）。因此设备树沿用的是较早的 WCN6x5x 命名，并非严格对应 WCN7850 绑定。
+
+WLAN 一侧使用同一家族名称：调制解调器目录为 `kiwi`，Wi-Fi 配置目录为 `kiwi_v2`（第 07、16 节）。推断：`kiwi` 是该无线芯片家族的内部平台名，设备树即为其编写。
+
+参考架构。高通 WCN6856 概述（文档 80-WL542-10，与本芯片同一代但为不同型号）展示了该家族可能共享的结构：PMU、晶振与时钟接口、OTP、RFFE 控制信号、蓝牙子系统，以及两组 WLAN MAC/PHY。其主机接口为蓝牙 HCI 使用 UART 或 USB，WLAN 使用 PCIe，蓝牙音频使用 Slimbus、PCM 或 I2S。这与本设备所见一致：蓝牙使用 `ttyHS0` 与 `hs_uart_operation`（本节），WLAN 使用 PCIe 上的 `mhi0`（第 11 节），音频使用 Slimbus 与 SLIM-DEV1 后端（第 12 节）。WCN6856 是不同型号，因此这只是架构参考。推断，未对照 WCN7850 数据手册核对（该手册尚未阅读）。
+
 ## WPSS：Wi-Fi 远程子系统
 
 XBL 配置（`data/strings/xbl_config.txt`）中有两个该子系统的节，`[FULL_WPSS]` 与 `[CORE_WPSS]`。两者都是 `Type = elf_split`、`ImagePath = \image\wpss`、`SubsysID = 6`，并预留内存 `ResvMemoryStart = 0x85600000`。分区标签分别为 `modem_a`（完整版）与 `core_nhlos_a`（核心版）。两者的 `ProxyGuid` 相同，均为 `61513695-E0C6-4F07-BF41-A51A7770640E`。已观察。节内容见 `data/xbl/wpss_config_sections.txt`。

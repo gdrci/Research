@@ -42,7 +42,7 @@
 
 | 器件 | 功能 | 依据 | 可信度 |
 |---|---|---|---|
-| Maxim MAX98388 | 扬声器功放，左声道 I2C 地址 `0x3A`、右声道 `0x38`，TDM 输入（4 欧姆负载，16 位） | `odm/bin/max98388_v2.sh` 的初始化序列；该名称出现在 `vendor.img` 与 MCU tub 中（第 12 节） | 已命名。ODM 脚本表明它是生产用扬声器功放。参考板的混音配置列出的是高通 WSA 宏，两者的对应关系为推断 |
+| Maxim MAX98388（ADI，WLP-16） | 单声道 D 类扬声器功放，带 I/V 反馈，PCM/TDM 输入，I2C 控制。供电 2.3 V 至 10 V。厂商数据（Analog Devices 产品页与 Digi-Key 列表）：1 kHz 下 THD+N 优于 -83 dB，动态范围最高 111 dB（A 计权），软件关断低于 5 µW，上电 1 ms。内核绑定 `adi,max98388` 描述了电压与电流监测槽位（`adi,vmon-slot-no`、`adi,imon-slot-no`）及交错模式，与 ODM 脚本中电压、电流反馈的使能相符（第 12 节） | 已命名。I2C 地址不一致：ODM 脚本用 `0x3A` 与 `0x38`，内核绑定示例用 `0x39`。在没有 ADI 数据手册的情况下未解决 |
 | 高通 WCD 风格编解码宏（RX、TX、VA、WSA） | 音频编解码与 LPASS 宏 | 混音路径中的 `RX_MACRO`、`TX_MACRO`、`VA_MACRO`、`WSA_MACRO`，以及设备树中的 `lpass-cdc` 节点（第 12 节） | 已命名（系列）；编解码器型号不在文件中 |
 | WCD9320 | 一个库中的编解码器名称 | `libats.so` 与 `vendor.img` 中包含该字符串（第 12 节） | 仅在字符串中命名；设备树中未使用 |
 | NXP RT700（MIMXRT798S） | 一颗芯片内的 MCU（Cortex-M33）与 HiFi4 音频 DSP | DSP 镜像中的 `system_MIMXRT798S_hifi4.c`；MCU 镜像中的 `arvr/firmware/lib/uhal/peripherals/rt700/` 驱动（第 14、15 节） | 已命名 |

@@ -13,6 +13,18 @@ This section covers the Wi-Fi and Bluetooth stack as it is laid out in the OTA: 
 
 - The chip is the Qualcomm WCN7850, a combined Wi-Fi and Bluetooth part. The Bluetooth patch banner names it (`PF=WCN7850ROM=`), and the WLAN build tag is `WLAN.HMT`. Observed.
 
+## Chip identity: WCN7850 in the firmware, WCN6x5x in the device tree
+
+Two names appear for the same radio, and they do not fully agree:
+
+- The Bluetooth patch banner says `PF=WCN7850ROM=` (observed, above).
+- The device tree names the Bluetooth node `/soc/bt_wcn6x5x` with `compatible = "qcom,kiwi"`, and the supplies are named `qcom,bt-vdd-aon`, `qcom,bt-vdd-dig`, `qcom,bt-vdd-rfaOp8`, `qcom,bt-vdd-rfa2` and `qcom,bt-vdd18-aon`, with reset GPIOs for Bluetooth and WLAN (observed, `data/android/vendor_ramdisk/vendor_dtb_dump.txt`).
+- The Linux binding for the WCN7850 Bluetooth part (`qcom,wcn7850-bt`) uses different supply names (`vddaon`, `vdddig`, `vddrfa0p8`, `vddrfa1p2`, `vddrfa1p8`, `vddrfacmn`, `vddwlcx`, `vddwlmx`). So the device tree follows the older WCN6x5x naming, not the WCN7850 binding exactly.
+
+The WLAN side uses the same family name: the modem directory is `kiwi` and the Wi-Fi config directory is `kiwi_v2` (sections 07 and 16). Inferred: `kiwi` is the internal platform name of this radio family, and the device tree is written for it.
+
+Reference architecture. The Qualcomm WCN6856 overview (document 80-WL542-10, a different chip from the same generation) shows the structure that this family is likely to share: a PMU, a crystal and clock interface, OTP, RFFE control signals, a Bluetooth subsystem, and two WLAN MAC/PHY pairs. Its host interfaces are UART or USB for Bluetooth HCI, PCIe for WLAN, and Slimbus, PCM or I2S for Bluetooth audio. Those host interfaces match what this device shows: `ttyHS0` with `hs_uart_operation` for Bluetooth (this section), `mhi0` on PCIe for WLAN (section 11), and the Slimbus and SLIM-DEV1 back ends for audio (section 12). The WCN6856 is a different part, so this is an architecture reference only. Inferred, not checked against the WCN7850 datasheet, which has not been read.
+
 ## WPSS, the Wi-Fi remote subsystem
 
 The XBL configuration (`data/strings/xbl_config.txt`) has two sections for the subsystem, `[FULL_WPSS]` and `[CORE_WPSS]`. Both are `Type = elf_split` with `ImagePath = \image\wpss` and `SubsysID = 6`. They reserve memory at `ResvMemoryStart = 0x85600000`. The partition labels are `modem_a` (full) and `core_nhlos_a` (core). Both carry the same `ProxyGuid`, `61513695-E0C6-4F07-BF41-A51A7770640E`. Observed. The sections are in `data/xbl/wpss_config_sections.txt`.
