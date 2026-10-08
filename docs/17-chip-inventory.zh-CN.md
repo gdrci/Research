@@ -65,7 +65,7 @@
 
 | 器件 | 功能 | 依据 | 可信度 |
 |---|---|---|---|
-| 高通 WCN7850 | Wi-Fi 与蓝牙组合芯片 | 蓝牙补丁横幅 `PF=WCN7850ROM=`（第 07 节）；WLAN 构建标签 `WLAN.HMT` | 已命名 |
+| 高通 WCN7850（固件横幅）；设备树中该家族命名为 WCN6x5x（`bt_wcn6x5x`、`qcom,kiwi`） | Wi-Fi 与蓝牙组合芯片 | 蓝牙补丁横幅 `PF=WCN7850ROM=`（第 07 节）；设备树节点 `/soc/bt_wcn6x5x` 与 `qcom,kiwi`；WLAN 标签 `WLAN.HMT`（第 07 节）。WCN6856 概述（80-WL542-10）是不同型号，仅作架构参考 | 已命名（固件）；设备树中两种名称不一致，两者均记录 |
 | 高通 WPSS 子系统 | SoC 内的 Wi-Fi 远程处理器 | XBL 中的 `[FULL_WPSS]` 与 `[CORE_WPSS]` 节；SMP2P 设备树节点（第 07 节） | 子系统已命名；镜像不在 OTA 中 |
 | NXP PTN5150 | USB Type-C 控制器（`ptn5150@1d`，在 18 个覆盖层中为 disabled） | 覆盖层（第 04 节） | 已命名 |
 | Apple MFi 认证芯片（343S00176） | 机壳或手环的配件认证 | 覆盖层中的 `mfi343s00176@10`（`meta,mfi-i2c`）；`vendor.meta.hardware.mfi@1.0-service` 与 `/dev/mfi-i2c`（第 09 节） | 已命名。该芯片属于 Apple MFi 计划；芯片上的厂商字符串不在文件中 |
