@@ -28,7 +28,7 @@
 
 ### 1a. TME 固件（RISC-V）
 
-这是运行在 TME 核心上的 RISC-V 32 位程序。它提供镜像认证服务，XBL 与 PBL 通过 `tme_messages` 调用这些服务，并通过 IPCC 中断和 GLink 传输（`tme_com/src/GLinkPort.cpp`、`xport_qmp_config_tme.c`）与其他处理器通信。
+这是运行在 TME 核心上的 RISC-V 32 位程序。它提供镜像认证服务，XBL 与 PBL 通过 `tme_messages` 调用这些服务，并通过 IPCC 中断和 GLink 传输（`tme_com/src/GLinkPort.cpp`、`xport_qmp_config_tme.c`）与其他处理器通信。其入口为 `0x20412800`，有 6 个 `PT_LOAD` 段。以含压缩指令的 RISC-V 解码方式对其代码做线性扫描，读取到 52,066 条指令。证据：`data/secure/tme_object_0x91_immediate_scan.txt`。
 
 证书名称位于此区域：
 

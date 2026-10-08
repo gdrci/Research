@@ -4,14 +4,14 @@
 
 本索引列出仓库中 `data/` 下的每个文件、引用它的章节，以及文件首行内容，便于读者判断其中记录了什么。当章节点名引用某文件时，记为**按文件名**引用；当章节描述其所在目录而未点名该文件时，记为**按目录**引用；标为**无**的文件目前尚未被任何章节引用。
 
-计数以撰写时的仓库为准：共 166 个文件，2,915,018 字节。
+计数以撰写时的仓库为准：共 167 个文件，2,919,295 字节。
 
 ## 按目录
 
 | 目录 | 文件数 | 字节 |
 |---|---:|---:|
 | `data/analysis/` | 4 | 3,241 |
-| `data/android/` | 41 | 918,306 |
+| `data/android/` | 42 | 922,595 |
 | `data/avb/` | 3 | 6,405 |
 | `data/dsp/` | 3 | 535,090 |
 | `data/ghidra/` | 21 | 173,637 |
@@ -59,6 +59,7 @@
 | `data/android/dtbo/board_component_matrix.tsv` | 7,832 | 04 | 文件名 | component	0:Greatwhite Config Dev0	1:Greatwhite EVT1 Camera DOE	2:Greatwhite Dev0 2023	... |
 | `data/android/dtbo/board_ids.tsv` | 1,826 | 04 | 文件名 | index	model	compatible	qcom,msm-id	qcom,board-id	nodes	dtbo_bytes |
 | `data/android/dtbo/overlay_components.tsv` | 2,814 | 04 | 文件名 | node	compatible	overlays_present (of 18) |
+| `data/android/dtbo/overlay_bus_map.txt` | 4,289 | 04 | 文件名 | 覆盖层 fragment 与总线标签（SE4、SE8、SE10、SE0 SPI sleep）的对应，以及各节点的父节点 |
 | `data/android/kernel/config.txt` | 214,061 | 04, 08 | 文件名 | # |
 | `data/android/kernel/security_options.tsv` | 862 | 04, 08 | 目录 | option	state |
 | `data/android/selinux/plat_sepolicy_vers.txt` | 5 | 11 | 文件名 | 32.0 |

@@ -37,7 +37,7 @@ This section lists the integrated circuits that the OTA shows the glasses use, w
 | Novatek NT36672E | LCD panel (QDCM names) | `qdcm_calib_data_nt36672e_*` | Named (panel) |
 | Sharp 2k, 4k and QHD panels | Panels (QDCM names) | `qdcm_calib_data_Sharp_*` | Named (panel) |
 | Kinetic KTB8399 | Backlight driver | `ktb8399@60` (`kinetic,ktb8399`) in overlays (section 04) | Named |
-| Awinic AW2026 | LED driver | `aw2026@64` (`awinic,aw2026_led`) in overlays | Named |
+| Awinic AW2026 | LED driver | `aw2026@64` (`awinic,aw2026_led`) in overlays; enabled on all 18 boards, on the SE8 bus (section 04). Its address `0x64` is also used by the OP03010 LCoS node, which sits on SE4, so the two do not clash | Named |
 
 ## Audio
 
@@ -56,9 +56,9 @@ This section lists the integrated circuits that the OTA shows the glasses use, w
 |---|---|---|---|
 | TDK InvenSense ICM-45688 | 6-axis IMU for navigation sensor fusion and the camera IMU logger | `libnavigationsensorfusion.so` contains "InvenSense ICM45688" (section 13) | Named |
 | Cypress PSoC 4 (CY8C4046) | Touch controller on the frame | `cy8c4046_fw` driver source path, `psoc in %s mode` strings, `touch-app-b0.cyacd2` image (section 14) | Named |
-| TI TMP114 | Temperature sensors (overlays) | `tmp114@4C`, `@4D`, `@4E` in overlays (section 04) | Named |
-| Maxim MAX31875 | Temperature sensors (overlays) | `max31875@48`, `@49`, `@4A` in overlays | Named |
-| TI ADS1115 | ADC for analogue sensors (overlays) | `ads1115@49` in overlays | Named |
+| TI TMP114 | Temperature sensors (overlays) | `tmp114@4C`, `@4D`, `@4E` in overlays; enabled on 4, 4 and 1 boards; bus not established (section 04) | Named |
+| Maxim MAX31875 | Temperature sensors (overlays) | `max31875@48`, `@49`, `@4A` in overlays; enabled on 6 boards, on the SE4 bus (section 04) | Named |
+| TI ADS1115 | ADC for analogue sensors (overlays) | `ads1115@49` in overlays; disabled on all 18 boards, so it never shares an enabled bus with MAX31875 at `0x49` (section 04) | Named |
 | Ambient light sensor | ALS driver, with a flicker mode | `als_*` console strings and `als_flicker_*` (section 14) | Not named |
 | Hinge sensor | Hinge open and close input | `hinge_open`, `hinge_close` (section 14) | Not named |
 

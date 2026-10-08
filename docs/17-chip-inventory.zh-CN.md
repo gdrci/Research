@@ -37,7 +37,7 @@
 | Novatek NT36672E | LCD 面板（QDCM 名称） | `qdcm_calib_data_nt36672e_*` | 已命名（面板） |
 | Sharp 2k、4k 与 QHD 面板 | 面板（QDCM 名称） | `qdcm_calib_data_Sharp_*` | 已命名（面板） |
 | Kinetic KTB8399 | 背光驱动 | 覆盖层中的 `ktb8399@60`（`kinetic,ktb8399`）（第 04 节） | 已命名 |
-| Awinic AW2026 | LED 驱动 | 覆盖层中的 `aw2026@64`（`awinic,aw2026_led`） | 已命名 |
+| Awinic AW2026 | LED 驱动 | 覆盖层中的 `aw2026@64`（`awinic,aw2026_led`）；在全部 18 个板型上启用，位于 SE8 总线（第 04 节）。其地址 `0x64` 也被位于 SE4 上的 OP03010 LCoS 节点使用，二者不冲突 | 已命名 |
 
 ## 音频
 
@@ -56,9 +56,9 @@
 |---|---|---|---|
 | TDK InvenSense ICM-45688 | 用于导航传感器融合与摄像头 IMU 记录的 6 轴 IMU | `libnavigationsensorfusion.so` 中含 "InvenSense ICM45688"（第 13 节） | 已命名 |
 | Cypress PSoC 4（CY8C4046） | 镜框上的触控控制器 | `cy8c4046_fw` 驱动源路径、`psoc in %s mode` 字符串、`touch-app-b0.cyacd2` 镜像（第 14 节） | 已命名 |
-| TI TMP114 | 温度传感器（覆盖层） | 覆盖层中的 `tmp114@4C`、`@4D`、`@4E`（第 04 节） | 已命名 |
-| Maxim MAX31875 | 温度传感器（覆盖层） | 覆盖层中的 `max31875@48`、`@49`、`@4A` | 已命名 |
-| TI ADS1115 | 模拟传感器用 ADC（覆盖层） | 覆盖层中的 `ads1115@49` | 已命名 |
+| TI TMP114 | 温度传感器（覆盖层） | 覆盖层中的 `tmp114@4C`、`@4D`、`@4E`；分别在 4、4、1 个板型上启用；总线未确定（第 04 节） | 已命名 |
+| Maxim MAX31875 | 温度传感器（覆盖层） | 覆盖层中的 `max31875@48`、`@49`、`@4A`；在 6 个板型上启用，位于 SE4 总线（第 04 节） | 已命名 |
+| TI ADS1115 | 模拟传感器用 ADC（覆盖层） | 覆盖层中的 `ads1115@49`；在全部 18 个板型上禁用，因此在启用的总线上从不与 `0x49` 处的 MAX31875 共存（第 04 节） | 已命名 |
 | 环境光传感器 | ALS 驱动，带闪烁模式 | `als_*` 控制台字符串与 `als_flicker_*`（第 14 节） | 未命名 |
 | 铰链传感器 | 铰链开合输入 | `hinge_open`、`hinge_close`（第 14 节） | 未命名 |
 

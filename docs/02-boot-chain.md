@@ -28,7 +28,7 @@ The two build dates are separate builds: TME on 5 October 2025, SBL1 on 5 March 
 
 ### 1a. TME firmware (RISC-V)
 
-This is a RISC-V 32-bit program that runs on the TME core. It provides the image-authentication services that XBL and PBL call through `tme_messages`, and it talks to the other processors through IPCC interrupts and the GLink transport (`tme_com/src/GLinkPort.cpp`, `xport_qmp_config_tme.c`).
+This is a RISC-V 32-bit program that runs on the TME core. It provides the image-authentication services that XBL and PBL call through `tme_messages`, and it talks to the other processors through IPCC interrupts and the GLink transport (`tme_com/src/GLinkPort.cpp`, `xport_qmp_config_tme.c`). Its entry point is `0x20412800` and it has six `PT_LOAD` segments. A linear sweep of its code, decoding RISC-V with the compressed extension, reads 52,066 instructions. Evidence: `data/secure/tme_object_0x91_immediate_scan.txt`.
 
 The certificate names are in this region:
 

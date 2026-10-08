@@ -49,6 +49,16 @@ The boot image, `vendor` and `odm` carry an Android 12 fingerprint (`SQ3A.220605
 
 Several parts of the system run outside the application processor. A microcontroller (the MCU) handles the sensors, the buttons, the hinge and the charging case, and it is reached over a transport called STP. The electromyography input from the wrist band reaches the phone-side software through an EMG service. Section 09 covers these. The hardware is also split into two audio-codec variants, RT600 and RT700, listed per product and per board. How the software selects one at boot is not established.
 
+## What the OTA does not contain
+
+- **The silicon boot ROM (PBL).** It is not in the OTA.
+- **Fuse contents.** The arb-fuse bank values are zero in the image file, and the code that sets them at run time is not located. Section 06.
+- **The DDR layout.** The memory map that SBL1 builds at run time is only partly read. Sections 02 and 06.
+- **Interrupt routing.** The files name IPCC and GLink but do not describe the interrupt map. Sections 02 and 05.
+- **Glasses MCU internals.** The strings and the console give the interface, not the full firmware. Sections 09 and 14.
+
+Section 06 lists the stalled items that block a complete model of the boot-time security code.
+
 ## Document map
 
 | Document | Subject |
@@ -70,5 +80,4 @@ Several parts of the system run outside the application processor. A microcontro
 | [15](15-audio-dsp-firmware.md) | RT700 HiFi4 DSP: wake word, hearing, speaker model, microphones |
 | [16](16-modem-partition-firmware.md) | ADSP, CDSP, trusted applications and their signing chains |
 | [17](17-chip-inventory.md) | Integrated circuits: SoC, PMICs, amplifiers, sensors, connectivity, with evidence and confidence |
-| [19](19-emulation-reference.md) | Processors, entry points, addresses, bus devices and open emulation gaps |
 | [18](18-evidence-index.md) | Every evidence file and the section that cites it |

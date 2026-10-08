@@ -44,7 +44,6 @@ Discord：[discord.gg/oculus](https://discord.gg/oculus) · gdrci（Discord）
 | 音频 DSP 固件（RT700 HiFi4） | [15](docs/15-audio-dsp-firmware.md) | [15](docs/15-audio-dsp-firmware.zh-CN.md) |
 | 调制解调器分区固件：ADSP、CDSP 与可信应用 | [16](docs/16-modem-partition-firmware.md) | [16](docs/16-modem-partition-firmware.zh-CN.md) |
 | 芯片清单 | [17](docs/17-chip-inventory.md) | [17](docs/17-chip-inventory.zh-CN.md) |
-| 模拟参考 | [19](docs/19-emulation-reference.md) | [19](docs/19-emulation-reference.zh-CN.md) |
 | 证据索引 | [18](docs/18-evidence-index.md) | [18](docs/18-evidence-index.zh-CN.md) |
 
 

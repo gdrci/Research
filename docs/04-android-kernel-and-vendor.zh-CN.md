@@ -236,4 +236,33 @@ LCoS 的名称和 `meta,lcos-i2c` 兼容字符串指向 LCoS（硅基液晶）�
 
 名称可能给出了一条构建顺序（未经验证）：先是 Dev0 与 Dev1，然后是 PreP1、EVT1、EVT2、DVT 和 PVT，最后是 P1 版本。"Protostar FF3" 是原型标签。"ULED" 和 "Onewire" 只是名称，其硬件含义未确定。
 
+### 各板型的显示、传感器与总线器件使能
+
+矩阵 `data/android/dtbo/board_component_matrix.tsv` 给出了每个节点在每个板型上的状态。下表保留了地址被共享的节点，以及第 17 节列出的节点。板 ID 为 `qcom,board-id` 的第二个值，已去掉 `0x22` 前缀。
+
+| # | 板型 | 板 ID | LCoS OP03010（`0x64`，SE4） | LCoS OP02220 BA（`0x65`，SE4） | PMIC OP03010（`0x40`，SE4） | PMIC OP02220（`0x44`，SE4） | AW2026（`0x64`，SE8） | MAX31875（`0x48`，SE4） | TMP114（`0x4C`） | MAX17332（`0x36`） |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 0 | Greatwhite Config Dev0 | 0xb0 | 是 | 是 | 是 | 是 | 是 | 是 | 否 | 否 |
+| 1 | Greatwhite EVT1 Camera DOE | 0xba | 是 | 是 | 是 | 是 | 是 | 否 | 否 | 否 |
+| 2 | Greatwhite Dev0 2023 | 0xb3 | 是 | 是 | 是 | 是 | 是 | 是 | 否 | 否 |
+| 3 | Greatwhite Dev1.0 | 0xbb | 是 | 是 | 是 | 是 | 是 | 否 | 是 | 否 |
+| 4 | Protostar FF3 (RT700) | 0xd1 | 否 | 是 | 否 | 是 | 是 | 是 | 否 | 是 |
+| 5 | Greatwhite DVT | 0xae | 是 | 是 | 是 | 是 | 是 | 否 | 否 | 否 |
+| 6 | Greatwhite Dev0.2 | 0xb7 | 是 | 是 | 是 | 是 | 是 | 否 | 是 | 否 |
+| 7 | Greatwhite EVT2 | 0xbf | 是 | 是 | 是 | 是 | 是 | 否 | 否 | 否 |
+| 8 | Greatwhite Config Dev0.1 | 0xb1 | 是 | 是 | 是 | 是 | 是 | 是 | 否 | 否 |
+| 9 | Greatwhite Dev1.1 | 0xbd | 是 | 是 | 是 | 是 | 是 | 否 | 是 | 否 |
+| 10 | Greatwhite PreP1 | 0xb2 | 是 | 是 | 是 | 是 | 是 | 是 | 否 | 否 |
+| 11 | Greatwhite ULED | 0xb9 | 否 | 是 | 否 | 是 | 是 | 否 | 否 | 否 |
+| 12 | Greatwhite PreP1+ | 0xb4 | 是 | 是 | 是 | 是 | 是 | 是 | 否 | 否 |
+| 13 | Greatwhite PVT | 0xaf | 是 | 是 | 是 | 是 | 是 | 否 | 否 | 否 |
+| 14 | Greatwhite P1 (RT700) | 0xb6 | 是 | 是 | 是 | 是 | 是 | 否 | 否 | 否 |
+| 15 | Greatwhite P1 (RT600) | 0xb5 | 是 | 是 | 是 | 是 | 是 | 否 | 是 | 否 |
+| 16 | Greatwhite EVT1 (RT700) | 0xb8 | 是 | 是 | 是 | 是 | 是 | 否 | 否 | 否 |
+| 17 | Greatwhite EVT1 DOE2 (Onewire) | 0xbc | 是 | 是 | 是 | 是 | 是 | 否 | 否 | 否 |
+
+总线归属。覆盖层通过 fragment 把器件挂到总线上。在覆盖层 0 中（其他已检查的覆盖层 fragment 编号相同），`fragment@42` 指向标签 `qupv3_se4_i2c`。该串行引擎（SE4）上挂有 `lcosOP03010@64`、`lcosOP02220BA@65`、`pmicOP03010@40`、`pmicOP02220@44`，以及 `max31875@48`、`@49`、`@4A`。`fragment@56` 指向 `qupv3_se8_i2c`，上面挂有 `aw2026@64`。`fragment@24` 指向 `qupv3_se10_i2c`，上面挂有 `ads1115@49`，该节点在全部 18 个板型上均被禁用。`tmp114` 节点位于标签为 `qupv3_se0_spi_sleep` 的 fragment 之下，因此其总线尚未确定。证据：`data/android/dtbo/overlay_bus_map.txt`。
+
+同一总线上的器件地址各不相同。因此共享的地址并不冲突：`0x64` 分别用于 SE4 与 SE8，`0x49` 分别用于 SE4 与 SE10。要把每个 SE 标签映射到物理 I2C 地址，需要基础设备树的标签，而厂商转储中没有保留这些标签。
+
 P1 的 RT600 与 RT700 变体恰好在四个组件上不同。`hyperoff` 只存在于 RT700。`tmp114@4C` 和 `tmp114@4D` 只存在于 RT600。`display-virtual-sensor` 在 RT700 上禁用，在 RT600 上启用。`hyperoff` 的差异与软件一致：`mcu-properties.sh` 只在 RT700 配置中开启 hyperoff（第 09 节）。

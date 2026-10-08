@@ -4,14 +4,14 @@
 
 This index lists every file under `data/` in the repository, the sections that cite it, and the first line of the file so a reader can tell what it holds. A file is cited **by name** when a section names it. A file is cited **by directory** when a section describes its directory, but the file itself is not named. A file marked **none** is not cited anywhere yet.
 
-Counts are from the repository at the time of writing: 166 files, 2,915,018 bytes.
+Counts are from the repository at the time of writing: 167 files, 2,919,295 bytes.
 
 ## By directory
 
 | Directory | Files | Bytes |
 |---|---:|---:|
 | `data/analysis/` | 4 | 3,241 |
-| `data/android/` | 41 | 918,306 |
+| `data/android/` | 42 | 922,595 |
 | `data/avb/` | 3 | 6,405 |
 | `data/dsp/` | 3 | 535,090 |
 | `data/ghidra/` | 21 | 173,637 |
@@ -59,6 +59,7 @@ Counts are from the repository at the time of writing: 166 files, 2,915,018 byte
 | `data/android/dtbo/board_component_matrix.tsv` | 7,832 | 04 | file name | component	0:Greatwhite Config Dev0	1:Greatwhite EVT1 Camera DOE	2:Greatwhite Dev0 2023	... |
 | `data/android/dtbo/board_ids.tsv` | 1,826 | 04 | file name | index	model	compatible	qcom,msm-id	qcom,board-id	nodes	dtbo_bytes |
 | `data/android/dtbo/overlay_components.tsv` | 2,814 | 04 | file name | node	compatible	overlays_present (of 18) |
+| `data/android/dtbo/overlay_bus_map.txt` | 4,289 | 04 | file name | fragment-to-bus label mapping (SE4, SE8, SE10, SE0 SPI sleep) and each node's parent in the overlays |
 | `data/android/kernel/config.txt` | 214,061 | 04, 08 | file name | # |
 | `data/android/kernel/security_options.tsv` | 862 | 04, 08 | directory | option	state |
 | `data/android/selinux/plat_sepolicy_vers.txt` | 5 | 11 | file name | 32.0 |

@@ -236,4 +236,33 @@ Each overlay's root node has `model`, `compatible` (`meta,greatwhite` plus a rev
 
 The names may give a build sequence (not verified): Dev0 and Dev1 first, then PreP1, EVT1, EVT2, DVT and PVT, then the P1 build. "Protostar FF3" is a prototype label. "ULED" and "Onewire" are names only; their hardware meaning is not established.
 
+### Per-board enables for the display, sensor and bus devices
+
+The matrix `data/android/dtbo/board_component_matrix.tsv` gives each node's status on each board. The table keeps the nodes whose addresses are shared or that section 17 names. The board ID is the second `qcom,board-id` value, with the `0x22` prefix removed.
+
+| # | Board | Board ID | LCoS OP03010 (`0x64`, SE4) | LCoS OP02220 BA (`0x65`, SE4) | PMIC OP03010 (`0x40`, SE4) | PMIC OP02220 (`0x44`, SE4) | AW2026 (`0x64`, SE8) | MAX31875 (`0x48`, SE4) | TMP114 (`0x4C`) | MAX17332 (`0x36`) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 0 | Greatwhite Config Dev0 | 0xb0 | yes | yes | yes | yes | yes | yes | no | no |
+| 1 | Greatwhite EVT1 Camera DOE | 0xba | yes | yes | yes | yes | yes | no | no | no |
+| 2 | Greatwhite Dev0 2023 | 0xb3 | yes | yes | yes | yes | yes | yes | no | no |
+| 3 | Greatwhite Dev1.0 | 0xbb | yes | yes | yes | yes | yes | no | yes | no |
+| 4 | Protostar FF3 (RT700) | 0xd1 | no | yes | no | yes | yes | yes | no | yes |
+| 5 | Greatwhite DVT | 0xae | yes | yes | yes | yes | yes | no | no | no |
+| 6 | Greatwhite Dev0.2 | 0xb7 | yes | yes | yes | yes | yes | no | yes | no |
+| 7 | Greatwhite EVT2 | 0xbf | yes | yes | yes | yes | yes | no | no | no |
+| 8 | Greatwhite Config Dev0.1 | 0xb1 | yes | yes | yes | yes | yes | yes | no | no |
+| 9 | Greatwhite Dev1.1 | 0xbd | yes | yes | yes | yes | yes | no | yes | no |
+| 10 | Greatwhite PreP1 | 0xb2 | yes | yes | yes | yes | yes | yes | no | no |
+| 11 | Greatwhite ULED | 0xb9 | no | yes | no | yes | yes | no | no | no |
+| 12 | Greatwhite PreP1+ | 0xb4 | yes | yes | yes | yes | yes | yes | no | no |
+| 13 | Greatwhite PVT | 0xaf | yes | yes | yes | yes | yes | no | no | no |
+| 14 | Greatwhite P1 (RT700) | 0xb6 | yes | yes | yes | yes | yes | no | no | no |
+| 15 | Greatwhite P1 (RT600) | 0xb5 | yes | yes | yes | yes | yes | no | yes | no |
+| 16 | Greatwhite EVT1 (RT700) | 0xb8 | yes | yes | yes | yes | yes | no | no | no |
+| 17 | Greatwhite EVT1 DOE2 (Onewire) | 0xbc | yes | yes | yes | yes | yes | no | no | no |
+
+Bus placement. The overlays attach each device to a bus through a fragment. In overlay 0 (the fragment numbers are the same in the other overlays checked), `fragment@42` targets the label `qupv3_se4_i2c`. That serial engine (SE4) carries `lcosOP03010@64`, `lcosOP02220BA@65`, `pmicOP03010@40`, `pmicOP02220@44` and `max31875@48`, `@49`, `@4A`. `fragment@56` targets `qupv3_se8_i2c`, which carries `aw2026@64`. `fragment@24` targets `qupv3_se10_i2c`, which carries `ads1115@49`; that node is disabled on all 18 boards. The `tmp114` nodes sit under a fragment whose label is `qupv3_se0_spi_sleep`, so their bus is not established. Evidence: `data/android/dtbo/overlay_bus_map.txt`.
+
+On each bus the device addresses are unique. The shared addresses are therefore not a clash: `0x64` is used on SE4 and SE8, and `0x49` on SE4 and SE10. Mapping each SE label to a physical I2C address needs the base device-tree labels, which the vendor dump does not keep.
+
 The RT600 and RT700 variants of P1 differ in exactly four components. `hyperoff` is present only on RT700. `tmp114@4C` and `tmp114@4D` are present only on RT600. `display-virtual-sensor` is disabled on RT700 and enabled on RT600. The `hyperoff` difference matches the software: `mcu-properties.sh` turns on hyperoff only in the RT700 configuration (section 09).
