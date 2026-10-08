@@ -21,6 +21,8 @@
 - 设备树把蓝牙节点命名为 `/soc/bt_wcn6x5x`，`compatible = "qcom,kiwi"`，其供电名为 `qcom,bt-vdd-aon`、`qcom,bt-vdd-dig`、`qcom,bt-vdd-rfaOp8`、`qcom,bt-vdd-rfa2` 与 `qcom,bt-vdd18-aon`，并有蓝牙与 WLAN 的复位 GPIO（已观察，`data/android/vendor_ramdisk/vendor_dtb_dump.txt`）。
 - WCN7850 蓝牙部分的 Linux 绑定（`qcom,wcn7850-bt`）使用另一套供电名（`vddaon`、`vdddig`、`vddrfa0p8`、`vddrfa1p2`、`vddrfa1p8`、`vddrfacmn`、`vddwlcx`、`vddwlmx`）。因此设备树沿用的是较早的 WCN6x5x 命名，并非严格对应 WCN7850 绑定。
 
+公开佐证（来自搜索结果，未打开原文）：上游 Linux `ath12k` 驱动支持 WCN7850 的 hw2.0 固件，公开固件树中的 WLAN 构建字符串形如 `WLAN.HMT.1.1.c5-00284-QCAHMTSWPL_V1.0_V2.0_SILICONZ-3`。设备自身的标签为 `WLAN.HMT.1.1.c4-00443-…`，是同一家族字符串的较早构建。公开树中的板级数据文件为 `ath12k/WCN7850/hw2.0/board-2.bin`。设备附带的是 `bdwlan.elf`，而非 `board-2.bin`，因此设备的 WLAN 数据打包方式与上游布局不同。根据字符串推断，未对固件本身核对。
+
 WLAN 一侧使用同一家族名称：调制解调器目录为 `kiwi`，Wi-Fi 配置目录为 `kiwi_v2`（第 07、16 节）。推断：`kiwi` 是该无线芯片家族的内部平台名，设备树即为其编写。
 
 参考架构。高通 WCN6856 概述（文档 80-WL542-10，与本芯片同一代但为不同型号）展示了该家族可能共享的结构：PMU、晶振与时钟接口、OTP、RFFE 控制信号、蓝牙子系统，以及两组 WLAN MAC/PHY。其主机接口为蓝牙 HCI 使用 UART 或 USB，WLAN 使用 PCIe，蓝牙音频使用 Slimbus、PCM 或 I2S。这与本设备所见一致：蓝牙使用 `ttyHS0` 与 `hs_uart_operation`（本节），WLAN 使用 PCIe 上的 `mhi0`（第 11 节），音频使用 Slimbus 与 SLIM-DEV1 后端（第 12 节）。WCN6856 是不同型号，因此这只是架构参考。推断，未对照 WCN7850 数据手册核对（该手册尚未阅读）。
