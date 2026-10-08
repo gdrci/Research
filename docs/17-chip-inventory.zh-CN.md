@@ -42,7 +42,7 @@
 
 | 器件 | 功能 | 依据 | 可信度 |
 |---|---|---|---|
-| Maxim MAX98388（ADI，WLP-16） | 单声道 D 类扬声器功放，带 I/V 反馈，PCM/TDM 输入，I2C 控制。供电 2.3 V 至 10 V。厂商数据（Analog Devices 产品页与 Digi-Key 列表）：1 kHz 下 THD+N 优于 -83 dB，动态范围最高 111 dB（A 计权），软件关断低于 5 µW，上电 1 ms。内核绑定 `adi,max98388` 描述了电压与电流监测槽位（`adi,vmon-slot-no`、`adi,imon-slot-no`）及交错模式，与 ODM 脚本中电压、电流反馈的使能相符（第 12 节） | 已命名。I2C 地址不一致：ODM 脚本用 `0x3A` 与 `0x38`，内核绑定示例用 `0x39`。在没有 ADI 数据手册的情况下未解决 公开搜索：Rev. 2 数据手册（2023/09/26）在 analog.com。其 I2C 地址表未能获取（环境出口代理阻止）。 |
+| Maxim MAX98388（ADI，16 凸点 WLP） | 单声道 D 类扬声器功放，带 I/V 反馈，PCM（I2S/LJ/TDM）输入，I2C 控制。供电 2.3 V 至 10 V。数据手册 Rev. 2（ADI，2024）：4 欧姆下 3.7 V 时输出 1.32 W，1 kHz 下 THD+N 优于 -83 dB，动态范围最高 111 dB（A 计权），软件关断低于 5 µW，上电 1 ms。I2C 地址表（数据手册表 9）由 ADDR 脚决定 7 位地址：接 VDD 为 0x38，接 GND 为 0x39，接 SDA 为 0x3A，接 SCL 为 0x3B。因此 ODM 脚本中的 `0x3A`（左）与 `0x38`（右）分别对应接 SDA 与接 VDD，与数据手册一致。内核绑定示例使用 0x39（接 GND）。 | 已命名。地址已据数据手册解决（第 12、17 节） |
 | 高通 WCD 风格编解码宏（RX、TX、VA、WSA） | 音频编解码与 LPASS 宏 | 混音路径中的 `RX_MACRO`、`TX_MACRO`、`VA_MACRO`、`WSA_MACRO`，以及设备树中的 `lpass-cdc` 节点（第 12 节） | 已命名（系列）；编解码器型号不在文件中 |
 | WCD9320 | 一个库中的编解码器名称 | `libats.so` 与 `vendor.img` 中包含该字符串（第 12 节） | 仅在字符串中命名；设备树中未使用 |
 | NXP RT700（MIMXRT798S） | 一颗芯片内的 MCU（Cortex-M33）与 HiFi4 音频 DSP | DSP 镜像中的 `system_MIMXRT798S_hifi4.c`；MCU 镜像中的 `arvr/firmware/lib/uhal/peripherals/rt700/` 驱动（第 14、15 节） | 已命名 |
@@ -65,7 +65,7 @@
 
 | 器件 | 功能 | 依据 | 可信度 |
 |---|---|---|---|
-| 高通 WCN7850（固件横幅）；设备树中该家族命名为 WCN6x5x（`bt_wcn6x5x`、`qcom,kiwi`） | Wi-Fi 与蓝牙组合芯片 | 蓝牙补丁横幅 `PF=WCN7850ROM=`（第 07 节）；设备树节点 `/soc/bt_wcn6x5x` 与 `qcom,kiwi`；WLAN 标签 `WLAN.HMT`（第 07 节）。WCN6856 概述（80-WL542-10）是不同型号，仅作架构参考 | 已命名（固件）；设备树中两种名称不一致，两者均记录 公开搜索：高通将 WCN785x 列在 FastConnect 7800 系列下（Wi-Fi 7；高通资料称蓝牙 5.4，WikiDevi 将 WCN7850 列为蓝牙 5.3）。资料未能获取（环境出口代理阻止）。 |
+| 高通 WCN7850（固件横幅）；设备树中该家族命名为 WCN6x5x（`bt_wcn6x5x`、`qcom,kiwi`） | Wi-Fi 与蓝牙组合芯片 | 蓝牙补丁横幅 `PF=WCN7850ROM=`（第 07 节）；设备树节点 `/soc/bt_wcn6x5x` 与 `qcom,kiwi`；WLAN 标签 `WLAN.HMT`。高通 FastConnect 7800 资料（87-PW329-1 Rev. B，2023）订购型号为 WCN785x-1 与 WCN785x-5，工艺 14 nm，支持 Wi-Fi 7/6E/6、2.4/5/6 GHz、320 MHz 信道、4K QAM、MLO、蓝牙 5.4、LE Audio 与 ANT+。该资料未提及 WCN7850，也未列出主机接口。 | 已命名（固件）；该器件属于 WCN785x 系列。蓝牙 5.4 来自该资料；WCN7850 的确切版本未确认 |
 | 高通 WPSS 子系统 | SoC 内的 Wi-Fi 远程处理器 | XBL 中的 `[FULL_WPSS]` 与 `[CORE_WPSS]` 节；SMP2P 设备树节点（第 07 节） | 子系统已命名；镜像不在 OTA 中 |
 | NXP PTN5150 | USB Type-C 控制器（`ptn5150@1d`，在 18 个覆盖层中为 disabled） | 覆盖层（第 04 节） | 已命名 |
 | Apple MFi 认证芯片（343S00176） | 机壳或手环的配件认证 | 覆盖层中的 `mfi343s00176@10`（`meta,mfi-i2c`）；`vendor.meta.hardware.mfi@1.0-service` 与 `/dev/mfi-i2c`（第 09 节） | 已命名。该芯片属于 Apple MFi 计划；芯片上的厂商字符串不在文件中 |
