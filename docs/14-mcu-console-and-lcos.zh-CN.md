@@ -1,4 +1,4 @@
-# 15 - MCU 控制台、LCoS 显示控制器与传感器驱动
+# 14 - MCU 控制台、LCoS 显示控制器与传感器驱动
 
 [English](14-mcu-console-and-lcos.md)
 

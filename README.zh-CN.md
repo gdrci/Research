@@ -40,9 +40,9 @@ Discord：[discord.gg/oculus](https://discord.gg/oculus) · gdrci（Discord）
 | SELinux 与厂商策略 | [11](docs/11-selinux-and-vendor-policy.md) | [11](docs/11-selinux-and-vendor-policy.zh-CN.md) |
 | 音频 | [12](docs/12-audio.md) | [12](docs/12-audio.zh-CN.md) |
 | 摄像头与显示用户空间 | [13](docs/13-camera-and-display.md) | [13](docs/13-camera-and-display.zh-CN.md) |
-| MCU 控制台、LCoS 与触控 | [14](docs/14-mcu-console-and-lcos.md) | [14](docs/14-mcu-console-and-lcos.zh-CN.md) |
+| MCU 控制台、LCoS 显示控制器与传感器驱动 | [14](docs/14-mcu-console-and-lcos.md) | [14](docs/14-mcu-console-and-lcos.zh-CN.md) |
 | 音频 DSP 固件（RT700 HiFi4） | [15](docs/15-audio-dsp-firmware.md) | [15](docs/15-audio-dsp-firmware.zh-CN.md) |
-| 调制解调器分区：ADSP、CDSP 与可信应用 | [16](docs/16-modem-partition-firmware.md) | [16](docs/16-modem-partition-firmware.zh-CN.md) |
+| 调制解调器分区固件：ADSP、CDSP 与可信应用 | [16](docs/16-modem-partition-firmware.md) | [16](docs/16-modem-partition-firmware.zh-CN.md) |
 | 芯片清单 | [17](docs/17-chip-inventory.md) | [17](docs/17-chip-inventory.zh-CN.md) |
 | 证据索引 | [18](docs/18-evidence-index.md) | [18](docs/18-evidence-index.zh-CN.md) |
 

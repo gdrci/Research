@@ -1,4 +1,4 @@
-# 16 - 音频 DSP 固件（RT700 HiFi4）
+# 15 - 音频 DSP 固件（RT700 HiFi4）
 
 [English](15-audio-dsp-firmware.md)
 

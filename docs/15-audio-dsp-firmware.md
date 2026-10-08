@@ -1,4 +1,4 @@
-# 16 - Audio DSP firmware (RT700 HiFi4)
+# 15 - Audio DSP firmware (RT700 HiFi4)
 
 [中文](15-audio-dsp-firmware.zh-CN.md)
 

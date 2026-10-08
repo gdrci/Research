@@ -1,4 +1,4 @@
-# 15 - MCU console, LCoS display controller and sensor drivers
+# 14 - MCU console, LCoS display controller and sensor drivers
 
 [中文](14-mcu-console-and-lcos.zh-CN.md)
 

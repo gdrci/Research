@@ -4,7 +4,7 @@
 
 本索引列出仓库中 `data/` 下的每个文件、引用它的章节，以及文件首行内容，便于读者判断其中记录了什么。当章节点名引用某文件时，记为**按文件名**引用；当章节描述其所在目录而未点名该文件时，记为**按目录**引用；标为**无**的文件目前尚未被任何章节引用。
 
-计数以撰写时的仓库为准：共 145 个文件，2,862,270 字节。
+计数以撰写时的仓库为准：共 165 个文件，2,914,119 字节。
 
 ## 按目录
 
@@ -14,14 +14,14 @@
 | `data/android/` | 41 | 918,306 |
 | `data/avb/` | 3 | 6,405 |
 | `data/dsp/` | 3 | 535,090 |
-| `data/ghidra/` | 18 | 151,030 |
-| `data/inventory.json/` | 1 | 33,943 |
+| `data/ghidra/` | 21 | 173,637 |
+| `data/inventory.json` | 1 | 33,943 |
 | `data/mcu/` | 1 | 12,733 |
-| `data/partition_table.md/` | 1 | 3,504 |
-| `data/partition_table.zh-CN.md/` | 1 | 3,679 |
-| `data/qfprom_literal_candidates.json/` | 1 | 839 |
+| `data/partition_table.md` | 1 | 3,504 |
+| `data/partition_table.zh-CN.md` | 1 | 3,679 |
+| `data/qfprom_literal_candidates.json` | 1 | 839 |
 | `data/remote/` | 9 | 21,350 |
-| `data/secure/` | 27 | 47,671 |
+| `data/secure/` | 44 | 76,913 |
 | `data/strings/` | 20 | 1,097,518 |
 | `data/userspace/` | 9 | 23,781 |
 | `data/xbl/` | 6 | 3,180 |
@@ -54,17 +54,17 @@
 | `data/android/camera_display/init.qti.display_boot.sh` | 11,773 | 13 | 文件名 | #!/vendor/bin/sh |
 | `data/android/camera_display/procamera.rc` | 405 | 13 | 文件名 | service procamera /system_ext/bin/procamera |
 | `data/android/camera_display/stubcameraservice.rc` | 214 | 13 | 文件名 | on property:persist.vendor.media.enableStubCamera=1 |
-| `data/android/camera_display/summary.txt` | 760 | 03, 11, 12, 13, 15 | 文件名 | Camera and display userspace summary (fs/system_ext, fs/vendor, fs/odm of greatwhite.zi... |
+| `data/android/camera_display/summary.txt` | 760 | 13 | 文件名 | Camera and display userspace summary (fs/system_ext, fs/vendor, fs/odm of greatwhite.zi... |
 | `data/android/camera_display/vendor.qti.hardware.display.composer-service.rc` | 369 | 13 | 文件名 | service vendor.qti.hardware.display.composer /vendor/bin/hw/vendor.qti.hardware.display... |
 | `data/android/dtbo/board_component_matrix.tsv` | 7,832 | 04 | 文件名 | component	0:Greatwhite Config Dev0	1:Greatwhite EVT1 Camera DOE	2:Greatwhite Dev0 2023	... |
 | `data/android/dtbo/board_ids.tsv` | 1,826 | 04 | 文件名 | index	model	compatible	qcom,msm-id	qcom,board-id	nodes	dtbo_bytes |
 | `data/android/dtbo/overlay_components.tsv` | 2,814 | 04 | 文件名 | node	compatible	overlays_present (of 18) |
-| `data/android/kernel/config.txt` | 214,061 | 04, 07, 08 | 文件名 | # |
+| `data/android/kernel/config.txt` | 214,061 | 04, 08 | 文件名 | # |
 | `data/android/kernel/security_options.tsv` | 862 | 04, 08 | 目录 | option	state |
 | `data/android/selinux/plat_sepolicy_vers.txt` | 5 | 11 | 文件名 | 32.0 |
 | `data/android/selinux/policy_summary.txt` | 2,347 | 11 | 文件名 | SELinux vendor policy summary (fs/vendor/etc/selinux of greatwhite.zip). Counts from te... |
 | `data/android/selinux/selinux_denial_metadata` | 1,503 | 11 | 文件名 | dnsmasq netd fifo_file b/77868789 |
-| `data/android/selinux/vendor_hwservice_contexts` | 5,853 | 11 | 文件名 | android.hardware.media.c2::IConfigurable                           u:object_r:hal_codec... |
+| `data/android/selinux/vendor_hwservice_contexts` | 5,853 | 07, 11 | 文件名 | android.hardware.media.c2::IConfigurable                           u:object_r:hal_codec... |
 | `data/android/selinux/vendor_property_contexts` | 7,652 | 11 | 文件名 | #line 1 "out/soong/.intermediates/system/sepolicy/vendor_property_contexts/android_comm... |
 | `data/android/selinux/vendor_seapp_contexts` | 119 | 11 | 文件名 | user=_app seinfo=platform name=com.qualcomm.timeservice domain=vendor_timeservice_app t... |
 | `data/android/selinux/vendor_service_contexts` | 4,017 | 11 | 文件名 | vendor.qti.hardware.display.config.IDisplayConfig/default u:object_r:vendor_hal_vnddisp... |
@@ -72,7 +72,7 @@
 | `data/android/vendor_boot/bootconfig.txt` | 175 | 04 | 文件名 | androidboot.hardware=greatwhite |
 | `data/android/vendor_ramdisk/fstab.greatwhite` | 4,894 | 04 | 文件名 | # Copyright (c) 2019-2020 The Linux Foundation. All rights reserved. |
 | `data/android/vendor_ramdisk/kernel_modules.txt` | 3,386 | 04, 07, 12, 13, 14, 17 | 目录 | adsp_loader_dlkm.ko |
-| `data/android/vendor_ramdisk/modules_modinfo.tsv` | 14,566 | 04, 07, 17 | 文件名 | module	license	description	author	depends |
+| `data/android/vendor_ramdisk/modules_modinfo.tsv` | 14,566 | 04, 05, 07, 17 | 文件名 | module	license	description	author	depends |
 | `data/android/vendor_ramdisk/vendor_dtb_dump.txt` | 562,388 | 04, 07, 12, 13, 14, 17 | 文件名 | / |
 | `data/android/vendor_ramdisk/wpss_dt_nodes.txt` | 720 | 07 | 文件名 | Device-tree nodes naming WPSS (data/android/vendor_ramdisk/vendor_dtb_dump.txt, binary-... |
 | `data/avb/hashtree_rebuild.txt` | 2,271 | 03 | 文件名 | dm-verity tree rebuild, from vbmeta*.img descriptors and the partition images |
@@ -100,7 +100,7 @@
 | `data/ghidra/uefi_verifiedboot_decompiled.txt` | 17,430 | 03 | 文件名 | VerifiedBootDxe (uefi.img DXE volume, PE image at decompressed offset 0x74804, 61,504 b... |
 | `data/ghidra/xbl_primary_stub_thumb2_disasm.txt` | 1,751 | 02 | 文件名 | # program stub.bin lang ARM:LE:32:v8T |
 | `data/inventory.json` | 33,943 | 01 | 文件名 | [ |
-| `data/mcu/mcu_console_strings.txt` | 12,733 | 14, 17 | 文件名 | MCU firmware console strings (mcu.default.rt700.tub, file offsets). Extracted by printa... |
+| `data/mcu/mcu_console_strings.txt` | 12,733 | 09, 14, 17 | 文件名 | MCU firmware console strings (mcu.default.rt700.tub, file offsets). Extracted by printa... |
 | `data/partition_table.md` | 3,504 | 01 | 文件名 | # Partition table |
 | `data/partition_table.zh-CN.md` | 3,679 | 01, 02, 03, 04, 05, 06, 07, 08, 09, 11, 12, 13, 14, 15, 16, 17 | 目录 | # 分区表 |
 | `data/qfprom_literal_candidates.json` | 839 | 06 | 文件名 | { |
@@ -118,25 +118,25 @@
 | `data/secure/hyp_mmio_map.tsv` | 1,579 | 02, 06 | 文件名 | va	pa	attr	perm	size |
 | `data/secure/hyp_pil_arb_fuse_table.txt` | 3,133 | 06 | 文件名 | hyp.img: PILSubsys_getArbFuseBank and its subsystem table. Observed by AArch64 disassem... |
 | `data/secure/hyp_rm_objects_and_arb_fuse.txt` | 1,590 | 06 | 文件名 | hyp.img is the Gunyah/QTEE hypervisor resource manager (AArch64 ELF, entry 0x80000000). |
-| `data/secure/hyp_arb_fuse_xref_scan.txt` | 19 | 06 | 文件名 | hyp.img cross-references to the arb-fuse table; no writer of the bank field found |
-| `data/secure/hyp_arb_fuse_reference_check.txt` | 12 | 06 | 文件名 | Ghidra reference check on getArbFuseBank and the table getter; no references to the getter |
-| `data/secure/tz_object_0x91_provider_scan.txt` | 21 | 06 | 文件名 | tz.img object-0x91 invoke path and store scans; provider not found |
-| `data/secure/tz_context_creator_decomp.txt` | 107 | 06 | 文件名 | Decompiled tz.img context wrapper, list-node registration callers and switch-in; no thread-block pair store |
-| `data/secure/tz_switch_in_entry_scan.txt` | 12 | 06, 02 | 文件名 | tz.img branch and pointer scan for the switch-in function; no in-image caller |
-| `data/secure/sbl1_tz_entry_context_chain.txt` | 13 | 02, 06 | 文件名 | SBL1 loader objects and the TrustZone entry context; the object at loader +0x28 not identified |
-| `data/secure/sbl1_loader_context_chain.txt` | 5 | 02 | 文件名 | SBL1 loader context: protocol services 0x0E and 0x11, boot image driver, selector |
-| `data/secure/sbl1_loader_ctx_slot.txt` | 16 | 02 | 文件名 | Config-object layout: the loader transfer slot at +0x28 is config entry 1; record table still unresolved |
-| `data/secure/sbl1_image_record_table.txt` | 17 | 02 | 文件名 | SBL1 per-image record table: layout, ids, zero transfer values |
-| `data/secure/sbl1_loader_instance_layout.txt` | 24 | 02 | 文件名 | SBL1 MBN loader instance and MBRD driver layout; corrects the earlier +0x28 reading |
-| `data/secure/sbl1_id10_block_device_object.txt` | 13 | 02 | 文件名 | SBL1 config-id-10 object: block-device loader method table; not the TrustZone entry |
-| `data/secure/sbl1_indirect_call_scan.txt` | 10 | 02 | 文件名 | sbl1.elf indirect-call scan for the header-driven jump into the TrustZone image; not located |
-| `data/secure/tz_oem_spare_fuse_writer_decomp.txt` | 128 | 06 | 文件名 | tz.img OEM spare-fuse writer (reads oem_regions_config); not the root-key reader |
-| `data/secure/oem_key_lookup_hash_tests.txt` | 7 | 06 | 文件名 | Hash and offset lookup tests for the OEM root-key name in tz.img and devcfg.img; negative |
-| `data/secure/oem_key_block_ref_query.txt` | 9 | 06 | 文件名 | Ghidra reference query on the OEM key block; the hits are misdisassembled data |
-| `data/secure/tz_oem_key_accessor_map.txt` | 15 | 06 | 文件名 | Map of the tz.img /tz/oem key accessors; the root-key hash is not one of them; devcfg has no direct reference |
-| `data/ghidra/arb_fuse_refs_check.java` | 28 | 06 | 文件名 | 用于熔丝组引用检查的 Ghidra 无头脚本（基址 0x100000） |
-| `data/ghidra/tz_context_decomp.java` | 24 | 06 | 文件名 | 反编译 tz.img 上下文函数的 Ghidra 无头脚本 |
-| `data/ghidra/sbl1_boot_image_driver_decompiled.txt` | 410 | 02 | 文件名 | Ghidra decompile of the SBL1 boot image driver FUN_14825980 |
+| `data/secure/hyp_arb_fuse_xref_scan.txt` | 1,631 | 06 | 文件名 | hyp.img cross-references to the arb-fuse table; no writer of the bank field found |
+| `data/secure/hyp_arb_fuse_reference_check.txt` | 972 | 06 | 文件名 | Ghidra reference check on getArbFuseBank and the table getter; no references to the getter |
+| `data/secure/tz_object_0x91_provider_scan.txt` | 1,712 | 06 | 文件名 | tz.img object-0x91 invoke path and store scans; provider not found |
+| `data/secure/tz_context_creator_decomp.txt` | 2,874 | none | 文件名 | Decompiled tz.img context wrapper, list-node registration callers and switch-in; no thread-block pair store |
+| `data/secure/tz_switch_in_entry_scan.txt` | 1,153 | 06, 02 | 文件名 | tz.img branch and pointer scan for the switch-in function; no in-image caller |
+| `data/secure/sbl1_tz_entry_context_chain.txt` | 2,018 | 02 | 文件名 | SBL1 loader objects and the TrustZone entry context; the object at loader +0x28 not identified |
+| `data/secure/sbl1_loader_context_chain.txt` | 898 | 02 | 文件名 | SBL1 loader context: protocol services 0x0E and 0x11, boot image driver, selector |
+| `data/secure/sbl1_loader_ctx_slot.txt` | 1,393 | 02 | 文件名 | Config-object layout: the loader transfer slot at +0x28 is config entry 1; record table still unresolved |
+| `data/secure/sbl1_image_record_table.txt` | 1,462 | 02 | 文件名 | SBL1 per-image record table: layout, ids, zero transfer values |
+| `data/secure/sbl1_loader_instance_layout.txt` | 2,219 | 02 | 文件名 | SBL1 MBN loader instance and MBRD driver layout; corrects the earlier +0x28 reading |
+| `data/secure/sbl1_id10_block_device_object.txt` | 1,645 | 02 | 文件名 | SBL1 config-id-10 object: block-device loader method table; not the TrustZone entry |
+| `data/secure/sbl1_indirect_call_scan.txt` | 1,253 | none | 文件名 | sbl1.elf indirect-call scan for the header-driven jump into the TrustZone image; not located |
+| `data/secure/tz_oem_spare_fuse_writer_decomp.txt` | 3,967 | 06, 10 | 文件名 | tz.img OEM spare-fuse writer (reads oem_regions_config); not the root-key reader |
+| `data/secure/oem_key_lookup_hash_tests.txt` | 1,449 | 06 | 文件名 | Hash and offset lookup tests for the OEM root-key name in tz.img and devcfg.img; negative |
+| `data/secure/oem_key_block_ref_query.txt` | 991 | none | 文件名 | Ghidra reference query on the OEM key block; the hits are misdisassembled data |
+| `data/secure/tz_oem_key_accessor_map.txt` | 1,648 | none | 文件名 | Map of the tz.img /tz/oem key accessors; the root-key hash is not one of them; devcfg has no direct reference |
+| `data/ghidra/arb_fuse_refs_check.java` | 1,308 | 06 | 文件名 | 用于熔丝组引用检查的 Ghidra 无头脚本（基址 0x100000） |
+| `data/ghidra/tz_context_decomp.java` | 1,275 | none | 文件名 | 反编译 tz.img 上下文函数的 Ghidra 无头脚本 |
+| `data/ghidra/sbl1_boot_image_driver_decompiled.txt` | 20,024 | 02 | 文件名 | Ghidra decompile of the SBL1 boot image driver FUN_14825980 |
 | `data/secure/keymaster_rollback_strings.txt` | 1,061 | 03 | 文件名 | keymaster.img (ELF, 368,640 bytes), strings related to rollback, version, boot state an... |
 | `data/secure/object_0x91_firmware_scan.txt` | 638 | 02, 03, 06 | 目录 | Firmware-wide scan for table rows keyed by object ID 0x91 (low 32 bits 0x91, high 32 bi... |
 | `data/secure/oem_key_pointer_search.txt` | 1,137 | 06 | 文件名 | Search for references to the OEM configuration key names (TrustZone, tz.img; devcfg.img). |
@@ -155,14 +155,14 @@
 | `data/secure/tz_pkhash_path.txt` | 3,449 | 06 | 文件名 | TrustZone (tz.img) PK-hash ("PKHashExt") path, root-of-trust key. Observed by AArch64 d... |
 | `data/secure/tz_sw_fuse_check_area.txt` | 4,027 | 06 | 文件名 | TrustZone SW-fuse check area (tz.img), disassembly by capstone (verified by reading the... |
 | `data/secure/tz_thread_block_setter.txt` | 2,080 | 06 | 文件名 | tz.img: writers of the per-thread block pointer (tpidrro_el0). Observed by AArch64 disa... |
-| `data/secure/uefi_fuse_region_table.txt` | 1,653 | 06 | 文件名 | Region table in the UEFI fuse-controller PE (decompressed DXE volume, PE at 0x168E84). |
+| `data/secure/uefi_fuse_region_table.txt` | 1,653 | 06, 10 | 文件名 | Region table in the UEFI fuse-controller PE (decompressed DXE volume, PE at 0x168E84). |
 | `data/secure/uefi_fv_header.txt` | 682 | 02, 03, 06 | 目录 | uefi.img firmware volume (verified header fields): |
 | `data/secure/uefi_verified_boot_findings.txt` | 811 | 03 | 文件名 | uefi.img DXE volume (gzip section, uncompressed 3,911,688 bytes). Evidence: data/string... |
-| `data/secure/avb_rollback_string_search.txt` | 31 | 03 | 文件名 | 启动阶段镜像的 AVB 回滚字符串搜索；解压 gzip DXE 卷；system.img 中的 libavb 字符串 |
+| `data/secure/avb_rollback_string_search.txt` | 1,957 | 03 | 文件名 | 启动阶段镜像的 AVB 回滚字符串搜索；解压 gzip DXE 卷；system.img 中的 libavb 字符串 |
 | `data/secure/xbl_companion_digest_test.txt` | 534 | 02, 03, 06 | 目录 | XBL companion segment (xbl.img 0x1C074, 0x280 bytes) digest test. |
 | `data/strings/abl.txt` | 1,856 | 03, 07 | 目录 | A7s`smIO |
 | `data/strings/aop.txt` | 4,568 | 03, 07 | 目录 | 0hJF;FAi |
-| `data/strings/aop_config.txt` | 1,270 | 03, 07 | 目录 | vrm.aoss |
+| `data/strings/aop_config.txt` | 1,270 | 03, 05, 07 | 文件名 | vrm.aoss |
 | `data/strings/cpucp.txt` | 2,265 | 03, 07 | 目录 | o` Ro` lo` |
 | `data/strings/devcfg.txt` | 10,171 | 03, 07 | 目录 | */+J0Xg: |
 | `data/strings/featenabler.txt` | 11,340 | 03, 07 | 目录 | +5@).=A) |
@@ -180,8 +180,8 @@
 | `data/strings/xbl.txt` | 36,536 | 03, 07 | 目录 | CHIP_PROD_PROV_K_LBL |
 | `data/strings/xbl_config.txt` | 27,668 | 07 | 文件名 | /A006_7_0100_0_dcb.bin |
 | `data/strings/xbl_ramdump.txt` | 45,553 | 03, 07 | 目录 | T)hj8	h*8 |
-| `data/userspace/init_rc_files.txt` | 6,949 | 08, 09, 12, 13, 15 | 文件名 | odm/etc/init/android.hardware.thermal-service.pixel.rc |
-| `data/userspace/meta_hal_names.txt` | 2,840 | 07, 08, 09, 12, 13, 15 | 目录 | vendor.meta.airship.enable_multi_scope |
+| `data/userspace/init_rc_files.txt` | 6,949 | 07, 08, 09, 12, 13, 15 | 文件名 | odm/etc/init/android.hardware.thermal-service.pixel.rc |
+| `data/userspace/meta_hal_names.txt` | 2,840 | 07, 08, 09, 12, 13, 15 | 文件名 | vendor.meta.airship.enable_multi_scope |
 | `data/userspace/peripheral_firmware_headers.txt` | 1,875 | 08 | 文件名 | Peripheral firmware headers (fs/vendor/firmware of greatwhite.zip). ELF fields via pyel... |
 | `data/userspace/smartglass_apps.txt` | 2,099 | 09 | 文件名 | SmartglassAccountsRelease.apk |
 | `data/userspace/tub_contents.txt` | 2,153 | 09 | 文件名 | case.default.cabo.tub (89600 bytes) |

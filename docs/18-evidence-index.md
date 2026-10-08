@@ -4,7 +4,7 @@
 
 This index lists every file under `data/` in the repository, the sections that cite it, and the first line of the file so a reader can tell what it holds. A file is cited **by name** when a section names it. A file is cited **by directory** when a section describes its directory, but the file itself is not named. A file marked **none** is not cited anywhere yet.
 
-Counts are from the repository at the time of writing: 145 files, 2,862,270 bytes.
+Counts are from the repository at the time of writing: 165 files, 2,914,119 bytes.
 
 ## By directory
 
@@ -14,14 +14,14 @@ Counts are from the repository at the time of writing: 145 files, 2,862,270 byte
 | `data/android/` | 41 | 918,306 |
 | `data/avb/` | 3 | 6,405 |
 | `data/dsp/` | 3 | 535,090 |
-| `data/ghidra/` | 18 | 151,030 |
-| `data/inventory.json/` | 1 | 33,943 |
+| `data/ghidra/` | 21 | 173,637 |
+| `data/inventory.json` | 1 | 33,943 |
 | `data/mcu/` | 1 | 12,733 |
-| `data/partition_table.md/` | 1 | 3,504 |
-| `data/partition_table.zh-CN.md/` | 1 | 3,679 |
-| `data/qfprom_literal_candidates.json/` | 1 | 839 |
+| `data/partition_table.md` | 1 | 3,504 |
+| `data/partition_table.zh-CN.md` | 1 | 3,679 |
+| `data/qfprom_literal_candidates.json` | 1 | 839 |
 | `data/remote/` | 9 | 21,350 |
-| `data/secure/` | 27 | 47,671 |
+| `data/secure/` | 44 | 76,913 |
 | `data/strings/` | 20 | 1,097,518 |
 | `data/userspace/` | 9 | 23,781 |
 | `data/xbl/` | 6 | 3,180 |
@@ -54,17 +54,17 @@ Counts are from the repository at the time of writing: 145 files, 2,862,270 byte
 | `data/android/camera_display/init.qti.display_boot.sh` | 11,773 | 13 | file name | #!/vendor/bin/sh |
 | `data/android/camera_display/procamera.rc` | 405 | 13 | file name | service procamera /system_ext/bin/procamera |
 | `data/android/camera_display/stubcameraservice.rc` | 214 | 13 | file name | on property:persist.vendor.media.enableStubCamera=1 |
-| `data/android/camera_display/summary.txt` | 760 | 03, 11, 12, 13, 15 | file name | Camera and display userspace summary (fs/system_ext, fs/vendor, fs/odm of greatwhite.zi... |
+| `data/android/camera_display/summary.txt` | 760 | 13 | file name | Camera and display userspace summary (fs/system_ext, fs/vendor, fs/odm of greatwhite.zi... |
 | `data/android/camera_display/vendor.qti.hardware.display.composer-service.rc` | 369 | 13 | file name | service vendor.qti.hardware.display.composer /vendor/bin/hw/vendor.qti.hardware.display... |
 | `data/android/dtbo/board_component_matrix.tsv` | 7,832 | 04 | file name | component	0:Greatwhite Config Dev0	1:Greatwhite EVT1 Camera DOE	2:Greatwhite Dev0 2023	... |
 | `data/android/dtbo/board_ids.tsv` | 1,826 | 04 | file name | index	model	compatible	qcom,msm-id	qcom,board-id	nodes	dtbo_bytes |
 | `data/android/dtbo/overlay_components.tsv` | 2,814 | 04 | file name | node	compatible	overlays_present (of 18) |
-| `data/android/kernel/config.txt` | 214,061 | 04, 07, 08 | file name | # |
+| `data/android/kernel/config.txt` | 214,061 | 04, 08 | file name | # |
 | `data/android/kernel/security_options.tsv` | 862 | 04, 08 | directory | option	state |
 | `data/android/selinux/plat_sepolicy_vers.txt` | 5 | 11 | file name | 32.0 |
 | `data/android/selinux/policy_summary.txt` | 2,347 | 11 | file name | SELinux vendor policy summary (fs/vendor/etc/selinux of greatwhite.zip). Counts from te... |
 | `data/android/selinux/selinux_denial_metadata` | 1,503 | 11 | file name | dnsmasq netd fifo_file b/77868789 |
-| `data/android/selinux/vendor_hwservice_contexts` | 5,853 | 11 | file name | android.hardware.media.c2::IConfigurable                           u:object_r:hal_codec... |
+| `data/android/selinux/vendor_hwservice_contexts` | 5,853 | 07, 11 | file name | android.hardware.media.c2::IConfigurable                           u:object_r:hal_codec... |
 | `data/android/selinux/vendor_property_contexts` | 7,652 | 11 | file name | #line 1 "out/soong/.intermediates/system/sepolicy/vendor_property_contexts/android_comm... |
 | `data/android/selinux/vendor_seapp_contexts` | 119 | 11 | file name | user=_app seinfo=platform name=com.qualcomm.timeservice domain=vendor_timeservice_app t... |
 | `data/android/selinux/vendor_service_contexts` | 4,017 | 11 | file name | vendor.qti.hardware.display.config.IDisplayConfig/default u:object_r:vendor_hal_vnddisp... |
@@ -72,7 +72,7 @@ Counts are from the repository at the time of writing: 145 files, 2,862,270 byte
 | `data/android/vendor_boot/bootconfig.txt` | 175 | 04 | file name | androidboot.hardware=greatwhite |
 | `data/android/vendor_ramdisk/fstab.greatwhite` | 4,894 | 04 | file name | # Copyright (c) 2019-2020 The Linux Foundation. All rights reserved. |
 | `data/android/vendor_ramdisk/kernel_modules.txt` | 3,386 | 04, 07, 12, 13, 14, 17 | directory | adsp_loader_dlkm.ko |
-| `data/android/vendor_ramdisk/modules_modinfo.tsv` | 14,566 | 04, 07, 17 | file name | module	license	description	author	depends |
+| `data/android/vendor_ramdisk/modules_modinfo.tsv` | 14,566 | 04, 05, 07, 17 | file name | module	license	description	author	depends |
 | `data/android/vendor_ramdisk/vendor_dtb_dump.txt` | 562,388 | 04, 07, 12, 13, 14, 17 | file name | / |
 | `data/android/vendor_ramdisk/wpss_dt_nodes.txt` | 720 | 07 | file name | Device-tree nodes naming WPSS (data/android/vendor_ramdisk/vendor_dtb_dump.txt, binary-... |
 | `data/avb/hashtree_rebuild.txt` | 2,271 | 03 | file name | dm-verity tree rebuild, from vbmeta*.img descriptors and the partition images |
@@ -100,7 +100,7 @@ Counts are from the repository at the time of writing: 145 files, 2,862,270 byte
 | `data/ghidra/uefi_verifiedboot_decompiled.txt` | 17,430 | 03 | file name | VerifiedBootDxe (uefi.img DXE volume, PE image at decompressed offset 0x74804, 61,504 b... |
 | `data/ghidra/xbl_primary_stub_thumb2_disasm.txt` | 1,751 | 02 | file name | # program stub.bin lang ARM:LE:32:v8T |
 | `data/inventory.json` | 33,943 | 01 | file name | [ |
-| `data/mcu/mcu_console_strings.txt` | 12,733 | 14, 17 | file name | MCU firmware console strings (mcu.default.rt700.tub, file offsets). Extracted by printa... |
+| `data/mcu/mcu_console_strings.txt` | 12,733 | 09, 14, 17 | file name | MCU firmware console strings (mcu.default.rt700.tub, file offsets). Extracted by printa... |
 | `data/partition_table.md` | 3,504 | 01 | file name | # Partition table |
 | `data/partition_table.zh-CN.md` | 3,679 | 01, 02, 03, 04, 05, 06, 07, 08, 09, 11, 12, 13, 14, 15, 16, 17 | directory | # 分区表 |
 | `data/qfprom_literal_candidates.json` | 839 | 06 | file name | { |
@@ -118,25 +118,25 @@ Counts are from the repository at the time of writing: 145 files, 2,862,270 byte
 | `data/secure/hyp_mmio_map.tsv` | 1,579 | 02, 06 | file name | va	pa	attr	perm	size |
 | `data/secure/hyp_pil_arb_fuse_table.txt` | 3,133 | 06 | file name | hyp.img: PILSubsys_getArbFuseBank and its subsystem table. Observed by AArch64 disassem... |
 | `data/secure/hyp_rm_objects_and_arb_fuse.txt` | 1,590 | 06 | file name | hyp.img is the Gunyah/QTEE hypervisor resource manager (AArch64 ELF, entry 0x80000000). |
-| `data/secure/hyp_arb_fuse_xref_scan.txt` | 19 | 06 | file name | hyp.img cross-references to the arb-fuse table; no writer of the bank field found |
-| `data/secure/hyp_arb_fuse_reference_check.txt` | 12 | 06 | file name | Ghidra reference check on getArbFuseBank and the table getter; no references to the getter |
-| `data/secure/tz_object_0x91_provider_scan.txt` | 21 | 06 | file name | tz.img object-0x91 invoke path and store scans; provider not found |
-| `data/secure/tz_context_creator_decomp.txt` | 107 | 06 | file name | Decompiled tz.img context wrapper, list-node registration callers and switch-in; no thread-block pair store |
-| `data/secure/tz_switch_in_entry_scan.txt` | 12 | 06, 02 | file name | tz.img branch and pointer scan for the switch-in function; no in-image caller |
-| `data/secure/sbl1_tz_entry_context_chain.txt` | 13 | 02, 06 | file name | SBL1 loader objects and the TrustZone entry context; the object at loader +0x28 not identified |
-| `data/secure/sbl1_loader_context_chain.txt` | 5 | 02 | file name | SBL1 loader context: protocol services 0x0E and 0x11, boot image driver, selector |
-| `data/secure/sbl1_loader_ctx_slot.txt` | 16 | 02 | file name | Config-object layout: the loader transfer slot at +0x28 is config entry 1; record table still unresolved |
-| `data/secure/sbl1_image_record_table.txt` | 17 | 02 | file name | SBL1 per-image record table: layout, ids, zero transfer values |
-| `data/secure/sbl1_loader_instance_layout.txt` | 24 | 02 | file name | SBL1 MBN loader instance and MBRD driver layout; corrects the earlier +0x28 reading |
-| `data/secure/sbl1_id10_block_device_object.txt` | 13 | 02 | file name | SBL1 config-id-10 object: block-device loader method table; not the TrustZone entry |
-| `data/secure/sbl1_indirect_call_scan.txt` | 10 | 02 | file name | sbl1.elf indirect-call scan for the header-driven jump into the TrustZone image; not located |
-| `data/secure/tz_oem_spare_fuse_writer_decomp.txt` | 128 | 06 | file name | tz.img OEM spare-fuse writer (reads oem_regions_config); not the root-key reader |
-| `data/secure/oem_key_lookup_hash_tests.txt` | 7 | 06 | file name | Hash and offset lookup tests for the OEM root-key name in tz.img and devcfg.img; negative |
-| `data/secure/oem_key_block_ref_query.txt` | 9 | 06 | file name | Ghidra reference query on the OEM key block; the hits are misdisassembled data |
-| `data/secure/tz_oem_key_accessor_map.txt` | 15 | 06 | file name | Map of the tz.img /tz/oem key accessors; the root-key hash is not one of them; devcfg has no direct reference |
-| `data/ghidra/arb_fuse_refs_check.java` | 28 | 06 | file name | Ghidra headless script for the arb-fuse reference check (base 0x100000) |
-| `data/ghidra/tz_context_decomp.java` | 24 | 06 | file name | Ghidra headless script that decompiles the tz.img context functions |
-| `data/ghidra/sbl1_boot_image_driver_decompiled.txt` | 410 | 02 | file name | Ghidra decompile of the SBL1 boot image driver FUN_14825980 |
+| `data/secure/hyp_arb_fuse_xref_scan.txt` | 1,631 | 06 | file name | hyp.img cross-references to the arb-fuse table; no writer of the bank field found |
+| `data/secure/hyp_arb_fuse_reference_check.txt` | 972 | 06 | file name | Ghidra reference check on getArbFuseBank and the table getter; no references to the getter |
+| `data/secure/tz_object_0x91_provider_scan.txt` | 1,712 | 06 | file name | tz.img object-0x91 invoke path and store scans; provider not found |
+| `data/secure/tz_context_creator_decomp.txt` | 2,874 | none | file name | Decompiled tz.img context wrapper, list-node registration callers and switch-in; no thread-block pair store |
+| `data/secure/tz_switch_in_entry_scan.txt` | 1,153 | 06, 02 | file name | tz.img branch and pointer scan for the switch-in function; no in-image caller |
+| `data/secure/sbl1_tz_entry_context_chain.txt` | 2,018 | 02 | file name | SBL1 loader objects and the TrustZone entry context; the object at loader +0x28 not identified |
+| `data/secure/sbl1_loader_context_chain.txt` | 898 | 02 | file name | SBL1 loader context: protocol services 0x0E and 0x11, boot image driver, selector |
+| `data/secure/sbl1_loader_ctx_slot.txt` | 1,393 | 02 | file name | Config-object layout: the loader transfer slot at +0x28 is config entry 1; record table still unresolved |
+| `data/secure/sbl1_image_record_table.txt` | 1,462 | 02 | file name | SBL1 per-image record table: layout, ids, zero transfer values |
+| `data/secure/sbl1_loader_instance_layout.txt` | 2,219 | 02 | file name | SBL1 MBN loader instance and MBRD driver layout; corrects the earlier +0x28 reading |
+| `data/secure/sbl1_id10_block_device_object.txt` | 1,645 | 02 | file name | SBL1 config-id-10 object: block-device loader method table; not the TrustZone entry |
+| `data/secure/sbl1_indirect_call_scan.txt` | 1,253 | none | file name | sbl1.elf indirect-call scan for the header-driven jump into the TrustZone image; not located |
+| `data/secure/tz_oem_spare_fuse_writer_decomp.txt` | 3,967 | 06, 10 | file name | tz.img OEM spare-fuse writer (reads oem_regions_config); not the root-key reader |
+| `data/secure/oem_key_lookup_hash_tests.txt` | 1,449 | 06 | file name | Hash and offset lookup tests for the OEM root-key name in tz.img and devcfg.img; negative |
+| `data/secure/oem_key_block_ref_query.txt` | 991 | none | file name | Ghidra reference query on the OEM key block; the hits are misdisassembled data |
+| `data/secure/tz_oem_key_accessor_map.txt` | 1,648 | none | file name | Map of the tz.img /tz/oem key accessors; the root-key hash is not one of them; devcfg has no direct reference |
+| `data/ghidra/arb_fuse_refs_check.java` | 1,308 | 06 | file name | Ghidra headless script for the arb-fuse reference check (base 0x100000) |
+| `data/ghidra/tz_context_decomp.java` | 1,275 | none | file name | Ghidra headless script that decompiles the tz.img context functions |
+| `data/ghidra/sbl1_boot_image_driver_decompiled.txt` | 20,024 | 02 | file name | Ghidra decompile of the SBL1 boot image driver FUN_14825980 |
 | `data/secure/keymaster_rollback_strings.txt` | 1,061 | 03 | file name | keymaster.img (ELF, 368,640 bytes), strings related to rollback, version, boot state an... |
 | `data/secure/object_0x91_firmware_scan.txt` | 638 | 02, 03, 06 | directory | Firmware-wide scan for table rows keyed by object ID 0x91 (low 32 bits 0x91, high 32 bi... |
 | `data/secure/oem_key_pointer_search.txt` | 1,137 | 06 | file name | Search for references to the OEM configuration key names (TrustZone, tz.img; devcfg.img). |
@@ -155,14 +155,14 @@ Counts are from the repository at the time of writing: 145 files, 2,862,270 byte
 | `data/secure/tz_pkhash_path.txt` | 3,449 | 06 | file name | TrustZone (tz.img) PK-hash ("PKHashExt") path, root-of-trust key. Observed by AArch64 d... |
 | `data/secure/tz_sw_fuse_check_area.txt` | 4,027 | 06 | file name | TrustZone SW-fuse check area (tz.img), disassembly by capstone (verified by reading the... |
 | `data/secure/tz_thread_block_setter.txt` | 2,080 | 06 | file name | tz.img: writers of the per-thread block pointer (tpidrro_el0). Observed by AArch64 disa... |
-| `data/secure/uefi_fuse_region_table.txt` | 1,653 | 06 | file name | Region table in the UEFI fuse-controller PE (decompressed DXE volume, PE at 0x168E84). |
+| `data/secure/uefi_fuse_region_table.txt` | 1,653 | 06, 10 | file name | Region table in the UEFI fuse-controller PE (decompressed DXE volume, PE at 0x168E84). |
 | `data/secure/uefi_fv_header.txt` | 682 | 02, 03, 06 | directory | uefi.img firmware volume (verified header fields): |
 | `data/secure/uefi_verified_boot_findings.txt` | 811 | 03 | file name | uefi.img DXE volume (gzip section, uncompressed 3,911,688 bytes). Evidence: data/string... |
-| `data/secure/avb_rollback_string_search.txt` | 31 | 03 | file name | AVB rollback string search over boot-time images; gzip DXE volume decoded; system.img libavb strings |
+| `data/secure/avb_rollback_string_search.txt` | 1,957 | 03 | file name | AVB rollback string search over boot-time images; gzip DXE volume decoded; system.img libavb strings |
 | `data/secure/xbl_companion_digest_test.txt` | 534 | 02, 03, 06 | directory | XBL companion segment (xbl.img 0x1C074, 0x280 bytes) digest test. |
 | `data/strings/abl.txt` | 1,856 | 03, 07 | directory | A7s`smIO |
 | `data/strings/aop.txt` | 4,568 | 03, 07 | directory | 0hJF;FAi |
-| `data/strings/aop_config.txt` | 1,270 | 03, 07 | directory | vrm.aoss |
+| `data/strings/aop_config.txt` | 1,270 | 03, 05, 07 | file name | vrm.aoss |
 | `data/strings/cpucp.txt` | 2,265 | 03, 07 | directory | o` Ro` lo` |
 | `data/strings/devcfg.txt` | 10,171 | 03, 07 | directory | */+J0Xg: |
 | `data/strings/featenabler.txt` | 11,340 | 03, 07 | directory | +5@).=A) |
@@ -180,8 +180,8 @@ Counts are from the repository at the time of writing: 145 files, 2,862,270 byte
 | `data/strings/xbl.txt` | 36,536 | 03, 07 | directory | CHIP_PROD_PROV_K_LBL |
 | `data/strings/xbl_config.txt` | 27,668 | 07 | file name | /A006_7_0100_0_dcb.bin |
 | `data/strings/xbl_ramdump.txt` | 45,553 | 03, 07 | directory | T)hj8	h*8 |
-| `data/userspace/init_rc_files.txt` | 6,949 | 08, 09, 12, 13, 15 | file name | odm/etc/init/android.hardware.thermal-service.pixel.rc |
-| `data/userspace/meta_hal_names.txt` | 2,840 | 07, 08, 09, 12, 13, 15 | directory | vendor.meta.airship.enable_multi_scope |
+| `data/userspace/init_rc_files.txt` | 6,949 | 07, 08, 09, 12, 13, 15 | file name | odm/etc/init/android.hardware.thermal-service.pixel.rc |
+| `data/userspace/meta_hal_names.txt` | 2,840 | 07, 08, 09, 12, 13, 15 | file name | vendor.meta.airship.enable_multi_scope |
 | `data/userspace/peripheral_firmware_headers.txt` | 1,875 | 08 | file name | Peripheral firmware headers (fs/vendor/firmware of greatwhite.zip). ELF fields via pyel... |
 | `data/userspace/smartglass_apps.txt` | 2,099 | 09 | file name | SmartglassAccountsRelease.apk |
 | `data/userspace/tub_contents.txt` | 2,153 | 09 | file name | case.default.cabo.tub (89600 bytes) |
