@@ -184,6 +184,6 @@ QFPROM 在启动时写入或 PAS 熔丝读取服务启用时被启用。安全�
 | PK_HASH，根证书的 SHA-256 | TZ 与 devcfg 中的 `OEM_rot_pk_hash1_fuse_values`（文档 06） | 假设：相同作用；读取者仍未找到 |
 | SECURE_BOOT_ENFORCE 及其使能位 | 安全启动状态字第 0 至 11 位，第 3 位为防回滚（文档 06） | 结构上相似；状态服务未确定 |
 | 调试覆盖与 DEBUG 字段 | 安全调试熔丝检查，第 8 至 11 位（文档 06） | 结构上相似 |
-| 熔丝区域的读写权限位 | `FUSE_CONTROLLER` 与 `QFPROM_CORR` 区域（文档 06） | 尚未比较 |
+| 熔丝区域的读写权限位 | `FUSE_CONTROLLER` 与 `QFPROM_CORR` 区域（文档 06）。UEFI 区域表只有名称、基址与大小，没有权限字段（`data/secure/uefi_fuse_region_table.txt`）。唯一找到的权限值是 OEM 备用熔丝写入函数中对 `/ac/oem_regions_config` 的 `0x12` 检查（`data/secure/tz_oem_spare_fuse_writer_decomp.txt`），那是配置检查，而非逐区域的位 | 已比较：greatwhite 的区域表中不存在逐区域的权限位。QCC730 的位布局不能直接适用 |
 
 QCC730 的布局不能直接套用到 `greatwhite`，需要逐项核对。它是另一款芯片，上面列出的 OTP 字节偏移都是 QCC730 自己的。

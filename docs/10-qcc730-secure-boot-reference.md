@@ -184,6 +184,6 @@ These are parallels to test. None is confirmed on `greatwhite`.
 | PK_HASH, SHA-256 of root certificates | `OEM_rot_pk_hash1_fuse_values` in TZ and devcfg (doc 06) | Hypothesis: the same role; the reader is still not found |
 | SECURE_BOOT_ENFORCE and the enable bits | Secure-boot status word, bits 0 to 11, bit 3 = anti-rollback (doc 06) | Structural parallel; the status service is not identified |
 | Debug override and DEBUG field | Secure-debug fuse checks, bits 8 to 11 (doc 06) | Structural parallel |
-| Read/write permission bits for fuse regions | `FUSE_CONTROLLER` and `QFPROM_CORR` regions (doc 06) | Not compared yet |
+| Read/write permission bits for fuse regions | `FUSE_CONTROLLER` and `QFPROM_CORR` regions (doc 06). The UEFI region table has only name, base and size, with no permission field (`data/secure/uefi_fuse_region_table.txt`). The only permission value found is the `0x12` check on `/ac/oem_regions_config` in the OEM spare-fuse writer (`data/secure/tz_oem_spare_fuse_writer_decomp.txt`), which is a configuration check, not a per-region bit | Compared: no per-region permission bits exist in the greatwhite region table. The QCC730 bit layout does not apply directly |
 
 The QCC730 layout cannot be applied to `greatwhite` without checking. It is a different chip, and the OTP byte offsets above are its own.
