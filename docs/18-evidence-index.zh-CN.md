@@ -1,17 +1,17 @@
-# 17 - 证据索引
+# 18 - 证据索引
 
-[English](17-evidence-index.md)
+[English](18-evidence-index.md)
 
 本索引列出仓库中 `data/` 下的每个文件、引用它的章节，以及文件首行内容，便于读者判断其中记录了什么。当章节点名引用某文件时，记为**按文件名**引用；当章节描述其所在目录而未点名该文件时，记为**按目录**引用；标为**无**的文件目前尚未被任何章节引用。
 
-计数以撰写时的仓库为准：共 143 个文件，2,856,284 字节。
+计数以撰写时的仓库为准：共 145 个文件，2,862,270 字节。
 
 ## 按目录
 
 | 目录 | 文件数 | 字节 |
 |---|---:|---:|
 | `data/analysis/` | 4 | 3,241 |
-| `data/android/` | 40 | 913,457 |
+| `data/android/` | 41 | 918,306 |
 | `data/avb/` | 3 | 6,405 |
 | `data/dsp/` | 3 | 535,090 |
 | `data/ghidra/` | 18 | 151,030 |
@@ -21,7 +21,7 @@
 | `data/partition_table.zh-CN.md/` | 1 | 3,679 |
 | `data/qfprom_literal_candidates.json/` | 1 | 839 |
 | `data/remote/` | 9 | 21,350 |
-| `data/secure/` | 26 | 46,534 |
+| `data/secure/` | 27 | 47,671 |
 | `data/strings/` | 20 | 1,097,518 |
 | `data/userspace/` | 9 | 23,781 |
 | `data/xbl/` | 6 | 3,180 |
@@ -42,13 +42,14 @@
 | `data/android/audio/ftm_test_config_neo-idp-snd-card` | 8,364 | 12 | 文件名 | tc 1 |
 | `data/android/audio/ftm_test_config_neo-qxr-snd-card` | 5,729 | 12 | 文件名 | tc 1 |
 | `data/android/audio/hw_info.xml` | 5,185 | 12 | 文件名 | <?xml version="1.0" encoding="UTF-8"?> |
+| `data/android/audio/max98388_v2.sh` | 4,849 | 12, 17 | 文件名 | #!/bin/sh |
 | `data/android/audio/microphone_characteristics.xml` | 671 | 12 | 文件名 | <?xml version="1.0" encoding="ISO-8859-1"?> |
 | `data/android/boot_ramdisk/adb_debug.prop` | 373 | 04 | 文件名 | # Note: This file will be loaded with highest priority to override |
 | `data/android/boot_ramdisk/build.prop` | 931 | 01, 04 | 文件名 | #################################### |
 | `data/android/camera_display/cameraserver.greatwhite.rc` | 528 | 08, 13 | 文件名 | # Override of default frameworks/av/camera/cameraserver/cameraserver.rc behavior. |
 | `data/android/camera_display/continuousaicamera_nova.rc` | 527 | 13 | 文件名 | service continuousaicamera /system_ext/bin/continuousaicamera_nova |
 | `data/android/camera_display/display_settings.xml` | 419 | 13 | 文件名 | <?xml version='1.0' encoding='utf-8' standalone='yes' ?> |
-| `data/android/camera_display/fix-gw-display-pmic.rc` | 176 | 13 | 文件名 | # When /vendor/hw/bin/ is available, fix-up the display power setting  ASAP: |
+| `data/android/camera_display/fix-gw-display-pmic.rc` | 176 | 13, 17 | 文件名 | # When /vendor/hw/bin/ is available, fix-up the display power setting  ASAP: |
 | `data/android/camera_display/init.hw.camera.rc` | 922 | 08, 13 | 文件名 | on init |
 | `data/android/camera_display/init.qti.display_boot.sh` | 11,773 | 13 | 文件名 | #!/vendor/bin/sh |
 | `data/android/camera_display/procamera.rc` | 405 | 13 | 文件名 | service procamera /system_ext/bin/procamera |
@@ -70,14 +71,14 @@
 | `data/android/selinux/vndservice_contexts` | 196 | 11 | 文件名 | manager                 u:object_r:service_manager_vndservice:s0 |
 | `data/android/vendor_boot/bootconfig.txt` | 175 | 04 | 文件名 | androidboot.hardware=greatwhite |
 | `data/android/vendor_ramdisk/fstab.greatwhite` | 4,894 | 04 | 文件名 | # Copyright (c) 2019-2020 The Linux Foundation. All rights reserved. |
-| `data/android/vendor_ramdisk/kernel_modules.txt` | 3,386 | 04, 07, 12, 13, 14 | 目录 | adsp_loader_dlkm.ko |
-| `data/android/vendor_ramdisk/modules_modinfo.tsv` | 14,566 | 04, 07 | 文件名 | module	license	description	author	depends |
-| `data/android/vendor_ramdisk/vendor_dtb_dump.txt` | 562,388 | 04, 07, 12, 13, 14 | 文件名 | / |
+| `data/android/vendor_ramdisk/kernel_modules.txt` | 3,386 | 04, 07, 12, 13, 14, 17 | 目录 | adsp_loader_dlkm.ko |
+| `data/android/vendor_ramdisk/modules_modinfo.tsv` | 14,566 | 04, 07, 17 | 文件名 | module	license	description	author	depends |
+| `data/android/vendor_ramdisk/vendor_dtb_dump.txt` | 562,388 | 04, 07, 12, 13, 14, 17 | 文件名 | / |
 | `data/android/vendor_ramdisk/wpss_dt_nodes.txt` | 720 | 07 | 文件名 | Device-tree nodes naming WPSS (data/android/vendor_ramdisk/vendor_dtb_dump.txt, binary-... |
 | `data/avb/hashtree_rebuild.txt` | 2,271 | 03 | 文件名 | dm-verity tree rebuild, from vbmeta*.img descriptors and the partition images |
 | `data/avb/vbmeta_summary.txt` | 2,976 | 03 | 文件名 | == vbmeta.img |
 | `data/avb/verify_results.txt` | 1,158 | 03 | 文件名 | == vbmeta.img |
-| `data/dsp/dsp_symbol_table.txt` | 533,006 | 15 | 文件名 | DSP app symbol table (symbol_table.elf inside dsp.default.rt700.tub, EM_XTENSA). Column... |
+| `data/dsp/dsp_symbol_table.txt` | 533,006 | 15, 17 | 文件名 | DSP app symbol table (symbol_table.elf inside dsp.default.rt700.tub, EM_XTENSA). Column... |
 | `data/dsp/dsp_tub_manifest.json` | 1,589 | 15 | 文件名 | { |
 | `data/dsp/dsp_tub_subimages.txt` | 495 | 15 | 文件名 | dsp.default.rt700.tub: 4429312 bytes, sha256 da8ae200fbab870b166d97e778da88b9d2925dfe94... |
 | `data/ghidra/aop_entry_thumb2_disasm.txt` | 389 | 05 | 文件名 | # program aop.img lang ARM:LE:32:v8T |
@@ -99,9 +100,9 @@
 | `data/ghidra/uefi_verifiedboot_decompiled.txt` | 17,430 | 03 | 文件名 | VerifiedBootDxe (uefi.img DXE volume, PE image at decompressed offset 0x74804, 61,504 b... |
 | `data/ghidra/xbl_primary_stub_thumb2_disasm.txt` | 1,751 | 02 | 文件名 | # program stub.bin lang ARM:LE:32:v8T |
 | `data/inventory.json` | 33,943 | 01 | 文件名 | [ |
-| `data/mcu/mcu_console_strings.txt` | 12,733 | 14 | 文件名 | MCU firmware console strings (mcu.default.rt700.tub, file offsets). Extracted by printa... |
+| `data/mcu/mcu_console_strings.txt` | 12,733 | 14, 17 | 文件名 | MCU firmware console strings (mcu.default.rt700.tub, file offsets). Extracted by printa... |
 | `data/partition_table.md` | 3,504 | 01 | 文件名 | # Partition table |
-| `data/partition_table.zh-CN.md` | 3,679 | 01, 02, 03, 04, 05, 06, 07, 08, 09, 11, 12, 13, 14, 15, 16 | 目录 | # 分区表 |
+| `data/partition_table.zh-CN.md` | 3,679 | 01, 02, 03, 04, 05, 06, 07, 08, 09, 11, 12, 13, 14, 15, 16, 17 | 目录 | # 分区表 |
 | `data/qfprom_literal_candidates.json` | 839 | 06 | 文件名 | { |
 | `data/remote/bluetooth_listing.txt` | 1,827 | 05, 07 | 文件名 | type=FAT16/12 dirs=1 files=51 total_bytes=780143 |
 | `data/remote/bluetooth_version_files.txt` | 700 | 07 | 文件名 | bluetooth.img (FAT16, extracted with a local FAT16 helper; 8.3 names shown as stored) |
@@ -119,6 +120,7 @@
 | `data/secure/hyp_rm_objects_and_arb_fuse.txt` | 1,590 | 06 | 文件名 | hyp.img is the Gunyah/QTEE hypervisor resource manager (AArch64 ELF, entry 0x80000000). |
 | `data/secure/keymaster_rollback_strings.txt` | 1,061 | 03 | 文件名 | keymaster.img (ELF, 368,640 bytes), strings related to rollback, version, boot state an... |
 | `data/secure/object_0x91_firmware_scan.txt` | 638 | 02, 03, 06 | 目录 | Firmware-wide scan for table rows keyed by object ID 0x91 (low 32 bits 0x91, high 32 bi... |
+| `data/secure/oem_key_pointer_search.txt` | 1,137 | 06 | 文件名 | Search for references to the OEM configuration key names (TrustZone, tz.img; devcfg.img). |
 | `data/secure/oem_rot_key_xref_search.txt` | 846 | 06 | 文件名 | Search for the reader of OEM_rot_pk_hash1_fuse_values (tz.img file 0x13A3AC, vaddr 0x1C... |
 | `data/secure/sbl1_cpr_fuse_getters.txt` | 2,365 | 06 | 文件名 | SBL1 fuse-field getters (sbl1.elf, AArch64). Observed from disassembly. Ghidra did not ... |
 | `data/secure/tme_antirollback_location.txt` | 571 | 06 | 文件名 | Anti-rollback manager location (xbl.img, TME RISC-V ELF at offset 0x1C2F4) |

@@ -43,7 +43,8 @@ This repository describes how the system is built and how it starts. It is not v
 | MCU console, LCoS and touch | [14](docs/14-mcu-console-and-lcos.md) | [14](docs/14-mcu-console-and-lcos.zh-CN.md) |
 | Audio DSP firmware (RT700 HiFi4) | [15](docs/15-audio-dsp-firmware.md) | [15](docs/15-audio-dsp-firmware.zh-CN.md) |
 | Modem partition: ADSP, CDSP and trusted applications | [16](docs/16-modem-partition-firmware.md) | [16](docs/16-modem-partition-firmware.zh-CN.md) |
-| Evidence index | [17](docs/17-evidence-index.md) | [17](docs/17-evidence-index.zh-CN.md) |
+| Chip inventory | [17](docs/17-chip-inventory.md) | [17](docs/17-chip-inventory.zh-CN.md) |
+| Evidence index | [18](docs/18-evidence-index.md) | [18](docs/18-evidence-index.zh-CN.md) |
 
 
 ## Evidence labels

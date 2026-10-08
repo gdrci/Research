@@ -1,17 +1,17 @@
-# 17 - Evidence index
+# 18 - Evidence index
 
-[中文](17-evidence-index.zh-CN.md)
+[中文](18-evidence-index.zh-CN.md)
 
 This index lists every file under `data/` in the repository, the sections that cite it, and the first line of the file so a reader can tell what it holds. A file is cited **by name** when a section names it. A file is cited **by directory** when a section describes its directory, but the file itself is not named. A file marked **none** is not cited anywhere yet.
 
-Counts are from the repository at the time of writing: 143 files, 2,856,284 bytes.
+Counts are from the repository at the time of writing: 145 files, 2,862,270 bytes.
 
 ## By directory
 
 | Directory | Files | Bytes |
 |---|---:|---:|
 | `data/analysis/` | 4 | 3,241 |
-| `data/android/` | 40 | 913,457 |
+| `data/android/` | 41 | 918,306 |
 | `data/avb/` | 3 | 6,405 |
 | `data/dsp/` | 3 | 535,090 |
 | `data/ghidra/` | 18 | 151,030 |
@@ -21,7 +21,7 @@ Counts are from the repository at the time of writing: 143 files, 2,856,284 byte
 | `data/partition_table.zh-CN.md/` | 1 | 3,679 |
 | `data/qfprom_literal_candidates.json/` | 1 | 839 |
 | `data/remote/` | 9 | 21,350 |
-| `data/secure/` | 26 | 46,534 |
+| `data/secure/` | 27 | 47,671 |
 | `data/strings/` | 20 | 1,097,518 |
 | `data/userspace/` | 9 | 23,781 |
 | `data/xbl/` | 6 | 3,180 |
@@ -42,13 +42,14 @@ Counts are from the repository at the time of writing: 143 files, 2,856,284 byte
 | `data/android/audio/ftm_test_config_neo-idp-snd-card` | 8,364 | 12 | file name | tc 1 |
 | `data/android/audio/ftm_test_config_neo-qxr-snd-card` | 5,729 | 12 | file name | tc 1 |
 | `data/android/audio/hw_info.xml` | 5,185 | 12 | file name | <?xml version="1.0" encoding="UTF-8"?> |
+| `data/android/audio/max98388_v2.sh` | 4,849 | 12, 17 | file name | #!/bin/sh |
 | `data/android/audio/microphone_characteristics.xml` | 671 | 12 | file name | <?xml version="1.0" encoding="ISO-8859-1"?> |
 | `data/android/boot_ramdisk/adb_debug.prop` | 373 | 04 | file name | # Note: This file will be loaded with highest priority to override |
 | `data/android/boot_ramdisk/build.prop` | 931 | 01, 04 | file name | #################################### |
 | `data/android/camera_display/cameraserver.greatwhite.rc` | 528 | 08, 13 | file name | # Override of default frameworks/av/camera/cameraserver/cameraserver.rc behavior. |
 | `data/android/camera_display/continuousaicamera_nova.rc` | 527 | 13 | file name | service continuousaicamera /system_ext/bin/continuousaicamera_nova |
 | `data/android/camera_display/display_settings.xml` | 419 | 13 | file name | <?xml version='1.0' encoding='utf-8' standalone='yes' ?> |
-| `data/android/camera_display/fix-gw-display-pmic.rc` | 176 | 13 | file name | # When /vendor/hw/bin/ is available, fix-up the display power setting  ASAP: |
+| `data/android/camera_display/fix-gw-display-pmic.rc` | 176 | 13, 17 | file name | # When /vendor/hw/bin/ is available, fix-up the display power setting  ASAP: |
 | `data/android/camera_display/init.hw.camera.rc` | 922 | 08, 13 | file name | on init |
 | `data/android/camera_display/init.qti.display_boot.sh` | 11,773 | 13 | file name | #!/vendor/bin/sh |
 | `data/android/camera_display/procamera.rc` | 405 | 13 | file name | service procamera /system_ext/bin/procamera |
@@ -70,14 +71,14 @@ Counts are from the repository at the time of writing: 143 files, 2,856,284 byte
 | `data/android/selinux/vndservice_contexts` | 196 | 11 | file name | manager                 u:object_r:service_manager_vndservice:s0 |
 | `data/android/vendor_boot/bootconfig.txt` | 175 | 04 | file name | androidboot.hardware=greatwhite |
 | `data/android/vendor_ramdisk/fstab.greatwhite` | 4,894 | 04 | file name | # Copyright (c) 2019-2020 The Linux Foundation. All rights reserved. |
-| `data/android/vendor_ramdisk/kernel_modules.txt` | 3,386 | 04, 07, 12, 13, 14 | directory | adsp_loader_dlkm.ko |
-| `data/android/vendor_ramdisk/modules_modinfo.tsv` | 14,566 | 04, 07 | file name | module	license	description	author	depends |
-| `data/android/vendor_ramdisk/vendor_dtb_dump.txt` | 562,388 | 04, 07, 12, 13, 14 | file name | / |
+| `data/android/vendor_ramdisk/kernel_modules.txt` | 3,386 | 04, 07, 12, 13, 14, 17 | directory | adsp_loader_dlkm.ko |
+| `data/android/vendor_ramdisk/modules_modinfo.tsv` | 14,566 | 04, 07, 17 | file name | module	license	description	author	depends |
+| `data/android/vendor_ramdisk/vendor_dtb_dump.txt` | 562,388 | 04, 07, 12, 13, 14, 17 | file name | / |
 | `data/android/vendor_ramdisk/wpss_dt_nodes.txt` | 720 | 07 | file name | Device-tree nodes naming WPSS (data/android/vendor_ramdisk/vendor_dtb_dump.txt, binary-... |
 | `data/avb/hashtree_rebuild.txt` | 2,271 | 03 | file name | dm-verity tree rebuild, from vbmeta*.img descriptors and the partition images |
 | `data/avb/vbmeta_summary.txt` | 2,976 | 03 | file name | == vbmeta.img |
 | `data/avb/verify_results.txt` | 1,158 | 03 | file name | == vbmeta.img |
-| `data/dsp/dsp_symbol_table.txt` | 533,006 | 15 | file name | DSP app symbol table (symbol_table.elf inside dsp.default.rt700.tub, EM_XTENSA). Column... |
+| `data/dsp/dsp_symbol_table.txt` | 533,006 | 15, 17 | file name | DSP app symbol table (symbol_table.elf inside dsp.default.rt700.tub, EM_XTENSA). Column... |
 | `data/dsp/dsp_tub_manifest.json` | 1,589 | 15 | file name | { |
 | `data/dsp/dsp_tub_subimages.txt` | 495 | 15 | file name | dsp.default.rt700.tub: 4429312 bytes, sha256 da8ae200fbab870b166d97e778da88b9d2925dfe94... |
 | `data/ghidra/aop_entry_thumb2_disasm.txt` | 389 | 05 | file name | # program aop.img lang ARM:LE:32:v8T |
@@ -99,9 +100,9 @@ Counts are from the repository at the time of writing: 143 files, 2,856,284 byte
 | `data/ghidra/uefi_verifiedboot_decompiled.txt` | 17,430 | 03 | file name | VerifiedBootDxe (uefi.img DXE volume, PE image at decompressed offset 0x74804, 61,504 b... |
 | `data/ghidra/xbl_primary_stub_thumb2_disasm.txt` | 1,751 | 02 | file name | # program stub.bin lang ARM:LE:32:v8T |
 | `data/inventory.json` | 33,943 | 01 | file name | [ |
-| `data/mcu/mcu_console_strings.txt` | 12,733 | 14 | file name | MCU firmware console strings (mcu.default.rt700.tub, file offsets). Extracted by printa... |
+| `data/mcu/mcu_console_strings.txt` | 12,733 | 14, 17 | file name | MCU firmware console strings (mcu.default.rt700.tub, file offsets). Extracted by printa... |
 | `data/partition_table.md` | 3,504 | 01 | file name | # Partition table |
-| `data/partition_table.zh-CN.md` | 3,679 | 01, 02, 03, 04, 05, 06, 07, 08, 09, 11, 12, 13, 14, 15, 16 | directory | # 分区表 |
+| `data/partition_table.zh-CN.md` | 3,679 | 01, 02, 03, 04, 05, 06, 07, 08, 09, 11, 12, 13, 14, 15, 16, 17 | directory | # 分区表 |
 | `data/qfprom_literal_candidates.json` | 839 | 06 | file name | { |
 | `data/remote/bluetooth_listing.txt` | 1,827 | 05, 07 | file name | type=FAT16/12 dirs=1 files=51 total_bytes=780143 |
 | `data/remote/bluetooth_version_files.txt` | 700 | 07 | file name | bluetooth.img (FAT16, extracted with a local FAT16 helper; 8.3 names shown as stored) |
@@ -119,6 +120,7 @@ Counts are from the repository at the time of writing: 143 files, 2,856,284 byte
 | `data/secure/hyp_rm_objects_and_arb_fuse.txt` | 1,590 | 06 | file name | hyp.img is the Gunyah/QTEE hypervisor resource manager (AArch64 ELF, entry 0x80000000). |
 | `data/secure/keymaster_rollback_strings.txt` | 1,061 | 03 | file name | keymaster.img (ELF, 368,640 bytes), strings related to rollback, version, boot state an... |
 | `data/secure/object_0x91_firmware_scan.txt` | 638 | 02, 03, 06 | directory | Firmware-wide scan for table rows keyed by object ID 0x91 (low 32 bits 0x91, high 32 bi... |
+| `data/secure/oem_key_pointer_search.txt` | 1,137 | 06 | file name | Search for references to the OEM configuration key names (TrustZone, tz.img; devcfg.img). |
 | `data/secure/oem_rot_key_xref_search.txt` | 846 | 06 | file name | Search for the reader of OEM_rot_pk_hash1_fuse_values (tz.img file 0x13A3AC, vaddr 0x1C... |
 | `data/secure/sbl1_cpr_fuse_getters.txt` | 2,365 | 06 | file name | SBL1 fuse-field getters (sbl1.elf, AArch64). Observed from disassembly. Ghidra did not ... |
 | `data/secure/tme_antirollback_location.txt` | 571 | 06 | file name | Anti-rollback manager location (xbl.img, TME RISC-V ELF at offset 0x1C2F4) |

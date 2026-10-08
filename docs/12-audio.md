@@ -62,6 +62,9 @@ The names are the Qualcomm WCD-style codec macros (`RX_MACRO`, `TX_MACRO`, `VA_M
 
 ### Speakers
 
+Correction (from the ODM script, section 17): the production speaker amplifiers appear to be two Maxim MAX98388 smart amplifiers (left at I2C `0x3A`, right at `0x38`, TDM input, 4 ohm load). The script is `data/android/audio/max98388_v2.sh`. The mixer configuration below is the reference board's, and it names the Qualcomm WSA macros. How the two fit together is inferred, not confirmed.
+
+
 The FTM test configuration for the IDP build shows the speaker path directly (`data/android/audio/ftm_test_config_neo-idp-sg-snd-card`). Observed:
 
 - Two channels, `#Left Speaker` and `#Right Speaker`. The playback key is `gkv_rx:PCM_LL_PLAYBACK-SPEAKER-INSTANCE1-DEVICEPP_RX_DEFAULT`, back end `CODEC_DMA-LPAIF_WSA-RX-0`, and PCM id 100.

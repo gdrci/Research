@@ -43,7 +43,8 @@ Discord：[discord.gg/oculus](https://discord.gg/oculus) · gdrci（Discord）
 | MCU 控制台、LCoS 与触控 | [14](docs/14-mcu-console-and-lcos.md) | [14](docs/14-mcu-console-and-lcos.zh-CN.md) |
 | 音频 DSP 固件（RT700 HiFi4） | [15](docs/15-audio-dsp-firmware.md) | [15](docs/15-audio-dsp-firmware.zh-CN.md) |
 | 调制解调器分区：ADSP、CDSP 与可信应用 | [16](docs/16-modem-partition-firmware.md) | [16](docs/16-modem-partition-firmware.zh-CN.md) |
-| 证据索引 | [17](docs/17-evidence-index.md) | [17](docs/17-evidence-index.zh-CN.md) |
+| 芯片清单 | [17](docs/17-chip-inventory.md) | [17](docs/17-chip-inventory.zh-CN.md) |
+| 证据索引 | [18](docs/18-evidence-index.md) | [18](docs/18-evidence-index.zh-CN.md) |
 
 
 ## 证据标注

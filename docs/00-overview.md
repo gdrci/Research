@@ -69,4 +69,5 @@ Several parts of the system run outside the application processor. A microcontro
 | [14](14-mcu-console-and-lcos.md) | MCU console, LCoS controller, touch, IMU, ALS and sub-image layout |
 | [15](15-audio-dsp-firmware.md) | RT700 HiFi4 DSP: wake word, hearing, speaker model, microphones |
 | [16](16-modem-partition-firmware.md) | ADSP, CDSP, trusted applications and their signing chains |
-| [17](17-evidence-index.md) | Every evidence file and the section that cites it |
+| [17](17-chip-inventory.md) | Integrated circuits: SoC, PMICs, amplifiers, sensors, connectivity, with evidence and confidence |
+| [18](18-evidence-index.md) | Every evidence file and the section that cites it |

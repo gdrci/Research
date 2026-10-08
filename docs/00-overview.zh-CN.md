@@ -69,4 +69,5 @@ SBL1 中有一处直接引用该地址，位于构建启动内存映射的代码
 | [14](14-mcu-console-and-lcos.zh-CN.md) | MCU 控制台、LCoS 控制器、触控、IMU、ALS 与子镜像布局 |
 | [15](15-audio-dsp-firmware.zh-CN.md) | RT700 HiFi4 DSP：唤醒词、听力、扬声器模型、麦克风 |
 | [16](16-modem-partition-firmware.zh-CN.md) | ADSP、CDSP、可信应用及其签名链 |
-| [17](17-evidence-index.zh-CN.md) | 每个证据文件及引用它的章节 |
+| [17](17-chip-inventory.zh-CN.md) | 集成电路：SoC、PMIC、功放、传感器、连接，附依据与可信度 |
+| [18](18-evidence-index.zh-CN.md) | 每个证据文件及引用它的章节 |

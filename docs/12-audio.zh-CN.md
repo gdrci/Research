@@ -62,6 +62,9 @@
 
 ### 扬声器
 
+更正（来自 ODM 脚本，见第 17 节）：生产用扬声器功放看起来是两颗 Maxim MAX98388 智能功放（左声道 I2C `0x3A`，右声道 `0x38`，TDM 输入，4 欧姆负载）。脚本为 `data/android/audio/max98388_v2.sh`。下文的混音配置来自参考板，其中列的是高通 WSA 宏。二者如何对应是推断，未经确认。
+
+
 IDP 版本的 FTM（工厂测试）配置直接展示了扬声器路径（`data/android/audio/ftm_test_config_neo-idp-sg-snd-card`）。已观察：
 
 - 两个声道：`#Left Speaker` 与 `#Right Speaker`。播放键为 `gkv_rx:PCM_LL_PLAYBACK-SPEAKER-INSTANCE1-DEVICEPP_RX_DEFAULT`，后端为 `CODEC_DMA-LPAIF_WSA-RX-0`，PCM id 为 100。
