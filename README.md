@@ -37,6 +37,7 @@ This repository describes how the system is built and how it starts. It is not v
 | QCC730 secure-boot reference (external, different chip) | [10](docs/10-qcc730-secure-boot-reference.md) | [10](docs/10-qcc730-secure-boot-reference.zh-CN.md) |
 | Wireless and connectivity | [11](docs/11-wireless-and-connectivity.md) | [11](docs/11-wireless-and-connectivity.zh-CN.md) |
 | Peripheral firmware and build IDs | [12](docs/12-peripheral-firmware-and-build-ids.md) | [12](docs/12-peripheral-firmware-and-build-ids.zh-CN.md) |
+| Evidence index | [13](docs/13-evidence-index.md) | [13](docs/13-evidence-index.zh-CN.md) |
 
 
 ## Evidence labels
