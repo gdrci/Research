@@ -1,0 +1,12 @@
+# hyp.img reference check for PILSubsys_getArbFuseBank (0x3EB4C) and the table getter (0x260C4)
+# Ghidra 12.1.3, hyp.img imported at base 0x100000, auto-analysed; then code block force-disassembled (3,239 instructions added); references queried with ReferenceManager.
+# Script: data/ghidra/arb_fuse_refs_check.java
+
+refs to 0x13EB4C (getArbFuseBank entry): 0
+refs to 0x1260C4 (table getter): 1, from 0x13EB6C (UNCONDITIONAL_CALL, inside getArbFuseBank)
+refs to 0x126000 (consumer), 0x126060 (consumer), 0x126024, 0x126088 (BL sites inside consumers), 0x13EB6C: 0
+
+Image-wide, other than the hyp.img name string, 'PILSubsys_getArbFuseBank' appears in no firmware image in the set (fw_img/*.img searched for the name).
+Pointer words (64-bit) equal to 0x3EB4C in hyp.img: 0. ADR and ADRP+ADD references to 0x3EB4C: 0.
+
+Reading: no code or data in the image set reaches PILSubsys_getArbFuseBank. Its callers are outside the set or not reached by a static reference. Observed.
