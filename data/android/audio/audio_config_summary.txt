@@ -1,0 +1,38 @@
+Vendor audio configuration summary (fs/vendor/etc of greatwhite.zip). Counts from XML parse and text scan.
+audio_policy_configuration.xml: 36732 bytes, sha256 1cbae168fef5af4156a7883b6f81f4ed3b3b5cf909c1fe839a68eb9fe17fb70f
+audio/sku_neo/audio_policy_configuration.xml: 36732 bytes, sha256 1cbae168fef5af4156a7883b6f81f4ed3b3b5cf909c1fe839a68eb9fe17fb70f
+audio/sku_neo/mixer_paths_neo_idp_sg.xml: 107044 bytes, sha256 522057f2414c9c947d7f59ecae5630d93103e5f22eab21727eb43e07c2592289
+audio/sku_neo/resourcemanager_neo_idp_sg.xml: 55347 bytes, sha256 875e03a737f05fe554b03d305c0620230be78d04169ae40b84be1e390930a855
+usecaseKvManager.xml: 65071 bytes, sha256 3e5745d52904a75d263e538a0cda832eb32b81484a3f9f6539940ad4a34dd0c2
+backend_conf.xml: 8209 bytes, sha256 8af58dbbe56d44e9c495cab388fe2a3f10a8ef64678e832f81d5847146906041
+card-defs.xml: 13799 bytes, sha256 d053c5c8889c656b6c0292f12446e0402bc521e74c3dfbe0604356c69a210948
+audio_effects.xml: 10931 bytes, sha256 9973539b75d4e2362e0f4a91d472ac1c15412c97be4cadc5455a41d1e92f7ab4
+audio_policy_volumes.xml: 13160 bytes, sha256 28d80592901b0d39410f18d93af7bf669dea16b8445c26a56fd127b8a3430be8
+default_volume_tables.xml: 5133 bytes, sha256 700b3e3979801bc09875e948bfae489d4c488e8b17911e8dcc2eebbfd17bb4ec
+microphone_characteristics.xml: 671 bytes, sha256 49abc21a4e7b520f41b5303568f6ebd32d4e8d570c1271fc9abef76890edb806
+a2dp_audio_policy_configuration.xml: 2090 bytes, sha256 e20164e2412fa4b6497a908b2304dd8fe19684925fbae38ed6461ad60f3a9ec2
+bluetooth_qti_audio_policy_configuration.xml: 2103 bytes, sha256 b32c201568fbfd204fa74512f76bf9df98ed97e3f9f1f3c898a2072ce26e84ed
+usb_audio_policy_configuration.xml: 2237 bytes, sha256 13f6bfaa10b9e77974b0e250fb59e4f583ce0a623766c8cfce1451c96f37afde
+r_submix_audio_policy_configuration.xml: 2105 bytes, sha256 44aa04e6a3fe674bf22e1e87fee602ca4d42e701740bf96f0101fe6c3b2abe09
+media_codecs_vendor_audio.xml: 975 bytes, sha256 7243761f12b860cd9edc37295f3f3452d159e11249baab8525e59f65f5e392dc
+acdbdata/neo_idp_sg/IDP_neo_sg_acdb_cal.acdb: 1469406 bytes, sha256 8a496395f333fa78e97604d38e0ddda3482c77f3878f57193c6d279ef333f7b2
+acdbdata/neo_idp_sg/IDP_neo_sg_workspaceFileXml.qwsp: 660048 bytes, sha256 93fbfe9d27d6801cfd451d111376f6dd9ac466df386d90afa44e9945d7090bc3
+audio/hw_info.xml: 5185 bytes, sha256 69cad1718d54bccc9468bfb068291237d9f298a9c4706e1e23919caea235b41e
+module primary (main policy file): mixPorts 25, devicePorts 24, routes 29
+module usb (main policy file): mixPorts 1, devicePorts 1, routes 1
+devicePort types: AUDIO_DEVICE_OUT_EARPIECE 1, AUDIO_DEVICE_OUT_SPEAKER 1, AUDIO_DEVICE_OUT_WIRED_HEADSET 1, AUDIO_DEVICE_OUT_WIRED_HEADPHONE 1, AUDIO_DEVICE_OUT_LINE 1, AUDIO_DEVICE_OUT_BLUETOOTH_SCO 1, AUDIO_DEVICE_OUT_BLUETOOTH_SCO_HEADSET 1, AUDIO_DEVICE_OUT_BLUETOOTH_SCO_CARKIT 1, AUDIO_DEVICE_OUT_TELEPHONY_TX 1, AUDIO_DEVICE_OUT_AUX_DIGITAL 1, AUDIO_DEVICE_OUT_PROXY 1, AUDIO_DEVICE_OUT_FM 1, AUDIO_DEVICE_OUT_BLUETOOTH_A2DP 1, AUDIO_DEVICE_OUT_BLUETOOTH_A2DP_HEADPHONES 1, AUDIO_DEVICE_OUT_BLUETOOTH_A2DP_SPEAKER 1, AUDIO_DEVICE_OUT_USB_DEVICE 1, AUDIO_DEVICE_OUT_USB_HEADSET 1, AUDIO_DEVICE_IN_BUILTIN_MIC 1, AUDIO_DEVICE_IN_BACK_MIC 1, AUDIO_DEVICE_IN_FM_TUNER 1, AUDIO_DEVICE_IN_WIRED_HEADSET 1, AUDIO_DEVICE_IN_TELEPHONY_RX 1, AUDIO_DEVICE_IN_USB_DEVICE 1, AUDIO_DEVICE_IN_USB_HEADSET 1, AUDIO_DEVICE_OUT_USB_ACCESSORY 1
+mixer paths: 1253, ctl elements: 477
+ctl prefixes: TX 142, VA 92, WSA 45, RX 43, IIR0 27, ADC2 21, SpkrLeft 15, WSA2 10, SpkrRight 9, HPHL 9, HPHR 7, LPI 6
+resource manager usecase blocks: 51; snd_device_name values: 33
+snd_device_name values: afe-proxy, bt-a2dp, bt-a2dp-mic, bt-sco, bt-sco-mic, display-port, ext_ec_ref_tx, handset, handset-dmic-endfire, handset-mic, haptics-dev, headphones, headset-mic, headset-va-mic, none, play-fm, quad-mic, speaker, speaker-dmic-endfire, speaker-mic, speaker-mono-2, ultrasound-handset, ultrasound-mic, unprocessed-hdr-mic-inverted-landscape, unprocessed-hdr-mic-inverted-portrait, unprocessed-hdr-mic-landscape, unprocessed-hdr-mic-portrait, usb-headphones, usb-headset-mic, va-mic, vi-feedback, voice-handset, voice-handset-hac
+backend_conf device entries: 40
+usecaseKvManager graph_kv entries: 283
+volume streams: 14 (ACCESSIBILITY, ALARM, ASSISTANT, BLUETOOTH_SCO, DTMF, ENFORCED_AUDIBLE, MUSIC, NOTIFICATION, PATCH, REROUTING, RING, SYSTEM, TTS, VOICE_CALL)
+audio_effects: 14 effects, 13 libraries
+card-defs: id 100 name waipiovirtualsndcard, pcm-device entries 25
+microphone channel to position: ch0->pos0, ch1->pos3, ch2->pos4, ch3->pos1, ch4->pos2, ch5->pos5
+a2dp_audio_policy_configuration.xml: module ['a2dp']
+bluetooth_qti_audio_policy_configuration.xml: module ['bluetooth_qti']
+usb_audio_policy_configuration.xml: module ['usb']
+r_submix_audio_policy_configuration.xml: module ['r_submix']
+sku_neo_qssi/audio_policy_configuration.xml: modules ['primary', 'usb']

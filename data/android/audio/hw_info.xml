@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
+  Hardware Information Configuration File
+
+  This file contains hardware-specific configuration data for audio processing
+  including product mappings, board IDs, and microphone configurations.
+-->
+<hardware_information>
+  <!-- Map from string to product id -->
+  <product_name_mappings>
+    <product name="starfish" id="PRODUCT_ID_STARFISH" description="stella (rt600)"/>
+    <product name="hammerhead" id="PRODUCT_ID_HAMMERHEAD" description="supernova (rt600)"/>
+    <product name="greatwhite" id="PRODUCT_ID_GREATWHITE" description="hypernova (rt600)"/>
+    <product name="greatwhite_rt700" id="PRODUCT_ID_GREATWHITE_RT700" description="hypernova (rt700)"/>
+    <product name="florian" id="PRODUCT_ID_FLORIAN_MAKO" description="florian: paloma (rt700)"/>
+    <product name="mako" id="PRODUCT_ID_FLORIAN_MAKO" description="florian: paloma (rt700)"/>
+    <product name="zebra" id="PRODUCT_ID_FLORIAN_ZEBRA" description="florian: bellini (rt700)"/>
+    <product name="silvertip" id="PRODUCT_ID_FLORIAN_SILVERTIP" description="florian: aperol (rt700)"/>
+    <product name="unknown" id="PRODUCT_ID_UNKNOWN"/>
+  </product_name_mappings>
+
+  <!-- Map from string to board id -->
+  <board_name_mappings>
+    <board name="DEV0" id="BOARD_ID_DEV0"/>
+    <board name="DEV0_1" id="BOARD_ID_DEV0_1"/>
+    <board name="DEV0.2" id="BOARD_ID_DEV0_2"/>
+    <board name="DEV0_P1" id="BOARD_ID_DEV0_P1"/>
+    <board name="DEV1" id="BOARD_ID_DEV1"/>
+    <board name="PRE_P1" id="BOARD_ID_PRE_P1"/>
+    <board name="PRE_P1_PLUS" id="BOARD_ID_PRE_P1_PLUS"/>
+    <board name="P1" id="BOARD_ID_P1"/>
+    <board name="P1_RT600" id="BOARD_ID_P1_RT600"/>
+    <board name="EVT" id="BOARD_ID_EVT"/>
+    <board name="EVT1" id="BOARD_ID_EVT1"/>
+    <board name="EVT1_1" id="BOARD_ID_EVT1_1"/>
+    <board name="EVT2" id="BOARD_ID_EVT2"/>
+    <board name="DVT" id="BOARD_ID_DVT"/>
+    <board name="PVT" id="BOARD_ID_PVT"/>
+    <board name="UNKNOWN" id="BOARD_ID_UNKNOWN"/>
+  </board_name_mappings>
+
+  <!-- Map from char in serial number to hardware SKU -->
+  <serial_sku_mappings>
+    <serial_char char="B" sku="AUDIO_OP_SN_SKU_1"/>
+    <serial_char char="S" sku="AUDIO_OP_SN_SKU_1"/>
+    <serial_char char="Q" sku="AUDIO_OP_SN_SKU_2"/>
+    <serial_char char="T" sku="AUDIO_OP_SN_SKU_2"/>
+    <serial_char char="R" sku="AUDIO_OP_SN_SKU_3"/>
+    <serial_char char="V" sku="AUDIO_OP_SN_SKU_3"/>
+    <serial_char char="W" sku="AUDIO_OP_SN_SKU_4"/>
+    <serial_char char="Y" sku="AUDIO_OP_SN_SKU_4"/>
+    <serial_char char="X" sku="AUDIO_OP_SN_SKU_5"/>
+    <serial_char char="Z" sku="AUDIO_OP_SN_SKU_5"/>
+  </serial_sku_mappings>
+
+  <!-- Map from hardware SKU to string -->
+  <sku_name_mappings>
+    <sku_name id="AUDIO_OP_SN_SKU_1" display_name="WAYFARER"/>
+    <sku_name id="AUDIO_OP_SN_SKU_2" display_name="WAYFARER_LARGE"/>
+    <sku_name id="AUDIO_OP_SN_SKU_3" display_name="HEADLINER"/>
+    <sku_name id="AUDIO_OP_SN_SKU_4" display_name="HEADLINER_LNB"/>
+    <sku_name id="AUDIO_OP_SN_SKU_5" display_name="SKYLER"/>
+    <sku_name id="AUDIO_OP_SKU_UNKNOWN" display_name="UNKNOWN"/>
+  </sku_name_mappings>
+
+  <!-- Mic configuration for Hammerhead -->
+  <hammerhead_mic_configuration>
+    <microphone channel="1" label="Right1" name="Nose_Mic_Right"/>
+    <microphone channel="2" label="Left1" name="Logo_Mic_Left"/>
+    <microphone channel="3" label="Right2" name="Logo_Mic_Right"/>
+    <microphone channel="4" label="Left2" name="Temple_Mic_Left"/>
+    <microphone channel="5" label="Right3" name="Temple_Mic_Right"/>
+  </hammerhead_mic_configuration>
+
+  <!-- Mic configuration for Greatwhite -->
+  <greatwhite_mic_configuration>
+    <microphone channel="1" label="Left1" name="Nose_Mic_Left"/>
+    <microphone channel="2" label="Left2" name="Logo_Mic_Left"/>
+    <microphone channel="3" label="Right2" name="Logo_Mic_Right"/>
+    <microphone channel="4" label="Right1" name="Contact_Mic_Right"/>
+    <microphone channel="5" label="Left3" name="Temple_Mic_Left"/>
+    <microphone channel="6" label="Right3" name="Temple_Mic_Right"/>
+  </greatwhite_mic_configuration>
+
+  <!-- Mic configuration for Florian Mako -->
+  <florian_mako_mic_configuration>
+    <microphone channel="1" label="Left1" name="Camera_Mic_Left"/>
+    <microphone channel="2" label="Right1" name="Nose_Mic_Right"/>
+    <microphone channel="3" label="Left2" name="Nose_Mic_Left"/>
+    <microphone channel="4" label="Right2" name="Tusk_Mic_Right"/>
+    <microphone channel="5" label="Left3" name="Tusk_Mic_Left"/>
+  </florian_mako_mic_configuration>
+
+  <!-- Mic configuration for Florian Zebra and Silvertip -->
+  <florian_zebra_silvertip_mic_configuration>
+    <microphone channel="1" label="Right1" name="Nose_Mic_Right"/>
+    <microphone channel="2" label="Left1" name="Nose_Mic_Left"/>
+    <microphone channel="3" label="Right2" name="Armpit_Mic_Right"/>
+    <microphone channel="4" label="Left2" name="Armpit_Mic_Left"/>
+    <microphone channel="5" label="Right3" name="Temple_Mic_Right"/>
+    <microphone channel="6" label="Left3" name="Temple_Mic_Left"/>
+  </florian_zebra_silvertip_mic_configuration>
+</hardware_information>

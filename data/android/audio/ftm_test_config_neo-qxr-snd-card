@@ -1,0 +1,327 @@
+tc 1
+#Left Speaker
+!Playback
+gkv_rx:PCM_LL_PLAYBACK-SPEAKER-INSTANCE1-DEVICEPP_RX_DEFAULT
+be_name_rx:CODEC_DMA-LPAIF_WSA-RX-0
+pcm_id_rx:100
+channels_rx:1
+
+enable
+WSA2 RX0 MUX:AIF1_PB
+WSA2_RX0 INP0:RX0
+WSA2_COMP1 Switch:1
+SpkrLeft COMP Switch:1
+SpkrLeft VISENSE Switch:1
+SpkrLeft SWR DAC_Port Switch:1
+WSA2_RX0 Digital Volume:78
+
+disable
+WSA2 RX0 MUX:ZERO
+WSA2_RX0 INP0:ZERO
+WSA2_COMP1 Switch:0
+SpkrLeft COMP Switch:0
+SpkrLeft VISENSE Switch:0
+SpkrLeft SWR DAC_Port Switch:0
+
+tc 2
+#Right Speaker
+!Playback
+gkv_rx:PCM_LL_PLAYBACK-SPEAKER-INSTANCE1-DEVICEPP_RX_DEFAULT
+be_name_rx:CODEC_DMA-LPAIF_WSA-RX-0
+pcm_id_rx:100
+channels_rx:1
+
+enable
+WSA RX1 MUX:AIF1_PB
+WSA_RX1 INP0:RX1
+WSA_COMP2 Switch:1
+SpkrRight COMP Switch:1
+SpkrRight VISENSE Switch:1
+SpkrRight SWR DAC_Port Switch:1
+WSA_RX1 Digital Volume:78
+
+disable
+WSA RX1 MUX:ZERO
+WSA_RX1 INP0:ZERO
+WSA_COMP2 Switch:0
+SpkrRight COMP Switch:0
+SpkrRight VISENSE Switch:0
+SpkrRight SWR DAC_Port Switch:0
+
+
+
+tc 22
+#MSM DMIC1
+!Capture
+gkv_tx:PCM_RECORD-SPEAKER_MIC-AUDIO_FLUENCE_SMECNS-INSTANCE1
+be_name_tx:CODEC_DMA-LPAIF_RXTX-TX-3
+pcm_id_tx:101
+channels_tx:1
+Txdevice:0
+
+enable
+TX DEC2 MUX:MSM_DMIC
+TX_AIF1_CAP Mixer DEC2:1
+TX_DEC2 Volume:114
+TX DMIC MUX2:DMIC0
+
+disable
+TX_AIF1_CAP Mixer DEC2:0
+TX DMIC MUX2:ZERO
+
+tc 23
+#MSM DMIC2
+!Capture
+gkv_tx:PCM_RECORD-HANDSETMIC-AUDIO_FLUENCE_SMECNS-INSTANCE1
+be_name_tx:CODEC_DMA-LPAIF_RXTX-TX-3
+pcm_id_tx:101
+channels_tx:1
+Txdevice:0
+
+enable
+TX DEC2 MUX:MSM_DMIC
+TX_AIF1_CAP Mixer DEC2:1
+TX DMIC MUX2:DMIC1
+
+disable
+TX_AIF1_CAP Mixer DEC2:0
+TX DMIC MUX2:ZERO
+
+tc 24
+#MSM DMIC3
+!Capture
+gkv_tx:PCM_RECORD-HANDSETMIC-AUDIO_FLUENCE_SMECNS-INSTANCE1
+be_name_tx:CODEC_DMA-LPAIF_RXTX-TX-3
+pcm_id_tx:101
+channels_tx:1
+Txdevice:0
+
+enable
+TX DEC2 MUX:MSM_DMIC
+TX_AIF1_CAP Mixer DEC2:1
+TX DMIC MUX2:DMIC2
+
+disable
+TX_AIF1_CAP Mixer DEC2:0
+TX DMIC MUX2:ZERO
+
+tc 25
+#MSM DMIC4
+!Capture
+gkv_tx:PCM_RECORD-HANDSETMIC-AUDIO_FLUENCE_SMECNS-INSTANCE1
+be_name_tx:CODEC_DMA-LPAIF_RXTX-TX-3
+pcm_id_tx:101
+channels_tx:1
+Txdevice:0
+
+enable
+TX DEC2 MUX:MSM_DMIC
+TX_AIF1_CAP Mixer DEC2:1
+TX DMIC MUX2:DMIC3
+
+disable
+TX_AIF1_CAP Mixer DEC2:0
+TX DMIC MUX2:ZERO
+
+tc 26
+#MSM DMIC5
+!Capture
+gkv_tx:PCM_RECORD-HANDSETMIC-AUDIO_FLUENCE_SMECNS-INSTANCE1
+be_name_tx:CODEC_DMA-LPAIF_RXTX-TX-3
+pcm_id_tx:101
+channels_tx:1
+Txdevice:0
+
+enable
+TX DEC2 MUX:MSM_DMIC
+TX_AIF1_CAP Mixer DEC2:1
+TX DMIC MUX2:DMIC4
+
+disable
+TX_AIF1_CAP Mixer DEC2:0
+TX DMIC MUX2:ZERO
+
+tc 27
+#MSM DMIC6
+!Capture
+gkv_tx:PCM_RECORD-HANDSETMIC-AUDIO_FLUENCE_SMECNS-INSTANCE1
+be_name_tx:CODEC_DMA-LPAIF_RXTX-TX-3
+pcm_id_tx:101
+channels_tx:1
+Txdevice:0
+
+enable
+TX DEC2 MUX:MSM_DMIC
+TX_AIF1_CAP Mixer DEC2:1
+TX DMIC MUX2:DMIC5
+
+disable
+TX_AIF1_CAP Mixer DEC2:0
+TX DMIC MUX2:ZERO
+
+tc 241
+#HANDSETMIC_MSM_MIC to SpeakerRight
+!CodecLoop
+
+enable
+WSA_RX1 INP0:DEC0
+WSA_COMP2 Switch:1
+SpkrRight COMP Switch:1
+SpkrRight VISENSE Switch:1
+SpkrRight SWR DAC_Port Switch:1
+WSA_RX1 Digital Volume:96
+TX DEC0 MUX:MSM_DMIC
+TX DMIC MUX0:DMIC0
+WSA RX1 MUX:ZERO
+WSA_RX1 INP0:ZERO
+WSA_COMP2 Switch:0
+SpkrRight COMP Switch:0
+SpkrRight VISENSE Switch:0
+SpkrRight SWR DAC_Port Switch:0
+TX DMIC MUX0:ZERO
+WSA_RX1 INP0:DEC0
+WSA_COMP2 Switch:1
+SpkrRight COMP Switch:1
+SpkrRight VISENSE Switch:1
+SpkrRight SWR DAC_Port Switch:1
+WSA_RX1 Digital Volume:96
+TX DEC0 MUX:MSM_DMIC
+TX DMIC MUX0:DMIC0
+
+
+
+
+disable
+WSA RX1 MUX:ZERO
+WSA_RX1 INP0:ZERO
+WSA_COMP2 Switch:0
+SpkrRight COMP Switch:0
+SpkrRight VISENSE Switch:0
+SpkrRight SWR DAC_Port Switch:0
+TX DMIC MUX0:ZERO
+
+
+tc 242
+#HANDSETMIC_MSM_MIC to SpeakerRight
+!CodecLoop
+
+enable
+WSA_RX1 INP0:DEC0
+WSA_COMP2 Switch:1
+SpkrRight COMP Switch:1
+SpkrRight VISENSE Switch:1
+SpkrRight SWR DAC_Port Switch:1
+WSA_RX1 Digital Volume:84
+TX DEC0 MUX:MSM_DMIC
+TX DMIC MUX0:DMIC1
+WSA RX1 MUX:ZERO
+WSA_RX1 INP0:ZERO
+WSA_COMP2 Switch:0
+SpkrRight COMP Switch:0
+SpkrRight VISENSE Switch:0
+SpkrRight SWR DAC_Port Switch:0
+TX DMIC MUX0:ZERO
+WSA_RX1 INP0:DEC0
+WSA_COMP2 Switch:1
+SpkrRight COMP Switch:1
+SpkrRight VISENSE Switch:1
+SpkrRight SWR DAC_Port Switch:1
+WSA_RX1 Digital Volume:84
+TX DEC0 MUX:MSM_DMIC
+TX DMIC MUX0:DMIC1
+
+
+
+
+disable
+WSA RX1 MUX:ZERO
+WSA_RX1 INP0:ZERO
+WSA_COMP2 Switch:0
+SpkrRight COMP Switch:0
+SpkrRight VISENSE Switch:0
+SpkrRight SWR DAC_Port Switch:0
+TX DMIC MUX0:ZERO
+
+
+tc 243
+#HANDSETMIC_MSM_MIC to SpeakerRight
+!CodecLoop
+
+enable
+WSA_RX1 INP0:DEC0
+WSA_COMP2 Switch:1
+SpkrRight COMP Switch:1
+SpkrRight VISENSE Switch:1
+SpkrRight SWR DAC_Port Switch:1
+WSA_RX1 Digital Volume:84
+TX DEC0 MUX:MSM_DMIC
+TX DMIC MUX0:DMIC2
+WSA RX1 MUX:ZERO
+WSA_RX1 INP0:ZERO
+WSA_COMP2 Switch:0
+SpkrRight COMP Switch:0
+SpkrRight VISENSE Switch:0
+SpkrRight SWR DAC_Port Switch:0
+TX DMIC MUX0:ZERO
+WSA_RX1 INP0:DEC0
+WSA_COMP2 Switch:1
+SpkrRight COMP Switch:1
+SpkrRight VISENSE Switch:1
+SpkrRight SWR DAC_Port Switch:1
+WSA_RX1 Digital Volume:84
+TX DEC0 MUX:MSM_DMIC
+TX DMIC MUX0:DMIC2
+
+
+
+
+disable
+WSA RX1 MUX:ZERO
+WSA_RX1 INP0:ZERO
+WSA_COMP2 Switch:0
+SpkrRight COMP Switch:0
+SpkrRight VISENSE Switch:0
+SpkrRight SWR DAC_Port Switch:0
+TX DMIC MUX0:ZERO
+
+
+tc 244
+#HANDSETMIC_MSM_MIC to SpeakerRight
+!CodecLoop
+
+enable
+WSA_RX1 INP0:DEC0
+WSA_COMP2 Switch:1
+SpkrRight COMP Switch:1
+SpkrRight VISENSE Switch:1
+SpkrRight SWR DAC_Port Switch:1
+WSA_RX1 Digital Volume:84
+TX DEC0 MUX:MSM_DMIC
+TX DMIC MUX0:DMIC3
+WSA RX1 MUX:ZERO
+WSA_RX1 INP0:ZERO
+WSA_COMP2 Switch:0
+SpkrRight COMP Switch:0
+SpkrRight VISENSE Switch:0
+SpkrRight SWR DAC_Port Switch:0
+TX DMIC MUX0:ZERO
+WSA_RX1 INP0:DEC0
+WSA_COMP2 Switch:1
+SpkrRight COMP Switch:1
+SpkrRight VISENSE Switch:1
+SpkrRight SWR DAC_Port Switch:1
+WSA_RX1 Digital Volume:84
+TX DEC0 MUX:MSM_DMIC
+TX DMIC MUX0:DMIC3
+
+
+
+
+disable
+WSA RX1 MUX:ZERO
+WSA_RX1 INP0:ZERO
+WSA_COMP2 Switch:0
+SpkrRight COMP Switch:0
+SpkrRight VISENSE Switch:0
+SpkrRight SWR DAC_Port Switch:0
+TX DMIC MUX0:ZERO

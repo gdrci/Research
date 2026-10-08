@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Copyright (c) Meta Platforms, Inc. and affiliates. All rights reserved. -->
+<microphone_characteristics_and_channel_maps>
+    <raw_audio_mic_order>
+        <mic_order channel="0" position="0" /> <!-- NOSE -->
+        <mic_order channel="1" position="3" /> <!-- LEFT_LOGO -->
+        <mic_order channel="2" position="4" /> <!-- RIGHT_LOGO -->
+        <mic_order channel="3" position="1" /> <!-- LEFT_MID_TEMPLE -->
+        <mic_order channel="4" position="2" /> <!-- RIGHT_MID_TEMPLE -->
+        <mic_order channel="5" position="5" /> <!-- CMIC -->
+    </raw_audio_mic_order>
+</microphone_characteristics_and_channel_maps>
