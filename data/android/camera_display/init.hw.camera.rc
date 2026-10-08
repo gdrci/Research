@@ -1,0 +1,19 @@
+on init
+    # Create a cpu group for restrict processes for video capture
+    mkdir /dev/cpuctl/camera-restricted
+    chown system system /dev/cpuctl/camera-restricted
+    chown system system /dev/cpuctl/camera-restricted/tasks
+    chown system system /dev/cpuctl/camera-restricted/cgroup.procs
+    chmod 0664 /dev/cpuctl/camera-restricted/tasks
+    chmod 0664 /dev/cpuctl/camera-restricted/cgroup.procs
+
+    # Create a cpu group for process to restrict usage during video capture
+    mkdir /dev/cpuset/camera-restricted
+    write /dev/cpuset/camera-restricted/cpus 0-2
+    copy /dev/cpuset/mems /dev/cpuset/camera-restricted/mems
+
+    chown system system /dev/cpuset/camera-restricted
+    chown system system /dev/cpuset/camera-restricted/tasks
+    chown system system /dev/cpuset/camera-restricted/cgroup.procs
+    chmod 0664 /dev/cpuset/camera-restricted/tasks
+    chmod 0664 /dev/cpuset/camera-restricted/cgroup.procs

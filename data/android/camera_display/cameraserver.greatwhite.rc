@@ -1,0 +1,15 @@
+# Override of default frameworks/av/camera/cameraserver/cameraserver.rc behavior.
+# The media service definition is overridden here to be
+# disabled by default
+
+service cameraserver /system/bin/cameraserver
+    override
+    class main
+    user cameraserver
+    group audio camera input drmrpc
+    ioprio rt 4
+    task_profiles CameraServiceCapacity HighPerformance
+    rlimit rtprio 10 10
+    onrestart class_restart cameraWatchdog
+    interface aidl android.frameworks.cameraservice.service.ICameraService/default
+    disabled

@@ -63,4 +63,7 @@ SBL1 中有一处直接引用该地址，位于构建启动内存映射的代码
 | [08](08-peripheral-firmware-and-build-ids.zh-CN.md) | 构建 ID、GPU、摄像头、视频与视觉固件 |
 | [09](09-glasses-software-and-mcu.zh-CN.md) | MCU、STP、RT600/RT700、EMG 腕带、应用层 |
 | [10](10-qcc730-secure-boot-reference.zh-CN.md) | 外部 QCC730 安全启动参考（另一款芯片） |
-| [11](11-evidence-index.zh-CN.md) | 各章节使用的 `data/` 目录 |
+| [11](11-selinux-and-vendor-policy.zh-CN.md) | 厂商 SELinux 策略、上下文、seapp 与签名者 |
+| [12](12-audio.zh-CN.md) | 音频协议栈、LPASS、后端、混音器路径、策略、音效、ACDB |
+| [13](13-camera-and-display.zh-CN.md) | 摄像头与显示的服务、库、调校、面板 |
+| [14](14-evidence-index.zh-CN.md) | 每个证据文件及引用它的章节 |

@@ -1,0 +1,10 @@
+Camera and display userspace summary (fs/system_ext, fs/vendor, fs/odm of greatwhite.zip). Observed from files.
+camera tuning dir: vendor/etc/camera, 19 files
+display config dir: vendor/etc/display, 24 files
+camera tuning subdirectories: AIDenoiseTuning, CameraALSLuxMap, CameraAlsFovFlattenedMat, CorePiAECTuning, CorePiAWBTuning, CorePiFDTuning, KFSCoreTuning, dnn
+display panel QDCM calibration JSON files: 12
+display DPU XML files: DPU660.xml, DPU670.xml, DPU720.xml, DPU7__.xml, DPU820.xml, DPU830.xml, DPU8__.xml, DPU9__.xml
+display_settings.xml sha256 c24780d9cca7fe8bff40f9c5ab85ce22ccb9859f64896340c89fb96e93e92ed6
+max77655_util (vendor/bin/hw) size 24264
+continuousaicamera_nova (system_ext/bin) size 967528
+libvirtualcameraprovider.so present: True

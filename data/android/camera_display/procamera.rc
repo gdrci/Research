@@ -1,0 +1,13 @@
+service procamera /system_ext/bin/procamera
+  class main
+  user system
+  group system
+  interface aidl procamera.IProCameraService/default
+  disabled
+  oneshot
+
+  on post-fs-data
+    # Create pvs directories so SELinux tags can be applied
+    mkdir /data/misc/procamera 0750 system system
+    mkdir /data/misc/procamera/movies 0750 system system
+    mkdir /data/misc/procamera/snapshot 0750 system system

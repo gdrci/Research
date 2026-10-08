@@ -1,0 +1,8 @@
+on property:persist.vendor.media.enableStubCamera=1
+    start stubcameraservice
+
+service stubcameraservice /system_ext/bin/stubcameraservice
+    class late_start
+    user cameraserver
+    group camera
+    disabled

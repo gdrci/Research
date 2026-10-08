@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<display-settings>
+<config identifier="0" />
+<display
+  name="local:4630946274128011393"
+  fixedToUserRotation="2"
+  forcedScalingMode="1"
+  forcedWidth="600"
+  forcedHeight="600" />
+<display
+  name="local:4630946521766656385"
+  fixedToUserRotation="2"
+  forcedScalingMode="1"
+  forcedWidth="375"
+  forcedHeight="454"
+  forcedDensity="100"/>
+</display-settings>

@@ -37,7 +37,10 @@ Discord：[discord.gg/oculus](https://discord.gg/oculus) · @gdrci（Discord）
 | 外设固件与构建 ID | [08](docs/08-peripheral-firmware-and-build-ids.md) | [08](docs/08-peripheral-firmware-and-build-ids.zh-CN.md) |
 | 眼镜端软件与 MCU | [09](docs/09-glasses-software-and-mcu.md) | [09](docs/09-glasses-software-and-mcu.zh-CN.md) |
 | QCC730 安全启动参考（外部资料，另一款芯片） | [10](docs/10-qcc730-secure-boot-reference.md) | [10](docs/10-qcc730-secure-boot-reference.zh-CN.md) |
-| 证据索引 | [11](docs/11-evidence-index.md) | [11](docs/11-evidence-index.zh-CN.md) |
+| SELinux 与厂商策略 | [11](docs/11-selinux-and-vendor-policy.md) | [11](docs/11-selinux-and-vendor-policy.zh-CN.md) |
+| 音频 | [12](docs/12-audio.md) | [12](docs/12-audio.zh-CN.md) |
+| 摄像头与显示用户空间 | [13](docs/13-camera-and-display.md) | [13](docs/13-camera-and-display.zh-CN.md) |
+| 证据索引 | [14](docs/14-evidence-index.md) | [14](docs/14-evidence-index.zh-CN.md) |
 
 
 ## 证据标注

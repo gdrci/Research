@@ -63,4 +63,7 @@ Several parts of the system run outside the application processor. A microcontro
 | [08](08-peripheral-firmware-and-build-ids.md) | Build IDs, GPU, camera, video and vision firmware |
 | [09](09-glasses-software-and-mcu.md) | MCU, STP, RT600/RT700, EMG band, app layer |
 | [10](10-qcc730-secure-boot-reference.md) | External QCC730 secure-boot reference (different chip) |
-| [11](11-evidence-index.md) | Which `data/` directory each section uses |
+| [11](11-selinux-and-vendor-policy.md) | Vendor SELinux policy, contexts, seapp and signer |
+| [12](12-audio.md) | Audio stack, LPASS, backends, mixer paths, policy, effects, ACDB |
+| [13](13-camera-and-display.md) | Camera and display services, libraries, tuning, panels |
+| [14](14-evidence-index.md) | Every evidence file and the section that cites it |

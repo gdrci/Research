@@ -1,0 +1,15 @@
+service continuousaicamera /system_ext/bin/continuousaicamera_nova
+  class main
+  user system
+  group system camera audio
+  capabilities WAKE_ALARM
+  disabled
+
+on post-fs-data
+  # Create continuousaicamera directories so SELinux tags can be applied
+  mkdir /data/misc/continuousaicamera 0755 system system
+  mkdir /data/misc/continuousaicamera/snapshot 0755 system system
+  mkdir /data/misc/continuousaicamera/hold_sidecars 0755 system system
+
+on property:sys.settings.continuous_ai_camera_enabled=1
+  start continuousaicamera

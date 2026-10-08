@@ -37,7 +37,10 @@ This repository describes how the system is built and how it starts. It is not v
 | Peripheral firmware and build IDs | [08](docs/08-peripheral-firmware-and-build-ids.md) | [08](docs/08-peripheral-firmware-and-build-ids.zh-CN.md) |
 | Glasses software and MCU | [09](docs/09-glasses-software-and-mcu.md) | [09](docs/09-glasses-software-and-mcu.zh-CN.md) |
 | QCC730 secure-boot reference (external, different chip) | [10](docs/10-qcc730-secure-boot-reference.md) | [10](docs/10-qcc730-secure-boot-reference.zh-CN.md) |
-| Evidence index | [11](docs/11-evidence-index.md) | [11](docs/11-evidence-index.zh-CN.md) |
+| SELinux and vendor policy | [11](docs/11-selinux-and-vendor-policy.md) | [11](docs/11-selinux-and-vendor-policy.zh-CN.md) |
+| Audio | [12](docs/12-audio.md) | [12](docs/12-audio.zh-CN.md) |
+| Camera and display userspace | [13](docs/13-camera-and-display.md) | [13](docs/13-camera-and-display.zh-CN.md) |
+| Evidence index | [14](docs/14-evidence-index.md) | [14](docs/14-evidence-index.zh-CN.md) |
 
 
 ## Evidence labels

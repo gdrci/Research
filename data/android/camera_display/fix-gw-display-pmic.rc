@@ -1,0 +1,3 @@
+# When /vendor/hw/bin/ is available, fix-up the display power setting  ASAP:
+on late-fs
+   exec_background - root root -- /vendor/bin/hw/max77655_util --config_gw_display_pmic
