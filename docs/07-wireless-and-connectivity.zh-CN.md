@@ -21,7 +21,7 @@
 - 设备树把蓝牙节点命名为 `/soc/bt_wcn6x5x`，`compatible = "qcom,kiwi"`，其供电名为 `qcom,bt-vdd-aon`、`qcom,bt-vdd-dig`、`qcom,bt-vdd-rfaOp8`、`qcom,bt-vdd-rfa2` 与 `qcom,bt-vdd18-aon`，并有蓝牙与 WLAN 的复位 GPIO（已观察，`data/android/vendor_ramdisk/vendor_dtb_dump.txt`）。
 - WCN7850 蓝牙部分的 Linux 绑定（`qcom,wcn7850-bt`）使用另一套供电名（`vddaon`、`vdddig`、`vddrfa0p8`、`vddrfa1p2`、`vddrfa1p8`、`vddrfacmn`、`vddwlcx`、`vddwlmx`）。因此设备树沿用的是较早的 WCN6x5x 命名，并非严格对应 WCN7850 绑定。
 
-公开佐证（来自搜索结果，未打开原文）：上游 Linux `ath12k` 驱动支持 WCN7850 的 hw2.0 固件，公开固件树中的 WLAN 构建字符串形如 `WLAN.HMT.1.1.c5-00284-QCAHMTSWPL_V1.0_V2.0_SILICONZ-3`。设备自身的标签为 `WLAN.HMT.1.1.c4-00443-…`，是同一家族字符串的较早构建。公开树中的板级数据文件为 `ath12k/WCN7850/hw2.0/board-2.bin`。设备附带的是 `bdwlan.elf`，而非 `board-2.bin`，因此设备的 WLAN 数据打包方式与上游布局不同。根据字符串推断，未对固件本身核对。
+公开佐证（来自搜索结果，未打开原文）：上游 Linux `ath12k` 驱动支持 WCN7850 的 hw2.0 固件，公开固件树中的 WLAN 构建字符串形如 `WLAN.HMT.1.1.c5-00284-QCAHMTSWPL_V1.0_V2.0_SILICONZ-3`。设备自身的标签为 `WLAN.HMT.1.1.c4-00443-…`，是同一家族字符串的较早构建。公开树中的板级数据文件为 `ath12k/WCN7850/hw2.0/board-2.bin`，与 `amss.bin`、`m3.bin` 一同出现在首次加入 WCN7850 的 linux-firmware 合并请求中，搜索结果将其定在 2023 年 12 月。引用的合并请求为 [ath10k/ath11k/ath12k 固件 2023-12-21](https://lists.infradead.org/pipermail/ath11k/2023-December/005186.html)，该页面未打开，因此此合并请求中的 WCN7850 内容未经核对。搜索结果中的 WHENCE 未列出 `hmtbtfw20.tlv`，因此蓝牙补丁文件名无法由该来源确认。设备附带的是 `bdwlan.elf`，而非 `board-2.bin`，因此设备的 WLAN 数据打包方式与上游布局不同。根据字符串推断，未对固件本身核对。
 
 WLAN 一侧使用同一家族名称：调制解调器目录为 `kiwi`，Wi-Fi 配置目录为 `kiwi_v2`（第 07、16 节）。推断：`kiwi` 是该无线芯片家族的内部平台名，设备树即为其编写。
 
