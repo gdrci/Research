@@ -1,0 +1,9 @@
+# Ghidra reference query on the OEM key block in tz.img (vaddr 0x1C13A200-0x1C13A800), tz4 project, analysed
+
+Result: 65 references. All are CONDITIONAL_JUMP or UNCONDITIONAL_JUMP instructions whose source is inside the block itself, plus one UNCONDITIONAL_CALL from 0x1C04F9AC to 0x1C13A388.
+
+Reading: the key block is string data in .rodata. Ghidra disassembled part of it as code, so these references are artefacts of misdisassembly, not references from the lookup code. The single call (0x1C04F9AC to 0x1C13A388) lands on data that was decoded as a function entry; it is not a meaningful call.
+
+What this rules out: the lookup does not refer to the block by a code or data address that Ghidra resolves.
+
+Consequence: the reader is most likely a loop over the block that selects an entry by index. A literal index would be stored in the caller as a constant, and that caller would have to be found by data-flow analysis of the configuration parser. This query does not find it. Observed.
