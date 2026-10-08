@@ -100,7 +100,7 @@ Inferred: the two local displays are the two lenses of the glasses, and the forc
 
 ### LCoS and backlight HALs
 
-The SELinux policy has domains and interfaces for `hal_oculus_lcos` (`vendor.oculus.hardware.lcos::ILcos`), `hal_oculus_backlight` (`vendor.oculus.hardware.backlight::IBacklight`) and `hal_oculus_display` (`vendor.oculus.hardware.display::IDisplayRefresh` and the `vendor.oculus.hardware.graphics.composer::IComposer`) (section 11). The LCoS and backlight HAL binaries are not in the `vendor/bin/hw` or `odm/bin/hw` directories of the OTA. Not found. The `lcos` kernel driver (`meta,lcos-i2c` compatible string) is in section 04.
+The SELinux policy has domains and interfaces for `hal_oculus_lcos` (`vendor.oculus.hardware.lcos::ILcos`), `hal_oculus_backlight` (`vendor.oculus.hardware.backlight::IBacklight`) and `hal_oculus_display` (`vendor.oculus.hardware.display::IDisplayRefresh` and the `vendor.oculus.hardware.graphics.composer::IComposer`) (section 11). The LCoS control itself runs in the MCU firmware. The console commands drive the display engine, the LED drivers and the calibration, and they are described in section 14. No Android-side LCoS control binary was found in the `vendor`, `odm`, `system_ext` or `product` partitions. The backlight HAL binary is not found. The `lcos` kernel driver (`meta,lcos-i2c` compatible string) is in section 04.
 
 ## Relation to other sections
 
@@ -111,7 +111,8 @@ The SELinux policy has domains and interfaces for `hal_oculus_lcos` (`vendor.ocu
 
 ## What is not found
 
-- The LCoS HAL binary and the backlight HAL binary. Not in the OTA's `vendor` or `odm` binaries.
+- The Android-side LCoS control binary: the control is in the MCU firmware (section 14). Closed as an open item for the LCoS control path.
+- The backlight HAL binary. Not in the OTA's `vendor` or `odm` binaries.
 - The camera sensor drivers' names beyond the device-tree nodes. The sensor module names are not in the files examined.
 - The panel selection logic for this device. Not in the OTA.
 - The image pipeline configuration (`camera` XML for the Android camera provider). Not present in the files examined.

@@ -1,22 +1,27 @@
-# 14 - Evidence index
+# 17 - Evidence index
 
-[中文](14-evidence-index.zh-CN.md)
+[中文](17-evidence-index.zh-CN.md)
 
-This index lists every file under `data/` in the repository, the sections that cite it, and the first line of the file so a reader can tell what it holds. A file is cited **by name** when a section names it. A file is cited **by directory** when a section describes its directory, but the file itself is not named. Every file in `data/` is covered by one of the two.
+This index lists every file under `data/` in the repository, the sections that cite it, and the first line of the file so a reader can tell what it holds. A file is cited **by name** when a section names it. A file is cited **by directory** when a section describes its directory, but the file itself is not named. A file marked **none** is not cited anywhere yet.
 
-Counts are from the repository at the time of writing: 127 files, 2,281,573 bytes.
+Counts are from the repository at the time of writing: 143 files, 2,856,284 bytes.
 
 ## By directory
 
 | Directory | Files | Bytes |
 |---|---:|---:|
 | `data/analysis/` | 4 | 3,241 |
-| `data/android/` | 30 | 897,364 |
+| `data/android/` | 40 | 913,457 |
 | `data/avb/` | 3 | 6,405 |
+| `data/dsp/` | 3 | 535,090 |
 | `data/ghidra/` | 18 | 151,030 |
-| `data/./` | 4 | 41,965 |
-| `data/remote/` | 8 | 12,031 |
-| `data/secure/` | 25 | 45,058 |
+| `data/inventory.json/` | 1 | 33,943 |
+| `data/mcu/` | 1 | 12,733 |
+| `data/partition_table.md/` | 1 | 3,504 |
+| `data/partition_table.zh-CN.md/` | 1 | 3,679 |
+| `data/qfprom_literal_candidates.json/` | 1 | 839 |
+| `data/remote/` | 9 | 21,350 |
+| `data/secure/` | 26 | 46,534 |
 | `data/strings/` | 20 | 1,097,518 |
 | `data/userspace/` | 9 | 23,781 |
 | `data/xbl/` | 6 | 3,180 |
@@ -29,7 +34,7 @@ Counts are from the repository at the time of writing: 127 files, 2,281,573 byte
 | `data/analysis/isa_tests.txt` | 1,083 | 02 | file name | NOTE: the Hexagon control adsp.b02 is 62% zero words (data, not code). Its Hexagon rows... |
 | `data/analysis/qupfw_decode.txt` | 874 | 02 | directory | NOTE: superseded. High decode rates here come from zero-filled and repetitive data, not... |
 | `data/analysis/thumb_arm_tests.txt` | 1,168 | 02 | directory | Function-boundary statistics (per 1000 items). Random baseline: Thumb halfword bx lr 0x... |
-| `data/android/audio/audio_config_summary.txt` | 4,842 | 12 | file name | Vendor audio configuration summary (fs/vendor/etc of greatwhite.zip). Counts from XML p... |
+| `data/android/audio/audio_config_summary.txt` | 4,842 | 12, 15 | file name | Vendor audio configuration summary (fs/vendor/etc of greatwhite.zip). Counts from XML p... |
 | `data/android/audio/audio_effects.xml` | 10,931 | 12 | file name | <?xml version="1.0" encoding="UTF-8"?> |
 | `data/android/audio/backend_conf.xml` | 8,209 | 12 | file name | <?xml version="1.0" encoding="ISO-8859-1"?> |
 | `data/android/audio/card-defs.xml` | 13,799 | 12 | file name | <!--  Copyright (c) 2019,2021 The Linux Foundation. All rights reserved.      --> |
@@ -40,6 +45,16 @@ Counts are from the repository at the time of writing: 127 files, 2,281,573 byte
 | `data/android/audio/microphone_characteristics.xml` | 671 | 12 | file name | <?xml version="1.0" encoding="ISO-8859-1"?> |
 | `data/android/boot_ramdisk/adb_debug.prop` | 373 | 04 | file name | # Note: This file will be loaded with highest priority to override |
 | `data/android/boot_ramdisk/build.prop` | 931 | 01, 04 | file name | #################################### |
+| `data/android/camera_display/cameraserver.greatwhite.rc` | 528 | 08, 13 | file name | # Override of default frameworks/av/camera/cameraserver/cameraserver.rc behavior. |
+| `data/android/camera_display/continuousaicamera_nova.rc` | 527 | 13 | file name | service continuousaicamera /system_ext/bin/continuousaicamera_nova |
+| `data/android/camera_display/display_settings.xml` | 419 | 13 | file name | <?xml version='1.0' encoding='utf-8' standalone='yes' ?> |
+| `data/android/camera_display/fix-gw-display-pmic.rc` | 176 | 13 | file name | # When /vendor/hw/bin/ is available, fix-up the display power setting  ASAP: |
+| `data/android/camera_display/init.hw.camera.rc` | 922 | 08, 13 | file name | on init |
+| `data/android/camera_display/init.qti.display_boot.sh` | 11,773 | 13 | file name | #!/vendor/bin/sh |
+| `data/android/camera_display/procamera.rc` | 405 | 13 | file name | service procamera /system_ext/bin/procamera |
+| `data/android/camera_display/stubcameraservice.rc` | 214 | 13 | file name | on property:persist.vendor.media.enableStubCamera=1 |
+| `data/android/camera_display/summary.txt` | 760 | 03, 11, 12, 13, 15 | file name | Camera and display userspace summary (fs/system_ext, fs/vendor, fs/odm of greatwhite.zi... |
+| `data/android/camera_display/vendor.qti.hardware.display.composer-service.rc` | 369 | 13 | file name | service vendor.qti.hardware.display.composer /vendor/bin/hw/vendor.qti.hardware.display... |
 | `data/android/dtbo/board_component_matrix.tsv` | 7,832 | 04 | file name | component	0:Greatwhite Config Dev0	1:Greatwhite EVT1 Camera DOE	2:Greatwhite Dev0 2023	... |
 | `data/android/dtbo/board_ids.tsv` | 1,826 | 04 | file name | index	model	compatible	qcom,msm-id	qcom,board-id	nodes	dtbo_bytes |
 | `data/android/dtbo/overlay_components.tsv` | 2,814 | 04 | file name | node	compatible	overlays_present (of 18) |
@@ -55,13 +70,16 @@ Counts are from the repository at the time of writing: 127 files, 2,281,573 byte
 | `data/android/selinux/vndservice_contexts` | 196 | 11 | file name | manager                 u:object_r:service_manager_vndservice:s0 |
 | `data/android/vendor_boot/bootconfig.txt` | 175 | 04 | file name | androidboot.hardware=greatwhite |
 | `data/android/vendor_ramdisk/fstab.greatwhite` | 4,894 | 04 | file name | # Copyright (c) 2019-2020 The Linux Foundation. All rights reserved. |
-| `data/android/vendor_ramdisk/kernel_modules.txt` | 3,386 | 04, 07, 12, 13 | directory | adsp_loader_dlkm.ko |
+| `data/android/vendor_ramdisk/kernel_modules.txt` | 3,386 | 04, 07, 12, 13, 14 | directory | adsp_loader_dlkm.ko |
 | `data/android/vendor_ramdisk/modules_modinfo.tsv` | 14,566 | 04, 07 | file name | module	license	description	author	depends |
-| `data/android/vendor_ramdisk/vendor_dtb_dump.txt` | 562,388 | 04, 07, 12, 13 | file name | / |
+| `data/android/vendor_ramdisk/vendor_dtb_dump.txt` | 562,388 | 04, 07, 12, 13, 14 | file name | / |
 | `data/android/vendor_ramdisk/wpss_dt_nodes.txt` | 720 | 07 | file name | Device-tree nodes naming WPSS (data/android/vendor_ramdisk/vendor_dtb_dump.txt, binary-... |
 | `data/avb/hashtree_rebuild.txt` | 2,271 | 03 | file name | dm-verity tree rebuild, from vbmeta*.img descriptors and the partition images |
 | `data/avb/vbmeta_summary.txt` | 2,976 | 03 | file name | == vbmeta.img |
 | `data/avb/verify_results.txt` | 1,158 | 03 | file name | == vbmeta.img |
+| `data/dsp/dsp_symbol_table.txt` | 533,006 | 15 | file name | DSP app symbol table (symbol_table.elf inside dsp.default.rt700.tub, EM_XTENSA). Column... |
+| `data/dsp/dsp_tub_manifest.json` | 1,589 | 15 | file name | { |
+| `data/dsp/dsp_tub_subimages.txt` | 495 | 15 | file name | dsp.default.rt700.tub: 4429312 bytes, sha256 da8ae200fbab870b166d97e778da88b9d2925dfe94... |
 | `data/ghidra/aop_entry_thumb2_disasm.txt` | 389 | 05 | file name | # program aop.img lang ARM:LE:32:v8T |
 | `data/ghidra/import_map.json` | 20,955 | 01 | file name | [ |
 | `data/ghidra/sbl1_appsbl_record.txt` | 656 | 02 | file name | SBL1 image-descriptor records (sbl1.elf, data at 0x148B6A40..0x148B6CE0). |
@@ -81,17 +99,19 @@ Counts are from the repository at the time of writing: 127 files, 2,281,573 byte
 | `data/ghidra/uefi_verifiedboot_decompiled.txt` | 17,430 | 03 | file name | VerifiedBootDxe (uefi.img DXE volume, PE image at decompressed offset 0x74804, 61,504 b... |
 | `data/ghidra/xbl_primary_stub_thumb2_disasm.txt` | 1,751 | 02 | file name | # program stub.bin lang ARM:LE:32:v8T |
 | `data/inventory.json` | 33,943 | 01 | file name | [ |
+| `data/mcu/mcu_console_strings.txt` | 12,733 | 14 | file name | MCU firmware console strings (mcu.default.rt700.tub, file offsets). Extracted by printa... |
 | `data/partition_table.md` | 3,504 | 01 | file name | # Partition table |
-| `data/partition_table.zh-CN.md` | 3,679 | 00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 11, 12, 13 | directory | # 分区表 |
+| `data/partition_table.zh-CN.md` | 3,679 | 01, 02, 03, 04, 05, 06, 07, 08, 09, 11, 12, 13, 14, 15, 16 | directory | # 分区表 |
 | `data/qfprom_literal_candidates.json` | 839 | 06 | file name | { |
 | `data/remote/bluetooth_listing.txt` | 1,827 | 05, 07 | file name | type=FAT16/12 dirs=1 files=51 total_bytes=780143 |
 | `data/remote/bluetooth_version_files.txt` | 700 | 07 | file name | bluetooth.img (FAT16, extracted with a local FAT16 helper; 8.3 names shown as stored) |
-| `data/remote/dsp_adsp_files.txt` | 809 | 05, 07, 08 | directory | AudioSphereModule.so.1 |
-| `data/remote/dsp_cdsp_files.txt` | 381 | 05, 07, 08 | directory | fastrpc_shell_3 |
-| `data/remote/dsp_map_adsp.txt` | 492 | 05, 07, 08 | directory | ../../build/ms/dynamic_modules/aurora.adsp_la.prod/libsysmon_skel.so |
-| `data/remote/dsp_map_cdsp.txt` | 1,159 | 05, 07, 08 | directory | ../../build/ms/dynamic_modules/aurora.cdsp.prod/libevadsp_3_0.so |
-| `data/remote/modem_listing.txt` | 5,832 | 05, 07 | file name | type=FAT16/12 dirs=3 files=165 total_bytes=36487937 |
-| `data/remote/modem_verinfo.txt` | 831 | 07, 08 | file name | { |
+| `data/remote/dsp_adsp_files.txt` | 809 | 05, 07, 08, 16 | directory | AudioSphereModule.so.1 |
+| `data/remote/dsp_cdsp_files.txt` | 381 | 05, 07, 08, 16 | directory | fastrpc_shell_3 |
+| `data/remote/dsp_map_adsp.txt` | 492 | 05, 07, 08, 16 | directory | ../../build/ms/dynamic_modules/aurora.adsp_la.prod/libsysmon_skel.so |
+| `data/remote/dsp_map_cdsp.txt` | 1,159 | 05, 07, 08, 16 | directory | ../../build/ms/dynamic_modules/aurora.cdsp.prod/libevadsp_3_0.so |
+| `data/remote/modem_firmware_signatures.txt` | 9,319 | 16 | file name | Modem-partition firmware sets: split images (.mdt + .bNN), ELF headers, signature-segme... |
+| `data/remote/modem_listing.txt` | 5,832 | 05, 07, 16 | file name | type=FAT16/12 dirs=3 files=165 total_bytes=36487937 |
+| `data/remote/modem_verinfo.txt` | 831 | 07, 08, 16 | file name | { |
 | `data/secure/featenabler_display_swfuse_decompiled.txt` | 5,618 | 06 | file name | featenabler.img (AArch64 TA), Ghidra analysis (program featenabler.img). Decompiled rou... |
 | `data/secure/featenabler_summary.txt` | 1,606 | 02, 03, 06 | directory | featenabler.img (ELF64 AArch64, TA). Evidence from the image; disassembly by capstone. |
 | `data/secure/hyp_mmio_map.tsv` | 1,579 | 02, 06 | file name | va	pa	attr	perm	size |
@@ -109,6 +129,7 @@ Counts are from the repository at the time of writing: 127 files, 2,281,573 byte
 | `data/secure/tz_mmio_table.tsv` | 243 | 02, 03, 06 | directory | TrustZone table at tz.img vaddr 0x1c141c40 (16-byte entries: base, count) |
 | `data/secure/tz_mmio_table_users.txt` | 1,849 | 02, 06 | file name | TrustZone MMIO table at 0x1C141C40 (tz.img), 5 entries of (base u32, count u32): |
 | `data/secure/tz_object_0x91_and_oem_key_search.txt` | 929 | 06 | file name | TrustZone object 0x91 and OEM key reader searches (tz.img, devcfg.img) |
+| `data/secure/tz_object_0x91_requests.txt` | 1,476 | 06 | file name | tz.img: every code site that loads the value 0x91 (MOVZ w/x, imm16 = 0x91), with a disa... |
 | `data/secure/tz_object_invoke_chain.txt` | 2,221 | 06 | file name | TrustZone object-invoke chain (tz.img, Ghidra analysis project tzana and capstone disas... |
 | `data/secure/tz_pkhash_path.txt` | 3,449 | 06 | file name | TrustZone (tz.img) PK-hash ("PKHashExt") path, root-of-trust key. Observed by AArch64 d... |
 | `data/secure/tz_sw_fuse_check_area.txt` | 4,027 | 06 | file name | TrustZone SW-fuse check area (tz.img), disassembly by capstone (verified by reading the... |
@@ -137,8 +158,8 @@ Counts are from the repository at the time of writing: 127 files, 2,281,573 byte
 | `data/strings/xbl.txt` | 36,536 | 03, 07 | directory | CHIP_PROD_PROV_K_LBL |
 | `data/strings/xbl_config.txt` | 27,668 | 07 | file name | /A006_7_0100_0_dcb.bin |
 | `data/strings/xbl_ramdump.txt` | 45,553 | 03, 07 | directory | T)hj8	h*8 |
-| `data/userspace/init_rc_files.txt` | 6,949 | 08, 09, 12, 13 | file name | odm/etc/init/android.hardware.thermal-service.pixel.rc |
-| `data/userspace/meta_hal_names.txt` | 2,840 | 07, 08, 09, 12, 13 | directory | vendor.meta.airship.enable_multi_scope |
+| `data/userspace/init_rc_files.txt` | 6,949 | 08, 09, 12, 13, 15 | file name | odm/etc/init/android.hardware.thermal-service.pixel.rc |
+| `data/userspace/meta_hal_names.txt` | 2,840 | 07, 08, 09, 12, 13, 15 | directory | vendor.meta.airship.enable_multi_scope |
 | `data/userspace/peripheral_firmware_headers.txt` | 1,875 | 08 | file name | Peripheral firmware headers (fs/vendor/firmware of greatwhite.zip). ELF fields via pyel... |
 | `data/userspace/smartglass_apps.txt` | 2,099 | 09 | file name | SmartglassAccountsRelease.apk |
 | `data/userspace/tub_contents.txt` | 2,153 | 09 | file name | case.default.cabo.tub (89600 bytes) |
@@ -155,7 +176,7 @@ Counts are from the repository at the time of writing: 127 files, 2,281,573 byte
 
 ## Files not copied
 
-The OTA itself holds the large firmware and configuration files that the sections describe but the repository does not copy. Their hashes are in the evidence files of each section. Examples: `vendor_sepolicy.cil` (section 11, hash in `data/android/selinux/policy_summary.txt`), and the audio policy and calibration files (section 12, hashes in `data/android/audio/audio_config_summary.txt`).
+The OTA itself holds the large firmware and configuration files that the sections describe but the repository does not copy. Their hashes are in the evidence files of each section. Examples: `vendor_sepolicy.cil` (section 11, hash in `data/android/selinux/policy_summary.txt`), the audio policy and calibration files (section 12, hashes in `data/android/audio/audio_config_summary.txt`), the MCU and DSP tubs (sections 14 and 15, hashes in `data/dsp/dsp_tub_subimages.txt`), and the modem firmware images (section 16, hashes in `data/remote/modem_firmware_signatures.txt`).
 
 ## Tools
 

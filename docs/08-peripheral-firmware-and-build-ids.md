@@ -27,7 +27,7 @@ What the manifest tells us:
 
 - The `Aurora` name is the SoC codename used in section 00. The `LA` tag is the Qualcomm Linux Android base line.
 - Several subsystem builds share the `1.149279` tag (`common`, `boot`), so they probably come from one release train. Inferred.
-- The `btfm` entry (`00819`) does not match the Bluetooth image's own version file (`00797`, section 07). This is recorded as observed in section 07 and is not resolved here.
+- The `btfm` entry (`00819`) does not match the Bluetooth image's own version file (`00797`). The patch banner inside the image says `00797`, so the image is that build and `00819` is a different build (section 07).
 - The `apps_vendor` entry is `LA.VENDOR.12.2`, while the vendor partition is Android 12 (section 04). This matches the older Treble base described there.
 
 The manifest is the only build-level record found in the OTA. The other images do not have the same kind of record. Not found.
@@ -48,7 +48,7 @@ Two firmware formats appear:
 - `a650_sqe.fw` (31,988 bytes) and `a740v3_sqe.fw` (76,852 bytes): SQE (command-stream) microcode. Raw, no header.
 - `a621_gmu.bin` (56,056 bytes) and `gmu_gen70200.bin` (67,608 bytes): GMU firmware. Both start with the words `0x0, 0x0, 0x1, 0x1dc, 0x4000`, which looks like a common header. Inferred.
 
-The zap ELF headers say `e_machine = EM_QDSP6` (Hexagon), entry `0x1000`, and one loadable segment at `0x1000` with flags RWX (`0x8000007`). Observed. A Hexagon machine type is not what a GPU-side image would be expected to carry. The header is recorded as read; the reason is not established here.
+The zap ELF headers say `e_machine = EM_QDSP6` (Hexagon), entry `0x1000`, and one loadable segment at `0x1000` with flags RWX (`0x8000007`). Observed. The Adreno driver loads the zap through the kernel's zap-shader path (`adreno_zap_shader_load` and `a6xx_zap_shader_init` in `msm.ko`, `kgsl_zap_shader_load` in `msm_kgsl`). Observed as symbol names. Inferred: the Qualcomm peripheral-authentication path loads these ELF files, and the Hexagon machine type is the value that path expects in the header. The zap then runs on the GPU side.
 
 The `a740v3_zap.mbn` and `a620_zap.mbn` files carry the signing blocks. They include the strings `SECTOOLS SECP384R1 CURVE TEST ROOT01` and `General Use Test Key 0 (for testing only)`. Observed. Test-root strings in a shipped signed image show that the signing structure is present, but the chain to a production root is not checked here.
 
@@ -75,7 +75,7 @@ The `Venus` name is the Qualcomm video codec block. The file name `vpu20_4v` is 
 - Strings include `facedetection`, `prevState_selectedAlignment`, `prevState_ageAlignment` and `prevState_ageSgm`. Observed.
 - The vendor image has `etc/eva/facedetection/model3.dat`. Observed.
 
-The image is a vision co-processor that runs face detection and face-alignment models. The name `EVASS` is not expanded in the files. Inferred from the strings and the model file.
+The image is an `EVA` firmware (the `EVA:` log prefix) built for Xtensa with XOS, and it drives the CVP hardware through `HFI_CMD_SESSION_CVP_*` session commands. Observed from the strings. Its log messages describe a stereo vision and late-stage reprojection pipeline: depth buffers and `EyeBufferReverseFences` for the left and right eyes, `LSR-DISPLAY-Forward` and `LSR-*-EYE-Forward` fences (late-stage reprojection to the display), `GainMap` fences, `SKIPPING SGM` (semi-global matching for depth), `ConcealMB` (macroblock concealment), `Global Align Matrix` and `EVA_FW_ValidateDmmAlignmentControl`. The tracking thresholds `imageConfHighThreshold`, `enablingSgmMinAgeThreshold`, `imageToGyroMinAgeThreshold` and `gyroToImageMinAgeThreshold` show that image tracks are aligned with the gyroscope. The face-detection model in `vendor/etc/eva/facedetection/model3.dat` belongs to the same pipeline. So `EVASS` is best read as the vision-processing firmware for depth, reprojection and tracking, with face detection as one client. Inferred from the strings; the expansion of `EVASS` itself is not in the files.
 
 ## Common format
 
@@ -85,7 +85,7 @@ The ELF images use the same segment layout as the Qualcomm remote processors in 
 
 - The loader for the GPU zap shader and the camera and video firmware in the kernel or the TrustZone image. The loader names are in section 05 and section 04; the link to these files is not confirmed.
 - A build-level manifest for the GPU, camera and vision images. Not found.
-- The expansion of `EVASS`. Not found in the images.
+- The expansion of `EVASS`. Not in the images. The function of the image is identified from the log strings (above), so this is a naming gap, not a functional one.
 
 ## Evidence
 

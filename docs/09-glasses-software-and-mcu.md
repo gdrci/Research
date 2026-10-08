@@ -10,10 +10,10 @@ The glasses have a microcontroller that is separate from the SoC. Several HALs a
 
 - The `lpi_mcu` service (`odm/etc/init/vendor.meta.hardware.lpi_mcu-service.greatwhite.rc`, binary `odm/bin/hw/vendor.meta.hardware.lpi_mcu-service.greatwhite`) registers 20 AIDL interfaces. They are listed below. The count is from the service binary: 20 `vendor.meta.hardware.*` interface descriptors (the earlier draft said 17 and missed three).
 - The `mcu-properties.sh` script in `vendor/bin` reads `/sys/devices/platform/soc/soc:meta,rt600_ctrl/is_rt600`. The kernel driver is named `meta,rt600_ctrl`. Its exact role is inferred from the name and from the trigger the init file writes to it.
-- `vendor/firmware` holds `mcu.default.rt700.tub` and `mcu.core1.default.rt700.tub`. The `.tub` files are most likely the MCU's own firmware. The `rt700` part of the name matches the audio-codec variant that the scripts test for. Both points are inferred.
+- `vendor/firmware` holds `mcu.default.rt700.tub` and `mcu.core1.default.rt700.tub`. The `.tub` files are the MCU's own firmware. The MCU is an NXP RT700 part (Arm Cortex-M33 with FreeRTOS 10.4.6, observed in the console strings; see section 14). The `rt700` in the names is the processor platform, not only the audio codec. This corrects an earlier draft that called it an audio-codec variant.
 - `odm/lib64/libmcu-vendor.so` is the vendor-side MCU library. It is on the ODM partition.
 
-Verified from the files: the names, the paths, and the init and property logic. The MCU's processor type and firmware format are unverified.
+Verified from the files: the names, the paths, the init and property logic, and the MCU processor (Cortex-M33, from the FreeRTOS port path). The `.tub` payloads are plain text and code (section 14).
 
 ### Its AIDL interfaces
 
@@ -58,7 +58,7 @@ The recovery path is worth noting. When `vendor.meta.mcu_hal.stp_need_recovery` 
 - If the value is `0`, the device is the RT700 configuration. It sets `persist.vendor.meta.enable_hyperoff=true` and `persist.vendor.meta.hyperoff.use_stp=true`.
 - Otherwise it is RT600. It sets nothing.
 
-So the glasses come in two audio-codec variants (Realtek RT600 and RT700), and the software selects behaviour at boot. The overlays in `dtbo.img` also differ by component (section 04). The overlay that enables `rt685_detect` and the `rt700` firmware names are consistent with this. Observed; I have not read the codec driver.
+So the glasses come in two variants of the NXP RT600 and RT700 family (the DSP build contains `nxp_rt600` tool paths and `MIMXRT798S`, the RT700 part number; observed), and the software selects behaviour at boot. The overlays in `dtbo.img` also differ by component (section 04). The overlay that enables `rt685_detect` and the `rt700` firmware names are consistent with this. Observed; I have not read the codec driver.
 
 ## EMG input (the wrist band)
 
@@ -120,7 +120,7 @@ What the names suggest (inferred):
 
 - The MCU runs an application (`app.bin`) with a recovery image (`app.recovery.bin`) and a signed image. `spl2` is a second-stage loader that holds its own copies of the core and DSP images.
 - The touch controller uses `.cyacd2`, which is the Cypress (now Infineon) PSoC firmware format.
-- The RT700 audio codec has its own DSP, with separate instruction and data memory (`dsp_itcm.bin` and `dsp_dtcm.bin`). The DSP container is 4.4 MB.
+- The RT700 part has a HiFi4 DSP (the source file `system_MIMXRT798S_hifi4.c` is in the image), with separate instruction and data memory (`dsp_itcm.bin` and `dsp_dtcm.bin`). The DSP container is 4.4 MB. Section 16 describes the DSP firmware.
 - Display calibration data is stored in the MCU container, next to `pmic_reset_info.bin`.
 
 The `.tub` container format itself is not decoded. The names sit at fixed offsets (in the DSP file, for example, at `0x0`, `0x600` and `0x8A00`), but the header layout is not yet known.

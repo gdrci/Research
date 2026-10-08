@@ -1,6 +1,6 @@
 # 15 - MCU 控制台、LCoS 显示控制器与传感器驱动
 
-[English](15-mcu-console-and-lcos.md)
+[English](14-mcu-console-and-lcos.md)
 
 本节记录 `vendor/firmware/mcu.default.rt700.tub` 中 MCU 固件通过命令控制台暴露的功能：LCoS（硅基液晶）显示控制器、为其点亮的 LED 驱动、触控控制器、惯性与环境光传感器、铰链，以及 STP 传输。本节更正第 09 节的两处说法，并关闭第 13 节中"未找到 LCoS HAL 二进制"的未决项。
 
@@ -10,7 +10,7 @@
 
 - MCU 固件针对 NXP RT700 平台构建。其外设驱动位于 `arvr/firmware/lib/uhal/peripherals/rt700/`（`rt700_clock.c`、`rt700_gpio.c`、`rt700_edma.c`、`rt700_spi_peripheral.c`、`rt700_power_domain.c`、`rt700_wdt.c`）。已观察。
 - RTOS 为 FreeRTOS v10.4.6，使用移植层 `GCC/ARM_CM33_NTZ/non_secure/port.c`，因此内核为非安全模式的 Arm Cortex-M33。已观察。
-- 固件源码树名为 `arvr/firmware/projects/smartglasses/platforms/greatwhite/rt700/`。DSP 镜像中也有同样的路径（第 16 节）。因此文件名中的 `rt700` 指的是处理器平台，而不只是音频编解码器。这更正了第 09 节把它称为音频编解码器变体的说法。
+- 固件源码树名为 `arvr/firmware/projects/smartglasses/platforms/greatwhite/rt700/`。DSP 镜像中也有同样的路径（第 15 节）。因此文件名中的 `rt700` 指的是处理器平台，而不只是音频编解码器。这更正了第 09 节把它称为音频编解码器变体的说法。
 - 控制台是一组带帮助文本的命名命令。帮助文本中包含一个外部 wiki 引用：`xra: See https://fburl.com/wiki/xra_mcu_commands`。已观察。该 wiki 不在 OTA 中。
 
 ## LCoS 控制台
@@ -71,7 +71,7 @@ Android 端有 LCoS HAL 的 SELinux 标签（`hal_oculus_lcos` 与 `vendor.oculu
 - `touch self-test`、`touch read-palm-gesture`、`touch update-gesture-config`、`touch raw-data`、`touch get-fw-version`、`touch stats`、`touch touchpad-capacitance [slot]`。
 - 复位：`touch hard-reset`、`soft-reset`、`watchdog-reset`、`hardfault-reset`、`reset-reason`（输出原因、堆栈，以及 CC 与 EC 字）。
 
-已观察。`touch read-palm-gesture` 表明触控面板还会报告手掌手势。手掌手势与第 17 节中掌纹认证 TA 属于同一类输入。推断。
+已观察。`touch read-palm-gesture` 表明触控面板还会报告手掌手势。手掌手势与第 16 节中掌纹认证 TA 属于同一类输入。推断。
 
 ## IMU 与工厂校准
 

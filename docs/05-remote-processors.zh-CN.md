@@ -86,7 +86,7 @@ Hexagon ELF，`e_machine = EM_QDSP6`，`e_flags = 0x3`。它有十一个 `PT_LOA
 目录结构：
 
 - `/image/kiwi/`：主基带集合。`amss.bin`（7.46 MB）和 `amss20.bin`（6.50 MB）是基带固件镜像。`Data.msc` 和 `Data20.msc` 是数据段。`bdwlan.elf` 与 `bdwlan.elf.xz` 是 Wi-Fi 板级数据。`regdb.bin` 是无线监管数据库。`phy_ucode.elf` 与 `phy_ucode20.elf` 是 PHY 微码。`qdss_trace_config_v1.cfg` 与 `v2.cfg` 用于配置跟踪输出。
-- `/image/adsp.b00` 至 `adsp.b27`：分段固件（高通 `.mdt` 拆分成的 `.bNN` 部分；部分编号缺失）。`adsp.b00` 是 Hexagon ELF。这些不是应用 DSP 固件，而是以同样的分段格式存放在这里。
+- `/image/adsp.b00` 至 `adsp.b41`（另有头文件 `adsp.mdt`）：应用 DSP 固件本身，分为 40 个可加载段与一个签名段。已观察为 Hexagon ELF，入口 `0x87600000`。段结构、SHA-384 哈希表、签名链以及同一镜像中的可信应用见第 16 节。早期草稿曾称这些不是应用 DSP 固件，这一说法有误。`cdsp.b00` 至 `cdsp.b12` 为计算 DSP 固件，同样在第 16 节说明。
 
 `amss.bin` 是 32 位 ELF，`e_machine = 0x28`（ARM）。`kiwi` 是构建中此基带配置的目录名，其含义未说明。根据头部已验证，名称含义未解释。
 

@@ -1,6 +1,6 @@
 # 15 - MCU console, LCoS display controller and sensor drivers
 
-[中文](15-mcu-console-and-lcos.zh-CN.md)
+[中文](14-mcu-console-and-lcos.zh-CN.md)
 
 This section documents what the MCU firmware in `vendor/firmware/mcu.default.rt700.tub` exposes through its command console: the LCoS (liquid-crystal-on-silicon) display controller, the LED drivers that light it, the touch controller, the inertial and ambient-light sensors, the hinge, and the STP transport. It corrects two earlier points in section 09 and closes the open item "LCoS HAL binary not found" in section 13.
 
@@ -10,7 +10,7 @@ Status labels: observed means read from the file; inferred means a reasonable re
 
 - The MCU firmware is built for the NXP RT700 platform. Its peripheral drivers are in `arvr/firmware/lib/uhal/peripherals/rt700/` (`rt700_clock.c`, `rt700_gpio.c`, `rt700_edma.c`, `rt700_spi_peripheral.c`, `rt700_power_domain.c`, `rt700_wdt.c`). Observed.
 - The RTOS is FreeRTOS v10.4.6, with the port `GCC/ARM_CM33_NTZ/non_secure/port.c`, so the core is an Arm Cortex-M33 in non-secure mode. Observed.
-- The firmware tree is named `arvr/firmware/projects/smartglasses/platforms/greatwhite/rt700/`. Observed in the DSP image too (section 16). So the `rt700` in the file names is the processor platform, not only an audio codec. This corrects section 09, which called it an audio-codec variant.
+- The firmware tree is named `arvr/firmware/projects/smartglasses/platforms/greatwhite/rt700/`. Observed in the DSP image too (section 15). So the `rt700` in the file names is the processor platform, not only an audio codec. This corrects section 09, which called it an audio-codec variant.
 - The console is a set of named commands with help text. The help text includes an external wiki reference, `xra: See https://fburl.com/wiki/xra_mcu_commands`. Observed. The wiki is not in the OTA.
 
 ## The LCoS console
@@ -71,7 +71,7 @@ The touch controller is a Cypress/Infineon PSoC, as section 09 says, and the MCU
 - `touch self-test`, `touch read-palm-gesture`, `touch update-gesture-config`, `touch raw-data`, `touch get-fw-version`, `touch stats`, `touch touchpad-capacitance [slot]`.
 - Resets: `touch hard-reset`, `soft-reset`, `watchdog-reset`, `hardfault-reset`, `reset-reason` (prints the cause, the stack, and the CC and EC words).
 
-Observed. `touch read-palm-gesture` shows the touch surface also reports a palm gesture. The palm gesture is the same class of input as the palm-authentication TA in section 17. Inferred.
+Observed. `touch read-palm-gesture` shows the touch surface also reports a palm gesture. The palm gesture is the same class of input as the palm-authentication TA in section 16. Inferred.
 
 ## IMU and factory calibration
 

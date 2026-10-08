@@ -11,6 +11,8 @@
 - 内核侧是高通的 CNSS2/ICNSS2 平台驱动，外加 `wlan.ko` 主机驱动。
 - 主机协议栈通过两个 HAL 服务与芯片通信：高通 Wi-Fi HAL 与 Meta（`vendor.oculus`）Wi-Fi HAL。
 
+- 芯片为高通 WCN7850，Wi-Fi 与蓝牙合一。蓝牙补丁的横幅中写有该型号（`PF=WCN7850ROM=`），WLAN 构建标签为 `WLAN.HMT`。已观察。
+
 ## WPSS：Wi-Fi 远程子系统
 
 XBL 配置（`data/strings/xbl_config.txt`）中有两个该子系统的节，`[FULL_WPSS]` 与 `[CORE_WPSS]`。两者都是 `Type = elf_split`、`ImagePath = \image\wpss`、`SubsysID = 6`，并预留内存 `ResvMemoryStart = 0x85600000`。分区标签分别为 `modem_a`（完整版）与 `core_nhlos_a`（核心版）。两者的 `ProxyGuid` 相同，均为 `61513695-E0C6-4F07-BF41-A51A7770640E`。已观察。节内容见 `data/xbl/wpss_config_sections.txt`。
@@ -23,7 +25,7 @@ PIL 代理列表中也有 `PIL_WPSS`。已观察。
 - 其下五个 WLAN 通道：`qcom,smp2p-wlan-1-in`、`-1-out`、`-2-in`、`-2-out` 与 `-3-out`。已观察。
 - `/soc/wpss_etm` 的 coresight 路径，包含 funnel 与 TPDM 节点（`funnel_wpss`、`tpdm_wpss`、`tpdm_wpss1`）。已观察。跟踪路径未作进一步分析。
 
-WPSS 固件本身（`wpss.mdt` 或 `wpss.b*`）不在 OTA 的镜像中。未找到。XBL 条目说明它从 `modem_a` 分区加载，因此它很可能位于 modem 分区内容中，但 modem FAT 镜像里并没有。推断。
+WPSS 固件本身（`wpss.mdt` 或 `wpss.b*`）不在 OTA 中。已检查：对每个已提取镜像搜索 `wpss`，只找到配置与表格，以及 ADSP、CDSP 段（`modem.img`）中的 QDSS 跟踪字符串。modem FAT 镜像中没有 `wpss` 文件，`vendor`、`odm`、`system_ext`、`product` 中也没有。XBL 条目把镜像指定给 `modem_a` 分区，因此该镜像很可能位于 OTA 未包含的分区中。推断。
 
 init 脚本在 Wi-Fi 服务启动之前写入 ICNSS 驱动（见下）。已观察：
 
@@ -99,11 +101,11 @@ WLAN 侧的构建 ID 为 `WLAN.HMT.1.1.c4-00443-QCAHMTSWPL_V1.0_V2.0_SILICONZ-1`
 
 两个 TLV 文件都以字节 `0x01` 开头，即 HCI 命令包指示符。其后是厂商补丁段。具体段格式为推断，未完整解码。原始头部见 `data/remote/bluetooth_version_files.txt`。
 
-`modem.img/verinfo/ver_info.txt` 中的构建清单将 `btfm` 列为 `BTFW.HAMILTON.2.0.0-00819-PATCHZ-1`，而蓝牙镜像自身的版本文件写的是 `00797`。两者不同。已观察。清单是构建级别的记录，`.ver` 文件是镜像实际携带的内容；造成差异的原因尚未确定。
+`modem.img/verinfo/ver_info.txt` 中的构建清单将 `btfm` 列为 `BTFW.HAMILTON.2.0.0-00819-PATCHZ-1`，而蓝牙镜像自身的版本文件写的是 `00797`。两者不同。已观察。清单是构建级别的记录，`.ver` 文件是镜像实际携带的内容；造成差异的原因尚未确定。已部分解决：补丁自身的文本（位于 `hmtbtfw20.tlv` 中）为 `Patch Release PF=WCN7850ROM= 0200 BUILD=BTFW.HAMILTON.2.0.0-00797-PATCHZ-1.105163.2.109423.3`，因此镜像是 00797 版本。清单中的 `00819` 是该镜像不包含的另一个构建。已从 TLV 字符串观察得出。
 
 ## 未找到的内容
 
-- WPSS 固件镜像（`wpss.mdt` 或 `wpss.b*`）。不在 OTA 中。
+- WPSS 固件镜像（`wpss.mdt` 或 `wpss.b*`）。已在所有已提取镜像中搜索，不在 OTA 中。
 - 读取 `/sys/kernel/icnss` 节点的代码，以及 ICNSS 到 WPSS 的启动流程。在所检视的镜像中未找到。
 - `/mnt/vendor/persist` 的内容（`wlan.cfg`、`wlan_mac.bin`）。运行时写入。
 - 蓝牙 TLV 段格式（首字节之后的部分）。

@@ -1,6 +1,6 @@
 # 16 - 音频 DSP 固件（RT700 HiFi4）
 
-[English](16-audio-dsp-firmware.md)
+[English](15-audio-dsp-firmware.md)
 
 本节记录 `vendor/firmware/dsp.default.rt700.tub`，即眼镜 NXP RT700 芯片上音频 DSP 的固件。它是第 12 节从 Android 一侧描述的音频协议栈的处理端。容器内的符号表列出约 4,600 个函数，因此下文大部分内容依据函数名称观察得出。完整符号列表见 `data/dsp/dsp_symbol_table.txt`，清单与子镜像表见 `data/dsp/`。
 
@@ -8,7 +8,7 @@
 
 ## 身份
 
-- 内核与工具链：DSP 为 Cadence Xtensa 内核（符号表 ELF 中为 `EM_XTENSA`）。构建树中写有 `nxp_rt600_RI2021_6_newlib`（Xtensa RI-2021.6 工具链），源文件 `system_MIMXRT798S_hifi4.c` 写明型号为 MIMXRT798S，即 RT700 的 HiFi4 系统。已观察。因此 RT700 芯片在 Cortex-M33 MCU（第 15 节）旁边还有一个 HiFi4 DSP。
+- 内核与工具链：DSP 为 Cadence Xtensa 内核（符号表 ELF 中为 `EM_XTENSA`）。构建树中写有 `nxp_rt600_RI2021_6_newlib`（Xtensa RI-2021.6 工具链），源文件 `system_MIMXRT798S_hifi4.c` 写明型号为 MIMXRT798S，即 RT700 的 HiFi4 系统。已观察。因此 RT700 芯片在 Cortex-M33 MCU（第 14 节）旁边还有一个 HiFi4 DSP。
 - RTOS：XOS（Cadence 为 Xtensa 设计的 RTOS），其中 `xos_*` 函数负责线程、队列、信号量、互斥量与时钟中断。源头文件为 `xos.h`，版本 `2.0.9`。已观察。
 - 平台路径：`arvr/firmware/projects/smartglasses/platforms/greatwhite/rt700/dsp/`，与 MCU 为同一平台树。已观察。
 - 应用：`arvr/firmware/projects/smartglasses/apps/dsp/app.c`。已观察。
@@ -31,7 +31,7 @@
 
 清单为每个代码与数据资源给出 64 字节签名，以 128 个十六进制字符表示。`offset` 值是闪存布局中的位置，而非文件偏移，与第 09 节相同。三个存储器镜像相隔 64 KB（`140378112`、`140443648`、`140509184`）。已观察。这些偏移所基于的闪存基址未确定。
 
-子镜像名称与符号表在文件中都是明文。DSP 固件未加密，与 MCU tub 相同（第 15 节）。
+子镜像名称与符号表在文件中都是明文。DSP 固件未加密，与 MCU tub 相同（第 14 节）。
 
 ## 依据函数名称得出的音频功能
 
@@ -95,7 +95,7 @@
 
 ### 发往应用处理器的消息
 
-`Xr2Messager` 暴露了 DSP 发往 Android 一侧的消息：`sendWakewordEnabled`、`sendSpatialImuEnabled`、`sendAvcGainAdjEnabled`、`getAvcMinGain`、`getHearingVolume`。已观察。`AVC` 即自动音量控制，根据名称推断。`SpatialIMU` 表明 DSP 使用 IMU 做空间音频（第 15 节记录了 IMU）。根据名称推断。
+`Xr2Messager` 暴露了 DSP 发往 Android 一侧的消息：`sendWakewordEnabled`、`sendSpatialImuEnabled`、`sendAvcGainAdjEnabled`、`getAvcMinGain`、`getHearingVolume`。已观察。`AVC` 即自动音量控制，根据名称推断。`SpatialIMU` 表明 DSP 使用 IMU 做空间音频（第 14 节记录了 IMU）。根据名称推断。
 
 DSP 还会把遥测转发给 MCU：`_relay_telemetry_to_mcu`。已观察。因此 DSP、MCU 与手机各自保存自己的遥测。
 
@@ -108,8 +108,8 @@ DSP 运行一个名为 `tesser` 的模块框架（约 125 个函数）：`tesser
 ## 与其他章节的关系
 
 - 第 12 节描述 Android 一侧：后端、混音器路径、扬声器与麦克风配置。DSP 固件实现了这些路由背后的处理。
-- 第 15 节描述 MCU，它与 DSP 共享 RT700 平台树，并转发 DSP 遥测。
-- 第 17 节描述调制解调器分区中的 ADSP 与 CDSP，它们是另外的处理器（Hexagon）。此处的 DSP 是 RT700 上的 HiFi4。
+- 第 14 节描述 MCU，它与 DSP 共享 RT700 平台树，并转发 DSP 遥测。
+- 第 16 节描述调制解调器分区中的 ADSP 与 CDSP，它们是另外的处理器（Hexagon）。此处的 DSP 是 RT700 上的 HiFi4。
 
 ## 未找到的内容
 

@@ -66,4 +66,7 @@ SBL1 中有一处直接引用该地址，位于构建启动内存映射的代码
 | [11](11-selinux-and-vendor-policy.zh-CN.md) | 厂商 SELinux 策略、上下文、seapp 与签名者 |
 | [12](12-audio.zh-CN.md) | 音频协议栈、LPASS、后端、混音器路径、策略、音效、ACDB |
 | [13](13-camera-and-display.zh-CN.md) | 摄像头与显示的服务、库、调校、面板 |
-| [14](14-evidence-index.zh-CN.md) | 每个证据文件及引用它的章节 |
+| [14](14-mcu-console-and-lcos.zh-CN.md) | MCU 控制台、LCoS 控制器、触控、IMU、ALS 与子镜像布局 |
+| [15](15-audio-dsp-firmware.zh-CN.md) | RT700 HiFi4 DSP：唤醒词、听力、扬声器模型、麦克风 |
+| [16](16-modem-partition-firmware.zh-CN.md) | ADSP、CDSP、可信应用及其签名链 |
+| [17](17-evidence-index.zh-CN.md) | 每个证据文件及引用它的章节 |

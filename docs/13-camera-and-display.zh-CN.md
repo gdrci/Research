@@ -98,7 +98,7 @@
 
 ### LCoS 与背光 HAL
 
-SELinux 策略中有 `hal_oculus_lcos`（`vendor.oculus.hardware.lcos::ILcos`）、`hal_oculus_backlight`（`vendor.oculus.hardware.backlight::IBacklight`）以及 `hal_oculus_display`（`vendor.oculus.hardware.display::IDisplayRefresh` 与 `vendor.oculus.hardware.graphics.composer::IComposer`）的域与接口（第 11 节）。LCoS 与背光 HAL 的二进制文件不在 OTA 的 `vendor/bin/hw` 或 `odm/bin/hw` 目录中。未找到。`lcos` 内核驱动（兼容字符串 `meta,lcos-i2c`）在第 04 节。
+SELinux 策略中有 `hal_oculus_lcos`（`vendor.oculus.hardware.lcos::ILcos`）、`hal_oculus_backlight`（`vendor.oculus.hardware.backlight::IBacklight`）以及 `hal_oculus_display`（`vendor.oculus.hardware.display::IDisplayRefresh` 与 `vendor.oculus.hardware.graphics.composer::IComposer`）的域与接口（第 11 节）。LCoS 的控制本身运行在 MCU 固件中。控制台命令驱动显示引擎、LED 驱动与校准，见第 14 节。在已检视的 `vendor`、`odm`、`system_ext` 与 `product` 分区中，未找到 Android 端的 LCoS 控制二进制。背光 HAL 二进制未找到。`lcos` 内核驱动（兼容字符串 `meta,lcos-i2c`）在第 04 节。
 
 ## 与其他章节的关系
 
@@ -109,7 +109,8 @@ SELinux 策略中有 `hal_oculus_lcos`（`vendor.oculus.hardware.lcos::ILcos`）
 
 ## 未找到的内容
 
-- LCoS HAL 二进制与背光 HAL 二进制。不在 OTA 的 `vendor` 或 `odm` 二进制中。
+- Android 端的 LCoS 控制二进制：控制在 MCU 固件中（第 14 节）。LCoS 控制路径的未决项已关闭。
+- 背光 HAL 二进制。不在 OTA 的 `vendor` 或 `odm` 二进制中。
 - 设备树节点之外的摄像头传感器驱动名称。所检视的文件中没有传感器模块名。
 - 本设备的面板选择逻辑。不在 OTA 中。
 - Android 摄像头提供者的图像管线配置（摄像头 XML）。所检视的文件中不存在。

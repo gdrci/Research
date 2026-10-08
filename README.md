@@ -4,7 +4,7 @@ Documentation of the Ray-Ban Display firmware: how the system is built, how it b
 
 Chinese version: [README.zh-CN.md](README.zh-CN.md)
 
-Discord: [discord.gg/oculus](https://discord.gg/oculus) · @gdrci (Discord)
+Discord: [discord.gg/oculus](https://discord.gg/oculus) · gdrci (Discord)
 
 ## Scope
 
@@ -40,7 +40,10 @@ This repository describes how the system is built and how it starts. It is not v
 | SELinux and vendor policy | [11](docs/11-selinux-and-vendor-policy.md) | [11](docs/11-selinux-and-vendor-policy.zh-CN.md) |
 | Audio | [12](docs/12-audio.md) | [12](docs/12-audio.zh-CN.md) |
 | Camera and display userspace | [13](docs/13-camera-and-display.md) | [13](docs/13-camera-and-display.zh-CN.md) |
-| Evidence index | [14](docs/14-evidence-index.md) | [14](docs/14-evidence-index.zh-CN.md) |
+| MCU console, LCoS and touch | [14](docs/14-mcu-console-and-lcos.md) | [14](docs/14-mcu-console-and-lcos.zh-CN.md) |
+| Audio DSP firmware (RT700 HiFi4) | [15](docs/15-audio-dsp-firmware.md) | [15](docs/15-audio-dsp-firmware.zh-CN.md) |
+| Modem partition: ADSP, CDSP and trusted applications | [16](docs/16-modem-partition-firmware.md) | [16](docs/16-modem-partition-firmware.zh-CN.md) |
+| Evidence index | [17](docs/17-evidence-index.md) | [17](docs/17-evidence-index.zh-CN.md) |
 
 
 ## Evidence labels

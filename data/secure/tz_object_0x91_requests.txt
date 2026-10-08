@@ -1,0 +1,21 @@
+tz.img: every code site that loads the value 0x91 (MOVZ w/x, imm16 = 0x91), with a disassembly check.
+Sites: 0x1C0999C4, 0x1C0B534C, 0x1C0F2F94, 0x1C324440, 0x1C3251E0, 0x1C325960, 0x1C3B288C, 0x1C3EC184.
+Of these, two are object requests:
+  0x1C3251E0: mov w0,#0x91 ; bl 0x1C32E024 ; cbz x0 -> (object lookup for ID 0x91)
+  0x1C325960: mov w0,#0x91 ; bl 0x1C32E024 ; cbz x0 -> (object lookup for ID 0x91)
+The other six load 0x91 as a line number for a log call (w2 or w3 argument of 0x1C3B0028, 0x1C391020, etc.).
+
+FUN_1C32E024(id) (object lookup):
+  x22 = tpidrro_el0 + 0x28            (per-thread object cache)
+  bl 0x1C303D04(cache, id)            -> cached (object, handle) pair or none
+  on miss: bl 0x1C32DFB0(id, &pair)   -> FUN_1C32DFB0 below
+           bl 0x1C303D68(cache, id, pair)   (insert into cache)
+  return pair (x0, x1), or 0 when not found
+
+FUN_1C32DFB0(id, out):
+  x8 = tpidrro_el0
+  (x9, x8) = [x8 + 0x18], [x8 + 0x20]  // invoke function pointer and handle of the thread context
+  bl 0x1C302990 with op 0x1001, args: (&id, 4 bytes), out pair
+  writes out = result pair; returns status (0 = ok)
+
+So object 0x91 is not stored in a table in tz.img. It is requested from the root object of the current thread context: the invoke function pointer and handle at tpidrro_el0 + 0x18 and + 0x20. The provider of ID 0x91 is therefore the function that the context creator installed at +0x18. The creator is not found (see data/secure/tz_thread_block_setter.txt).

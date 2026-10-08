@@ -1,6 +1,6 @@
 # 16 - Audio DSP firmware (RT700 HiFi4)
 
-[中文](16-audio-dsp-firmware.zh-CN.md)
+[中文](15-audio-dsp-firmware.zh-CN.md)
 
 This section covers `vendor/firmware/dsp.default.rt700.tub`, the firmware for the audio DSP on the glasses' NXP RT700 part. It is the processing side of the audio stack that section 12 describes from the Android side. The symbol table inside the container names about 4,600 functions, so most of the content below is observed from names. The full symbol list is in `data/dsp/dsp_symbol_table.txt`, and the manifest and sub-image table are in `data/dsp/`.
 
@@ -8,7 +8,7 @@ Status labels: observed means read from the file; inferred means a reasonable re
 
 ## Identity
 
-- Core and toolchain: the DSP is a Cadence Xtensa core (`EM_XTENSA` in the symbol-table ELF). The build tree names `nxp_rt600_RI2021_6_newlib` (an Xtensa RI-2021.6 toolchain), and the source `system_MIMXRT798S_hifi4.c` names the MIMXRT798S part, which is the RT700 HiFi4 system. Observed. The RT700 part therefore has a HiFi4 DSP next to its Cortex-M33 MCU (section 15).
+- Core and toolchain: the DSP is a Cadence Xtensa core (`EM_XTENSA` in the symbol-table ELF). The build tree names `nxp_rt600_RI2021_6_newlib` (an Xtensa RI-2021.6 toolchain), and the source `system_MIMXRT798S_hifi4.c` names the MIMXRT798S part, which is the RT700 HiFi4 system. Observed. The RT700 part therefore has a HiFi4 DSP next to its Cortex-M33 MCU (section 14).
 - RTOS: XOS (Cadence's RTOS for Xtensa), with `xos_*` functions for threads, queues, semaphores, mutexes and the tick handler. The source header is `xos.h` with version `2.0.9`. Observed.
 - Platform path: `arvr/firmware/projects/smartglasses/platforms/greatwhite/rt700/dsp/`, the same platform tree as the MCU. Observed.
 - Application: `arvr/firmware/projects/smartglasses/apps/dsp/app.c`. Observed.
@@ -31,7 +31,7 @@ The container is 4,429,312 bytes. Its sub-images (`data/dsp/dsp_tub_subimages.tx
 
 The manifest gives each code and data asset a 64-byte signature, written as 128 hex characters. The `offset` values are positions in a flash layout, not file offsets, as in section 09. The three memory images are placed 64 KB apart (`140378112`, `140443648`, `140509184`). Observed. The flash base for those offsets is not established.
 
-The sub-image names and the symbol table are plain text in the file. The DSP firmware is not encrypted, the same as the MCU tub (section 15).
+The sub-image names and the symbol table are plain text in the file. The DSP firmware is not encrypted, the same as the MCU tub (section 14).
 
 ## Audio features, from the function names
 
@@ -96,7 +96,7 @@ Observed as symbol names. Their algorithms are not in the file as text.
 
 ### Messages to the application processor
 
-`Xr2Messager` exposes the messages the DSP sends to the Android side: `sendWakewordEnabled`, `sendSpatialImuEnabled`, `sendAvcGainAdjEnabled`, `getAvcMinGain`, `getHearingVolume`. Observed. `AVC` is automatic volume control, inferred from the name. `SpatialIMU` shows that the DSP uses the IMU for spatial audio (section 15 names the IMU). Inferred from the name.
+`Xr2Messager` exposes the messages the DSP sends to the Android side: `sendWakewordEnabled`, `sendSpatialImuEnabled`, `sendAvcGainAdjEnabled`, `getAvcMinGain`, `getHearingVolume`. Observed. `AVC` is automatic volume control, inferred from the name. `SpatialIMU` shows that the DSP uses the IMU for spatial audio (section 14 names the IMU). Inferred from the name.
 
 The DSP also relays telemetry to the MCU: `_relay_telemetry_to_mcu`. Observed. So the DSP, the MCU and the phone each keep their own telemetry.
 

@@ -66,4 +66,7 @@ Several parts of the system run outside the application processor. A microcontro
 | [11](11-selinux-and-vendor-policy.md) | Vendor SELinux policy, contexts, seapp and signer |
 | [12](12-audio.md) | Audio stack, LPASS, backends, mixer paths, policy, effects, ACDB |
 | [13](13-camera-and-display.md) | Camera and display services, libraries, tuning, panels |
-| [14](14-evidence-index.md) | Every evidence file and the section that cites it |
+| [14](14-mcu-console-and-lcos.md) | MCU console, LCoS controller, touch, IMU, ALS and sub-image layout |
+| [15](15-audio-dsp-firmware.md) | RT700 HiFi4 DSP: wake word, hearing, speaker model, microphones |
+| [16](16-modem-partition-firmware.md) | ADSP, CDSP, trusted applications and their signing chains |
+| [17](17-evidence-index.md) | Every evidence file and the section that cites it |

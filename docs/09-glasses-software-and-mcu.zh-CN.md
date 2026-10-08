@@ -10,10 +10,10 @@
 
 - `lpi_mcu` 服务（`odm/etc/init/vendor.meta.hardware.lpi_mcu-service.greatwhite.rc`，可执行文件 `odm/bin/hw/vendor.meta.hardware.lpi_mcu-service.greatwhite`）注册了 20 个 AIDL 接口，列于下文。数量来自服务二进制：20 个 `vendor.meta.hardware.*` 接口描述符（早期草稿写的是 17，漏掉了三个）。
 - `vendor/bin` 中的 `mcu-properties.sh` 读取 `/sys/devices/platform/soc/soc:meta,rt600_ctrl/is_rt600`。内核驱动名为 `meta,rt600_ctrl`。它的确切作用是根据名称以及 init 文件写入它的触发器推断的。
-- `vendor/firmware` 中有 `mcu.default.rt700.tub` 和 `mcu.core1.default.rt700.tub`。`.tub` 文件很可能是 MCU 自己的固件。文件名中的 `rt700` 与脚本检测的音频编解码器变体相符。这两点都是推断。
+- `vendor/firmware` 中有 `mcu.default.rt700.tub` 和 `mcu.core1.default.rt700.tub`。`.tub` 文件是 MCU 自己的固件。MCU 为 NXP RT700 芯片（Arm Cortex-M33，FreeRTOS 10.4.6，由控制台字符串观察得出；见第 14 节）。文件名中的 `rt700` 指处理器平台，而不只是音频编解码器。这更正了早期草稿中把它称为音频编解码器变体的说法。原句变体相符。这两点都是推断。
 - `odm/lib64/libmcu-vendor.so` 是厂商侧的 MCU 库，位于 ODM 分区中。
 
-已从文件中验证的内容：名称、路径，以及 init 与属性的逻辑。MCU 的处理器类型和固件格式未验证。
+已从文件中验证的内容：名称、路径、init 与属性的逻辑，以及 MCU 处理器（Cortex-M33，依据 FreeRTOS 移植路径）。`.tub` 载荷是明文文本与代码（第 14 节）。
 
 ### 它的 AIDL 接口
 
@@ -58,7 +58,7 @@
 - 值为 `0` 时，设备为 RT700 配置，设置 `persist.vendor.meta.enable_hyperoff=true` 与 `persist.vendor.meta.hyperoff.use_stp=true`。
 - 否则为 RT600 配置，不设置任何属性。
 
-因此眼镜有两种音频编解码器（Realtek RT600 与 RT700），软件在启动时选择对应的行为。`dtbo.img` 中的覆盖层也按组件有所不同（第 04 节）。启用 `rt685_detect` 的覆盖层与 `rt700` 固件的名称与此相符。已观察；我尚未阅读编解码器驱动。
+因此眼镜有两种 NXP RT600 与 RT700 系列的变体（DSP 构建中包含 `nxp_rt600` 工具路径与 `MIMXRT798S`，即 RT700 型号；已观察），软件在启动时选择对应的行为。`dtbo.img` 中的覆盖层也按组件有所不同（第 04 节）。启用 `rt685_detect` 的覆盖层与 `rt700` 固件的名称与此相符。已观察；我尚未阅读编解码器驱动。
 
 ## EMG 输入（腕带）
 
@@ -121,7 +121,7 @@ EMG 服务路径（在提取的文件树中观察到）：
 
 - MCU 运行一个应用（`app.bin`），并带有恢复镜像（`app.recovery.bin`）和已签名镜像。`spl2` 是二级加载程序，内含它自己的核心与 DSP 镜像副本。
 - 触摸控制器使用 `.cyacd2`，这是 Cypress（现为 Infineon）PSoC 的固件格式。
-- RT700 音频编解码器有自己的 DSP，指令存储与数据存储分开（`dsp_itcm.bin` 与 `dsp_dtcm.bin`）。该 DSP 容器为 4.4 MB。
+- RT700 芯片有一个 HiFi4 DSP（镜像中有源文件 `system_MIMXRT798S_hifi4.c`），指令存储与数据存储分开（`dsp_itcm.bin` 与 `dsp_dtcm.bin`）。该 DSP 容器为 4.4 MB。第 15 节描述该 DSP 固件。
 - 显示校准数据存放在 MCU 容器中，与 `pmic_reset_info.bin` 相邻。
 
 `.tub` 容器格式本身尚未解码。这些名称位于固定偏移处（例如在 DSP 文件中位于 `0x0`、`0x600` 和 `0x8A00`），但头部结构尚不清楚。

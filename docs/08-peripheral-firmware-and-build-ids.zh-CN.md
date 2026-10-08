@@ -27,7 +27,7 @@
 
 - `Aurora` 是第 00 节中使用的 SoC 代号。`LA` 标记是高通 Linux Android 基线。
 - 多个子系统构建共享标签 `1.149279`（`common`、`boot`），因此它们可能来自同一发布线。推断。
-- `btfm` 条目（`00819`）与蓝牙镜像自身的版本文件（`00797`，第 07 节）不一致。第 07 节已如实记录，此处不作解决。
+- `btfm` 条目（`00819`）与蓝牙镜像自身的版本文件（`00797`）不一致。镜像内的补丁横幅写的是 `00797`，因此镜像就是该构建，`00819` 是另一个构建（第 07 节）。
 - `apps_vendor` 条目为 `LA.VENDOR.12.2`，而 vendor 分区为 Android 12（第 04 节）。这与该节所述的较旧 Treble 基线一致。
 
 该清单是 OTA 中找到的唯一构建级别记录。其他镜像没有同类记录。未找到。
@@ -48,7 +48,7 @@
 - `a650_sqe.fw`（31,988 字节）与 `a740v3_sqe.fw`（76,852 字节）：SQE（命令流）微码。原始格式，无头部。
 - `a621_gmu.bin`（56,056 字节）与 `gmu_gen70200.bin`（67,608 字节）：GMU 固件。两者都以字 `0x0, 0x0, 0x1, 0x1dc, 0x4000` 开头，看起来像一个通用头部。推断。
 
-zap 的 ELF 头写明 `e_machine = EM_QDSP6`（Hexagon），入口 `0x1000`，并有一个位于 `0x1000` 的可加载段，标志为 RWX（`0x8000007`）。已观察。GPU 侧的镜像不一定携带 Hexagon 机器类型，此点出乎意料；本文只记录读取到的内容，原因尚未确定。
+zap 的 ELF 头写明 `e_machine = EM_QDSP6`（Hexagon），入口 `0x1000`，并有一个位于 `0x1000` 的可加载段，标志为 RWX（`0x8000007`）。已观察。Adreno 驱动通过内核的 zap 着色器路径加载它（`msm.ko` 中的 `adreno_zap_shader_load` 与 `a6xx_zap_shader_init`，`msm_kgsl` 中的 `kgsl_zap_shader_load`）。按符号名观察。推断：高通的外设认证路径加载这些 ELF 文件，Hexagon 机器类型是该路径在头部中期望的值；zap 随后在 GPU 一侧运行。
 
 `a740v3_zap.mbn` 与 `a620_zap.mbn` 含有签名块，其中包括字符串 `SECTOOLS SECP384R1 CURVE TEST ROOT01` 与 `General Use Test Key 0 (for testing only)`。已观察。出货的签名镜像中出现测试根字符串，说明签名结构存在，但这里未检查其到生产根的信任链。
 
@@ -75,7 +75,7 @@ GPU 驱动 `msm_kgsl.ko` 读取速度分级熔丝单元（第 06 节）。推断
 - 字符串包括 `facedetection`、`prevState_selectedAlignment`、`prevState_ageAlignment` 与 `prevState_ageSgm`。已观察。
 - vendor 镜像中有 `etc/eva/facedetection/model3.dat`。已观察。
 
-该镜像是运行人脸检测与人脸对齐模型的视觉协处理器。文件中没有展开 `EVASS` 这一名称。根据字符串与模型文件推断。
+该镜像是为 Xtensa 与 XOS 构建的 `EVA` 固件（日志前缀 `EVA:`），通过 `HFI_CMD_SESSION_CVP_*` 会话命令驱动 CVP 硬件。已从字符串观察。其日志描述的是立体视觉与延迟重投影管线：左右眼的深度缓冲与 `EyeBufferReverseFences`，面向显示的 `LSR-DISPLAY-Forward` 与 `LSR-*-EYE-Forward` 栅栏（延迟重投影），`GainMap` 栅栏，`SKIPPING SGM`（用于深度的半全局匹配），`ConcealMB`（宏块隐藏），`Global Align Matrix` 与 `EVA_FW_ValidateDmmAlignmentControl`。跟踪阈值 `imageConfHighThreshold`、`enablingSgmMinAgeThreshold`、`imageToGyroMinAgeThreshold` 与 `gyroToImageMinAgeThreshold` 表明图像轨迹与陀螺仪对齐。`vendor/etc/eva/facedetection/model3.dat` 中的人脸检测模型属于同一管线。因此 `EVASS` 最好理解为用于深度、重投影与跟踪的视觉处理固件，人脸检测是其中一个客户端。根据字符串推断；`EVASS` 这一缩写本身不在文件中。
 
 ## 通用格式
 
@@ -85,7 +85,7 @@ ELF 镜像与第 05 节中高通远程处理器使用相同的段布局：一个
 
 - GPU zap 着色器、摄像头与视频固件在内核或 TrustZone 镜像中的加载器。加载器名称见第 05 节与第 04 节，与这些文件的关联未确认。
 - GPU、摄像头与视觉镜像的构建级别清单。未找到。
-- `EVASS` 的展开含义。镜像中未找到。
+- `EVASS` 的展开含义。镜像中没有。镜像的功能已由日志字符串确定（见上），因此这是命名上的空缺，而非功能上的。
 
 ## 证据
 

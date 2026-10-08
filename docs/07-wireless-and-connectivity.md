@@ -11,6 +11,8 @@ This section covers the Wi-Fi and Bluetooth stack as it is laid out in the OTA: 
 - The kernel side is the Qualcomm CNSS2/ICNSS2 platform driver plus the `wlan.ko` host driver.
 - The host stack talks to the chip through two HAL services: the Qualcomm Wi-Fi HAL and a Meta (`vendor.oculus`) Wi-Fi HAL.
 
+- The chip is the Qualcomm WCN7850, a combined Wi-Fi and Bluetooth part. The Bluetooth patch banner names it (`PF=WCN7850ROM=`), and the WLAN build tag is `WLAN.HMT`. Observed.
+
 ## WPSS, the Wi-Fi remote subsystem
 
 The XBL configuration (`data/strings/xbl_config.txt`) has two sections for the subsystem, `[FULL_WPSS]` and `[CORE_WPSS]`. Both are `Type = elf_split` with `ImagePath = \image\wpss` and `SubsysID = 6`. They reserve memory at `ResvMemoryStart = 0x85600000`. The partition labels are `modem_a` (full) and `core_nhlos_a` (core). Both carry the same `ProxyGuid`, `61513695-E0C6-4F07-BF41-A51A7770640E`. Observed. The sections are in `data/xbl/wpss_config_sections.txt`.
@@ -23,7 +25,7 @@ The device tree (`data/android/vendor_ramdisk/vendor_dtb_dump.txt`) defines the 
 - Five WLAN channels under it: `qcom,smp2p-wlan-1-in`, `-1-out`, `-2-in`, `-2-out` and `-3-out`. Observed.
 - A coresight path `/soc/wpss_etm` with a funnel and TPDM nodes (`funnel_wpss`, `tpdm_wpss`, `tpdm_wpss1`). Observed. The trace path is not analysed further.
 
-The WPSS firmware file itself (`wpss.mdt` or `wpss.b*`) is not among the images in the OTA. Not found. The XBL entry says it is loaded from the `modem_a` partition, so it is probably inside the modem partition content, but the modem FAT image does not contain it. Inferred.
+The WPSS firmware file itself (`wpss.mdt` or `wpss.b*`) is not in the OTA. Checked: a search of every extracted image for `wpss` found only configuration and tables, and QDSS trace strings inside the ADSP and CDSP segments (`modem.img`). The modem FAT image has no `wpss` file, and `vendor`, `odm`, `system_ext` and `product` have none. The XBL entry names `modem_a` as the partition for the image, so the image is most likely in a partition that the OTA does not include. Inferred.
 
 The init script writes to the ICNSS driver before the Wi-Fi service starts (below). Observed:
 
@@ -99,11 +101,11 @@ The build ID for the WLAN side is `WLAN.HMT.1.1.c4-00443-QCAHMTSWPL_V1.0_V2.0_SI
 
 Both TLV files start with the byte `0x01`, which is the HCI command packet indicator. The following bytes are a vendor patch segment. The exact segment layout is inferred and not decoded. The raw headers are in `data/remote/bluetooth_version_files.txt`.
 
-The build manifest in `modem.img/verinfo/ver_info.txt` lists `btfm` as `BTFW.HAMILTON.2.0.0-00819-PATCHZ-1`. The Bluetooth image's own version file says `00797`. The two differ. Observed. The manifest is a build-level record and the `.ver` file is what the image carries. The reason for the difference is not established.
+The build manifest in `modem.img/verinfo/ver_info.txt` lists `btfm` as `BTFW.HAMILTON.2.0.0-00819-PATCHZ-1`. The Bluetooth image's own version file says `00797`. The two differ. Resolved in part: the patch's own text, inside `hmtbtfw20.tlv`, reads `Patch Release PF=WCN7850ROM= 0200 BUILD=BTFW.HAMILTON.2.0.0-00797-PATCHZ-1.105163.2.109423.3`, so the image is build 00797. The `00819` entry is a different build that this image does not carry. Observed from the TLV strings. The manifest is a build-level record and the `.ver` file is what the image carries. The reason for the difference is not established.
 
 ## What is not found
 
-- The WPSS firmware image (`wpss.mdt` or `wpss.b*`). Not in the OTA.
+- The WPSS firmware image (`wpss.mdt` or `wpss.b*`). Searched in every extracted image; not in the OTA.
 - The code that reads the `/sys/kernel/icnss` nodes, and the ICNSS-to-WPSS boot sequence. Not in the images examined.
 - The `/mnt/vendor/persist` contents (`wlan.cfg`, `wlan_mac.bin`). Written at run time.
 - The Bluetooth TLV segment format, beyond the first bytes.

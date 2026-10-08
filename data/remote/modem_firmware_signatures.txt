@@ -1,0 +1,101 @@
+Modem-partition firmware sets: split images (.mdt + .bNN), ELF headers, signature-segment hash coverage, and signing chains.
+Method: .mdt ELF headers parsed; each non-empty program segment file bNN was hashed with SHA-384 and searched inside the signature segment (the segment with flags 0x2000000). Certificates were located by DER scan of the signature segment and read with openssl.
+
+adsp: ELF32, machine 0xa4, entry 0x87600000, program headers 42, PT_LOAD 40, paddr 0x87600000-0x89300000
+  signature segment adsp.b41; SHA-384 matched segments 39 (indices [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39]); unmatched non-empty []
+  certificates in signature segment:
+    CN = Greatwhite_FW_Signing_3, O = "Meta Platforms Technologies, LLC", L = Menlo Park, ST = CA, C = US
+    CN = Greatwhite_FW_Root_0, O = "Meta Platforms Technologies, LLC", L = Menlo Park, ST = CA, C = US
+    CN = Greatwhite_FW_Root_1, O = "Meta Platforms Technologies, LLC", L = Menlo Park, ST = CA, C = US
+    CN = Greatwhite_FW_Root_2, O = "Meta Platforms Technologies, LLC", L = Menlo Park, ST = CA, C = US
+    CN = Greatwhite_FW_Root_3, O = "Meta Platforms Technologies, LLC", L = Menlo Park, ST = CA, C = US
+
+cdsp: ELF32, machine 0xa4, entry 0x89400000, program headers 13, PT_LOAD 11, paddr 0x89400000-0x89e00000
+  signature segment cdsp.b12; SHA-384 matched segments 11 (indices [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]); unmatched non-empty []
+  certificates in signature segment:
+    CN = Greatwhite_FW_Signing_3, O = "Meta Platforms Technologies, LLC", L = Menlo Park, ST = CA, C = US
+    CN = Greatwhite_FW_Root_0, O = "Meta Platforms Technologies, LLC", L = Menlo Park, ST = CA, C = US
+    CN = Greatwhite_FW_Root_1, O = "Meta Platforms Technologies, LLC", L = Menlo Park, ST = CA, C = US
+    CN = Greatwhite_FW_Root_2, O = "Meta Platforms Technologies, LLC", L = Menlo Park, ST = CA, C = US
+    CN = Greatwhite_FW_Root_3, O = "Meta Platforms Technologies, LLC", L = Menlo Park, ST = CA, C = US
+
+featenabler: ELF64, machine 0xb7, entry 0x0, program headers 9, PT_LOAD 5, paddr 0x0-0x112e0
+  signature segment featenabler.b08; SHA-384 matched segments 8 (indices [0, 1, 2, 3, 4, 5, 6, 7]); unmatched non-empty []
+  certificates in signature segment:
+    C = US, ST = CA, L = San Diego, O = QUALCOMM, CN = CASS - SBL4
+    O = "Qualcomm Technologies, Inc.", OU = Qualcomm Cryptographic Operations, CN = SRoT MBNv7 Image Signing Root CA 6 SubCA 1
+    O = "Qualcomm Technologies, Inc.", OU = Qualcomm Cryptographic Operations, CN = SRoT MBNv7 Image Signing Root CA 6
+    CN = Greatwhite_FW_Signing_3, O = "Meta Platforms Technologies, LLC", L = Menlo Park, ST = CA, C = US
+    CN = Greatwhite_FW_Root_0, O = "Meta Platforms Technologies, LLC", L = Menlo Park, ST = CA, C = US
+    CN = Greatwhite_FW_Root_1, O = "Meta Platforms Technologies, LLC", L = Menlo Park, ST = CA, C = US
+    CN = Greatwhite_FW_Root_2, O = "Meta Platforms Technologies, LLC", L = Menlo Park, ST = CA, C = US
+    CN = Greatwhite_FW_Root_3, O = "Meta Platforms Technologies, LLC", L = Menlo Park, ST = CA, C = US
+
+hdcp1: ELF64, machine 0xb7, entry 0x0, program headers 9, PT_LOAD 5, paddr 0x0-0xdbb8
+  signature segment hdcp1.b08; SHA-384 matched segments 8 (indices [0, 1, 2, 3, 4, 5, 6, 7]); unmatched non-empty []
+  certificates in signature segment:
+    C = US, ST = California, CN = SecTools Test User, O = SecTools, L = San Diego
+    C = US, CN = SECTOOLS SECP384R1 CURVE TEST ROOT0, L = San Diego, O = QUALCOMM, OU = CDMA Technologies, OU = General Use Test Key 0 (for testing only)
+    C = US, CN = SECTOOLS SECP384R1 CURVE TEST ROOT, L = San Diego, O = QUALCOMM, OU = CDMA Technologies, OU = General Use Test Key (for testing only)
+
+hdcp2p2: ELF64, machine 0xb7, entry 0x0, program headers 9, PT_LOAD 5, paddr 0x0-0x26855
+  signature segment hdcp2p2.b08; SHA-384 matched segments 8 (indices [0, 1, 2, 3, 4, 5, 6, 7]); unmatched non-empty []
+  certificates in signature segment:
+    C = US, ST = California, CN = SecTools Test User, O = SecTools, L = San Diego
+    C = US, CN = SECTOOLS SECP384R1 CURVE TEST ROOT0, L = San Diego, O = QUALCOMM, OU = CDMA Technologies, OU = General Use Test Key 0 (for testing only)
+    C = US, CN = SECTOOLS SECP384R1 CURVE TEST ROOT, L = San Diego, O = QUALCOMM, OU = CDMA Technologies, OU = General Use Test Key (for testing only)
+
+hdcpsrm: ELF64, machine 0xb7, entry 0x0, program headers 9, PT_LOAD 5, paddr 0x0-0xa42c
+  signature segment hdcpsrm.b08; SHA-384 matched segments 8 (indices [0, 1, 2, 3, 4, 5, 6, 7]); unmatched non-empty []
+  certificates in signature segment:
+    C = US, ST = California, CN = SecTools Test User, O = SecTools, L = San Diego
+    C = US, CN = SECTOOLS SECP384R1 CURVE TEST ROOT0, L = San Diego, O = QUALCOMM, OU = CDMA Technologies, OU = General Use Test Key 0 (for testing only)
+    C = US, CN = SECTOOLS SECP384R1 CURVE TEST ROOT, L = San Diego, O = QUALCOMM, OU = CDMA Technologies, OU = General Use Test Key (for testing only)
+
+loadalgota64: ELF64, machine 0xb7, entry 0x0, program headers 9, PT_LOAD 5, paddr 0x0-0x14158
+  signature segment loadalgota64.b08; SHA-384 matched segments 8 (indices [0, 1, 2, 3, 4, 5, 6, 7]); unmatched non-empty []
+  certificates in signature segment:
+    C = US, ST = California, CN = SecTools Test User, O = SecTools, L = San Diego
+    C = US, CN = SECTOOLS SECP384R1 CURVE TEST ROOT0, L = San Diego, O = QUALCOMM, OU = CDMA Technologies, OU = General Use Test Key 0 (for testing only)
+    C = US, CN = SECTOOLS SECP384R1 CURVE TEST ROOT, L = San Diego, O = QUALCOMM, OU = CDMA Technologies, OU = General Use Test Key (for testing only)
+
+mldapta: ELF64, machine 0xb7, entry 0x0, program headers 9, PT_LOAD 5, paddr 0x0-0x1998f
+  signature segment mldapta.b08; SHA-384 matched segments 8 (indices [0, 1, 2, 3, 4, 5, 6, 7]); unmatched non-empty []
+  certificates in signature segment:
+    C = US, ST = California, CN = SecTools Test User, O = SecTools, L = San Diego
+    C = US, CN = SECTOOLS SECP384R1 CURVE TEST ROOT0, L = San Diego, O = QUALCOMM, OU = CDMA Technologies, OU = General Use Test Key 0 (for testing only)
+    C = US, CN = SECTOOLS SECP384R1 CURVE TEST ROOT, L = San Diego, O = QUALCOMM, OU = CDMA Technologies, OU = General Use Test Key (for testing only)
+
+ovrtz64: ELF64, machine 0xb7, entry 0x0, program headers 9, PT_LOAD 5, paddr 0x0-0x1f56f
+  signature segment ovrtz64.b08; SHA-384 matched segments 8 (indices [0, 1, 2, 3, 4, 5, 6, 7]); unmatched non-empty []
+  certificates in signature segment:
+    C = US, ST = California, CN = SecTools Test User, O = SecTools, L = San Diego
+    C = US, CN = SECTOOLS SECP384R1 CURVE TEST ROOT0, L = San Diego, O = QUALCOMM, OU = CDMA Technologies, OU = General Use Test Key 0 (for testing only)
+    C = US, CN = SECTOOLS SECP384R1 CURVE TEST ROOT, L = San Diego, O = QUALCOMM, OU = CDMA Technologies, OU = General Use Test Key (for testing only)
+
+palmprintengine64: ELF64, machine 0xb7, entry 0x0, program headers 9, PT_LOAD 5, paddr 0x0-0x112bd
+  signature segment palmprintengine64.b08; SHA-384 matched segments 8 (indices [0, 1, 2, 3, 4, 5, 6, 7]); unmatched non-empty []
+  certificates in signature segment:
+    C = US, ST = California, CN = SecTools Test User, O = SecTools, L = San Diego
+    C = US, CN = SECTOOLS SECP384R1 CURVE TEST ROOT0, L = San Diego, O = QUALCOMM, OU = CDMA Technologies, OU = General Use Test Key 0 (for testing only)
+    C = US, CN = SECTOOLS SECP384R1 CURVE TEST ROOT, L = San Diego, O = QUALCOMM, OU = CDMA Technologies, OU = General Use Test Key (for testing only)
+
+soter64: ELF64, machine 0xb7, entry 0x0, program headers 9, PT_LOAD 5, paddr 0x0-0x12bf7
+  signature segment soter64.b08; SHA-384 matched segments 8 (indices [0, 1, 2, 3, 4, 5, 6, 7]); unmatched non-empty []
+  certificates in signature segment:
+    C = US, ST = California, CN = SecTools Test User, O = SecTools, L = San Diego
+    C = US, CN = SECTOOLS SECP384R1 CURVE TEST ROOT0, L = San Diego, O = QUALCOMM, OU = CDMA Technologies, OU = General Use Test Key 0 (for testing only)
+    C = US, CN = SECTOOLS SECP384R1 CURVE TEST ROOT, L = San Diego, O = QUALCOMM, OU = CDMA Technologies, OU = General Use Test Key (for testing only)
+
+
+Single-file (.mbn) trusted applications in modem.img /image (certificates by DER scan):
+  ovrtz64.mbn (141,592 bytes, ELF64 AArch64): Greatwhite_FW_Signing_3 chain (Meta)
+  palmprintengine64.mbn (84,248 bytes, ELF64 AArch64): Greatwhite_FW_Signing_3 chain (Meta)
+  sp_license.mbn (36,952 bytes, ELF64 AArch64): SECTOOLS SECP384R1 CURVE TEST ROOT chain ("SecTools Test User")
+  widevine.mbn (245,848 bytes, ELF64 AArch64): SECTOOLS test root chain
+  smplap64.mbn (1,962,072 bytes, ELF64 AArch64): SECTOOLS test root chain
+
+Summary of signing chains in modem.img:
+  Meta Greatwhite_FW chain (Signing_3 under Root_0..3): adsp (.mdt), cdsp (.mdt), ovrtz64 (.mbn), palmprintengine64 (.mbn), featenabler (.mdt, with the Qualcomm SRoT MBNv7 and CASS-SBL4 certificates above it)
+  SECTOOLS SECP384R1 test root ("SecTools Test User"): hdcp1, hdcp2p2, hdcpsrm, loadalgota64, mldapta, soter64 (.mdt); sp_license, widevine, smplap64 (.mbn)
+  The same TA appears in both forms for ovrtz64 and palmprintengine64: the .mdt split image uses the test root, the .mbn uses the Meta chain.

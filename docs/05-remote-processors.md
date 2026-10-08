@@ -86,7 +86,7 @@ A FAT16 image of 36.5 MB in 165 files. Listing: `data/remote/modem_listing.txt`.
 Layout:
 
 - `/image/kiwi/`: the main modem set. `amss.bin` (7.46 MB) and `amss20.bin` (6.50 MB) are the modem firmware images. `Data.msc` and `Data20.msc` are data sections. `bdwlan.elf` and `bdwlan.elf.xz` are Wi-Fi board data. `regdb.bin` is the wireless regulatory database. `phy_ucode.elf` and `phy_ucode20.elf` are PHY microcode. `qdss_trace_config_v1.cfg` and `v2.cfg` configure trace output.
-- `/image/adsp.b00` to `adsp.b27`: segmented firmware (a Qualcomm `.mdt` split into `.bNN` parts). `adsp.b00` is a Hexagon ELF. These are not the application DSP firmware; they are the same segmented format, stored here.
+- `/image/adsp.b00` to `adsp.b41` (with the header file `adsp.mdt`): the application DSP firmware itself, split into 40 loadable segments and a signature segment. Observed as a Hexagon ELF with entry `0x87600000`. The segment structure, the SHA-384 hash table, the signing chain and the trusted applications in the same image are in section 16. An earlier draft of this section said these were not the application DSP firmware; that was wrong. `cdsp.b00` to `cdsp.b12` is the compute DSP firmware, and it is described there too.
 
 `amss.bin` is a 32-bit ELF with `e_machine = 0x28` (ARM). `kiwi` is the directory name the build uses for this modem configuration. Verified from headers. The name is not explained.
 
