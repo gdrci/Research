@@ -1,0 +1,12 @@
+# tz.img: how the thread switch-in function FUN_1C108368 is reached
+# Scans over the executable segments of tz.img (ELF load addresses; decoded with capstone, arm64).
+
+Direct branches (b, bl, b.cond, cbz/cbnz, tbz/tbnz) to 0x1C108368: none.
+Direct branches to its setter 0x1C1399F8: one, from inside the switch-in itself (0x1C108384).
+Direct branches to 0x1C108320 (the context wrapper): three, from 0x1C07FA84, 0x1C089F1C, 0x1C0970DC.
+Pointer words (8-byte) equal to 0x1C108368, 0x1C108320 or 0x1C302990 in tz.img: none.
+ADR / ADRP+ADD forming 0x1C108368, 0x1C108320, 0x1C1399F8 or 0x1C302990 in executable code: none.
+
+Ghidra reference manager (tz4 project, analysed): no references to 0x1C108368 (see data/secure/tz_context_creator_decomp.txt for the decompile output).
+
+Reading: the switch-in function has no caller inside tz.img. It is entered from code outside this image. Its argument (the per-thread context object, with the block pointer at +0x48) is supplied by that outside caller. The entry context that TrustZone receives is therefore the open question in section 02; the search for the thread-block writer ends at this boundary. Observed.
