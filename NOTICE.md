@@ -35,7 +35,3 @@ Meta, Ray-Ban, Oculus, Qualcomm, Snapdragon, FastConnect, Android, Linux, NXP, A
 ## Affiliation
 
 This repository is an independent analysis. It is not affiliated with, sponsored by or endorsed by Meta Platforms, Inc., Qualcomm, or any other vendor named in it.
-
-## Author notes
-
-I wrote the analysis, the documentation and the evidence notes in this repository. I saved the Qualcomm application-note pages (as HTML), the OP-TEE page and the datasheets myself, and I cite them as saved.
