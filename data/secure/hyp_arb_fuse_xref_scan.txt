@@ -1,0 +1,19 @@
+# hyp.img: cross-reference scan for the arb-fuse table (AArch64, file offset = vaddr + 0x1000 for code segments at vaddr 0x0, 0x90000, 0xB6000; table segment vaddr 0x200000 at file 0x110000)
+# Method: capstone linear sweep of the three code segments; ADRP page + following ADD/LDR/STR immediate, filtered to the table range 0x2007E8..0x20221C.
+# Table: 19 records x 0x148 bytes at 0x2007E8 (getter 0x260C4 returns it; count is ldrsw from 0x93000+0xAD8 = 19 at getter 0x260D8).
+
+Static code references to the table range (code segments only): 0x26014 (ADRP 0x200000 in consumer 0x26000), 0x26078 (ADRP in consumer 0x26060), 0x260C4 (getter), plus ADRP+ADD hits that resolve to strings rather than the table.
+
+BL call sites:
+  0x26024  -> 0x3E028 (key-match accessor) from consumer 0x26000
+  0x26088  -> 0x3E038 (accessor) from consumer 0x26060
+  0x3EB6C  -> 0x260C4 (table getter) from getArbFuseBank 0x3EB4C
+  0x3EB74  -> 0x260D8 (count getter) from getArbFuseBank 0x3EB4C
+  0x3F640, 0x3F7D8, 0x3F984, 0x3FB34  -> 0x3E028
+  Calls to 0x3EB4C (getArbFuseBank) from any BL: none.
+
+Pointers to the function addresses as 64-bit words in hyp.img: none for 0x3EB4C, 0x26000, 0x260E8.
+
+Stores into the table: no store instruction with a static table address. No store with offset 0xD8 from a 0x148-stride pointer (the only 0xD8 access is the load at 0x3EC20 in getArbFuseBank).
+
+Reading: the bank field (+0xD8) is zero in the file image, no code in hyp.img writes it through a static address, and getArbFuseBank has no direct caller and no pointer to it in the image. It is reached through an indirect dispatch that is not yet identified.

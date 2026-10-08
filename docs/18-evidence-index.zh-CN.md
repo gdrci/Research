@@ -118,6 +118,7 @@
 | `data/secure/hyp_mmio_map.tsv` | 1,579 | 02, 06 | 文件名 | va	pa	attr	perm	size |
 | `data/secure/hyp_pil_arb_fuse_table.txt` | 3,133 | 06 | 文件名 | hyp.img: PILSubsys_getArbFuseBank and its subsystem table. Observed by AArch64 disassem... |
 | `data/secure/hyp_rm_objects_and_arb_fuse.txt` | 1,590 | 06 | 文件名 | hyp.img is the Gunyah/QTEE hypervisor resource manager (AArch64 ELF, entry 0x80000000). |
+| `data/secure/hyp_arb_fuse_xref_scan.txt` | 19 | 06 | 文件名 | hyp.img cross-references to the arb-fuse table; no writer of the bank field found |
 | `data/secure/keymaster_rollback_strings.txt` | 1,061 | 03 | 文件名 | keymaster.img (ELF, 368,640 bytes), strings related to rollback, version, boot state an... |
 | `data/secure/object_0x91_firmware_scan.txt` | 638 | 02, 03, 06 | 目录 | Firmware-wide scan for table rows keyed by object ID 0x91 (low 32 bits 0x91, high 32 bi... |
 | `data/secure/oem_key_pointer_search.txt` | 1,137 | 06 | 文件名 | Search for references to the OEM configuration key names (TrustZone, tz.img; devcfg.img). |
