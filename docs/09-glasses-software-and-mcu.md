@@ -82,7 +82,13 @@ The EMG service path, observed in the extracted tree:
 - `libemginput.so` opens device nodes by a formatted name (`/dev/%s`) and also has `/dev/gpiochip%u` and `/dev/joycon0`. The format name is not resolved.
 - Event names in `emg2`: `emg_raw_gesture_event`, `input_emg_raw_gesture_event`, `wearables_band_tightness_detector_events`.
 
-Not found: the transport between the band and `emg2`. The `dev/Band` string in the MCU firmware is a status-icon path, not a device. Checked and ruled out as the transport: the MCU firmware (its strings cover gesture, IMU and captouch, with no EMG or band-transport names), the DSP firmware (its `band_*` names are audio bands), and the SPL2 firmware (its UART driver has no EMG names). The band link is therefore probably a wireless connection handled by the Bluetooth stack, which is not identified in the extracted strings. The vendor init files have no band or EMG device entry. The link is therefore still open.
+The band is named **Uniband** in the code (`enable_uniband_partial_gestures`, `wearables_uniband_allowlist` in the mobile-config names; `Uniband Enable`, `Uniband Capabilities Query` in `libemginput.so`). The data path from the band to `emg2` is then:
+
+- `system_ext/lib64/libatc_service.so` is a transport controller. Its strings cover BLE links, L2CAP listening and secure PSMs, peer IDs, companion BLE RSSI and transport sessions. The Uniband link is most likely a BLE/L2CAP transport handled here. This is inferred from the naming and the transport strings, not shown in code.
+- `system_ext/lib64/libemginput.so` contains `WirelessInputDevice` and `WirelessInputDeviceControl`. They open a channel to the wireless input service, send capability and device-info requests, configure the connection type (`DIRECT_CONNECTION` or `Companion`), and queue `UnibandEvent` messages (`queueUnibandEvent`). The RPC messages are in the `com.oculus.wearableinputservice` protobuf package.
+- `emg2` and its consumer libraries (`libemg_device_status_consumer.so`, `libemg_gesture_consumer.so`, `libemg_quaternion_consumer.so`) receive the decoded device state, battery, detector and band-tightness events.
+
+Not shown in code: the radio-level transport that carries bytes between the band and `libatc_service`. Observed for the rest of the chain.
 
 `libmarvin-emg.meta.so` and `libemg_marvin-client.meta.so` use the name "Marvin". It is probably an internal codename for the model or the client. Unverified.
 
