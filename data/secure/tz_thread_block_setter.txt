@@ -1,0 +1,31 @@
+tz.img: writers of the per-thread block pointer (tpidrro_el0). Observed by AArch64 disassembly.
+
+msr tpidrro_el0 sites (MSR encoding 0xD51BD060 | Rt, scanned over all PT_LOAD segments):
+  0x1C00EEF4  inside an exception-return path (restores the frame at sp+0x100..., then sets tpidrro_el0 from x0)
+  0x1C00F0E4  (x1)           exception-return path, same family
+  0x1C1399F8  msr tpidrro_el0, x0 ; ret    -> small setter, called only from 0x1C108384
+  0x1468xxxx  a series of msr tpidrro_el0,x0 at 0x80-byte steps (0x14680800 .. 0x14680F80, and 0x14690xxx)
+              in the 0x14680000 entry region (the entry block the context-creation note refers to)
+
+Setter caller 0x1C108368 (function, prologue at 0x1C108370):
+  x19 = x0 (context object)
+  x0  = [x19 + 0x48]        // thread block pointer
+  bl 0x1C1399F8             // tpidrro_el0 = [ctx + 0x48]
+  x0  = [x19 + 8]; if nonzero: w1 = 0x35; bl 0x1C070CA0 ; if w0 == 0 -> return, else tail-call 0x1C139A08
+  otherwise tail-call 0x1C139A20 (path not followed)
+
+Its function-pointer slot was not found (no 8-byte pointer to 0x1C108368 in the file, no bl caller).
+
+Related functions:
+  0x1C108320 (prologue at 0x1C108320): mov x19,x0 ; bl 0x1C111070(ctx+0x90) ; returns ctx+0x90
+     called from 0x1C07FA84, 0x1C089F1C, 0x1C0970DC (object setup/teardown paths)
+  0x1C108310: bl 0x1C0339B4 ; returns [x0+8]
+  0x1C07F848 (function containing 0x1C07FA30): allocates 0x30 bytes via 0x1C067484 and sets fields
+     [x21+0x10] (from 0x1C108310), [x21+0x28] (flag). Candidate creator of a context record. Not confirmed.
+  0x1C096B08 (function containing 0x1C0970A0): sets [x20+0x40]=1, [x20+0xE0] flag, copies 0x20 bytes
+     via the TZ region call 0x1468331C into [x20+0x20], then calls 0x1C108310 and 0x1C108320.
+
+Conclusion:
+  The thread-block pointer is written by 0x1C1399F8, whose only caller is the switch-in function 0x1C108368,
+  which reads it from a context object at +0x48. The code that builds the 0x1C0 context objects and the
+  per-thread block contents (the +0x18 invoke function and +0x20 handle) is not identified.
