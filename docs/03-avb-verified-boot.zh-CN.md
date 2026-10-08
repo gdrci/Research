@@ -49,6 +49,8 @@
 
 防回滚只有在设备同时保存一个由熔丝支撑的计数器副本时才有效。这个副本目前还没有找到，第 06 节说明了应该去哪里找。
 
+回滚比较在哪里执行。启动阶段的镜像中没有回滚比较代码。UEFI DXE 卷（`uefi.img`，位于 `0x49EA8` 的 gzip 成员，已解压并搜索）中没有 `rollback`、`avb` 或 `vbmeta` 字符串。`xbl.img`、`abl.img`、`vbmeta.img`、`hyp.img` 和 `imagefv.img` 中也没有。`system.img` 确实包含 libavb 的回滚检查（`Invalid rollback_index_location`、`ERROR_ROLLBACK_INDEX`），因此 libavb 的比较位于 Android 用户空间。`system.img` 中是哪个二进制文件包含这些字符串，尚未确定。依据字符串观察得出。证据见 `data/secure/avb_rollback_string_search.txt`。
+
 ## 依赖 AVB 的 fstab 条目
 
 第一阶段 fstab（第 04 节）中，`vendor` 和 `odm` 使用 `avb=vbmeta`，`system`、`system_ext` 和 `product` 使用 `avb=vbmeta_system`。这些值就是验证器所遵循的链条。已验证。

@@ -139,6 +139,7 @@
 | `data/secure/uefi_fuse_region_table.txt` | 1,653 | 06 | 文件名 | Region table in the UEFI fuse-controller PE (decompressed DXE volume, PE at 0x168E84). |
 | `data/secure/uefi_fv_header.txt` | 682 | 02, 03, 06 | 目录 | uefi.img firmware volume (verified header fields): |
 | `data/secure/uefi_verified_boot_findings.txt` | 811 | 03 | 文件名 | uefi.img DXE volume (gzip section, uncompressed 3,911,688 bytes). Evidence: data/string... |
+| `data/secure/avb_rollback_string_search.txt` | 31 | 03 | 文件名 | 启动阶段镜像的 AVB 回滚字符串搜索；解压 gzip DXE 卷；system.img 中的 libavb 字符串 |
 | `data/secure/xbl_companion_digest_test.txt` | 534 | 02, 03, 06 | 目录 | XBL companion segment (xbl.img 0x1C074, 0x280 bytes) digest test. |
 | `data/strings/abl.txt` | 1,856 | 03, 07 | 目录 | A7s`smIO |
 | `data/strings/aop.txt` | 4,568 | 03, 07 | 目录 | 0hJF;FAi |

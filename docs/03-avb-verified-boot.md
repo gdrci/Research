@@ -49,6 +49,8 @@ The value 1770249600 is the Unix time of 2026-02-05 00:00 UTC. It equals the pat
 
 Anti-rollback only works if the device also keeps a fuse-backed copy of the counter. The copy is not located yet. Section 06 explains where to look.
 
+Where the comparison runs. The boot-time images carry no rollback comparison. The UEFI DXE volume (`uefi.img`, gzip member at `0x49EA8`, decoded and searched) has no `rollback`, `avb` or `vbmeta` strings. `xbl.img`, `abl.img`, `vbmeta.img`, `hyp.img` and `imagefv.img` have none either. `system.img` does contain libavb's rollback checks (`Invalid rollback_index_location`, `ERROR_ROLLBACK_INDEX`), so the comparison that libavb makes lives in Android userspace. Which binary in `system.img` holds those strings has not been identified. Observed from strings. Evidence: `data/secure/avb_rollback_string_search.txt`.
+
 ## Fstab entries that depend on AVB
 
 The first-stage fstab (section 04) uses `avb=vbmeta` for `vendor` and `odm`, and `avb=vbmeta_system` for `system`, `system_ext` and `product`. Those values are the chain that the verifier follows. Verified.

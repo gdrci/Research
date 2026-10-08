@@ -1,0 +1,31 @@
+# AVB rollback string search across boot-time images (firmware images extracted from the OTA)
+# Command: strings -n 5 <image> | grep -i -E 'rpmb|rollback_index|rollbackindex|avb_|libavb|rollback index'
+== uefi.img: 0 matching lines
+== xbl.img: 0 matching lines
+== abl.img: 0 matching lines
+== vbmeta.img: 0 matching lines
+== tz.img: 107 matching lines
+!ERROR: %s: device is not RPMB provisioned!
+!ERROR: %s: dh_rpmb_open_partition: DH_ERROR_WRONG_ARGUMENT
+!ERROR: %s: failed to create RPMB partition
+!ERROR: %s: failed to open RPMB device
+!ERROR: %s: failed to open RPMB partition
+== hyp.img: 0 matching lines
+== keymaster.img: 11 matching lines
+!!! secboot device && rpmb error, BAILING OUT !!!
+RPMB buffer invalid
+RPMB buffer length less than min. Len: %u
+RPMB is full. Upgraded key will not be rollback protected.
+RPMB not provisioned or enabled
+== uefisecapp.img: 1 matching lines
+gen_key_for_rpmb
+== imagefv.img: 0 matching lines
+
+# Correction pass: uefi.img stores its DXE volume as gzip. Raw strings miss it, so the gzip members were decoded
+# (zlib, gzip wrapper) and searched again.
+== uefi.img gzip member at 0x49EA8, uncompressed 3,911,688 bytes: 'rollback' 0, 'avb' 0, 'vbmeta' 0, 'anti-rollback' 0; 'RPMB' 79 hits (write-counter and RPMB packet code: rpmb_read_counter, CounterPkt)
+== xbl.img, abl.img, vbmeta.img, hyp.img, imagefv.img: no gzip members decoded
+# Android side (raw strings; the files are ext4 images):
+== system.img: 120 matching lines, including 'Chain partition has invalid rollback_index_location field', 'Invalid rollback_index_location', 'AVB_SLOT_VERIFY_FLAGS_NO_VBMETA_PARTITION was passed but the validate_public_key_for_partition() operation isn't implemented', 'ERROR_ROLLBACK_INDEX'
+== system_ext.img, product.img, vendor.img, odm.img, boot.img, vendor_boot.img: 0 matching lines
+# Reading: the libavb rollback check is present in system.img (Android userspace), not in any boot-time image searched here.

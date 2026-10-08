@@ -139,6 +139,7 @@ Counts are from the repository at the time of writing: 145 files, 2,862,270 byte
 | `data/secure/uefi_fuse_region_table.txt` | 1,653 | 06 | file name | Region table in the UEFI fuse-controller PE (decompressed DXE volume, PE at 0x168E84). |
 | `data/secure/uefi_fv_header.txt` | 682 | 02, 03, 06 | directory | uefi.img firmware volume (verified header fields): |
 | `data/secure/uefi_verified_boot_findings.txt` | 811 | 03 | file name | uefi.img DXE volume (gzip section, uncompressed 3,911,688 bytes). Evidence: data/string... |
+| `data/secure/avb_rollback_string_search.txt` | 31 | 03 | file name | AVB rollback string search over boot-time images; gzip DXE volume decoded; system.img libavb strings |
 | `data/secure/xbl_companion_digest_test.txt` | 534 | 02, 03, 06 | directory | XBL companion segment (xbl.img 0x1C074, 0x280 bytes) digest test. |
 | `data/strings/abl.txt` | 1,856 | 03, 07 | directory | A7s`smIO |
 | `data/strings/aop.txt` | 4,568 | 03, 07 | directory | 0hJF;FAi |
