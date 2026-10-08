@@ -1,0 +1,13 @@
+# SBL1 config id 10 object (per-record 0x48-byte object) and its method table (sbl1.elf; Ghidra decompiles)
+
+FUN_14854AD8 (installer, reached through FUN_1482A028 for some image types) writes a 9-qword method table into the 0x48-byte object:
+  [0] 0x14854B48   [1] 0   [2] 0x14854DA8   [3] FUN_14854FBC   [4] 0x14855038   [5] FUN_148552C0   [6] 0   [7] 0   [8] FUN_14855564
+  object+0x30 and object+0x38 are used by FUN_148552C0 (read path): read via method [4] at offset +0x20 of the service at +0x30, with a block size at object+0x20.
+
+FUN_14854FBC (method [3]), source name boot_block_dev.c:
+  checks FUN_14855748 (returns nonzero on a failed precondition), clears the first dword, calls method [2] of the object at +0x18 (+0xC) with the qword at +0x30, logs 'boot_block_dev.c' 0x375 on error, then calls method [3] of the object at +0x38 (+0xE) with the object.
+FUN_148552C0 (method [5]): block read helper. Splits the request by the block size at +0x20 (checked to be 1..0x1000), reads through method [4] of the object at +0x30, and aligns the partial head and tail blocks.
+
+Reading: the id-10 object is a block-device image source. It is not the TrustZone entry call. The final step into TrustZone is a jump to the entry address that the image header provides; the code that reads that header and jumps is not identified here. Observed.
+
+Consequence for the open item: the TrustZone entry call is made after the block-device loader has read the image, and its target comes from the image header, not from a static record. A static search for the entry address 0x14680000 in SBL1 finds only the region registration, as noted in section 02.
