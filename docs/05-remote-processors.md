@@ -95,7 +95,7 @@ Layout:
 A FAT16 image of 0.78 MB in 51 files. Listing: `data/remote/bluetooth_listing.txt`.
 
 - `hmtbtfw10.tlv` and `hmtbtfw20.tlv`: Bluetooth firmware, in the TLV format.
-- `hmtbtfw20.ver`: `BTFW.HAMILTON.2.0.0-00797-PATCHZ-1.105163.2.1094`. The chip name is Hamilton. Verified.
+- `hmtbtfw20.ver`: `BTFW.HAMILTON.2.0.0-00797-PATCHZ-1.105163.2.109423.3`. The chip name is Hamilton. Verified.
 - `hmtnv10.*` and `hmtnv20.*`: non-volatile configuration files, about 30 variants (`.b0202` to `.b32`, `.bin`, `.b0c`). The suffixes look like per-product or per-antenna configuration. Unverified.
 
 The fstab mounts the image read-only at `/vendor/bt_firmware` (section 04).

@@ -60,3 +60,5 @@ SBL1 中有一处直接引用该地址，位于构建启动内存映射的代码
 | [05](05-remote-processors.zh-CN.md) | AOP、CPUCP、SHRM、QUP、DSP、基带、蓝牙 |
 | [06](06-qfprom-and-fuses.zh-CN.md) | 熔丝块、内存映射、读取者 |
 | [09](09-glasses-software-and-mcu.zh-CN.md) | MCU、STP、RT600/RT700、EMG 腕带、应用层 |
+| [11](11-wireless-and-connectivity.zh-CN.md) | Wi-Fi 与蓝牙协议栈、WPSS 子系统、驱动、HAL、固件 |
+| [12](12-peripheral-firmware-and-build-ids.zh-CN.md) | 构建 ID、GPU、摄像头、视频与视觉固件 |

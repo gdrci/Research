@@ -35,6 +35,8 @@ Discord：[discord.gg/oculus](https://discord.gg/oculus) · @gdrci（Discord）
 | QFPROM 与熔丝 | [06](docs/06-qfprom-and-fuses.md) | [06](docs/06-qfprom-and-fuses.zh-CN.md) |
 | 眼镜端软件与 MCU | [09](docs/09-glasses-software-and-mcu.md) | [09](docs/09-glasses-software-and-mcu.zh-CN.md) |
 | QCC730 安全启动参考（外部资料，另一款芯片） | [10](docs/10-qcc730-secure-boot-reference.md) | [10](docs/10-qcc730-secure-boot-reference.zh-CN.md) |
+| 无线与连接 | [11](docs/11-wireless-and-connectivity.md) | [11](docs/11-wireless-and-connectivity.zh-CN.md) |
+| 外设固件与构建 ID | [12](docs/12-peripheral-firmware-and-build-ids.md) | [12](docs/12-peripheral-firmware-and-build-ids.zh-CN.md) |
 
 
 ## 证据标注

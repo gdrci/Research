@@ -95,7 +95,7 @@ Hexagon ELF，`e_machine = EM_QDSP6`，`e_flags = 0x3`。它有十一个 `PT_LOA
 这是一个 FAT16 镜像，大小 0.78 MB，共 51 个文件。列表见 `data/remote/bluetooth_listing.txt`。
 
 - `hmtbtfw10.tlv` 与 `hmtbtfw20.tlv`：蓝牙固件，TLV 格式。
-- `hmtbtfw20.ver`：`BTFW.HAMILTON.2.0.0-00797-PATCHZ-1.105163.2.1094`。芯片名为 Hamilton。已验证。
+- `hmtbtfw20.ver`：`BTFW.HAMILTON.2.0.0-00797-PATCHZ-1.105163.2.109423.3`。芯片名为 Hamilton。已验证。
 - `hmtnv10.*` 与 `hmtnv20.*`：非易失性配置文件，约 30 个变体（`.b0202` 至 `.b32`、`.bin`、`.b0c`）。后缀看起来是按产品或按天线的配置，未验证。
 
 fstab 以只读方式把该镜像挂载在 `/vendor/bt_firmware`（第 04 节）。

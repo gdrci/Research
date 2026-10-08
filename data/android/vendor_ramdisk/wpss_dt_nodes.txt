@@ -1,0 +1,18 @@
+Device-tree nodes naming WPSS (data/android/vendor_ramdisk/vendor_dtb_dump.txt, binary-safe grep):
+/soc/qcom,smp2p-wpss
+/soc/qcom,smp2p-wpss/master-kernel
+/soc/qcom,smp2p-wpss/qcom,smp2p-wlan-1-in
+/soc/qcom,smp2p-wpss/qcom,smp2p-wlan-1-out
+/soc/qcom,smp2p-wpss/qcom,smp2p-wlan-2-in
+/soc/qcom,smp2p-wpss/qcom,smp2p-wlan-2-out
+/soc/qcom,smp2p-wpss/qcom,smp2p-wlan-3-out
+/soc/qcom,smp2p-wpss/slave-kernel
+/soc/wpss_etm
+/soc/wpss_etm/out-ports
+/soc/wpss_etm/out-ports/port
+/soc/wpss_etm/out-ports/port/endpoint
+/soc/qcom,smp2p-wpss/qcom,smp2p-wlan-1-in
+/soc/qcom,smp2p-wpss/qcom,smp2p-wlan-1-out
+/soc/qcom,smp2p-wpss/qcom,smp2p-wlan-2-in
+/soc/qcom,smp2p-wpss/qcom,smp2p-wlan-2-out
+/soc/qcom,smp2p-wpss/qcom,smp2p-wlan-3-out

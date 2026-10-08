@@ -1,0 +1,10 @@
+bluetooth.img (FAT16, extracted with a local FAT16 helper; 8.3 names shown as stored)
+Version files:
+  2OVFZG~2.VER: BTFW.HAMILTON.2.0.0-00797-PATCHZ-1.105163.2.109423.3
+  4QG462~2.VER: BTFW.HAMILTON.1.0.0-00214-PATCH-1
+TLV patch files (size, first 16 bytes, last 16 bytes):
+   BLVLPJ~2.TLV 253484 01 28 de 03 08 de 03 00 e4 dd 03 00 01 00 03 00 ... 5e ff 10 4c 64 40 e8 32 a6 25 33 63 77 65 87 b4
+   Y4VWDV~2.TLV 91308 01 a8 64 01 88 64 01 00 64 64 01 00 01 00 03 00 ... 7e ff 3c fa 76 8b b2 95 e9 a0 00 d0 a0 b7 b1 72
+Build IDs (modem.img /verinfo/ver_info.txt):
+          "btfm": "BTFW.HAMILTON.2.0.0-00819-PATCHZ-1", 
+          "wlan_hmt": "WLAN.HMT.1.1.c4-00443-QCAHMTSWPL_V1.0_V2.0_SILICONZ-1"

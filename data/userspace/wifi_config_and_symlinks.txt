@@ -1,0 +1,66 @@
+vendor/etc/wifi listing and WCNSS_qcom_cfg.ini head (extracted):
+  <scratch>/fs/vendor/etc/wifi:
+  total 80
+  drwxr-xr-x  3 root 2000  4096 Jan  1  2009 .
+  drwxr-xr-x 19 root 2000  4096 Jan  1  2009 ..
+  -rw-r--r--  1 root root  2977 Jan  1  2009 icm.conf
+  drwxr-xr-x  2 root 2000  4096 Jan  1  2009 kiwi_v2
+  -rw-r--r--  1 root root   124 Jan  1  2009 p2p_supplicant_overlay.conf
+  -rw-r--r--  1 root root 53160 Jan  1  2009 vendor_cmd.xml
+  -rw-r--r--  1 root root    97 Jan  1  2009 wpa_supplicant.conf
+  -rw-r--r--  1 root root   203 Jan  1  2009 wpa_supplicant_overlay.conf
+  
+  <scratch>/fs/vendor/etc/wifi/kiwi_v2:
+  total 12
+  drwxr-xr-x 2 root 2000 4096 Jan  1  2009 .
+  drwxr-xr-x 3 root 2000 4096 Jan  1  2009 ..
+  -rw-r--r-- 1 root root 2521 Jan  1  2009 WCNSS_qcom_cfg.ini
+
+vendor/firmware/wlan/qca_cld (symlinks, as stored):
+  total 8
+  drwxr-xr-x 2 root 2000 4096 Jan  1  2009 .
+  drwxr-xr-x 3 root 2000 4096 Jan  1  2009 ..
+  lrwxrwxrwx 1 root root   43 Oct  7 20:15 WCNSS_qcom_cfg.ini -> /vendor/etc/wifi/kiwi_v2/WCNSS_qcom_cfg.ini
+  lrwxrwxrwx 1 root root   28 Oct  7 20:15 wlan.cfg -> /mnt/vendor/persist/wlan.cfg
+  lrwxrwxrwx 1 root root   32 Oct  7 20:15 wlan_mac.bin -> /mnt/vendor/persist/wlan_mac.bin
+
+# This file allows user to override the factory
+# defaults for the WLAN Driver
+
+gDot11Mode=0
+InfraUapsdVoSrvIntv=0
+InfraUapsdViSrvIntv=0
+InfraUapsdBeSrvIntv=0
+InfraUapsdBkSrvIntv=0
+gAddTSWhenACMIsOff=1
+gEnableApOBSSProt=1
+RTSThreshold=1048576
+g11dSupportEnabled=0
+gEnableDFSMasterCap=1
+gNeighborScanTimerPeriod=200
+gNeighborLookupThreshold=76
+FastRoamEnabled=1
+RoamRssiDiff=5
+gAllowDFSChannelRoam=1
+gSetTxChainmask1x1=1
+gSetRxChainmask1x1=1
+gActiveMaxChannelTime=40
+gWlanMccToSccSwitchMode = 3
+gEnableTXSTBC=1
+gEnableTxBFeeSAP=1
+gEnableTxBFin20MHz=1
+gEnableTxSUBeamformer=1
+gRrmEnable=1
+gVhtAmpduLenExponent=7
+gVhtMpduLen=2
+isP2pDeviceAddrAdministrated=0
+gEnableVhtFor24GHzBand=1
+gEnableLpassSupport=1
+gCountryCodePriority=1
+gEnableMuBformee=1
+gTDLSExternalControl=1
+gEnableTDLSOffChannel=1
+gNumVdevs=5
+gSoftApMaxPeers=10
+gEnableSarSafety=3
+gSarSafetyIndex=1

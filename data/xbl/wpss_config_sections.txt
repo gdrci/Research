@@ -1,0 +1,31 @@
+xbl config sections for WPSS (data/strings/xbl_config.txt, extracted):
+770:[FULL_WPSS]
+771-Type = elf_split
+772-PartiLabel = modem_a
+773-#PartiRootGuid =
+774-#PartiGuid = "EBD0A0A2 B9E5 4433 87C0 68B6B72699C7"
+775-ImagePath = \image\wpss
+776-SubsysID = 6
+777-ResvMemoryStart = 0x85600000
+778-ResvMemorySize = 
+--
+843:[CORE_WPSS]
+844-Type = elf_split
+845-PartiLabel = core_nhlos_a
+846-#PartiRootGuid =
+847-#PartiGuid = "EBD0A0A2 B9E5 4433 87C0 68B6B72699C7"
+848-ImagePath = \image\wpss
+849-SubsysID = 6
+850-ResvMemoryStart = 0x85600000
+851-ResvMemorySize = 
+
+WPSS-related PIL lines in xbl_config:
+456:pil_proxy_vote
+458:pil_proxy_vote_1
+462:pil_proxy_vote_4
+467:pil_proxy_vote_12
+471:pil_proxy_vote_18
+478:pil_proxy_vote_6
+479:PIL_WPSS
+893:/soc/pil/pil_proxy_vote
+1133:pil_proxy_vote

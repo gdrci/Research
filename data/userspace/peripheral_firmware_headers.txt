@@ -1,0 +1,14 @@
+Peripheral firmware headers (fs/vendor/firmware of greatwhite.zip). ELF fields via pyelftools; raw microcode shown by first words.
+a620_zap.mdt: size 6284, e_machine EM_QDSP6, e_entry 0x1000, program headers 3, PT_LOAD 1, first PT_LOAD paddr 0x1000 filesz 0x68c flags 0x8000007
+a620_zap.mbn: size 14328, e_machine EM_QDSP6, e_entry 0x1000, program headers 3, PT_LOAD 1, first PT_LOAD paddr 0x1000 filesz 0x68c flags 0x8000007
+a740v3_zap.mdt: size 4044, e_machine EM_QDSP6, e_entry 0x1000, program headers 3, PT_LOAD 1, first PT_LOAD paddr 0x1000 filesz 0x430 flags 0x8000007
+a740v3_zap.elf: size 5168, e_machine EM_QDSP6, e_entry 0x1000, program headers 1, PT_LOAD 1, first PT_LOAD paddr 0x1000 filesz 0x430 flags 0x8000007
+a740v3_zap.mbn: size 12088, e_machine EM_QDSP6, e_entry 0x1000, program headers 3, PT_LOAD 1, first PT_LOAD paddr 0x1000 filesz 0x430 flags 0x8000007
+CAMERA_ICP.mdt: size 7724, e_machine EM_XTENSA, e_entry 0x0, program headers 21, PT_LOAD 19, first PT_LOAD paddr 0x0 filesz 0x168 flags 0x8000005
+CAMERA_ICP.mbn: size 949080, e_machine EM_XTENSA, e_entry 0x0, program headers 21, PT_LOAD 19, first PT_LOAD paddr 0x0 filesz 0x168 flags 0x8000005
+evass.mbn: size 2247464, e_machine EM_XTENSA, e_entry 0xf500000, program headers 20, PT_LOAD 18, first PT_LOAD paddr 0xf500000 filesz 0x130 flags 0x8000005
+vpu20_4v.mbn: size 2079528, e_machine EM_XTENSA, e_entry 0xf500000, program headers 20, PT_LOAD 18, first PT_LOAD paddr 0xf500000 filesz 0x130 flags 0x8000005
+a650_sqe.fw: size 31988, first words 0x0 0x16dd114 0x1001ebc 0x88020001 0xa8020080 0xb8020000 0x88030001 0x5042001c
+a740v3_sqe.fw: size 76852, first words 0x0 0x1511181 0x1004b0c 0x1511149 0x1002538 0x10edd26 0xb8020000 0xb80300ef
+a621_gmu.bin: size 56056, first words 0x0 0x0 0x1 0x1dc 0x4000 0x0 0x1 0xd7ec
+gmu_gen70200.bin: size 67608, first words 0x0 0x0 0x1 0x1dc 0x4000 0x0 0x1 0x1050c
