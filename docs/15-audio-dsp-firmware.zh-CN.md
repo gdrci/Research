@@ -22,11 +22,11 @@
 |---|---:|---|
 | `dsp_dtcm.bin` | `0x000000` | 数据紧耦合存储器镜像，加载地址 `0x24000000`（清单 `load_addr` 为 `603979776`） |
 | `dsp_itcm.bin` | `0x000600` | 指令紧耦合存储器镜像，加载地址 `0x24020000` |
-| `dsp_app.bin` | `0x008A00` | 应用代码，加载地址 `0x20100000` |
+| `dsp_app.bin` | `0x008A00` | 应用代码，加载地址 `0x20128000`（清单 `load_addr`） |
 | `configs.cfg`、`overrides.cfg` | `0x01E4FD`、`0x01E509` | 运行时配置（`overrides.cfg` 名称表明存在按设备覆盖的一层） |
 | `assets_ro.bin` | `0x0F8A00` | 只读资源（清单中无加载地址） |
 | `logger_dict_generated.json`、`zephyr_log_dict_generated.json`、`tel_dict_generated.json` | `0x37CC00` 至 `0x3B0C00` | 日志与遥测字典 |
-| `symbol_table.elf` | `0x3C1400`（ELF 位于 `0x3C1600`） | 符号表，`EM_XTENSA` ELF，含 6,799 个具名符号、4,602 个函数 |
+| `symbol_table.elf` | `0x3C1400`（ELF 位于 `0x3C1600`） | 符号表，`EM_XTENSA` ELF，含 6,799 个唯一具名符号（ELF 中有 7,101 个具名条目，部分重复）、4,602 个函数 |
 | `metadata.json` | `0x438800` | 清单（部署、`md5`、`target_assets`，每项含 `layout.load_addr`、`layout.offset` 与 64 字节 `signature`） |
 
 清单为每个代码与数据资源给出 64 字节签名，以 128 个十六进制字符表示。`offset` 值是闪存布局中的位置，而非文件偏移，与第 09 节相同。三个存储器镜像相隔 64 KB（`140378112`、`140443648`、`140509184`）。已观察。这些偏移所基于的闪存基址未确定。
@@ -39,7 +39,7 @@
 
 ### 唤醒词
 
-- 约 33 个函数。例如：`ww_status_init`、`xra_enable_wakeword`、`xra_set_ww_jarvis`、`xra_ww_publish_preroll_data_internal`、`xra_log_metrics_from_ww_header`，以及 `Xr2Messager::sendWakewordEnabled`。
+- 约 36 个函数名中含 `ww` 或 `wakeword`（仅 `ww` 一词则为 26 个）。例如：`ww_status_init`、`xra_enable_wakeword`、`xra_set_ww_jarvis`、`xra_ww_publish_preroll_data_internal`、`xra_log_metrics_from_ww_header`，以及 `Xr2Messager::sendWakewordEnabled`。
 - 遥测变量名包括 `dsp_ww_decision`、`ww_detect`、`ww_detect_status`、`ww_label_id`、`ww_mode`、`ww_trans_mode` 与 `ww_uuid`。已观察。
 - `decline_ww_detect_event`、`set_ww_detected_flag` 与 `set_ww_reset_flag` 显示了事件路径。已观察。
 - 预缓冲区保留触发之前的音频（`xra_ww_publish_preroll_data_internal`）。根据名称推断。
@@ -55,12 +55,12 @@
 ### 扬声器保护与扬声器模型
 
 - 扬声器模型位于 `meta::audio` 与 `facebook::xr::audio` C++ 框架中，表现为 `speaker_system_id` 模板族及其参数标签。
-- 扬声器模型的参数名存在：`Bdt`、`Adt`、`A1`、`A2`、`Zeta`、`F0`、`Reb`、`Bl`（反电动势与电机常数）、`SigMax`、`AlphaMean`、`AlphaVar`、`OptMu`、`Lambda`、`DownsamplingRatio`、`TriggerHoldFrames`、`ReleaseHoldFrames`、`WaterIngressDetected`、`RunAlgoEnabled`、`AccumulatedEnergyThreshold`、`StabilityConstraintMode`、`TempCompEnabled`、`TempRef`、`TempCoeffAlpha`、`Rtref`、`TempTarget`，以及拟合系数 `RebFitCoeffs`、`BlFitCoeffs`、`A1FitCoeffs`、`A2FitCoeffs`、`F0FitCoeffs`、`ZetaFitCoeffs`。已观察。
-- 这些参数描述一个限制振膜位移的扬声器保护模型，带有温度补偿与进水检测标志。根据名称推断。`SpeakerSystemID` 模板及 `Mechanical`、`Time` 常数表明模型按扬声器拟合。推断。
+- 扬声器模型的参数名存在：`Bdt`、`Adt`、`A1`、`A2`、`Zeta`、`F0`、`Reb`、`SigMax`、`AlphaMean`、`AlphaVar`、`OptMu`、`Lambda`、`DownsamplingRatio`、`TriggerHoldFrames`、`ReleaseHoldFrames`、`WaterIngressDetected`、`RunAlgoEnabled`、`AccumulatedEnergyThreshold`、`StabilityConstraintMode`、`TempCompEnabled`、`TempRef`、`TempCoeffAlpha`、`Rtref`、`TempTarget`，以及拟合系数 `RebFitCoeffs`、`BlFitCoeffs`（模型中还有 `BlCoeff` 与 `BlLimits`）、`A1FitCoeffs`、`A2FitCoeffs`、`F0FitCoeffs`、`ZetaFitCoeffs`。已观察。
+- 这些参数描述一个限制振膜位移的扬声器保护模型，带有温度补偿与进水检测标志。根据名称推断。`SpeakerSystemID` 模板及 `Mechanical` 常数表明模型按扬声器拟合。推断。
 
 ### 扬声器功放 I/O
 
-- 约 29 个函数涉及功放缓冲区与调试引脚：`amp_tx_get_next_buffer`、`xra_amp_rx_get_next_buffer`、`debug_pin_set_amp_tx`、`debug_pin_clear_amp_rx`，以及 `amp_buffer_underrun` 计数。已观察。
+- 约 33 个函数涉及功放缓冲区与调试引脚：`amp_tx_get_next_buffer`、`xra_amp_rx_get_next_buffer`、`debug_pin_set_amp_tx`、`debug_pin_clear_amp_rx`，以及 `amp_buffer_underrun` 计数。已观察。
 - 功放 TX 与 RX 使能是遥测字段：`amp_tx_en`、`amp_rx_en`、`amp_tx_checked_in`、`amp_rx_checked_in`。已观察。它们分别是扬声器功放的反馈（RX）与驱动（TX）通路，与第 12 节中 WSA2 的 `VISENSE` 通路相符。根据名称推断。
 
 ### 麦克风（DMIC/PDM）
@@ -76,7 +76,7 @@
 
 ### TDM 与 I2S
 
-- 约 52 个函数：`tdm_start`、`tdm_pause`、`tdm_init`、`tdm_halt_info`、`tdm_edma_dump`、`tdm_rx_transfer_callback`、`tdm_tx_transfer_callback`、`SAI_RxEDMACallback`、`SAI_TxEDMACallback`，以及 PDM 与 EDMA 辅助函数。已观察。
+- 约 40 个函数名中含 `tdm` 或 `sai`（仅 `tdm` 一词则为 17 个）：`tdm_start`、`tdm_stop`、`tdm_unpause`、`tdm_init`、`tdm_halt`、`tdm_rx_transfer_callback`、`tdm_tx_transfer_callback`、`SAI_RxEDMACallback`、`SAI_TxEDMACallback`，以及 PDM 与 EDMA 辅助函数。已观察。
 - 遥测名 `tdm_instance`、`tdm_frame_count`、`tdm_halt`、`tdm_actions_status` 与 `set_tdm_ready_flag`。已观察。它们是通向编解码器的 TDM 链路（第 12 节的 `LPAIF` TDM 后端）。
 - `xra_speech_send_frame_over_tdm` 通过 TDM 发送语音帧。已观察。这是从 DSP 到电话侧或编解码器通路的链路。
 
@@ -120,7 +120,7 @@ DSP 运行一个名为 `tesser` 的模块框架（约 125 个函数）：`tesser
 
 ## 证据
 
-- `data/dsp/dsp_symbol_table.txt`：全部 6,799 个具名符号，附地址、大小与类型。
+- `data/dsp/dsp_symbol_table.txt`：全部 6,799 个唯一具名符号，附地址、大小与类型。
 - `data/dsp/dsp_tub_manifest.json`：DSP 清单（部署、md5、平台、资源布局与签名）。
 - `data/dsp/dsp_tub_subimages.txt`：子镜像表，附偏移与文件哈希。
 - `data/userspace/init_rc_files.txt` 与 `data/android/audio/audio_config_summary.txt`：本固件运行所在的 Android 音频配置（第 12 节）。

@@ -15,19 +15,19 @@ Verified Boot here follows the libavb 1.x format. The parsed output is in `data/
 | Release string | `avbtool 1.2.0` |
 | Public key | 520 bytes, SHA-256 `0d5c1533678bc678252d94dbe5c9689ebdfe72f34c32fdbbcc87e3952c814abe` |
 
-Descriptors, in the order they appear:
+Descriptors, in the order they appear in the image:
 
 | Type | Partition | Size | Hash | Notes |
 |---|---|---:|---|---|
+| chain | `recovery` | | | rollback location 1 |
+| chain | `vbmeta_system` | | | rollback location 2 |
 | hash | `boot` | 30,208,000 | sha256 | Whole-image hash. |
 | hash | `dtbo` | 2,435,291 | sha256 | Whole-image hash. |
 | hash | `vendor_boot` | 13,946,880 | sha256 | Whole-image hash. |
-| hashtree | `vendor` | 453,591,040 | sha256 | dm-verity, format v1. |
 | hashtree | `odm` | 52,924,416 | sha1 | dm-verity, format v1. |
-| chain | `recovery` | | | rollback location 1 |
-| chain | `vbmeta_system` | | | rollback location 2 |
+| hashtree | `vendor` | 453,591,040 | sha256 | dm-verity, format v1. |
 
-Properties attached to the image: fingerprints and `os_version` for the Android 12 partitions, all reading `facebook/greatwhite/greatwhite:12/SQ3A.220605.009.A1/65394930092600080:user/release-keys`.
+Eight properties sit between the chain and hash descriptors. Their values: `.fingerprint` for `boot`, `vendor_boot`, `vendor`, `odm` and `dtbo` reads `facebook/greatwhite/greatwhite:12/SQ3A.220605.009.A1/65394930092600080:user/release-keys`; `.os_version` for `boot`, `vendor` and `odm` reads `12`.
 
 The `odm` hashtree uses SHA-1. The `vendor` one uses SHA-256. The mix is unusual, and the reason is unverified.
 
@@ -49,7 +49,7 @@ The value 1770249600 is the Unix time of 2026-02-05 00:00 UTC. It equals the pat
 
 Anti-rollback only works if the device also keeps a fuse-backed copy of the counter. The copy is not located yet. Section 06 explains where to look.
 
-Where the comparison runs. The boot-time images carry no rollback comparison. The UEFI DXE volume (`uefi.img`, gzip member at `0x49EA8`, decoded and searched) has no `rollback`, `avb` or `vbmeta` strings. `xbl.img`, `abl.img`, `vbmeta.img`, `hyp.img` and `imagefv.img` have none either. `system.img` does contain libavb's rollback checks (`Invalid rollback_index_location`, `ERROR_ROLLBACK_INDEX`), so the comparison that libavb makes lives in Android userspace. Which binary in `system.img` holds those strings has not been identified. Observed from strings. Evidence: `data/secure/avb_rollback_string_search.txt`.
+Where the comparison runs. No rollback-error string (`ERROR_ROLLBACK_INDEX`) appears in `boot`, `vendor_boot`, `dtbo`, `recovery`, `vbmeta`, `xbl`, `abl`, `hyp`, `imagefv` or `uefi`. The UEFI DXE volume (`uefi.img`, gzip member at `0x49EA8`, decoded and searched) has no `rollback`, `avb` or `vbmeta` strings. `recovery.img` does contain `ROLLBACK_INDEX` and `AvbVBMetaV`, so its use of libavb is not ruled out. `xbl.img` contains only the source path `.../antirollback/src/AntiRollbackMgr.cpp`, which belongs to the TME rollback manager (section 06). `vbmeta.img` contains only the chain descriptor name `vbmeta_system`. `abl.img`, `hyp.img` and `imagefv.img` contain no such strings. `system.img` does contain libavb's rollback checks (`Invalid rollback_index_location`, `ERROR_ROLLBACK_INDEX`), so the comparison that libavb makes lives in Android userspace. Which binary in `system.img` holds those strings has not been identified. Observed from strings. Evidence: `data/secure/avb_rollback_string_search.txt`.
 
 ## Fstab entries that depend on AVB
 
@@ -57,7 +57,7 @@ The first-stage fstab (section 04) uses `avb=vbmeta` for `vendor` and `odm`, and
 
 ### Verified boot and device state in `uefi.img`
 
-`uefi.img` is a firmware volume (`_FVH` at `0x1000`, length `0x289000`). Its DXE code sits in a GUID-defined section (`1d301fe9-be79-4353-91c2-d23bc959ae0c`) whose payload is gzip. Decompressed, it is 3,911,688 bytes. The string list is `data/strings/uefi_dxe_fv_strings.txt` (18,305 strings).
+`uefi.img` is a firmware volume (`_FVH` at `0x1000`, length `0x289000`). Its DXE code sits in a GUID-defined section (`1d301fe9-be79-4353-91c2-d23bc959ae0c`) whose payload is gzip. Decompressed, it is 3,911,688 bytes. The string list is `data/strings/uefi_dxe_fv_strings.txt` (18,306 lines including one header line).
 
 The verified-boot module `VerifiedBootDxe` does four things, from its strings:
 - It reads and writes device state (`RWDeviceState`). The state goes through a QSEE app (`gQcomQseecomProtocolGuid`), through RPMB (`Succeed using rpmb`), or through devinfo.

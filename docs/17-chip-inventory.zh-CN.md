@@ -13,19 +13,19 @@
 | 器件 | 功能 | 依据 | 可信度 |
 |---|---|---|---|
 | 高通 "Aurora" SoC（`SocAuroraLAA`） | 应用处理器，平台 `neo` | XBL `IMAGE_VARIANT_STRING=SocAuroraLAA`；设备树中的 `qcom,neo-*` 节点（pinctrl、pdc、pcie、nsp、mmss、videocc、rpmh-clk、system）；`ro.board.platform=neo`（第 04 节） | 已命名（代号）；文件中没有市场型号 公开搜索：未找到该代号的公开来源。高通公开的智能眼镜 SoC 为 AR1 Gen 1、AR1+ Gen 1 与 AR2 Gen 1。设备树中没有 AR1 或 AR2 名称，因此代号未与之匹配。之后的搜索找到了高通针对 Meta Ray-Ban Display 的设备查找页面，该页面将平台列为 Snapdragon AR1 Gen 1（`https://www.qualcomm.com/xr-vr-ar/device-finder/meta-ray-ban-display0`，经搜索找到，未打开原文）。这给出了该设备的市场名称。`Aurora` 是否为 AR1 Gen 1 的代号尚未确认：搜索未找到相关来源；另有一条 NVD 来源的记录把某个 AR1 Gen 1 变体称为 `Luna1`，对本设备同样未经确认。 |
-| 高通 PM8150 | 通过 SPMI 连接的主 PMIC | 设备树中 50 个 `qcom,pm8150` 节点；SELinux 的 sysfs 标签中有 `pm8150@0`（第 11 节） | 已命名 公开搜索：Linux SPMI 绑定列出 `qcom,pm8150` 与 `qcom,pm8150b`；未找到公开的寄存器映射。 |
-| 高通 PM8150（已对照设备树转储核实） | SPMI 从设备 0（`/soc/qcom,spmi@c42d000/qcom,pm8150@0`）上的外设基址：temp-alarm `0x2400`，power-on `0x800`，VADC `0x3100`（`qcom,spmi-adc5`），ADC-TM `0x3500`（`qcom,adc-tm5`），SDAM `0xB100`（重启原因位于 `0x48`），GPIO `0xC000`（`qcom,pm8150-gpio`，10 个 GPIO），时钟分频器 `0x5B00`。VADC 通道包括芯片温度（`0x06`）、XO 热敏电阻（`0x4C`）、机壳热敏电阻（`0x4D`）与 WLAN 热敏电阻（`0x4E`）。RTC 节点（`qcom,pm8941-rtc`）的 `reg` 单元为 `0x6000`（`rtc`）与 `0x6100`（`alarm`）；转储的字符串显示丢失了第二个单元的末尾 NUL，因此此处按原始字节解码（`00 00 60 00` 与 `00 00 61 00`）。已由原始字节核实。来源：`data/android/vendor_ramdisk/vendor_dtb_dump.txt`。寄存器级细节未公开。 | 已命名；基址与通道来自设备树 |
-| 高通 PM8008（PM8008i） | 带稳压器的配套 PMIC，共两颗 | 22 个 `qcom,pm8008i-regulator` 节点；`qcom,pm8008-chip`（第 04 节） | 已命名 |
-| Maxim MAX77655 | 显示电源 PMIC，开机时配置 | `vendor/bin/hw` 中的 `max77655_util --config_gw_display_pmic`，由 `fix-gw-display-pmic.rc` 运行（第 13 节）；MCU tub 与启动镜像中也有 `max77655` | 已命名 公开搜索：Maxim 的 MAX77655 编程指南示例代码使用从机地址 0x44。未与数据手册核对。 |
+| 高通 PM8150 | 通过 SPMI 连接的主 PMIC | 设备树转储中有 49 行提到 `qcom,pm8150`；父节点为 `qcom,pm8150@0` 与 `@1`（兼容串 `qcom,spmi-pmic`）；SELinux 的 sysfs 标签中有 `pm8150@0`（第 11 节） | 已命名 公开搜索：Linux SPMI 绑定列出 `qcom,pm8150` 与 `qcom,pm8150b`；未找到公开的寄存器映射。 |
+| 高通 PM8150（已对照设备树转储核实） | SPMI 从设备 0（`/soc/qcom,spmi@c42d000/qcom,pm8150@0`）上的外设基址：temp-alarm `0x2400`，power-on `0x800`，VADC `0x3100`（`qcom,spmi-adc5`），ADC-TM `0x3500`（`qcom,adc-tm5`），SDAM `0xB100`（重启原因位于 `0x48`），GPIO `0xC000`（`qcom,pm8150-gpio`），时钟分频器 `0x5B00`。VADC 通道包括芯片温度（`0x06`）、XO 热敏电阻（`0x4C`）、机壳热敏电阻（`0x4D`）与 WLAN 热敏电阻（`0x4E`）。RTC 节点（`qcom,pm8941-rtc`）的 `reg` 单元为 `0x6000`（`rtc`）与 `0x6100`（`alarm`）；转储的字符串显示丢失了第二个单元的末尾 NUL，因此此处按原始字节解码（`00 00 60 00` 与 `00 00 61 00`）。已由原始字节核实。来源：`data/android/vendor_ramdisk/vendor_dtb_dump.txt`。寄存器级细节未公开。 | 已命名；基址与通道来自设备树 |
+| 高通 PM8008（PM8008i） | 带稳压器的配套 PMIC（设备树转储中有一行 `qcom,pm8008-chip` 兼容串） | 22 个 `qcom,pm8008i-regulator` 节点；`qcom,pm8008-chip`（第 04 节） | 已命名 |
+| Maxim MAX77655 | 显示电源 PMIC，开机时配置 | `vendor/bin/hw` 中的 `max77655_util --config_gw_display_pmic`，由 `fix-gw-display-pmic.rc` 运行（第 13 节）；`boot.img`（18 处命中）与 `vendor.img`（6 处命中）中有 `max77655`；MCU tub 中没有 | 已命名 公开搜索：Maxim 的 MAX77655 编程指南示例代码使用从机地址 0x44。未与数据手册核对。 |
 | Maxim MAX77813 | 充电器或 PMIC（覆盖层） | 覆盖层中的 `max77813@18`（第 04 节） | 已命名 |
 | Maxim MAX77789 | 充电器或 PMIC（覆盖层） | 覆盖层中的 `max77789@69` | 已命名 |
-| Maxim MAX17332 | 电量计 | `vendor.img` 中 138 处命中；SELinux 与 `init.metasoc.sh` 中的 `max17332-battery` 电源节点（第 04、09、11 节） | 已命名 |
+| Maxim MAX17332 | 电量计 | `vendor.img` 中 121 处命中（其中 114 处为 `max17332-battery`）；SELinux 与 `init.metasoc.sh` 中的 `max17332-battery` 电源节点（第 04、09、11 节） | 已命名 |
 | MPS MP28167 | 稳压器（覆盖层） | 覆盖层中的 `mp28167@60` | 已命名 |
 | Richtek RT6160 | 稳压器（覆盖层） | 覆盖层中的 `rt6160@75` | 已命名 |
 | Renesas RAA491901 | 稳压器（覆盖层） | 覆盖层中的 `raa491901@29` | 已命名 |
 | Dialog DA9172 | PMIC（一个覆盖层） | 覆盖层中的 `pmicDA9172@6A` | 已命名 |
 | "OP02220" 与 "OP03010" 一对 | 显示 / LCoS 电源与驱动 PMIC。厂商未明确 | `pmicOP02220@44`、`pmicOP03010@40`；设备节点 `lcos-i2c-OP02220`、`lcos-i2c-OP03010`（第 04、13、14 节） | 器件名已命名；厂商未确定 |
-| Silergy SY8809 与 SY5502 | 机壳固件中的 DC-DC 转换器 | `vendor.img` 与机壳 `.tub` 文件中分别有 14 与 8 处命中（第 09 节） | 固件中已命名；功能未确定 |
+| Silergy SY8809 与 SY5502 | 机壳固件中的 DC-DC 转换器 | SY8809：15 处命中（`vendor.img` 中 6 处，三个机壳 tub 中 9 处）；SY5502：`vendor.img` 中 2 处（第 09 节） | 固件中已命名；功能未确定 |
 
 ## 显示与 LCoS
 
@@ -43,8 +43,8 @@
 
 | 器件 | 功能 | 依据 | 可信度 |
 |---|---|---|---|
-| Maxim MAX98388（ADI，16 凸点 WLP） | 单声道 D 类扬声器功放，带 I/V 反馈，PCM（I2S/LJ/TDM）输入，I2C 控制。供电 2.3 V 至 10 V。数据手册 Rev. 2（ADI，2024）：4 欧姆下 3.7 V 时输出 1.32 W，1 kHz 下 THD+N 优于 -83 dB，动态范围最高 111 dB（A 计权），软件关断低于 5 µW，上电 1 ms。I2C 地址表（数据手册表 9）由 ADDR 脚决定 7 位地址：接 VDD 为 0x38，接 GND 为 0x39，接 SDA 为 0x3A，接 SCL 为 0x3B。因此 ODM 脚本中的 `0x3A`（左）与 `0x38`（右）分别对应接 SDA 与接 VDD，与数据手册一致。内核绑定示例使用 0x39（接 GND）。 | 已命名。地址已据数据手册解决（第 12、17 节） |
-| 高通 WCD 风格编解码宏（RX、TX、VA、WSA） | 音频编解码与 LPASS 宏 | 混音路径中的 `RX_MACRO`、`TX_MACRO`、`VA_MACRO`、`WSA_MACRO`，以及设备树中的 `lpass-cdc` 节点（第 12 节） | 已命名（系列）；编解码器型号不在文件中 |
+| Maxim MAX98388（ADI，16 凸点 WLP） | 单声道 D 类扬声器功放，带 I/V 反馈，PCM（I2S/LJ/TDM）输入，I2C 控制。供电 2.3 V 至 10 V。数据手册 Rev. 2（ADI，2024）：4 欧姆下 3.7 V 时输出 1.32 W，1 kHz 下峰值 THD+N 优于 -83 dB，动态范围最高 111 dB（A 计权），软件关断低于 5 µW，上电 1 ms（fS = 48 kHz，斜坡关闭）。I2C 地址表（数据手册表 9）由 ADDR 脚决定 7 位地址：接 VDD 为 0x38，接 GND 为 0x39，接 SDA 为 0x3A，接 SCL 为 0x3B。ODM 脚本中左声道用 `0x3A`、右声道用 `0x38`。数据手册给出的是引脚到地址的映射；每个声道使用哪个物理引脚，本地数据中未确定。 | 已命名；数据手册给出地址映射（第 12、17 节） |
+| 高通 WCD 风格编解码宏（RX、TX、VA、WSA） | 音频编解码与 LPASS 宏 | 混音路径中的 `RX_MACRO`；`TX`、`VA` 与 `WSA` 宏仅出现在 UEFI DXE 字符串中；以及设备树中的 `lpass-cdc` 节点（第 12 节） | 已命名（系列）；编解码器型号不在文件中 |
 | WCD9320 | 一个库中的编解码器名称 | `libats.so` 与 `vendor.img` 中包含该字符串（第 12 节） | 仅在字符串中命名；设备树中未使用 |
 | NXP RT700（MIMXRT798S） | 一颗芯片内的 MCU（Cortex-M33）与 HiFi4 音频 DSP | DSP 镜像中的 `system_MIMXRT798S_hifi4.c`；MCU 镜像中的 `arvr/firmware/lib/uhal/peripherals/rt700/` 驱动（第 14、15 节） | 已命名 |
 | NXP RT600 | 同一系列的另一变体（`is_rt600` 开关，第 09 节） | DSP 镜像中的 `nxp_rt600_RI2021_6_newlib` 工具链路径；内核驱动名 `rt600_ctrl` | 已命名为变体；RT600 型号只出现在工具链路径中 |
@@ -76,7 +76,7 @@
 
 | 器件 | 功能 | 依据 | 可信度 |
 |---|---|---|---|
-| 存储控制器 | 启动与数据存储 | 设备树中有 UFS PHY 时钟门控（`gcc_ufs_phy_gdsc`）与 SDHCI 主机（`sdhci@7c4000`，SELinux 标签中的 `mmc0` 路径）（第 04 节）。UEFI 镜像的启动设备字符串中列有 UFS、eMMC、NAND 与 NVMe（第 02 节） | 控制器已命名；器件型号未命名，所装的存储类型未确定 |
+| 存储控制器 | 启动与数据存储 | 设备树中有 UFS PHY 时钟门控（`gcc_ufs_phy_gdsc`）与 SDHCI 主机（`sdhci@7C4000`，SELinux 标签中的 `mmc0` 路径）（第 04 节）。UEFI 镜像的启动设备字符串中列有 UFS、eMMC、NAND 与 NVMe（第 02 节） | 控制器已命名；器件型号未命名，所装的存储类型未确定 |
 | 安全元件（`hal_secure_element`） | 安全元件 HAL | SELinux 域与服务标签（第 11 节） | 未命名 |
 | 振动驱动 | 振动（`hal_vibrator`） | 仅有 SELinux 标签 | 未命名 |
 

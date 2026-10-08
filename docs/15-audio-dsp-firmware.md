@@ -22,11 +22,11 @@ The container is 4,429,312 bytes. Its sub-images (`data/dsp/dsp_tub_subimages.tx
 |---|---:|---|
 | `dsp_dtcm.bin` | `0x000000` | Data tightly-coupled memory image, loaded at `0x24000000` (manifest `load_addr` `603979776`) |
 | `dsp_itcm.bin` | `0x000600` | Instruction tightly-coupled memory image, loaded at `0x24020000` |
-| `dsp_app.bin` | `0x008A00` | Application code, loaded at `0x20100000` |
+| `dsp_app.bin` | `0x008A00` | Application code, loaded at `0x20128000` (manifest `load_addr`) |
 | `configs.cfg`, `overrides.cfg` | `0x01E4FD`, `0x01E509` | Runtime configuration (the `overrides.cfg` name suggests the per-device override layer) |
 | `assets_ro.bin` | `0x0F8A00` | Read-only assets (no load address in the manifest) |
 | `logger_dict_generated.json`, `zephyr_log_dict_generated.json`, `tel_dict_generated.json` | `0x37CC00` to `0x3B0C00` | Log and telemetry dictionaries |
-| `symbol_table.elf` | `0x3C1400` (ELF at `0x3C1600`) | The symbol table, an `EM_XTENSA` ELF with 6,799 named symbols and 4,602 functions |
+| `symbol_table.elf` | `0x3C1400` (ELF at `0x3C1600`) | The symbol table, an `EM_XTENSA` ELF with 6,799 unique named symbols (7,101 named ELF entries, some repeated) and 4,602 functions |
 | `metadata.json` | `0x438800` | Manifest (deployment, `md5`, `target_assets` with `layout.load_addr`, `layout.offset` and a 64-byte `signature` per asset) |
 
 The manifest gives each code and data asset a 64-byte signature, written as 128 hex characters. The `offset` values are positions in a flash layout, not file offsets, as in section 09. The three memory images are placed 64 KB apart (`140378112`, `140443648`, `140509184`). Observed. The flash base for those offsets is not established.
@@ -39,7 +39,7 @@ The function names group into the features below. The counts are from the symbol
 
 ### Wake word
 
-- About 33 functions. Examples: `ww_status_init`, `xra_enable_wakeword`, `xra_set_ww_jarvis`, `xra_ww_publish_preroll_data_internal`, `xra_log_metrics_from_ww_header`, and `Xr2Messager::sendWakewordEnabled`.
+- About 36 functions with `ww` or `wakeword` in the name (26 with the `ww` token alone). Examples: `ww_status_init`, `xra_enable_wakeword`, `xra_set_ww_jarvis`, `xra_ww_publish_preroll_data_internal`, `xra_log_metrics_from_ww_header`, and `Xr2Messager::sendWakewordEnabled`.
 - The telemetry variable names include `dsp_ww_decision`, `ww_detect`, `ww_detect_status`, `ww_label_id`, `ww_mode`, `ww_trans_mode` and `ww_uuid`. Observed in the telemetry dictionaries.
 - `decline_ww_detect_event`, `set_ww_detected_flag` and `set_ww_reset_flag` show the event path. Observed.
 - A pre-roll buffer keeps audio from before the trigger (`xra_ww_publish_preroll_data_internal`). Inferred from the name.
@@ -55,13 +55,13 @@ The function names group into the features below. The counts are from the symbol
 ### Speaker protection and speaker model
 
 - The speaker model is in the `meta::audio` and `facebook::xr::audio` C++ framework, as the `speaker_system_id` template family and its parameter tags.
-- The parameter names of the speaker model are present: `Bdt`, `Adt`, `A1`, `A2`, `Zeta`, `F0`, `Reb`, `Bl` (back-EMF and motor constants), `SigMax`, `AlphaMean`, `AlphaVar`, `OptMu`, `Lambda`, `DownsamplingRatio`, `TriggerHoldFrames`, `ReleaseHoldFrames`, `WaterIngressDetected`, `RunAlgoEnabled`, `AccumulatedEnergyThreshold`, `StabilityConstraintMode`, `TempCompEnabled`, `TempRef`, `TempCoeffAlpha`, `Rtref`, `TempTarget`, and the fit coefficients `RebFitCoeffs`, `BlFitCoeffs`, `A1FitCoeffs`, `A2FitCoeffs`, `F0FitCoeffs`, `ZetaFitCoeffs`. Observed.
-- These parameters describe an excursion-limiting speaker protection model, with temperature compensation and a water-ingress detection flag. Inferred from the names. The `SpeakerSystemID` template and the `Mechanical` and `Time` constants suggest the model is fitted per speaker. Inferred.
+- The parameter names of the speaker model are present: `Bdt`, `Adt`, `A1`, `A2`, `Zeta`, `F0`, `Reb`, `SigMax`, `AlphaMean`, `AlphaVar`, `OptMu`, `Lambda`, `DownsamplingRatio`, `TriggerHoldFrames`, `ReleaseHoldFrames`, `WaterIngressDetected`, `RunAlgoEnabled`, `AccumulatedEnergyThreshold`, `StabilityConstraintMode`, `TempCompEnabled`, `TempRef`, `TempCoeffAlpha`, `Rtref`, `TempTarget`, and the fit coefficients `RebFitCoeffs`, `BlFitCoeffs` (the model also has `BlCoeff` and `BlLimits`), `A1FitCoeffs`, `A2FitCoeffs`, `F0FitCoeffs`, `ZetaFitCoeffs`. Observed.
+- These parameters describe an excursion-limiting speaker protection model, with temperature compensation and a water-ingress detection flag. Inferred from the names. The `SpeakerSystemID` template and the `Mechanical` constant suggest the model is fitted per speaker. Inferred.
 - `speaker_system_id` also appears as the parameter tag family. Observed.
 
 ### Speaker amplifier I/O
 
-- About 29 functions for amplifier buffers and debug pins: `amp_tx_get_next_buffer`, `xra_amp_rx_get_next_buffer`, `debug_pin_set_amp_tx`, `debug_pin_clear_amp_rx`, and the `amp_buffer_underrun` counter. Observed.
+- About 33 functions for amplifier buffers and debug pins: `amp_tx_get_next_buffer`, `xra_amp_rx_get_next_buffer`, `debug_pin_set_amp_tx`, `debug_pin_clear_amp_rx`, and the `amp_buffer_underrun` counter. Observed.
 - The amplifier TX and RX enables are telemetry fields: `amp_tx_en`, `amp_rx_en`, `amp_tx_checked_in`, `amp_rx_checked_in`. Observed. These are the feedback (RX) and drive (TX) paths for the speaker amplifiers, matching the WSA2 `VISENSE` path in section 12. Inferred from the names.
 
 ### Microphones (DMIC/PDM)
@@ -77,7 +77,7 @@ The function names group into the features below. The counts are from the symbol
 
 ### TDM and I2S
 
-- About 52 functions: `tdm_start`, `tdm_pause`, `tdm_init`, `tdm_halt_info`, `tdm_edma_dump`, `tdm_rx_transfer_callback`, `tdm_tx_transfer_callback`, `SAI_RxEDMACallback`, `SAI_TxEDMACallback`, `PDM` and `EDMA` helpers. Observed.
+- About 40 functions with `tdm` or `sai` in the name (17 with `tdm` alone): `tdm_start`, `tdm_stop`, `tdm_unpause`, `tdm_init`, `tdm_halt`, `tdm_rx_transfer_callback`, `tdm_tx_transfer_callback`, `SAI_RxEDMACallback`, `SAI_TxEDMACallback`, `PDM` and `EDMA` helpers. Observed.
 - The telemetry names `tdm_instance`, `tdm_frame_count`, `tdm_halt`, `tdm_actions_status` and `set_tdm_ready_flag`. Observed. These are the TDM links to the codec (the `LPAIF` TDM backends in section 12).
 - `xra_speech_send_frame_over_tdm` sends speech frames over TDM. Observed. This is the link from the DSP to the phone-side or codec path.
 
@@ -121,7 +121,7 @@ The `sml` (sample memory layer) functions, `tesser_module_sml_runner_create`, ru
 
 ## Evidence
 
-- `data/dsp/dsp_symbol_table.txt`: all 6,799 named symbols with address, size and type.
+- `data/dsp/dsp_symbol_table.txt`: all 6,799 unique named symbols with address, size and type.
 - `data/dsp/dsp_tub_manifest.json`: the DSP manifest (deployment, md5, platform, asset layouts and signatures).
 - `data/dsp/dsp_tub_subimages.txt`: the sub-image table with offsets and the file hash.
 - `data/userspace/init_rc_files.txt` and `data/android/audio/audio_config_summary.txt`: the Android audio configuration this firmware runs under (section 12).

@@ -19,15 +19,15 @@
 
 | 类型 | 分区 | 大小 | 哈希 | 说明 |
 |---|---|---:|---|---|
+| chain | `recovery` | | | 回滚位置 1 |
+| chain | `vbmeta_system` | | | 回滚位置 2 |
 | hash | `boot` | 30,208,000 | sha256 | 整镜像哈希 |
 | hash | `dtbo` | 2,435,291 | sha256 | 整镜像哈希 |
 | hash | `vendor_boot` | 13,946,880 | sha256 | 整镜像哈希 |
-| hashtree | `vendor` | 453,591,040 | sha256 | dm-verity，格式 v1 |
 | hashtree | `odm` | 52,924,416 | sha1 | dm-verity，格式 v1，启用 FEC |
-| chain | `recovery` | | | 回滚位置 1 |
-| chain | `vbmeta_system` | | | 回滚位置 2 |
+| hashtree | `vendor` | 453,591,040 | sha256 | dm-verity，格式 v1 |
 
-镜像附带的属性：Android 12 分区的指纹和 `os_version`，全部为 `facebook/greatwhite/greatwhite:12/SQ3A.220605.009.A1/65394930092600080:user/release-keys`。
+两个 chain 描述符与 hash 描述符之间有八个属性。属性取值：`boot`、`vendor_boot`、`vendor`、`odm` 和 `dtbo` 的 `.fingerprint` 为 `facebook/greatwhite/greatwhite:12/SQ3A.220605.009.A1/65394930092600080:user/release-keys`；`boot`、`vendor` 和 `odm` 的 `.os_version` 为 `12`。
 
 `odm` 的 hashtree 使用 SHA-1，`vendor` 使用 SHA-256。这种混用不寻常，原因未验证。
 
@@ -49,7 +49,7 @@
 
 防回滚只有在设备同时保存一个由熔丝支撑的计数器副本时才有效。这个副本目前还没有找到，第 06 节说明了应该去哪里找。
 
-回滚比较在哪里执行。启动阶段的镜像中没有回滚比较代码。UEFI DXE 卷（`uefi.img`，位于 `0x49EA8` 的 gzip 成员，已解压并搜索）中没有 `rollback`、`avb` 或 `vbmeta` 字符串。`xbl.img`、`abl.img`、`vbmeta.img`、`hyp.img` 和 `imagefv.img` 中也没有。`system.img` 确实包含 libavb 的回滚检查（`Invalid rollback_index_location`、`ERROR_ROLLBACK_INDEX`），因此 libavb 的比较位于 Android 用户空间。`system.img` 中是哪个二进制文件包含这些字符串，尚未确定。依据字符串观察得出。证据见 `data/secure/avb_rollback_string_search.txt`。
+回滚比较在哪里执行。`boot`、`vendor_boot`、`dtbo`、`recovery`、`vbmeta`、`xbl`、`abl`、`hyp`、`imagefv` 和 `uefi` 中都没有回滚错误字符串（`ERROR_ROLLBACK_INDEX`）。UEFI DXE 卷（`uefi.img`，位于 `0x49EA8` 的 gzip 成员，已解压并搜索）中没有 `rollback`、`avb` 或 `vbmeta` 字符串。`recovery.img` 中确有 `ROLLBACK_INDEX` 和 `AvbVBMetaV`，因此不能排除其使用 libavb。`xbl.img` 中只有源路径 `.../antirollback/src/AntiRollbackMgr.cpp`，它属于 TME 回滚管理器（第 06 节）。`vbmeta.img` 中只有链式描述符名称 `vbmeta_system`。`abl.img`、`hyp.img` 和 `imagefv.img` 中没有此类字符串。`system.img` 确实包含 libavb 的回滚检查（`Invalid rollback_index_location`、`ERROR_ROLLBACK_INDEX`），因此 libavb 的比较位于 Android 用户空间。`system.img` 中是哪个二进制文件包含这些字符串，尚未确定。依据字符串观察得出。证据见 `data/secure/avb_rollback_string_search.txt`。
 
 ## 依赖 AVB 的 fstab 条目
 
@@ -57,7 +57,7 @@
 
 ### `uefi.img` 中的验证启动与设备状态
 
-`uefi.img` 是一个固件卷（`0x1000` 处为 `_FVH`，长度 `0x289000`）。其 DXE 代码位于一个 GUID 定义的段（`1d301fe9-be79-4353-91c2-d23bc959ae0c`）中，该段的载荷是 gzip。解压后为 3,911,688 字节。字符串列表见 `data/strings/uefi_dxe_fv_strings.txt`（18,305 条）。
+`uefi.img` 是一个固件卷（`0x1000` 处为 `_FVH`，长度 `0x289000`）。其 DXE 代码位于一个 GUID 定义的段（`1d301fe9-be79-4353-91c2-d23bc959ae0c`）中，该段的载荷是 gzip。解压后为 3,911,688 字节。字符串列表见 `data/strings/uefi_dxe_fv_strings.txt`（18,306 行，含一行表头）。
 
 验证启动模块 `VerifiedBootDxe` 根据其字符串完成以下四项工作：
 - 读写设备状态（`RWDeviceState`）。状态通过 QSEE 应用（`gQcomQseecomProtocolGuid`）、RPMB（`Succeed using rpmb`）或 devinfo 保存。

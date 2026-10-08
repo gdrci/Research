@@ -40,7 +40,7 @@ QFPROM 窗口旁边还有三个块。TrustZone 的 MMIO 表和 SBL1 的区域映
 
 ## TrustZone MMIO 表
 
-TrustZone 在 `0x1C141C40` 处有一张表，由五个 16 字节条目组成，每个条目包含一个 32 位基址和一个 32 位计数。索引 4 为 `0x010C0000`。
+TrustZone 在 `0x1C141C40` 处有一张表，由五个 8 字节条目组成，每个条目包含一个 32 位基址和一个 32 位计数。索引 4 为 `0x010C0000`。
 
 有两个函数读取该表。`FUN_1C067548` 传入标志 `0x9041`，`FUN_1C067598` 传入标志 `0x9061`。两者都拒绝大于 4 的索引，然后通过 `FUN_1C03ACAC` 映射该条目。两者各有 16 处调用点：15 处 `BL` 与 1 处尾调用 `B`。索引 0 到 4 都以两种标志被使用（`data/secure/tz_mmio_table_users.txt`）。
 
@@ -49,7 +49,7 @@ TrustZone 在 `0x1C141C40` 处有一张表，由五个 16 字节条目组成，�
 标志的含义，来自 `FUN_14682D04`：
 
 - `0x9041` 以 EL1 读写方式映射该范围。`0x9061` 只相差第 5 位，该位设置 `AP[2]`（只读位），因此 `0x9061` 以只读方式映射。
-- 两者都设置禁止执行（`UXN` 和 `PXN`）、内部共享和访问标志，并且都选择 MAIR 属性索引 1。索引 1 很可能是设备内存类型，这是推断。
+- 两者都设置禁止执行（`UXN`；未设置 `PXN`）、内部共享和访问标志，并且都选择 MAIR 属性索引 1。索引 1 很可能是设备内存类型，这是推断。
 
 计数以 KB 为单位。映射器检查计数是否为 4 的倍数（即整数个 4 KB 页），并以 `基址 + 计数 × 0x400` 计算结束地址。因此 QFPROM 条目在 TrustZone 中映射 8 KB。这是从映射器的运算推断出来的。
 
@@ -101,7 +101,7 @@ Featenabler（`featenabler.img`）使用软件熔丝按硬件版本启用功能�
 
 ### 虚拟化层
 
-虚拟化层有 8 个字面量池槽位保存 `0x221C8000`，其内存映射中有上述 `0x3000` 记录。它是关于该块映射最完整的一份材料。扫描 `hyp.img` 发现，在 `0x221C8000`–`0x221CAFFF` 范围内没有其他常量：每个槽位都恰好是 `0x221C8000`，仅有一处 `movk` 使用 `0x221C`。因此镜像中没有代码通过绝对地址访问多出的两页。已观察。`0x3000` 的大小仍可能通过计算偏移覆盖这两页，此点未检查。
+虚拟化层有 8 个字面量池槽位保存 `0x221C8000`，其内存映射中有上述 `0x3000` 记录。它是关于该块映射最完整的一份材料。扫描 `hyp.img` 发现，在 `0x221C8000`–`0x221CAFFF` 范围内没有其他常量：每个槽位都恰好是 `0x221C8000`，有两处 `movk #0x221c` 指令，分别位于 `0x84`（基址 `0x221C8000`）和 `0x33874`（`0x221C873C`），均在该页之内。因此镜像中没有代码通过绝对地址访问多出的两页。已观察。`0x3000` 的大小仍可能通过计算偏移覆盖这两页，此点未检查。
 
 ### TME
 
@@ -117,7 +117,7 @@ SBL1 还通过 `0x14853EF4`–`0x14853F30` 处的小型读取函数直接读取 
 
 ### TrustZone 防回滚标志
 
-`qsee_sfs_is_anti_rollback_enabled` 对应的函数位于 `0x1C32D6E0`（字符串引用位于 `0x1C32D710`，源码行 `0x356`）。它向 `FUN_1C32516C` 请求一个单字节标志。`FUN_1C32516C` 在 TLS 块（`tpidrro_el0`）中保存每线程缓存：`+0x18AB` 为有效标记，`+0x18AC` 为值。缓存未命中时，它通过 `FUN_1C32E024` 和 `FUN_1C32DFB0` 获取接口 ID `0x91` 对应的对象。后者以 4 字节缓冲区形式传入该 ID，经由 `FUN_1C302990` 调用对象。标志本身来自 ID `0x91` 的对象，其提供者尚未确定。缓存与查找方式已观察；标志的来源尚未找到。反汇编见 `data/secure/tz_antirollback_path.txt`。
+`qsee_sfs_is_anti_rollback_enabled` 对应的函数位于 `0x1C32D6E0`（字符串引用位于 `0x1C32D710`，源码行 `0x356`）。它向 `FUN_1C32516C` 请求一个单字节标志。`FUN_1C32516C` 在 TLS 块中保存每线程缓存：它从 `tpidrro_el0+0x78` 读取一个指针，在该指针上 `+0x18AB` 为有效标记，`+0x18AC` 为值。缓存未命中时，它通过 `FUN_1C32E024` 和 `FUN_1C32DFB0` 获取接口 ID `0x91` 对应的对象。后者以 4 字节缓冲区形式传入该 ID，经由 `FUN_1C302990` 调用对象。标志本身来自 ID `0x91` 的对象，其提供者尚未确定。缓存与查找方式已观察；标志的来源尚未找到。反汇编见 `data/secure/tz_antirollback_path.txt`。
 
 对象 `0x91` 的请求路径现已映射（`data/secure/tz_object_0x91_requests.txt`）。只有两处代码请求它（`0x1C3251E0` 与 `0x1C325960`）。两者都调用 `FUN_1C32E024`，它先查找 `tpidrro_el0 + 0x28` 处的每线程缓存。未命中时，`FUN_1C32DFB0` 调用该线程的根对象：`tpidrro_el0 + 0x18` 处的函数指针与 `+0x20` 处的句柄，操作码为 `0x1001`，参数为 4 字节的 ID。因此 `0x91` 的提供者就是线程上下文在 `+0x18` 处安装的那个函数。这使上下文创建者与提供者成为同一个未决问题。已从反汇编观察得出。其他加载 `0x91` 的位置是日志行号。
 
@@ -155,7 +155,7 @@ TME 代码中没有直接构造 QFPROM 或 TrustZone MMIO 地址的常量（`lui
 
 上下文的创建者仍未找到。切入函数 `0x1C108368` 在 `tz.img` 内没有调用者：没有分支、指针或地址形成指令能到达它。它从镜像外部进入，因此 TrustZone 入口接收到的上下文由 `tz.img` 之外的代码提供（`data/secure/tz_switch_in_entry_scan.txt`）。依据观察得出。启动线程的块是 SBL1 在 TrustZone 入口处传入的 `x0`（见第 02 节“TrustZone 入口上下文及其加载器”）。接收该块的加载器路径经由 `MBRD` 驱动对象运行，尚未完整追踪（见第 02 节“TrustZone 入口上下文及其加载器”），因此 `+0x18` 调用对的来源仍未确定。对 `tz.img` 的静态扫描（包括搜索写入 `+0x18` 的函数地址，以及对象 ID `0x91`）没有找到把调用对（函数与句柄）写入线程块的存储指令（`data/secure/tz_object_0x91_provider_scan.txt`）。依据观察得出；扫描并不穷尽。切入例程（`0x1C304010`）检查 `+2` 处的半字为 `0x0002`。没有简单的常量存储写入该值，另有十处把 `0x20000` 装入无关字段。搜索记录见 `data/secure/tz_context_creation_search.txt`。
 
-线程块指针只在少数几处写入（`data/secure/tz_thread_block_setter.txt`）。设置函数 `0x1C1399F8` 是 `msr tpidrro_el0, x0`；它唯一的直接调用者是切入函数 `0x1C108368`，该函数从上下文对象的 `+0x48` 处读取块指针。块本身不在那里分配。切入函数的函数指针槽位未找到，因此它很可能是通过对象表间接调用的。另有两个设置上下文对象的函数（约 `0x1C07F848` 和 `0x1C096B08`）调用包装函数 `0x1C108320`。它们是创建者的候选，但未找到写入新块的 `+0x18` 调用函数或 `+0x20` 句柄的代码。因此创建者仍未确定。
+线程块指针只在少数几处写入（`data/secure/tz_thread_block_setter.txt`）。设置函数 `0x1C1399F8` 是 `msr tpidrro_el0, x0`；它唯一的直接调用者是切入函数 `0x1C108368`，该函数从上下文对象的 `+0x48` 处读取块指针。块本身不在那里分配。切入函数的函数指针槽位未找到，因此它很可能是通过对象表间接调用的。另有三处调用包装函数 `0x1C108320`：调用点 `0x1C07FA84`（位于约 `0x1C07F848` 的函数中）、`0x1C089F1C`（约 `0x1C089DA0`）和 `0x1C0970DC`（约 `0x1C096B08`）。它们是创建者的候选，但未找到写入新块的 `+0x18` 调用函数或 `+0x20` 句柄的代码。因此创建者仍未确定。
 
 `tz.img` 中的静态分发表有 61 行，每行 16 字节：8 字节的键 `(type << 16) | method` 和一个处理函数指针。类型标签 2 与切入例程中的线程上下文检查相符。对象 ID `0x91` 不是该表中的键，因此该对象在运行时才被解析。已观察。证据见 `data/secure/tz_dispatch_table.txt`。
 
@@ -165,7 +165,7 @@ UEFI 熔丝库中有一张命名区域表（`data/secure/uefi_fuse_region_table.
 
 `hyp.img` 是 Gunyah/QTEE 虚拟化资源管理器，而不是普通的虚拟化层。它的字符串列出了 RPC、VM 创建、memparcel 和 SMC 等待队列的源文件，以及本地和远程对象表（`localObjTable`、`remoteObjTable`、`LocalObj_retrieve`）。这使它成为 TrustZone 查找背后对象调用提供者的候选，但其中没有找到对象 `0x91` 的表项，因此尚未确认。它还包含 `PILSubsys_getArbFuseBank`，说明外设镜像（PIL）是按子系统的防回滚熔丝组进行检查的。如果该熔丝组是 `0x221C` 块中的某个软件熔丝范围，那么回滚状态就保存在那里；熔丝组与子系统的对应关系部分已解码（见下文）。依据字符串观察得出。证据见 `data/secure/hyp_rm_objects_and_arb_fuse.txt`。
 
-熔丝组表的交叉引用（`data/secure/hyp_arb_fuse_xref_scan.txt`）。该表是 `hyp.img` 中位于 `0x2007E8` 的静态数组，共 19 条记录。`0x260C4` 处的读取函数返回它。它在代码中的使用者只有 `0x26000` 和 `0x26060` 处的查找例程，以及 `PILSubsys_getArbFuseBank`（`0x3EB4C`）。`hyp.img` 中没有代码通过静态地址写入熔丝组字段（`+0xD8`），文件镜像中每个熔丝组字段都是零。`PILSubsys_getArbFuseBank` 在镜像集中没有任何引用。在对代码块强制反汇编后，Ghidra 的引用管理器也找不到指向其入口的引用。既没有直接调用，也没有绝对或相对指针，没有 `ADR`，也没有 `ADRP`+`ADD` 指向它，且该名称未出现在其他镜像中。因此它的调用者位于本文分析的镜像之外。熔丝组的值因此是在运行时由镜像集之外的路径设置，或来自尚未定位的来源。依据观察得出。证据见 `data/secure/hyp_arb_fuse_reference_check.txt` 与 `data/ghidra/arb_fuse_refs_check.java`。
+熔丝组表的交叉引用（`data/secure/hyp_arb_fuse_xref_scan.txt`）。该表是 `hyp.img` 中位于 `0x2007E8` 的静态数组，共 19 条记录。`0x260C4` 处的读取函数返回它。读取函数 `0x260C4` 的唯一调用位于 `0x3EB6C`，在 `PILSubsys_getArbFuseBank`（`0x3EB4C`）内部；`0x26000` 和 `0x26060` 处的例程是否直接读取该表尚未确定。`hyp.img` 中没有代码通过静态地址写入熔丝组字段（`+0xD8`），文件镜像中每个熔丝组字段都是零。`hyp.img` 中没有 `bl` 或 `b` 指令指向 `PILSubsys_getArbFuseBank`。在对代码块强制反汇编后，Ghidra 的引用管理器也找不到指向其入口的引用，且该名称未出现在其他镜像中。因此它的调用者位于本文分析的镜像之外。熔丝组的值因此是在运行时由镜像集之外的路径设置，或来自尚未定位的来源。依据观察得出。证据见 `data/secure/hyp_arb_fuse_reference_check.txt` 与 `data/ghidra/arb_fuse_refs_check.java`。
 
 TrustZone 的安全启动状态字有命名的位，由一个例程报告（位于 `0x1C3DFF30`，它调用状态服务并逐位记录）：第 0 位为 secboot 启用检查，第 1 位为安全硬件密钥已编程，第 2 位为调试禁用检查，第 3 位为防回滚检查，第 4 位为熔丝配置检查，第 5 位为 RPMB 已配置检查，第 6 位为镜像证书中的调试检查，第 8 位为 TZ 安全调试熔丝，第 9 位为 MSS 安全调试熔丝，第 10 位为 CP 安全调试熔丝，第 11 位为非安全安全调试熔丝。状态服务通过 `0x1C401090` 处的间接槽调用，该槽在文件中为零，运行时才填充，因此计算第 3 位的函数尚未确定。依据字符串和报告例程的代码观察得出。
 
@@ -192,10 +192,10 @@ PIL 防回滚熔丝查找已部分解码（`data/secure/hyp_pil_arb_fuse_table.t
 
 ## 复位原因路径
 
-复位原因保存在两个位置。设备树节点 `/soc/reboot_reason` 同时列出了这两处：
+复位原因保存在两个位置。设备树节点 `/soc/reboot_reason` 只引用一个 NVMEM 单元，即 SDAM 单元（phandle `0x1cf`）。IMEM 单元是一个独立节点，在基础设备树中不被该节点引用：
 
 1. PM8150 PMIC 上的 `sdam@b100/restart@48`，即 SDAM 字节 `0x48` 的第 1 到 7 位。SDAM 是 PMIC 上的一小块寄存器区，用于在复位之间保存数据。
-2. `msm-imem@146aa000/restart_reason@65c`，位于共享 IMEM `0x146AA000`。XBL 配置中有相同的基址（`SharedIMEMBaseAddr = 0x146AA000`）。
+2. `qcom,msm-imem@146aa000/restart_reason@65c`，位于共享 IMEM `0x146AA000`（`reg = <0x65c 4>`）。XBL 配置中有相同的基址（`SharedIMEMBaseAddr = 0x146AA000`）。
 
 第二份副本位于温复位后仍然保留的内存中。两个文件中都有记录，已验证。复位原因码的具体取值尚未解码。
 
@@ -209,7 +209,7 @@ PIL 防回滚熔丝查找已部分解码（`data/secure/hyp_pil_arb_fuse_table.t
 - SBL1 区域表中每条记录的含义。接收它的服务（协议 `0x3E`，即页表构建器）已在第 02 节确定。APPSBL 记录中的区域描述符是 `(base, size)` 对：`(0x80000000, 0x26E00000)` 与 `(0xA6E40000, 0x591C0000)`。若按 `(start, end)` 读取，第一对会在开始之前结束，因此 `(base, size)` 是唯一自洽的读法，第二对恰好结束于 32 位空间顶端。该读法基于算术推导，并非来自消费这些记录的代码。
 - 多出的两页是否通过计算偏移被使用。`hyp.img` 中没有指向那里的绝对地址。
 - 字节 `0x221C8119` 及其相邻字节，用于确认 `gpu_speed_bin` 字段，以及同一字节中还有哪些位。
-- `OEM_rot_pk_hash1_fuse_values` 的读取者，及其对应的 QFPROM 偏移。进一步搜索未在 `tz.img` 或 `devcfg.img` 中找到指向任何键名的指针、相对指针或 adrp 引用，因此键块是以非指针方式读取的（`data/secure/oem_key_pointer_search.txt`）。该名称是 `tz.img` 中 OEM 配置块（约 `0x13A295`–`0x13A7XX`，约 40 个键）中的一个键，`devcfg.img` 中也有它。通过 ADRP+ADD、ADR、绝对指针和重定位的搜索都未找到对它的代码引用（`data/secure/oem_rot_key_xref_search.txt`）。PK 哈希处理路径（`data/secure/tz_pkhash_path.txt`）本身不直接读取 QFPROM，其设备 ID 输入来自运行时对象的方法 6。读取者很可能是通过该对象对 OEM 块做的按名称查找。尚未找到。 OEM 熔丝写入函数 `FUN_1C0EE8E8` 已反编译（`data/secure/tz_oem_spare_fuse_writer_decomp.txt`）。它读取 `/ac/oem_regions_config`，检查权限值是否为 `0x12`，为每个区域构造掩码，并通过写入调用（`FUN_1C039168(1, ...)`）把掩码交给 TrustZone。它并不按名称读取 `OEM_rot_pk_hash1_fuse_values`，因此它是备用熔丝区域的写入者，而不是根密钥的读取者。对键名查找方式的进一步测试（CRC-32、FNV、DJB2、SDBM 哈希，以及偏移表）均为阴性（`data/secure/oem_key_lookup_hash_tests.txt`）。
+- `OEM_rot_pk_hash1_fuse_values` 的读取者，及其对应的 QFPROM 偏移。进一步搜索未在 `tz.img` 或 `devcfg.img` 中找到指向任何键名的指针、相对指针或 adrp 引用，因此键块是以非指针方式读取的（`data/secure/oem_key_pointer_search.txt`）。该名称是 `tz.img` 中 OEM 配置块中的一个键，位于文件偏移 `0x13A3AC`（VA `0x1C13C3AC`），周围的密钥块尚未界定；`devcfg.img` 中也有它。通过 ADRP+ADD、ADR、绝对指针和重定位的搜索都未找到对它的代码引用（`data/secure/oem_rot_key_xref_search.txt`）。PK 哈希处理路径（`data/secure/tz_pkhash_path.txt`）本身不直接读取 QFPROM，其设备 ID 输入来自运行时对象的方法 6。读取者很可能是通过该对象对 OEM 块做的按名称查找。尚未找到。 OEM 熔丝写入函数 `FUN_1C0EE8E8` 已反编译（`data/secure/tz_oem_spare_fuse_writer_decomp.txt`）。它读取 `/ac/oem_regions_config`，检查权限值是否为 `0x12`，为每个区域构造掩码，并通过写入调用（`FUN_1C039168(1, ...)`）把掩码交给 TrustZone。它并不按名称读取 `OEM_rot_pk_hash1_fuse_values`，因此它是备用熔丝区域的写入者，而不是根密钥的读取者。对键名查找方式的进一步测试（CRC-32、FNV、DJB2、SDBM 哈希，以及偏移表）均为阴性（`data/secure/oem_key_lookup_hash_tests.txt`）。
 - 对象 `0x91` 的提供者（即上文的防回滚标志对象），以及构建 TrustZone 线程上下文（`0x14680000` 入口块）的代码。两者在镜像中均未找到；搜索记录见 `data/secure/tz_object_0x91_and_oem_key_search.txt` 与 `data/secure/tz_context_creation_search.txt`。
 - 将 vbmeta 回滚索引与已存储值比较的代码。
 - `featenabler` 的显示块基址（`IDeviceRegionFinder` 的区域名称）、许可证签名校验，以及每个 `soc_hw_version` 对应的 SoC 名称。
