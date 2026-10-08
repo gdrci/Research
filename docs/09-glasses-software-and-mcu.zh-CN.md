@@ -58,7 +58,7 @@ init 脚本包含一个恢复分支。当 `vendor.meta.mcu_hal.stp_need_recovery
 - 值为 `0` 时，设备为 RT700 配置，设置 `persist.vendor.meta.enable_hyperoff=true` 与 `persist.vendor.meta.hyperoff.use_stp=true`。
 - 否则为 RT600 配置，不设置任何属性。
 
-因此眼镜有两种 NXP RT600 与 RT700 系列的变体（DSP 构建中包含 `nxp_rt600` 工具路径与 `MIMXRT798S`，即 RT700 型号；已观察），软件在启动时选择对应的行为。`dtbo.img` 中的覆盖层也按组件有所不同（第 04 节）。覆盖层中包含 `gpio_rt685_detect` 与 `rt700_bkup_disp_ctrl_high/low` 节点。`dtbo.img` 中未出现固件文件名。已观察；我尚未阅读编解码器驱动。
+因此眼镜有两种 NXP RT600 与 RT700 系列的变体（DSP 构建中包含 `nxp_rt600` 工具路径与 `MIMXRT798S`，即 RT700 型号；已观察），软件在启动时选择对应的行为。`dtbo.img` 中的覆盖层也按组件有所不同（第 04 节）。覆盖层中包含 `gpio_rt685_detect` 与 `rt700_bkup_disp_ctrl_high/low` 节点。`dtbo.img` 中未出现固件文件名。已观察；编解码器驱动尚未阅读。
 
 ## EMG 输入（腕带）
 
@@ -156,4 +156,4 @@ EMG 服务路径（在提取的文件树中观察到）：
 ## 构建相关信息
 
 - `odm/bin/hw_sync_timing.sh` 的头部注释写着 "HW Sync Timing Analysis Script for Blueshark"（为 Blueshark 编写的硬件同步时序分析脚本）。它解析 `dmesg` 中的 `gpio_mirror` 日志。因此 "Blueshark" 是镜像中出现的产品或项目名称。已观察。
-- 该脚本中的版权声明为 "Meta Platforms, Inc. and affiliates. Confidential and proprietary"。我只把它作为来源记录，没有进一步使用。
+- 该脚本中的版权声明为 "Meta Platforms, Inc. and affiliates. Confidential and proprietary"。仅作为来源记录，没有进一步使用。

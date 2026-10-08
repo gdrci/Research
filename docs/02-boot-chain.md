@@ -85,7 +85,7 @@ The first program, at offset 0, is the one with the odd machine value `EM_M32`. 
 
 The tests on its content (`data/analysis/isa_tests.txt`, `data/ghidra/xbl_primary_stub_thumb2_disasm.txt`) are:
 
-- **Per-word decode rate.** Hexagon 0.774, ARM32 0.769. This does not separate the two. The Hexagon control I used earlier (`adsp.b02`) is 62% zero words, so it is data, not code, and it is not a valid calibration. The rate does not separate the two ISAs.
+- **Per-word decode rate.** Hexagon 0.774, ARM32 0.769. This does not separate the two. The Hexagon control sample (`adsp.b02`) is 62% zero words, so it is data, not code, and it is not a valid calibration. The rate does not separate the two ISAs.
 - **Function-boundary instructions.** None of these appear: Hexagon `allocframe` and `dealloc_return`; ARM32 `push {..., lr}`, `pop {..., pc}`, `bx lr`; AArch64 `ret` (`0xD65F03C0`); RISC-V `ret` (`0x00008067`). Known AArch64 code has 24.6 `ret` per 1,000 words, so the test works.
 - **Ghidra disassembly from the start address.** Disassembled from offset 0 as Thumb-2, 669 instructions decode before the first error. Known AArch64 code decodes 2,000 instructions from its entry in the same method (count not in any data file; unverified). The Thumb-2 output is a repeating pattern (`stmia r4!,{r0}` followed by `adds r0,#0x3`, with values stepping towards `cmp r0,#0xf6`). That reads as a table of values, not code. Ghidra's ARM32 decode gives 0 instructions, and its Hexagon decode gives 1.
 - **Entropy.** The primary stub is about 4.9 bits per byte overall; its 4 KB blocks are between 0 and 6.0 bits per byte (median 5.7). The 6.4 to 7.1 figures in `data/analysis/thumb_arm_tests.txt` are for xbl.img offsets 0x20000 to 0xC0000, which lie in the TME and SBL1 programs.
@@ -171,7 +171,7 @@ Two functions read the table: `FUN_1C067548` and `FUN_1C067598`. Each takes an i
 Decoding the flag, with `FUN_14682D04` (`data/ghidra/tz_mmio_mapper_decompiled.txt`):
 
 - `0x9041` and `0x9061` differ in one bit, bit 5. That bit sets descriptor bit 7, `AP[2]`, which is the read-only bit at EL1. So `0x9041` maps the range read-write and `0x9061` maps it read-only.
-- Both set `UXN` and `PXN` (execute-never), inner-shareable, and the access flag. Both select MAIR attribute index 1. The attribute index is probably device memory, which is an inference.
+- Both set `UXN` (descriptor bit 54, from flag bit 6) and `PXN` (descriptor bit 53, from flag bit 12), inner-shareable, and the access flag. Both select MAIR attribute index 1. The attribute index is probably device memory, which is an inference.
 - The mapper treats the two base arguments as virtual and physical. Both are the same value here, so the mapping is an identity mapping, in line with the hypervisor's `va == pa` records.
 
 The count is in KB. The mapper checks `count & 3` (a multiple of 4 KB pages) and adds `count × 0x400` to compute the end address. So the QFPROM entry, `0x221C8000` with count 8, covers 8 KB in TrustZone. This is inferred from the mapper's arithmetic.
@@ -193,7 +193,7 @@ Evidence: `data/secure/sbl1_tz_entry_context_chain.txt`, `data/secure/sbl1_loade
 ## Stage 4: UEFI and ABL
 
 - `uefi.img`: ELF64 with `EM_ARM`, entry `0xA7000000`, one `PT_LOAD`. The strings cover boot-device detection (`UFS`, `eMMC`, `NAND`, `NVME`, `SPI`, `Flashless`), SMP bring-up (`AuxBootStrap_%d`, `Continue booting UEFI on Core %d`), and the platform configuration (`uefiplatLA.cfg`, `OsTypeString`). It also names `qsee/mink/oem/config/aurora/oem_config.xml`, a MINK configuration for this SoC, and `data.load.elf`. Observed.
-- `abl.img`: ELF32 with `EM_ARM`, entry `0x9FA00000`. It has almost no readable strings. Its ISA and role are not established. The condition-code and Thumb tests I ran on it were inconclusive, and the same condition-code test fails on the known ARM32 modem binary, so I do not rely on it.
+- `abl.img`: ELF32 with `EM_ARM`, entry `0x9FA00000`. It has almost no readable strings. Its ISA and role are not established. The condition-code and Thumb tests run on it were inconclusive, and the same condition-code test fails on the known ARM32 modem binary, so it is not relied on.
 - `imagefv.img`: ELF32 ARM, 20 KB, likely a firmware volume. Unverified.
 
 The APPSBL image descriptor in SBL1 (type 2, name `APPSBL`) points to a region from `0xA6E40000` to the top of the 32-bit space (`0xA6E40000 + 0x591C0000 = 0x100000000`). `uefi.img` loads at `0xA7000000`, inside that region, and `abl.img` loads at `0x9FA00000`, below it. So the APPSBL-role image is `uefi.img`. The field meanings are inferred from the arithmetic, and the record is in `data/ghidra/sbl1_appsbl_record.txt`.

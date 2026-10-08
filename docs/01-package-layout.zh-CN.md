@@ -43,7 +43,7 @@ post-timestamp=1780360088
 
 **`xbl.img` 是一个容器。** 它首尾相接地包含三个 ELF 程序：偏移 0 处的存根，`0x1C2F4` 处的 RISC-V TME 固件，以及 `0x4AFC4` 处的 AArch64 SBL1（第 02 节）。外层头部只描述存根。
 
-**XBL 外层头部的机器字段不寻常。** 偏移 0 处的存根是 32 位 ELF，其 `e_machine` 为 1（`EM_M32`）。`xbl_config.img` 是 64 位 ELF，同样的值。标准的 ARM、AArch64 和 Hexagon 都使用其他值。加载器可能并不读取这个字段，因此这很可能是高通的约定，但我还没有在另一份高通 XBL 上核对过。
+**XBL 外层头部的机器字段不寻常。** 偏移 0 处的存根是 32 位 ELF，其 `e_machine` 为 1（`EM_M32`）。`xbl_config.img` 是 64 位 ELF，同样的值。标准的 ARM、AArch64 和 Hexagon 都使用其他值。加载器可能并不读取这个字段，因此这很可能是高通的约定，但尚未在另一份高通 XBL 上核对。
 
 **`uefi.img` 的 64 位 ELF 头部中 `e_machine = EM_ARM`（40）。**ARM64 镜像通常使用 `EM_AARCH64`（183）。加载器可能忽略这个字段，也可能该镜像实际以 ARM32 代码运行。此点未定。
 
@@ -51,7 +51,7 @@ post-timestamp=1780360088
 
 **远程处理器镜像不全是 ELF。** `dsp.img` 是 ext4，`modem.img` 和 `bluetooth.img` 是 FAT。由 `vendor_ramdisk` 中的 fstab（`fstab.greatwhite`）挂载它们。见第 05 节。
 
-**镜像集合中没有 PBL。** 第一级引导程序位于 SoC 的掩膜 ROM 中，所以 OTA 不包含它。这是高通的标准做法，但我还没有在本设备上验证。
+**镜像集合中没有 PBL。** 第一级引导程序位于 SoC 的掩膜 ROM 中，所以 OTA 不包含它。这是高通的标准做法，但尚未在本设备上验证。
 
 ## 值得注意的数值
 

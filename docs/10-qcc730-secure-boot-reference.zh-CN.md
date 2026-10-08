@@ -9,9 +9,9 @@
 | 来源 | 版本 | 用途 |
 |---|---|---|
 | Qualcomm，*Enable Secure Boot on QCC730 Application Note*，80-Y8730-8，rev AB，2026 年 2 月 10 日更新。四个页面：*OTP format and configuration*、*SecImage configuration file*、*Secure boot key features on QCC730*、*Examples for secure boot configuration* | AB | 下文第 1 至 4 节 |
-| OP-TEE 文档，*Hoya architecture*（`architecture/platforms/qualcomm/hoya.rst`），由用户提供 | 当前 | 第 5 节 |
+| OP-TEE 文档，*Hoya architecture*（`architecture/platforms/qualcomm/hoya.rst`），由我保存 | 当前 | 第 5 节 |
 
-Qualcomm 页面由用户以保存的 HTML 形式提供。其图片位于 `docs/images/qcc730/`。每张图片都是 WebP 格式（保存时文件名为 `.png`，但实际是 WebP）。
+Qualcomm 页面由我以 HTML 形式保存。其图片位于 `docs/images/qcc730/`。每张图片都是 WebP 格式（保存时文件名为 `.png`，但实际是 WebP）。
 
 ## 1. OTP 格式与配置
 
@@ -149,7 +149,7 @@ python nvm_programmer.py -n otp -k PK_HASH=<根证书的 SHA-256> -s ch347
 
 **提升防回滚版本。** 示例将 SBL 的 `sw_id` 设为 `0x0000000100000000`，APP 设为 `0x0000000100000001`，两个镜像的软件版本均为 1。示例只展示了 SecImage 一侧。对应的 OTP 写入不在所提供的资料中。
 
-## 5. OP-TEE 文档：Hoya 架构（由用户提供）
+## 5. OP-TEE 文档：Hoya 架构（由我保存）
 
 Hoya 系列面向 Qualcomm 应用处理器，目前包括 `kodiak` 和 `lemans`。在通用 Qualcomm 平台功能之上，它启用了 8 核 Cortex-A（ARMv8）配置和 GICv3 中断控制器（`CFG_ARM_GICV3`）。
 

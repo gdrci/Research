@@ -49,7 +49,7 @@ The decompiled chain is `FUN_1C03ACAC`, which takes a lock, calls `FUN_146816F4`
 What the flags select, from `FUN_14682D04`:
 
 - `0x9041` maps the range read-write at EL1. `0x9061` differs only in bit 5, which sets `AP[2]` (the read-only bit). So `0x9061` maps it read-only.
-- Both set execute-never for unprivileged code (`UXN`; `PXN` is not set), inner-shareable and the access flag, and both select MAIR attribute index 1. Index 1 is probably the device memory type. That is inferred.
+- Both set execute-never bits: `UXN` (descriptor bit 54, from flag bit 6) and `PXN` (descriptor bit 53, from flag bit 12, which both flags have set). Both set inner-shareable and the access flag, and both select MAIR attribute index 1. Index 1 is probably the device memory type. That is inferred.
 
 The count's unit is KB. The mapper checks that the count is a multiple of four (whole 4 KB pages) and computes the end address as `base + count × 0x400`. So the QFPROM entry maps 8 KB in TrustZone. This is inferred from the mapper's arithmetic.
 

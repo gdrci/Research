@@ -85,7 +85,7 @@ QFPROM 引用（见第 06 节）位于一个函数内，在 Ghidra 中命名为 
 
 对其内容进行的测试（`data/analysis/isa_tests.txt`、`data/ghidra/xbl_primary_stub_thumb2_disasm.txt`）：
 
-- **逐字解码率。** Hexagon 为 0.774，ARM32 为 0.769，无法区分。我之前用作 Hexagon 对照的 `adsp.b02` 有 62% 的字为零，是数据而不是代码，因此它不是有效的对照。该解码率无法区分两种指令集。
+- **逐字解码率。** Hexagon 为 0.774，ARM32 为 0.769，无法区分。用作 Hexagon 对照的样本 `adsp.b02` 有 62% 的字为零，是数据而不是代码，因此它不是有效的对照。该解码率无法区分两种指令集。
 - **函数边界指令。** 以下均未出现：Hexagon 的 `allocframe` 与 `dealloc_return`；ARM32 的 `push {..., lr}`、`pop {..., pc}`、`bx lr`；AArch64 的 `ret`（`0xD65F03C0`）；RISC-V 的 `ret`（`0x00008067`）。已知 AArch64 代码每千个字有 24.6 个 `ret`，说明测试有效。
 - **从起始地址开始的 Ghidra 反汇编。** 从偏移 0 开始按 Thumb-2 反汇编，在第一个错误之前能解码 669 条指令。在同一方法下，已知 AArch64 代码从入口可解码 2,000 条指令（数量未在任何数据文件中；未验证）。Thumb-2 的输出是一个重复模式（`stmia r4!,{r0}` 后接 `adds r0,#0x3`，数值逐步趋向 `cmp r0,#0xf6`）。这更像一张数值表，而不是代码。Ghidra 的 ARM32 解码为 0 条指令，Hexagon 解码为 1 条。
 - **熵。** 主存根整体约为每字节 4.9 比特；其 4 KB 块在每字节 0 至 6.0 比特之间（中位数 5.7）。`data/analysis/thumb_arm_tests.txt` 中的 6.4 至 7.1 比特数值针对 xbl.img 偏移 0x20000 至 0xC0000，这些位于 TME 与 SBL1 程序之中。
@@ -171,7 +171,7 @@ TrustZone 在 `0x1C141C40` 处有一张表，由五个 8 字节条目组成。�
 用 `FUN_14682D04` 解码标志（`data/ghidra/tz_mmio_mapper_decompiled.txt`）：
 
 - `0x9041` 与 `0x9061` 只相差一位，即第 5 位。该位设置描述符的第 7 位，即 `AP[2]`，也就是 EL1 的只读位。因此 `0x9041` 以读写方式映射该范围，`0x9061` 以只读方式映射。
-- 两者都设置 `UXN` 和 `PXN`（禁止执行）、内部共享，以及访问标志。两者都选择 MAIR 属性索引 1。该属性索引很可能对应设备内存，这是推断。
+- 两者都设置 `UXN`（描述符第 54 位，来自标志第 6 位）与 `PXN`（描述符第 53 位，来自标志第 12 位）两个禁止执行位，并设置内部共享，以及访问标志。两者都选择 MAIR 属性索引 1。该属性索引很可能对应设备内存，这是推断。
 - 映射器把两个基址参数当作虚拟地址和物理地址。这里两者相同，因此是恒等映射，与虚拟化层中 `va == pa` 的记录一致。
 
 计数以 KB 为单位。映射器检查 `count & 3`（即 4 KB 页的整数倍），并把 `count × 0x400` 加到起始地址上得到结束地址。因此 QFPROM 条目 `0x221C8000` 计数为 8，在 TrustZone 中覆盖 8 KB。这是从映射器的运算推断出来的。
@@ -193,7 +193,7 @@ MBN 加载器的方法 `FUN_1482EE9C` 验证镜像，调用加载器实例 `+0x2
 ## 阶段 4：UEFI 与 ABL
 
 - `uefi.img`：ELF64，`EM_ARM`，入口 `0xA7000000`，1 个 `PT_LOAD`。字符串涵盖启动设备检测（`UFS`、`eMMC`、`NAND`、`NVME`、`SPI`、`Flashless`）、多核启动（`AuxBootStrap_%d`、`Continue booting UEFI on Core %d`），以及平台配置（`uefiplatLA.cfg`、`OsTypeString`）。它还提到 `qsee/mink/oem/config/aurora/oem_config.xml`（本 SoC 的 MINK 配置）和 `data.load.elf`。已观察。
-- `abl.img`：ELF32，`EM_ARM`，入口 `0x9FA00000`。几乎没有可读字符串。其指令集与作用未确定。我对它进行的条件码与 Thumb 测试都没有定论；在已知的 ARM32 基带二进制上，同样的条件码测试也失败，因此我不依赖它。
+- `abl.img`：ELF32，`EM_ARM`，入口 `0x9FA00000`。几乎没有可读字符串。其指令集与作用未确定。对它进行的条件码与 Thumb 测试都没有定论；在已知的 ARM32 基带二进制上，同样的条件码测试也失败，因此不依赖它。
 - `imagefv.img`：ELF32 ARM，20 KB，很可能是固件卷。未验证。
 
 SBL1 中的 APPSBL 镜像描述符（类型 2，名称 `APPSBL`）指向从 `0xA6E40000` 到 32 位空间顶端的区域（`0xA6E40000 + 0x591C0000 = 0x100000000`）。`uefi.img` 加载在 `0xA7000000`，位于该区域之内；`abl.img` 加载在 `0x9FA00000`，位于其下方。因此 APPSBL 角色的镜像是 `uefi.img`。字段含义是根据算术推断的，记录见 `data/ghidra/sbl1_appsbl_record.txt`。

@@ -203,7 +203,7 @@ Component groups in the overlays, with how many of the 18 enable them:
 | Power and battery | `metabattery`, `mcu_thermistor`, `hw-comparator-sensor` | 18 |
 | Other Meta | `amem`, `hyperoff@0` (11), `reboot_reason`, `ramoops@a6c00000` | varies |
 
-The LCoS names and the `meta,lcos-i2c` compatible strings point to LCoS (liquid crystal on silicon) microdisplay drivers. Which driver runs on which panel, and which one the shipping device uses, is not settled. The `ptn5150@1d` node (`nxp,ptn5150`), the `st60a3g1` device and `qcom,dp_display` are present but disabled in all 18 overlays. `ads1115@49` is present in 18 overlays but disabled in all 18. I have not identified what they are.
+The LCoS names and the `meta,lcos-i2c` compatible strings point to LCoS (liquid crystal on silicon) microdisplay drivers. Which driver runs on which panel, and which one the shipping device uses, is not settled. The `ptn5150@1d` node (`nxp,ptn5150`), the `st60a3g1` device and `qcom,dp_display` are present but disabled in all 18 overlays. `ads1115@49` is present in 18 overlays but disabled in all 18. What they are has not been identified.
 
 The `mfi343s00176` node with `meta,mfi-i2c` is the MFi authentication part. Its role in accessory identification is inferred from the name. Unverified.
 

@@ -43,7 +43,7 @@ post-timestamp=1780360088
 
 **`xbl.img` is a container.** It holds three ELF programs back to back: a stub at offset 0, a RISC-V TME firmware at `0x1C2F4`, and an AArch64 SBL1 at `0x4AFC4` (section 02). The outer header describes only the stub.
 
-**XBL's outer header has an unusual machine field.** The stub at offset 0 is a 32-bit ELF whose `e_machine` is 1 (`EM_M32`). `xbl_config.img` is a 64-bit ELF with the same value. Standard ARM, AArch64 and Hexagon all use other values. The field is not what the loader reads, so this is probably a Qualcomm convention, but I have not confirmed it against another Qualcomm XBL.
+**XBL's outer header has an unusual machine field.** The stub at offset 0 is a 32-bit ELF whose `e_machine` is 1 (`EM_M32`). `xbl_config.img` is a 64-bit ELF with the same value. Standard ARM, AArch64 and Hexagon all use other values. The field is not what the loader reads, so this is probably a Qualcomm convention, but this has not been confirmed against another Qualcomm XBL.
 
 **`uefi.img` has a 64-bit ELF header with `e_machine = EM_ARM` (40).** ARM64 images normally use `EM_AARCH64` (183). The loader may ignore the field, or the image may run as ARM32 code. This is open.
 
@@ -51,7 +51,7 @@ post-timestamp=1780360088
 
 **Remote-processor images are not ELF-only.** `dsp.img` is ext4 and `modem.img` and `bluetooth.img` are FAT. The fstab in `vendor_ramdisk` (`fstab.greatwhite`) mounts them. See section 05.
 
-**No PBL in the image set.** The primary boot loader lives in the SoC's mask ROM, so the OTA does not contain it. This is the standard Qualcomm arrangement; I have not verified it on this device.
+**No PBL in the image set.** The primary boot loader lives in the SoC's mask ROM, so the OTA does not contain it. This is the standard Qualcomm arrangement; It has not been verified on this device.
 
 ## Noteworthy values
 

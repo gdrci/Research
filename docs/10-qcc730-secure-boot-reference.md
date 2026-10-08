@@ -9,9 +9,9 @@ This document holds external reference material from Qualcomm and OP-TEE. It is 
 | Source | Revision | Used for |
 |---|---|---|
 | Qualcomm, *Enable Secure Boot on QCC730 Application Note*, 80-Y8730-8, rev AB, updated Feb 10, 2026. Four pages: *OTP format and configuration*, *SecImage configuration file*, *Secure boot key features on QCC730*, *Examples for secure boot configuration* | AB | Sections 1 to 4 below |
-| OP-TEE documentation, *Hoya architecture* (`architecture/platforms/qualcomm/hoya.rst`), supplied by the user | current | Section 5 |
+| OP-TEE documentation, *Hoya architecture* (`architecture/platforms/qualcomm/hoya.rst`), saved by me | current | Section 5 |
 
-The Qualcomm pages were supplied by the user as saved HTML. Their figures are in `docs/images/qcc730/`. Each figure is a WebP image (the saved files were named `.png` but are WebP).
+I saved the Qualcomm pages as HTML. Their figures are in `docs/images/qcc730/`. Each figure is a WebP image (the saved files were named `.png` but are WebP).
 
 ## 1. OTP format and configuration
 
@@ -149,7 +149,7 @@ The example SHA-256 of `qpsa_rootca.cer` is `de5480d49ed1cbe0813755f06324fce56e3
 
 **Raise the anti-rollback version.** The example sets `sw_id` to `0x0000000100000000` for SBL and `0x0000000100000001` for APP, so both images carry software version 1. The example shows only the SecImage side. The matching OTP write is not in the supplied material.
 
-## 5. OP-TEE documentation: Hoya architecture (supplied by the user)
+## 5. OP-TEE documentation: Hoya architecture (saved by me)
 
 The Hoya family targets Qualcomm application processors, currently `kodiak` and `lemans`. On top of the common Qualcomm platform features it enables an 8-core Cortex-A (ARMv8) configuration with a GICv3 interrupt controller (`CFG_ARM_GICV3`).
 

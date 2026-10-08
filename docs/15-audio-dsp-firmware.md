@@ -57,7 +57,6 @@ The function names group into the features below. The counts are from the symbol
 - The speaker model is in the `meta::audio` and `facebook::xr::audio` C++ framework, as the `speaker_system_id` template family and its parameter tags.
 - The parameter names of the speaker model are present: `Bdt`, `Adt`, `A1`, `A2`, `Zeta`, `F0`, `Reb`, `SigMax`, `AlphaMean`, `AlphaVar`, `OptMu`, `Lambda`, `DownsamplingRatio`, `TriggerHoldFrames`, `ReleaseHoldFrames`, `WaterIngressDetected`, `RunAlgoEnabled`, `AccumulatedEnergyThreshold`, `StabilityConstraintMode`, `TempCompEnabled`, `TempRef`, `TempCoeffAlpha`, `Rtref`, `TempTarget`, and the fit coefficients `RebFitCoeffs`, `BlFitCoeffs` (the model also has `BlCoeff` and `BlLimits`), `A1FitCoeffs`, `A2FitCoeffs`, `F0FitCoeffs`, `ZetaFitCoeffs`. Observed.
 - These parameters describe an excursion-limiting speaker protection model, with temperature compensation and a water-ingress detection flag. Inferred from the names. The `SpeakerSystemID` template and the `Mechanical` constant suggest the model is fitted per speaker. Inferred.
-- `speaker_system_id` also appears as the parameter tag family. Observed.
 
 ### Speaker amplifier I/O
 

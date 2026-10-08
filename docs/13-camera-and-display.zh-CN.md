@@ -51,7 +51,9 @@
 - 时钟门控：摄像头时钟控制器 `camcc` 的 `cam_cc_*` GDSC 节点（titan 顶层、IPE 0、BPS、IFE 0 至 2）。
 - 传感器引脚：`cam_sensor_mclk0_active` 至 `mclk7`，以及 `cam_sensor_active_rst0` 与 `rst1`，各有 suspend 状态。已观察。
 
-第 04 节列出了同一转储中的传感器与 EEPROM 节点（`qcom,cam-sensor0`、`qcom,eeprom0`、`oculus,cam_fsync` 与 `qcom,cam-res-mgr`）。摄像头内核驱动 `camera.ko`（摄像头请求管理器）在第 04 节。图像协处理器固件 `CAMERA_ICP.mbn` 在第 08 节。
+第 04 节列出了同一转储中的传感器与 EEPROM 节点（`qcom,cam-sensor0`、`qcom,eeprom0`、`oculus,cam_fsync` 与 `qcom,cam-res-mgr`）。
+
+摄像头内核驱动 `camera.ko`（摄像头请求管理器）在第 04 节。图像协处理器固件 `CAMERA_ICP.mbn` 在第 08 节。
 
 ## 显示
 

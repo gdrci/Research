@@ -203,7 +203,7 @@ androidboot.hibernation_resume_device=259:61
 | 电源与电池 | `metabattery`、`mcu_thermistor`、`hw-comparator-sensor` | 18 |
 | 其他 Meta 节点 | `amem`、`hyperoff@0`（11）、`reboot_reason`、`ramoops@a6c00000` | 各不相同 |
 
-LCoS 的名称和 `meta,lcos-i2c` 兼容字符串指向 LCoS（硅基液晶）微显示驱动。哪个驱动驱动哪块面板，以及出厂设备实际使用哪一个，尚未确定。`ptn5150@1d` 节点（`nxp,ptn5150`）、`st60a3g1` 器件以及 `qcom,dp_display` 在全部 18 个覆盖层中都存在但处于禁用状态。`ads1115@49` 在 18 个覆盖层中存在，但在全部 18 个中处于禁用状态。我尚未确定它们的用途。
+LCoS 的名称和 `meta,lcos-i2c` 兼容字符串指向 LCoS（硅基液晶）微显示驱动。哪个驱动驱动哪块面板，以及出厂设备实际使用哪一个，尚未确定。`ptn5150@1d` 节点（`nxp,ptn5150`）、`st60a3g1` 器件以及 `qcom,dp_display` 在全部 18 个覆盖层中都存在但处于禁用状态。`ads1115@49` 在 18 个覆盖层中存在，但在全部 18 个中处于禁用状态。它们的用途尚未确定。
 
 `mfi343s00176` 节点（`meta,mfi-i2c`）是 MFi 认证芯片。它在配件识别中的作用是根据名称推断的，未验证。
 
