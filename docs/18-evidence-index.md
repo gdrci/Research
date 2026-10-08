@@ -133,6 +133,8 @@ Counts are from the repository at the time of writing: 145 files, 2,862,270 byte
 | `data/secure/tz_oem_spare_fuse_writer_decomp.txt` | 128 | 06 | file name | tz.img OEM spare-fuse writer (reads oem_regions_config); not the root-key reader |
 | `data/secure/oem_key_lookup_hash_tests.txt` | 7 | 06 | file name | Hash and offset lookup tests for the OEM root-key name in tz.img and devcfg.img; negative |
 | `data/secure/oem_key_block_ref_query.txt` | 9 | 06 | file name | Ghidra reference query on the OEM key block; the hits are misdisassembled data |
+| `data/ghidra/arb_fuse_refs_check.java` | 28 | 06 | file name | Ghidra headless script for the arb-fuse reference check (base 0x100000) |
+| `data/ghidra/tz_context_decomp.java` | 24 | 06 | file name | Ghidra headless script that decompiles the tz.img context functions |
 | `data/ghidra/sbl1_boot_image_driver_decompiled.txt` | 410 | 02 | file name | Ghidra decompile of the SBL1 boot image driver FUN_14825980 |
 | `data/secure/keymaster_rollback_strings.txt` | 1,061 | 03 | file name | keymaster.img (ELF, 368,640 bytes), strings related to rollback, version, boot state an... |
 | `data/secure/object_0x91_firmware_scan.txt` | 638 | 02, 03, 06 | directory | Firmware-wide scan for table rows keyed by object ID 0x91 (low 32 bits 0x91, high 32 bi... |
