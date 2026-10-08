@@ -49,7 +49,7 @@ This repository describes how the system is built and how it starts. It is not v
 
 ## License
 
-The documentation (`docs/` and the README files) is licensed under [CC BY 4.0](LICENSE). Copyright (c) 2026 gdrci. The contents of `data/` are excerpts and extractions included as evidence and are not covered by this license. Their rights remain with their owners. See the notice at the top of [LICENSE](LICENSE). This repository is not affiliated with Meta or any other vendor named in it.
+The original documentation (the README files and `docs/`, except section 10 and `docs/images/`) is licensed under [CC BY 4.0](LICENSE). Copyright (c) 2026 gdrci. Excluded from the license, and still owned by their rights holders: the contents of `data/` (firmware excerpts included as evidence), the figures in `docs/images/`, and section 10 (built from Qualcomm and OP-TEE material). Credits, the third-party notices and the owners of each excluded item are in [NOTICE.md](NOTICE.md). This repository is not affiliated with Meta or any other vendor named in it.
 
 ## Evidence labels
 

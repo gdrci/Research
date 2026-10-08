@@ -2,7 +2,7 @@
 
 [中文版](10-qcc730-secure-boot-reference.zh-CN.md)
 
-This document holds external reference material from Qualcomm and OP-TEE. It is not about the `greatwhite` device. The QCC730 is a different Qualcomm part (M4F, with RRAM and external flash). Its OTP layout and signing format are the best documented example of how Qualcomm encodes secure-boot and anti-rollback state. Use them as a model to test against the `greatwhite` evidence, not as a description of it.
+This document holds external reference material from Qualcomm and OP-TEE. It is not covered by the repository's CC BY 4.0 license; see NOTICE.md. It is not about the `greatwhite` device. The QCC730 is a different Qualcomm part (M4F, with RRAM and external flash). Its OTP layout and signing format are the best documented example of how Qualcomm encodes secure-boot and anti-rollback state. Use them as a model to test against the `greatwhite` evidence, not as a description of it.
 
 ## Sources
 

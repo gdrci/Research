@@ -1,9 +1,14 @@
 Copyright (c) 2026 gdrci
 
-This license covers the documentation in this repository: the files under docs/ and the README files, in English and Simplified Chinese.
+This license covers the original documentation in this repository: the README files and the files under docs/, in English and Simplified Chinese, except as listed below.
 It is the Creative Commons Attribution 4.0 International license (CC BY 4.0), reproduced below.
 
-It does not cover the contents of data/. Those files are excerpts and extractions (strings, symbol tables, disassembly and decompiler output, hex dumps, and metadata) taken from the firmware being documented and from third-party material. They are included only as evidence for the documentation. No license is granted for them here, and the rights in that material remain with their respective owners.
+It does not cover the following, which are excluded from the grant and remain the property of their owners. See NOTICE.md for details:
+- the contents of data/, which are excerpts and extractions included as evidence;
+- the images in docs/images/, which are figures from Qualcomm's application note;
+- section 10 of the documentation (docs/10-qcc730-secure-boot-reference.md and its Chinese counterpart), which is built from Qualcomm and OP-TEE material.
+
+Those files are excerpts and extractions (strings, symbol tables, disassembly and decompiler output, hex dumps, and metadata) taken from the firmware being documented and from third-party material. They are included only as evidence for the documentation. No license is granted for them here, and the rights in that material remain with their respective owners.
 
 This repository is an independent analysis. It is not affiliated with, sponsored by, or endorsed by Meta Platforms, Inc., Qualcomm, or any other vendor named in it.
 

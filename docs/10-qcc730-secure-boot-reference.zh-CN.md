@@ -2,7 +2,7 @@
 
 [English](10-qcc730-secure-boot-reference.md)
 
-本文档收录 Qualcomm 和 OP-TEE 的外部参考资料。它不描述 `greatwhite` 设备。QCC730 是另一款高通芯片（M4F，配 RRAM 与外部闪存）。它的 OTP 布局和签名格式，是高通如何编码安全启动与防回滚状态的最完整的公开范例。这些内容可作为与 `greatwhite` 证据对照的模型，而不是对 `greatwhite` 的描述。
+本文档收录 Qualcomm 和 OP-TEE 的外部参考资料。本文不适用本仓库的 CC BY 4.0 许可，见 NOTICE.md。它不描述 `greatwhite` 设备。QCC730 是另一款高通芯片（M4F，配 RRAM 与外部闪存）。它的 OTP 布局和签名格式，是高通如何编码安全启动与防回滚状态的最完整的公开范例。这些内容可作为与 `greatwhite` 证据对照的模型，而不是对 `greatwhite` 的描述。
 
 ## 来源
 
