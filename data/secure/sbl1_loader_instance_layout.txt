@@ -1,0 +1,24 @@
+# SBL1 MBN loader instance (sbl1.elf; Ghidra decompiles of FUN_1482EB30, FUN_1482EE9C, FUN_1482EFB8, FUN_1482F4AC, FUN_1482F50C-area helpers, and the boot image driver FUN_14825980)
+
+CORRECTION to the earlier notes (data/secure/sbl1_loader_ctx_slot.txt and section 02 text): the object at loader +0x28 is NOT a transfer service. The earlier reading that +0x28 was config entry 1 of the config object was wrong; the 0x48 and 0x38 blocks are separate objects.
+
+Loader instance (0x38 bytes; allocated through the allocator, service 0x11 object at 0x148B5B60, method [0] with size 0x38; FUN_1482EB30):
+  +0x08  qword  arg to the service 0x0C object (FUN_1482EB30)
+  +0x10  qword  value from FUN_1482EFB8 (the 'MBRD' driver object, see below); the verify path passes this to FUN_1482F4AC
+  +0x18  qword  output of the service 0x0C method
+  +0x20  qword  service 0x0C object; its method [4] is called with +0x18 (FUN_1482EE9C)
+  +0x28  qword  service 0x11 object = the allocator (0x148B5B60)
+  The release step in FUN_1482EE9C calls method [3] of the allocator (0x1482AAA8), the free routine, with the instance. Verified: the allocator's method table at 0x148B5B60 is [0x1482AA30, 0x1482AA6C, 0x1482AAE4, 0x1482AAA8, 0x1482AB44, 0x1482ACEC, 0x1482AE8C, 0x148D70C0].
+
+Driver object 'MBRD' (0x68 bytes, magic 0x4D424452 at +0x00; FUN_1482EFB8, boot_mbn_driver.c):
+  +0x08 config object (param_1)
+  +0x10 allocator (service 0x11)
+  +0x18 service 0x0A object (config id 10 object, method [2] gives +0x20)
+  +0x20 output of service 0x0A method [2]
+  +0x28 service 0x0C object
+  +0x38 service 0x0D object
+  FUN_1482F4AC calls method [3] of the object at +0x18 of this structure and then the method at +0x10 offset. The register use in that function is not clear from the decompile (the base is passed in x19 without a clear setter), so which object makes the final call into TrustZone is not decided here.
+
+Config id 10: FUN_14825980 (boot image driver) sets it per record to a 0x48-byte object it allocates (FUN_1482A028 installs it). The vtable of that object is not yet read.
+
+Open: the object whose method makes the final transfer to the image entry (candidate: the id-10 object, or method [3] of service 0x0A) and its vtable.

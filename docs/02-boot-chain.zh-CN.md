@@ -186,7 +186,7 @@ TrustZone 在 `0x1C141C40` 处有一张表，由五个 16 字节条目组成。�
 
 TrustZone 入口（`0x14680000`）在 `x0` 中接收每线程上下文，并将其写入 `tpidr_el0`，因此第一个参数就是启动线程的块。SBL1 通过加载器对象加载 TrustZone。每镜像加载器上下文与启动镜像驱动已在 `data/ghidra/sbl1_boot_image_driver_decompiled.txt` 中解码。驱动通过服务 `0x0E`（ELF 加载器构造函数，位于 `0x14830594`）解析加载器工厂，通过服务 `0x11` 解析分配器。加载器类型由配置 `0x49` 选择：0 选择 MBN 加载器（`FUN_1482EEF4`），1 选择 ELF 加载器。
 
-MBN 加载器的传输方法 `FUN_1482EE9C` 调用上下文 `+0x28` 处对象的 `+0x18` 方法。该槽位是配置对象的第 1 项（各项为 24 字节，从 `+0x10` 开始）。位于 `0x148B6298`（步长 `0x98`）的每镜像记录表为每条记录提供的该值都是零，其 `+0x90` 处的标志也是零（`data/secure/sbl1_image_record_table.txt`）。因此，被调用的传输对象并非由静态表提供。它在运行时由哪段代码写入尚未确定，这是 TrustZone 上下文的未决问题。
+MBN 加载器的方法 `FUN_1482EE9C` 验证镜像，调用加载器实例 `+0x20` 处服务对象的方法 `+0x20`，再运行 `FUN_1482F4AC`，然后通过分配器释放加载器实例（方法 `+0x18`，即释放例程），该分配器位于实例的 `+0x28` 处。先前将 `+0x28` 视为传输对象的说法有误。进入镜像的最终调用由 `FUN_1482F4AC` 经由 `MBRD` 驱动对象发出（`0x68` 字节，魔数 `0x4D424452`，由 `FUN_1482EFB8` 构造）。究竟哪个对象发出该最终调用仍未确定。每镜像记录表（`data/secure/sbl1_image_record_table.txt`）的每条记录的值字段都是零。布局见 `data/secure/sbl1_loader_instance_layout.txt`。
 
 证据：`data/secure/sbl1_tz_entry_context_chain.txt`、`data/secure/sbl1_loader_context_chain.txt`、`data/secure/sbl1_loader_ctx_slot.txt`、`data/secure/tz_switch_in_entry_scan.txt`。
 
