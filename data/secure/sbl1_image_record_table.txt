@@ -1,0 +1,17 @@
+# SBL1 per-image record table at 0x148B6298 (sbl1.elf file offset 0x902A0 .. 0x90CB0; Ghidra decompile of FUN_14825980 gives the loop)
+
+Record layout (from the loop: a record spans puVar10-9 .. puVar10+9, the loop steps puVar10 by 0x13 qwords):
+  R+0x00  int32  0x1E for every record; 0x1F marks the end of the table
+  R+0x04  int32  image id (read as the high half of the first qword)
+  R+0x48  qword  value passed as *puVar10 to the config setter FUN_14829A3C(object, 1, value)
+  R+0x90  int32  flag: when nonzero the driver creates a new object with FUN_14829D20
+Stride 0x98 bytes. Table entries 0..16 (17 records), terminator at 0x148B6CB0.
+
+Image ids in table order: 0x22, 0x23, 0x200, 0x25, 0x20, 0xFFFFFFFF, 0xFFFFFFFF, 0x42, 0x3D, 0x21, 0x31, 0x64, 0x05, 0x07, 0x2B, 0x15, 0x09.
+
+Observed values:
+- R+0x48 is zero in every record.
+- R+0x90 is zero in every record, so the new-object branch is never taken from this static table.
+- The image-name strings 'QSEE' (0x148B6AC8, record 13) and 'APPSBL' (0x148B6C90, record 16) sit inside these records.
+
+Reading: the static table does not supply the value that becomes the loader transfer slot (config entry 1, object +0x28). That value is zero at the point the driver sets it. Whichever code later writes the transfer object into that slot is outside the path analysed here, or the decompile of the driver misreads the loop; this is not resolved. Observed from the raw data; the loop reading is from Ghidra.

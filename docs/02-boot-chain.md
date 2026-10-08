@@ -182,6 +182,14 @@ The table is read only by the two functions above. Their 30 call sites, with the
 
 `featenabler` decides which features a chip revision supports. It reads `soc_hw_version`, and for each feature ID it calls `ConfigureSwFuse`. Errors are logged as `ConfigureSwFuse failed for feature_id` and `feature id %li not supported for soc_hw_version %x`. The mechanism is software fuses gated by hardware revision. Observed.
 
+### The TrustZone entry context and its loader
+
+The TrustZone entry (`0x14680000`) takes the per-thread context in `x0` and writes it to `tpidr_el0`, so the first argument is the boot thread's block. SBL1 loads TrustZone through a loader object. The per-image loader context and the boot image driver are decoded in `data/ghidra/sbl1_boot_image_driver_decompiled.txt`. The driver resolves the loader factory through service `0x0E` (the ELF loader constructor at `0x14830594`) and the allocator through service `0x11`. The loader type is chosen by config `0x49`, where 0 selects the MBN loader (`FUN_1482EEF4`) and 1 selects the ELF loader.
+
+The MBN loader's transfer method `FUN_1482EE9C` calls method `+0x18` of the object at context `+0x28`. That slot is config entry 1 of the config object (entries are 24 bytes from `+0x10`). The per-image record table at `0x148B6298` (stride `0x98`) supplies that value as zero for every record, and its flag at `+0x90` is zero too (`data/secure/sbl1_image_record_table.txt`). So the object that the transfer calls is not supplied by the static table. Which code writes it at run time is not established, and it is the open point for the TrustZone context.
+
+Evidence: `data/secure/sbl1_tz_entry_context_chain.txt`, `data/secure/sbl1_loader_context_chain.txt`, `data/secure/sbl1_loader_ctx_slot.txt`, `data/secure/tz_switch_in_entry_scan.txt`.
+
 ## Stage 4: UEFI and ABL
 
 - `uefi.img`: ELF64 with `EM_ARM`, entry `0xA7000000`, one `PT_LOAD`. The strings cover boot-device detection (`UFS`, `eMMC`, `NAND`, `NVME`, `SPI`, `Flashless`), SMP bring-up (`AuxBootStrap_%d`, `Continue booting UEFI on Core %d`), and the platform configuration (`uefiplatLA.cfg`, `OsTypeString`). It also names `qsee/mink/oem/config/aurora/oem_config.xml`, a MINK configuration for this SoC, and `data.load.elf`. Observed.

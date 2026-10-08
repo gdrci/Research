@@ -182,6 +182,14 @@ TrustZone 在 `0x1C141C40` 处有一张表，由五个 16 字节条目组成。�
 
 `featenabler` 决定某一芯片版本支持哪些功能。它读取 `soc_hw_version`，并为每个功能 ID 调用 `ConfigureSwFuse`。出错时记录 `ConfigureSwFuse failed for feature_id` 和 `feature id %li not supported for soc_hw_version %x`。这一机制是按硬件版本门控的软件熔丝。已观察。
 
+### TrustZone 入口上下文及其加载器
+
+TrustZone 入口（`0x14680000`）在 `x0` 中接收每线程上下文，并将其写入 `tpidr_el0`，因此第一个参数就是启动线程的块。SBL1 通过加载器对象加载 TrustZone。每镜像加载器上下文与启动镜像驱动已在 `data/ghidra/sbl1_boot_image_driver_decompiled.txt` 中解码。驱动通过服务 `0x0E`（ELF 加载器构造函数，位于 `0x14830594`）解析加载器工厂，通过服务 `0x11` 解析分配器。加载器类型由配置 `0x49` 选择：0 选择 MBN 加载器（`FUN_1482EEF4`），1 选择 ELF 加载器。
+
+MBN 加载器的传输方法 `FUN_1482EE9C` 调用上下文 `+0x28` 处对象的 `+0x18` 方法。该槽位是配置对象的第 1 项（各项为 24 字节，从 `+0x10` 开始）。位于 `0x148B6298`（步长 `0x98`）的每镜像记录表为每条记录提供的该值都是零，其 `+0x90` 处的标志也是零（`data/secure/sbl1_image_record_table.txt`）。因此，被调用的传输对象并非由静态表提供。它在运行时由哪段代码写入尚未确定，这是 TrustZone 上下文的未决问题。
+
+证据：`data/secure/sbl1_tz_entry_context_chain.txt`、`data/secure/sbl1_loader_context_chain.txt`、`data/secure/sbl1_loader_ctx_slot.txt`、`data/secure/tz_switch_in_entry_scan.txt`。
+
 ## 阶段 4：UEFI 与 ABL
 
 - `uefi.img`：ELF64，`EM_ARM`，入口 `0xA7000000`，1 个 `PT_LOAD`。字符串涵盖启动设备检测（`UFS`、`eMMC`、`NAND`、`NVME`、`SPI`、`Flashless`）、多核启动（`AuxBootStrap_%d`、`Continue booting UEFI on Core %d`），以及平台配置（`uefiplatLA.cfg`、`OsTypeString`）。它还提到 `qsee/mink/oem/config/aurora/oem_config.xml`（本 SoC 的 MINK 配置）和 `data.load.elf`。已观察。

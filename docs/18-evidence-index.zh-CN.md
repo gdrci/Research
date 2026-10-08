@@ -126,6 +126,7 @@
 | `data/secure/sbl1_tz_entry_context_chain.txt` | 13 | 02, 06 | 文件名 | SBL1 loader objects and the TrustZone entry context; the object at loader +0x28 not identified |
 | `data/secure/sbl1_loader_context_chain.txt` | 5 | 02 | 文件名 | SBL1 loader context: protocol services 0x0E and 0x11, boot image driver, selector |
 | `data/secure/sbl1_loader_ctx_slot.txt` | 16 | 02 | 文件名 | Config-object layout: the loader transfer slot at +0x28 is config entry 1; record table still unresolved |
+| `data/secure/sbl1_image_record_table.txt` | 17 | 02 | 文件名 | SBL1 per-image record table: layout, ids, zero transfer values |
 | `data/ghidra/sbl1_boot_image_driver_decompiled.txt` | 410 | 02 | 文件名 | Ghidra decompile of the SBL1 boot image driver FUN_14825980 |
 | `data/secure/keymaster_rollback_strings.txt` | 1,061 | 03 | 文件名 | keymaster.img (ELF, 368,640 bytes), strings related to rollback, version, boot state an... |
 | `data/secure/object_0x91_firmware_scan.txt` | 638 | 02, 03, 06 | 目录 | Firmware-wide scan for table rows keyed by object ID 0x91 (low 32 bits 0x91, high 32 bi... |
