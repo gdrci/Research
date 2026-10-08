@@ -33,7 +33,8 @@ This repository describes how the system is built and how it starts. It is not v
 | Kernel and vendor | [04](docs/04-android-kernel-and-vendor.md) | [04](docs/04-android-kernel-and-vendor.zh-CN.md) |
 | Remote processors | [05](docs/05-remote-processors.md) | [05](docs/05-remote-processors.zh-CN.md) |
 | QFPROM and fuses | [06](docs/06-qfprom-and-fuses.md) | [06](docs/06-qfprom-and-fuses.zh-CN.md) |
-| Glasses software and MCU | [09](docs/09-glasses-software-and-mcu.md) | [09](docs/09-glasses-software-and-mcu.zh-CN.md) |
+| Glasses software and MCU | [09](docs/09-glasses-software-and-mcu.md) | [09](docs/09-glasses-software-and-mcu.zh-CN.md) || QCC730 secure-boot reference (external, different chip) | [10](docs/10-qcc730-secure-boot-reference.md) | [10](docs/10-qcc730-secure-boot-reference.zh-CN.md) |
+
 
 ## Evidence labels
 
