@@ -35,7 +35,3 @@ Meta、Ray-Ban、Oculus、Qualcomm、Snapdragon、FastConnect、Android、Linux�
 ## 关联声明
 
 本仓库是独立分析。它不隶属于、不受赞助于、也未获得 Meta Platforms, Inc.、Qualcomm 或文中提及的任何其他厂商的认可。
-
-## 作者说明
-
-本仓库中的分析、文档与证据说明由我完成。Qualcomm 应用笔记页面（保存为 HTML）、OP-TEE 页面与数据手册均由我保存，并按我保存的版本引用。
