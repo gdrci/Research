@@ -4,7 +4,7 @@
 
 英文版：[README.md](README.md)
 
-Discord：[discord.gg/oculus](https://discord.gg/oculus) · gdrci（Discord）
+Discord：[discord.gg/oculus](https://discord.gg/oculus) · @gdrci（Discord）
 
 ## 范围
 
