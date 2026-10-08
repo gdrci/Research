@@ -1,0 +1,107 @@
+# tz.img: decompiled context functions near the thread-block setter (Ghidra 12.1.3, decompiler output; script data/ghidra/tz_context_decomp.java)
+# Load: tz.img at its ELF vaddrs (no base shift).
+
+
+undefined8 FUN_1c108320(long param_1)
+
+{
+  FUN_1c111070(*(undefined8 *)(param_1 + 0x90));
+  return *(undefined8 *)(param_1 + 0x90);
+}
+
+
+undefined8 FUN_1c0970dc(void)
+
+{
+  long lVar1;
+  undefined8 *puVar2;
+  undefined8 *unaff_x19;
+  long *unaff_x20;
+  long unaff_x24;
+  long unaff_x29;
+  
+  lVar1 = FUN_1c108320();
+  *unaff_x20 = 0;
+  unaff_x20[1] = 0;
+  puVar2 = *(undefined8 **)(unaff_x24 + 8);
+  unaff_x20[3] = lVar1;
+  *unaff_x20 = unaff_x24;
+  unaff_x20[1] = (long)puVar2;
+  *puVar2 = unaff_x20;
+  *(long **)(unaff_x24 + 8) = unaff_x20;
+  *unaff_x19 = &LAB_1c0971a4;
+  unaff_x19[1] = unaff_x20;
+  if (DAT_1c13c188 == *(long *)(unaff_x29 + -8)) {
+    return 0;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_1c0339b4();
+}
+
+
+undefined8 FUN_1c089f1c(void)
+
+{
+  long lVar1;
+  undefined8 *puVar2;
+  undefined8 *unaff_x19;
+  long *unaff_x21;
+  long unaff_x22;
+  long unaff_x29;
+  
+  lVar1 = FUN_1c108320();
+  unaff_x21[3] = lVar1;
+  lVar1 = FUN_1c10bac4();
+  *unaff_x21 = 0;
+  unaff_x21[1] = 0;
+  puVar2 = *(undefined8 **)(unaff_x22 + 8);
+  *(bool *)(unaff_x21 + 4) = lVar1 != 0;
+  *unaff_x21 = unaff_x22;
+  unaff_x21[1] = (long)puVar2;
+  *puVar2 = unaff_x21;
+  *(long **)(unaff_x22 + 8) = unaff_x21;
+  *unaff_x19 = &DAT_1c089fcc;
+  unaff_x19[1] = unaff_x21;
+  if (DAT_1c13c188 == *(long *)(unaff_x29 + -8)) {
+    return 0;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_1c0339b4();
+}
+
+
+undefined8 FUN_1c07fa84(void)
+
+{
+  long lVar1;
+  undefined8 *puVar2;
+  undefined8 *unaff_x19;
+  long *unaff_x21;
+  long unaff_x24;
+  long unaff_x29;
+  
+  lVar1 = FUN_1c108320();
+  *unaff_x21 = 0;
+  unaff_x21[1] = 0;
+  puVar2 = *(undefined8 **)(unaff_x24 + 8);
+  unaff_x21[3] = lVar1;
+  unaff_x21[4] = 1;
+  *unaff_x21 = unaff_x24;
+  unaff_x21[1] = (long)puVar2;
+  *puVar2 = unaff_x21;
+  *(long **)(unaff_x24 + 8) = unaff_x21;
+  *unaff_x19 = FUN_1c07faec;
+  unaff_x19[1] = unaff_x21;
+  if (DAT_1c13c188 == *(long *)(unaff_x29 + -8)) {
+    return 0;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_1c0339b4();
+}
+
+
+# Reading
+# FUN_1C108320 returns *(param_1 + 0x90) after calling FUN_1C111070 on it.
+# The three callers (0x1C0970DC, 0x1C089F1C, 0x1C07FA84) each build a node: they set node[0..1] as a doubly linked list pointer pair into a list head at *(unaff_x24 + 8) and store a callback address in a stack slot. These are list entries with a pointer taken from +0x90, not thread blocks.
+# FUN_1C108368 (switch-in) has no direct caller; it is reached by an indirect call. It loads a block from its argument at +0x48.
+# No store of a (function, handle) pair at +0x18/+0x20 of a thread block appears in these functions.

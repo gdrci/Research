@@ -121,6 +121,7 @@
 | `data/secure/hyp_arb_fuse_xref_scan.txt` | 19 | 06 | 文件名 | hyp.img cross-references to the arb-fuse table; no writer of the bank field found |
 | `data/secure/hyp_arb_fuse_reference_check.txt` | 12 | 06 | 文件名 | Ghidra reference check on getArbFuseBank and the table getter; no references to the getter |
 | `data/secure/tz_object_0x91_provider_scan.txt` | 21 | 06 | 文件名 | tz.img object-0x91 invoke path and store scans; provider not found |
+| `data/secure/tz_context_creator_decomp.txt` | 107 | 06 | 文件名 | Decompiled tz.img context wrapper, list-node registration callers and switch-in; no thread-block pair store |
 | `data/secure/keymaster_rollback_strings.txt` | 1,061 | 03 | 文件名 | keymaster.img (ELF, 368,640 bytes), strings related to rollback, version, boot state an... |
 | `data/secure/object_0x91_firmware_scan.txt` | 638 | 02, 03, 06 | 目录 | Firmware-wide scan for table rows keyed by object ID 0x91 (low 32 bits 0x91, high 32 bi... |
 | `data/secure/oem_key_pointer_search.txt` | 1,137 | 06 | 文件名 | Search for references to the OEM configuration key names (TrustZone, tz.img; devcfg.img). |
