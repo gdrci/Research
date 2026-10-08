@@ -125,6 +125,7 @@ Counts are from the repository at the time of writing: 145 files, 2,862,270 byte
 | `data/secure/tz_switch_in_entry_scan.txt` | 12 | 06, 02 | file name | tz.img branch and pointer scan for the switch-in function; no in-image caller |
 | `data/secure/sbl1_tz_entry_context_chain.txt` | 13 | 02, 06 | file name | SBL1 loader objects and the TrustZone entry context; the object at loader +0x28 not identified |
 | `data/secure/sbl1_loader_context_chain.txt` | 5 | 02 | file name | SBL1 loader context: protocol services 0x0E and 0x11, boot image driver, selector |
+| `data/secure/sbl1_loader_ctx_slot.txt` | 16 | 02 | file name | Config-object layout: the loader transfer slot at +0x28 is config entry 1; record table still unresolved |
 | `data/ghidra/sbl1_boot_image_driver_decompiled.txt` | 410 | 02 | file name | Ghidra decompile of the SBL1 boot image driver FUN_14825980 |
 | `data/secure/keymaster_rollback_strings.txt` | 1,061 | 03 | file name | keymaster.img (ELF, 368,640 bytes), strings related to rollback, version, boot state an... |
 | `data/secure/object_0x91_firmware_scan.txt` | 638 | 02, 03, 06 | directory | Firmware-wide scan for table rows keyed by object ID 0x91 (low 32 bits 0x91, high 32 bi... |

@@ -1,0 +1,16 @@
+# SBL1 loader context slot +0x28 (sbl1.elf; Ghidra decompiles of the config helpers and the boot image driver)
+
+Config object layout (FUN_148297D4 and FUN_14829860, decompiled):
+  entry i at object + 0x10 + i*0x18
+  +0x00 (within entry) pointer value, written by FUN_148297D4 (id < 100, value = param)
+  +0x08 (within entry) flag, set to 1 or 2 by the two writers
+  FUN_14829860 writes a 32-bit value at +0x10 of the entry (no pointer)
+
+So the pointer at object + 0x28 is the value of config entry id 1 (0x10 + 1*0x18 = 0x28).
+The driver (FUN_14825980) sets it with FUN_14829A3C(object, 1, *puVar10), where puVar10 walks the record table at 0x148B62E0. That is the qword at the record start.
+
+The config object is produced by FUN_14829D20, which copies a 0x960-byte template (global 0x970 of the context) into a new object. The 0x48-byte allocations in the driver are separate blocks; they are not the config object.
+
+Open:
+- The record stride inferred from the loop is 0x13 qwords (0x98 bytes), with the terminator id 0x1F. Reading the table at that stride gives id 0x1E and a zero first qword in every row, so the record layout in the decompile does not match the raw data in this form. The data type of DAT_148B62E0 has to be recovered in Ghidra before the TrustZone image's record can be identified.
+- Therefore the transfer object written to the context slot is not identified. Observed.
