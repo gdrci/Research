@@ -16,7 +16,7 @@ The following are excluded from the license in [LICENSE](LICENSE). Their rights 
 |---|---|---|---|
 | Ray-Ban Display firmware: excerpts, strings, symbol tables, disassembly and decompiler output, hex extracts and metadata | `data/` | Meta Platforms, Inc. and the owners of the third-party components in the firmware | Included as evidence for the analysis |
 | Three figures from Qualcomm's *Enable Secure Boot on QCC730 Application Note* (80-Y8730-8, rev AB) | `docs/images/qcc730/` | Qualcomm Technologies, Inc. | Saved HTML pages; reproduced for reference |
-| Section 10, QCC730 secure-boot reference, EN and ZH | `docs/10-qcc730-secure-boot-reference*.md` | Qualcomm Technologies, Inc. and the OP-TEE project | Summarised from the Qualcomm application note and the OP-TEE *Hoya architecture* documentation (saved by me) |
+| Section 10, QCC730 secure-boot reference, EN and ZH | `docs/10-qcc730-secure-boot-reference*.md` | Qualcomm Technologies, Inc. and the OP-TEE project | Summarised from the Qualcomm application note and the OP-TEE *Hoya architecture* documentation |
 | Analog Devices MAX98388/MAX98389 datasheet (Rev. 2, 6/24) | Cited in `docs/12-audio.md`, `docs/17-chip-inventory.md` | Analog Devices, Inc. | Cited for specification values |
 | Qualcomm FastConnect 7800 product brief (87-PW329-1 Rev. B) | Cited in `docs/17-chip-inventory.md` | Qualcomm Technologies, Inc. | Cited for product features |
 
