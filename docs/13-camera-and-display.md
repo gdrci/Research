@@ -4,7 +4,7 @@
 
 This section covers the camera and display software above the kernel: the init services, the camera and display HAL and service processes, the image-processing and colour libraries, the tuning and calibration files for panels and cameras, and the device-tree nodes that the camera and display drivers bind to. The camera firmware for the image co-processor is in section 08. The LCoS and backlight calibration are covered here where they touch the display stack.
 
-Status labels: observed means read directly from a file; inferred means a reasonable reading that the files do not state; not found means the item is not in the OTA. Summary and hashes are in `data/android/camera_display/`.
+Status labels: observed means read directly from a file; inferred means a reasonable reading that the files do not state; not found means the item is not in the `vendor`, `odm`, `system_ext` or `product` partitions (`system.img` was not searched). Summary and hashes are in `data/android/camera_display/`.
 
 ## Camera
 
@@ -13,8 +13,8 @@ Status labels: observed means read directly from a file; inferred means a reason
 From `system_ext/etc/init/` (observed, copies in `data/android/camera_display/`):
 
 - `cameraserver` runs `/system/bin/cameraserver` as user `cameraserver`, group `audio camera input drmrpc`, with real-time I/O priority and `rtprio 10`. It is `disabled` until started and exposes the AIDL interface `android.frameworks.cameraservice.service.ICameraService/default`.
-- `init.hw.camera.rc` creates two CPU groups, `/dev/cpuctl/camera-restricted` and `/dev/cpuset/camera-restricted`. The cpuset is limited to CPUs 0 to 2 during video capture. Observed.
-- `continuousaicamera` runs `/system_ext/bin/continuousaicamera_nova` as user `system`, with `WAKE_ALARM`. It is started only when `sys.settings.continuous_ai_camera_enabled=1`, and it creates `/data/misc/continuousaicamera` with `snapshot` and `hold_sidecars` subdirectories. Observed.
+- `init.hw.camera.rc` creates two CPU groups, `/dev/cpuctl/camera-restricted` and `/dev/cpuset/camera-restricted`. It sets `/dev/cpuset/camera-restricted/cpus` to `0-2` at init; its comment says processes placed in that group are restricted during video capture. The file does not show which processes are placed there. Observed.
+- `continuousaicamera` runs `/system_ext/bin/continuousaicamera_nova` as user `system`, with `WAKE_ALARM`. It is started only when `sys.settings.continuous_ai_camera_enabled=1`, and an `on post-fs-data` block in the same rc creates `/data/misc/continuousaicamera` with `snapshot` and `hold_sidecars` subdirectories. Observed.
 - `procamera` runs `/system_ext/bin/procamera` as `interface aidl procamera.IProCameraService/default`. It is a oneshot, disabled by default.
 - `stubcameraservice` runs `/system_ext/bin/stubcameraservice` in class `late_start`, started only when `persist.vendor.media.enableStubCamera=1`. Observed.
 
@@ -22,7 +22,7 @@ Other services in the same directory: `mediacaptureservice` and `ondevicecapture
 
 ### The continuous AI camera service
 
-`continuousaicamera_nova` (967,528 bytes) exports the AIDL interface `aidl::continuousaicamera::IContinuousAiCameraService`. Observed from its symbols. It uses `GraphicBuffer` and `GraphicBufferMapper` to read frames, and a `CameraInputSurface` to receive them. It also has a client interface for an `sgruntimeservice` AI capture face-detection callback (`ISgrAICaptureFaceDetection`). Observed. Its libraries include `libmarvin-continuousaicamera.meta.so` and `libalwaysoncamera*.so`, which indicates an always-on capture pipeline. Inferred from the names.
+`continuousaicamera_nova` (967,528 bytes) exports the AIDL interface `aidl::continuousaicamera::IContinuousAiCameraService`. Observed from its symbols. It uses `GraphicBuffer` and `GraphicBufferMapper` to read frames, and a `CameraInputSurface` to receive them. It also has a client interface for an `sgruntimeservice` AI capture face-detection callback (`ISgrAICaptureFaceDetection`). Observed. The tree has `libmarvin-continuousaicamera.meta.so` and `libalwaysoncamera.so` in `system_ext/lib64`, but the binary does not name either, so the link is not shown. The always-on capture reading is inferred from the names.
 
 ### Vendor camera libraries
 
@@ -45,13 +45,13 @@ The `camflicker` binary is in `vendor/bin`. Observed. Its function is not analys
 
 The camera nodes in `data/android/vendor_ramdisk/vendor_dtb_dump.txt` (observed):
 
-- The CPAS block (Camera Peripheral Authorization System), `/soc/qcom,cam-cpas@ac13000`, with a camera bus tree of level 0 to level 3 nodes. The nodes name the IFE, IPE, BPS, ICP, JPEG and CDM clients: `ife0` to `ife9` (linear stats, PDAF, RDI pixel raw, UBWC write), `ipe0`, `bps0`, `icp0`, `jpeg-dma0`, `jpeg-enc0`, and several `rt-cdm*` nodes.
+- The CPAS block (Camera Peripheral Authorization System), `/soc/qcom,cam-cpas@ac13000`, with a camera bus tree of level 0 to level 3 nodes. The nodes name the IFE, IPE, BPS, ICP, JPEG and CDM clients: `ife0` and `ife1` each have UBWC write, RDI pixel-raw write, PDAF write and linear-stats write nodes, and `ife2` to `ife9` each have only an RDI stats/pixel-raw write node; `ipe0`, `bps0`, `icp0`, `jpeg-dma0`, `jpeg-enc0`, and several `rt-cdm*` nodes.
 - Processing nodes: `/soc/qcom,cam-icp`, `/soc/qcom,cam-jpeg`, `/soc/qcom,cam-cdm-intf`.
 - The IOMMU for the camera: `/soc/qcom,cam_smmu` with the `msm_cam_smmu_ife`, `msm_cam_smmu_icp` and `msm_cam_smmu_jpeg` context banks, each with an `iova-mem-map`.
 - Clock gating: `cam_cc_*` GDSC nodes for the camera clock controller `camcc` (titan top, IPE 0, BPS, IFE 0 to 2).
 - Sensor pins: `cam_sensor_mclk0_active` to `mclk7` and `cam_sensor_active_rst0` and `rst1`, with suspend states. Observed.
 
-Section 04 lists the sensor and EEPROM nodes (`qcom,cam-sensor0`, `qcom,eeprom0`, `oculus,cam_fsync` and `qcom,cam-res-mgr`) from the same dump.
+Section 04 lists the sensor and EEPROM nodes (`qcom,cam-sensor0`, `qcom,eeprom0`, `oculus,cam_fsync` and `qcom,cam-res-mgr`) from the DTBO overlay component tables (`data/android/dtbo/overlay_components.tsv`), not from the vendor DT dump.
 
 The camera kernel driver `camera.ko` (Camera Request Manager) is in section 04. The image co-processor firmware `CAMERA_ICP.mbn` is in section 08.
 
@@ -61,10 +61,10 @@ The camera kernel driver `camera.ko` (Camera Request Manager) is in section 04. 
 
 From `vendor/etc/init/` and `vendor/bin/` (observed):
 
-- `qti_display_boot` runs `/vendor/bin/init.qti.display_boot.sh` as a oneshot at `post-fs-data`. The script selects per-SoC display and gralloc properties by reading the SoC ID (`/sys/devices/soc0/soc_id`) and the platform name. It sets `vendor.display.supports_background_blur` to 1 and branches on the platform name (`taro`, and a case for the SoC IDs listed in the script). The `neo` platform is not one of the branches shown in the first part of the script; the branch for it is not checked here.
+- `qti_display_boot` runs `/vendor/bin/init.qti.display_boot.sh` as a oneshot at `post-fs-data`. The script selects per-SoC display and gralloc properties by reading the SoC ID (`/sys/devices/soc0/soc_id`) and the platform name. It sets `vendor.display.supports_background_blur` to 1 by default (line 73) and to 0 in the parrot SoC-ID branches (lines 151, 177, 203); it branches on the platform name (`taro`, and a case for the SoC IDs listed in the script). The script has a `neo` branch (line 232). SoC ID 554 sets `vendor.display.enable_null_display` to 1; SoC ID 579 sets display and gralloc properties, including `vendor.display.target.version` 3 and `vendor.display.force_gpu_composition` 1. The DT root is `qcom,neo` (NEO-LA).
 - `fix-gw-display-pmic.rc` runs `/vendor/bin/hw/max77655_util --config_gw_display_pmic` in `late-fs`. The utility name and the `--config_gw_display_pmic` option are observed. Inferred: it configures the display power through a Maxim `max77655` PMIC. The device-tree dump does not contain `max77655`, so the chip is not confirmed.
 - Display HAL services: `vendor.qti.hardware.display.composer` (`/vendor/bin/hw/vendor.qti.hardware.display.composer-service`, class `hal animation`, group `graphics drmrpc`), `vendor.qti.hardware.display.allocator-service`, `vendor.qti.hardware.display.demura-service` (demura is the panel uniformity correction), and `display-color-hal-1-0` (`vendor.display.color@1.0-service`). Observed in `vendor/etc/init` and `vendor/bin/hw`.
-- The `vendor.display.color` HAL is provided in versions 1.0 to 1.6 by the libraries in `vendor/lib64`. Observed as file names.
+- The `vendor.display.color` HAL is provided in versions 1.0 to 1.7 by the libraries in `vendor/lib64`. Observed as file names.
 
 ### Graphics and colour libraries
 
@@ -80,7 +80,7 @@ From `vendor/etc/init/` and `vendor/bin/` (observed):
 
 `vendor/etc/display/` (24 files, observed):
 
-- Display-processor configuration: `DPU660.xml`, `DPU670.xml`, `DPU720.xml`, `DPU7__.xml`, `DPU820.xml`, `DPU830.xml`, `DPU8__.xml`, `DPU9__.xml`. The number is the display processor (DPU) version. The meaning of the `__` in `DPU7__`, `DPU8__` and `DPU9__` is not established.
+- Display-processor configuration: `DPU660.xml`, `DPU670.xml`, `DPU720.xml`, `DPU7__.xml`, `DPU820.xml`, `DPU830.xml`, `DPU8__.xml`, `DPU9__.xml`. The number matches the root element of each file (for example `<SDE660>`, `<SDE820>`); the files do not call it a DPU version, so that reading is inferred. The meaning of the `__` in `DPU7__`, `DPU8__` and `DPU9__` is not established.
 - `advanced_sf_offsets.xml` and `thermallevel_to_fps.xml`: surface-flinger offsets, and a table from thermal level to frame rate.
 - Twelve colour-calibration (QDCM) JSON files for the panel modes:
   - `r66451` AMOLED, from the Visionox panel: command and video mode, each with and without DSC (display stream compression).
@@ -100,13 +100,13 @@ Inferred: the two local displays are the two lenses of the glasses, and the forc
 
 ### LCoS and backlight HALs
 
-The SELinux policy has domains and interfaces for `hal_oculus_lcos` (`vendor.oculus.hardware.lcos::ILcos`), `hal_oculus_backlight` (`vendor.oculus.hardware.backlight::IBacklight`) and `hal_oculus_display` (`vendor.oculus.hardware.display::IDisplayRefresh` and the `vendor.oculus.hardware.graphics.composer::IComposer`) (section 11). The LCoS control itself runs in the MCU firmware. The console commands drive the display engine, the LED drivers and the calibration, and they are described in section 14. No Android-side LCoS control binary was found in the `vendor`, `odm`, `system_ext` or `product` partitions. The backlight HAL binary is not found. The `lcos` kernel driver (`meta,lcos-i2c` compatible string) is in section 04.
+The SELinux policy has domains and interfaces for `hal_oculus_lcos` (`vendor.oculus.hardware.lcos::ILcos`), `hal_oculus_backlight` (`vendor.oculus.hardware.backlight::IBacklight`) and `hal_oculus_display` (`vendor.oculus.hardware.display::IDisplayRefresh` and the `vendor.oculus.hardware.graphics.composer::IComposer`) (section 11). The LCoS controller is run by the MCU firmware (inferred from the console strings; the node-to-MCU link is not shown in the files). The console commands drive the display engine, the LED drivers and the calibration, and they are described in section 14. No Android-side LCoS control binary was found in the `vendor`, `odm`, `system_ext` or `product` partitions. The backlight HAL binary is not found. The `lcos` kernel driver (`meta,lcos-i2c` compatible string) is in section 04.
 
 ## Relation to other sections
 
 - The display PMIC and the backlight IC in the overlay tables are in section 04.
-- The camera and display GPU drivers take their speed-bin fuse cell from section 06.
-- The MCU-backed button and sensor HALs that trigger camera capture are in section 09.
+- The GPU driver (`msm_kgsl.ko`) takes its speed-bin fuse cell from section 06 (`gpu_speed_bin`, bits 5 to 12 of the bytes at `0x119`).
+- Section 09 lists the MCU-facing capture-button and sensor HALs. Neither section states that the capture button triggers camera capture.
 - The image co-processor firmware `CAMERA_ICP.mbn` and the video `vpu20_4v.mbn` are in section 08.
 
 ## What is not found
