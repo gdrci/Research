@@ -1,0 +1,59 @@
+{
+  "deployment_methods": [
+    "TBSP"
+  ],
+  "host_assets": [
+    {
+      "name": "logger_dict_generated.json"
+    },
+    {
+      "name": "zephyr_log_dict_generated.json"
+    },
+    {
+      "name": "tel_dict_generated.json"
+    },
+    {
+      "name": "symbol_table.elf"
+    }
+  ],
+  "md5": "869a093ac9348d5b476eeafb4a910ab0",
+  "platform": "greatwhite-rt700",
+  "target_assets": [
+    {
+      "layout": {
+        "load_addr": 603979776,
+        "offset": 140378112
+      },
+      "name": "dsp_dtcm.bin",
+      "signature": "352cf343a0eb3e5e02bca2d60f9ac74f7a87d67132f16724786e598dd49bc2badb8fd2e389a54f92f117ab0da9ca9ff096eb3cd15f9f65271c5b53ea56768f00",
+      "type": "bin"
+    },
+    {
+      "layout": {
+        "load_addr": 604110848,
+        "offset": 140443648
+      },
+      "name": "dsp_itcm.bin",
+      "signature": "4cde50a918df18f727e5274b6c2082d4ad3d6726df0299e98ef8e12d423e61a48ff63206cb950cd44daa7339c8fc19dd28bc7ae635d9be310108a733f1ac3c04",
+      "type": "bin"
+    },
+    {
+      "layout": {
+        "load_addr": 538083328,
+        "offset": 140509184
+      },
+      "name": "dsp_app.bin",
+      "signature": "68ec8a876f25148d07a60e2870fe5009602790a901909aab97a1949bb194816e031df591aae7f201db30d34fb4acc0e7de800183dc3ad8711621db8e4e981401",
+      "type": "bin"
+    },
+    {
+      "layout": {
+        "offset": 137363456
+      },
+      "name": "assets_ro.bin",
+      "signature": "a87312fe69c61f7bf03cd372da8da0f36d6a2014e8e266db49e45d2123aff688d01f9a7aba29d59eae2d40f174ef0adf35d6c5134541588949e8767ea15acd09",
+      "type": "flash"
+    }
+  ],
+  "version": "be0e82d710b3"
+}

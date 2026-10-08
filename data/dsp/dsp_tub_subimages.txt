@@ -1,0 +1,12 @@
+dsp.default.rt700.tub: 4429312 bytes, sha256 da8ae200fbab870b166d97e778da88b9d2925dfe94047cfa1ec067189e32bf10
+sub-image name headers (file offset, name):
+0x000000 dsp_dtcm.bin
+0x000600 dsp_itcm.bin
+0x008a00 dsp_app.bin
+0x01e4fd configs.cfg (with overrides.cfg at 0x01e509)
+0x0f8a00 assets_ro.bin
+0x37cc00 logger_dict_generated.json
+0x3a7e00 zephyr_log_dict_generated.json
+0x3b0c00 tel_dict_generated.json
+0x3c1400 symbol_table.elf (ELF at 0x3c1600)
+0x438800 metadata.json (manifest at 0x438f1a)
