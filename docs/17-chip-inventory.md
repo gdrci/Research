@@ -2,7 +2,7 @@
 
 [中文](17-chip-inventory.zh-CN.md)
 
-This section lists the integrated circuits that the OTA shows the glasses use, with the evidence for each identification. It is a reverse-engineering inventory, not a datasheet. Each entry gives the part as named in the files, the function the files give for it, and a confidence level:
+This section lists the integrated circuits that the OTA shows the glasses use, with the evidence for each identification. It is a reverse-engineering inventory. Each entry gives the part as named in the files, the function the files give for it, and a confidence level:
 
 - **Named**: the part number appears in a driver, init script, device tree, or binary string tied to that function.
 - **Inferred**: the function is clear but the part number is not in the files, or the part is named by a family.
