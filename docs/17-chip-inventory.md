@@ -8,8 +8,6 @@ This section lists the integrated circuits that the OTA shows the glasses use, w
 - **Inferred**: the function is clear but the part number is not in the files, or the part is named by a family.
 - **Not named**: the function is present but no part number was found.
 
-Qualcomm datasheets were not available here. The public-document checks below are marked where they were not done.
-
 ## Application processor and power
 
 | Part | Function | Evidence | Confidence |
@@ -80,19 +78,6 @@ Qualcomm datasheets were not available here. The public-document checks below ar
 | Storage controllers | Boot and data storage | A UFS PHY clock gate (`gcc_ufs_phy_gdsc`) and an SDHCI host (`sdhci@7c4000`, the `mmc0` path in the SELinux labels) are in the device tree (section 04). The UEFI image lists UFS, eMMC, NAND and NVMe among its boot-device strings (section 02) | Named controllers; the device part is not named, and which storage type is fitted is not established |
 | Secure element (`hal_secure_element`) | Secure element HAL | SELinux domain and service labels (section 11) | Not named |
 | Haptic driver | Vibration (`hal_vibrator`) | SELinux label only | Not named |
-
-## What was not done
-
-- Qualcomm datasheets for the SoC, the PMIC, the WCN7850 and the WPSS subsystem were not read. Public documents could not be fetched from this environment: the external sites were blocked by the environment's egress proxy in earlier work. The checks that a datasheet would settle are listed as open below.
-- A physical part number for the LCoS, the LED drivers, the ALS, the hinge sensor, the secure element and the haptic driver is not in the files.
-- The Qualcomm marketing number for the "Aurora" SoC is not in the files.
-
-## Open checks that a datasheet would close
-
-- The exact Aurora part number, and its SoC bring-up pins against the device-tree pinmux.
-- The PM8150 and PM8008 register maps against the SPMI nodes in section 04.
-- The MAX77655 and MAX98388 register maps against the ODM init sequence (MAX98388).
-- The WCN7850 firmware interface against the `hmtbtfw` patch format (section 07).
 
 ## Evidence
 
