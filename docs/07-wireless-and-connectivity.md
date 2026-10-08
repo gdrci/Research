@@ -1,6 +1,6 @@
-# 11 - Wireless and connectivity (Wi-Fi, Bluetooth, WPSS)
+# 07 - Wireless and connectivity (Wi-Fi, Bluetooth, WPSS)
 
-[中文](11-wireless-and-connectivity.zh-CN.md)
+[中文](07-wireless-and-connectivity.zh-CN.md)
 
 This section covers the Wi-Fi and Bluetooth stack as it is laid out in the OTA: the remote subsystem that runs the radio (WPSS), the kernel drivers, the init scripts and HAL services, the configuration files, and the firmware images. Each claim is marked as observed (read from the files), inferred (a reasonable reading that the files do not state), or not found.
 

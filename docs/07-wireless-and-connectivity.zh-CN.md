@@ -1,6 +1,6 @@
-# 11 - 无线与连接（Wi-Fi、蓝牙、WPSS）
+# 07 - 无线与连接（Wi-Fi、蓝牙、WPSS）
 
-[English](11-wireless-and-connectivity.md)
+[English](07-wireless-and-connectivity.md)
 
 本节记录 OTA 中 Wi-Fi 与蓝牙协议栈的组成：运行射频的远程子系统（WPSS）、内核驱动、init 脚本与 HAL 服务、配置文件以及固件镜像。每项结论都标明为已观察（直接读取文件）、推断（文件未明说但合理的解读）或未找到。
 

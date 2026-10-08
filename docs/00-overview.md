@@ -60,6 +60,6 @@ Several parts of the system run outside the application processor. A microcontro
 | [05](05-remote-processors.md) | AOP, CPUCP, SHRM, QUP, DSPs, modem, Bluetooth |
 | [06](06-qfprom-and-fuses.md) | Fuse block, memory maps, readers |
 | [09](09-glasses-software-and-mcu.md) | MCU, STP, RT600/RT700, EMG band, app layer |
-| [11](11-wireless-and-connectivity.md) | Wi-Fi and Bluetooth stack, WPSS subsystem, drivers, HALs, firmware |
-| [12](12-peripheral-firmware-and-build-ids.md) | Build IDs, GPU, camera, video and vision firmware |
-| [13](13-evidence-index.md) | Which `data/` directory each section uses |
+| [07](07-wireless-and-connectivity.md) | Wi-Fi and Bluetooth stack, WPSS subsystem, drivers, HALs, firmware |
+| [08](08-peripheral-firmware-and-build-ids.md) | Build IDs, GPU, camera, video and vision firmware |
+| [11](11-evidence-index.md) | Which `data/` directory each section uses |

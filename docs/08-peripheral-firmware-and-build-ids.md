@@ -1,6 +1,6 @@
-# 12 - Peripheral firmware and build IDs
+# 08 - Peripheral firmware and build IDs
 
-[中文](12-peripheral-firmware-and-build-ids.zh-CN.md)
+[中文](08-peripheral-firmware-and-build-ids.zh-CN.md)
 
 This section covers two things that the other sections do not: the build identifiers the OTA records for each subsystem, and the firmware for the GPU, camera, video and vision blocks that sits in `vendor/firmware`. Each claim is marked as observed, inferred, or not found.
 
@@ -27,7 +27,7 @@ What the manifest tells us:
 
 - The `Aurora` name is the SoC codename used in section 00. The `LA` tag is the Qualcomm Linux Android base line.
 - Several subsystem builds share the `1.149279` tag (`common`, `boot`), so they probably come from one release train. Inferred.
-- The `btfm` entry (`00819`) does not match the Bluetooth image's own version file (`00797`, section 11). This is recorded as observed in section 11 and is not resolved here.
+- The `btfm` entry (`00819`) does not match the Bluetooth image's own version file (`00797`, section 07). This is recorded as observed in section 07 and is not resolved here.
 - The `apps_vendor` entry is `LA.VENDOR.12.2`, while the vendor partition is Android 12 (section 04). This matches the older Treble base described there.
 
 The manifest is the only build-level record found in the OTA. The other images do not have the same kind of record. Not found.

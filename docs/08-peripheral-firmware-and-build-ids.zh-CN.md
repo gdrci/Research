@@ -1,6 +1,6 @@
-# 12 - 外设固件与构建 ID
+# 08 - 外设固件与构建 ID
 
-[English](12-peripheral-firmware-and-build-ids.md)
+[English](08-peripheral-firmware-and-build-ids.md)
 
 本节记录两类内容，其他章节未涵盖：OTA 为各子系统记录的构建标识符，以及 `vendor/firmware` 中 GPU、摄像头、视频和视觉模块的固件。每项结论都标明为已观察、推断或未找到。
 
@@ -27,7 +27,7 @@
 
 - `Aurora` 是第 00 节中使用的 SoC 代号。`LA` 标记是高通 Linux Android 基线。
 - 多个子系统构建共享标签 `1.149279`（`common`、`boot`），因此它们可能来自同一发布线。推断。
-- `btfm` 条目（`00819`）与蓝牙镜像自身的版本文件（`00797`，第 11 节）不一致。第 11 节已如实记录，此处不作解决。
+- `btfm` 条目（`00819`）与蓝牙镜像自身的版本文件（`00797`，第 07 节）不一致。第 07 节已如实记录，此处不作解决。
 - `apps_vendor` 条目为 `LA.VENDOR.12.2`，而 vendor 分区为 Android 12（第 04 节）。这与该节所述的较旧 Treble 基线一致。
 
 该清单是 OTA 中找到的唯一构建级别记录。其他镜像没有同类记录。未找到。
