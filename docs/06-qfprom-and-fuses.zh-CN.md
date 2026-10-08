@@ -93,6 +93,8 @@ TrustZone（`tz.img`）保存上述表，并有两个字面量池槽位保存 `0
 - `invoke-oem-spare-fuses failed: 0x%x, 0x%x, 0x%x`：备用熔丝路径。
 - `qfprom_data`：熔丝数据缓冲区。
 
+TrustZone 中的 PK 哈希路径（`data/secure/tz_pkhash_path.txt`）观察如下。`PKHashExt` 处理程序注册名称 `GetPKHash`（函数 `0x1C395930`），并通过 `0x1C395C20`（`PKHashExtHandler_copyHash`，调用有界复制 `0x1C3AED14`）把 32 字节复制到其对象的 `+0x58` 偏移处。在初始化路径中，源是 `.rodata` 中 `0x1C3BE01E` 处的常量，旁边是许可证路径 `/persist/data/pfm/licen...` 的 DER 属性。因此该路径复制的是镜像中的值，而不是 QFPROM 中的值。函数 `0x1C396908`（`GetPKHash`/`GetDeviceID` 处理程序）通过方法 6 从运行时对象获取 16 字节设备 ID，并记录 `IDeviceID_getClientDeviceID failed`。方法 6 的提供者尚未确定。因此把 `OEM_rot_pk_hash1_fuse_values` 转换为哈希的读取者仍未找到。依据反汇编观察得出。复制的源地址是 DER 长度字节 `0x20`，复制可能早一个字节开始，此点未验证。
+
 DevCfg（`devcfg.img`）和 TrustZone 都有 `PM_QFPROM_FLAG`，这是电源管理从熔丝块读取的标志。已观察。
 
 Featenabler（`featenabler.img`）使用软件熔丝按硬件版本启用功能（字符串 `soc_hw_version`、`ConfigureSwFuse failed for feature_id`、`DisplayCore_EnableSwFuse`）。已观察。
@@ -157,11 +159,13 @@ UEFI 熔丝库中有一张命名区域表（`data/secure/uefi_fuse_region_table.
 
 记录 `qsee_is_sw_fuse_blown` 结果的 TrustZone 代码见 `data/secure/tz_sw_fuse_check_area.txt`。位于 `0x1C3ECD78` 的一个函数把 9 字节记录解包为两个大端 32 位字，再写回，因此它是记录的序列化函数，而不是熔丝读取。记录熔丝烧断结果的例程用 `ldr w0,[x27,x8,lsl #2]` 遍历一个列表，该列表解码为 ASCII 文本，因此它不是熔丝 ID 表。检查使用哪些软件熔丝 ID，因此仍未确定。
 
-`hyp.img` 是 Gunyah/QTEE 虚拟化资源管理器，而不是普通的虚拟化层。它的字符串列出了 RPC、VM 创建、memparcel 和 SMC 等待队列的源文件，以及本地和远程对象表（`localObjTable`、`remoteObjTable`、`LocalObj_retrieve`）。这使它成为 TrustZone 查找背后对象调用提供者的候选，但其中没有找到对象 `0x91` 的表项，因此尚未确认。它还包含 `PILSubsys_getArbFuseBank`，说明外设镜像（PIL）是按子系统的防回滚熔丝组进行检查的。如果该熔丝组是 `0x221C` 块中的某个软件熔丝范围，那么回滚状态就保存在那里；熔丝组与子系统的对应表尚未解码。依据字符串观察得出。证据见 `data/secure/hyp_rm_objects_and_arb_fuse.txt`。
+`hyp.img` 是 Gunyah/QTEE 虚拟化资源管理器，而不是普通的虚拟化层。它的字符串列出了 RPC、VM 创建、memparcel 和 SMC 等待队列的源文件，以及本地和远程对象表（`localObjTable`、`remoteObjTable`、`LocalObj_retrieve`）。这使它成为 TrustZone 查找背后对象调用提供者的候选，但其中没有找到对象 `0x91` 的表项，因此尚未确认。它还包含 `PILSubsys_getArbFuseBank`，说明外设镜像（PIL）是按子系统的防回滚熔丝组进行检查的。如果该熔丝组是 `0x221C` 块中的某个软件熔丝范围，那么回滚状态就保存在那里；熔丝组与子系统的对应关系部分已解码（见下文）。依据字符串观察得出。证据见 `data/secure/hyp_rm_objects_and_arb_fuse.txt`。
 
 TrustZone 的安全启动状态字有命名的位，由一个例程报告（位于 `0x1C3DFF30`，它调用状态服务并逐位记录）：第 0 位为 secboot 启用检查，第 1 位为安全硬件密钥已编程，第 2 位为调试禁用检查，第 3 位为防回滚检查，第 4 位为熔丝配置检查，第 5 位为 RPMB 已配置检查，第 6 位为镜像证书中的调试检查，第 8 位为 TZ 安全调试熔丝，第 9 位为 MSS 安全调试熔丝，第 10 位为 CP 安全调试熔丝，第 11 位为非安全安全调试熔丝。状态服务通过 `0x1C401090` 处的间接槽调用，该槽在文件中为零，运行时才填充，因此计算第 3 位的函数尚未确定。依据字符串和报告例程的代码观察得出。
 
 虚拟化层读取 UEFI 区域表中名为 `FUSE_CONTROLLER_SW_RANGE4` 的软件熔丝范围（`0x221C8000`，4 KB）中的若干字。其启动代码读取 `0x221C8610`、`0x221C8700`、`0x221C8744`（基址 `0x221C8000`）以及 `0x221C873C`。对 `0x221C873C` 这个字做测试：其低 4 位与位掩码 `0x4883`（第 0、1、7、11、14 位）比较，结果会设置虚拟化层状态字中的位。依据 `hyp.img`（AArch64，已自动分析）的反汇编观察得出。这些字各自保存什么字段，以及是否包含 PIL 防回滚熔丝组的值，尚未解码。位于 `0x9D4D4` 的标志在七处读取处控制分支；复制后的字尚未找到读取者（见 `data/secure/hyp_rm_objects_and_arb_fuse.txt`）。
+
+PIL 防回滚熔丝查找已部分解码（`data/secure/hyp_pil_arb_fuse_table.txt`）。`PILSubsys_getArbFuseBank`（函数 `0x3EB4C`）接收子系统 ID 与输出指针。它扫描 `0x2007E8` 处的 19 条 `0x148` 字节记录（数量位于 `0x93AD8`）。ID 在记录偏移 `+0xD0` 处匹配；熔丝组值从 `+0xD8` 返回，记录标志 `+0x118` 决定结果：标志为 1 时返回错误 `0x300068`，正常匹配时返回 0 并给出值，未找到 ID 时返回 `0x300067`。依据反汇编观察得出。文件镜像中所有熔丝组值均为零，且未找到对 `+0xD8` 的写入，因此这些值由未定位的运行时代码设置。只有 ID 为 `0x2` 的记录设置了标志。镜像中没有各 ID 对应的子系统名称，因此熔丝组与子系统的对应关系尚不完整。
 
 ## 字面量出现的位置
 
@@ -199,7 +203,8 @@ TrustZone 的安全启动状态字有命名的位，由一个例程报告（位�
 - SBL1 区域表中每条记录的含义。接收它的服务（协议 `0x3E`，即页表构建器）已在第 02 节确定，但每条记录的字段布局尚未确认。
 - 多出的两页是否通过计算偏移被使用。`hyp.img` 中没有指向那里的绝对地址。
 - 字节 `0x221C8119` 及其相邻字节，用于确认 `gpu_speed_bin` 字段，以及同一字节中还有哪些位。
-- `OEM_rot_pk_hash1_fuse_values` 的读取者，及其对应的 QFPROM 偏移。该名称是 `tz.img` 中 OEM 配置块（约 `0x13A295`–`0x13A7XX`，约 40 个键）中的一个键，`devcfg.img` 中也有它。通过 ADRP+ADD、ADR、绝对指针和重定位的搜索都未找到对它的代码引用（`data/secure/oem_rot_key_xref_search.txt`）。读取者很可能是对该块的按名称查找。尚未找到。
+- `OEM_rot_pk_hash1_fuse_values` 的读取者，及其对应的 QFPROM 偏移。该名称是 `tz.img` 中 OEM 配置块（约 `0x13A295`–`0x13A7XX`，约 40 个键）中的一个键，`devcfg.img` 中也有它。通过 ADRP+ADD、ADR、绝对指针和重定位的搜索都未找到对它的代码引用（`data/secure/oem_rot_key_xref_search.txt`）。PK 哈希处理路径（`data/secure/tz_pkhash_path.txt`）本身不直接读取 QFPROM，其设备 ID 输入来自运行时对象的方法 6。读取者很可能是通过该对象对 OEM 块做的按名称查找。尚未找到。
+- 对象 `0x91` 的提供者（即上文的防回滚标志对象），以及构建 TrustZone 线程上下文（`0x14680000` 入口块）的代码。两者在镜像中均未找到；搜索记录见 `data/secure/tz_object_0x91_and_oem_key_search.txt` 与 `data/secure/tz_context_creation_search.txt`。
 - 将 vbmeta 回滚索引与已存储值比较的代码。
 - `featenabler` 的显示块基址（`IDeviceRegionFinder` 的区域名称）、许可证签名校验，以及每个 `soc_hw_version` 对应的 SoC 名称。
 

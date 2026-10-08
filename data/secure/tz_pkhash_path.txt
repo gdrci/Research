@@ -1,0 +1,51 @@
+TrustZone (tz.img) PK-hash ("PKHashExt") path, root-of-trust key. Observed by AArch64 disassembly (capstone) and xref scan.
+
+Strings (file offset -> vaddr):
+  OEM_rot_pk_hash1_fuse_values      0x0013A3AC -> 0x1C13C3AC   (OEM config key name)
+  PKHash is not set. License is currently unusable.   0x2C9F61 -> 0x1C3BDF61
+  Failed getting device's pkhash    0x2CDFAD   -> 0x1C3C1FAD
+  Found pkHash with invalid type    0x2D0289   -> 0x1C3C4289
+  PKHashExtHandler_copyHash / %s[%d]: get / PKHashExtHandler_initWithR...   0x1C3BDFAE..
+  GetPKHash (9 bytes), GetDeviceID, "IDeviceID_getClientDeviceID failed"   0x1C3BE2F7..
+  "/persist/data/pfm/licen..." (license path)                             0x1C3BE03E area
+
+Function 0x1C395C20 (PKHashExtHandler_copyHash, 0x20-byte copy):
+  add x0,x0,#0x58 ; w1=w3=0x20 ; bl 0x1C3AED14   // bounded memcpy: copies min(len,cap)
+  cmp x0,#0x20 ; b.ne -> error log (string 0x1C3BDFAE, "copy %zu")
+  returns 0 on success, 0x3E9 on failure
+  -> copies 32 bytes from its second argument into object+0x58.
+
+Function 0x1C395930 (PKHashExt init, args: x0=obj, x1=src, w2=flag&1, w3=flag):
+  zeroes object head via 0x1C3AED5C (memset-like)
+  0x1C3927F8(obj, "GetPKHash", 9)   // registers the handler name
+  obj+0x30 = flag (w19 & 1) ; obj+0x31 = 0 ; obj+0x34 = 0x3F5 ; obj+0x28 = *(u64*)(0x1C3C8000+0x250) (a pointer loaded from a table)
+  obj+0x38 = obj+0x58 (x23) ; obj+0x40 = x24 (0x20)
+  x1 is then overwritten with 0x1C3BE01E and 0x1C395C20(obj, 0x1C3BE01E) is called (0x1C3959B0).
+  Other calls with the same source: 0x1C395AA8, 0x1C395AF4 (-> 0x1C3BE01E).
+
+Source blob 0x1C3BE015 (.rodata), decoded as DER TLV:
+  06 09 2B 06 01 04 01 8B 29 0C 05   OID 1.3.6.1.4.1.35625.12.5
+  20 ...                             OCTET STRING, length 0x20 (the 0x20 byte is at 0x1C3BE01E)
+  ...32 bytes...
+  OID ...12.3 followed by "/persist/data/pfm/licen..."   (license path attribute)
+  Note: the copy source passed in x1 is 0x1C3BE01E, which is the length byte; the 32 value bytes start at 0x1C3BE01F.
+  The copy therefore takes 0x20 bytes starting at the length byte. Whether the later comparison skips it is not verified.
+  The blob is a constant in .rodata; no fuse read occurs in this path.
+
+Function 0x1C396308 (license file reader/parser, called from 0x1C395DC8 and 0x1C396238):
+  x0 = service handle loaded from [0x1C3CF000+0x8E8]; x1 = path/buffer; x2 = out buffer (sp+0x160)
+  calls 0x1C3B01E0 (length helper) on the buffer and on buffer+0x13,
+  checks a size limit 0x800, then 0x1C3B00C8 / 0x1C3B006C (copy into out and check)
+
+Function 0x1C396908 (GetPKHash / GetDeviceID handler):
+  w0=0xC -> 0x1C3911C0 (allocate 12 bytes)
+  calls 0x1C3915F0 (object-invoke trampoline: mov x16,x8; br x16) with x0 = object, w1 = 6 (method 6), w3 = 0x10
+  -> 16-byte result ([sp+8] stored to [x19+8]); on failure logs string 0x1C3BE2F7 + 0xA7 line,
+     on the other branch logs "...failed" with line 0xAA.
+  The provider of method 6 is a runtime object (object-invoke table), not identified statically.
+
+Conclusion for the root-of-trust key reader:
+  - The fuse name OEM_rot_pk_hash1_fuse_values is a key in the OEM config block (see docs 06).
+  - The PK-hash comparison in this path uses a 16-byte device-ID result from object method 6 and a 32-byte
+    license-attribute value copied from .rodata. Neither is a direct QFPROM read in tz.img.
+  - The reader that turns OEM_rot_pk_hash1_fuse_values into the 32-byte hash is not found.

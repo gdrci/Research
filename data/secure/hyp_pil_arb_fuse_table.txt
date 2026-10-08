@@ -1,0 +1,48 @@
+hyp.img: PILSubsys_getArbFuseBank and its subsystem table. Observed by AArch64 disassembly.
+
+Function 0x0003EB4C = PILSubsys_getArbFuseBank(w0 = subsystem id, x1 = u32* out):
+  w19 = 0x300067 (initial return code, module 0x30 line 0x67)
+  x22 = table base 0x2007E8  (getter 0x260C4: adrp 0x200000 + 0x7E8)
+  x0  = table count  (getter 0x260D8: ldrsw from 0x93000+0xAD8 = 19)
+  loop i = 0..count-1, record = base + i*0x148:
+      if *(u32*)(record+0xD0) == w0 -> match
+  match and *(u32*)(record+0x118) == 1  -> log via 0xA114 (file 0xA4E41, name "PILSubsys_getArbFuseBank",
+                                           line 0x68), w19 = 0x300068, return 0x300068  (error)
+  match and *(u32*)(record+0x118) != 1  -> w19 = 0; *out = *(u32*)(record+0xD8); return 0  (success)
+  no match or table missing              -> log (line 0x67), return 0x300067  (error)
+
+Table: 19 records of 0x148 bytes at vaddr 0x2007E8.
+Fields used by the code in this function: +0xD0 (key), +0xD8 (bank value, u32), +0x118 (flag).
+Other fields seen in the same records: +0xF0 (a sequential index 1..0x23 used by the 0x25FF8/0x26060 lookups),
+  +0xF4 (read by 0x3E038; returns 0x7FFFFFFF when zero, i.e. treated as "no limit").
+
+ idx  +0xD0(key)  +0xD8(bank)  +0xF0(index)  +0xF4  +0x118(flag)
+   0     0x4          0x0          0x1         0x0      0x0
+   1    0x18          0x0          0xC         0x0      0x0
+   2     0xE          0x0          0x9         0x0      0x0
+   3    0x14          0x0          0xD         0x0      0x0
+   4     0x0          0x0          0xE         0x0      0x0
+   5    0x17          0x0          0x12        0x0      0x0
+   6    0x27          0x0          0x14        0x0      0x0
+   7    0x1C          0x0          0x15        0x0      0x0
+   8    0x28          0x0          0x17        0x0      0x0
+   9     0x2          0x0          0x4         0x0      0x1
+  10     0xD          0x0          0x6         0x0      0x0
+  11    0x1D          0x0          0xF         0x0      0x0
+  12    0x24          0x0          0x13        0x0      0x0
+  13    0x2E          0x0          0x1A        0x0      0x0
+  14    0x2D          0x0          0x1B        0x0      0x0
+  15    0x2F          0x0          0x1C        0x0      0x0
+  16    0x34          0x0          0x21        0x0      0x0
+  17    0x4C          0x0          0x22        0x0      0x0
+  18    0x4D          0x0          0x23        0x0      0x0
+
+Observations:
+  - In the file image every +0xD8 bank value is zero. No store to offset +0xD8 of a 0x148-stride record was found
+    (search: stores with #0xd8 near a #0x148 stride; only the two load sites 0x3EBD4 and 0x3EC1C).
+    So the bank values are either written at run time by code not located, or copied into the table by a
+    mechanism not found yet. Not determined.
+  - Only the record with key 0x2 has the flag set, so a lookup for subsystem 0x2 returns error 0x300068.
+  - Callers of 0x3EB4C were not enumerated. Callers of the table accessors 0x3E028/0x3E038 are at 0x26024, 0x26088,
+    0x3F640, 0x3F7D8, 0x3F984, 0x3FB34.
+  - The subsystem names for keys 0x2..0x4D are not in the image; they are not decoded.
