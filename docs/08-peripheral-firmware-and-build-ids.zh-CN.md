@@ -25,7 +25,7 @@
 
 清单能说明的内容：
 
-- `Aurora` 是第 00 节中使用的 SoC 代号。`LA` 标记是高通 Linux Android 基线。
+- `Aurora` 是第 05 节中使用的 SoC 代号。`LA` 标记是高通 Linux Android 基线。
 - 多个子系统构建共享标签 `1.149279`（`common`、`boot`），因此它们可能来自同一发布线。推断。
 - `btfm` 条目（`00819`）与蓝牙镜像自身的版本文件（`00797`）不一致。镜像内的补丁横幅写的是 `00797`，因此镜像就是该构建，`00819` 是另一个构建（第 07 节）。
 - `apps_vendor` 条目为 `LA.VENDOR.12.2`，而 vendor 分区为 Android 12（第 04 节）。这与该节所述的较旧 Treble 基线一致。
@@ -34,7 +34,7 @@
 
 ## `vendor/firmware` 中的外设固件
 
-`vendor/firmware` 目录共 42 项（`data/userspace/vendor_firmware_files.txt`）。其中 9 个是眼镜 MCU、传感器和音频的 `.tub` 容器，第 09 节已涵盖。其余列于下文。头部信息用 pyelftools 读取，原始文件直接读取（`data/userspace/peripheral_firmware_headers.txt`）。
+`vendor/firmware` 目录共 42 项（`data/userspace/vendor_firmware_files.txt`）。其中 9 个是 `.tub` 容器：MCU、DSP、case、触控与 SPL2 固件（第 09 节）。其余列于下文。头部信息用 pyelftools 读取，原始文件直接读取（`data/userspace/peripheral_firmware_headers.txt`）。
 
 出现两种固件格式：
 
@@ -52,15 +52,15 @@ zap 的 ELF 头写明 `e_machine = EM_QDSP6`（Hexagon），入口 `0x1000`，�
 
 `a740v3_zap.mbn` 的签名块含有 SECTOOLS 测试根（`SECTOOLS SECP384R1 CURVE TEST ROOT0`、`General Use Test Key 0 (for testing only)`）。`a620_zap.mbn` 不含 SECTOOLS 字符串，而是含有 Meta Greatwhite_FW 链（第 16 节）。已观察。出货的签名镜像中出现测试根字符串，说明签名结构存在，但这里未检查其到生产根的信任链。
 
-GPU 驱动 `msm_kgsl.ko` 读取速度分级熔丝单元（第 06 节）。推断：固件文件通过内核 GPU 驱动与 zap 机制加载，但所检视的镜像中没有加载器代码。
+`msm_kgsl.ko` 模块含有 `speed_bin` 与 `speed-bin` 字符串，设备树将 `speed_bin` nvmem 单元命名出来（第 06 节）。读取该单元的代码未经检视。推断：固件文件通过内核 GPU 驱动与 zap 机制加载，但所检视的镜像中没有加载器代码。
 
 ### 摄像头图像协处理器（`CAMERA_ICP`）
 
 - `CAMERA_ICP.mdt`（7,724 字节）与 `CAMERA_ICP.mbn`（949,080 字节）：Xtensa ELF，入口 `0x0`，21 个程序头，19 个可加载段。
-- 段文件 `CAMERA_ICP.b00` 至 `b20`。最大的是 `b08`（866,156 字节）。
+- 段文件存在于 `CAMERA_ICP.b00`–`b09`、`b17`、`b18` 与 `b20`（共 13 个文件）；`.mbn` 包含完整镜像。最大的是 `b08`（866,156 字节）。
 - 镜像中的字符串：`QC_IMAGE_VERSION_STRING=CICP.FW.5.0-00020`、`CAMERA_640_V1 (Mimas)`、`CAMERA_740_V1 (Skye)`，以及源路径 `Z:/b/fw_core/Common/DbgUtils/src/icpdiag.c`。已观察。
 
-`CICP` 是镜像对自身固件的命名。`Mimas` 与 `Skye` 作为两个摄像头配置字符串出现。已观察；将其理解为两种硬件变体属于推断。内核侧的摄像头配置在 `init.hw.camera.rc` 与 `cameraserver.greatwhite.rc` 中（`data/userspace/init_rc_files.txt`）。
+`CICP` 是镜像对自身固件的命名。`Mimas` 与 `Skye` 作为两个摄像头配置字符串出现。已观察；将其理解为两种硬件变体属于推断。摄像头初始化脚本 `init.hw.camera.rc` 与 `cameraserver.greatwhite.rc` 是 `system_ext/etc/init/` 中的用户空间文件（`data/userspace/init_rc_files.txt`）。
 
 ### 视频（`vpu20_4v.mbn`，Venus）
 
@@ -72,10 +72,10 @@ GPU 驱动 `msm_kgsl.ko` 读取速度分级熔丝单元（第 06 节）。推断
 ### 视觉（`evass.mbn`）
 
 - `evass.mbn`（2,247,464 字节）：Xtensa ELF，入口 `0xF500000`，20 个程序头，18 个可加载段。其第一个段表与 `vpu20_4v.mbn` 一致，但两个文件约有 100 万字节不同。已观察。
-- 字符串包括 `facedetection`、`prevState_selectedAlignment`、`prevState_ageAlignment` 与 `prevState_ageSgm`。已观察。
+- 字符串包括 `prevState_selectedAlignment`、`prevState_ageAlignment` 与 `prevState_ageSgm`。已观察。
 - vendor 镜像中有 `etc/eva/facedetection/model3.dat`。已观察。
 
-该镜像是为 Xtensa 与 XOS 构建的 `EVA` 固件（日志前缀 `EVA:`），通过 `HFI_CMD_SESSION_CVP_*` 会话命令驱动 CVP 硬件。已从字符串观察。其日志描述的是立体视觉与延迟重投影管线：左右眼的深度缓冲与 `EyeBufferReverseFences`，面向显示的 `LSR-DISPLAY-Forward` 与 `LSR-*-EYE-Forward` 栅栏（延迟重投影），`GainMap` 栅栏，`SKIPPING SGM`（用于深度的半全局匹配），`ConcealMB`（宏块隐藏），`Global Align Matrix` 与 `EVA_FW_ValidateDmmAlignmentControl`。跟踪阈值 `imageConfHighThreshold`、`enablingSgmMinAgeThreshold`、`imageToGyroMinAgeThreshold` 与 `gyroToImageMinAgeThreshold` 表明图像轨迹与陀螺仪对齐。`vendor/etc/eva/facedetection/model3.dat` 中的人脸检测模型属于同一管线。因此 `EVASS` 最好理解为用于深度、重投影与跟踪的视觉处理固件，人脸检测是其中一个客户端。根据字符串推断；`EVASS` 这一缩写本身不在文件中。
+该镜像是为 Xtensa 与 XOS 构建的 `EVA` 固件（日志前缀 `EVA:`），通过 `HFI_CMD_SESSION_CVP_*` 会话命令驱动 CVP 硬件。已从字符串观察。其日志描述的是立体视觉与延迟重投影管线：左右眼的深度缓冲与 `EyeBufferReverseFences`，面向显示的 `LSR-DISPLAY-Forward` 与 `LSR-*-EYE-Forward` 栅栏（延迟重投影），`GainMap` 栅栏，`SKIPPING  SGM`（两个空格；用于深度的半全局匹配），`ConcealMB`（宏块隐藏），`Global Align Matrix` 与 `EVA_FW_ValidateDmmAlignmentControl`。跟踪阈值 `imageConfHighThreshold`、`enablingSgmMinAgeThreshold`、`imageToGyroMinAgeThreshold` 与 `gyroToImageMinAgeThreshold` 表明图像轨迹与陀螺仪对齐。`vendor/etc/eva/facedetection/model3.dat` 中的人脸检测模型属于同一管线。因此 `EVASS` 最好理解为用于深度、重投影与跟踪的视觉处理固件，人脸检测是其中一个客户端。根据字符串推断；`EVASS` 这一缩写本身不在文件中。
 
 ## 通用格式
 

@@ -25,7 +25,7 @@ The metabuild is `Aurora.LA.2.0-00101-STD.PROD-1.149279.2`, with product flavour
 
 What the manifest tells us:
 
-- The `Aurora` name is the SoC codename used in section 00. The `LA` tag is the Qualcomm Linux Android base line.
+- The `Aurora` name is the SoC codename used in section 05. The `LA` tag is the Qualcomm Linux Android base line.
 - Several subsystem builds share the `1.149279` tag (`common`, `boot`), so they probably come from one release train. Inferred.
 - The `btfm` entry (`00819`) does not match the Bluetooth image's own version file (`00797`). The patch banner inside the image says `00797`, so the image is that build and `00819` is a different build (section 07).
 - The `apps_vendor` entry is `LA.VENDOR.12.2`, while the vendor partition is Android 12 (section 04). This matches the older Treble base described there.
@@ -34,7 +34,7 @@ The manifest is the only build-level record found in the OTA. The other images d
 
 ## Peripheral firmware in `vendor/firmware`
 
-The `vendor/firmware` directory has 42 entries (`data/userspace/vendor_firmware_files.txt`). Nine are `.tub` containers for the glasses MCU, sensors and audio, covered in section 09. The rest are listed below. Headers were read with pyelftools and the raw files were read directly (`data/userspace/peripheral_firmware_headers.txt`).
+The `vendor/firmware` directory has 42 entries (`data/userspace/vendor_firmware_files.txt`). Nine are `.tub` containers: MCU, DSP, case, touch and SPL2 firmware (section 09). The rest are listed below. Headers were read with pyelftools and the raw files were read directly (`data/userspace/peripheral_firmware_headers.txt`).
 
 Two firmware formats appear:
 
@@ -52,15 +52,15 @@ The zap ELF headers say `e_machine = EM_QDSP6` (Hexagon), entry `0x1000`, and on
 
 The `a740v3_zap.mbn` file carries the signing block with the SECTOOLS test root (`SECTOOLS SECP384R1 CURVE TEST ROOT0`, `General Use Test Key 0 (for testing only)`). The `a620_zap.mbn` file has no SECTOOLS strings; it carries the Meta Greatwhite_FW chain instead (section 16). Observed. Test-root strings in a shipped signed image show that the signing structure is present, but the chain to a production root is not checked here.
 
-The GPU driver `msm_kgsl.ko` reads the speed-bin fuse cell (section 06). Inferred: the firmware files are loaded through the kernel GPU driver and the zap mechanism, but the loader code is not in the images examined.
+The `msm_kgsl.ko` module contains the `speed_bin` and `speed-bin` strings, and the device tree names the `speed_bin` nvmem cell (section 06). The code that reads the cell was not examined. Inferred: the firmware files are loaded through the kernel GPU driver and the zap mechanism, but the loader code is not in the images examined.
 
 ### Camera image co-processor (`CAMERA_ICP`)
 
 - `CAMERA_ICP.mdt` (7,724 bytes) and `CAMERA_ICP.mbn` (949,080 bytes): an Xtensa ELF with entry `0x0`, 21 program headers and 19 loadable segments.
-- Segment files `CAMERA_ICP.b00` to `b20`. The largest is `b08` (866,156 bytes).
+- Segment files are present for `CAMERA_ICP.b00`–`b09`, `b17`, `b18` and `b20` (13 files); the `.mbn` holds the whole image. The largest is `b08` (866,156 bytes).
 - Strings in the image: `QC_IMAGE_VERSION_STRING=CICP.FW.5.0-00020`, `CAMERA_640_V1 (Mimas)`, `CAMERA_740_V1 (Skye)`, and a source path `Z:/b/fw_core/Common/DbgUtils/src/icpdiag.c`. Observed.
 
-`CICP` is the image's own name for the firmware. The `Mimas` and `Skye` names appear as two camera-configuration strings. Observed; the reading as hardware variants is inferred. The kernel side of the camera is in `init.hw.camera.rc` and `cameraserver.greatwhite.rc` (`data/userspace/init_rc_files.txt`).
+`CICP` is the image's own name for the firmware. The `Mimas` and `Skye` names appear as two camera-configuration strings. Observed; the reading as hardware variants is inferred. The camera init scripts `init.hw.camera.rc` and `cameraserver.greatwhite.rc` are userspace files in `system_ext/etc/init/` (`data/userspace/init_rc_files.txt`).
 
 ### Video (`vpu20_4v.mbn`, Venus)
 
@@ -72,10 +72,10 @@ The `Venus` name is the Qualcomm video codec block. The file name `vpu20_4v` is 
 ### Vision (`evass.mbn`)
 
 - `evass.mbn` (2,247,464 bytes): an Xtensa ELF with entry `0xF500000`, 20 program headers and 18 loadable segments. Its first segment table matches `vpu20_4v.mbn`, but the two files differ in about 1 million bytes. Observed.
-- Strings include `facedetection`, `prevState_selectedAlignment`, `prevState_ageAlignment` and `prevState_ageSgm`. Observed.
+- Strings include `prevState_selectedAlignment`, `prevState_ageAlignment` and `prevState_ageSgm`. Observed.
 - The vendor image has `etc/eva/facedetection/model3.dat`. Observed.
 
-The image is an `EVA` firmware (the `EVA:` log prefix) built for Xtensa with XOS, and it drives the CVP hardware through `HFI_CMD_SESSION_CVP_*` session commands. Observed from the strings. Its log messages describe a stereo vision and late-stage reprojection pipeline: depth buffers and `EyeBufferReverseFences` for the left and right eyes, `LSR-DISPLAY-Forward` and `LSR-*-EYE-Forward` fences (late-stage reprojection to the display), `GainMap` fences, `SKIPPING SGM` (semi-global matching for depth), `ConcealMB` (macroblock concealment), `Global Align Matrix` and `EVA_FW_ValidateDmmAlignmentControl`. The tracking thresholds `imageConfHighThreshold`, `enablingSgmMinAgeThreshold`, `imageToGyroMinAgeThreshold` and `gyroToImageMinAgeThreshold` show that image tracks are aligned with the gyroscope. The face-detection model in `vendor/etc/eva/facedetection/model3.dat` belongs to the same pipeline. So `EVASS` is best read as the vision-processing firmware for depth, reprojection and tracking, with face detection as one client. Inferred from the strings; the expansion of `EVASS` itself is not in the files.
+The image is an `EVA` firmware (the `EVA:` log prefix) built for Xtensa with XOS, and it drives the CVP hardware through `HFI_CMD_SESSION_CVP_*` session commands. Observed from the strings. Its log messages describe a stereo vision and late-stage reprojection pipeline: depth buffers and `EyeBufferReverseFences` for the left and right eyes, `LSR-DISPLAY-Forward` and `LSR-*-EYE-Forward` fences (late-stage reprojection to the display), `GainMap` fences, `SKIPPING  SGM` (two spaces) (semi-global matching for depth), `ConcealMB` (macroblock concealment), `Global Align Matrix` and `EVA_FW_ValidateDmmAlignmentControl`. The tracking thresholds `imageConfHighThreshold`, `enablingSgmMinAgeThreshold`, `imageToGyroMinAgeThreshold` and `gyroToImageMinAgeThreshold` show that image tracks are aligned with the gyroscope. The face-detection model in `vendor/etc/eva/facedetection/model3.dat` belongs to the same pipeline. So `EVASS` is best read as the vision-processing firmware for depth, reprojection and tracking, with face detection as one client. Inferred from the strings; the expansion of `EVASS` itself is not in the files.
 
 ## Common format
 

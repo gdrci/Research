@@ -2,7 +2,7 @@
 
 [English](10-qcc730-secure-boot-reference.md)
 
-本文档收录 Qualcomm 和 OP-TEE 的外部参考资料。它不描述 `greatwhite` 设备。QCC730 是另一款高通芯片（M4F 应用处理器，RRAM 与闪存）。它的 OTP 布局和签名格式，是高通如何编码安全启动与防回滚状态的最完整的公开范例。这些内容可作为与 `greatwhite` 证据对照的模型，而不是对 `greatwhite` 的描述。
+本文档收录 Qualcomm 和 OP-TEE 的外部参考资料。它不描述 `greatwhite` 设备。QCC730 是另一款高通芯片（M4F，配 RRAM 与外部闪存）。它的 OTP 布局和签名格式，是高通如何编码安全启动与防回滚状态的最完整的公开范例。这些内容可作为与 `greatwhite` 证据对照的模型，而不是对 `greatwhite` 的描述。
 
 ## 来源
 
@@ -53,7 +53,7 @@ QCC730 的 OTP 熔丝在烧录前为 0，烧录后为 1。在所在区域锁定�
 | 字节 | 位 | 名称 | 含义 | 建议值 |
 |---|---|---|---|---|
 | 160 | 7:4 | TOTAL_ROT_NUM[3:0] | 计算 RoT 哈希所用的 RoT 数量。QCC730 只支持 1 个 | 1 |
-| 162-163 | | MODEL_ID | 型号标识 | |
+| 162-163 | | MODEL_ID | 源资料未作说明 | |
 | 164 | 2:0 | SECURE_BOOT_ENFORCE[2:0] | 置 0x7 启用强制策略：镜像认证与防回滚检查 | 7 |
 | 165-166 | | OEM_ID | Qualcomm 分配的 16 位标识，供镜像认证使用 | 烧录分配的值 |
 | 167 | 7 | OEM_DEBUG_DISABLE | 置 1 禁用 JTAG 调试 | 1 |
@@ -73,7 +73,7 @@ QCC730 的 OTP 熔丝在烧录前为 0，烧录后为 1。在所在区域锁定�
 | 182 | 7:0 | ANTI_ROLLBACK[55:48] | |
 | 183 | 7:0 | ANTI_ROLLBACK[63:56] | |
 
-文档将版本定义为置 1 位的数量之和。这是一种温度计式编码（求和即统计置位数）。确切的熔丝写入规则在编程指南中，不在本资料内。
+源资料将版本定义为该字段中置 1 位的数量之和，即统计置位数。源资料未描述温度计式编码。确切的熔丝写入规则在编程指南中，不在本资料内。
 
 ### 熔丝烧录
 
@@ -84,7 +84,7 @@ NVM 编程器（`nvm_programmer.py`）用于读写 QCC730 的 OTP、RRAM 与闪�
 SecImage 配置（`qcc730_secimage.xml`）用于签名、后处理和校验安全镜像。它包含四个部分：`metadata`、`general_properties`、`data_provisioning` 和 `image_list`。
 
 - `metadata`：`<chipset>qcc730</chipset>`，`<version>2.0</version>`。
-- `general_properties`：`selected_signer`（默认本地签名器）、`selected_cert_config`、`cass_capability`（`secboot_sha2_root`，即 SHA-256 签名的根证书）、`key_size`（2048）、`exponent`（257 或 65537）、`mrc_index`、`num_root_certs`、`msm_part`、`oem_id`、`model_id`、`debug`、`max_cert_size`、`num_certs_in_certchain`。
+- `general_properties`：`selected_signer`（默认：本地签名器；示例值 `local_v2`）、`selected_cert_config`、`cass_capability`（`secboot_sha2_root`，即 SHA-256 签名的根证书）、`key_size`（2048）、`exponent`（257 或 65537）、`mrc_index`、`num_root_certs`、`msm_part`、`oem_id`、`model_id`、`debug`、`max_cert_size`、`num_certs_in_certchain`。
 - `image_list`：每个镜像包含 `sign_id`、`name`、`image_type`（`elf_has_ht`）和 `sw_id` 覆盖项。
 
 本地签名器使用 Qualcomm 平台签名应用（QPSA）的测试 PKI。若要使用本地预签名证书，需在 `sectools\resources\data_prov_assets\Signing\Local\` 下创建一个单词命名的文件夹，并在 `selected_cert_config` 中填写该名称。其 `config.xml` 设置 `is_mrc`、`root_pre`、`attest_ca_pre`、`attest_pre`、`root_cert` 和 `root_private_key`。
@@ -179,7 +179,7 @@ QFPROM 在启动时写入或 PAS 熔丝读取服务启用时被启用。安全�
 
 | QCC730 概念 | greatwhite 证据（见文档 02、03、06） | 状态 |
 |---|---|---|
-| OTP 中以 64 位温度计式编码表示的防回滚 | UEFI 熔丝库中的软件熔丝范围 `FUSE_CONTROLLER_SW_RANGE0`-`5`，位于 `0x221C` 块（文档 06）。虚拟化层在启动时把范围 4 的四个字（`0x221C8610`、`0x221C8700`、`0x221C8744`、`0x221C873C`）复制到全局变量中。它对这些字的唯一位测试是 4 位枚举掩码（`0x4883`），没有置位计数。尚未找到复制后全局变量的读取者 | 假设：目前读到的代码既不支持也不否定。需要复制全局变量的读取者或熔丝转储 |
+| OTP 中以 64 位编码表示的防回滚（置位数之和） | UEFI 熔丝库中的软件熔丝范围 `FUSE_CONTROLLER_SW_RANGE0`、`_RANGE1`、`_RANGE3`、`_RANGE4` 与 `_RANGE5`（区域表与字符串中没有 `_RANGE2`），位于 `0x221C` 块（文档 06）。虚拟化层的早期启动代码把范围 4 的三个字（`0x221C8610`、`0x221C8700`、`0x221C8744`）复制到全局变量 `0x9D4D0`、`0x9D4CC` 与 `0x9D4C8` 中。据报告，虚拟化层对这些字的唯一位测试是 4 位枚举掩码（`0x4883`），没有置位计数；此项未经重新检视。尚未找到复制后全局变量的读取者 | 假设：目前读到的代码既不支持也不否定。需要复制全局变量的读取者或熔丝转储 |
 | 镜像 SW_ID 的类型字段（SBL、APP、golden） | 虚拟化层的 `PILSubsys_getArbFuseBank` 提供按子系统划分的 arb 熔丝组（文档 06） | 假设：同类存储体中按子系统的索引 |
 | PK_HASH，根证书的 SHA-256 | TZ 与 devcfg 中的 `OEM_rot_pk_hash1_fuse_values`（文档 06） | 假设：相同作用；读取者仍未找到 |
 | SECURE_BOOT_ENFORCE 及其使能位 | 安全启动状态字第 0 至 11 位，第 3 位为防回滚（文档 06） | 结构上相似；状态服务未确定 |

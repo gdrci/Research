@@ -2,7 +2,7 @@
 
 [中文版](10-qcc730-secure-boot-reference.zh-CN.md)
 
-This document holds external reference material from Qualcomm and OP-TEE. It is not about the `greatwhite` device. The QCC730 is a different Qualcomm part (M4F application processor, RRAM and flash). Its OTP layout and signing format are the best documented example of how Qualcomm encodes secure-boot and anti-rollback state. Use them as a model to test against the `greatwhite` evidence, not as a description of it.
+This document holds external reference material from Qualcomm and OP-TEE. It is not about the `greatwhite` device. The QCC730 is a different Qualcomm part (M4F, with RRAM and external flash). Its OTP layout and signing format are the best documented example of how Qualcomm encodes secure-boot and anti-rollback state. Use them as a model to test against the `greatwhite` evidence, not as a description of it.
 
 ## Sources
 
@@ -53,7 +53,7 @@ The document's table names the field `WRITE_PERMISSION_READ_WRITE_PEMRIONS`, wit
 | Byte | Bit | Name | Meaning | Guidance |
 |---|---|---|---|---|
 | 160 | 7:4 | TOTAL_ROT_NUM[3:0] | Number of RoTs used for the RoT hash. QCC730 supports only one | 1 |
-| 162-163 | | MODEL_ID | Model identifier | |
+| 162-163 | | MODEL_ID | Not described in the source | |
 | 164 | 2:0 | SECURE_BOOT_ENFORCE[2:0] | 0x7 enables enforcement: image authentication and the anti-rollback check | 7 |
 | 165-166 | | OEM_ID | 16-bit identifier issued by Qualcomm, used by image authentication | Blow the assigned value |
 | 167 | 7 | OEM_DEBUG_DISABLE | 1 disables JTAG debugging | 1 |
@@ -73,7 +73,7 @@ The document's table names the field `WRITE_PERMISSION_READ_WRITE_PEMRIONS`, wit
 | 182 | 7:0 | ANTI_ROLLBACK[55:48] | |
 | 183 | 7:0 | ANTI_ROLLBACK[63:56] | |
 
-The document defines the version as the sum of one bits. This is a thermometer-style encoding (the sum counts the set bits). Its exact fuse-write rules are in the programming guide, not in this material.
+The source defines the version as the sum of the one bits in the field, which is a population count. The source does not describe a thermometer code. Its exact fuse-write rules are in the programming guide, not in this material.
 
 ### Fuse blowing
 
@@ -84,7 +84,7 @@ The NVM programmer (`nvm_programmer.py`) reads and writes QCC730 OTP, RRAM and f
 The SecImage configuration (`qcc730_secimage.xml`) signs, post-processes and validates secure images. It has four sections: `metadata`, `general_properties`, `data_provisioning` and `image_list`.
 
 - `metadata`: `<chipset>qcc730</chipset>`, `<version>2.0</version>`.
-- `general_properties`: `selected_signer` (local, default), `selected_cert_config`, `cass_capability` (`secboot_sha2_root`, a SHA-256-signed root certificate), `key_size` (2048), `exponent` (257 or 65537), `mrc_index`, `num_root_certs`, `msm_part`, `oem_id`, `model_id`, `debug`, `max_cert_size`, `num_certs_in_certchain`.
+- `general_properties`: `selected_signer` (default: local signer; example value `local_v2`), `selected_cert_config`, `cass_capability` (`secboot_sha2_root`, a SHA-256-signed root certificate), `key_size` (2048), `exponent` (257 or 65537), `mrc_index`, `num_root_certs`, `msm_part`, `oem_id`, `model_id`, `debug`, `max_cert_size`, `num_certs_in_certchain`.
 - `image_list`: each image has `sign_id`, `name`, `image_type` (`elf_has_ht`) and a `sw_id` override.
 
 The local signer uses the Qualcomm platform signing application (QPSA) test PKI. For a local pre-signed certificate, create a one-word folder under `sectools\resources\data_prov_assets\Signing\Local\` and name it in `selected_cert_config`. Its `config.xml` sets `is_mrc`, `root_pre`, `attest_ca_pre`, `attest_pre`, `root_cert` and `root_private_key`.
@@ -179,7 +179,7 @@ These are parallels to test. None is confirmed on `greatwhite`.
 
 | QCC730 concept | greatwhite evidence (see docs 02, 03, 06) | Status |
 |---|---|---|
-| Anti-rollback as a 64-bit thermometer code in OTP | Software-fuse ranges `FUSE_CONTROLLER_SW_RANGE0`-`5` in the UEFI fuse library. `0x221C` block (doc 06). The hypervisor copies four words of range 4 (`0x221C8610`, `0x221C8700`, `0x221C8744` and `0x221C873C`) into globals at boot. Its only bit test on those words is a 4-bit enumeration mask (`0x4883`), with no population count. Readers of the copied globals are not found | Hypothesis: not supported or refuted by the code read so far. Needs a reader of the copied globals or a fuse dump |
+| Anti-rollback as a 64-bit encoding in OTP (sum of set bits) | Software-fuse ranges `FUSE_CONTROLLER_SW_RANGE0`, `_RANGE1`, `_RANGE3`, `_RANGE4` and `_RANGE5` in the UEFI fuse library (no `_RANGE2` in the region table or strings). `0x221C` block (doc 06). The hypervisor's early-boot block copies three words of range 4 (`0x221C8610`, `0x221C8700`, `0x221C8744`) into globals `0x9D4D0`, `0x9D4CC` and `0x9D4C8`. The hypervisor's only bit test on those words was reported as a 4-bit enumeration mask (`0x4883`), with no population count; this was not re-examined. Readers of the copied globals are not found | Hypothesis: not supported or refuted by the code read so far. Needs a reader of the copied globals or a fuse dump |
 | Image SW_ID type field (SBL, APP, golden) | Hypervisor `PILSubsys_getArbFuseBank` gives a per-subsystem arb fuse bank (doc 06) | Hypothesis: a per-subsystem index into the same kind of bank |
 | PK_HASH, SHA-256 of root certificates | `OEM_rot_pk_hash1_fuse_values` in TZ and devcfg (doc 06) | Hypothesis: the same role; the reader is still not found |
 | SECURE_BOOT_ENFORCE and the enable bits | Secure-boot status word, bits 0 to 11, bit 3 = anti-rollback (doc 06) | Structural parallel; the status service is not identified |
