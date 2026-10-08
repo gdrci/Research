@@ -129,6 +129,7 @@ Counts are from the repository at the time of writing: 145 files, 2,862,270 byte
 | `data/secure/sbl1_image_record_table.txt` | 17 | 02 | file name | SBL1 per-image record table: layout, ids, zero transfer values |
 | `data/secure/sbl1_loader_instance_layout.txt` | 24 | 02 | file name | SBL1 MBN loader instance and MBRD driver layout; corrects the earlier +0x28 reading |
 | `data/secure/sbl1_id10_block_device_object.txt` | 13 | 02 | file name | SBL1 config-id-10 object: block-device loader method table; not the TrustZone entry |
+| `data/secure/sbl1_indirect_call_scan.txt` | 10 | 02 | file name | sbl1.elf indirect-call scan for the header-driven jump into the TrustZone image; not located |
 | `data/ghidra/sbl1_boot_image_driver_decompiled.txt` | 410 | 02 | file name | Ghidra decompile of the SBL1 boot image driver FUN_14825980 |
 | `data/secure/keymaster_rollback_strings.txt` | 1,061 | 03 | file name | keymaster.img (ELF, 368,640 bytes), strings related to rollback, version, boot state an... |
 | `data/secure/object_0x91_firmware_scan.txt` | 638 | 02, 03, 06 | directory | Firmware-wide scan for table rows keyed by object ID 0x91 (low 32 bits 0x91, high 32 bi... |

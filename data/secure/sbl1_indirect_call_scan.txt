@@ -1,0 +1,10 @@
+# sbl1.elf: indirect calls (blr) in the executable segments, to find the header-driven jump into a loaded image
+# Scan: capstone over segments 0x14824000 (file 0x1000, size 0x7F000) and 0x148A3000 (file 0x80000, size 0xF000). 4,398 instructions. 43 blr sites.
+
+Candidates examined:
+- 0x14825224 (blr x8, loaded from [object+0x28]): the allocator free path (section 02, sbl1_loader_instance_layout.txt). Not the image jump.
+- 0x14825420 and 0x148254E8 (blr x8, loaded from [object+0x38]): object method calls in the driver; not identified as the jump.
+- 0x1482555C (blr x8, from [x9+0x18]) and 0x14825568 (blr x20, x20 from [x8+0x50]): both in FUN_14825558. Ghidra decompile: this is the SBL1 boot main (external heap init, FUN_14828BD8 log strings, heap pool setup, FUN_148262A8/FUN_148262CC). Not the image jump.
+- 0x148257D4, 0x14825A44, 0x14825B88, 0x14825BC0, 0x14825C38, 0x14825C84, 0x14825D28, 0x1482740C, 0x148281C0: method calls through service or config objects, with the target loaded from an object table; none is loaded from a header field in the code shown.
+
+Result: no blr in SBL1 is loaded from a field that is clearly the image entry from the MBN or ELF header. The header-driven jump into the TrustZone image was not located. Observed.
