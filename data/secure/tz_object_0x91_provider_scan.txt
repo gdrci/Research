@@ -1,0 +1,21 @@
+# tz.img: search for the provider of object 0x91 (tz.img loads at its real vaddrs; code segments listed in the scan script)
+
+Invoke path (disassembly, file offsets per ELF load segments):
+  0x1C32DFB0: mrs x8, tpidrro_el0; ldp x9, x8, [x8, #0x18]   -> x9 = invoke function (+0x18), x8 = handle (+0x20)
+              w3 = 0x1001 (operation), x0 = handle, x2 = args buffer (4-byte object ID at [sp])
+              bl 0x1C302990
+  0x1C302990: mov x16, x9; br x16                            -> trampoline jumps to the function in +0x18
+  0x1C32E024: thread-local cache at tpidrro_el0 + 0x28 (0x1C303D04 lookup); on miss calls 0x1C32DFB0
+
+Scan 1: 32-bit value 0x91 in non-executable segments: 9 hits, none followed by a pointer pair that resembles an object table.
+
+Scan 2: stores of a function address at offset 0x18 from a non-stack base register (prologue-based function test):
+  0x1C073898 str x8,[x20,#0x18]       value 0x1C09CCAC
+  0x1C0F6824 stp x10,x11,[x0,#0x18]   second value 0x1C0FD6B0 (at +0x20, reversed relative to the invoke pair)
+  0x1C11B134 str x8,[x19,#0x18]       value 0x1C11B488
+  0x1C11DC60 stp x22,x23,[x20,#0x18] second value 0x1C11B48C (at +0x20)
+  0x1C3AF128 stp x20,x22,[x21,#0x18] second value 0x1C3AE284 (at +0x20)
+  Stack-based stores (sp) with a function address at +0x18 also appear; they are frame slots, not thread blocks.
+  None of these is a (function, handle) pair stored at +0x18/+0x20 of a block that is then installed in tpidrro_el0.
+
+Result: the provider of object 0x91 is not identified. The static search finds no store that writes the invoke pair into a thread block. The prologue test used in scan 2 misses some function shapes, so the scan is not exhaustive. Observed.
