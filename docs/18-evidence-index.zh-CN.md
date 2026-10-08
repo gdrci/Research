@@ -124,6 +124,8 @@
 | `data/secure/tz_context_creator_decomp.txt` | 107 | 06 | 文件名 | Decompiled tz.img context wrapper, list-node registration callers and switch-in; no thread-block pair store |
 | `data/secure/tz_switch_in_entry_scan.txt` | 12 | 06, 02 | 文件名 | tz.img branch and pointer scan for the switch-in function; no in-image caller |
 | `data/secure/sbl1_tz_entry_context_chain.txt` | 13 | 02, 06 | 文件名 | SBL1 loader objects and the TrustZone entry context; the object at loader +0x28 not identified |
+| `data/secure/sbl1_loader_context_chain.txt` | 5 | 02 | 文件名 | SBL1 loader context: protocol services 0x0E and 0x11, boot image driver, selector |
+| `data/ghidra/sbl1_boot_image_driver_decompiled.txt` | 410 | 02 | 文件名 | Ghidra decompile of the SBL1 boot image driver FUN_14825980 |
 | `data/secure/keymaster_rollback_strings.txt` | 1,061 | 03 | 文件名 | keymaster.img (ELF, 368,640 bytes), strings related to rollback, version, boot state an... |
 | `data/secure/object_0x91_firmware_scan.txt` | 638 | 02, 03, 06 | 目录 | Firmware-wide scan for table rows keyed by object ID 0x91 (low 32 bits 0x91, high 32 bi... |
 | `data/secure/oem_key_pointer_search.txt` | 1,137 | 06 | 文件名 | Search for references to the OEM configuration key names (TrustZone, tz.img; devcfg.img). |

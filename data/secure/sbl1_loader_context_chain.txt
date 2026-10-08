@@ -1,0 +1,5 @@
+# SBL1 loader context: from the boot image driver to the transfer object (sbl1.elf)
+Protocol table (data/ghidra/sbl1_protocol_table.txt): service 0x0E factory = 0x14830594 (ELF loader constructor); service 0x11 object = 0x148B5B60 (allocator); service 0x3E = page-table builder (section 02).
+Caller FUN_14825980 (data/ghidra/sbl1_boot_image_driver_decompiled.txt): allocates a 0x48-byte per-image context with the allocator and walks the record table at 0x148B62E0, setting config fields by id; then calls FUN_1482B0FC, which selects the loader (config 0x49: 0 = MBN, 1 = ELF).
+MBN loader (FUN_1482EEF4) method table: [10] = FUN_1482EE9C, which calls the verifier at ctx+0x20, FUN_1482F4AC on ctx+0x10, then method +0x18 of the object at ctx+0x28 (the transfer).
+Open: the object at ctx+0x28 is written by code inside the loader path (not in FUN_14825980), and its identity is not yet established.
