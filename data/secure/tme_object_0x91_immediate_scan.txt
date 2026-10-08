@@ -1,0 +1,19 @@
+TME program 0x91 immediate scan (xbl.img, ELF32 RISC-V program at file offset 0x1C2F4)
+
+Program headers (ELF32, e_machine 243 = EM_RISCV), PT_LOAD segments:
+  off 0xc00    va 0x20410c00  filesz 0x178    flags R+X
+  off 0x1800   va 0x20412800  filesz 0x22da4  flags R+X   (entry 0x20412800)
+  off 0x245a4  va 0x204355a4  filesz 0x46d8   flags R+X
+  off 0x28c7c  va 0x20439c7c  filesz 0x11f4   flags R+X
+  off 0x29e70  va 0x2043ae70  filesz 0x0      memsz 0x1b4
+  off 0x2a024  va 0x2043b024  filesz 0x0      memsz 0x4250
+
+Disassembly: capstone 5.0.7, RISC-V32 with the compressed extension, linear sweep over each segment.
+Instructions decoded: 52,066.
+
+Search: any instruction whose last operand is the immediate 0x91, 145, -0x91 or -145.
+Result: 0 hits.
+
+Reading: the TME code has no direct constant 0x91 in a form the sweep decodes, so the TME is not the
+direct provider of object 0x91 through an immediate compare. Linear sweep can miss data-in-code and
+indirect dispatch, so this is one negative result, not a proof. Observed.

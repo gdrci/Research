@@ -210,7 +210,7 @@ PIL 防回滚熔丝查找已部分解码（`data/secure/hyp_pil_arb_fuse_table.t
 - 多出的两页是否通过计算偏移被使用。`hyp.img` 中没有指向那里的绝对地址。
 - 字节 `0x221C8119` 及其相邻字节，用于确认 `gpu_speed_bin` 字段，以及同一字节中还有哪些位。
 - `OEM_rot_pk_hash1_fuse_values` 的读取者，及其对应的 QFPROM 偏移。进一步搜索未在 `tz.img` 或 `devcfg.img` 中找到指向任何键名的指针、相对指针或 adrp 引用，因此键块是以非指针方式读取的（`data/secure/oem_key_pointer_search.txt`）。该名称是 `tz.img` 中 OEM 配置块中的一个键，位于文件偏移 `0x13A3AC`（VA `0x1C13C3AC`），周围的密钥块尚未界定；`devcfg.img` 中也有它。通过 ADRP+ADD、ADR、绝对指针和重定位的搜索都未找到对它的代码引用（`data/secure/oem_rot_key_xref_search.txt`）。PK 哈希处理路径（`data/secure/tz_pkhash_path.txt`）本身不直接读取 QFPROM，其设备 ID 输入来自运行时对象的方法 6。读取者很可能是通过该对象对 OEM 块做的按名称查找。尚未找到。 OEM 熔丝写入函数 `FUN_1C0EE8E8` 已反编译（`data/secure/tz_oem_spare_fuse_writer_decomp.txt`）。它读取 `/ac/oem_regions_config`，检查权限值是否为 `0x12`，为每个区域构造掩码，并通过写入调用（`FUN_1C039168(1, ...)`）把掩码交给 TrustZone。它并不按名称读取 `OEM_rot_pk_hash1_fuse_values`，因此它是备用熔丝区域的写入者，而不是根密钥的读取者。对键名查找方式的进一步测试（CRC-32、FNV、DJB2、SDBM 哈希，以及偏移表）均为阴性（`data/secure/oem_key_lookup_hash_tests.txt`）。
-- 对象 `0x91` 的提供者（即上文的防回滚标志对象），以及构建 TrustZone 线程上下文（`0x14680000` 入口块）的代码。两者在镜像中均未找到；搜索记录见 `data/secure/tz_object_0x91_and_oem_key_search.txt` 与 `data/secure/tz_context_creation_search.txt`。
+- 对象 `0x91` 的提供者（即上文的防回滚标志对象），以及构建 TrustZone 线程上下文（`0x14680000` 入口块）的代码。两者在镜像中均未找到；搜索记录见 `data/secure/tz_object_0x91_and_oem_key_search.txt` 与 `data/secure/tz_context_creation_search.txt`。 对 TME 程序的线性反汇编（52,066 条 RISC-V 指令，含压缩指令）中没有 `0x91` 立即数（`data/secure/tme_object_0x91_immediate_scan.txt`）。
 - 将 vbmeta 回滚索引与已存储值比较的代码。
 - `featenabler` 的显示块基址（`IDeviceRegionFinder` 的区域名称）、许可证签名校验，以及每个 `soc_hw_version` 对应的 SoC 名称。
 

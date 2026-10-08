@@ -4,7 +4,7 @@
 
 This index lists every file under `data/` in the repository, the sections that cite it, and the first line of the file so a reader can tell what it holds. A file is cited **by name** when a section names it. A file is cited **by directory** when a section describes its directory, but the file itself is not named. A file marked **none** is not cited anywhere yet.
 
-Counts are from the repository at the time of writing: 165 files, 2,913,988 bytes.
+Counts are from the repository at the time of writing: 166 files, 2,915,018 bytes.
 
 ## By directory
 
@@ -21,7 +21,7 @@ Counts are from the repository at the time of writing: 165 files, 2,913,988 byte
 | `data/partition_table.zh-CN.md` | 1 | 3,679 |
 | `data/qfprom_literal_candidates.json` | 1 | 839 |
 | `data/remote/` | 9 | 21,350 |
-| `data/secure/` | 44 | 76,926 |
+| `data/secure/` | 45 | 77,956 |
 | `data/strings/` | 20 | 1,097,518 |
 | `data/userspace/` | 9 | 23,637 |
 | `data/xbl/` | 6 | 3,180 |
@@ -159,6 +159,7 @@ Counts are from the repository at the time of writing: 165 files, 2,913,988 byte
 | `data/secure/uefi_fv_header.txt` | 682 | 02, 03, 06 | directory | uefi.img firmware volume (verified header fields): |
 | `data/secure/uefi_verified_boot_findings.txt` | 811 | 03 | file name | uefi.img DXE volume (gzip section, uncompressed 3,911,688 bytes). Evidence: data/string... |
 | `data/secure/avb_rollback_string_search.txt` | 1,957 | 03 | file name | AVB rollback string search over boot-time images; gzip DXE volume decoded; system.img libavb strings |
+| `data/secure/tme_object_0x91_immediate_scan.txt` | 1,030 | 06 | file name | TME program linear scan for object 0x91 immediates: 52,066 instructions, 0 hits |
 | `data/secure/xbl_companion_digest_test.txt` | 534 | 02, 03, 06 | directory | XBL companion segment (xbl.img 0x1C074, 0x280 bytes) digest test. |
 | `data/strings/abl.txt` | 1,856 | 03, 07 | directory | A7s`smIO |
 | `data/strings/aop.txt` | 4,568 | 03, 07 | directory | 0hJF;FAi |

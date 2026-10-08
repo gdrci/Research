@@ -4,7 +4,7 @@
 
 本索引列出仓库中 `data/` 下的每个文件、引用它的章节，以及文件首行内容，便于读者判断其中记录了什么。当章节点名引用某文件时，记为**按文件名**引用；当章节描述其所在目录而未点名该文件时，记为**按目录**引用；标为**无**的文件目前尚未被任何章节引用。
 
-计数以撰写时的仓库为准：共 165 个文件，2,913,988 字节。
+计数以撰写时的仓库为准：共 166 个文件，2,915,018 字节。
 
 ## 按目录
 
@@ -21,7 +21,7 @@
 | `data/partition_table.zh-CN.md` | 1 | 3,679 |
 | `data/qfprom_literal_candidates.json` | 1 | 839 |
 | `data/remote/` | 9 | 21,350 |
-| `data/secure/` | 44 | 76,926 |
+| `data/secure/` | 45 | 77,956 |
 | `data/strings/` | 20 | 1,097,518 |
 | `data/userspace/` | 9 | 23,637 |
 | `data/xbl/` | 6 | 3,180 |
@@ -159,6 +159,7 @@
 | `data/secure/uefi_fv_header.txt` | 682 | 02, 03, 06 | 目录 | uefi.img firmware volume (verified header fields): |
 | `data/secure/uefi_verified_boot_findings.txt` | 811 | 03 | 文件名 | uefi.img DXE volume (gzip section, uncompressed 3,911,688 bytes). Evidence: data/string... |
 | `data/secure/avb_rollback_string_search.txt` | 1,957 | 03 | 文件名 | 启动阶段镜像的 AVB 回滚字符串搜索；解压 gzip DXE 卷；system.img 中的 libavb 字符串 |
+| `data/secure/tme_object_0x91_immediate_scan.txt` | 1,030 | 06 | 文件名 | TME 程序线性扫描对象 0x91 立即数：52,066 条指令，0 处命中 |
 | `data/secure/xbl_companion_digest_test.txt` | 534 | 02, 03, 06 | 目录 | XBL companion segment (xbl.img 0x1C074, 0x280 bytes) digest test. |
 | `data/strings/abl.txt` | 1,856 | 03, 07 | 目录 | A7s`smIO |
 | `data/strings/aop.txt` | 4,568 | 03, 07 | 目录 | 0hJF;FAi |
