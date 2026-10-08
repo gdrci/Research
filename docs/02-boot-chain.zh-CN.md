@@ -18,7 +18,7 @@
 
 | 偏移 | 格式 | 入口 | 识别结果 | 证据 |
 |---|---|---|---|---|
-| `0x00000` | ELF32，`e_machine = 1`（`EM_M32`） | `0x2211C000` | 主存根 | 两个 `PT_LOAD` 段，约 114 KB 内容。内容呈数据特征（见 1c）。 |
+| `0x00000` | ELF32，`e_machine = 1`（`EM_M32`） | `0x2211C000` | 主存根 | 两个 `PT_LOAD` 段，共 115,328 字节（0x1C000 与 0x280）。内容呈数据特征（见 1c）。 |
 | `0x1C2F4` | ELF32，`EM_RISCV` | `0x20412800` | TME 固件 | 源路径 `tmeFwMain`、`tme_com`、`tme_messages`、`IPCC_*`、`xport_qmp_config_tme.c`；`TME_FW_VERSION_STRING=ssg.tmefw.1.0.1-00467-release`，构建时间 `October 05 2025` |
 | `0x4AFC4` | ELF64，`EM_AARCH64` | `0x14824FA8` | SBL1，二级引导程序核心 | `SBL1 BUILD @ 13:02:53 on Mar  5 2026`，`QC_IMAGE_VERSION_STRING=BOOT.MXF.2.2-00536-AURORA-1.149279.3`，`OEM_IMAGE_VERSION_STRING=ip-10-195-200-195` |
 
@@ -28,7 +28,7 @@
 
 ### 1a. TME 固件（RISC-V）
 
-这是运行在 TME 核心上的 RISC-V 32 位程序。它提供镜像认证服务，XBL 与 PBL 通过 `tme_messages` 调用这些服务，并通过 IPCC 中断和 GLink 传输（`tme_com/GLinkPort.cpp`、`xport_qmp_config_tme.c`）与其他处理器通信。
+这是运行在 TME 核心上的 RISC-V 32 位程序。它提供镜像认证服务，XBL 与 PBL 通过 `tme_messages` 调用这些服务，并通过 IPCC 中断和 GLink 传输（`tme_com/src/GLinkPort.cpp`、`xport_qmp_config_tme.c`）与其他处理器通信。
 
 证书名称位于此区域：
 
@@ -51,12 +51,12 @@ TME 镜像不引用 QFPROM 基址。在其代码中搜索 `LUI` 指令（使用 
 - 内存与 DDR：`boot_ddr.c`、`boot_ddr_info.c`、`boot_ddr_share_data_to_aop`、`boot_populate_ddr_details_shared_table`、`BootMemMapLib.c`。
 - 其他处理器：`boot_prepare_cpucp`、`boot_reset_cpucp`、`boot_cpucp.c`、`boot_shrm_mini_dump_init`、`boot_vsense.c`。
 - 镜像加载与检查：`boot_mbn_loader.c`、`boot_elf_loader.c`、`boot_elf_auth.c`、`boot_blacklist.c`、`boot_qsee.c`、`boot_whitelist_prot.c`。
-- 崩溃处理：`error_handler_el3.c`、`sbl_error_handler: DDR not initialized`、`boot_dload_dump_security_regions`、`boot_ramdump.c`。
+- 崩溃处理：`error_handler_el3.c`、`sbl_error_handler FAIL: DDR not initialized`、`boot_dload_dump_security_regions`、`boot_ramdump.c`。
 - 共享内存与调试：`boot_smem_init`、`boot_smem_debug_init`、`boot_smem_alloc_for_minidump`、`/dev/icbcfg/boot`、`boot_eud.c`。
 
-SBL1 有一个子系统列表，其中包括 `tz`、`mss`、`uefi`、`adsp`、`aop` 和 `ssc`。该列表位于同一字符串块的偏移 `0xCD0F9` 处。它是 `uefi` 是下一个加载程序的最强提示。已观察。
+SBL1 有一个子系统列表，其中包括 `tz`、`mss`、`uefi`、`adsp`、`aop` 和 `ssc`。该列表位于同一字符串块中（该块起始于 `0xCD0F9`）；列表本身始于 `0xCD129`。它是 `uefi` 是下一个加载程序的最强提示。已观察。
 
-SBL1 的字符串表中也有下一阶段的镜像名。偏移 `0x813D0` 至 `0x813F8` 的一组镜像名依次为 `CPUCP_DTB`、`QSEE Dev Config`、`QSEE` 和 `APPSBL`。另有一个 `uefi` 字符串位于 `0x82171`。`abl` 不出现在这里，`uefi` 镜像中也没有它。`uefi.img` 含有 `UEFI DXE` 以及 DXE 内核字符串（`Dxe Core  FV decompression failed`、`DXE Heap`、`AddDecompressdFvForDxe failed`）。这些是 UEFI DXE 固件卷的字符串，因此 `uefi.img` 是一个 UEFI 载荷。已观察。`uefi` 作为 `APPSBL` 被加载是推断：使用这些名称的 SBL1 加载代码尚未反编译。
+SBL1 的字符串表中也有下一阶段的镜像名。SBL1 相对偏移 `0x813D0` 至 `0x813F8` 的一组镜像名依次为 `CPUCP_DTB`、`QSEE Dev Config`、`QSEE` 和 `APPSBL`。另有一个 `uefi` 字符串位于 `0x82171`。`abl` 不出现在这里，`uefi` 镜像中也没有它。`uefi.img` 含有 `UEFI DXE` 以及 DXE 内核字符串（`Dxe Core  FV decompression failed`、`DXE Heap`、`AddDecompressdFvForDxe failed`）。这些是 UEFI DXE 固件卷的字符串，因此 `uefi.img` 是一个 UEFI 载荷。已观察。`uefi` 作为 `APPSBL` 被加载是推断：使用这些名称的 SBL1 加载代码尚未反编译。
 
 SBL1 按文件名引用了 `shrm.elf`、`devcfg.bin`、`cpr.bin` 和 `_dcb.bin`。这些是它加载的镜像。加载它们的代码尚未反编译。
 
@@ -87,13 +87,13 @@ QFPROM 引用（见第 06 节）位于一个函数内，在 Ghidra 中命名为 
 
 - **逐字解码率。** Hexagon 为 0.774，ARM32 为 0.769，无法区分。我之前用作 Hexagon 对照的 `adsp.b02` 有 62% 的字为零，是数据而不是代码，因此它不是有效的对照。该解码率无法区分两种指令集。
 - **函数边界指令。** 以下均未出现：Hexagon 的 `allocframe` 与 `dealloc_return`；ARM32 的 `push {..., lr}`、`pop {..., pc}`、`bx lr`；AArch64 的 `ret`（`0xD65F03C0`）；RISC-V 的 `ret`（`0x00008067`）。已知 AArch64 代码每千个字有 24.6 个 `ret`，说明测试有效。
-- **从起始地址开始的 Ghidra 反汇编。** 从偏移 0 开始按 Thumb-2 反汇编，在第一个错误之前能解码 669 条指令。在同一方法下，已知 AArch64 代码从入口可解码 2,000 条指令。Thumb-2 的输出是一个重复模式（`stmia r4!,{r0}` 后接 `adds r0,#0x3`，数值逐步趋向 `cmp r0,#0xf6`）。这更像一张数值表，而不是代码。Ghidra 的 ARM32 解码为 0 条指令，Hexagon 解码为 1 条。
-- **熵。** 该区域大部分在每字节 6.5 到 7.1 比特之间。偏移 `0x10000` 处的一个 64 KB 块较低（每字节 3.6 比特）。
+- **从起始地址开始的 Ghidra 反汇编。** 从偏移 0 开始按 Thumb-2 反汇编，在第一个错误之前能解码 669 条指令。在同一方法下，已知 AArch64 代码从入口可解码 2,000 条指令（数量未在任何数据文件中；未验证）。Thumb-2 的输出是一个重复模式（`stmia r4!,{r0}` 后接 `adds r0,#0x3`，数值逐步趋向 `cmp r0,#0xf6`）。这更像一张数值表，而不是代码。Ghidra 的 ARM32 解码为 0 条指令，Hexagon 解码为 1 条。
+- **熵。** 主存根整体约为每字节 4.9 比特；其 4 KB 块在每字节 0 至 6.0 比特之间（中位数 5.7）。`data/analysis/thumb_arm_tests.txt` 中的 6.4 至 7.1 比特数值针对 xbl.img 偏移 0x20000 至 0xC0000，这些位于 TME 与 SBL1 程序之中。
 - **Hexagon 解码长度（Ghidra，对该段原始导入）。** 从偏移 0x8、0x10、0x20、0x40、0x80 和 0xF0 开始，Hexagon 解码器在遇到无效数据包前只能解出 2 到 10 条指令。真正的 Hexagon 代码区会产生长序列。此处记为排除依据，而非格式证明。
-- **Ghidra 解码（已验证）。** 对该段做原始导入并关闭自动分析：在入口处 AArch64 解码出 0 条指令；在 Capstone 曾标记的偏移（0x14598、0x1457C、0x14218）处解码出 0 或 1 条。ARM v7 在入口处解码出 0 条。RISC-V 解码出 1 条指令（2 字节）。因此该段在入口处不是 AArch64、ARM32 或 RISC-V 代码。Capstone 之前的长序列是噪声，因为它几乎会解码任何 4 字节模式。该段很可能是加密、签名或非代码头；其格式仍未确定。
-- **前 112 KB 的字节级检查**（`0x2211C000`，`0x1C000` 字节）。从起点开始，ARM32 解码出 0 条指令，Thumb 在前 16 KB 内解码出 164 条指令。27% 的字为零。步长 2 至 32 字之间没有任何一个重复率超过 29%，因此不存在固定的记录长度。zlib 和 LZMA 在偏移 0 至 60 之间都无法解码。伴随段位于 `0x22143000`（640 字节），不以 DER 或 X.509 数据开头，而是以打包字段组成的高通风格头部开头。这些结果都未识别出格式。
+- **Ghidra 解码（已观察；工具输出未保存在 `data/` 中）。** 对该段做原始导入并关闭自动分析：在入口处 AArch64 解码出 0 条指令；在 Capstone 曾标记的偏移（0x14598、0x1457C、0x14218）处解码出 0 或 1 条。ARM v7 在入口处解码出 0 条。RISC-V 解码出 1 条指令（2 字节）。因此该段在入口处不是 AArch64、ARM32 或 RISC-V 代码。Capstone 之前的长序列是噪声，因为它几乎会解码任何 4 字节模式。该段很可能是加密、签名或非代码头；其格式仍未确定。
+- **前 112 KB 的字节级检查**（`0x2211C000`，`0x1C000` 字节）。从起点开始，ARM32 解码出 0 条指令，Thumb 在前 16 KB 内解码出 164 条指令（数量未在任何数据文件中；未验证）。27% 的字为零。步长 2 至 32 字之间没有任何一个重复率超过 29%，因此不存在固定的记录长度。zlib 和 LZMA 在偏移 0 至 60 之间都无法解码。伴随段位于 `0x22143000`（640 字节），不以 DER 或 X.509 数据开头，而是以打包字段组成的高通风格头部开头。这些结果都未识别出格式。
 
-结论是：主存根是数据表，不是任何已测试指令集的代码。它的确切格式尚未确定。
+推断的结论是：主存根是数据表，不是任何已测试指令集的代码。它的确切格式尚未确定。
 
 ### TrustZone 区域的注册位置
 
@@ -133,7 +133,7 @@ cookie 字段的含义来自键名。读取它们的代码在 SBL1 中，尚未�
 
 | 镜像 | 格式 | 入口 / 段 | 证据 |
 |---|---|---|---|
-| `tz.img` | ELF64 AArch64 | 入口 `0x14680000`，32 个 `PT_LOAD` | 最前面的指令写入 `tpidr_el0` 和 `tpidr_el1`，随后读取 `sctlr_el3`，这是 EL3 初始化。已验证。 |
+| `tz.img` | ELF64 AArch64 | 入口 `0x14680000`，33 个 `PT_LOAD` 头，其中一个为空（filesz 为 0），因此有内容的为 32 个 | 最前面的指令写入 `tpidr_el0` 和 `tpidr_el1`，随后读取 `sctlr_el3`，这是 EL3 初始化。已验证。 |
 | `hyp.img` | ELF64 AArch64 | 入口 `0x80000000`，5 个 `PT_LOAD` | `HypX Version Not Supported!`、`smem_init`、`PILSubsys_getArbFuseBank`。已观察。 |
 | `devcfg.img` | ELF64 AArch64 | 2 个 `PT_LOAD` | `PM_QFPROM_FLAG`、`tgt_cpucp_config`、`fp_sensor_version`。已观察。 |
 | `keymaster.img` | ELF64 AArch64 | 5 个 `PT_LOAD` | `KEYMASTER_SET_VERSION`、`KEYMASTER_GET_VERSION`、`osVersion`。已观察。 |
@@ -154,7 +154,7 @@ cookie 字段的含义来自键名。读取它们的代码在 SBL1 中，尚未�
 
 #### MMIO 表及其映射器
 
-TrustZone 在 `0x1C141C40` 处有一张表，由五个 16 字节条目组成。每个条目包含一个 32 位基址和一个 32 位计数：
+TrustZone 在 `0x1C141C40` 处有一张表，由五个 8 字节条目组成。每个条目包含一个 32 位基址和一个 32 位计数：
 
 | 索引 | 基址 | 计数 | 说明 |
 |---:|---|---:|---|
@@ -166,7 +166,7 @@ TrustZone 在 `0x1C141C40` 处有一张表，由五个 16 字节条目组成。�
 
 有两个函数读取该表：`FUN_1C067548` 和 `FUN_1C067598`。每个函数接收一个索引，拒绝大于 4 的值，读取 `基址` 与 `计数`，并以两次基址、计数和一个标志调用 `FUN_1C03ACAC`。第一个函数传入标志 `0x9041`，第二个传入 `0x9061`。两者各有 16 处调用点：15 处 `BL` 与 1 处尾调用 `B`。索引 0 到 4 都以两种标志被使用（`data/secure/tz_mmio_table_users.txt`；映射器反编译见 `data/ghidra/tz_mmio_mapper_decompiled.txt`）。
 
-`FUN_1C03ACAC` 加锁，调用 `FUN_146816F4`，然后解锁。`FUN_146816F4` 用基址、第二个基址、计数和标志构造一个 32 字节的请求，然后调用 `FUN_14681A68`。后者是一个一阶段转换表映射器：对每个范围，它把二级和三级描述符写入正在使用的转换表，并发出 `TLBI`、`DSB` 和 `ISB` 维护指令。`FUN_146816F4` 中没有 `SMC` 指令，因此这些操作都留在 TrustZone 内部完成。
+`FUN_1C03ACAC` 调用 `FUN_1C062D44(4)`，然后调用 `FUN_146816F4`，再调用一个释放 thunk（推断为解锁）。`FUN_146816F4` 用基址、第二个基址、计数和标志构造一个 32 字节的请求，然后调用 `FUN_14681A68`。后者是一个一阶段转换表映射器：对每个范围，它把二级和三级描述符写入正在使用的转换表，并发出 `TLBI`、`DSB` 和 `ISB` 维护指令。`FUN_146816F4` 中没有 `SMC` 指令，因此这些操作都留在 TrustZone 内部完成。
 
 用 `FUN_14682D04` 解码标志（`data/ghidra/tz_mmio_mapper_decompiled.txt`）：
 
@@ -176,7 +176,7 @@ TrustZone 在 `0x1C141C40` 处有一张表，由五个 16 字节条目组成。�
 
 计数以 KB 为单位。映射器检查 `count & 3`（即 4 KB 页的整数倍），并把 `count × 0x400` 加到起始地址上得到结束地址。因此 QFPROM 条目 `0x221C8000` 计数为 8，在 TrustZone 中覆盖 8 KB。这是从映射器的运算推断出来的。
 
-该表只被上述两个函数读取。它们的 30 个调用点，以及各调用点传入的索引，列在 `data/secure/tz_mmio_table_users.txt` 中。
+该表只被上述两个函数读取。它们的 32 个调用点（每个函数 16 个），以及各调用点传入的索引，列在 `data/secure/tz_mmio_table_users.txt` 中。
 
 ### Featenabler
 
