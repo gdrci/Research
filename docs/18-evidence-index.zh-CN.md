@@ -4,7 +4,7 @@
 
 本索引列出仓库中 `data/` 下的每个文件、引用它的章节，以及文件首行内容，便于读者判断其中记录了什么。当章节点名引用某文件时，记为**按文件名**引用；当章节描述其所在目录而未点名该文件时，记为**按目录**引用；标为**无**的文件目前尚未被任何章节引用。
 
-计数以撰写时的仓库为准：共 165 个文件，2,914,119 字节。
+计数以撰写时的仓库为准：共 165 个文件，2,913,988 字节。
 
 ## 按目录
 
@@ -21,9 +21,9 @@
 | `data/partition_table.zh-CN.md` | 1 | 3,679 |
 | `data/qfprom_literal_candidates.json` | 1 | 839 |
 | `data/remote/` | 9 | 21,350 |
-| `data/secure/` | 44 | 76,913 |
+| `data/secure/` | 44 | 76,926 |
 | `data/strings/` | 20 | 1,097,518 |
-| `data/userspace/` | 9 | 23,781 |
+| `data/userspace/` | 9 | 23,637 |
 | `data/xbl/` | 6 | 3,180 |
 
 ## 按文件
@@ -147,7 +147,7 @@
 | `data/secure/tz_antirollback_path.txt` | 5,047 | 06 | 文件名 | TrustZone anti-rollback flag path (tz.img, AArch64). Disassembly by capstone; Ghidra ha... |
 | `data/secure/tz_context_creation_search.txt` | 731 | 06 | 文件名 | TrustZone object-invoke context: creation search (tz.img). |
 | `data/secure/tz_dispatch_table.txt` | 721 | 06 | 文件名 | TrustZone static dispatch table (tz.img), 16-byte rows: 8-byte key (type << 16 / method... |
-| `data/secure/tz_mmio_table.tsv` | 243 | 02, 03, 06 | 目录 | TrustZone table at tz.img vaddr 0x1c141c40 (16-byte entries: base, count) |
+| `data/secure/tz_mmio_table.tsv` | 256 | 02, 03, 06 | 目录 | TrustZone table at tz.img vaddr 0x1c141c40 (8-byte entries: base, count) |
 | `data/secure/tz_mmio_table_users.txt` | 1,849 | 02, 06 | 文件名 | TrustZone MMIO table at 0x1C141C40 (tz.img), 5 entries of (base u32, count u32): |
 | `data/secure/tz_object_0x91_and_oem_key_search.txt` | 929 | 06 | 文件名 | TrustZone object 0x91 and OEM key reader searches (tz.img, devcfg.img) |
 | `data/secure/tz_object_0x91_requests.txt` | 1,476 | 06 | 文件名 | tz.img: every code site that loads the value 0x91 (MOVZ w/x, imm16 = 0x91), with a disa... |
@@ -188,7 +188,7 @@
 | `data/userspace/tub_md5_tests.txt` | 3,036 | 09 | 文件名 | mcu.core1.default.rt700.tub (87,552 bytes), manifest at file offset 0x14E00 (the JSON w... |
 | `data/userspace/vendor_firmware_files.txt` | 661 | 08 | 文件名 | CAMERA_ICP.b00 |
 | `data/userspace/wifi_bt_init_and_modules.txt` | 1,937 | 07 | 文件名 | Wireless kernel modules (data/android/vendor_ramdisk/modules_modinfo.tsv): |
-| `data/userspace/wifi_config_and_symlinks.txt` | 2,231 | 07 | 文件名 | vendor/etc/wifi listing and WCNSS_qcom_cfg.ini head (extracted): |
+| `data/userspace/wifi_config_and_symlinks.txt` | 2,087 | 07 | 文件名 | vendor/etc/wifi listing and WCNSS_qcom_cfg.ini head (extracted): |
 | `data/xbl/sbl1_memmap_function.txt` | 616 | 02, 07 | 目录 | SBL1 (xbl.img offset 0x4AFC4 program, vaddr base 0x14824000 region) |
 | `data/xbl/sbl1_qfprom_xref.txt` | 590 | 02, 07 | 目录 | SBL1 (AArch64) references to 0x221C8000 (tools/aarch64_xref.py) |
 | `data/xbl/string_regions.txt` | 464 | 02 | 文件名 | String locations in xbl.img (file offsets) |
