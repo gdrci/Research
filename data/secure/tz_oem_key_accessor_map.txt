@@ -1,0 +1,15 @@
+# tz.img: OEM key accessors that read the /tz/oem configuration (register-aware ADRP+ADD scan of all code, tz.img at ELF vaddrs)
+
+Accessor pattern (example at 0x1C0401C0): a guard byte at 0x1C16B000+0xE68 is tested; the path "/tz/oem" (0x1C13C28D) is passed to FUN_1C04026C (opens/loads the file); then the key string at 0x1C13C295 (OEM_sec_wdog_bark_time) is passed to FUN_1C0B6D1C with the result stored in a global at [x19+0x834] (defaulting to 0x1770 when zero).
+
+Keys referenced by these accessors (block offsets from 0x1C13C200, each followed by /tz/oem in the same function), found by the ADRP+ADD scan:
+  0x295 OEM_sec_wdog_bark_time, 0x2AC, 0x2C3, 0x2F4, 0x30C, 0x330, 0x351, 0x3E6, 0x403, 0x425, 0x43B, 0x4CA, 0x4E2, 0x501, 0x51E, 0x532, 0x54D, 0x59D, 0x5B1, 0x5CC, 0x5E4, 0x5FC, 0x61A, 0x638, 0x64F, 0x66B, 0x6A1, 0x6BD, 0x6CE, 0x6F4, 0x748, 0x766, 0x7A3, 0x7C2, 0x7D8
+  (names are not decoded here; OEM_rot_pk_hash1_fuse_values is at 0x3AC and does NOT appear in this list)
+
+Gap: the key OEM_rot_pk_hash1_fuse_values (0x1C13C3AC) and OEM_rot_enc_key1_fuse_values (0x1C13C3C9) are not referenced by any of these accessors. Their lookups use another mechanism.
+
+Other ADRP+ADD uses of the block page in the code are to string literals of log format strings on other pages (for example 0x1C145000 + 0x3AC is a log string), not to the key block.
+
+devcfg.img: a scan of all loadable segments found no ADRP+ADD reference into its key block around vaddr 0x1C0064B2 (OEM_rot_pk_hash1_fuse_values).
+
+Observed. The root-key reader is not one of these accessors, and devcfg does not reference the key by a direct address. Its reader remains open.

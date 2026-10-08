@@ -133,6 +133,7 @@
 | `data/secure/tz_oem_spare_fuse_writer_decomp.txt` | 128 | 06 | 文件名 | tz.img OEM spare-fuse writer (reads oem_regions_config); not the root-key reader |
 | `data/secure/oem_key_lookup_hash_tests.txt` | 7 | 06 | 文件名 | Hash and offset lookup tests for the OEM root-key name in tz.img and devcfg.img; negative |
 | `data/secure/oem_key_block_ref_query.txt` | 9 | 06 | 文件名 | Ghidra reference query on the OEM key block; the hits are misdisassembled data |
+| `data/secure/tz_oem_key_accessor_map.txt` | 15 | 06 | 文件名 | Map of the tz.img /tz/oem key accessors; the root-key hash is not one of them; devcfg has no direct reference |
 | `data/ghidra/arb_fuse_refs_check.java` | 28 | 06 | 文件名 | 用于熔丝组引用检查的 Ghidra 无头脚本（基址 0x100000） |
 | `data/ghidra/tz_context_decomp.java` | 24 | 06 | 文件名 | 反编译 tz.img 上下文函数的 Ghidra 无头脚本 |
 | `data/ghidra/sbl1_boot_image_driver_decompiled.txt` | 410 | 02 | 文件名 | Ghidra decompile of the SBL1 boot image driver FUN_14825980 |
