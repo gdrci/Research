@@ -59,7 +59,8 @@ Several parts of the system run outside the application processor. A microcontro
 | [04](04-android-kernel-and-vendor.md) | Kernel, ramdisks, fstab, modules, overlays, bootconfig |
 | [05](05-remote-processors.md) | AOP, CPUCP, SHRM, QUP, DSPs, modem, Bluetooth |
 | [06](06-qfprom-and-fuses.md) | Fuse block, memory maps, readers |
-| [09](09-glasses-software-and-mcu.md) | MCU, STP, RT600/RT700, EMG band, app layer |
 | [07](07-wireless-and-connectivity.md) | Wi-Fi and Bluetooth stack, WPSS subsystem, drivers, HALs, firmware |
 | [08](08-peripheral-firmware-and-build-ids.md) | Build IDs, GPU, camera, video and vision firmware |
+| [09](09-glasses-software-and-mcu.md) | MCU, STP, RT600/RT700, EMG band, app layer |
+| [10](10-qcc730-secure-boot-reference.md) | External QCC730 secure-boot reference (different chip) |
 | [11](11-evidence-index.md) | Which `data/` directory each section uses |
