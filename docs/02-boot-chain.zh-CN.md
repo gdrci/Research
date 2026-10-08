@@ -99,7 +99,7 @@ QFPROM 引用（见第 06 节）位于一个函数内，在 Ghidra 中命名为 
 
 镜像区域在 `sbl1_config.c` 中注册，位于 `0x1482DAE4` 处的例程里。它调用 `FUN_1482E6C4`，然后调用 `FUN_148612EC`（`boot_ram_partition_drv.c`）。该函数通过 `FUN_148615E0` 注册三个区域：SBL1（`0x14800000`、`0x200000`、类型 4）、TrustZone（`0x14680000`、`0x2B000`、类型 5），以及位于 `0xA6E00000`（`0x40000`、类型 4）的第三个区域。这些类型值与内存映射中使用的类别相同。已观察。证据见 `data/ghidra/sbl1_xblconfig_partition_evidence.txt`。
 
-在紧急下载路径（`boot_dload_entry`，`0x1482E274`）中，SBL1 还以 `(0x14680000, 0x2B000, 0x4001)` 调用加载并认证接口。正常路径中的认证调用尚未找到。进入 TrustZone 的跳转，以及它在 `x0` 中接收的每线程上下文（入口代码中的 `tpidr_el0` 值），也尚未找到。
+在紧急下载路径（`boot_dload_entry`，`0x1482E274`）中，SBL1 还以 `(0x14680000, 0x2B000, 0x4001)` 调用加载并认证接口。正常路径中的认证调用尚未找到。TrustZone 入口在 `x0` 中接收每线程上下文，并将其写入 `tpidr_el0`（`tz.img` 入口）。调用入口的加载器对象（位于加载器 `+0x28` 处对象的 `+0x18` 方法，见 `FUN_1482EE9C`）尚未识别，因此构造该上下文的调用者仍未确定。证据见 `data/secure/sbl1_tz_entry_context_chain.txt`。
 
 ### SBL1 向非安全世界的跳转
 
