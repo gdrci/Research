@@ -4,7 +4,7 @@ Documentation of the Ray-Ban Display firmware: how the system is built, how it b
 
 Chinese version: [README.zh-CN.md](README.zh-CN.md)
 
-Discord: [discord.gg/oculus](https://discord.gg/oculus) · gdrci (Discord)
+Discord: [discord.gg/oculus](https://discord.gg/oculus) · @gdrci (Discord)
 
 ## Scope
 
