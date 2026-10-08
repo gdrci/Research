@@ -1,0 +1,16 @@
+Search for references to the OEM configuration key names (TrustZone, tz.img; devcfg.img).
+
+Key block: "/tz/oem" path at tz.img file 0x13A28D; keys follow as packed strings from 0x13A295 (OEM_sec_wdog_bark_time)
+to 0x13A7C2 (oem_decryption_sw_ids). OEM_rot_pk_hash1_fuse_values is at file 0x13A3AC (vaddr 0x1C13C3AC) and
+OEM_rot_enc_key1_fuse_values at 0x13A3C9 (vaddr 0x1C13C3C9).
+
+Searches (all negative):
+  tz.img, 8-byte absolute pointer equal to 0x1C13C3AC           : none
+  tz.img, 4-byte absolute pointer equal to 0x1C13C3AC           : none
+  tz.img, 8-byte or 4-byte value equal to file offset 0x13A3AC  : none
+  tz.img, any 8-byte value inside the key block (0x1C13A200..0x1C13A800 or file 0x13A200..0x13A800): none
+  tz.img, 32-bit relative pointer (value + own vaddr = name vaddr): none
+  devcfg.img, the same name at file 0x74B2 (vaddr 0x1C0064B2): no absolute, 32-bit relative, or adrp+add references
+
+Conclusion: no pointer table references the key names. The key lookup uses packed strings, a hash, or an index
+that is not a pointer. The reader of OEM_rot_pk_hash1_fuse_values is therefore not located by pointer search.
