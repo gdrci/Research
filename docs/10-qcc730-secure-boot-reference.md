@@ -179,7 +179,7 @@ These are parallels to test. None is confirmed on `greatwhite`.
 
 | QCC730 concept | greatwhite evidence (see docs 02, 03, 06) | Status |
 |---|---|---|
-| Anti-rollback as a 64-bit thermometer code in OTP | Software-fuse ranges `FUSE_CONTROLLER_SW_RANGE0`-`5` in the UEFI fuse library. `0x221C` block (doc 06) | Hypothesis: the rollback banks are SW ranges with a thermometer layout |
+| Anti-rollback as a 64-bit thermometer code in OTP | Software-fuse ranges `FUSE_CONTROLLER_SW_RANGE0`-`5` in the UEFI fuse library. `0x221C` block (doc 06). The hypervisor copies four words of range 4 (`0x221C8610`, `0x221C8700`, `0x221C8744` and `0x221C873C`) into globals at boot. Its only bit test on those words is a 4-bit enumeration mask (`0x4883`), with no population count. Readers of the copied globals are not found | Hypothesis: not supported or refuted by the code read so far. Needs a reader of the copied globals or a fuse dump |
 | Image SW_ID type field (SBL, APP, golden) | Hypervisor `PILSubsys_getArbFuseBank` gives a per-subsystem arb fuse bank (doc 06) | Hypothesis: a per-subsystem index into the same kind of bank |
 | PK_HASH, SHA-256 of root certificates | `OEM_rot_pk_hash1_fuse_values` in TZ and devcfg (doc 06) | Hypothesis: the same role; the reader is still not found |
 | SECURE_BOOT_ENFORCE and the enable bits | Secure-boot status word, bits 0 to 11, bit 3 = anti-rollback (doc 06) | Structural parallel; the status service is not identified |
