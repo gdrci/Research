@@ -1,0 +1,4 @@
+XBL companion segment (xbl.img 0x1C074, 0x280 bytes) digest test.
+Hashed ranges (SHA-256 and SHA-384 of 12 candidates: starts 0x0, 0x74, 0x1000, 0x10000; ends 0x1C074, 0x1C000, 0x1C0F4, 0x1C2F4 and similar): no 32- or 48-byte value in the companion matches any candidate.
+Companion begins: 82 01 7c 02 01 00 01 00 02 00 00 00 91 82 74 00 01 83 04 00 ... (8-byte records of 32-bit words; format not identified).
+Public Qualcomm documentation (docs.qualcomm.com, optee.readthedocs.io) was blocked by the egress policy and was not used.
