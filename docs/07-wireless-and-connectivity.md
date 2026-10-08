@@ -115,6 +115,8 @@ The build ID for the WLAN side is `WLAN.HMT.1.1.c4-00443-QCAHMTSWPL_V1.0_V2.0_SI
 
 Both TLV files start with the byte `0x01`, which is the HCI command packet indicator. The following bytes are a vendor patch segment. The exact segment layout is inferred and not decoded. The raw headers are in `data/remote/bluetooth_version_files.txt`.
 
+Bluetooth features and host interface (`bluetooth.img`, FAT image; strings only). The image carries connected isochronous stream code (`CIS-TX`, `CIS-RX`, `CIS-M`, `LE_ISO_prepareSduBufQ`, `SetupISODatapath`), which is the unicast LE Audio transport. It has no broadcast isochronous strings (`BIG`, `BIS`), no periodic advertising or PAST strings, and no channel-sounding or angle-of-arrival strings. So the image supports unicast LE Audio, and the strings show nothing for Bluetooth 5.4 or 6.0 features. The Bluetooth version is therefore bounded to a unicast LE Audio stack, not confirmed as a specific release. The host transport is UART (`ttyHS0`, section 07 above). Observed from strings; not checked against the Bluetooth specification or a datasheet.
+
 The build manifest in `modem.img/verinfo/ver_info.txt` lists `btfm` as `BTFW.HAMILTON.2.0.0-00819-PATCHZ-1`. The Bluetooth image's own version file says `00797`. The two differ. Resolved in part: the patch's own text, inside `hmtbtfw20.tlv`, reads `Patch Release PF=WCN7850ROM= 0200 BUILD=BTFW.HAMILTON.2.0.0-00797-PATCHZ-1.105163.2.109423.3`, so the image is build 00797. The `00819` entry is a different build that this image does not carry. Observed from the TLV strings. The manifest is a build-level record and the `.ver` file is what the image carries. The reason for the difference is not established.
 
 ## What is not found

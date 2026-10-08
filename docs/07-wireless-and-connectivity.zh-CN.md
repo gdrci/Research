@@ -113,6 +113,8 @@ WLAN 侧的构建 ID 为 `WLAN.HMT.1.1.c4-00443-QCAHMTSWPL_V1.0_V2.0_SILICONZ-1`
 - `hmtbtfw20.tlv`（253,484 字节），版本文件 `hmtbtfw20.ver` 为 `BTFW.HAMILTON.2.0.0-00797-PATCHZ-1.105163.2.109423.3`。
 - `hmtnv10.*` 与 `hmtnv20.*`：NV 配置文件，约 30 个变体（`.bin`、`.b0c`、`.b0202` 至 `.b1e` 等）。后缀看起来像按变体划分的配置。未验证。
 
+蓝牙功能与主机接口（`bluetooth.img`，FAT 镜像；仅依据字符串）。镜像包含面向连接的等时流代码（`CIS-TX`、`CIS-RX`、`CIS-M`、`LE_ISO_prepareSduBufQ`、`SetupISODatapath`），即单播 LE Audio 传输。镜像中没有广播等时字符串（`BIG`、`BIS`），也没有周期性广告或 PAST 字符串，以及信道探测或到达角字符串。因此该镜像支持单播 LE Audio，字符串中也看不到蓝牙 5.4 或 6.0 的功能。蓝牙版本因此只能界定为单播 LE Audio 协议栈，不能确认为某个具体发布版本。主机传输为 UART（`ttyHS0`，见上文第 07 节）。依据字符串观察得出；未与蓝牙规范或数据手册核对。
+
 两个 TLV 文件都以字节 `0x01` 开头，即 HCI 命令包指示符。其后是厂商补丁段。具体段格式为推断，未完整解码。原始头部见 `data/remote/bluetooth_version_files.txt`。
 
 `modem.img/verinfo/ver_info.txt` 中的构建清单将 `btfm` 列为 `BTFW.HAMILTON.2.0.0-00819-PATCHZ-1`，而蓝牙镜像自身的版本文件写的是 `00797`。两者不同。已观察。清单是构建级别的记录，`.ver` 文件是镜像实际携带的内容；造成差异的原因尚未确定。已部分解决：补丁自身的文本（位于 `hmtbtfw20.tlv` 中）为 `Patch Release PF=WCN7850ROM= 0200 BUILD=BTFW.HAMILTON.2.0.0-00797-PATCHZ-1.105163.2.109423.3`，因此镜像是 00797 版本。清单中的 `00819` 是该镜像不包含的另一个构建。已从 TLV 字符串观察得出。
