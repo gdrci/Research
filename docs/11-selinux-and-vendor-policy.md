@@ -8,7 +8,7 @@ This section covers the SELinux policy that ships in the vendor partition, and t
 
 - `plat_sepolicy_vers.txt` is `32.0`. This is the platform policy version. Observed.
 - The CIL names carry the version as a suffix: `init_32_0`, `hwservicemanager_32_0`, `servicemanager_32_0`, `system_server_32_0`, `tee_32_0`. The vendor policy is compiled against platform 32.0. Observed.
-- Android 12 is the vendor base (section 04), and the platform policy version 32.0 matches the Android 12 release. Inferred from the version table; the mapping is not in the files.
+- Android 12 is the vendor base (section 04). The vendor `build.prop` sets `ro.vendor.build.version.release=12`, `ro.vendor.build.version.sdk=32` and `ro.vndk.version=32`, so platform policy 32.0 matches vendor SDK level 32. The name Android 12L for SDK 32 comes from AOSP release history, not from these files.
 
 The vendor policy sits on top of the platform policy. `plat_pub_versioned.cil` (13,860 lines, 1.0 MB) is the platform's public policy for version 32.0, which the vendor policy must not conflict with. Its contents are not decoded here. Observed as a file.
 
@@ -24,7 +24,7 @@ The file is 507,018 bytes and 5,325 lines of CIL. Top-level forms, counted:
 | `typeattributeset` | 241 | Attribute membership |
 | `genfscon` | 211 | Labels for `sysfs` (205) and `proc` (6) paths |
 | `dontaudit` | 161 | Suppressed denial logs |
-| `typetransition` | 147 | Automatic labels for new objects (144 parse with four fields) |
+| `typetransition` | 147 | Automatic labels for new objects (144 parse with four fields; 3 have five) |
 | `neverallow` | 82 | Compile-time prohibitions |
 | `typeattribute` | 64 | Attribute declarations |
 | `allowx` | 17 | Extended-permission allows |
@@ -40,19 +40,19 @@ Of the 631 types, 258 start with `vendor_`, 175 with `hal_`, and 71 with `sysfs`
 
 Each HAL has a domain pair. For example `hal_audio_default` and `hal_audio_default_exec`. The `_exec` type labels the binary, and `init` changes to the domain on exec through a `typetransition`:
 
-    typetransition init hal_audio_default_exec process hal_audio_default
+    typetransition init_32_0 hal_audio_default_exec process hal_audio_default
 
-Of the 144 `typetransition` rules with four fields, 132 start from `init_32_0`, and 128 of those follow this exec pattern. The other rules cover `postprocess_init` (5), `vendor_rfs_access` (2), and the graphics HALs' tmpfs files. Observed.
+Of the 144 `typetransition` rules with four arguments, 132 start from `init_32_0`. All 132 transition to a process type whose name contains `exec`: 128 end in `_exec`, 3 end in `_exec_32_0`, and 1 is `postprocess_exec_file`. The other 12 rules are `postprocess_init` (5), `vendor_rfs_access` (2), tmpfs transitions for `hal_graphics_allocator_default` and `hal_graphics_composer_default` (1 each), `init-systemstart-sh` to `bootstat_exec_32_0` (1), `vendor_timeservice_app` tmpfs (1), and `shell_32_0` to `wattsup_exec` (1). Observed.
 
 ### Oculus and Meta domains
 
 Meta and Oculus domains are the most distinctive part of the policy. The type list includes:
 
-- `hal_oculus_backlight`, `hal_oculus_battery`, `hal_oculus_bluetooth`, `hal_oculus_catty`, `hal_oculus_devicecert`, `hal_oculus_display`, `hal_oculus_dock`, `hal_oculus_keyboxinstaller`, `hal_oculus_lcos`, `hal_oculus_remotethermal`, `hal_oculus_sensors`, `hal_oculus_sensors_iad`, `hal_oculus_wifi`, `hal_oculus_devicecert`, `hal_usb_oculus`. Observed.
+- `hal_oculus_backlight`, `hal_oculus_battery`, `hal_oculus_bluetooth`, `hal_oculus_catty_default`, `hal_oculus_devicecert`, `hal_oculus_display`, `hal_oculus_dock`, `hal_oculus_keyboxinstaller`, `hal_oculus_lcos`, `hal_oculus_remotethermal`, `hal_oculus_sensors`, `hal_oculus_sensors_iad`, `hal_oculus_wifi`, `hal_usb_oculus`. Observed.
 - `hal_lpi_mcu`, the domain of the MCU-backed HALs (section 09).
 - `hal_palmauth_vendor_data_file`, a data type whose name points to palm authentication. Inferred from the name.
 
-`hal_oculus_sensors` is the source of 82 allow rules, the second-largest HAL. Observed.
+`hal_oculus_sensors` is the source of 82 allow rules, the largest HAL source. Observed.
 
 ### neverallow
 
@@ -100,14 +100,14 @@ The 86 property entries are grouped by owner:
 
 - `persist.vendor.meta.*`: uweb, audio HAL, displaymapping. Observed.
 - `persist.vendor.ovr.*` and `vendor.ovr.*`: `vendor_oculus_prop`. Observed.
-- `vendor.meta.palmauth.*`, `vendor.meta.palmcheck.*`, `vendor.meta.palmexp.session.id.*`: `vendor_palmauth_prop`. Observed.
+- `vendor.meta.palmauth.*` and `vendor.meta.palmexp.session.id.*`: `vendor_palmauth_prop`; `vendor.meta.palmcheck.*`: `vendor_palmcheck_prop`. Observed.
 - `vendor.meta.mcu_hal.*`: `vendor_meta_hal_lpi_mcu_prop`. Observed.
 
 ### File contexts
 
-The 892 file rules are regular expressions. The path roots, counted by first directory, are `vendor` (478), `dev` (159), a `(vendor|system/vendor)` alternation (134), `sys` (48), `data` (25), `persist` (15), `mnt` (15) and `odm` (9). Observed.
+The 892 file rules are regular expressions. The path roots, counted by first directory, are `vendor` (478), `dev` (159), a `(vendor|system/vendor)` alternation (134), `sys` (48), `data` (25), `persist` (15), `mnt` (15) and `odm` (9). The other 9 rules are `system` (3), `res` (2), `(vendor|system_ext)` (2), `(/system)?/system_ext` (1), and `(vendor|sustem)` (1). Observed.
 
-The most used file label is `same_process_hal_file` (431 rules). It labels the HAL shared objects that run inside the HAL process. `vendor_custom_ab_block_device` (20) labels the A/B block devices, and `persist_cal_file` (7) labels calibration files in `/mnt/vendor/persist`. Observed.
+The most used file label is `same_process_hal_file` (431 rules). It labels the HAL shared objects that run inside the HAL process. `vendor_custom_ab_block_device` (20) labels the A/B block devices, and `persist_cal_file` (7) labels calibration and serial-number files under `/persist`, for example `/persist/calibration(/.*)?` and `/persist/wlan_mac.bin`. The calibration path under `/mnt/vendor/persist` uses the label `vendor_persist_cal_file`. Observed.
 
 ## App-side contexts
 
@@ -139,7 +139,7 @@ Observed. Some of these names come from a shared base policy, so they are not pr
 
 ## What is not found
 
-- The compiled policy binary (`sepolicy`) is not in the OTA. The CIL files are the input to the build. Not found.
+- The vendor partition contains only the CIL inputs; no compiled `sepolicy` is in `vendor/etc/selinux`. The odm partition contains a compiled policy, `odm/etc/selinux/precompiled_sepolicy` (1,208,319 bytes, SELinux policy magic `0xF97CFF8C`). It is not decoded here.
 - The platform policy that the vendor policy extends (`plat_pub_versioned.cil` is only the public part). Not decoded.
 - The runtime denial log from a device. Not in the OTA.
 

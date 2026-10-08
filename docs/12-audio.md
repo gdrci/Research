@@ -25,10 +25,10 @@ The Bluetooth audio path is separate: `android.hardware.bluetooth.audio@2.0` and
 The device tree (`data/android/vendor_ramdisk/vendor_dtb_dump.txt`) gives these nodes. Observed.
 
 - Sound card compatible: `qcom,waipio-asoc-snd`, under `/soc/spf_core_platform/sound`.
-- LPASS platform compatible: `qcom,neo-lpass`. The platform name is `neo` (section 04, `ro.board.platform=neo`).
-- Codec macros: `rx-macro@3200000`, `wsa-macro@3240000`, `wsa2-macro@31E0000` and `va-macro@33F0000`, each with a SoundWire master (`rx_swr_master`, `wsa_swr_master`, `wsa2_swr_master`, `va_swr_master`). The device tree also lists four SoundWire controllers, `swr0` to `swr3`.
+- No LPASS platform compatible named `qcom,neo-lpass` is in the DTB. The LPASS-related compatibles are `qcom,lpass-cdc` (on `/soc/spf_core_platform/lpass-cdc`), `qcom,lpass-cdc-clk-rsc-mngr`, and `qcom,neo-lpass_ag_noc` on the `/soc/interconnect@3c40000` node. The platform name is `neo` (section 04, `ro.board.platform=neo`).
+- Codec macros: `rx-macro@3200000`, `wsa-macro@3240000`, `wsa2-macro@31E0000` and `va-macro@33F0000`, each with a SoundWire master (`rx_swr_master`, `wsa_swr_master`, `wsa2_swr_master`, `va_swr_master`). The `/aliases` node maps `swr0` to `wsa-macro@3240000/wsa_swr_master`, `swr1` to `rx-macro@3200000/rx_swr_master`, `swr2` to `va-macro@33F0000/va_swr_master`, and `swr3` to `wsa2-macro@31E0000/wsa2_swr_master`. These are aliases for the four macro SoundWire masters, not separate controllers.
 - LPI pinctrl at `0x3440000` with the SoundWire clock and data pins (`tx_swr_*`, `rx_swr_*`, `wsa_swr_*`, `wsa2_swr_*`) and TDM pins (`quat_tdm_ws`, `quat_tdm_sd3`).
-- Two clock votes, `vote_lpass_audio_hw` and `vote_lpass_core_hw`, and a `lpass_audio_hw_vote` property.
+- Two clock votes, `vote_lpass_audio_hw` and `vote_lpass_core_hw`, and a `lpass_audio_hw_vote` label under `/__symbols__` that points to `/soc/vote_lpass_audio_hw`.
 
 The card definition in `card-defs.xml` is one card, id 100, name `waipiovirtualsndcard`, with 25 PCM device entries. Observed. The name `waipiovirtualsndcard` shows the card is virtual at the card-definition level; the mapping to real hardware is in the backend and mixer files below. The meaning of `waipio` as a codename is not established here.
 
@@ -48,27 +48,27 @@ The card definition in `card-defs.xml` is one card, id 100, name `waipiovirtuals
 
 | Prefix | ctl count | Block |
 |---|---:|---|
-| `TX` | 142 | Capture (TX macro) |
+| `TX` | 150 | Capture (TX macro) |
 | `VA` | 92 | Voice activation |
 | `WSA`, `WSA2` | 45, 10 | Speaker amplifier macros |
-| `RX` | 43 | Playback (RX macro) |
+| `RX` | 49 | Playback (RX macro) |
 | `IIR0` | 27 | IIR filter |
 | `ADC2`, `ADC3`, `ADC4`, `ADC1` | 21, 4, 4, 3 | Analogue-to-digital converters |
 | `SpkrLeft`, `SpkrRight` | 15, 9 | Speaker outputs |
 | `HPHL`, `HPHR` | 9, 7 | Headphone outputs |
 | `LPI` | 6 | LPI controls |
 
-The names are the Qualcomm WCD-style codec macros (`RX_MACRO`, `TX_MACRO`, `VA_MACRO`, `WSA_MACRO`). The chip family behind them is inferred from the names. Not confirmed from a codec ID.
+The control names use the prefixes `TX`, `VA`, `WSA` and `RX`. The literal `RX_MACRO` appears in 7 names; `TX_MACRO`, `VA_MACRO` and `WSA_MACRO` do not appear. The WCD-style reading is inferred; `wcd937x_dlkm.ko` and `wcd938x_dlkm.ko` are in the vendor modules, but no codec ID is in the OTA. The chip family behind them is inferred from the names. Not confirmed from a codec ID.
 
 ### Speakers
 
-Correction (from the ODM script, section 17): the production speaker amplifiers appear to be two Maxim MAX98388 smart amplifiers (left at 7-bit I2C `0x3A`, right at `0x38`, which the datasheet's Table 9 gives for the ADDR pin tied to SDA and to VDD; TDM input, 4 ohm load). The script is `data/android/audio/max98388_v2.sh`. The mixer configuration below is the reference board's, and it names the Qualcomm WSA macros. How the two fit together is inferred, not confirmed.
+Correction (from the ODM script, section 17): the production speaker amplifiers appear to be two Maxim MAX98388 smart amplifiers (left at I2C address `0x3A`, right at `0x38`, the values the script passes as `-d` to `mst com_port`; TDM input, 4 ohm load; the script gives no address width or ADDR strap, so the 7-bit reading and the datasheet mapping are not confirmed by the OTA). The script is `data/android/audio/max98388_v2.sh`. The mixer configuration below is the reference board's, and it names the Qualcomm WSA macros. How the two fit together is inferred, not confirmed.
 
 
 The FTM test configuration for the IDP build shows the speaker path directly (`data/android/audio/ftm_test_config_neo-idp-sg-snd-card`). Observed:
 
-- Two channels, `#Left Speaker` and `#Right Speaker`. The playback key is `gkv_rx:PCM_LL_PLAYBACK-SPEAKER-INSTANCE1-DEVICEPP_RX_DEFAULT`, back end `CODEC_DMA-LPAIF_WSA-RX-0`, and PCM id 100.
-- Enable steps set `WSA2 RX0 MUX` to `AIF1_PB`, route `WSA2_RX0 INP0` to `RX0`, turn on `WSA2_COMP1`, `SpkrLeft COMP`, `SpkrLeft VISENSE`, and `SpkrLeft SWR DAC_Port`, and set `WSA2_RX0 Digital Volume` to 78.
+- Two channels, `#Left Speaker` and `#Right Speaker`. The playback key is `gkv_rx:PCM_LL_PLAYBACK-SPEAKER-INSTANCE1-DEVICEPP_RX_DEFAULT`, back end `CODEC_DMA-LPAIF_WSA-RX-0`, and PCM id 100. That key is not in `usecaseKvManager.xml`, which uses hex keys; its only `PCM_LL_PLAYBACK` references there are comments.
+- The right channel (control 2) uses `WSA RX1 MUX`, `WSA_RX1 INP0`, `WSA_COMP2`, `SpkrRight` and `WSA_RX1 Digital Volume` 78, so the right speaker is on the WSA macro, not WSA2. Enable steps for the left channel set `WSA2 RX0 MUX` to `AIF1_PB`, route `WSA2_RX0 INP0` to `RX0`, turn on `WSA2_COMP1`, `SpkrLeft COMP`, `SpkrLeft VISENSE`, and `SpkrLeft SWR DAC_Port`, and set `WSA2_RX0 Digital Volume` to 78.
 - `VISENSE` is the voltage-and-current sense path that the amplifier uses for feedback. The name is observed; its function is inferred from the name.
 
 ### Microphones
@@ -111,9 +111,9 @@ The primary module's device ports cover: earpiece, speaker, wired headset and he
 `audio_effects.xml` (10,931 bytes) lists 14 effects and 13 libraries. Observed.
 
 - Volume and listener effects: `volume` (bundle), `music_helper`, `ring_helper`, `alarm_helper`, `voice_helper` and `notification_helper` (volume listeners).
-- Processing: `downmix`, `loudness_enhancer`, `dynamics_processing`, `hw_acc` (offload bundle, `libqcompostprocbundle.so`), `reverb`, `visualizer` in software and hardware forms (`libqcomvisualizer.so`).
+- Processing: `downmix`, `loudness_enhancer`, `dynamics_processing`, `hw_acc` (offload bundle, `libqcompostprocbundle.so`), `reverb` and `visualizer` as `effectProxy` entries (not `effect` entries); the visualizer libraries are `visualizer_sw` (`libvisualizer.so`) and `visualizer_hw` (`libqcomvisualizer.so`).
 - Pre-processing: `aec` and `ns` (`libqcomvoiceprocessing.so`), and `capture_audio_preproc` (`libcaptureaudiopreproc.so`).
-- `audiosphere` (`libasphere.so`). The name is observed; its function is not confirmed here.
+- `audiosphere` (`libasphere.so`) is named in `audio_effects.xml`, but the library file is not in the unpacked OTA. Its function is not confirmed here.
 
 ## Calibration (ACDB)
 
@@ -138,7 +138,7 @@ The `qxr` suffix is a different board variant. Which device uses which file is i
 
 - The RT600 and RT700 variants in section 09 change the codec path. The audio policy and the mixer files here are for the `neo` SKU; the RT variant differences are not decoded in them.
 - The `low_power_audio_service` and the LPI links are the audio side of the MCU path described in section 09.
-- The ADSP firmware that the audio libraries call through FastRPC is in the modem partition (section 05). The link is through `audioadsprpcd`; the firmware itself is not described here.
+- The ADSP firmware that the audio libraries call through FastRPC is in the dsp partition (ext4, mounted at `/vendor/dsp`), per `data/partition_table.md`. The modem partition holds modem firmware (section 05). The link is through `audioadsprpcd`; the firmware itself is not described here.
 
 ## What is not found
 

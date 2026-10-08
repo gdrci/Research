@@ -25,10 +25,10 @@
 设备树（`data/android/vendor_ramdisk/vendor_dtb_dump.txt`）中的节点如下。已观察。
 
 - 声卡兼容字符串：`qcom,waipio-asoc-snd`，位于 `/soc/spf_core_platform/sound` 下。
-- LPASS 平台兼容字符串：`qcom,neo-lpass`。平台名为 `neo`（第 04 节，`ro.board.platform=neo`）。
-- 编解码宏：`rx-macro@3200000`、`wsa-macro@3240000`、`wsa2-macro@31E0000` 与 `va-macro@33F0000`，各自带有一个 SoundWire 主控（`rx_swr_master`、`wsa_swr_master`、`wsa2_swr_master`、`va_swr_master`）。设备树另列出四个 SoundWire 控制器 `swr0` 至 `swr3`。
+- 设备树中没有名为 `qcom,neo-lpass` 的 LPASS 平台兼容字符串。与 LPASS 相关的兼容字符串为 `/soc/spf_core_platform/lpass-cdc` 上的 `qcom,lpass-cdc`、`qcom,lpass-cdc-clk-rsc-mngr`，以及 `/soc/interconnect@3c40000` 节点上的 `qcom,neo-lpass_ag_noc`。平台名为 `neo`（第 04 节，`ro.board.platform=neo`）。
+- 编解码宏：`rx-macro@3200000`、`wsa-macro@3240000`、`wsa2-macro@31E0000` 与 `va-macro@33F0000`，各自带有一个 SoundWire 主控（`rx_swr_master`、`wsa_swr_master`、`wsa2_swr_master`、`va_swr_master`）。`/aliases` 节点将 `swr0` 映射到 `wsa-macro@3240000/wsa_swr_master`，`swr1` 映射到 `rx-macro@3200000/rx_swr_master`，`swr2` 映射到 `va-macro@33F0000/va_swr_master`，`swr3` 映射到 `wsa2-macro@31E0000/wsa2_swr_master`。这些是四个宏 SoundWire 主控的别名，而非独立控制器。
 - LPI pinctrl 位于 `0x3440000`，包含 SoundWire 时钟与数据引脚（`tx_swr_*`、`rx_swr_*`、`wsa_swr_*`、`wsa2_swr_*`）以及 TDM 引脚（`quat_tdm_ws`、`quat_tdm_sd3`）。
-- 两个时钟投票节点 `vote_lpass_audio_hw` 与 `vote_lpass_core_hw`，以及属性 `lpass_audio_hw_vote`。
+- 两个时钟投票节点 `vote_lpass_audio_hw` 与 `vote_lpass_core_hw`，以及 `/__symbols__` 下指向 `/soc/vote_lpass_audio_hw` 的标签 `lpass_audio_hw_vote`。
 
 `card-defs.xml` 中只有一张卡：id 100，名称 `waipiovirtualsndcard`，含 25 个 PCM 设备条目。已观察。名称 `waipiovirtualsndcard` 表明在卡定义层面该卡是虚拟的；与真实硬件的映射在下面的后端与混音器文件中。`waipio` 作为代号的含义此处未确定。
 
@@ -48,27 +48,27 @@
 
 | 前缀 | ctl 数量 | 模块 |
 |---|---:|---|
-| `TX` | 142 | 采集（TX 宏） |
+| `TX` | 150 | 采集（TX 宏） |
 | `VA` | 92 | 语音唤醒 |
 | `WSA`、`WSA2` | 45、10 | 扬声器功放宏 |
-| `RX` | 43 | 播放（RX 宏） |
+| `RX` | 49 | 播放（RX 宏） |
 | `IIR0` | 27 | IIR 滤波器 |
 | `ADC2`、`ADC3`、`ADC4`、`ADC1` | 21、4、4、3 | 模数转换器 |
 | `SpkrLeft`、`SpkrRight` | 15、9 | 扬声器输出 |
 | `HPHL`、`HPHR` | 9、7 | 耳机输出 |
 | `LPI` | 6 | LPI 控制 |
 
-这些名称是高通 WCD 风格的编解码宏（`RX_MACRO`、`TX_MACRO`、`VA_MACRO`、`WSA_MACRO`）。其背后的芯片系列是根据名称推断的，未经编解码器 ID 寄存器确认。
+控制名称使用 `TX`、`VA`、`WSA` 与 `RX` 前缀；字面量 `RX_MACRO` 出现在 7 个名称中，`TX_MACRO`、`VA_MACRO` 与 `WSA_MACRO` 未出现。WCD 风格的解读为推断；厂商模块中有 `wcd937x_dlkm.ko` 与 `wcd938x_dlkm.ko`，但 OTA 中没有编解码器 ID。其背后的芯片系列是根据名称推断的，未经编解码器 ID 寄存器确认。
 
 ### 扬声器
 
-更正（来自 ODM 脚本，见第 17 节）：生产用扬声器功放看起来是两颗 Maxim MAX98388 智能功放（左声道 7 位 I2C `0x3A`，右声道 `0x38`，数据手册表 9 分别对应 ADDR 脚接 SDA 与接 VDD；TDM 输入，4 欧姆负载）。脚本为 `data/android/audio/max98388_v2.sh`。下文的混音配置来自参考板，其中列的是高通 WSA 宏。二者如何对应是推断，未经确认。
+更正（来自 ODM 脚本，见第 17 节）：生产用扬声器功放看起来是两颗 Maxim MAX98388 智能功放（左声道 I2C 地址 `0x3A`，右声道 `0x38`，即脚本传给 `mst com_port` 的 `-d` 参数；TDM 输入，4 欧姆负载；脚本未给出地址宽度或 ADDR 脚接法，因此 7 位解读与数据手册映射未被 OTA 确认）。脚本为 `data/android/audio/max98388_v2.sh`。下文的混音配置来自参考板，其中列的是高通 WSA 宏。二者如何对应是推断，未经确认。
 
 
 IDP 版本的 FTM（工厂测试）配置直接展示了扬声器路径（`data/android/audio/ftm_test_config_neo-idp-sg-snd-card`）。已观察：
 
-- 两个声道：`#Left Speaker` 与 `#Right Speaker`。播放键为 `gkv_rx:PCM_LL_PLAYBACK-SPEAKER-INSTANCE1-DEVICEPP_RX_DEFAULT`，后端为 `CODEC_DMA-LPAIF_WSA-RX-0`，PCM id 为 100。
-- 使能步骤把 `WSA2 RX0 MUX` 设为 `AIF1_PB`，将 `WSA2_RX0 INP0` 接到 `RX0`，打开 `WSA2_COMP1`、`SpkrLeft COMP`、`SpkrLeft VISENSE` 与 `SpkrLeft SWR DAC_Port`，并把 `WSA2_RX0 Digital Volume` 设为 78。
+- 两个声道：`#Left Speaker` 与 `#Right Speaker`。播放键为 `gkv_rx:PCM_LL_PLAYBACK-SPEAKER-INSTANCE1-DEVICEPP_RX_DEFAULT`，后端为 `CODEC_DMA-LPAIF_WSA-RX-0`，PCM id 为 100。该键不在 `usecaseKvManager.xml` 中（那里使用十六进制键）；其中 `PCM_LL_PLAYBACK` 仅出现在注释里。
+- 第二个声道（控制 2）使用 `WSA RX1 MUX`、`WSA_RX1 INP0`、`WSA_COMP2`、`SpkrRight` 与 `WSA_RX1 Digital Volume` 78，因此右声道功放位于 WSA 宏而非 WSA2。左声道的使能步骤把 `WSA2 RX0 MUX` 设为 `AIF1_PB`，将 `WSA2_RX0 INP0` 接到 `RX0`，打开 `WSA2_COMP1`、`SpkrLeft COMP`、`SpkrLeft VISENSE` 与 `SpkrLeft SWR DAC_Port`，并把 `WSA2_RX0 Digital Volume` 设为 78。
 - `VISENSE` 是功放用于反馈的电压与电流检测通路。名称已观察；其功能根据名称推断。
 
 ### 麦克风
@@ -111,9 +111,9 @@ primary 模块的设备端口包括：听筒、扬声器、有线耳机与耳机
 `audio_effects.xml`（10,931 字节）列出 14 个音效与 13 个库。已观察。
 
 - 音量与监听类：`volume`（bundle）、`music_helper`、`ring_helper`、`alarm_helper`、`voice_helper` 与 `notification_helper`（音量监听器）。
-- 处理类：`downmix`、`loudness_enhancer`、`dynamics_processing`、`hw_acc`（卸载 bundle，`libqcompostprocbundle.so`）、`reverb`，以及软件与硬件形式的 `visualizer`（`libqcomvisualizer.so`）。
+- 处理类：`downmix`、`loudness_enhancer`、`dynamics_processing`、`hw_acc`（卸载 bundle，`libqcompostprocbundle.so`）。`reverb` 与 `visualizer` 为 `effectProxy` 条目（而非 `effect` 条目）；visualizer 库为 `visualizer_sw`（`libvisualizer.so`）与 `visualizer_hw`（`libqcomvisualizer.so`）。
 - 预处理类：`aec` 与 `ns`（`libqcomvoiceprocessing.so`），以及 `capture_audio_preproc`（`libcaptureaudiopreproc.so`）。
-- `audiosphere`（`libasphere.so`）。名称已观察；其功能此处未确认。
+- `audiosphere`（`libasphere.so`）在 `audio_effects.xml` 中有命名，但该库文件不在已解包的 OTA 中。其功能此处未确认。
 
 ## 校准（ACDB）
 
@@ -138,7 +138,7 @@ primary 模块的设备端口包括：听筒、扬声器、有线耳机与耳机
 
 - 第 09 节的 RT600 与 RT700 变体会改变编解码路径。此处的音频策略与混音器文件适用于 `neo` SKU；RT 变体的差异在这些文件中未解码。
 - `low_power_audio_service` 与 LPI 链路是第 09 节所述 MCU 路径的音频一侧。
-- 音频库通过 FastRPC 调用的 ADSP 固件位于 modem 分区中（第 05 节）。连接通过 `audioadsprpcd` 完成；固件本身此处未描述。
+- 音频库通过 FastRPC 调用的 ADSP 固件位于 dsp 分区中（ext4，挂载于 `/vendor/dsp`），依据 `data/partition_table.md`。modem 分区含有调制解调器固件（第 05 节）。连接通过 `audioadsprpcd` 完成；固件本身此处未描述。
 
 ## 未找到的内容
 

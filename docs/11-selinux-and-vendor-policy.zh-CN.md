@@ -8,7 +8,7 @@
 
 - `plat_sepolicy_vers.txt` 为 `32.0`，即平台策略版本。已观察。
 - CIL 名称带有版本后缀：`init_32_0`、`hwservicemanager_32_0`、`servicemanager_32_0`、`system_server_32_0`、`tee_32_0`。厂商策略针对平台 32.0 编译。已观察。
-- Android 12 是厂商基线（第 04 节），平台策略版本 32.0 与 Android 12 发布版相符。根据版本表推断；文件中没有对应表。
+- Android 12 是厂商基线（第 04 节）。厂商 `build.prop` 设置 `ro.vendor.build.version.release=12`、`ro.vendor.build.version.sdk=32` 与 `ro.vndk.version=32`，因此平台策略 32.0 与厂商 SDK 级别 32 相符。SDK 32 对应 Android 12L 的名称来自 AOSP 发布历史，而非这些文件。
 
 厂商策略叠加在平台策略之上。`plat_pub_versioned.cil`（13,860 行，1.0 MB）是 32.0 版本的平台公共策略，厂商策略不能与之冲突。其内容此处未解码。已作为文件观察。
 
@@ -24,7 +24,7 @@
 | `typeattributeset` | 241 | 属性成员关系 |
 | `genfscon` | 211 | `sysfs`（205）与 `proc`（6）路径的标签 |
 | `dontaudit` | 161 | 被抑制的拒绝日志 |
-| `typetransition` | 147 | 新对象的自动标签 |
+| `typetransition` | 147 | 新对象的自动标签（144 条解析为四个字段；3 条为五个字段） |
 | `neverallow` | 82 | 编译期禁令 |
 | `typeattribute` | 64 | 属性声明 |
 | `allowx` | 17 | 扩展权限允许 |
@@ -40,19 +40,19 @@
 
 每个 HAL 都有一对域，例如 `hal_audio_default` 与 `hal_audio_default_exec`。`_exec` 类型标记可执行文件，`init` 在执行时通过 `typetransition` 切换到该域：
 
-    typetransition init hal_audio_default_exec process hal_audio_default
+    typetransition init_32_0 hal_audio_default_exec process hal_audio_default
 
-在 144 条四字段的 `typetransition` 规则中，132 条以 `init_32_0` 为起点，其中 128 条遵循此执行模式。其余规则涉及 `postprocess_init`（5）、`vendor_rfs_access`（2）以及图形 HAL 的 tmpfs 文件。已观察。
+在 144 条四个参数的 `typetransition` 规则中，132 条以 `init_32_0` 为起点。这 132 条都转换到名称含 `exec` 的进程类型：其中 128 条以 `_exec` 结尾，3 条以 `_exec_32_0` 结尾，1 条为 `postprocess_exec_file`。其余 12 条规则为 `postprocess_init`（5）、`vendor_rfs_access`（2）、`hal_graphics_allocator_default` 与 `hal_graphics_composer_default` 的 tmpfs 转换（各 1）、`init-systemstart-sh` 到 `bootstat_exec_32_0`（1）、`vendor_timeservice_app` 的 tmpfs（1），以及 `shell_32_0` 到 `wattsup_exec`（1）。已观察。
 
 ### Oculus 与 Meta 域
 
 Meta 与 Oculus 的域是策略中最具特征的部分。类型列表包括：
 
-- `hal_oculus_backlight`、`hal_oculus_battery`、`hal_oculus_bluetooth`、`hal_oculus_catty`、`hal_oculus_devicecert`、`hal_oculus_display`、`hal_oculus_dock`、`hal_oculus_keyboxinstaller`、`hal_oculus_lcos`、`hal_oculus_remotethermal`、`hal_oculus_sensors`、`hal_oculus_sensors_iad`、`hal_oculus_wifi`、`hal_usb_oculus`。已观察。
+- `hal_oculus_backlight`、`hal_oculus_battery`、`hal_oculus_bluetooth`、`hal_oculus_catty_default`、`hal_oculus_devicecert`、`hal_oculus_display`、`hal_oculus_dock`、`hal_oculus_keyboxinstaller`、`hal_oculus_lcos`、`hal_oculus_remotethermal`、`hal_oculus_sensors`、`hal_oculus_sensors_iad`、`hal_oculus_wifi`、`hal_usb_oculus`。已观察。
 - `hal_lpi_mcu`，即 MCU 支持的 HAL 所在域（第 09 节）。
 - `hal_palmauth_vendor_data_file`，一个名称指向掌纹认证的数据类型。根据名称推断。
 
-`hal_oculus_sensors` 是 82 条 allow 规则的来源，是第二大的 HAL。已观察。
+`hal_oculus_sensors` 是 82 条 allow 规则的来源，是最大的 HAL 来源。已观察。
 
 ### neverallow
 
@@ -100,14 +100,14 @@ Meta 与 Oculus 的域是策略中最具特征的部分。类型列表包括：
 
 - `persist.vendor.meta.*`：uweb、音频 HAL、displaymapping。已观察。
 - `persist.vendor.ovr.*` 与 `vendor.ovr.*`：`vendor_oculus_prop`。已观察。
-- `vendor.meta.palmauth.*`、`vendor.meta.palmcheck.*`、`vendor.meta.palmexp.session.id.*`：`vendor_palmauth_prop`。已观察。
+- `vendor.meta.palmauth.*` 与 `vendor.meta.palmexp.session.id.*`：`vendor_palmauth_prop`；`vendor.meta.palmcheck.*`：`vendor_palmcheck_prop`。已观察。
 - `vendor.meta.mcu_hal.*`：`vendor_meta_hal_lpi_mcu_prop`。已观察。
 
 ### 文件上下文
 
-892 条文件规则是正则表达式。按第一级目录统计，路径根为 `vendor`（478）、`dev`（159）、`(vendor|system/vendor)` 选择式（134）、`sys`（48）、`data`（25）、`persist`（15）、`mnt`（15）与 `odm`（9）。已观察。
+892 条文件规则是正则表达式。按第一级目录统计，路径根为 `vendor`（478）、`dev`（159）、`(vendor|system/vendor)` 选择式（134）、`sys`（48）、`data`（25）、`persist`（15）、`mnt`（15）与 `odm`（9）。其余 9 条规则为 `system`（3）、`res`（2）、`(vendor|system_ext)`（2）、`(/system)?/system_ext`（1）与 `(vendor|sustem)`（1）。已观察。
 
-使用最多的文件标签是 `same_process_hal_file`（431 条规则），用于标记运行在 HAL 进程内的共享对象。`vendor_custom_ab_block_device`（20）标记 A/B 块设备，`persist_cal_file`（7）标记 `/mnt/vendor/persist` 中的校准文件。已观察。
+使用最多的文件标签是 `same_process_hal_file`（431 条规则），用于标记运行在 HAL 进程内的共享对象。`vendor_custom_ab_block_device`（20）标记 A/B 块设备，`persist_cal_file`（7）标记 `/persist` 下的校准与序列号文件，例如 `/persist/calibration(/.*)?` 与 `/persist/wlan_mac.bin`。`/mnt/vendor/persist` 下的校准路径使用标签 `vendor_persist_cal_file`。已观察。
 
 ## 应用侧上下文
 
@@ -139,7 +139,7 @@ Meta 与 Oculus 的域是策略中最具特征的部分。类型列表包括：
 
 ## 未找到的内容
 
-- 编译后的策略二进制（`sepolicy`）不在 OTA 中。CIL 文件是构建的输入。未找到。
+- 厂商分区只含 CIL 输入，`vendor/etc/selinux` 中没有编译后的 `sepolicy`。odm 分区含有编译后的策略 `odm/etc/selinux/precompiled_sepolicy`（1,208,319 字节，SELinux 策略魔数 `0xF97CFF8C`），此处未解码。
 - 厂商策略所扩展的平台策略（`plat_pub_versioned.cil` 只是其公共部分）。未解码。
 - 设备上的运行时拒绝日志。不在 OTA 中。
 
