@@ -1,0 +1,347 @@
+MCU firmware console strings (mcu.default.rt700.tub, file offsets). Extracted by printable-run scan.
+--- LCoS and LED console (offsets 0x13e494-0x13f240) ---
+0x0013e494 t useful value
+0x0013e4a4 Regular Threshold: %.2f %s
+0x0013e4c0 Current Useful Value: %.2f
+0x0013e4dc set-algo
+0x0013e4e8 setting dondoff algorithm: 0x%04llX
+0x0013e510 Startup Threshold: %u %s
+0x0013e52c FSM State: %s
+0x0013e53c lcos
+0x0013e545 LCOS console commands:
+0x0013e562 lcos toggle <interval seconds> <number of toggles>
+0x0013e59b Toggles LCOS power on and off at a set interval (default 5s)
+0x0013e5de lcos init
+0x0013e5eb Initializes LCOS in MIPI mode
+0x0013e60e lcos pgen <pattern_name> <r> <g> <b>
+0x0013e637 Set PGEN mode pattern. Pattern names must be disabled/checkerboard/hcolorbar/vcolorbar/hramp/vramp/solid. RGB options for solid only
+0x0013e6c2 lcos poweroff
+0x0013e6d3 Powers off LCOS
+0x0013e6e6 lcos clearscreen
+0x0013e6fa LCOS clearscreen operation
+0x0013e71a lcos setledgains <r> <g> <b>
+0x0013e73a Set LED gains (max 1023)
+0x0013e756 lcos setledcurrents <r> <g> <b>
+0x0013e77a Set LED currents in micro amperes (integer values only)
+0x0013e7b6 lcos getledgains
+0x0013e7ca Get LED gains
+0x0013e7de lcos getledcurrents
+0x0013e7f6 Get LED currents in micro amperes
+0x0013e81e lcos getledbitres
+0x0013e832 Get LED bit resolution and rsense GPIO value
+0x0013e862 lcos readtemp <rb/g/lcos/schedule>
+0x0013e88a Read display IC temperature from red/blue LEDs (rb), green LED (g) or LCOS (lcos)
+0x0013e8e2 lcos mipi_rx <1/0>
+0x0013e8fa Start (1) or stop (0) MIPI RX pipeline
+0x0013e926 lcos i2c r <device addr> <reg> <num bytes>
+0x0013e956 Read register(s) from i2c device (Note: all values are hex)
+0x0013e996 lcos i2c w <device addr> <reg> <data(x,y,z,...)>
+0x0013e9ca Write register(s) on i2c device (Note: all values are hex)
+0x0013ea0a lcos poweron
+0x0013ea1a Do GPIO and I2C sequence to power-on, not sending init sequence to LCOS
+0x0013ea66 lcos send-init-sequence
+0x0013ea82 Send I2C sequence to initialize LCOS to PGEN mode (assumes power is on)
+0x0013eace lcos set-pixel-voltage <pixel_voltage_mV
+0x0013eafa Set LCOS pixel voltage value in milliVolts
+0x0013eb2a lcos get-pixel-voltage
+0x0013eb46 Get LCOS pixel voltage value in milliVolts
+0x0013eb76 lcos set-ito-voltages <pos_red_mV> <pos_green_mV> <pos_blue_mV> <neg_red_mV> <neg_green_mV> <neg_blue_mV>
+0x0013ebe6 Set LCOS positive and negative ITO voltages in milliVolts
+0x0013ec26 lcos get-ito-voltages
+0x0013ec3e Get LCOS ITO voltages in milliVolts
+0x0013ec66 lcos set-interp-coeffs <r/g/b> <low_slope> <low_offset> <high_slope> <high_offset>
+0x0013ecbe Set interpolation coeffs(uA) for Low&High resolution
+0x0013ecf6 lcos get-interp-coeffs <r/g/b>
+0x0013ed1a Get interpolation coefficients for Low&High resolution
+0x0013ed56 lcos get-led-mode
+0x0013ed6a Get current LED driver mode (PFM or PWM)
+0x0013ed96 lcos set-led-mode
+0x0013edaa Set LED driver mode to PFM or PWM
+0x0013edd2 lcos get-led-voltages
+0x0013edea Get LED static voltages
+0x0013ee06 lcos clearbus
+0x0013ee16 Clear display i2c bus by toggling clock lane
+0x0013ee46 lcos init-i2c
+0x0013ee56 Initialize i2c controller
+0x0013ee76 lcos deinit-i2c
+0x0013ee8a De-initialize i2c controller
+0x0013eeaa lcos set-already-initialized
+0x0013eeca Set LCOS configs while display already on
+0x0013eefa lcos set-led-bitres-setting <bitres_setting>
+0x0013ef2a Set LED driver bit resolution setting (auto or low or high
+0x0013ef6a lcos get-led-bitres-setting
+0x0013ef8a Get current LED driver bit resolution setting
+0x0013efbe lcos get-led-bitres-threshold
+0x0013efde Get the current threshold used to switch between high and low resolution
+0x0013f02a lcos get-pmic-rev
+0x0013f03e Get the chip ID of PMIC
+0x0013f05a lcos dump-de-otp
+0x0013f06e Dump the SYS level DE OTP readback
+0x0013f096 lcos get-error-counts
+0x0013f0ae Get the various LCOS error counts
+0x0013f0d5 Display SN: %s
+0x0013f0e9 LCOS SN: %s
+0x0013f0f9 LED SN: %s
+0x0013f109 DDB SN: %s
+0x0013f119 VF_1MA_R: %f
+0x0013f129 VF_1MA_G: %f
+0x0013f139 VF_1MA_B: %f
+0x0013f149 VF_140MA_R: %f
+0x0013f15d VF_140MA_G: %f
+0x0013f171 VF_140MA_B: %f
+0x0013f185 OFFSET_LOW_RES_R: %f
+0x0013f19d OFFSET_LOW_RES_G: %f
+0x0013f1b5 OFFSET_LOW_RES_B: %f
+0x0013f1cd SLOPE_LOW_RES_R: %f
+0x0013f1e5 SLOPE_LOW_RES_G: %f
+0x0013f1fd SLOPE_LOW_RES_B: %f
+0x0013f215 OFFSET_HIGH_RES_R: %f
+0x0013f22d OFFSET_HIGH_RES_G: 
+--- LCoS calibration, error counters, IMU, touch console (offsets 0x13f240-0x1406f4) ---
+0x0013f245 OFFSET_HIGH_RES_B: %f
+0x0013f25d SLOPE_HIGH_RES_R: %f
+0x0013f275 SLOPE_HIGH_RES_G: %f
+0x0013f28d SLOPE_HIGH_RES_B: %f
+0x0013f2ac auto
+0x0013f2b4 clearbus
+0x0013f2c1 Clearing display i2c bus
+0x0013f2dc init-i2c
+0x0013f2e9 Initializing display i2c bus
+0x0013f308 deinit-i2c
+0x0013f315 Deinitializing display i2c bus
+0x0013f338 set-already-initialized
+0x0013f351 LCOS settings: is_pwm = %d, r = %d, g = %d, b = %d
+0x0013f388 get-pmic-rev
+0x0013f399 PMIC chip ID: %d
+0x0013f3ac toggle
+0x0013f3b5 Test complete.
+0x0013f3c8 poweron
+0x0013f3d0 send-init-sequence
+0x0013f3e4 pgen
+0x0013f3ec checkerboard
+0x0013f3fc solid
+0x0013f404 vcolorbar
+0x0013f410 hcolorbar
+0x0013f41c vramp
+0x0013f424 hramp
+0x0013f42d Invalid pattern name. Defaulting to checkerboard.
+0x0013f460 poweroff
+0x0013f46c clearscreen
+0x0013f479 Clear Screen
+0x0013f488 setledgains
+0x0013f495 LED Gains: r = %d, g = %d, b = %d
+0x0013f4b9 Invalid LED gain value(s), must be < 1023
+0x0013f4e4 setledcurrents
+0x0013f4f4 getledgains
+0x0013f500 getledcurrents
+0x0013f511 LED Currents: r = %d, g = %d, b = %d
+0x0013f538 getledbitres
+0x0013f549 LED Bit resolution: %s
+0x0013f564 readtemp
+0x0013f571 Sensor name not provided, must be rb, lcos, g, or schedule
+0x0013f5b5 Failed to read LCOS temperature
+0x0013f5d9 LCOS Temperature: %d
+0x0013f5f1 Invalid sensor name %s, must be rb, lcos, g, or schedule
+0x0013f62d Read LCOS temperature from %s
+0x0013f64e Temperature: %d
+0x0013f660 mipi_rx
+0x0013f669 Invalid mode name %s, must be r or w
+0x0013f691 Reading %d bytes from i2c device 0x%02x at register address %s
+0x0013f6d5 i2c read failed: %d
+0x0013f6f1 Writing %d bytes to i2c device 0x%02x at register address %s
+0x0013f731 i2c write failed: %d
+0x0013f748 set-pixel-voltage
+0x0013f75c get-pixel-voltage
+0x0013f770 Pixel Voltage: %u mV
+0x0013f788 set-ito-voltages
+0x0013f79c get-ito-voltages
+0x0013f7b0 POS_RED_ITO_MV:%d POS_GREEN_ITO_MV:%d POS_BLUE_ITO_MV:%d NEG_RED_ITO_MV:%d NEG_GREEN_ITO_MV:%d NEG_BLUE_ITO_MV:%d
+0x0013f824 set-interp-coeffs
+0x0013f838 get-interp-coeffs
+0x0013f84c SLOPE_LOW_RES:%d OFFSET_LOW_RES:%d SLOPE_HIGH_RES:%d OFFSET_HIGH_RES:%d
+0x0013f898 get-led-mode
+0x0013f8a8 LED MODE: %s
+0x0013f8b8 set-led-mode
+0x0013f8c9 LED mode not provided, must be pwm or pfm
+0x0013f8fd Invalid led mode. Supported modes: pfm, pwm
+0x0013f92c get-led-voltages
+0x0013f940 RED:%d GREEN:%d BLUE:%d BLANK:%d
+0x0013f964 set-led-bitres-setting
+0x0013f97d LED bit resolution setting not provided, must be auto or low or high
+0x0013f9c5 Invalid LED bit resolution setting not provided. Supported modes: auto or low or high
+0x0013fa1c get-led-bitres-setting
+0x0013fa34 LED BIT RESOLUTION SETTING: %s
+0x0013fa54 get-led-bitres-threshold
+0x0013fa70 LED BIT RESOLUTION THRESHOLD: r:%u, g:%u, b:%u microAmps
+0x0013faac dump-de-otp
+0x0013fab8 get-error-counts
+0x0013facc LCOS ERROR COUNTS:
+0x0013fadf SOT_ERROR_FLAG_COUNT:%u
+0x0013faf7 CRC_ERROR_FLAG_COUNT:%u
+0x0013fb0f ECC_SINGLE_ERR_FLAG_COUNT:%u
+0x0013fb2c ECC_FATAL_ERR_FLAG_COUNT:%u
+0x0013fb48 SOT0_ERROR_COUNT:%u
+0x0013fb5c CRC_FAILURE_COUNT:%u
+0x0013fb75 Failed to execute cmd, %d
+0x0013fb91 start
+0x0013fb98 read
+0x0013fb9e set-odr data-rate-us batch-latency-us
+0x0013fbc5 stop
+0x0013fbcb chip-id
+0x0013fbd4 factory-cal
+0x0013fbe4 x: %f y: %f z: %f
+0x0013fbf8 set-odr
+0x0013fc00 chip-id
+0x0013fc08 Chip ID: 0x%X
+0x0013fc18 factory-cal
+0x0013fc24 rectification_matrix:
+0x0013fc40 offset x:%f y:%f z:%f
+0x0013fc59 sns_clk: %d
+0x0013fc69 row_sns_clk: %d
+0x0013fc7d n_sub: %d
+0x0013fc89 cdac_ref: %d
+0x0013fc99 row_cdac_ref: %d
+0x0013fcad cic_rate: %d
+0x0013fcbd cdacref_fine: %d
+0x0013fcd1 cdac_comp: %d
+0x0013fce1 cdac_comp_div: %d
+0x0013fcf5 cdac_dither_value: %d
+0x0013fd0d %d: n_sub: %d decn: %d cdac_comp: %d
+0x0013fd34 Error: cdac_comp_div is zero
+0x0013fd55 touch probe
+0x0013fd65 touch mode [tuner]
+0x0013fd7d touch r <reg_addr> <num>
+0x0013fd99 touch w <reg_addr> <val1> [val2] [val3]
+0x0013fdc5 touch g <dev_addr> <num>
+0x0013fde1 touch t <dev_addr> <val1> [val2] [val3]
+0x0013fe0d touch reboot-dfu
+0x0013fe21 touch dfu
+0x0013fe2d touch read-touch-points
+0x0013fe49 touch get[-presense|-dondoff]-ppc [<slot_id>]
+0x0013fe79 touch set[-presense|-dondoff]-ppc [<slot_id>] <n_sub> <decn> <cdac_comp>
+0x0013fec5 touch set-use-case <cpu_freq_mhz> <refresh_rate_hz> <wake_on_touch> <deep_sleep> <sleep_in_active> <centroid_mode> 
+0x0013ff3d touch hard-reset
+0x0013ff51 touch soft-reset
+0x0013ff65 touch watchdog-reset
+0x0013ff7d touch hardfault-reset
+0x0013ff95 touch reset-reason
+0x0013ffad touch get[-presense|-dondoff]-configuration
+0x0013ffdd touch set[-presense|-dondoff]-configuration <cdac> <row_cdac> <n_sub> <sns_clk> <row_sns_clk> <cicrate> <cdacref_fine> <cdac_comp> <cdac_dither>
+0x00140071 touch set-lp[-presense|-dondoff]-configuration <cdac> <row_cdac> <n_sub> <sns_clk> <row_sns_clk> <cicrate> <cdacref_fine> <cdac_comp> <cdac_dither>
+0x00140109 touch get[-presense|-dondoff]-counts
+0x00140131 touch update-gesture-config
+0x00140151 touch self-test
+0x00140165 touch read-palm-gesture
+0x00140181 touch get-calibration
+0x00140199 touch raw-data
+0x001401ad touch get-schema
+0x001401c1 touch get-fw-version
+0x001401d9 touch stats
+0x001401e9 touch dondoff-capacitance
+0x00140205 touch touchpad-capacitance [slot]
+0x00140228 reboot-dfu
+0x00140238 erase
+0x00140241 completed! silicon rev: %02x
+0x00140261 raw: %d
+0x0014026d bsln: %d
+0x00140279 diff: %d
+0x00140285 touched: %d
+0x00140295 Existing configuration:
+0x001402b1 Input configuration:
+0x001402c9 Confirm configuration:
+0x001402e4 tuner
+0x001402ec unknown
+0x00140300 self-test
+0x0014030d init: %d
+0x00140317 chip_id: %08x
+0x00140326 chip_id_valid: %d
+0x0014033c Chip Read ID: %08X
+0x00140350 Starting touch sensor driver
+0x00140371 sensor not found!
+0x00140385 sensor started
+0x00140399 read 0x%02x
+0x001403a8 psoc in %s mode
+0x001403bd read [0x%04x] 0x%02x
+0x001403d4 read-touch-points
+0x001403e9  touches: %d
+0x001403f9 %d: id: %d x: %d y: %d z: %d
+0x00140418 get-ppc
+0x00140420 set-ppc
+0x00140429 system_time: %ums
+0x0014043d active_time: %ums
+0x00140451 test_mode: %s
+0x00140461 CPU: %u%%
+0x0014046d CPU speed: %uMhz
+0x0014047f wake_on_touch: %s
+0x00140492 deep_sleep: %s
+0x001404a2 sleep_in_active: %s
+0x001404b7 centroid_mode: %s
+0x001404cd Refresh Rate: %uhz (%dus)
+0x001404e9 finger stats: %u%% merged, dist min: %u, max: %u
+0x0014051c set-use-case
+0x0014052d CPU freq now %uMhz
+0x00140544 hard-reset
+0x00140550 soft-reset
+0x0014055c watchdog-reset
+0x0014056c hardfault-reset
+0x0014057c reset-reason
+0x0014058d cause: %s (%08x)
+0x001405a1 stack:
+0x001405ad %08x
+0x001405b5 CC: %08x
+0x001405c1 EC: %08x
+0x001405cc get-configuration
+0x001405e0 set-configuration
+0x001405f4 get-lp-configuration
+0x0014060c set-lp-configuration
+0x00140624 get-counts
+0x00140630 raw (%d -> %d x %d):
+0x00140648 %c%5d
+0x00140651 diff:
+0x00140659 baseline:
+0x00140664 update-gesture-config
+0x0014067c get-dondoff-counts
+0x00140690 get-dondoff-configuration
+0x001406ac get-lp-dondoff-configuration
+0x001406cc set-dondoff-configuration
+0x001406e8 set-lp-dondo
+--- sub-image name headers ---
+0x00000000 app.bin
+0x001435e8 display_wpc_coeff.bin
+0x00143600 display_calibration.bin
+0x0014f8e8 touch-app-b0.cyacd2
+0x0015076c boot_data.bin
+0x0015118c pmic_reset_info.bin
+0x001511a0 shutdown_state.bin
+0x001511b4 boot_shutdown_history.bin
+0x00152868 hot_car_notif.bin
+0x00154e54 factory_reset_telemetry.bin
+0x00155c28 batt.bin
+0x0015657c battery_heatmap.bin
+0x00156590 battery_heatmap2.bin
+0x00157a1b Eevent_trace.bin
+0x0015898c hc_cfg.bin
+0x00158998 hcfocus_cfg.bin
+0x001589a8 cf_cfg_sku1_cfg.bin
+0x001589bc cf_cfg_sku2_5_cfg.bin
+0x00158c5c cf_fixed_bf_weights_a.bin
+0x00158c78 cf_fixed_bf_weights_b.bin
+0x00158c94 cf_fixed_bf_weights_c.bin
+0x00158cb0 cf_fixed_bf_weights_occluded_a.bin
+0x00158cd4 cf_fixed_bf_weights_occluded_b.bin
+0x00158cf8 cf_fixed_bf_weights_occluded_c.bin
+0x00159d94 case.default.cocos.tub_case.bin
+0x00159dcb case.bin
+0x00159dd4 case.default.lynx.tub_case.bin
+0x00159e0a case.bin
+0x00159e14 case.default.cabo.tub_case.bin
+0x00159e4a case.bin
+0x00185400 dumptruck.bin
+0x00194c00 offload_assets_ro.bin
+0x00594e00 romfs.bin
+0x006c7200 debug_frame.bin
+0x00715400 logger_dict_generated.json
+0x007cde00 zephyr_log_dict_generated.json
+0x007f8800 tel_dict_generated.json
+0x00811a00 configs.json
+0x00816400 metadata.json
