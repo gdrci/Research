@@ -1,5 +1,7 @@
 # Credits and third-party notices
 
+[中文版](NOTICE.zh-CN.md)
+
 ## Author
 
 Original analysis and documentation: **gdrci**.
