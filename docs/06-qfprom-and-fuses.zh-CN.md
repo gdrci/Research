@@ -206,7 +206,7 @@ PIL 防回滚熔丝查找已部分解码（`data/secure/hyp_pil_arb_fuse_table.t
 ## 未解决的问题
 
 - `FUN_1C03ACAC` 所加的锁（经由 `FUN_1C062D44`），以及 `FUN_14681A68` 在 MMIO 路径之外的调用者。
-- SBL1 区域表中每条记录的含义。接收它的服务（协议 `0x3E`，即页表构建器）已在第 02 节确定，但每条记录的字段布局尚未确认。
+- SBL1 区域表中每条记录的含义。接收它的服务（协议 `0x3E`，即页表构建器）已在第 02 节确定。APPSBL 记录中的区域描述符是 `(base, size)` 对：`(0x80000000, 0x26E00000)` 与 `(0xA6E40000, 0x591C0000)`。若按 `(start, end)` 读取，第一对会在开始之前结束，因此 `(base, size)` 是唯一自洽的读法，第二对恰好结束于 32 位空间顶端。该读法基于算术推导，并非来自消费这些记录的代码。
 - 多出的两页是否通过计算偏移被使用。`hyp.img` 中没有指向那里的绝对地址。
 - 字节 `0x221C8119` 及其相邻字节，用于确认 `gpu_speed_bin` 字段，以及同一字节中还有哪些位。
 - `OEM_rot_pk_hash1_fuse_values` 的读取者，及其对应的 QFPROM 偏移。进一步搜索未在 `tz.img` 或 `devcfg.img` 中找到指向任何键名的指针、相对指针或 adrp 引用，因此键块是以非指针方式读取的（`data/secure/oem_key_pointer_search.txt`）。该名称是 `tz.img` 中 OEM 配置块（约 `0x13A295`–`0x13A7XX`，约 40 个键）中的一个键，`devcfg.img` 中也有它。通过 ADRP+ADD、ADR、绝对指针和重定位的搜索都未找到对它的代码引用（`data/secure/oem_rot_key_xref_search.txt`）。PK 哈希处理路径（`data/secure/tz_pkhash_path.txt`）本身不直接读取 QFPROM，其设备 ID 输入来自运行时对象的方法 6。读取者很可能是通过该对象对 OEM 块做的按名称查找。尚未找到。 OEM 熔丝写入函数 `FUN_1C0EE8E8` 已反编译（`data/secure/tz_oem_spare_fuse_writer_decomp.txt`）。它读取 `/ac/oem_regions_config`，检查权限值是否为 `0x12`，为每个区域构造掩码，并通过写入调用（`FUN_1C039168(1, ...)`）把掩码交给 TrustZone。它并不按名称读取 `OEM_rot_pk_hash1_fuse_values`，因此它是备用熔丝区域的写入者，而不是根密钥的读取者。
