@@ -1,0 +1,7 @@
+# Tests for how the OEM configuration key OEM_rot_pk_hash1_fuse_values is looked up in tz.img and devcfg.img (negative results)
+
+1. Hash-indexed lookup. For the names OEM_rot_pk_hash1_fuse_values, OEM_rot_pk_hash1, OEM_rot_enc_key1_fuse_values, OEM_sec_wdog_bark_time and OEM_rot_enable_transfer_APPS, the 32-bit values of CRC-32 (zlib), FNV-1a 32, FNV-1 32, DJB2 and SDBM were computed. Both little- and big-endian forms were searched in tz.img, devcfg.img and keymaster.img. No value occurs with a count below 50. Result: no hash-indexed table found for these functions.
+
+2. Offset-indexed lookup. The file offset of the name (tz.img 0x13A3AC) was taken relative to block starts 0x13A000, 0x13A200, 0x13A280, 0x13A28D, 0x13A290, 0x13A295 and 0x139000, and the offsets were searched as 16-bit and 32-bit words. The hits are scattered across the image, with no clustering or table structure, so they are not evidence of an index. Result: no offset-indexed table identified.
+
+Interpretation: the key is not located by a hash of its name, and no offset table was identified. Combined with the earlier pointer, relative-pointer and relocation searches (data/secure/oem_key_pointer_search.txt, data/secure/oem_rot_key_xref_search.txt), the reader is probably a sequential name comparison over the parsed OEM configuration, reached through the configuration parser, which needs a dynamic trace or a deeper dataflow analysis to find. Not found. Observed.
