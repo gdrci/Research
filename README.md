@@ -47,6 +47,10 @@ This repository describes how the system is built and how it starts. It is not v
 | Evidence index | [18](docs/18-evidence-index.md) | [18](docs/18-evidence-index.zh-CN.md) |
 
 
+## License
+
+The documentation (`docs/` and the README files) is licensed under [CC BY 4.0](LICENSE). Copyright (c) 2026 gdrci. The contents of `data/` are excerpts and extractions included as evidence and are not covered by this license. Their rights remain with their owners. See the notice at the top of [LICENSE](LICENSE). This repository is not affiliated with Meta or any other vendor named in it.
+
 ## Evidence labels
 
 - **Verified**: read directly from a header, a hash, a parsed structure or a file.

@@ -47,6 +47,10 @@ Discord：[discord.gg/oculus](https://discord.gg/oculus) · gdrci（Discord）
 | 证据索引 | [18](docs/18-evidence-index.md) | [18](docs/18-evidence-index.zh-CN.md) |
 
 
+## 许可证
+
+文档（`docs/` 与 README 文件）采用 [CC BY 4.0](LICENSE) 许可。版权所有 (c) 2026 gdrci。`data/` 中的内容是作为证据收录的摘录与提取物，不适用本许可证，其权利归各自的权利人所有。详见 [LICENSE](LICENSE) 顶部的说明。本仓库与 Meta 或文中提及的其他厂商没有关联。
+
 ## 证据标注
 
 - **已验证（Verified）**：直接从头部信息、哈希值、解析出的结构或文件中读取。
