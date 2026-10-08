@@ -44,6 +44,7 @@ This repository describes how the system is built and how it starts. It is not v
 | Audio DSP firmware (RT700 HiFi4) | [15](docs/15-audio-dsp-firmware.md) | [15](docs/15-audio-dsp-firmware.zh-CN.md) |
 | Modem partition firmware: ADSP, CDSP and trusted applications | [16](docs/16-modem-partition-firmware.md) | [16](docs/16-modem-partition-firmware.zh-CN.md) |
 | Chip inventory | [17](docs/17-chip-inventory.md) | [17](docs/17-chip-inventory.zh-CN.md) |
+| Emulation reference | [19](docs/19-emulation-reference.md) | [19](docs/19-emulation-reference.zh-CN.md) |
 | Evidence index | [18](docs/18-evidence-index.md) | [18](docs/18-evidence-index.zh-CN.md) |
 
 

@@ -140,7 +140,7 @@ File: `data/android/kernel/config.txt`, 7,581 lines, 1,754 options set to `y` an
 | `CONFIG_META_OATMEAL`, `CONFIG_META_GRANOLA_OATMEAL` | not set | Meta-specific options, both off in this build |
 | `CONFIG_SECURITY_YAMA`, `CONFIG_SECURITY_LOCKDOWN_LSM` | not set | |
 
-Several things stand out. The kernel has strong exploit mitigations (PAC, BTI, MTE, shadow stacks, KASLR, stack canaries, usercopy hardening). Module signing is off, which means the vendor modules are trusted by location and by AVB, not by a signature the kernel checks. The `SELINUX_DEVELOP` option is built in, but the command line sets `enforcing`.
+The kernel configuration enables PAC, BTI, MTE, shadow stacks, KASLR, stack canaries and usercopy hardening. Module signing is disabled, so the vendor modules are loaded on the basis of their location and the AVB chain, and the kernel does not check a module signature. The `SELINUX_DEVELOP` option is built in, but the command line sets `enforcing`.
 
 ## Kernel modules
 

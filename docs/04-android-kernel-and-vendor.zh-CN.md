@@ -140,7 +140,7 @@ androidboot.hibernation_resume_device=259:61
 | `CONFIG_META_OATMEAL`、`CONFIG_META_GRANOLA_OATMEAL` | 未设置 | Meta 专用选项，本构建均关闭 |
 | `CONFIG_SECURITY_YAMA`、`CONFIG_SECURITY_LOCKDOWN_LSM` | 未设置 | |
 
-有几点值得注意。内核启用了较强的利用缓解措施（PAC、BTI、MTE、影子栈、KASLR、栈金丝、用户拷贝加固）。模块签名关闭，这意味着厂商模块是靠所在分区和 AVB 的校验而被信任的，内核本身并不校验签名。`SELINUX_DEVELOP` 已编入，但命令行设定为 `enforcing`。
+内核配置启用了 PAC、BTI、MTE、影子栈、KASLR、栈金丝和用户拷贝加固。模块签名已关闭，因此厂商模块依据其所在位置和 AVB 链加载，内核本身不校验模块签名。`SELINUX_DEVELOP` 已编入，但命令行设定为 `enforcing`。
 
 ## 内核模块
 

@@ -49,7 +49,7 @@
 - 在 RT700 配置下，`mcu-properties.sh` 会设置 `persist.vendor.meta.hyperoff.use_stp=true`。
 - `vendor.meta.stp_service.boot` 与 `vendor.meta.mcu_hal.stp_need_recovery` 分别是 STP 服务的启动标志和恢复标志。
 
-恢复路径值得注意。当 `vendor.meta.mcu_hal.stp_need_recovery` 被设为 1 时，init 脚本等待五秒（用于收集日志），然后向 `/sys/devices/platform/soc/soc:meta,rt600_ctrl/trigger_assert` 写入 `1`，使 MCU 断言；随后清除该标志。该文件将重启行保持注释状态（“暂时”），并附有待复查的 TODO。已从 init 文件验证。文件中还写明 "only effective on greatwhite"（仅在 greatwhite 上有效）。
+init 脚本包含一个恢复分支。当 `vendor.meta.mcu_hal.stp_need_recovery` 被设为 1 时，它等待五秒以收集日志，向 `/sys/devices/platform/soc/soc:meta,rt600_ctrl/trigger_assert` 写入 `1`，使 MCU 断言，然后清除该标志。文件中的重启行已注释，注释写明仅在 greatwhite 上有效。已从 init 文件验证。
 
 ### 两种硬件配置：RT600 与 RT700
 

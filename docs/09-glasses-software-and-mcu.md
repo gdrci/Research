@@ -49,7 +49,7 @@ The names describe what the interface controls. Whether each one runs on the MCU
 - `persist.vendor.meta.hyperoff.use_stp=true` is set by `mcu-properties.sh` on the RT700 configuration.
 - `vendor.meta.stp_service.boot` and `vendor.meta.mcu_hal.stp_need_recovery` are the STP service's boot and recovery flags.
 
-The recovery path is worth noting. When `vendor.meta.mcu_hal.stp_need_recovery` is set to 1, the init script waits five seconds (to collect logs), then writes `1` to `/sys/devices/platform/soc/soc:meta,rt600_ctrl/trigger_assert`, which asserts the MCU. The flag is then reset. The file keeps the reboot line commented out "for now", with a TODO to revisit. Verified from the init file. The comment "only effective on greatwhite" is in the file itself.
+The init script has a recovery branch. When `vendor.meta.mcu_hal.stp_need_recovery` is set to 1, it waits five seconds to collect logs, writes `1` to `/sys/devices/platform/soc/soc:meta,rt600_ctrl/trigger_assert`, which asserts the MCU, and then clears the flag. The reboot line in the file is commented out, with a comment that it is only effective on greatwhite. Verified from the init file.
 
 ### Two hardware configurations: RT600 and RT700
 

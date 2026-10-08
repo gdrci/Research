@@ -29,7 +29,7 @@ Boot ROM (PBL)                 silicon, not in the OTA                       unv
 
 ## The XBL container
 
-`xbl.img` is not one loader. It holds three programs, each with its own ELF header. The SBL1 program is the one that does the work. The TME program is a RISC-V firmware that SBL1 and PBL call for authentication. The first program is a small stub whose machine value (EM_M32, 1) is not used by any of the container's three programs. Section 02 describes each, and section 07 explains how to import them.
+`xbl.img` is not one loader. It holds three programs, each with its own ELF header. The SBL1 program is the one that does the work. The TME program is a RISC-V firmware that SBL1 and PBL call for authentication. The first program is a small stub whose machine value (EM_M32, 1) is not used by any of the container's three programs. Section 02 describes each.
 
 ## Where fuses come in
 
@@ -47,7 +47,7 @@ The boot image, `vendor` and `odm` carry an Android 12 fingerprint (`SQ3A.220605
 
 ## The glasses around the SoC
 
-Several parts of the system run outside the application processor. A microcontroller (the MCU) handles the sensors, the buttons, the hinge and the charging case, and it is reached over a transport called STP. The electromyography input from the wrist band reaches the phone-side software through an EMG service. Section 09 covers these. The hardware is also split into two audio-codec variants, RT600 and RT700, is listed per product and per board; how the software selects one at boot is not established (inferred).
+Several parts of the system run outside the application processor. A microcontroller (the MCU) handles the sensors, the buttons, the hinge and the charging case, and it is reached over a transport called STP. The electromyography input from the wrist band reaches the phone-side software through an EMG service. Section 09 covers these. The hardware is also split into two audio-codec variants, RT600 and RT700, listed per product and per board. How the software selects one at boot is not established.
 
 ## Document map
 
@@ -70,4 +70,5 @@ Several parts of the system run outside the application processor. A microcontro
 | [15](15-audio-dsp-firmware.md) | RT700 HiFi4 DSP: wake word, hearing, speaker model, microphones |
 | [16](16-modem-partition-firmware.md) | ADSP, CDSP, trusted applications and their signing chains |
 | [17](17-chip-inventory.md) | Integrated circuits: SoC, PMICs, amplifiers, sensors, connectivity, with evidence and confidence |
+| [19](19-emulation-reference.md) | Processors, entry points, addresses, bus devices and open emulation gaps |
 | [18](18-evidence-index.md) | Every evidence file and the section that cites it |
