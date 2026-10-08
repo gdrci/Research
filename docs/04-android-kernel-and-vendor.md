@@ -68,19 +68,19 @@ androidboot.load_modules_parallel=true
 androidboot.hibernation_resume_device=259:61
 ```
 
-`259:61` is the major and minor number of the block device used for hibernation resume. Verified. Which partition that is depends on the device's block numbering, and I have not mapped it.
+The bootconfig contains `androidboot.hibernation_resume_device=259:61`, the major and minor number of the hibernation resume block device. Verified as text. Which partition that is is not established by local data.
 
 ### Vendor ramdisk contents
 
 224 regular files:
 
-- `lib/modules/`: 214 kernel modules.
+- `lib/modules/`: 214 kernel modules, plus six `modules.*` metadata files (`modules.alias`, `modules.blocklist`, `modules.dep`, `modules.load`, `modules.load.recovery`, `modules.softdep`).
 - `first_stage_ramdisk/fstab.greatwhite`: the first-stage fstab.
-- `avb/`: three AVB public keys, named `q-gsi.avbpubkey`, `r-gsi.avbpubkey` and `s-gsi.avbpubkey`. The `gsi` suffix is the Android Generic System Image convention.
+- `avb/`: three AVB public keys, named `q-gsi.avbpubkey`, `r-gsi.avbpubkey` and `s-gsi.avbpubkey`. The `gsi` suffix is, from general background and not from the files, the Android Generic System Image convention.
 
 ### Device props
 
-`ro.board.platform=neo`, `ro.hardware.egl=adreno`, `ro.hardware.camera=qcom`, `persist.vendor.qcom.bluetooth.soc=hamilton`.
+`ro.board.platform=neo`, `ro.hardware.egl=adreno`, `ro.hardware.camera=qcom`, `persist.vendor.qcom.bluetooth.soc=hamilton` (in `vendor/build.prop`).
 
 `neo` is the board platform name the vendor code uses. `hamilton` is the Bluetooth/Wi-Fi combo chip the vendor properties name, and the AOP image also refers to it (section 05).
 
@@ -99,12 +99,12 @@ File: `data/android/vendor_ramdisk/fstab.greatwhite`.
 | `/data` | `by-name/userdata` | f2fs | `fileencryption=aes-256-xts:aes-256-cts:v2+emmc_optimized+wrappedkey_v0`, `inlinecrypt`, `checkpoint=fs` |
 | `/mnt/vendor/persist` | `by-name/persist` | ext4 | `sync` |
 | `/storage/usbotg` | USB host | vfat | `voldmanaged=usbotg:auto` |
-| zram swap | `/dev/block/zram0` | swap | `zramsize=1610612736` (1.5 GB), backing device 256 MB |
+| zram swap | `/dev/block/zram0` | swap | `zramsize=1610612736` (1.5 GiB), backing device 256 MB |
 
 Three details matter here:
 
 - `/data` uses hardware-wrapped keys (`wrappedkey_v0`) with inline encryption. The key handling is in `hwkm` and `crypto-qti-hwkm` (below).
-- Modem, DSP and Bluetooth firmware are separate partitions, mounted read-only at runtime. The kernel loads them from `/vendor/firmware/`.
+- Modem, DSP and Bluetooth firmware are separate partitions, mounted read-only at `/vendor/firmware_mnt`, `/vendor/dsp` and `/vendor/bt_firmware`. The kernel's firmware search path is `/vendor/firmware/` (`firmware_class.path`); local data does not show how these partitions are reached from it.
 - `/metadata` is formattable at first boot, which makes it the place where the device creates its encryption metadata.
 
 ## Kernel configuration
@@ -128,7 +128,7 @@ File: `data/android/kernel/config.txt`, 7,581 lines, 1,754 options set to `y` an
 | `CONFIG_KGDB` | not set | no kernel debugger over serial |
 | `CONFIG_DYNAMIC_DEBUG` | not set | |
 | `CONFIG_MAGIC_SYSRQ` | y | SysRq keys enabled |
-| `CONFIG_DEBUG_FS` | y | debugfs mounted |
+| `CONFIG_DEBUG_FS` | y | built in; runtime mounting is not shown by local data |
 | `CONFIG_KVM` | unset | no KVM; the hypervisor is Gunyah |
 | `CONFIG_HIBERNATION` | y | hibernation support |
 | `CONFIG_DM_VERITY_FEC` | y | dm-verity forward error correction |
@@ -144,7 +144,7 @@ Several things stand out. The kernel has strong exploit mitigations (PAC, BTI, M
 
 ## Kernel modules
 
-File: `data/android/vendor_ramdisk/modules_modinfo.tsv`, one row per module with its licence, description, author and dependencies. 214 modules: 199 are GPL v2, 11 GPL, and 4 dual BSD/GPL. 106 have dependencies. Every module's vermagic matches `5.10.240-perf-gd253e0b2f72b SMP preempt mod_unload modversions aarch64`.
+File: `data/android/vendor_ramdisk/modules_modinfo.tsv`, one row per module with its licence, description, author and dependencies. 214 modules: 199 are GPL v2, 11 GPL, and 4 dual BSD/GPL. 106 have dependencies. Every `.ko` in the vendor ramdisk carries the vermagic `5.10.240-perf-gd253e0b2f72b SMP preempt mod_unload modversions aarch64` (the TSV has no vermagic column; this was checked in the binaries).
 
 Modules that connect to the rest of the analysis:
 
@@ -154,10 +154,10 @@ Modules that connect to the rest of the analysis:
 | `tmecom-intf.ko` | MSM TMECom QTI mailbox protocol client | none | The kernel's mailbox client for TME firmware. |
 | `hwkm.ko` | QTI Hardware Key Manager library | `tmecom-intf` | Key handling goes through TME. |
 | `crypto-qti-hwkm.ko` | Crypto HWKM library for storage encryption | `hwkm` | Storage keys (the `wrappedkey_v0` path). |
-| `qcom-dload-mode.ko` | MSM Download Mode Driver | none | Download mode, matching the XBL cookie. |
+| `qcom-dload-mode.ko` | MSM Download Mode Driver | none | Download mode (the link to the XBL cookie is unverified). |
 | `qcom-reboot-reason.ko` | MSM Reboot Reason Driver | none | Reboot reasons (section 06 has the DTB side). |
 | `mfi_i2c_driver.ko` | MFi I2C driver | none | Accessory-authentication I2C. The target part is in the DTBO. |
-| `cdsp-loader.ko`, `adsp_loader_dlkm.ko`, `q6_dlkm.ko`, `mdt_loader.ko` | DSP loaders | varies | Load DSP firmware from `/vendor/dsp`. |
+| `cdsp-loader.ko`, `adsp_loader_dlkm.ko`, `q6_dlkm.ko`, `mdt_loader.ko` | DSP loaders | varies | Load DSP firmware (the path `/vendor/dsp` comes from fstab; the loaders do not name it; unverified). |
 | `msm_kgsl.ko` | 3D Graphics driver | several | GPU. Uses the `speed_bin` cell. |
 | `camera.ko` | Camera Request Manager | several | Camera pipeline. |
 | `gh_rm_drv.ko`, `gh_msgq.ko`, `mem_buf.ko` | Gunyah resource and message drivers | `gh_msgq` | Hypervisor-side messaging and shared memory. |
@@ -169,13 +169,13 @@ Modules that connect to the rest of the analysis:
 The vendor DTB is at `data/android/vendor_ramdisk/vendor_dtb_dump.txt`. Relevant nodes:
 
 - `/soc/qfprom@221c8000`: the fuse block. `reg = <0x221c8000 0x1000>`, `read-only`.
-- `/soc/qfprom@221c8000/gpu_speed_bin@119`: fuse cell, byte `0x119`, bits 5 to 12.
+- `/soc/qfprom@221c8000/gpu_speed_bin@119`: fuse cell at `0x119`, 2 bytes (`reg = <0x119 0x2>`), 8 bits starting at bit 5 (`bits = <5 8>`): bits 5 to 7 of `0x119` and bits 0 to 4 of `0x11A`.
 - `/soc/qfprom@0`: consumer, `compatible = "qcom,qfprom-sys"`, with `nvmem-cell-names = "gpu_speed_bin"`.
 - `/soc/qcom,kgsl-3d0@3d00000`: the GPU. Its `nvmem-cell-names` entry is `speed_bin`, and it points at the same cell.
-- `/soc/reboot_reason`: reads `restart_reason` from the PMIC SDAM (`sdam@b100/restart@48`, bits 1 to 7) and from shared IMEM (`msm-imem@146aa000/restart_reason@65c`).
+- `/soc/reboot_reason`: reads `restart_reason` from the PMIC SDAM (`sdam@b100/restart@48`, bits 1 to 7). The DTB also has a separate IMEM node, `msm-imem@146aa000/restart_reason@65c`, which is not linked to `/soc/reboot_reason`.
 - `/soc/qcom,spmi@c42d000/qcom,pm8150@0`: PM8150 PMIC.
 
-Two notes. The `qfprom-sys` consumer refers to a kernel config (`QCOM_QFPROM_SYS`) that is not set, so whatever reads that node is not this interface. The reboot-reason path has two storage locations, so a reboot reason can be kept across a reset even if the PMIC is reset.
+Two notes. The `qfprom-sys` consumer refers to a kernel config (`QCOM_QFPROM_SYS`) that is not set, so whatever reads that node is not this interface.
 
 ## DTBO overlays
 
@@ -185,12 +185,12 @@ Component groups in the overlays, with how many of the 18 enable them:
 
 | Group | Nodes | Enabled in |
 |---|---|---|
-| Display | `qcom,dsi-display-primary`, `qcom,dsi-display-secondary`, `qcom,mdss_dsi_ctrl0/1`, `qcom,mdss_mdp`, `qcom,dp_display`, `qcom,wb-display`, `sde_rsc_rpmh` | 18 |
+| Display | `qcom,dsi-display-primary`, `qcom,dsi-display-secondary`, `qcom,mdss_dsi_ctrl0/1`, `qcom,mdss_mdp`, `qcom,wb-display`, `sde_rsc_rpmh` | 18 |
 | LCoS panel drivers | `lcosOP02220BA@65`, `lcosOP03010@64` (`meta,lcos-i2c-OP02220`, `meta,lcos-i2c-OP03010`) | 18 each. `lcosOP02220BA` is `okay` in all 18. `lcosOP03010` is `okay` in 16 and `disabled` in 2 (overlays 4 and 11, the Protostar FF3 and ULED builds). |
 | Display power | `pmicOP02220@44`, `pmicOP03010@40` | `pmicOP02220` in 18, `pmicOP03010` in 16 (disabled in 2) |
 | Display backlight or bias (inferred from the name) | `ktb8399@60` (`kinetic,ktb8399`) | 18, `okay` in all |
 | Display temperature | `max31875@48`, `@49`, `@4A` | `okay` in 6 overlays, `disabled` in 12 |
-| Display virtual sensors | `display-virtual-sensor`, `skin-virtual-sensor`, `outdoor-virtual-sensor`, `power-state-sensor` | `display-virtual-sensor` is `okay` in 7 |
+| Display virtual sensors | `display-virtual-sensor`, `skin-virtual-sensor`, `outdoor-virtual-sensor`, `power-state-sensor` | `display-virtual-sensor` is `okay` in 7; `outdoor-virtual-sensor` is `disabled` in all 18; `skin-virtual-sensor` and `power-state-sensor` are `okay` in 18 |
 | Temperature | `tmp114@4C`, `@4D`, `@4E` | 4, 4, 1 overlays |
 | Fuel gauge | `max17332@36` | 1 |
 | Charger / PMIC | `max77813@18` (`disabled` in 13, `okay` in 3), `max77813_se8_i2c@18` (2 overlays), `max77789@69`, `mp28167@60`, `rt6160@75`, `raa491901@29`, `pmicDA9172@6A` (1 overlay) | varies |
@@ -200,10 +200,10 @@ Component groups in the overlays, with how many of the 18 enable them:
 | Accessory and USB | `mfi343s00176@10` (`meta,mfi-i2c`, `okay` in 18), `ptn5150@1d` (`disabled` in 18), `usb_conn_gpio` | varies |
 | Light and LED | `aw2026@64` (`awinic,aw2026_led`) | 18 |
 | Peripheral link | `stp-interface`, `spi-stp@0` (`meta,spi-stp`), `st60a3g1@6d` (`meta,st60-i2c`, `disabled` in 18) | varies |
-| Power and battery | `metabattery`, `mcu_thermistor`, `ads1115@49`, `hw-comparator-sensor` | 18 |
+| Power and battery | `metabattery`, `mcu_thermistor`, `hw-comparator-sensor` | 18 |
 | Other Meta | `amem`, `hyperoff@0` (11), `reboot_reason`, `ramoops@a6c00000` | varies |
 
-The LCoS names and the `meta,lcos-i2c` compatible strings point to LCoS (liquid crystal on silicon) microdisplay drivers. Which driver runs on which panel, and which one the shipping device uses, is not settled. The `ptn5150` USB-C controller and the `st60a3g1` device are present but disabled in all 18 overlays. I have not identified what they are.
+The LCoS names and the `meta,lcos-i2c` compatible strings point to LCoS (liquid crystal on silicon) microdisplay drivers. Which driver runs on which panel, and which one the shipping device uses, is not settled. The `ptn5150@1d` node (`nxp,ptn5150`), the `st60a3g1` device and `qcom,dp_display` are present but disabled in all 18 overlays. `ads1115@49` is present in 18 overlays but disabled in all 18. I have not identified what they are.
 
 The `mfi343s00176` node with `meta,mfi-i2c` is the MFi authentication part. Its role in accessory identification is inferred from the name. Unverified.
 
@@ -234,6 +234,6 @@ Each overlay's root node has `model`, `compatible` (`meta,greatwhite` plus a rev
 | 16 | Greatwhite EVT1 (RT700) | 0xB8 |
 | 17 | Greatwhite EVT1 DOE2 (Onewire) | 0xBC |
 
-The names give a build sequence: Dev0 and Dev1 first, then PreP1, EVT1, EVT2, DVT and PVT, then the P1 build. "Protostar FF3" is a prototype label. "ULED" and "Onewire" are names only; their hardware meaning is not established.
+The names may give a build sequence (not verified): Dev0 and Dev1 first, then PreP1, EVT1, EVT2, DVT and PVT, then the P1 build. "Protostar FF3" is a prototype label. "ULED" and "Onewire" are names only; their hardware meaning is not established.
 
 The RT600 and RT700 variants of P1 differ in exactly four components. `hyperoff` is present only on RT700. `tmp114@4C` and `tmp114@4D` are present only on RT600. `display-virtual-sensor` is disabled on RT700 and enabled on RT600. The `hyperoff` difference matches the software: `mcu-properties.sh` turns on hyperoff only in the RT700 configuration (section 09).

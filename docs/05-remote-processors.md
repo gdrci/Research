@@ -2,7 +2,7 @@
 
 [中文版](05-remote-processors.zh-CN.md)
 
-The SoC has processors besides the application CPU, and each runs its own firmware. The boot chain loads some of them. The kernel loads others at runtime from the vendor partitions. This document identifies each one from its headers, strings and file listings. None of them has been disassembled yet.
+The SoC has processors besides the application CPU, and each runs its own firmware. The boot chain is expected to load some of them, and the kernel to load others from the vendor partitions; the load paths were not traced. This document identifies each one from its headers, strings and file listings. Only two small disassembly samples exist: a 12-instruction Ghidra disassembly of the AOP entry (`data/ghidra/aop_entry_thumb2_disasm.txt`) and a Ghidra Hexagon decode of `qupfw.img`. No other image has been disassembled.
 
 | Processor | Image | Format | Status |
 |---|---|---|---|
@@ -17,7 +17,7 @@ The SoC has processors besides the application CPU, and each runs its own firmwa
 
 ## AOP (`aop.img`, `aop_config.img`)
 
-`aop.img` is a 32-bit ARM ELF with seven `PT_LOAD` segments. Its entry point is `0x0B000009`. The low bit is set, which is the ARM Thumb convention, so the entry is Thumb code. The instruction pattern agrees: `bx lr` (`0x4770`) appears 6.2 times per 1,000 halfwords, against a random baseline near 0.015. So the code is Thumb-2. A Ghidra disassembly from the entry confirms it: the entry loads function pointers from a literal pool, calls them, and returns with `bx r0` (`data/ghidra/aop_entry_thumb2_disasm.txt`).
+`aop.img` is a 32-bit ARM ELF with seven `PT_LOAD` segments. Its entry point is `0x0B000009`. The low bit is set, which is the ARM Thumb convention, so the entry is Thumb code. The instruction pattern agrees: `bx lr` (`0x4770`) appears 6.2 times per 1,000 halfwords in the first code segment (file offset 0x154), against a random baseline near 0.015; across the whole file the rate is 2.8 per 1,000. So the entry code is Thumb (Ghidra language `ARM:LE:32:v8T`); the density does not establish Thumb-2 32-bit encodings. The Ghidra disassembly from the entry (`data/ghidra/aop_entry_thumb2_disasm.txt`) loads words from a literal pool, calls through registers, and returns with `bx r0` or `bx r1`. The pool words do not resolve to mapped code addresses, so they are not shown to be function pointers.
 
 The version string is `QC_IMAGE_VERSION_STRING=AOP.HO.4.0-00605-AURORA_E-1`. `AOP.HO` names the AOP image family and `AURORA` names the SoC. Verified as text.
 
@@ -25,13 +25,13 @@ The image contains `wlan_hamilton`, which points at the Hamilton Wi-Fi/Bluetooth
 
 `OEM_IMAGE_VERSION_STRING` holds a build host name. It is not analysed further.
 
-`aop_config.img` is a 16 KB ELF with two segments and no readable strings.
+`aop_config.img` is a 16 KB ELF with two PT_LOAD segments. Its readable strings are PMIC rail and clock names (`vrm.aoss`, `vrm.wlan`, `ldoa10`, `gpioa6`) and certificate subjects (`data/strings/aop_config.txt`).
 
 ## CPUCP (`cpucp.img`)
 
 A 32-bit RISC-V ELF (`EM_RISCV`), entry `0x90`, seven `PT_LOAD` segments. Verified from the header.
 
-Boot strings: `CPUCP boot started` and `SCMI init Done`, verified as text. SCMI (System Control and Management Interface) is the Arm standard that lets an application CPU ask a management processor for power, clock and performance changes. The strings suggest CPUCP implements the SCMI server side on this platform. Observed; not yet traced in code.
+Boot strings: `CPUCP boot started` and `SCMI init Done`, verified as text. SCMI (System Control and Management Interface) is, from general background and not from the files, the Arm standard that lets an application CPU ask a management processor for power, clock and performance changes. The strings suggest CPUCP implements the SCMI server side on this platform. Observed; not yet traced in code.
 
 Two other images refer to CPUCP. `xbl_ramdump` names a `CPUCPFW region` and `CPUCPFW.BIN`, so XBL reserves memory for it. `devcfg` has `tgt_cpucp_config`, a per-target configuration block. SBL1 has `boot_prepare_cpucp` and `boot_reset_cpucp`, so SBL1 starts and resets CPUCP. Observed.
 
@@ -47,7 +47,7 @@ A Hexagon ELF with `e_machine = EM_QDSP6` and `e_flags = 0x3`. It has eleven `PT
 
 The image has no functional strings. It does carry a certificate chain (`Qualcomm Technologies, Inc.`, `Qualcomm Cryptographic Operations`, `SRoT MBNv7 Image Signing Root CA 6`, and `CASS - SBL4` near `0xB5FF`). Its role is unknown. The name suggests the Qualcomm Universal Peripheral (QUP) serial blocks, but that is a guess.
 
-The layout is a Qualcomm image format. The `0x1000` segment begins with `QSI ` and holds a table of (offset, size) pairs. The `0x6328` segment begins with `SEFW`. Ghidra's Hexagon decode starts producing plausible instructions from `0x1100` onward (for example `memw R20,(R20+#0x1c)`), but the sequence is dominated by repeated `memw` patterns, so the code boundary is not established.
+The layout is a Qualcomm image format. The `0x1000` segment begins with the `QSI ` magic. Its contents are not decoded; the bytes after it include `30 0d` and `30 00` patterns that look like ASN.1 DER, so no (offset, size) table has been identified. The `0x6328` segment begins with `SEFW`. Ghidra's Hexagon decode starts producing plausible instructions from `0x1100` onward (for example `memw R20,(R20+#0x1c)`), but the sequence is dominated by repeated `memw` patterns, so the code boundary is not established.
 
 Earlier drafts said QUP holds real Hexagon code. That was wrong, because the decode rate was not a test of code. Whether `qupfw.img` contains any code, and where its entry is, is not established.
 
@@ -77,26 +77,26 @@ Compute DSP. Notable items:
 - `libbenchmark_skel.so`, `libcrm_test_skel.so`: test and benchmark skeletons.
 - `fastrpc_shell_3`, `fastrpc_shell_unsigned_3`: FastRPC shells for the compute DSP.
 
-The kernel modules that load these images are `cdsp-loader.ko`, `adsp_loader_dlkm.ko`, `q6_dlkm.ko`, `mdt_loader.ko` and `frpc-adsprpc.ko`.
+The kernel modules involved are `cdsp-loader.ko`, `adsp_loader_dlkm.ko`, `q6_dlkm.ko`, `mdt_loader.ko` (described in `modules_modinfo.tsv` as an MDT firmware parser) and `frpc-adsprpc.ko`. Their loading roles are not verified.
 
 ## Modem (`modem.img`)
 
-A FAT16 image of 36.5 MB in 165 files. Listing: `data/remote/modem_listing.txt`. Verified with a FAT reader that handles long names.
+A FAT16 image file of 38.5 MB (38,522,880 bytes), whose contents are 165 files totalling 36.5 MB (36,487,937 bytes). Listing: `data/remote/modem_listing.txt`. Verified with a FAT reader that handles long names.
 
 Layout:
 
 - `/image/kiwi/`: the main modem set. `amss.bin` (7.46 MB) and `amss20.bin` (6.50 MB) are the modem firmware images. `Data.msc` and `Data20.msc` are data sections. `bdwlan.elf` and `bdwlan.elf.xz` are Wi-Fi board data. `regdb.bin` is the wireless regulatory database. `phy_ucode.elf` and `phy_ucode20.elf` are PHY microcode. `qdss_trace_config_v1.cfg` and `v2.cfg` configure trace output.
-- `/image/adsp.b00` to `adsp.b41` (with the header file `adsp.mdt`): the application DSP firmware itself, split into 40 loadable segments and a signature segment. Observed as a Hexagon ELF with entry `0x87600000`. The segment structure, the SHA-384 hash table, the signing chain and the trusted applications in the same image are in section 16. An earlier draft of this section said these were not the application DSP firmware; that was wrong. `cdsp.b00` to `cdsp.b12` is the compute DSP firmware, and it is described there too.
+- `/image/adsp.b00` to `adsp.b41` (with the header file `adsp.mdt`): the application DSP firmware itself, split into 40 loadable segments (1 to 40), a header segment (0) and a signature segment (41). Segments 24 and 40 have zero file size and no `.bNN` file, so 40 `.bNN` files are present. Observed as a Hexagon ELF with entry `0x87600000`. The segment structure, the SHA-384 hash table, the signing chain and the trusted applications in the same image are in section 16. An earlier draft of this section said these were not the application DSP firmware; that was wrong. `cdsp.b00` to `cdsp.b12` is the compute DSP firmware, and it is described there too.
 
 `amss.bin` is a 32-bit ELF with `e_machine = 0x28` (ARM). `kiwi` is the directory name the build uses for this modem configuration. Verified from headers. The name is not explained.
 
 ## Bluetooth (`bluetooth.img`)
 
-A FAT16 image of 0.78 MB in 51 files. Listing: `data/remote/bluetooth_listing.txt`.
+A FAT16 image file of 1.22 MB (1,224,704 bytes), whose contents are 51 files totalling 0.78 MB (780,143 bytes). Listing: `data/remote/bluetooth_listing.txt`.
 
 - `hmtbtfw10.tlv` and `hmtbtfw20.tlv`: Bluetooth firmware, in the TLV format.
 - `hmtbtfw20.ver`: `BTFW.HAMILTON.2.0.0-00797-PATCHZ-1.105163.2.109423.3`. The chip name is Hamilton. Verified.
-- `hmtnv10.*` and `hmtnv20.*`: non-volatile configuration files, about 30 variants (`.b0202` to `.b32`, `.bin`, `.b0c`). The suffixes look like per-product or per-antenna configuration. Unverified.
+- `hmtnv10.*` and `hmtnv20.*`: non-volatile configuration files, 47 in total: `hmtnv20.*` has 45 (`.b0202` to `.b3f`, and `.bin`) and `hmtnv10.*` has 2 (`.b0c` and `.bin`). The suffixes look like per-product or per-antenna configuration. Unverified.
 
 The fstab mounts the image read-only at `/vendor/bt_firmware` (section 04).
 

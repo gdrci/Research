@@ -68,19 +68,19 @@ androidboot.load_modules_parallel=true
 androidboot.hibernation_resume_device=259:61
 ```
 
-`259:61` 是用于休眠恢复的块设备的主设备号和次设备号。已验证。它对应哪个分区取决于设备的块设备编号，我尚未映射。
+启动配置中包含 `androidboot.hibernation_resume_device=259:61`，即休眠恢复块设备的主设备号和次设备号。已作为文本验证。它对应哪个分区，本地数据未能确定。
 
 ### 厂商 ramdisk 内容
 
 共 224 个普通文件：
 
-- `lib/modules/`：214 个内核模块。
+- `lib/modules/`：214 个内核模块，另有六个 `modules.*` 元数据文件（`modules.alias`、`modules.blocklist`、`modules.dep`、`modules.load`、`modules.load.recovery`、`modules.softdep`）。
 - `first_stage_ramdisk/fstab.greatwhite`：第一阶段的 fstab。
-- `avb/`：三个 AVB 公钥，分别为 `q-gsi.avbpubkey`、`r-gsi.avbpubkey` 和 `s-gsi.avbpubkey`。后缀 `gsi` 是 Android Generic System Image 的命名惯例。
+- `avb/`：三个 AVB 公钥，分别为 `q-gsi.avbpubkey`、`r-gsi.avbpubkey` 和 `s-gsi.avbpubkey`。后缀 `gsi` 是（基于一般背景知识，非来自文件）Android Generic System Image 的命名惯例。
 
 ### 设备属性
 
-`ro.board.platform=neo`、`ro.hardware.egl=adreno`、`ro.hardware.camera=qcom`、`persist.vendor.qcom.bluetooth.soc=hamilton`。
+`ro.board.platform=neo`、`ro.hardware.egl=adreno`、`ro.hardware.camera=qcom`、`persist.vendor.qcom.bluetooth.soc=hamilton`（位于 `vendor/build.prop`）。
 
 `neo` 是厂商代码使用的板级平台名。`hamilton` 是厂商属性中指定的蓝牙/Wi-Fi 组合芯片，AOP 镜像也提到了它（第 05 节）。
 
@@ -99,12 +99,12 @@ androidboot.hibernation_resume_device=259:61
 | `/data` | `by-name/userdata` | f2fs | `fileencryption=aes-256-xts:aes-256-cts:v2+emmc_optimized+wrappedkey_v0`，`inlinecrypt`，`checkpoint=fs` |
 | `/mnt/vendor/persist` | `by-name/persist` | ext4 | `sync` |
 | `/storage/usbotg` | USB 主机 | vfat | `voldmanaged=usbotg:auto` |
-| zram 交换区 | `/dev/block/zram0` | swap | `zramsize=1610612736`（1.5 GB），后备设备 256 MB |
+| zram 交换区 | `/dev/block/zram0` | swap | `zramsize=1610612736`（1.5 GiB），后备设备 256 MB |
 
 这里有三点值得注意：
 
 - `/data` 使用硬件封装密钥（`wrappedkey_v0`）并配合内联加密。密钥处理由下面的 `hwkm` 与 `crypto-qti-hwkm` 完成。
-- 基带、DSP 和蓝牙固件分别位于独立分区，运行时以只读方式挂载。内核从 `/vendor/firmware/` 加载它们。
+- 基带、DSP 和蓝牙固件分别位于独立分区，以只读方式挂载于 `/vendor/firmware_mnt`、`/vendor/dsp` 与 `/vendor/bt_firmware`。内核的固件搜索路径为 `/vendor/firmware/`（`firmware_class.path`）；本地数据未显示这些分区如何从该路径访问。
 - `/metadata` 在首次启动时可以被格式化，设备正是在这里创建加密元数据。
 
 ## 内核配置
@@ -128,7 +128,7 @@ androidboot.hibernation_resume_device=259:61
 | `CONFIG_KGDB` | 未设置 | 无串口内核调试器 |
 | `CONFIG_DYNAMIC_DEBUG` | 未设置 | |
 | `CONFIG_MAGIC_SYSRQ` | y | 启用 SysRq 组合键 |
-| `CONFIG_DEBUG_FS` | y | 挂载 debugfs |
+| `CONFIG_DEBUG_FS` | y | 内置；运行时挂载未由本地数据显示 |
 | `CONFIG_KVM` | 未设置 | 无 KVM，虚拟化层为 Gunyah |
 | `CONFIG_HIBERNATION` | y | 支持休眠 |
 | `CONFIG_DM_VERITY_FEC` | y | dm-verity 前向纠错 |
@@ -154,10 +154,10 @@ androidboot.hibernation_resume_device=259:61
 | `tmecom-intf.ko` | MSM TMECom QTI mailbox protocol client | 无 | 内核连接 TME 固件的邮箱客户端。 |
 | `hwkm.ko` | QTI Hardware Key Manager library | `tmecom-intf` | 密钥处理经由 TME。 |
 | `crypto-qti-hwkm.ko` | Crypto HWKM library for storage encryption | `hwkm` | 存储加密密钥（`wrappedkey_v0` 路径）。 |
-| `qcom-dload-mode.ko` | MSM Download Mode Driver | 无 | 下载模式，与 XBL 的 cookie 对应。 |
+| `qcom-dload-mode.ko` | MSM Download Mode Driver | 无 | 下载模式（与 XBL cookie 的联系未经验证）。 |
 | `qcom-reboot-reason.ko` | MSM Reboot Reason Driver | 无 | 复位原因（设备树一侧见第 06 节）。 |
 | `mfi_i2c_driver.ko` | MFi I2C driver | 无 | 配件认证的 I2C 接口。目标芯片见 DTBO。 |
-| `cdsp-loader.ko`、`adsp_loader_dlkm.ko`、`q6_dlkm.ko`、`mdt_loader.ko` | DSP 加载器 | 视情况 | 从 `/vendor/dsp` 加载 DSP 固件。 |
+| `cdsp-loader.ko`、`adsp_loader_dlkm.ko`、`q6_dlkm.ko`、`mdt_loader.ko` | DSP 加载器 | 视情况 | 加载 DSP 固件（路径 `/vendor/dsp` 来自 fstab；加载器本身并未提及；未经验证）。 |
 | `msm_kgsl.ko` | 3D Graphics driver | 多个 | GPU 驱动，使用 `speed_bin` 字段。 |
 | `camera.ko` | Camera Request Manager | 多个 | 摄像头管线。 |
 | `gh_rm_drv.ko`、`gh_msgq.ko`、`mem_buf.ko` | Gunyah 资源与消息驱动 | `gh_msgq` | 虚拟化层侧的消息与共享内存。 |
@@ -172,10 +172,10 @@ androidboot.hibernation_resume_device=259:61
 - `/soc/qfprom@221c8000/gpu_speed_bin@119`：熔丝字段，位于字节 `0x119`，第 5 到 12 位。
 - `/soc/qfprom@0`：消费者，`compatible = "qcom,qfprom-sys"`，`nvmem-cell-names = "gpu_speed_bin"`。
 - `/soc/qcom,kgsl-3d0@3d00000`：GPU。其 `nvmem-cell-names` 项为 `speed_bin`，指向同一字段。
-- `/soc/reboot_reason`：从 PMIC SDAM（`sdam@b100/restart@48`，第 1 到 7 位）以及共享 IMEM（`msm-imem@146aa000/restart_reason@65c`）读取 `restart_reason`。
+- `/soc/reboot_reason`：从 PMIC SDAM（`sdam@b100/restart@48`，第 1 到 7 位）读取 `restart_reason`。DTB 中另有一个独立的 IMEM 节点 `msm-imem@146aa000/restart_reason@65c`，它未与 `/soc/reboot_reason` 关联。
 - `/soc/qcom,spmi@c42d000/qcom,pm8150@0`：PM8150 PMIC。
 
-有两点说明。`qfprom-sys` 消费者指向的内核配置 `QCOM_QFPROM_SYS` 未设置，因此读取该节点的并不是这个接口。复位原因有两个存储位置，因此即使 PMIC 被复位，复位原因仍可能被保留。
+有两点说明。`qfprom-sys` 消费者指向的内核配置 `QCOM_QFPROM_SYS` 未设置，因此读取该节点的并不是这个接口。
 
 ## DTBO 覆盖层
 
@@ -185,12 +185,12 @@ androidboot.hibernation_resume_device=259:61
 
 | 组别 | 节点 | 启用情况 |
 |---|---|---|
-| 显示 | `qcom,dsi-display-primary`、`qcom,dsi-display-secondary`、`qcom,mdss_dsi_ctrl0/1`、`qcom,mdss_mdp`、`qcom,dp_display`、`qcom,wb-display`、`sde_rsc_rpmh` | 18 |
+| 显示 | `qcom,dsi-display-primary`、`qcom,dsi-display-secondary`、`qcom,mdss_dsi_ctrl0/1`、`qcom,mdss_mdp`、`qcom,wb-display`、`sde_rsc_rpmh` | 18 |
 | LCoS 面板驱动 | `lcosOP02220BA@65`、`lcosOP03010@64`（`meta,lcos-i2c-OP02220`、`meta,lcos-i2c-OP03010`） | 各 18 个。`lcosOP02220BA` 在全部 18 个中为 `okay`；`lcosOP03010` 在 16 个覆盖层中为 `okay`，在 2 个中为 `disabled`（覆盖层 4 和 11，即 Protostar FF3 与 ULED 版本）。 |
 | 显示电源 | `pmicOP02220@44`、`pmicOP03010@40` | `pmicOP02220` 在 18 个中；`pmicOP03010` 在 16 个中（另 2 个禁用） |
 | 显示背光或偏置（根据名称推断） | `ktb8399@60`（`kinetic,ktb8399`） | 18 个，全部 `okay` |
 | 显示温度 | `max31875@48`、`@49`、`@4A` | 6 个覆盖层中 `okay`，12 个中 `disabled` |
-| 显示虚拟传感器 | `display-virtual-sensor`、`skin-virtual-sensor`、`outdoor-virtual-sensor`、`power-state-sensor` | `display-virtual-sensor` 在 7 个中为 `okay` |
+| 显示虚拟传感器 | `display-virtual-sensor`、`skin-virtual-sensor`、`outdoor-virtual-sensor`、`power-state-sensor` | `display-virtual-sensor` 在 7 个中为 `okay`；`outdoor-virtual-sensor` 在全部 18 个中为 `disabled`；`skin-virtual-sensor` 与 `power-state-sensor` 在 18 个中为 `okay` |
 | 温度 | `tmp114@4C`、`@4D`、`@4E` | 分别在 4、4、1 个覆盖层中 |
 | 电量计 | `max17332@36` | 1 个 |
 | 充电与电源管理 | `max77813@18`（13 个中 `disabled`，3 个中 `okay`）、`max77813_se8_i2c@18`（2 个）、`max77789@69`、`mp28167@60`、`rt6160@75`、`raa491901@29`、`pmicDA9172@6A`（1 个） | 各不相同 |
@@ -200,10 +200,10 @@ androidboot.hibernation_resume_device=259:61
 | 配件与 USB | `mfi343s00176@10`（`meta,mfi-i2c`，18 个中 `okay`）、`ptn5150@1d`（18 个中 `disabled`）、`usb_conn_gpio` | 各不相同 |
 | 指示灯 | `aw2026@64`（`awinic,aw2026_led`） | 18 |
 | 外设链路 | `stp-interface`、`spi-stp@0`（`meta,spi-stp`）、`st60a3g1@6d`（`meta,st60-i2c`，18 个中 `disabled`） | 各不相同 |
-| 电源与电池 | `metabattery`、`mcu_thermistor`、`ads1115@49`、`hw-comparator-sensor` | 18 |
+| 电源与电池 | `metabattery`、`mcu_thermistor`、`hw-comparator-sensor` | 18 |
 | 其他 Meta 节点 | `amem`、`hyperoff@0`（11）、`reboot_reason`、`ramoops@a6c00000` | 各不相同 |
 
-LCoS 的名称和 `meta,lcos-i2c` 兼容字符串指向 LCoS（硅基液晶）微显示驱动。哪个驱动驱动哪块面板，以及出厂设备实际使用哪一个，尚未确定。`ptn5150` USB-C 控制器和 `st60a3g1` 器件在全部 18 个覆盖层中都存在但处于禁用状态，我尚未确定它们的用途。
+LCoS 的名称和 `meta,lcos-i2c` 兼容字符串指向 LCoS（硅基液晶）微显示驱动。哪个驱动驱动哪块面板，以及出厂设备实际使用哪一个，尚未确定。`ptn5150@1d` 节点（`nxp,ptn5150`）、`st60a3g1` 器件以及 `qcom,dp_display` 在全部 18 个覆盖层中都存在但处于禁用状态。`ads1115@49` 在 18 个覆盖层中存在，但在全部 18 个中处于禁用状态。我尚未确定它们的用途。
 
 `mfi343s00176` 节点（`meta,mfi-i2c`）是 MFi 认证芯片。它在配件识别中的作用是根据名称推断的，未验证。
 
@@ -234,6 +234,6 @@ LCoS 的名称和 `meta,lcos-i2c` 兼容字符串指向 LCoS（硅基液晶）�
 | 16 | Greatwhite EVT1 (RT700) | 0xB8 |
 | 17 | Greatwhite EVT1 DOE2 (Onewire) | 0xBC |
 
-名称给出了一条构建顺序：先是 Dev0 与 Dev1，然后是 PreP1、EVT1、EVT2、DVT 和 PVT，最后是 P1 版本。"Protostar FF3" 是原型标签。"ULED" 和 "Onewire" 只是名称，其硬件含义未确定。
+名称可能给出了一条构建顺序（未经验证）：先是 Dev0 与 Dev1，然后是 PreP1、EVT1、EVT2、DVT 和 PVT，最后是 P1 版本。"Protostar FF3" 是原型标签。"ULED" 和 "Onewire" 只是名称，其硬件含义未确定。
 
 P1 的 RT600 与 RT700 变体恰好在四个组件上不同。`hyperoff` 只存在于 RT700。`tmp114@4C` 和 `tmp114@4D` 只存在于 RT600。`display-virtual-sensor` 在 RT700 上禁用，在 RT600 上启用。`hyperoff` 的差异与软件一致：`mcu-properties.sh` 只在 RT700 配置中开启 hyperoff（第 09 节）。

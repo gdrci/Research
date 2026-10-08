@@ -2,7 +2,7 @@
 
 [English](05-remote-processors.md)
 
-SoC 除了应用处理器之外还有若干处理器，每个都运行自己的固件。启动链会加载其中一部分，内核则在运行时从厂商分区加载另外一些。本文根据头部信息、字符串和文件列表进行识别。目前还没有反汇编其中任何一个。
+SoC 除了应用处理器之外还有若干处理器，每个都运行自己的固件。预期启动链会加载其中一部分，内核则预期从厂商分区加载另外一些；加载路径未经追踪。本文根据头部信息、字符串和文件列表进行识别。目前只有两个小规模的反汇编样本：AOP 入口的 12 条指令 Ghidra 反汇编（`data/ghidra/aop_entry_thumb2_disasm.txt`），以及 `qupfw.img` 的 Ghidra Hexagon 解码。其他镜像均未反汇编。
 
 | 处理器 | 镜像 | 格式 | 状态 |
 |---|---|---|---|
@@ -17,7 +17,7 @@ SoC 除了应用处理器之外还有若干处理器，每个都运行自己的�
 
 ## AOP（`aop.img`、`aop_config.img`）
 
-`aop.img` 是 32 位 ARM ELF，包含七个 `PT_LOAD` 段。入口点为 `0x0B000009`。最低位被置位，这是 ARM Thumb 的约定，因此入口处是 Thumb 代码。指令模式也与之相符：`bx lr`（`0x4770`）每千个半字出现 6.2 次，随机基线约为 0.015。因此该代码是 Thumb-2。Ghidra 从入口处的反汇编证实了这一点：入口从字面量池中加载函数指针，调用它们，并以 `bx r0` 返回（`data/ghidra/aop_entry_thumb2_disasm.txt`）。
+`aop.img` 是 32 位 ARM ELF，包含七个 `PT_LOAD` 段。入口点为 `0x0B000009`。最低位被置位，这是 ARM Thumb 的约定，因此入口处是 Thumb 代码。指令模式也与之相符：`bx lr`（`0x4770`）在第一个代码段（文件偏移 0x154）中每千个半字出现 6.2 次，随机基线约为 0.015；全文件的比率为每千个 2.8。因此入口代码为 Thumb（Ghidra 语言 `ARM:LE:32:v8T`）；该密度并不能确立 Thumb-2 的 32 位编码。入口处的 Ghidra 反汇编（`data/ghidra/aop_entry_thumb2_disasm.txt`）从字面量池加载字，通过寄存器调用，并以 `bx r0` 或 `bx r1` 返回。池中的字不能解析为已映射的代码地址，因此并未证明它们是函数指针。
 
 版本字符串为 `QC_IMAGE_VERSION_STRING=AOP.HO.4.0-00605-AURORA_E-1`。`AOP.HO` 表示 AOP 镜像系列，`AURORA` 表示 SoC。作为文本已验证。
 
@@ -25,13 +25,13 @@ SoC 除了应用处理器之外还有若干处理器，每个都运行自己的�
 
 `OEM_IMAGE_VERSION_STRING` 中是构建主机名，未进一步分析。
 
-`aop_config.img` 是 16 KB 的 ELF，有两个段，没有可读字符串。
+`aop_config.img` 是 16 KB 的 ELF，有两个 PT_LOAD 段。其可读字符串为 PMIC 电源轨与时钟名称（`vrm.aoss`、`vrm.wlan`、`ldoa10`、`gpioa6`）以及证书主体（`data/strings/aop_config.txt`）。
 
 ## CPUCP（`cpucp.img`）
 
 32 位 RISC-V ELF（`EM_RISCV`），入口 `0x90`，七个 `PT_LOAD` 段。根据头部已验证。
 
-启动字符串 `CPUCP boot started` 与 `SCMI init Done` 作为文本已验证。SCMI（System Control and Management Interface）是 Arm 的标准接口，允许应用处理器向管理处理器请求功耗、时钟和性能的变更。字符串表明，在这个平台上 CPUCP 实现了 SCMI 服务端。已观察，尚未在代码中追踪。
+启动字符串 `CPUCP boot started` 与 `SCMI init Done` 作为文本已验证。SCMI（System Control and Management Interface）是（基于一般背景知识，非来自文件）Arm 的标准接口，允许应用处理器向管理处理器请求功耗、时钟和性能的变更。字符串表明，在这个平台上 CPUCP 实现了 SCMI 服务端。已观察，尚未在代码中追踪。
 
 另有两个镜像提到了 CPUCP。`xbl_ramdump` 中有 `CPUCPFW region` 和 `CPUCPFW.BIN`，说明 XBL 为它预留了内存。`devcfg` 中有 `tgt_cpucp_config`，是按目标划分的配置块。SBL1 中有 `boot_prepare_cpucp` 和 `boot_reset_cpucp`，说明 SBL1 负责启动和复位 CPUCP。已观察。
 
@@ -47,7 +47,7 @@ Hexagon ELF，`e_machine = EM_QDSP6`，`e_flags = 0x3`。它有十一个 `PT_LOA
 
 镜像中没有功能性字符串，但含有一条证书链（`Qualcomm Technologies, Inc.`、`Qualcomm Cryptographic Operations`、`SRoT MBNv7 Image Signing Root CA 6`，以及 `0xB5FF` 附近的 `CASS - SBL4`）。作用未知。名称暗示是高通通用外设（QUP）串行模块，但这只是猜测。
 
-其布局是高通镜像格式。`0x1000` 段以 `QSI ` 开头，包含一个（偏移，大小）对表。`0x6328` 段以 `SEFW` 开头。Ghidra 的 Hexagon 解码从 `0x1100` 起开始得到看似合理的指令（例如 `memw R20,(R20+#0x1c)`），但序列主要由重复的 `memw` 组成，因此代码边界尚未确定。
+其布局是高通镜像格式。`0x1000` 段以 `QSI ` 魔数开头。其内容未经解码；其后的字节包含类似 ASN.1 DER 的 `30 0d` 与 `30 00` 模式，因此尚未确定（偏移，大小）表。`0x6328` 段以 `SEFW` 开头。Ghidra 的 Hexagon 解码从 `0x1100` 起开始得到看似合理的指令（例如 `memw R20,(R20+#0x1c)`），但序列主要由重复的 `memw` 组成，因此代码边界尚未确定。
 
 此前的草稿称 QUP 中含有真正的 Hexagon 代码，这是错误的，因为解码率并不能作为代码的判据。`qupfw.img` 中是否含有代码、入口在哪里，尚未确定。
 
@@ -77,26 +77,26 @@ Hexagon ELF，`e_machine = EM_QDSP6`，`e_flags = 0x3`。它有十一个 `PT_LOA
 - `libbenchmark_skel.so`、`libcrm_test_skel.so`：测试与基准骨架。
 - `fastrpc_shell_3`、`fastrpc_shell_unsigned_3`：计算 DSP 的 FastRPC shell。
 
-加载这些镜像的内核模块包括 `cdsp-loader.ko`、`adsp_loader_dlkm.ko`、`q6_dlkm.ko`、`mdt_loader.ko` 和 `frpc-adsprpc.ko`。
+涉及的内核模块包括 `cdsp-loader.ko`、`adsp_loader_dlkm.ko`、`q6_dlkm.ko`、`mdt_loader.ko`（在 `modules_modinfo.tsv` 中被描述为 MDT 固件解析器）以及 `frpc-adsprpc.ko`。其加载作用未经验证。
 
 ## 基带（`modem.img`）
 
-这是一个 FAT16 镜像，大小 36.5 MB，共 165 个文件。列表见 `data/remote/modem_listing.txt`。已通过能处理长文件名的 FAT 读取器验证。
+这是一个 FAT16 镜像文件，大小 38.5 MB（38,522,880 字节），其内容为 165 个文件，共 36.5 MB（36,487,937 字节）。列表见 `data/remote/modem_listing.txt`。已通过能处理长文件名的 FAT 读取器验证。
 
 目录结构：
 
 - `/image/kiwi/`：主基带集合。`amss.bin`（7.46 MB）和 `amss20.bin`（6.50 MB）是基带固件镜像。`Data.msc` 和 `Data20.msc` 是数据段。`bdwlan.elf` 与 `bdwlan.elf.xz` 是 Wi-Fi 板级数据。`regdb.bin` 是无线监管数据库。`phy_ucode.elf` 与 `phy_ucode20.elf` 是 PHY 微码。`qdss_trace_config_v1.cfg` 与 `v2.cfg` 用于配置跟踪输出。
-- `/image/adsp.b00` 至 `adsp.b41`（另有头文件 `adsp.mdt`）：应用 DSP 固件本身，分为 40 个可加载段与一个签名段。已观察为 Hexagon ELF，入口 `0x87600000`。段结构、SHA-384 哈希表、签名链以及同一镜像中的可信应用见第 16 节。早期草稿曾称这些不是应用 DSP 固件，这一说法有误。`cdsp.b00` 至 `cdsp.b12` 为计算 DSP 固件，同样在第 16 节说明。
+- `/image/adsp.b00` 至 `adsp.b41`（另有头文件 `adsp.mdt`）：应用 DSP 固件本身，分为 40 个可加载段（1 至 40）、一个头段（0）与一个签名段（41）。第 24 与 40 段文件大小为零且没有 `.bNN` 文件，因此存在 40 个 `.bNN` 文件。已观察为 Hexagon ELF，入口 `0x87600000`。段结构、SHA-384 哈希表、签名链以及同一镜像中的可信应用见第 16 节。早期草稿曾称这些不是应用 DSP 固件，这一说法有误。`cdsp.b00` 至 `cdsp.b12` 为计算 DSP 固件，同样在第 16 节说明。
 
 `amss.bin` 是 32 位 ELF，`e_machine = 0x28`（ARM）。`kiwi` 是构建中此基带配置的目录名，其含义未说明。根据头部已验证，名称含义未解释。
 
 ## 蓝牙（`bluetooth.img`）
 
-这是一个 FAT16 镜像，大小 0.78 MB，共 51 个文件。列表见 `data/remote/bluetooth_listing.txt`。
+这是一个 FAT16 镜像文件，大小 1.22 MB（1,224,704 字节），其内容为 51 个文件，共 0.78 MB（780,143 字节）。列表见 `data/remote/bluetooth_listing.txt`。
 
 - `hmtbtfw10.tlv` 与 `hmtbtfw20.tlv`：蓝牙固件，TLV 格式。
 - `hmtbtfw20.ver`：`BTFW.HAMILTON.2.0.0-00797-PATCHZ-1.105163.2.109423.3`。芯片名为 Hamilton。已验证。
-- `hmtnv10.*` 与 `hmtnv20.*`：非易失性配置文件，约 30 个变体（`.b0202` 至 `.b32`、`.bin`、`.b0c`）。后缀看起来是按产品或按天线的配置，未验证。
+- `hmtnv10.*` 与 `hmtnv20.*`：非易失性配置文件，共 47 个：`hmtnv20.*` 有 45 个（`.b0202` 至 `.b3f`，以及 `.bin`），`hmtnv10.*` 有 2 个（`.b0c` 与 `.bin`）。后缀看起来是按产品或按天线的配置，未验证。
 
 fstab 以只读方式把该镜像挂载在 `/vendor/bt_firmware`（第 04 节）。
 
