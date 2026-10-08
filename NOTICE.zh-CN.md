@@ -16,7 +16,7 @@
 |---|---|---|---|
 | Ray-Ban Display 固件：摘录、字符串、符号表、反汇编与反编译输出、十六进制提取物与元数据 | `data/` | Meta Platforms, Inc. 及固件中第三方组件的权利人 | 作为分析的证据收录 |
 | Qualcomm《Enable Secure Boot on QCC730 Application Note》（80-Y8730-8，rev AB）中的三张图 | `docs/images/qcc730/` | Qualcomm Technologies, Inc. | 保存的 HTML 页面提供；仅供参考引用 |
-| 第 10 节，QCC730 安全启动参考，中英文版 | `docs/10-qcc730-secure-boot-reference*.md` | Qualcomm Technologies, Inc. 与 OP-TEE 项目 | 摘自 Qualcomm 应用笔记与 OP-TEE *Hoya architecture* 文档（由我保存） |
+| 第 10 节，QCC730 安全启动参考，中英文版 | `docs/10-qcc730-secure-boot-reference*.md` | Qualcomm Technologies, Inc. 与 OP-TEE 项目 | 摘自 Qualcomm 应用笔记与 OP-TEE *Hoya architecture* 文档 |
 | Analog Devices MAX98388/MAX98389 数据手册（Rev. 2，6/24） | 引用于 `docs/12-audio.md`、`docs/17-chip-inventory.md` | Analog Devices, Inc. | 引用其规格数值 |
 | Qualcomm FastConnect 7800 产品简介（87-PW329-1 Rev. B） | 引用于 `docs/17-chip-inventory.md` | Qualcomm Technologies, Inc. | 引用其产品特性 |
 
