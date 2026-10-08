@@ -80,7 +80,7 @@ Examples (observed):
 - `meta.wearables.captureengine.ICaptureEngine/default` to `captureengineservice_service` and `.../wcs` to `wearablecameraservice_service`
 - `meta.internal.xrwifi.IXrWifi/default` to `xrwifi_service`
 
-Twenty of the 42 service entries map to `hal_lpi_mcu_service`, including the button, hinge, case, companion, light, mount, power and sensor interfaces. Observed. The MCU HAL names are described in section 09, which counts 17 AIDL interfaces for the `lpi_mcu` service. The difference (20 entries against 17 interfaces) is recorded as observed in both files and not resolved here.
+Twenty of the 42 service entries map to `hal_lpi_mcu_service`, including the button, hinge, case, companion, light, mount, power and sensor interfaces. Observed. The MCU HAL names are described in section 09. The `lpi_mcu` service binary registers 20 AIDL interfaces, which matches the 20 service entries. Resolved: an earlier draft of section 09 said 17 and missed three.
 
 ### HIDL service contexts
 

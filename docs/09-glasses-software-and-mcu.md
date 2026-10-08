@@ -8,7 +8,7 @@ This document covers the parts of the system that sit above the boot chain and b
 
 The glasses have a microcontroller that is separate from the SoC. Several HALs and kernel interfaces exist only to talk to it. The evidence:
 
-- The `lpi_mcu` service (`odm/etc/init/vendor.meta.hardware.lpi_mcu-service.greatwhite.rc`, binary `odm/bin/hw/vendor.meta.hardware.lpi_mcu-service.greatwhite`) registers 17 AIDL interfaces. They are listed below.
+- The `lpi_mcu` service (`odm/etc/init/vendor.meta.hardware.lpi_mcu-service.greatwhite.rc`, binary `odm/bin/hw/vendor.meta.hardware.lpi_mcu-service.greatwhite`) registers 20 AIDL interfaces. They are listed below. The count is from the service binary: 20 `vendor.meta.hardware.*` interface descriptors (the earlier draft said 17 and missed three).
 - The `mcu-properties.sh` script in `vendor/bin` reads `/sys/devices/platform/soc/soc:meta,rt600_ctrl/is_rt600`. The kernel driver is named `meta,rt600_ctrl`. Its exact role is inferred from the name and from the trigger the init file writes to it.
 - `vendor/firmware` holds `mcu.default.rt700.tub` and `mcu.core1.default.rt700.tub`. The `.tub` files are most likely the MCU's own firmware. The `rt700` part of the name matches the audio-codec variant that the scripts test for. Both points are inferred.
 - `odm/lib64/libmcu-vendor.so` is the vendor-side MCU library. It is on the ODM partition.
@@ -19,7 +19,9 @@ Verified from the files: the names, the paths, and the init and property logic. 
 
 | Interface | Role (from the name) |
 |---|---|
+| `vendor.meta.hardware.button.actionbutton.IActionButton` | action button |
 | `vendor.meta.hardware.button.capturebutton.ICaptureButton` | capture button |
+| `vendor.meta.hardware.button.powerbutton.IPowerButton` | power button |
 | `vendor.meta.hardware.button.powerslider.IPowerSlider` | power slider on the frame |
 | `vendor.meta.hardware.captouch.ICaptouch` | capacitive touch |
 | `vendor.meta.hardware.casestate.ICaseState` | state of the charging case |
@@ -36,8 +38,9 @@ Verified from the files: the names, the paths, and the init and property logic. 
 | `vendor.meta.hardware.sensor.imu.IImu` | inertial sensor (accelerometer and gyroscope) |
 | `vendor.meta.hardware.wakeword.IWakeword` | wake word |
 | `vendor.meta.hardware.audionotification.IAudioNotification` | audio notifications |
+| `vendor.meta.hardware.battery_provisioning.IBatteryProvisioning` | battery provisioning |
 
-The names describe what the interface controls. Whether each one runs on the MCU or on the application processor is shown by the service that hosts it: all 17 are registered by `lpi_mcu_service`, so they are MCU-facing.
+The names describe what the interface controls. Whether each one runs on the MCU or on the application processor is shown by the service that hosts it: all 20 are registered by `lpi_mcu_service`, so they are MCU-facing.
 
 ### The transport: STP
 

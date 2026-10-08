@@ -80,7 +80,7 @@ Meta 与 Oculus 的域是策略中最具特征的部分。类型列表包括：
 - `meta.wearables.captureengine.ICaptureEngine/default` 对应 `captureengineservice_service`，`.../wcs` 对应 `wearablecameraservice_service`
 - `meta.internal.xrwifi.IXrWifi/default` 对应 `xrwifi_service`
 
-42 个服务条目中有 20 个映射到 `hal_lpi_mcu_service`，包括按键、铰链、机壳、配套设备、灯光、支架、电源与传感器接口。已观察。第 09 节记录 `lpi_mcu` 服务注册了 17 个 AIDL 接口。20 个条目与 17 个接口之间的差异在两处都如实记录，此处未解决。
+42 个服务条目中有 20 个映射到 `hal_lpi_mcu_service`，包括按键、铰链、机壳、配套设备、灯光、支架、电源与传感器接口。已观察。`lpi_mcu` 服务二进制注册了 20 个 AIDL 接口，与 20 个服务条目一致。已解决：第 09 节早期草稿写的是 17，漏掉了三个。
 
 ### HIDL 服务上下文
 

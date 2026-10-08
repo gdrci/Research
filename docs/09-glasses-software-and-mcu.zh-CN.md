@@ -8,7 +8,7 @@
 
 眼镜上有一个与 SoC 分开的微控制器。好几个 HAL 和内核接口只为与它通信而存在。证据如下：
 
-- `lpi_mcu` 服务（`odm/etc/init/vendor.meta.hardware.lpi_mcu-service.greatwhite.rc`，可执行文件 `odm/bin/hw/vendor.meta.hardware.lpi_mcu-service.greatwhite`）注册了 17 个 AIDL 接口，列于下文。
+- `lpi_mcu` 服务（`odm/etc/init/vendor.meta.hardware.lpi_mcu-service.greatwhite.rc`，可执行文件 `odm/bin/hw/vendor.meta.hardware.lpi_mcu-service.greatwhite`）注册了 20 个 AIDL 接口，列于下文。数量来自服务二进制：20 个 `vendor.meta.hardware.*` 接口描述符（早期草稿写的是 17，漏掉了三个）。
 - `vendor/bin` 中的 `mcu-properties.sh` 读取 `/sys/devices/platform/soc/soc:meta,rt600_ctrl/is_rt600`。内核驱动名为 `meta,rt600_ctrl`。它的确切作用是根据名称以及 init 文件写入它的触发器推断的。
 - `vendor/firmware` 中有 `mcu.default.rt700.tub` 和 `mcu.core1.default.rt700.tub`。`.tub` 文件很可能是 MCU 自己的固件。文件名中的 `rt700` 与脚本检测的音频编解码器变体相符。这两点都是推断。
 - `odm/lib64/libmcu-vendor.so` 是厂商侧的 MCU 库，位于 ODM 分区中。
@@ -19,7 +19,9 @@
 
 | 接口 | 作用（根据名称） |
 |---|---|
+| `vendor.meta.hardware.button.actionbutton.IActionButton` | 动作按钮 |
 | `vendor.meta.hardware.button.capturebutton.ICaptureButton` | 拍摄按钮 |
+| `vendor.meta.hardware.button.powerbutton.IPowerButton` | 电源按钮 |
 | `vendor.meta.hardware.button.powerslider.IPowerSlider` | 镜框上的电源滑块 |
 | `vendor.meta.hardware.captouch.ICaptouch` | 电容式触摸 |
 | `vendor.meta.hardware.casestate.ICaseState` | 充电盒的状态 |
@@ -36,8 +38,9 @@
 | `vendor.meta.hardware.sensor.imu.IImu` | 惯性传感器（加速度计和陀螺仪） |
 | `vendor.meta.hardware.wakeword.IWakeword` | 唤醒词 |
 | `vendor.meta.hardware.audionotification.IAudioNotification` | 音频通知 |
+| `vendor.meta.hardware.battery_provisioning.IBatteryProvisioning` | 电池供电配置 |
 
-名称描述的是接口控制的内容。它们运行在哪里，由承载它们的服务决定：17 个接口全部由 `lpi_mcu_service` 注册，因此都面向 MCU。
+名称描述的是接口控制的内容。它们运行在哪里，由承载它们的服务决定：20 个接口全部由 `lpi_mcu_service` 注册，因此都面向 MCU。
 
 ### 传输：STP
 
