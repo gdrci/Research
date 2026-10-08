@@ -12,10 +12,10 @@
 
 | 器件 | 功能 | 依据 | 可信度 |
 |---|---|---|---|
-| 高通 "Aurora" SoC（`SocAuroraLAA`） | 应用处理器，平台 `neo` | XBL `IMAGE_VARIANT_STRING=SocAuroraLAA`；设备树中的 `qcom,neo-*` 节点（pinctrl、pdc、pcie、nsp、mmss、videocc、rpmh-clk、system）；`ro.board.platform=neo`（第 04 节） | 已命名（代号）；文件中没有市场型号 |
-| 高通 PM8150 | 通过 SPMI 连接的主 PMIC | 设备树中 50 个 `qcom,pm8150` 节点；SELinux 的 sysfs 标签中有 `pm8150@0`（第 11 节） | 已命名 |
+| 高通 "Aurora" SoC（`SocAuroraLAA`） | 应用处理器，平台 `neo` | XBL `IMAGE_VARIANT_STRING=SocAuroraLAA`；设备树中的 `qcom,neo-*` 节点（pinctrl、pdc、pcie、nsp、mmss、videocc、rpmh-clk、system）；`ro.board.platform=neo`（第 04 节） | 已命名（代号）；文件中没有市场型号 公开搜索：未找到该代号的公开来源。高通公开的智能眼镜 SoC 为 AR1 Gen 1、AR1+ Gen 1 与 AR2 Gen 1。设备树中没有 AR1 或 AR2 名称，因此未作匹配。 |
+| 高通 PM8150 | 通过 SPMI 连接的主 PMIC | 设备树中 50 个 `qcom,pm8150` 节点；SELinux 的 sysfs 标签中有 `pm8150@0`（第 11 节） | 已命名 公开搜索：Linux SPMI 绑定列出 `qcom,pm8150` 与 `qcom,pm8150b`；未找到公开的寄存器映射。 |
 | 高通 PM8008（PM8008i） | 带稳压器的配套 PMIC，共两颗 | 22 个 `qcom,pm8008i-regulator` 节点；`qcom,pm8008-chip`（第 04 节） | 已命名 |
-| Maxim MAX77655 | 显示电源 PMIC，开机时配置 | `vendor/bin/hw` 中的 `max77655_util --config_gw_display_pmic`，由 `fix-gw-display-pmic.rc` 运行（第 13 节）；MCU tub 与启动镜像中也有 `max77655` | 已命名 |
+| Maxim MAX77655 | 显示电源 PMIC，开机时配置 | `vendor/bin/hw` 中的 `max77655_util --config_gw_display_pmic`，由 `fix-gw-display-pmic.rc` 运行（第 13 节）；MCU tub 与启动镜像中也有 `max77655` | 已命名 公开搜索：Maxim 的 MAX77655 编程指南示例代码使用从机地址 0x44。未与数据手册核对。 |
 | Maxim MAX77813 | 充电器或 PMIC（覆盖层） | 覆盖层中的 `max77813@18`（第 04 节） | 已命名 |
 | Maxim MAX77789 | 充电器或 PMIC（覆盖层） | 覆盖层中的 `max77789@69` | 已命名 |
 | Maxim MAX17332 | 电量计 | `vendor.img` 中 138 处命中；SELinux 与 `init.metasoc.sh` 中的 `max17332-battery` 电源节点（第 04、09、11 节） | 已命名 |
@@ -42,7 +42,7 @@
 
 | 器件 | 功能 | 依据 | 可信度 |
 |---|---|---|---|
-| Maxim MAX98388（ADI，WLP-16） | 单声道 D 类扬声器功放，带 I/V 反馈，PCM/TDM 输入，I2C 控制。供电 2.3 V 至 10 V。厂商数据（Analog Devices 产品页与 Digi-Key 列表）：1 kHz 下 THD+N 优于 -83 dB，动态范围最高 111 dB（A 计权），软件关断低于 5 µW，上电 1 ms。内核绑定 `adi,max98388` 描述了电压与电流监测槽位（`adi,vmon-slot-no`、`adi,imon-slot-no`）及交错模式，与 ODM 脚本中电压、电流反馈的使能相符（第 12 节） | 已命名。I2C 地址不一致：ODM 脚本用 `0x3A` 与 `0x38`，内核绑定示例用 `0x39`。在没有 ADI 数据手册的情况下未解决 |
+| Maxim MAX98388（ADI，WLP-16） | 单声道 D 类扬声器功放，带 I/V 反馈，PCM/TDM 输入，I2C 控制。供电 2.3 V 至 10 V。厂商数据（Analog Devices 产品页与 Digi-Key 列表）：1 kHz 下 THD+N 优于 -83 dB，动态范围最高 111 dB（A 计权），软件关断低于 5 µW，上电 1 ms。内核绑定 `adi,max98388` 描述了电压与电流监测槽位（`adi,vmon-slot-no`、`adi,imon-slot-no`）及交错模式，与 ODM 脚本中电压、电流反馈的使能相符（第 12 节） | 已命名。I2C 地址不一致：ODM 脚本用 `0x3A` 与 `0x38`，内核绑定示例用 `0x39`。在没有 ADI 数据手册的情况下未解决 公开搜索：Rev. 2 数据手册（2023/09/26）在 analog.com。其 I2C 地址表未能获取（环境出口代理阻止）。 |
 | 高通 WCD 风格编解码宏（RX、TX、VA、WSA） | 音频编解码与 LPASS 宏 | 混音路径中的 `RX_MACRO`、`TX_MACRO`、`VA_MACRO`、`WSA_MACRO`，以及设备树中的 `lpass-cdc` 节点（第 12 节） | 已命名（系列）；编解码器型号不在文件中 |
 | WCD9320 | 一个库中的编解码器名称 | `libats.so` 与 `vendor.img` 中包含该字符串（第 12 节） | 仅在字符串中命名；设备树中未使用 |
 | NXP RT700（MIMXRT798S） | 一颗芯片内的 MCU（Cortex-M33）与 HiFi4 音频 DSP | DSP 镜像中的 `system_MIMXRT798S_hifi4.c`；MCU 镜像中的 `arvr/firmware/lib/uhal/peripherals/rt700/` 驱动（第 14、15 节） | 已命名 |
@@ -65,7 +65,7 @@
 
 | 器件 | 功能 | 依据 | 可信度 |
 |---|---|---|---|
-| 高通 WCN7850（固件横幅）；设备树中该家族命名为 WCN6x5x（`bt_wcn6x5x`、`qcom,kiwi`） | Wi-Fi 与蓝牙组合芯片 | 蓝牙补丁横幅 `PF=WCN7850ROM=`（第 07 节）；设备树节点 `/soc/bt_wcn6x5x` 与 `qcom,kiwi`；WLAN 标签 `WLAN.HMT`（第 07 节）。WCN6856 概述（80-WL542-10）是不同型号，仅作架构参考 | 已命名（固件）；设备树中两种名称不一致，两者均记录 |
+| 高通 WCN7850（固件横幅）；设备树中该家族命名为 WCN6x5x（`bt_wcn6x5x`、`qcom,kiwi`） | Wi-Fi 与蓝牙组合芯片 | 蓝牙补丁横幅 `PF=WCN7850ROM=`（第 07 节）；设备树节点 `/soc/bt_wcn6x5x` 与 `qcom,kiwi`；WLAN 标签 `WLAN.HMT`（第 07 节）。WCN6856 概述（80-WL542-10）是不同型号，仅作架构参考 | 已命名（固件）；设备树中两种名称不一致，两者均记录 公开搜索：高通将 WCN785x 列在 FastConnect 7800 系列下（Wi-Fi 7；高通资料称蓝牙 5.4，WikiDevi 将 WCN7850 列为蓝牙 5.3）。资料未能获取（环境出口代理阻止）。 |
 | 高通 WPSS 子系统 | SoC 内的 Wi-Fi 远程处理器 | XBL 中的 `[FULL_WPSS]` 与 `[CORE_WPSS]` 节；SMP2P 设备树节点（第 07 节） | 子系统已命名；镜像不在 OTA 中 |
 | NXP PTN5150 | USB Type-C 控制器（`ptn5150@1d`，在 18 个覆盖层中为 disabled） | 覆盖层（第 04 节） | 已命名 |
 | Apple MFi 认证芯片（343S00176） | 机壳或手环的配件认证 | 覆盖层中的 `mfi343s00176@10`（`meta,mfi-i2c`）；`vendor.meta.hardware.mfi@1.0-service` 与 `/dev/mfi-i2c`（第 09 节） | 已命名。该芯片属于 Apple MFi 计划；芯片上的厂商字符串不在文件中 |
